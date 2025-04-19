@@ -63,9 +63,9 @@ func complete_text():
 		dialogue_text.bbcode_text = displayed_text
 		is_text_completed = true
 	else:
-		# テキストが既に表示されている場合は次のテキストへ
-		# ここにシナリオ進行のコードを追加
-		pass
+		# テキストが表示済みなら次のシナリオに進む
+		if has_node("test_scenario"):
+			$test_scenario.on_text_completed()
 
 # 背景を変更する関数
 func change_background(background_path):
@@ -94,9 +94,10 @@ func hide_character(character_id):
 # BGMを再生する関数
 func play_bgm(bgm_path):
 	if current_bgm != bgm_path:
-		current_bgm = bgm_path
-		bgm_player.stream = load(bgm_path)
-		bgm_player.play()
+		#current_bgm = bgm_path
+		#bgm_player.stream = load(bgm_path)
+		#bgm_player.play()
+		pass
 
 # 効果音を再生する関数
 func play_sfx(sfx_path):

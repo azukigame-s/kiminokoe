@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl4wlib7utapy"]
+[gd_scene load_steps=3 format=3 uid="uid://bl4wlib7utapy"]
 
 [ext_resource type="Script" uid="uid://brkat7pgvdug3" path="res://scenes/novel_system.gd" id="1_07qo2"]
+[ext_resource type="Script" uid="uid://c6ch5dthq8lig" path="res://scripts/test_scenario.gd" id="2_gu5rf"]
 
 [node name="NovelSystem" type="Control"]
 layout_mode = 3
@@ -44,3 +45,6 @@ offset_bottom = 23.0
 [node name="bgm_player" type="AudioStreamPlayer" parent="."]
 
 [node name="sfx_player" type="AudioStreamPlayer" parent="."]
+
+[node name="test_scenario" type="Node" parent="."]
+script = ExtResource("2_gu5rf")
