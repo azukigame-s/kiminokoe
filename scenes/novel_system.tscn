@@ -37,11 +37,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="character_name" type="Label" parent="text_panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="bgm_player" type="AudioStreamPlayer" parent="."]
 
 [node name="sfx_player" type="AudioStreamPlayer" parent="."]

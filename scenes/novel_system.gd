@@ -1,5 +1,7 @@
 extends Control
 
+signal initialized
+
 # テキスト表示関連の変数
 var current_text = ""
 var displayed_text = ""
@@ -20,14 +22,22 @@ var current_bgm = ""
 @onready var background = $background
 @onready var characters_container = $characters_container
 @onready var dialogue_text = $text_panel/dialogue_text
-@onready var character_name = $text_panel/character_name
-@onready var bgm_player = $bgm_player
-@onready var sfx_player = $sfx_player
+@onready var bgm_player: AudioStreamPlayer = $bgm_player
+@onready var sfx_player: AudioStreamPlayer = $sfx_player
 
 func _ready():
+	print("Ready function called.")
+	
+	# デバッグ用出力
+	print("BGM player: ", bgm_player)
+	print("SFX player: ", sfx_player)
+	
 	# 初期化処理
 	dialogue_text.bbcode_enabled = true
-	dialogue_text.bbcode_text = ""
+	dialogue_text.text = ""
+	
+	# 初期化完了のシグナルを発行
+	emit_signal("initialized")
 
 func _process(delta):
 	# 文字送り処理
@@ -37,7 +47,7 @@ func _process(delta):
 			text_timer = 0
 			if displayed_text.length() < current_text.length():
 				displayed_text += current_text[displayed_text.length()]
-				dialogue_text.bbcode_text = displayed_text
+				dialogue_text.text  = displayed_text
 				# 文字表示時の効果音があれば、ここで再生
 			else:
 				is_text_completed = true
@@ -48,19 +58,12 @@ func show_text(text, speaker_name = ""):
 	displayed_text = ""
 	is_text_completed = false
 	text_timer = 0
-	
-	# 話者名を設定
-	if speaker_name != "":
-		character_name.text = speaker_name
-		character_name.visible = true
-	else:
-		character_name.visible = false
 
 # テキストを一気に表示する関数（クリック時など）
 func complete_text():
 	if not is_text_completed:
 		displayed_text = current_text
-		dialogue_text.bbcode_text = displayed_text
+		dialogue_text.text = displayed_text
 		is_text_completed = true
 	else:
 		# テキストが表示済みなら次のシナリオに進む
@@ -70,8 +73,17 @@ func complete_text():
 # 背景を変更する関数
 func change_background(background_path):
 	current_background = background_path
-	var bg_texture = load(background_path)
-	background.texture = bg_texture
+	var bg_texture = load("res://assets/backgrounds/" + background_path)
+	print("Loading texture at:", "res://assets/backgrounds/" + background_path)
+	print("Loaded texture:", bg_texture)
+	if bg_texture != null and background != null:
+		print("Applying texture...")
+		background.texture = bg_texture
+		print("Texture applied.")
+	else:
+		print("Error: Failed to load background texture or background node is null")
+		print("Path: ", "res://assets/backgrounds/" + background_path)
+		print("Background node: ", background)
 
 # キャラクターを表示する関数
 func show_character(character_id, character_path, position = Vector2(0, 0)):
@@ -93,16 +105,31 @@ func hide_character(character_id):
 
 # BGMを再生する関数
 func play_bgm(bgm_path):
+	if bgm_player == null:
+		print("Error: bgm_player is null")
+		return
+		
 	if current_bgm != bgm_path:
-		#current_bgm = bgm_path
-		#bgm_player.stream = load(bgm_path)
-		#bgm_player.play()
-		pass
+		current_bgm = bgm_path
+		var audio_stream = load(bgm_path)
+		if audio_stream != null:
+			bgm_player.stream = audio_stream
+			bgm_player.play()
+		else:
+			print("Failed to load audio: ", bgm_path)
 
 # 効果音を再生する関数
 func play_sfx(sfx_path):
-	sfx_player.stream = load(sfx_path)
-	sfx_player.play()
+	if sfx_player == null:
+		print("Error: sfx_player is null")
+		return
+
+	var audio_stream = load(sfx_path)
+	if audio_stream != null:
+		sfx_player.stream = audio_stream
+		sfx_player.play()
+	else:
+		print("Failed to load audio: ", sfx_path)
 
 # 入力処理
 func _input(event):

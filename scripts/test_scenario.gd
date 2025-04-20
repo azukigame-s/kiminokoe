@@ -7,11 +7,11 @@ var novel_system
 var scenario = [
 	{
 		"type": "background",
-		"path": "res://assets/backgrounds/sample.jpg"
+		"path": "sample.jpg"
 	},
 	{
 		"type": "bgm",
-		"path": "res://assets/music/sample_bgm.ogg"
+		"path": "res://assets/music/sample_bgm.mp3"
 	},
 	{
 		"type": "dialogue",
@@ -25,7 +25,7 @@ var scenario = [
 	},
 	{
 		"type": "sfx",
-		"path": "res://assets/sounds/sample_sfx.ogg"
+		"path": "res://assets/sounds/sample_sfx.mp3"
 	},
 	{
 		"type": "dialogue",
@@ -38,8 +38,12 @@ var current_index = 0
 
 func _ready():
 	novel_system = get_parent()
+	print("NovelSystem:", novel_system)
+	novel_system.connect("initialized", _on_novel_system_initialized)
+	
+func _on_novel_system_initialized():
 	execute_current_command()
-
+	
 # 現在のコマンドを実行
 func execute_current_command():
 	if current_index >= scenario.size():
