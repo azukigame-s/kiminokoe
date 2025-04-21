@@ -7,7 +7,7 @@ var novel_system
 var scenario = [
 	{
 		"type": "background",
-		"path": "sample.jpg"
+		"path": "res://assets/backgrounds/sample.jpg"
 	},
 	{
 		"type": "bgm",
@@ -38,24 +38,39 @@ var current_index = 0
 
 func _ready():
 	novel_system = get_parent()
-	print("NovelSystem:", novel_system)
-	novel_system.connect("initialized", _on_novel_system_initialized)
+	print("TestScenario ready - NovelSystem:", novel_system)
 	
+	# Godot 4.x形式のシグナル接続
+	if novel_system:
+		novel_system.initialized.connect(_on_novel_system_initialized)
+		print("Signal connected")
+	else:
+		print("Error: Novel system not found")
+
 func _on_novel_system_initialized():
+	print("Novel system initialized, starting scenario")
 	execute_current_command()
 	
 # 現在のコマンドを実行
 func execute_current_command():
 	if current_index >= scenario.size():
+		print("Scenario complete")
 		return
 	
 	var command = scenario[current_index]
+	print("Executing command: ", command.type, " at index ", current_index)
+	
 	match command.type:
 		"background":
 			novel_system.change_background(command.path)
 			proceed_to_next()
 		"character":
-			novel_system.show_character(command.id, command.path, Vector2(command.position_x, command.position_y))
+			# Vector2の作成方法を修正
+			var position = Vector2(
+				command.get("position_x", 0), 
+				command.get("position_y", 0)
+			)
+			novel_system.show_character(command.id, command.path, position)
 			proceed_to_next()
 		"dialogue":
 			novel_system.show_text(command.text, command.speaker)
@@ -66,6 +81,9 @@ func execute_current_command():
 		"sfx":
 			novel_system.play_sfx(command.path)
 			proceed_to_next()
+		_:
+			print("Unknown command type: ", command.type)
+			proceed_to_next()
 
 # 次のコマンドに進む
 func proceed_to_next():
@@ -75,5 +93,6 @@ func proceed_to_next():
 
 # テキスト表示が完了して次に進むときの処理
 func on_text_completed():
+	print("Text completed, moving to next command")
 	current_index += 1
 	execute_current_command()
