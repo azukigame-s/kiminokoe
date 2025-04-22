@@ -3,7 +3,7 @@ extends Node
 # ノベルシステムへの参照
 var novel_system
 
-# テストシナリオデータ
+# テストシナリオデータ - キャラクター表示なし
 var scenario = [
 	{
 		"type": "background",
@@ -15,13 +15,51 @@ var scenario = [
 	},
 	{
 		"type": "dialogue",
-		"speaker": "???",
-		"text": "ここは...どこだろう？"
+		"speaker": "",
+		"text": "車窓を流れる景色――。見えるのは青い空、そして青い海。
+	
+そんな景色を眺めながら僕はバスに揺られていた。
+
+大型の路線バスの左側、一番前の座席に腰を掛けているのだが、バスの中に乗客は僕一人だ。
+
+一番前の席は足場が他より高くなっており、大の大人が座ると体育座りのような不格好な体勢になってしまう。
+
+お世辞にも座り心地は良くないし、乗客のいない車内でわざわざ運転手さんのそばに座る必要なんてない。
+
+そう思うかもしれないが、それでも、僕はこの席が好きだった。"
 	},
 	{
 		"type": "dialogue",
-		"speaker": "???",
-		"text": "確か、私は..."
+		"speaker": "",
+		"text": "理由は２つ。
+
+フロントガラスから左の車窓にかけて、大パノラマの景色を拝むことができるというのがひとつ。
+
+放り込まれた小銭を大口を開けて飲み込むロボット――、のような運賃箱を見るのが好き、というのがもうひとつだ。
+
+とはいっても、乗客のいないこの状況ではその姿も拝めないのだけど……。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "流れる景色を見ていると、いろいろと考えてしまう。
+
+いろいろと思い出してしまう――。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "――そう。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "――――あの日も。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "あの日も……、１０月にしては青すぎる景色だった――。"
 	},
 	{
 		"type": "sfx",
@@ -30,8 +68,115 @@ var scenario = [
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "その時、不思議な声が聞こえてきた。"
-	}
+		"text": "『次は――』
+
+ピンポーンと軽い音が鳴る。
+
+『――だき西口。次は、地蔵焚西口です』
+
+次のバス停を知らせる感情のない音声を待たずして、降車ボタンを押した人がいる。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "「へへへ、イチバーン」
+
+「あんまり早く押すとまた運転手さんに怒られるぞ」
+
+ひとつ後ろの席に座る弟――、スグに向かい僕は言った。
+
+ニヤニヤと笑いながらスグは口を開く。
+
+「だって早く帰りたいじゃん！　なんてったって今日は――」
+
+満面の笑顔だ。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "そう。今日は１０月１０日。
+
+弟の８歳の誕生日だった。
+
+そんなやり取りをしているうちにバスはスピードを落とし、バス停に着く。
+
+僕が席を立とうとすると、その横を直が横切る。
+
+「ちょっとスグ、先に行っちゃ……」
+
+「ありがとうございましたー。ほら、お兄ぃも早く！」
+
+普段は僕の後ろをついてくる弟も、今日は気持ちが高鳴っているのかそそくさとバスを降りてしまう。"
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/forest.jpg"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "「ありがとうございました」
+
+運転手さんの顔も見ずお礼をし、慌ててあとを追った。
+
+バスを降りてもそこに弟の姿がない。
+
+「えっ、どこ？　スグぅ？」"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "ランドセルがバスの後ろに回るのが見えた。
+
+――そっちはダメだ！"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "「スグっ！　そっちは――――――」"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "ドンッ！！！！"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "キキーーッ！　ガシャン！！"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "「…………ス……グ……？」"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "今日は１０月１０日。
+
+弟の８歳の誕生日だった。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "１０月にしては青すぎる世界がかすみ、白くなる。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "そして、真っ暗になった――。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "誰かが遠くから叫ぶ声が聞こえる――。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "まわりの音も聞こえなくなり、鳶の鳴き声だけが耳に残っていた――――。"
+	},
 ]
 
 var current_index = 0
@@ -63,14 +208,6 @@ func execute_current_command():
 	match command.type:
 		"background":
 			novel_system.change_background(command.path)
-			proceed_to_next()
-		"character":
-			# Vector2の作成方法を修正
-			var position = Vector2(
-				command.get("position_x", 0), 
-				command.get("position_y", 0)
-			)
-			novel_system.show_character(command.id, command.path, position)
 			proceed_to_next()
 		"dialogue":
 			novel_system.show_text(command.text, command.speaker)

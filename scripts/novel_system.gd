@@ -29,6 +29,15 @@ var current_bgm = ""
 func _ready():
 	print("Visual Novel System: Ready function called.")
 	
+	# サイズを明示的に設定（親Controlノードのサイズ問題を解決するコード）
+	size_flags_horizontal = Control.SIZE_FILL
+	size_flags_vertical = Control.SIZE_FILL
+	anchor_right = 1.0
+	anchor_bottom = 1.0
+	
+	await get_tree().process_frame
+	print("Updated Control size after frame: ", size)
+	
 	# ノード参照の確認
 	_check_nodes()
 	
@@ -39,8 +48,8 @@ func _ready():
 	
 	# テキストパネルの設定
 	if text_panel:
-		# テキストパネルを画面下部に配置
-		text_panel.anchor_top = 0.7
+		# テキストパネルを全画面に設定（かまいたちの夜スタイル）
+		text_panel.anchor_top = 0.0
 		text_panel.anchor_bottom = 1.0
 		text_panel.anchor_left = 0.0
 		text_panel.anchor_right = 1.0
@@ -48,24 +57,34 @@ func _ready():
 		text_panel.offset_top = 0
 		text_panel.offset_right = 0
 		text_panel.offset_bottom = 0
-		print("Text panel setup complete. Size: ", text_panel.size)
+		
+		# 半透明の黒背景
+		var style_box = StyleBoxFlat.new()
+		style_box.bg_color = Color(0, 0, 0, 0.5)  # 半透明の黒
+		text_panel.add_theme_stylebox_override("panel", style_box)
+		
+		print("Text panel setup complete for Kamaitachi style. Size: ", text_panel.size)
 	
 	# テキスト表示の設定
 	if dialogue_text:
 		dialogue_text.bbcode_enabled = true
 		dialogue_text.visible = true
-		# パネル内での配置設定
-		dialogue_text.anchor_left = 0.05
+		
+		# テキストを画面中央に配置（かまいたちの夜スタイル）
+		dialogue_text.anchor_left = 0.1
 		dialogue_text.anchor_top = 0.1
-		dialogue_text.anchor_right = 0.95
+		dialogue_text.anchor_right = 0.9
 		dialogue_text.anchor_bottom = 0.9
 		dialogue_text.offset_left = 0
 		dialogue_text.offset_top = 0
 		dialogue_text.offset_right = 0
 		dialogue_text.offset_bottom = 0
-		# テキストが見えるように色を設定
+		
+		# テキストが見えるように色とフォントサイズを設定
 		dialogue_text.add_theme_color_override("default_color", Color(1, 1, 1, 1))  # 白色
-		print("Dialogue text setup complete. Size: ", dialogue_text.size)
+		dialogue_text.add_theme_font_size_override("normal_font_size", 24)  # フォントサイズを大きく
+		
+		print("Dialogue text setup complete for Kamaitachi style. Size: ", dialogue_text.size)
 	
 	# キャラクターコンテナの設定
 	if characters_container:
@@ -141,11 +160,11 @@ func _update_displayed_text():
 		var current_display = dialogue_text.text
 		var speaker_part = ""
 		
-		# 話者名がある場合は保持
-		if current_display.begins_with("[b]"):
-			var name_end = current_display.find("[/b]\n")
+		# 話者名がある場合は保持（かまいたちの夜スタイル）
+		if current_display.begins_with("[color=#FFDD00][b]"):
+			var name_end = current_display.find("[/b][/color]\n\n")
 			if name_end != -1:
-				speaker_part = current_display.substr(0, name_end + 5)  # [b]名前[/b]\n の部分
+				speaker_part = current_display.substr(0, name_end + 14)  # [color=#FFDD00][b]名前[/b][/color]\n\n の部分
 		
 		dialogue_text.text = speaker_part + displayed_text
 	else:
@@ -162,9 +181,9 @@ func show_text(text, speaker_name = ""):
 	if dialogue_text:
 		dialogue_text.visible = true
 		
-		# 話者名があれば追加
+		# 話者名があれば追加（かまいたちの夜風）
 		if speaker_name != "":
-			dialogue_text.text = "[b]" + speaker_name + "[/b]\n"
+			dialogue_text.text = "[color=#FFDD00][b]" + speaker_name + "[/b][/color]\n\n"
 		else:
 			dialogue_text.text = ""
 		
@@ -200,7 +219,19 @@ func change_background(background_path):
 	print("Loaded texture: ", bg_texture)
 	
 	if background != null:
+		# モジュレートカラーを確認/設定
+		background.modulate = Color(1, 1, 1, 1)  # 完全不透明の白
+		
+		# テクスチャを設定
 		background.texture = bg_texture
+		background.visible = true
+		
+		print("Background properties:")
+		print("- Visible: ", background.visible)
+		print("- Modulate: ", background.modulate)
+		print("- Size: ", background.size)
+		print("- Global position: ", background.global_position)
+		
 		_setup_fullscreen_element(background)
 		print("Background changed successfully.")
 	else:
