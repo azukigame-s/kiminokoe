@@ -7,7 +7,7 @@ var novel_system
 var scenario = [
 	{
 		"type": "background",
-		"path": "res://assets/backgrounds/sample.jpg"
+		"path": "res://assets/backgrounds/sea.jpg"
 	},
 	{
 		"type": "bgm",

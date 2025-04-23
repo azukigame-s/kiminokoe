@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dc30rltbxhcji"]
+
+[ext_resource type="FontFile" uid="uid://dj8w2jw743bqf" path="res://assets/fonts/SawarabiMincho-Regular.ttf" id="1_qfwxr"]
+
+[resource]
+default_font = ExtResource("1_qfwxr")

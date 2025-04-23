@@ -85,6 +85,12 @@ func _ready():
 		dialogue_text.add_theme_font_size_override("normal_font_size", 24)  # フォントサイズを大きく
 		
 		print("Dialogue text setup complete for Kamaitachi style. Size: ", dialogue_text.size)
+		
+		# テーマをロード
+		var custom_theme = load("res://themes/novel_theme.tres")
+		if custom_theme:
+			dialogue_text.theme = custom_theme
+			print("Custom theme applied to dialogue text")
 	
 	# キャラクターコンテナの設定
 	if characters_container:
