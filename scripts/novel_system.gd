@@ -8,6 +8,11 @@ var displayed_text = ""
 var text_speed = 0.05  # 文字表示速度（秒）
 var is_text_completed = true
 var text_timer = 0.0
+var page_text_buffer = []  # 現在のページに表示するテキストのバッファ
+var current_page_index = 0  # ページ内の現在位置
+
+# 新しい変数 - 「続きあり」インジケータ用
+var more_indicator = null
 
 # 背景関連
 var current_background = ""
@@ -97,8 +102,68 @@ func _ready():
 		_setup_fullscreen_element(characters_container)
 		print("Characters container setup complete.")
 	
+	# 「続きあり」インジケータを作成
+	create_more_indicator()
+	
 	# 初期化完了のシグナルを発行
 	initialized.emit()
+
+# 「続きあり」インジケータを作成する関数
+func create_more_indicator():
+	if text_panel and not more_indicator:
+		more_indicator = TextureRect.new()
+		more_indicator.name = "more_indicator"
+		
+		# テクスチャの読み込み試行
+		var indicator_texture = null
+		var possible_paths = [
+			"res://assets/icons/file.png",
+			"res://assets/icons/pencil.png",
+			"res://assets/images/more_indicator.png"
+		]
+		
+		for path in possible_paths:
+			indicator_texture = load(path)
+			if indicator_texture:
+				print("Found indicator texture at: ", path)
+				break
+		
+		if indicator_texture:
+			more_indicator.texture = indicator_texture
+		else:
+			# テクスチャが見つからない場合はプレースホルダーを作成
+			print("No indicator texture found. Creating placeholder...")
+			more_indicator = create_placeholder_indicator()
+		
+		# サイズと位置を設定
+		more_indicator.custom_minimum_size = Vector2(32, 32)
+		more_indicator.position = Vector2(1075, 575)  # 画面の右下あたり、適宜調整してください
+		more_indicator.visible = false  # 最初は非表示
+		
+		text_panel.add_child(more_indicator)
+		print("More indicator added to text panel")
+
+# プレースホルダーインジケータを作成する関数
+func create_placeholder_indicator():
+	var indicator = ColorRect.new()
+	indicator.name = "placeholder_indicator"
+	indicator.size = Vector2(20, 20)
+	indicator.color = Color(1, 1, 0, 0.8)  # 黄色の四角形
+	
+	# 点滅アニメーション用のタイマー
+	var timer = Timer.new()
+	timer.name = "blink_timer"
+	timer.wait_time = 0.5
+	timer.autostart = true
+	timer.timeout.connect(_on_indicator_blink)
+	indicator.add_child(timer)
+	
+	return indicator
+
+# インジケータの点滅処理
+func _on_indicator_blink():
+	if more_indicator and more_indicator is ColorRect:
+		more_indicator.modulate.a = 1.0 if more_indicator.modulate.a < 0.5 else 0.3
 
 # ノード参照を確認するヘルパー関数
 func _check_nodes():
@@ -159,6 +224,9 @@ func _process(delta):
 				#     play_sfx("text_sound.wav")
 			else:
 				is_text_completed = true
+				# テキスト表示が完了したら、「続きあり」インジケータを表示
+				if more_indicator:
+					more_indicator.visible = true
 
 # 現在表示すべきテキストを更新する関数
 func _update_displayed_text():
@@ -166,23 +234,46 @@ func _update_displayed_text():
 		var current_display = dialogue_text.text
 		var speaker_part = ""
 		
-		# 話者名がある場合は保持（かまいたちの夜スタイル）
-		if current_display.begins_with("[color=#FFDD00][b]"):
-			var name_end = current_display.find("[/b][/color]\n\n")
-			if name_end != -1:
-				speaker_part = current_display.substr(0, name_end + 14)  # [color=#FFDD00][b]名前[/b][/color]\n\n の部分
+		# 現在のテキストから話者名部分を抽出
+		var text_parts = current_display.split("\n\n", false, 1)  # 最初の改行で分割
+		
+		if text_parts.size() > 0 and text_parts[0].begins_with("[color=#FFDD00][b]"):
+			speaker_part = text_parts[0] + "\n\n"
+			
+			# 現在のページのテキストをすべて取得（話者名以外）
+			var content_start = current_display.find("\n\n", 0) + 2
+			if content_start < current_display.length():
+				var content_end = current_display.rfind("\n\n")
+				if content_end > content_start:
+					speaker_part = current_display.substr(0, content_end + 2)
+				else:
+					speaker_part = current_display.substr(0, content_start)
 		
 		dialogue_text.text = speaker_part + displayed_text
 	else:
 		print("Error: dialogue_text is null in _update_displayed_text()")
 
-# テキストを表示する関数
+# テキストを表示する関数（新しいページの開始）
 func show_text(text, speaker_name = ""):
 	print("Showing text: ", text)
 	current_text = text
 	displayed_text = ""
 	is_text_completed = false
 	text_timer = 0
+	
+	# ページバッファをリセット
+	page_text_buffer = []
+	current_page_index = 0
+	
+	# 現在のテキストをバッファに追加
+	page_text_buffer.append({
+		"text": text,
+		"speaker": speaker_name
+	})
+	
+	# 「続きあり」インジケータを非表示にする
+	if more_indicator:
+		more_indicator.visible = false
 	
 	if dialogue_text:
 		dialogue_text.visible = true
@@ -199,18 +290,63 @@ func show_text(text, speaker_name = ""):
 	else:
 		print("Error: dialogue_text is null in show_text()")
 
+# 同じページに文を追加表示する関数
+func show_text_same_page(text, speaker_name = ""):
+	print("Showing additional text in the same page: ", text)
+	current_text = text
+	displayed_text = ""
+	is_text_completed = false
+	text_timer = 0
+	
+	# 「続きあり」インジケータを非表示にする
+	if more_indicator:
+		more_indicator.visible = false
+	
+	if dialogue_text:
+		# 現在のテキストを保持
+		var current_content = dialogue_text.text
+		
+		# 話者名があれば追加（先頭に表示）
+		if speaker_name != "":
+			dialogue_text.text = current_content + "\n\n[color=#FFDD00][b]" + speaker_name + "[/b][/color]\n\n"
+		else:
+			dialogue_text.text = current_content + "\n\n"
+	else:
+		print("Error: dialogue_text is null in show_text_same_page()")
+
 # テキストを一気に表示する関数（クリック時など）
 func complete_text():
 	if not is_text_completed:
+		# まだテキストが表示中なら、一気に表示
 		displayed_text = current_text
 		_update_displayed_text()
 		is_text_completed = true
+		
+		# テキスト表示完了後に「続きあり」インジケータを表示
+		if more_indicator:
+			more_indicator.visible = true
+			
 		print("Text display completed.")
 	else:
-		# テキストが表示済みなら次のシナリオに進む
+		# テキストが表示済みなら次の文を表示または次のシナリオへ
 		if has_node("test_scenario"):
-			print("Advancing to next scenario.")
-			$test_scenario.on_text_completed()
+			if current_page_index < page_text_buffer.size() - 1:
+				# まだページ内に表示する文がある場合
+				current_page_index += 1
+				# 次の文を取得して表示
+				var next_text = page_text_buffer[current_page_index]
+				show_text_same_page(next_text["text"], next_text["speaker"])
+				print("Showing next text in the same page.")
+			else:
+				# ページ内のテキストをすべて表示したので次のシナリオへ
+				print("Advancing to next scenario.")
+				# 「続きあり」インジケータを非表示
+				if more_indicator:
+					more_indicator.visible = false
+				# バッファをリセット
+				page_text_buffer = []
+				current_page_index = 0
+				$test_scenario.on_text_completed()
 
 # 背景を変更する関数
 func change_background(background_path):
@@ -350,6 +486,13 @@ func play_sfx(sfx_path):
 		print("SFX playing: ", sfx_path)
 	else:
 		print("ERROR: Failed to load audio: ", sfx_path)
+
+# ページバッファにテキストを追加する関数
+func add_to_page_buffer(text, speaker_name = ""):
+	page_text_buffer.append({
+		"text": text,
+		"speaker": speaker_name
+	})
 
 # 入力処理
 func _input(event):
