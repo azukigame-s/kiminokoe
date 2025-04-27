@@ -16,92 +16,50 @@ var scenario = [
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "車窓を流れる景色――。見えるのは青い空、そして青い海。",
-		"new_page": true  # 新しいシーンの開始なので新ページ
+		"text": "車窓を流れる景色――。見えるのは青い空、そして青い海。
+	
+そんな景色を眺めながら僕はバスに揺られていた。
+
+大型の路線バスの左側、一番前の座席に腰を掛けているのだが、バスの中に乗客は僕一人だ。
+
+一番前の席は足場が他より高くなっており、大の大人が座ると体育座りのような不格好な体勢になってしまう。
+
+お世辞にも座り心地は良くないし、乗客のいない車内でわざわざ運転手さんのそばに座る必要なんてない。
+
+そう思うかもしれないが、それでも、僕はこの席が好きだった。"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "そんな景色を眺めながら僕はバスに揺られていた。"
-		# new_pageが省略されているので同じページに追加
+		"text": "理由は２つ。
+
+フロントガラスから左の車窓にかけて、大パノラマの景色を拝むことができるというのがひとつ。
+
+放り込まれた小銭を大口を開けて飲み込むロボット――、のような運賃箱を見るのが好き、というのがもうひとつだ。
+
+とはいっても、乗客のいないこの状況ではその姿も拝めないのだけど……。"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "大型の路線バスの左側、一番前の座席に腰を掛けているのだが、バスの中に乗客は僕一人だ。"
-		# 同じページに追加
+		"text": "流れる景色を見ていると、いろいろと考えてしまう。
+
+いろいろと思い出してしまう――。"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "一番前の席は足場が他より高くなっており、大の大人が座ると体育座りのような不格好な体勢になってしまう。"
-		# 同じページに追加
-	},
-	{
-		"type": "dialogue",
-		"speaker": "",
-		"text": "お世辞にも座り心地は良くないし、乗客のいない車内でわざわざ運転手さんのそばに座る必要なんてない。"
-		# 同じページに追加
-	},
-	{
-		"type": "dialogue",
-		"speaker": "",
-		"text": "そう思うかもしれないが、それでも、僕はこの席が好きだった。"
-		# 同じページに追加
-	},
-	{
-		"type": "dialogue",
-		"speaker": "",
-		"text": "理由は２つ。",
-		"new_page": true  # 新しい段落で区切るため新ページ
-	},
-	{
-		"type": "dialogue",
-		"speaker": "",
-		"text": "フロントガラスから左の車窓にかけて、大パノラマの景色を拝むことができるというのがひとつ。"
-		# 同じページに追加
-	},
-	{
-		"type": "dialogue",
-		"speaker": "",
-		"text": "放り込まれた小銭を大口を開けて飲み込むロボット――、のような運賃箱を見るのが好き、というのがもうひとつだ。"
-		# 同じページに追加
-	},
-	{
-		"type": "dialogue",
-		"speaker": "",
-		"text": "とはいっても、乗客のいないこの状況ではその姿も拝めないのだけど……。"
-		# 同じページに追加
-	},
-	{
-		"type": "dialogue",
-		"speaker": "",
-		"text": "流れる景色を見ていると、いろいろと考えてしまう。",
-		"new_page": true  # 場面転換のような重要な文なので新ページ
-	},
-	{
-		"type": "dialogue",
-		"speaker": "",
-		"text": "いろいろと思い出してしまう――。"
-		# 同じページに追加
-	},
-	{
-		"type": "dialogue",
-		"speaker": "",
-		"text": "――そう。",
-		"new_page": true  # 強調するため新ページ
+		"text": "――そう。"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
 		"text": "――――あの日も。"
-		# 同じページに追加
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
 		"text": "あの日も……、１０月にしては青すぎる景色だった――。"
-		# 同じページに追加
 	},
 	{
 		"type": "sfx",
@@ -110,62 +68,114 @@ var scenario = [
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "『次は――』",
-		"new_page": true  # SFX後は新ページ
+		"text": "『次は――』
+
+ピンポーンと軽い音が鳴る。
+
+『――だき西口。次は、地蔵焚西口です』
+
+次のバス停を知らせる感情のない音声を待たずして、降車ボタンを押した人がいる。"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "ピンポーンと軽い音が鳴る。"
-		# 同じページに追加
+		"text": "「へへへ、イチバーン」
+
+「あんまり早く押すとまた運転手さんに怒られるぞ」
+
+ひとつ後ろの席に座る弟――、スグに向かい僕は言った。
+
+ニヤニヤと笑いながらスグは口を開く。
+
+「だって早く帰りたいじゃん！　なんてったって今日は――」
+
+満面の笑顔だ。"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "『――だき西口。次は、地蔵焚西口です』"
-		# 同じページに追加
+		"text": "そう。今日は１０月１０日。
+
+弟の８歳の誕生日だった。
+
+そんなやり取りをしているうちにバスはスピードを落とし、バス停に着く。
+
+僕が席を立とうとすると、その横を直が横切る。
+
+「ちょっとスグ、先に行っちゃ……」
+
+「ありがとうございましたー。ほら、お兄ぃも早く！」
+
+普段は僕の後ろをついてくる弟も、今日は気持ちが高鳴っているのかそそくさとバスを降りてしまう。"
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/forest.jpg"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "次のバス停を知らせる感情のない音声を待たずして、降車ボタンを押した人がいる。"
-		# 同じページに追加
+		"text": "「ありがとうございました」
+
+運転手さんの顔も見ずお礼をし、慌ててあとを追った。
+
+バスを降りてもそこに弟の姿がない。
+
+「えっ、どこ？　スグぅ？」"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "「へへへ、イチバーン」",
-		"new_page": true  # 会話の始まりなので新ページ
+		"text": "ランドセルがバスの後ろに回るのが見えた。
+
+――そっちはダメだ！"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "「あんまり早く押すとまた運転手さんに怒られるぞ」"
-		# 同じページに追加
+		"text": "「スグっ！　そっちは――――――」"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "ひとつ後ろの席に座る弟――、スグに向かい僕は言った。"
-		# 同じページに追加
+		"text": "ドンッ！！！！"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "ニヤニヤと笑いながらスグは口を開く。"
-		# 同じページに追加
+		"text": "キキーーッ！　ガシャン！！"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "「だって早く帰りたいじゃん！　なんてったって今日は――」"
-		# 同じページに追加
+		"text": "「…………ス……グ……？」"
 	},
 	{
 		"type": "dialogue",
 		"speaker": "",
-		"text": "満面の笑顔だ。"
-		# 同じページに追加
+		"text": "今日は１０月１０日。
+
+弟の８歳の誕生日だった。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "１０月にしては青すぎる世界がかすみ、白くなる。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "そして、真っ暗になった――。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "誰かが遠くから叫ぶ声が聞こえる――。"
+	},
+	{
+		"type": "dialogue",
+		"speaker": "",
+		"text": "まわりの音も聞こえなくなり、鳶の鳴き声だけが耳に残っていた――――。"
 	},
 ]
 
@@ -200,22 +210,18 @@ func execute_current_command():
 			novel_system.change_background(command.path)
 			proceed_to_next()
 		"dialogue":
+			# 複数のダイアログを一つのページにまとめる処理
 			var current_dialog = command.text
 			var current_speaker = command.speaker
 			
-			# 新しいページで表示するかどうかを判断
-			if command.has("new_page") and command.new_page == true:
-				# 新しいページを開始
-				novel_system.clear_text_page()
+			# 最初のダイアログなら新しいページで表示
+			if novel_system.page_text_buffer.size() == 0:
 				novel_system.show_text(current_dialog, current_speaker)
 			else:
-				# 既存のページに追加
-				if novel_system.page_text_buffer.size() == 0:
-					# バッファが空の場合は新規表示
-					novel_system.show_text(current_dialog, current_speaker)
-				else:
-					# 既存のページに追加（同じページ内）
-					novel_system.show_text_same_page(current_dialog, current_speaker)
+				# 既存のバッファに追加
+				novel_system.add_to_page_buffer(current_dialog, current_speaker)
+				
+			# ダイアログはプレイヤーの入力を待つので自動的には進まない
 		"bgm":
 			novel_system.play_bgm(command.path)
 			proceed_to_next()
