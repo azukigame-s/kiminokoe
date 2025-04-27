@@ -14,9 +14,6 @@ var text_timer = 0.0
 var page_text_buffer = []  # 現在のページに表示するテキストのバッファ
 var current_page_index = 0  # ページ内の現在位置
 
-# 「続きあり」インジケータ用
-var more_indicator = null
-
 # 背景関連
 var current_background = ""
 
@@ -29,6 +26,7 @@ var current_bgm = ""
 @onready var dialogue_text = $text_panel/dialogue_text if has_node("text_panel") else null
 @onready var bgm_player = $bgm_player
 @onready var sfx_player = $sfx_player
+@onready var more_indicator = $text_panel/more_indicator if has_node("text_panel") else null
 
 func _ready():
 	print("Visual Novel System: Ready function called.")
@@ -150,38 +148,72 @@ func _setup_fullscreen_element(element):
 # 「続きあり」インジケータを作成する関数
 func create_more_indicator():
 	if text_panel and not more_indicator:
+		print("Creating more indicator...")
+		
+		# より単純なTextureRectアプローチ
 		more_indicator = TextureRect.new()
 		more_indicator.name = "more_indicator"
 		
-		# テクスチャの読み込み試行
-		var indicator_texture = null
-		var possible_paths = [
-			"res://assets/icons/file.png",
-			"res://assets/icons/pencil.png",
-			"res://assets/images/more_indicator.png"
-		]
+		# テクスチャの読み込み
+		var texture_path = "res://assets/icons/pencil.png"  # 文字送り用
+		# Todo: 本来はページ送り用の `file.png` も使いたい
 		
-		for path in possible_paths:
-			indicator_texture = load(path)
-			if indicator_texture:
-				print("Found indicator texture at: ", path)
-				break
-		
-		if indicator_texture:
-			more_indicator.texture = indicator_texture
+		if ResourceLoader.exists(texture_path):
+			var texture = load(texture_path)
+			if texture:
+				more_indicator.texture = texture
+				print("Loaded texture:", texture_path)
+			else:
+				print("Failed to load texture:", texture_path)
 		else:
-			# テクスチャが見つからない場合はプレースホルダーを作成
-			print("No indicator texture found. Creating placeholder...")
-			more_indicator = create_placeholder_indicator()
-		
-		# サイズと位置を設定
+			print("Texture path does not exist:", texture_path)
+			
+		# 基本的なサイズを設定
 		more_indicator.custom_minimum_size = Vector2(32, 32)
-		more_indicator.position = Vector2(1075, 575)  # 画面の右下あたり
-		more_indicator.visible = false  # 最初は非表示
 		
+		# Controlノードとして設定
+		more_indicator.size_flags_horizontal = Control.SIZE_SHRINK_END
+		more_indicator.size_flags_vertical = Control.SIZE_SHRINK_END
+		
+		# 右下に配置するためのアンカーとマージン設定
+		more_indicator.anchor_left = 1.0
+		more_indicator.anchor_top = 1.0
+		more_indicator.anchor_right = 1.0
+		more_indicator.anchor_bottom = 1.0
+		more_indicator.offset_left = -40  # 右端から40ピクセル左
+		more_indicator.offset_top = -40   # 下端から40ピクセル上
+		more_indicator.offset_right = -8
+		more_indicator.offset_bottom = -8
+		
+		# 可視性を設定
+		more_indicator.visible = false
+		
+		# テキストパネルに追加
 		text_panel.add_child(more_indicator)
+		
+		# 追加後の情報を表示
 		print("More indicator added to text panel")
+		print("- Visible:", more_indicator.visible)
+		print("- Position:", more_indicator.position)
+		print("- Size:", more_indicator.size)
+		print("- Parent:", more_indicator.get_parent().name if more_indicator.get_parent() else "None")
+	else:
+		print("Cannot create more indicator. Text panel exists:", text_panel != null, "More indicator already exists:", more_indicator != null)
 
+# インジケータのアイコンを更新する関数
+func update_more_indicator_icon(has_more_pages = false):
+	if more_indicator and more_indicator is TextureRect:
+		var icon_path = "res://assets/icons/pencil.png"  # デフォルトは通常用
+		
+		if has_more_pages:
+			icon_path = "res://assets/icons/file.png"  # ページ送り用
+			
+		if ResourceLoader.exists(icon_path):
+			var texture = load(icon_path)
+			if texture:
+				more_indicator.texture = texture
+				print("Updated indicator icon to: ", icon_path)
+				
 # プレースホルダーインジケータを作成する関数
 func create_placeholder_indicator():
 	var indicator = ColorRect.new()
@@ -217,7 +249,10 @@ func _process(delta):
 				is_text_completed = true
 				# テキスト表示が完了したら、「続きあり」インジケータを表示
 				if more_indicator:
-					more_indicator.visible = has_more_text_in_buffer()
+					var has_more = has_more_text_in_buffer()
+					update_more_indicator_icon(has_more)
+					more_indicator.visible = true  # テキスト表示完了時は常に表示
+					print("Text completed, setting indicator visible. Has more pages: ", has_more)
 
 # 現在表示すべきテキストを更新する関数
 func _update_displayed_text():
@@ -362,7 +397,9 @@ func complete_text_display():
 		
 		# テキスト表示完了後に「続きあり」インジケータを表示
 		if more_indicator:
-			more_indicator.visible = has_more_text_in_buffer()
+			var has_more = has_more_text_in_buffer()
+			more_indicator.visible = has_more
+			print("Text completed. More indicator visible:", more_indicator.visible, "Has more text:", has_more)
 		
 		print("Text display completed instantly")
 		
