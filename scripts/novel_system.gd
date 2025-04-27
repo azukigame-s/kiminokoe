@@ -1,6 +1,9 @@
 extends Control
 
+# _ready 完了シグナル
 signal initialized
+# クリック処理完了シグナル
+signal text_click_processed
 
 # テキスト表示関連の変数
 var current_text = ""
@@ -313,50 +316,90 @@ func show_text_same_page(text, speaker_name = ""):
 		more_indicator.visible = false
 	
 	if dialogue_text:
-		# 現在の話者名を追加
+		# 現在のテキストを保存
+		var current_displayed = dialogue_text.text
+		
+		# 話者名の扱い
 		if speaker_name != "":
-			# 改行を追加して話者名を設定
-			dialogue_text.text = dialogue_text.text + "\n\n[color=#FFDD00][b]" + speaker_name + "[/b][/color]\n\n"
+			# 前のテキストがある場合は改行を追加
+			if current_displayed != "":
+				current_displayed += "\n\n"
+			current_displayed += "[color=#FFDD00][b]" + speaker_name + "[/b][/color]\n\n"
 		else:
-			# 話者名なしの場合は単に改行を追加
-			dialogue_text.text = dialogue_text.text + "\n\n"
+			# 話者名なしの場合は単に改行を追加（前のテキストがある場合のみ）
+			if current_displayed != "":
+				current_displayed += "\n\n"
+		
+		# 基本テキストを設定（文字送りのベースとなる）
+		dialogue_text.text = current_displayed
 	else:
 		print("Error: dialogue_text is null in show_text_same_page()")
 
-# テキストを一気に表示する関数（クリック時など）
-func complete_text():
+# バッファをクリアする関数
+func clear_text_buffers():
+	page_text_buffer = []
+	current_page_index = 0
+	is_text_completed = true
+	current_text = ""
+	displayed_text = ""
+	
+	# テキストディスプレイをクリア
+	if dialogue_text:
+		dialogue_text.text = ""
+	
+	# インジケータを非表示
+	if more_indicator:
+		more_indicator.visible = false
+	
+	print("All text buffers cleared")
+
+# バッファに次のテキストがあるかチェック
+func has_more_text_in_buffer():
+	return current_page_index < page_text_buffer.size() - 1
+
+# バッファから次のテキストを表示
+func display_next_text_from_buffer():
+	if has_more_text_in_buffer():
+		current_page_index += 1
+		var next_text = page_text_buffer[current_page_index]
+		show_text_same_page(next_text["text"], next_text["speaker"])
+		return true
+	return false
+
+# テキスト表示を即座に完了
+func complete_text_display():
 	if not is_text_completed:
-		# まだテキストが表示中なら、一気に表示
 		displayed_text = current_text
 		_update_displayed_text()
 		is_text_completed = true
 		
-		# テキスト表示完了後に「続きあり」インジケータを表示（次のテキストがある場合のみ）
+		# テキスト表示完了後に「続きあり」インジケータを表示
 		if more_indicator:
-			more_indicator.visible = current_page_index < page_text_buffer.size() - 1
-			
-		print("Text display completed.")
+			more_indicator.visible = has_more_text_in_buffer()
+		
+		print("Text display completed instantly")
+		
+# テキストを一気に表示する関数（クリック時など）
+func complete_text():
+	if not is_text_completed:
+		# まだテキストが表示中なら、一気に表示
+		complete_text_display()
 	else:
-		# テキストが表示済みなら次の文を同じページに表示
-		if current_page_index < page_text_buffer.size() - 1:
-			# まだ表示する文がある場合
-			current_page_index += 1
-			var next_text = page_text_buffer[current_page_index]
-			show_text_same_page(next_text["text"], next_text["speaker"])
-			print("Showing next text in the same page.")
+		# テキストが表示済みの場合
+		if has_more_text_in_buffer():
+			# まだバッファにテキストがある場合、次を表示
+			display_next_text_from_buffer()
 		else:
-			# バッファ内のテキストをすべて表示したので次のシナリオへ
-			print("All text displayed, advancing to next scenario.")
-			# 「続きあり」インジケータを非表示
+			# バッファ内のすべてのテキストを表示し終えた
+			print("All text in buffer displayed")
+			
+			# インジケータを非表示
 			if more_indicator:
 				more_indicator.visible = false
-			# バッファをリセット
-			page_text_buffer = []
-			current_page_index = 0
 			
-			# テストシナリオがある場合はシナリオを進める
+			# テストシナリオに通知
 			if has_node("test_scenario"):
-				$test_scenario.on_text_completed()
+				$test_scenario.on_click_received()
 
 # 背景を変更する関数
 func change_background(background_path):
@@ -503,6 +546,8 @@ func add_to_page_buffer(text, speaker_name = ""):
 		"text": text,
 		"speaker": speaker_name
 	})
+	print("Added to page buffer: ", text)
+	print("Current buffer size: ", page_text_buffer.size())
 
 # 入力処理
 func _input(event):
@@ -510,3 +555,7 @@ func _input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			complete_text()
 			print("Mouse click detected - text advanced")
+			
+			# テストシナリオにクリックイベントを通知
+			if has_node("test_scenario") and is_text_completed:
+				$test_scenario.on_click_received()
