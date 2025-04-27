@@ -20,13 +20,21 @@ var current_background = ""
 # 音声関連
 var current_bgm = ""
 
+# インジケーターの状態を示す変数
+var show_indicator = false
+var indicator_symbol = "▽"  # 文字送り用
+var page_indicator_symbol = "▼"  # ページ送り用
+
+var indicator_visible = true  # インジケーターの表示/非表示状態
+var indicator_blink_timer = 0.0  # 点滅タイマー
+var indicator_blink_speed = 0.5  # 点滅の速さ（秒）
+
 # ノード参照
 @onready var background = $background
 @onready var text_panel = $text_panel
 @onready var dialogue_text = $text_panel/dialogue_text if has_node("text_panel") else null
 @onready var bgm_player = $bgm_player
 @onready var sfx_player = $sfx_player
-@onready var more_indicator = $text_panel/more_indicator if has_node("text_panel") else null
 
 func _ready():
 	print("Visual Novel System: Ready function called.")
@@ -50,9 +58,6 @@ func _ready():
 	
 	# テキストパネルの設定
 	_setup_text_panel()
-	
-	# 「続きあり」インジケータを作成
-	create_more_indicator()
 	
 	# 初期化完了のシグナルを発行
 	initialized.emit()
@@ -145,97 +150,6 @@ func _setup_fullscreen_element(element):
 		element.expand = true
 		element.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 
-# 「続きあり」インジケータを作成する関数
-func create_more_indicator():
-	if text_panel and not more_indicator:
-		print("Creating more indicator...")
-		
-		# より単純なTextureRectアプローチ
-		more_indicator = TextureRect.new()
-		more_indicator.name = "more_indicator"
-		
-		# テクスチャの読み込み
-		var texture_path = "res://assets/icons/pencil.png"  # 文字送り用
-		# Todo: 本来はページ送り用の `file.png` も使いたい
-		
-		if ResourceLoader.exists(texture_path):
-			var texture = load(texture_path)
-			if texture:
-				more_indicator.texture = texture
-				print("Loaded texture:", texture_path)
-			else:
-				print("Failed to load texture:", texture_path)
-		else:
-			print("Texture path does not exist:", texture_path)
-			
-		# 基本的なサイズを設定
-		more_indicator.custom_minimum_size = Vector2(32, 32)
-		
-		# Controlノードとして設定
-		more_indicator.size_flags_horizontal = Control.SIZE_SHRINK_END
-		more_indicator.size_flags_vertical = Control.SIZE_SHRINK_END
-		
-		# 右下に配置するためのアンカーとマージン設定
-		more_indicator.anchor_left = 1.0
-		more_indicator.anchor_top = 1.0
-		more_indicator.anchor_right = 1.0
-		more_indicator.anchor_bottom = 1.0
-		more_indicator.offset_left = -40  # 右端から40ピクセル左
-		more_indicator.offset_top = -40   # 下端から40ピクセル上
-		more_indicator.offset_right = -8
-		more_indicator.offset_bottom = -8
-		
-		# 可視性を設定
-		more_indicator.visible = false
-		
-		# テキストパネルに追加
-		text_panel.add_child(more_indicator)
-		
-		# 追加後の情報を表示
-		print("More indicator added to text panel")
-		print("- Visible:", more_indicator.visible)
-		print("- Position:", more_indicator.position)
-		print("- Size:", more_indicator.size)
-		print("- Parent:", more_indicator.get_parent().name if more_indicator.get_parent() else "None")
-	else:
-		print("Cannot create more indicator. Text panel exists:", text_panel != null, "More indicator already exists:", more_indicator != null)
-
-# インジケータのアイコンを更新する関数
-func update_more_indicator_icon(has_more_pages = false):
-	if more_indicator and more_indicator is TextureRect:
-		var icon_path = "res://assets/icons/pencil.png"  # デフォルトは通常用
-		
-		if has_more_pages:
-			icon_path = "res://assets/icons/file.png"  # ページ送り用
-			
-		if ResourceLoader.exists(icon_path):
-			var texture = load(icon_path)
-			if texture:
-				more_indicator.texture = texture
-				print("Updated indicator icon to: ", icon_path)
-				
-# プレースホルダーインジケータを作成する関数
-func create_placeholder_indicator():
-	var indicator = ColorRect.new()
-	indicator.name = "placeholder_indicator"
-	indicator.size = Vector2(20, 20)
-	indicator.color = Color(1, 1, 0, 0.8)  # 黄色の四角形
-	
-	# 点滅アニメーション用のタイマー
-	var timer = Timer.new()
-	timer.name = "blink_timer"
-	timer.wait_time = 0.5
-	timer.autostart = true
-	timer.timeout.connect(_on_indicator_blink)
-	indicator.add_child(timer)
-	
-	return indicator
-
-# インジケータの点滅処理
-func _on_indicator_blink():
-	if more_indicator and more_indicator is ColorRect:
-		more_indicator.modulate.a = 1.0 if more_indicator.modulate.a < 0.5 else 0.3
-
 func _process(delta):
 	# 文字送り処理
 	if not is_text_completed:
@@ -247,13 +161,17 @@ func _process(delta):
 				_update_displayed_text()
 			else:
 				is_text_completed = true
-				# テキスト表示が完了したら、「続きあり」インジケータを表示
-				if more_indicator:
-					var has_more = has_more_text_in_buffer()
-					update_more_indicator_icon(has_more)
-					more_indicator.visible = true  # テキスト表示完了時は常に表示
-					print("Text completed, setting indicator visible. Has more pages: ", has_more)
-
+				show_indicator = true  # インジケーターを表示
+				_update_displayed_text()
+	
+	# インジケーターの点滅処理
+	if is_text_completed and show_indicator:
+		indicator_blink_timer += delta
+		if indicator_blink_timer >= indicator_blink_speed:
+			indicator_blink_timer = 0
+			indicator_visible = !indicator_visible  # 表示状態を反転
+			_update_displayed_text()  # テキスト表示を更新
+		
 # 現在表示すべきテキストを更新する関数
 func _update_displayed_text():
 	if dialogue_text:
@@ -274,17 +192,22 @@ func _update_displayed_text():
 				else:
 					# 話者名を含まない場合、最後の改行までをベーステキストとする
 					base_text = base_text.substr(0, last_text_start + 2)
-			
+		
 		# 話者名がある場合は最初に追加
 		if current_page_index == 0:
 			var text_parts = dialogue_text.text.split("\n\n", false, 1)
 			if text_parts.size() > 0 and text_parts[0].begins_with("[color=#FFDD00][b]"):
 				base_text = text_parts[0] + "\n\n"
 		
-		# 最終的なテキストを設定
-		dialogue_text.text = base_text + displayed_text
-	else:
-		print("Error: dialogue_text is null in _update_displayed_text()")
+		# 最終的なテキストを設定（インジケーター付き）
+		var final_text = base_text + displayed_text
+		
+		# インジケーター表示（点滅エフェクト）
+		if is_text_completed and show_indicator and indicator_visible:
+			var symbol = "▼" if has_more_text_in_buffer() else "▽"
+			final_text += symbol
+		
+		dialogue_text.text = final_text
 
 # テキストを表示する関数（新しいページの開始）
 func show_text(text, speaker_name = ""):
@@ -303,10 +226,6 @@ func show_text(text, speaker_name = ""):
 		"text": text,
 		"speaker": speaker_name
 	})
-	
-	# 「続きあり」インジケータを非表示にする
-	if more_indicator:
-		more_indicator.visible = false
 	
 	if dialogue_text:
 		dialogue_text.visible = true
@@ -332,10 +251,6 @@ func show_text_same_page(text, speaker_name = ""):
 	displayed_text = ""
 	is_text_completed = false
 	text_timer = 0
-	
-	# 「続きあり」インジケータを非表示にする
-	if more_indicator:
-		more_indicator.visible = false
 	
 	if dialogue_text:
 		# 現在のテキストを保存
@@ -369,10 +284,6 @@ func clear_text_buffers():
 	if dialogue_text:
 		dialogue_text.text = ""
 	
-	# インジケータを非表示
-	if more_indicator:
-		more_indicator.visible = false
-	
 	print("All text buffers cleared")
 
 # バッファに次のテキストがあるかチェック
@@ -392,15 +303,9 @@ func display_next_text_from_buffer():
 func complete_text_display():
 	if not is_text_completed:
 		displayed_text = current_text
-		_update_displayed_text()
 		is_text_completed = true
-		
-		# テキスト表示完了後に「続きあり」インジケータを表示
-		if more_indicator:
-			var has_more = has_more_text_in_buffer()
-			more_indicator.visible = has_more
-			print("Text completed. More indicator visible:", more_indicator.visible, "Has more text:", has_more)
-		
+		show_indicator = true  # インジケーターを表示
+		_update_displayed_text()
 		print("Text display completed instantly")
 		
 # テキストを一気に表示する関数（クリック時など）
@@ -416,10 +321,9 @@ func complete_text():
 		else:
 			# バッファ内のすべてのテキストを表示し終えた
 			print("All text in buffer displayed")
-			
-			# インジケータを非表示
-			if more_indicator:
-				more_indicator.visible = false
+			# インジケーターを非表示にする
+			show_indicator = false
+			_update_displayed_text()
 			
 			# テストシナリオに通知
 			if has_node("test_scenario"):
