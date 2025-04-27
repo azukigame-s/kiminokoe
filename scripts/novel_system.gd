@@ -14,21 +14,17 @@ var text_timer = 0.0
 var page_text_buffer = []  # 現在のページに表示するテキストのバッファ
 var current_page_index = 0  # ページ内の現在位置
 
-# 新しい変数 - 「続きあり」インジケータ用
+# 「続きあり」インジケータ用
 var more_indicator = null
 
 # 背景関連
 var current_background = ""
-
-# キャラクター関連
-var current_characters = {}
 
 # 音声関連
 var current_bgm = ""
 
 # ノード参照
 @onready var background = $background
-@onready var characters_container = $characters_container
 @onready var text_panel = $text_panel
 @onready var dialogue_text = $text_panel/dialogue_text if has_node("text_panel") else null
 @onready var bgm_player = $bgm_player
@@ -37,7 +33,7 @@ var current_bgm = ""
 func _ready():
 	print("Visual Novel System: Ready function called.")
 	
-	# サイズを明示的に設定（親Controlノードのサイズ問題を解決するコード）
+	# サイズを明示的に設定
 	size_flags_horizontal = Control.SIZE_FILL
 	size_flags_vertical = Control.SIZE_FILL
 	anchor_right = 1.0
@@ -55,6 +51,38 @@ func _ready():
 		print("Background setup complete. Size: ", background.size)
 	
 	# テキストパネルの設定
+	_setup_text_panel()
+	
+	# 「続きあり」インジケータを作成
+	create_more_indicator()
+	
+	# 初期化完了のシグナルを発行
+	initialized.emit()
+
+# ノード参照を確認するヘルパー関数
+func _check_nodes():
+	print("Checking node references:")
+	print("- Background node: ", background)
+	print("- Text panel: ", text_panel)
+	print("- Dialogue text node: ", dialogue_text)
+	print("- BGM player: ", bgm_player)
+	print("- SFX player: ", sfx_player)
+	
+	# 親ノードのサイズ確認
+	print("Control size: ", size)
+	
+	# ノードが見つからない場合はエラーメッセージと推奨修正
+	if not background:
+		print("ERROR: Background node missing. Create a TextureRect named 'background' as a child of this Control node.")
+	
+	if not text_panel:
+		print("ERROR: Text panel missing. Create a Panel or Control named 'text_panel' as a child of this Control node.")
+	
+	if not dialogue_text and text_panel:
+		print("ERROR: Dialogue text node missing. Create a RichTextLabel named 'dialogue_text' as a child of the text_panel.")
+
+# テキストパネルのセットアップ
+func _setup_text_panel():
 	if text_panel:
 		# テキストパネルを全画面に設定（かまいたちの夜スタイル）
 		text_panel.anchor_top = 0.0
@@ -99,17 +127,25 @@ func _ready():
 		if custom_theme:
 			dialogue_text.theme = custom_theme
 			print("Custom theme applied to dialogue text")
+
+# 要素を画面全体に表示する共通設定関数
+func _setup_fullscreen_element(element):
+	# アンカーを画面全体に設定
+	element.anchor_left = 0.0
+	element.anchor_top = 0.0
+	element.anchor_right = 1.0
+	element.anchor_bottom = 1.0
 	
-	# キャラクターコンテナの設定
-	if characters_container:
-		_setup_fullscreen_element(characters_container)
-		print("Characters container setup complete.")
+	# オフセットを0に設定（画面の端から端まで広げる）
+	element.offset_left = 0
+	element.offset_top = 0
+	element.offset_right = 0
+	element.offset_bottom = 0
 	
-	# 「続きあり」インジケータを作成
-	create_more_indicator()
-	
-	# 初期化完了のシグナルを発行
-	initialized.emit()
+	# TextureRect固有のプロパティを設定
+	if element is TextureRect:
+		element.expand = true
+		element.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 
 # 「続きあり」インジケータを作成する関数
 func create_more_indicator():
@@ -140,7 +176,7 @@ func create_more_indicator():
 		
 		# サイズと位置を設定
 		more_indicator.custom_minimum_size = Vector2(32, 32)
-		more_indicator.position = Vector2(1075, 575)  # 画面の右下あたり、適宜調整してください
+		more_indicator.position = Vector2(1075, 575)  # 画面の右下あたり
 		more_indicator.visible = false  # 最初は非表示
 		
 		text_panel.add_child(more_indicator)
@@ -168,51 +204,6 @@ func _on_indicator_blink():
 	if more_indicator and more_indicator is ColorRect:
 		more_indicator.modulate.a = 1.0 if more_indicator.modulate.a < 0.5 else 0.3
 
-# ノード参照を確認するヘルパー関数
-func _check_nodes():
-	print("Checking node references:")
-	print("- Background node: ", background)
-	print("- Characters container: ", characters_container)
-	print("- Text panel: ", text_panel)
-	print("- Dialogue text node: ", dialogue_text)
-	print("- BGM player: ", bgm_player)
-	print("- SFX player: ", sfx_player)
-	
-	# 親ノードのサイズ確認
-	print("Control size: ", size)
-	
-	# ノードが見つからない場合はエラーメッセージと推奨修正
-	if not background:
-		print("ERROR: Background node missing. Create a TextureRect named 'background' as a child of this Control node.")
-	
-	if not text_panel:
-		print("ERROR: Text panel missing. Create a Panel or Control named 'text_panel' as a child of this Control node.")
-	
-	if not dialogue_text and text_panel:
-		print("ERROR: Dialogue text node missing. Create a RichTextLabel named 'dialogue_text' as a child of the text_panel.")
-	
-	if not characters_container:
-		print("ERROR: Characters container missing. Create a Control named 'characters_container' as a child of this Control node.")
-
-# 要素を画面全体に表示する共通設定関数
-func _setup_fullscreen_element(element):
-	# アンカーを画面全体に設定
-	element.anchor_left = 0.0
-	element.anchor_top = 0.0
-	element.anchor_right = 1.0
-	element.anchor_bottom = 1.0
-	
-	# オフセットを0に設定（画面の端から端まで広げる）
-	element.offset_left = 0
-	element.offset_top = 0
-	element.offset_right = 0
-	element.offset_bottom = 0
-	
-	# TextureRect固有のプロパティを設定
-	if element is TextureRect:
-		element.expand = true
-		element.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-
 func _process(delta):
 	# 文字送り処理
 	if not is_text_completed:
@@ -222,14 +213,11 @@ func _process(delta):
 			if displayed_text.length() < current_text.length():
 				displayed_text += current_text[displayed_text.length()]
 				_update_displayed_text()
-				# 文字表示時の効果音があれば、ここで再生する場合
-				# if displayed_text.length() % 3 == 0:  # 3文字ごとに再生など
-				#     play_sfx("text_sound.wav")
 			else:
 				is_text_completed = true
 				# テキスト表示が完了したら、「続きあり」インジケータを表示
 				if more_indicator:
-					more_indicator.visible = true
+					more_indicator.visible = has_more_text_in_buffer()
 
 # 現在表示すべきテキストを更新する関数
 func _update_displayed_text():
@@ -248,7 +236,6 @@ func _update_displayed_text():
 				if next_line != -1 and base_text.find("[color=#FFDD00][b]", last_text_start) != -1:
 					# 話者名を含む場合、その後の改行までをベーステキストとする
 					base_text = base_text.substr(0, next_line + 2)
-					
 				else:
 					# 話者名を含まない場合、最後の改行までをベーステキストとする
 					base_text = base_text.substr(0, last_text_start + 2)
@@ -431,64 +418,6 @@ func change_background(background_path):
 		print("Background changed successfully.")
 	else:
 		print("ERROR: Background node is null")
-
-# キャラクターを表示する関数
-func show_character(character_id, character_path, position = Vector2(512, 300)):
-	print("Showing character: ", character_id, " at path: ", character_path)
-	
-	if not character_id in current_characters:
-		var character_sprite = TextureRect.new()
-		character_sprite.name = character_id
-		characters_container.add_child(character_sprite)
-		current_characters[character_id] = character_sprite
-		print("Created new character sprite: ", character_id)
-	
-	var character = current_characters[character_id]
-	
-	# パスが相対パスかどうかを確認
-	var character_texture
-	if character_path.begins_with("res://"):
-		character_texture = load(character_path)
-	else:
-		character_texture = load("res://assets/characters/" + character_path)
-	
-	if character_texture != null:
-		character.texture = character_texture
-		character.expand = true
-		character.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
-		
-		# サイズ設定
-		character.custom_minimum_size = Vector2(300, 600)  # 適切なサイズに調整
-		
-		# 位置設定: キャラクターの中心を指定位置に
-		var char_width = character.custom_minimum_size.x
-		var char_height = character.custom_minimum_size.y
-		
-		# アンカーを左上に設定
-		character.anchor_left = 0
-		character.anchor_top = 0
-		character.anchor_right = 0
-		character.anchor_bottom = 0
-		
-		# 位置を中心に調整
-		character.offset_left = position.x - char_width / 2
-		character.offset_top = position.y - char_height / 2
-		character.offset_right = position.x + char_width / 2
-		character.offset_bottom = position.y + char_height / 2
-		
-		character.visible = true
-		print("Character displayed: ", character_id, " at position ", position)
-	else:
-		print("ERROR: Failed to load character texture: ", character_path)
-
-# キャラクターを非表示にする関数
-func hide_character(character_id):
-	if character_id in current_characters:
-		current_characters[character_id].queue_free()
-		current_characters.erase(character_id)
-		print("Character hidden: ", character_id)
-	else:
-		print("Warning: Attempted to hide non-existent character: ", character_id)
 
 # BGMを再生する関数
 func play_bgm(bgm_path):

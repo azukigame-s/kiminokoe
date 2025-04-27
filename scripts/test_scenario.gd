@@ -3,7 +3,7 @@ extends Node
 # ノベルシステムへの参照
 var novel_system
 
-# テストシナリオデータ - 「new_page」フラグを追加
+# テストシナリオデータ
 var scenario = [
 	{
 		"type": "background",
@@ -125,7 +125,7 @@ func _ready():
 	novel_system = get_parent()
 	print("TestScenario ready - NovelSystem:", novel_system)
 	
-	# Godot 4.x形式のシグナル接続
+	# シグナル接続
 	if novel_system:
 		novel_system.initialized.connect(_on_novel_system_initialized)
 		print("Signal connected")
