@@ -210,7 +210,17 @@ func execute_current_command():
 			novel_system.change_background(command.path)
 			proceed_to_next()
 		"dialogue":
-			novel_system.show_text(command.text, command.speaker)
+			# 複数のダイアログを一つのページにまとめる処理
+			var current_dialog = command.text
+			var current_speaker = command.speaker
+			
+			# 最初のダイアログなら新しいページで表示
+			if novel_system.page_text_buffer.size() == 0:
+				novel_system.show_text(current_dialog, current_speaker)
+			else:
+				# 既存のバッファに追加
+				novel_system.add_to_page_buffer(current_dialog, current_speaker)
+				
 			# ダイアログはプレイヤーの入力を待つので自動的には進まない
 		"bgm":
 			novel_system.play_bgm(command.path)

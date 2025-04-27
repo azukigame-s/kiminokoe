@@ -231,25 +231,33 @@ func _process(delta):
 # 現在表示すべきテキストを更新する関数
 func _update_displayed_text():
 	if dialogue_text:
-		var current_display = dialogue_text.text
-		var speaker_part = ""
+		var base_text = ""
 		
-		# 現在のテキストから話者名部分を抽出
-		var text_parts = current_display.split("\n\n", false, 1)  # 最初の改行で分割
-		
-		if text_parts.size() > 0 and text_parts[0].begins_with("[color=#FFDD00][b]"):
-			speaker_part = text_parts[0] + "\n\n"
-			
-			# 現在のページのテキストをすべて取得（話者名以外）
-			var content_start = current_display.find("\n\n", 0) + 2
-			if content_start < current_display.length():
-				var content_end = current_display.rfind("\n\n")
-				if content_end > content_start:
-					speaker_part = current_display.substr(0, content_end + 2)
+		# 話者名やすでにバッファにある内容を取得
+		if current_page_index > 0:
+			# 前のページ内容を保持
+			base_text = dialogue_text.text
+			# 最後の文章の表示部分のみを置き換える（現在表示中の文のプレフィクス部分を見つける）
+			var last_text_start = base_text.rfind("\n\n")
+			if last_text_start != -1:
+				# 話者名が含まれているか確認
+				var next_line = base_text.find("\n\n", last_text_start + 2)
+				if next_line != -1 and base_text.find("[color=#FFDD00][b]", last_text_start) != -1:
+					# 話者名を含む場合、その後の改行までをベーステキストとする
+					base_text = base_text.substr(0, next_line + 2)
+					
 				else:
-					speaker_part = current_display.substr(0, content_start)
+					# 話者名を含まない場合、最後の改行までをベーステキストとする
+					base_text = base_text.substr(0, last_text_start + 2)
+			
+		# 話者名がある場合は最初に追加
+		if current_page_index == 0:
+			var text_parts = dialogue_text.text.split("\n\n", false, 1)
+			if text_parts.size() > 0 and text_parts[0].begins_with("[color=#FFDD00][b]"):
+				base_text = text_parts[0] + "\n\n"
 		
-		dialogue_text.text = speaker_part + displayed_text
+		# 最終的なテキストを設定
+		dialogue_text.text = base_text + displayed_text
 	else:
 		print("Error: dialogue_text is null in _update_displayed_text()")
 
@@ -277,12 +285,12 @@ func show_text(text, speaker_name = ""):
 	
 	if dialogue_text:
 		dialogue_text.visible = true
+		# テキストを完全にクリア
+		dialogue_text.text = ""
 		
-		# 話者名があれば追加（かまいたちの夜風）
+		# 話者名があれば追加
 		if speaker_name != "":
 			dialogue_text.text = "[color=#FFDD00][b]" + speaker_name + "[/b][/color]\n\n"
-		else:
-			dialogue_text.text = ""
 		
 		# テキストパネルが非表示になっていたら表示
 		if text_panel:
@@ -293,6 +301,8 @@ func show_text(text, speaker_name = ""):
 # 同じページに文を追加表示する関数
 func show_text_same_page(text, speaker_name = ""):
 	print("Showing additional text in the same page: ", text)
+	
+	# 新しい文章を設定
 	current_text = text
 	displayed_text = ""
 	is_text_completed = false
@@ -303,14 +313,13 @@ func show_text_same_page(text, speaker_name = ""):
 		more_indicator.visible = false
 	
 	if dialogue_text:
-		# 現在のテキストを保持
-		var current_content = dialogue_text.text
-		
-		# 話者名があれば追加（先頭に表示）
+		# 現在の話者名を追加
 		if speaker_name != "":
-			dialogue_text.text = current_content + "\n\n[color=#FFDD00][b]" + speaker_name + "[/b][/color]\n\n"
+			# 改行を追加して話者名を設定
+			dialogue_text.text = dialogue_text.text + "\n\n[color=#FFDD00][b]" + speaker_name + "[/b][/color]\n\n"
 		else:
-			dialogue_text.text = current_content + "\n\n"
+			# 話者名なしの場合は単に改行を追加
+			dialogue_text.text = dialogue_text.text + "\n\n"
 	else:
 		print("Error: dialogue_text is null in show_text_same_page()")
 
@@ -322,30 +331,31 @@ func complete_text():
 		_update_displayed_text()
 		is_text_completed = true
 		
-		# テキスト表示完了後に「続きあり」インジケータを表示
+		# テキスト表示完了後に「続きあり」インジケータを表示（次のテキストがある場合のみ）
 		if more_indicator:
-			more_indicator.visible = true
+			more_indicator.visible = current_page_index < page_text_buffer.size() - 1
 			
 		print("Text display completed.")
 	else:
-		# テキストが表示済みなら次の文を表示または次のシナリオへ
-		if has_node("test_scenario"):
-			if current_page_index < page_text_buffer.size() - 1:
-				# まだページ内に表示する文がある場合
-				current_page_index += 1
-				# 次の文を取得して表示
-				var next_text = page_text_buffer[current_page_index]
-				show_text_same_page(next_text["text"], next_text["speaker"])
-				print("Showing next text in the same page.")
-			else:
-				# ページ内のテキストをすべて表示したので次のシナリオへ
-				print("Advancing to next scenario.")
-				# 「続きあり」インジケータを非表示
-				if more_indicator:
-					more_indicator.visible = false
-				# バッファをリセット
-				page_text_buffer = []
-				current_page_index = 0
+		# テキストが表示済みなら次の文を同じページに表示
+		if current_page_index < page_text_buffer.size() - 1:
+			# まだ表示する文がある場合
+			current_page_index += 1
+			var next_text = page_text_buffer[current_page_index]
+			show_text_same_page(next_text["text"], next_text["speaker"])
+			print("Showing next text in the same page.")
+		else:
+			# バッファ内のテキストをすべて表示したので次のシナリオへ
+			print("All text displayed, advancing to next scenario.")
+			# 「続きあり」インジケータを非表示
+			if more_indicator:
+				more_indicator.visible = false
+			# バッファをリセット
+			page_text_buffer = []
+			current_page_index = 0
+			
+			# テストシナリオがある場合はシナリオを進める
+			if has_node("test_scenario"):
 				$test_scenario.on_text_completed()
 
 # 背景を変更する関数
