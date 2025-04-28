@@ -267,10 +267,6 @@ func _get_indicator_symbol():
 		var current_item = page_text_buffer[current_page_index]
 		if current_item.get("go_next", false):
 			return page_indicator_symbol  # ページ送り用インジケータ
-	
-	# バッファにさらにテキストがある場合も「次へ」インジケータ
-	if has_more_text_in_buffer():
-		return page_indicator_symbol  # ページ送り用インジケータ
 		
 	# それ以外は通常の文字送りインジケータ
 	return indicator_symbol
