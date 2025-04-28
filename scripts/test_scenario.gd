@@ -135,6 +135,7 @@ func execute_current_command():
 		"dialogue":
 			var current_dialog = command.text
 			var new_page = command.get("new_page", false)  # デフォルトはfalse
+			var go_next = command.get("go_next", false)  # go_nextプロパティの取得
 			
 			if new_page:
 				# 新しいページの開始 - 以前のすべてのバッファをクリア
@@ -148,7 +149,7 @@ func execute_current_command():
 					print("First text in buffer: ", current_dialog)
 				else:
 					# すでにテキストがある場合はバッファに追加するのみ
-					novel_system.add_to_page_buffer(current_dialog)
+					novel_system.add_to_page_buffer(current_dialog, go_next)  # go_nextを渡す
 					print("Added text to buffer: ", current_dialog)
 			
 			# クリック待ち状態に移行

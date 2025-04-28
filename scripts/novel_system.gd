@@ -22,8 +22,8 @@ var current_bgm = ""
 
 # インジケーターの状態を示す変数
 var show_indicator = false
-var indicator_symbol = "▽"  # 文字送り用
-var page_indicator_symbol = "▼"  # ページ送り用
+var indicator_symbol = "⏎"  # 文字送り用
+var page_indicator_symbol = "⎘"  # ページ送り用
 
 var indicator_visible = true  # インジケーターの表示/非表示状態
 var indicator_blink_timer = 0.0  # 点滅タイマー
@@ -204,13 +204,12 @@ func _update_displayed_text():
 		
 		# インジケーター表示（点滅エフェクト）
 		if is_text_completed and show_indicator and indicator_visible:
-			var symbol = "▼" if has_more_text_in_buffer() else "▽"
-			final_text += symbol
+			final_text += _get_indicator_symbol()
 		
 		dialogue_text.text = final_text
 
 # テキストを表示する関数（新しいページの開始）
-func show_text(text):
+func show_text(text, go_next = false):
 	print("Showing text: ", text)
 	current_text = text
 	displayed_text = ""
@@ -224,6 +223,7 @@ func show_text(text):
 	# 現在のテキストをバッファに追加
 	page_text_buffer.append({
 		"text": text,
+		"go_next": go_next
 	})
 	
 	if dialogue_text:
@@ -260,6 +260,21 @@ func show_text_same_page(text):
 	else:
 		print("Error: dialogue_text is null in show_text_same_page()")
 
+# インジケータのシンボルを決定する関数
+func _get_indicator_symbol():
+	# 現在のテキストが「次へ」を示す場合
+	if current_page_index < page_text_buffer.size():
+		var current_item = page_text_buffer[current_page_index]
+		if current_item.get("go_next", false):
+			return page_indicator_symbol  # ページ送り用インジケータ
+	
+	# バッファにさらにテキストがある場合も「次へ」インジケータ
+	if has_more_text_in_buffer():
+		return page_indicator_symbol  # ページ送り用インジケータ
+		
+	# それ以外は通常の文字送りインジケータ
+	return indicator_symbol
+	
 # バッファをクリアする関数
 func clear_text_buffers():
 	page_text_buffer = []
@@ -399,9 +414,10 @@ func play_sfx(sfx_path):
 		print("ERROR: Failed to load audio: ", sfx_path)
 
 # ページバッファにテキストを追加する関数
-func add_to_page_buffer(text):
+func add_to_page_buffer(text, go_next = false):
 	page_text_buffer.append({
 		"text": text,
+		"go_next": go_next
 	})
 	print("Added to page buffer: ", text)
 	print("Current buffer size: ", page_text_buffer.size())
