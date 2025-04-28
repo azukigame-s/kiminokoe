@@ -210,7 +210,7 @@ func _update_displayed_text():
 		dialogue_text.text = final_text
 
 # テキストを表示する関数（新しいページの開始）
-func show_text(text, speaker_name = ""):
+func show_text(text):
 	print("Showing text: ", text)
 	current_text = text
 	displayed_text = ""
@@ -224,17 +224,12 @@ func show_text(text, speaker_name = ""):
 	# 現在のテキストをバッファに追加
 	page_text_buffer.append({
 		"text": text,
-		"speaker": speaker_name
 	})
 	
 	if dialogue_text:
 		dialogue_text.visible = true
 		# テキストを完全にクリア
 		dialogue_text.text = ""
-		
-		# 話者名があれば追加
-		if speaker_name != "":
-			dialogue_text.text = "[color=#FFDD00][b]" + speaker_name + "[/b][/color]\n\n"
 		
 		# テキストパネルが非表示になっていたら表示
 		if text_panel:
@@ -243,7 +238,7 @@ func show_text(text, speaker_name = ""):
 		print("Error: dialogue_text is null in show_text()")
 
 # 同じページに文を追加表示する関数
-func show_text_same_page(text, speaker_name = ""):
+func show_text_same_page(text):
 	print("Showing additional text in the same page: ", text)
 	
 	# 新しい文章を設定
@@ -256,16 +251,9 @@ func show_text_same_page(text, speaker_name = ""):
 		# 現在のテキストを保存
 		var current_displayed = dialogue_text.text
 		
-		# 話者名の扱い
-		if speaker_name != "":
-			# 前のテキストがある場合は改行を追加
-			if current_displayed != "":
-				current_displayed += "\n\n"
-			current_displayed += "[color=#FFDD00][b]" + speaker_name + "[/b][/color]\n\n"
-		else:
-			# 話者名なしの場合は単に改行を追加（前のテキストがある場合のみ）
-			if current_displayed != "":
-				current_displayed += "\n\n"
+		# 話者名なしの場合は単に改行を追加（前のテキストがある場合のみ）
+		if current_displayed != "":
+			current_displayed += "\n\n"
 		
 		# 基本テキストを設定（文字送りのベースとなる）
 		dialogue_text.text = current_displayed
@@ -295,7 +283,7 @@ func display_next_text_from_buffer():
 	if has_more_text_in_buffer():
 		current_page_index += 1
 		var next_text = page_text_buffer[current_page_index]
-		show_text_same_page(next_text["text"], next_text["speaker"])
+		show_text_same_page(next_text["text"])
 		return true
 	return false
 
@@ -411,10 +399,9 @@ func play_sfx(sfx_path):
 		print("ERROR: Failed to load audio: ", sfx_path)
 
 # ページバッファにテキストを追加する関数
-func add_to_page_buffer(text, speaker_name = ""):
+func add_to_page_buffer(text):
 	page_text_buffer.append({
 		"text": text,
-		"speaker": speaker_name
 	})
 	print("Added to page buffer: ", text)
 	print("Current buffer size: ", page_text_buffer.size())

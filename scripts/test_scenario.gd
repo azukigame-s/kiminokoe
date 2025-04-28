@@ -15,87 +15,73 @@ var scenario = [
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "車窓を流れる景色――。見えるのは青い空、そして青い海。",
-		"new_page": true  # 新しいページで開始
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "そんな景色を眺めながら僕はバスに揺られていた。"
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "大型の路線バスの左側、一番前の座席に腰を掛けているのだが、バスの中に乗客は僕一人だ。"
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "一番前の席は足場が他より高くなっており、大の大人が座ると体育座りのような不格好な体勢になってしまう。"
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "お世辞にも座り心地は良くないし、乗客のいない車内でわざわざ運転手さんのそばに座る必要なんてない。"
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
-		"text": "そう思うかもしれないが、それでも、僕はこの席が好きだった。"
+		"text": "そう思うかもしれないが、それでも、僕はこの席が好きだった。",
+		"go_next": true  # 新しいページへ進める
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "理由は２つ。",
-		"new_page": true  # 段落の変わり目でページを変更
+		"new_page": true  # 新しいページが始まる
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "フロントガラスから左の車窓にかけて、大パノラマの景色を拝むことができるというのがひとつ。"
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "放り込まれた小銭を大口を開けて飲み込むロボット――、のような運賃箱を見るのが好き、というのがもうひとつだ。"
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
-		"text": "とはいっても、乗客のいないこの状況ではその姿も拝めないのだけど……。"
+		"text": "とはいっても、乗客のいないこの状況ではその姿も拝めないのだけど……。",
+		"go_next": true  # 新しいページへ進める
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "流れる景色を見ていると、いろいろと考えてしまう。",
-		"new_page": true
+		"new_page": true  # 新しいページが始まる
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "いろいろと思い出してしまう――。"
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "――そう。"
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "――――あの日も。"
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
-		"text": "あの日も……、１０月にしては青すぎる景色だった――。"
+		"text": "あの日も……、１０月にしては青すぎる景色だった――。",
+		"go_next": true  # 新しいページへ進める
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "『次は――』",
-		"new_page": true
+		"new_page": true  # 新しいページが始まる
 	},
 	{
 		"type": "sfx",
@@ -103,17 +89,14 @@ var scenario = [
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "ピンポーンと軽い音が鳴る。"
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "『――だき西口。次は、地蔵焚西口です』"
 	},
 	{
 		"type": "dialogue",
-		"speaker": "",
 		"text": "次のバス停を知らせる感情のない音声を待たずして、降車ボタンを押した人がいる。"
 	},
 ]
@@ -151,22 +134,21 @@ func execute_current_command():
 			proceed_to_next()
 		"dialogue":
 			var current_dialog = command.text
-			var current_speaker = command.speaker
 			var new_page = command.get("new_page", false)  # デフォルトはfalse
 			
 			if new_page:
 				# 新しいページの開始 - 以前のすべてのバッファをクリア
 				novel_system.clear_text_buffers()
-				novel_system.show_text(current_dialog, current_speaker)
+				novel_system.show_text(current_dialog)
 				print("Started new page with text: ", current_dialog)
 			else:
 				if novel_system.page_text_buffer.size() == 0:
 					# バッファが空の場合は最初のテキストとして表示
-					novel_system.show_text(current_dialog, current_speaker)
+					novel_system.show_text(current_dialog)
 					print("First text in buffer: ", current_dialog)
 				else:
 					# すでにテキストがある場合はバッファに追加するのみ
-					novel_system.add_to_page_buffer(current_dialog, current_speaker)
+					novel_system.add_to_page_buffer(current_dialog)
 					print("Added text to buffer: ", current_dialog)
 			
 			# クリック待ち状態に移行
