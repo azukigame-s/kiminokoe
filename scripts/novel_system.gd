@@ -314,6 +314,11 @@ func complete_text():
 			show_indicator = false
 			_update_displayed_text()
 			text_click_processed.emit()
+			
+			# ここでTestScenarioの処理を待ち、次のテキストがバッファに追加されたかチェック
+			await get_tree().process_frame
+			if has_more_text_in_buffer():
+				display_next_text_from_buffer()
 
 # 背景変更
 func change_background(background_path):
