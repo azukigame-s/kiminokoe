@@ -104,27 +104,32 @@ var scenario = [
 var current_index = 0
 var waiting_for_click = false
 
+# シグナルのエイリアス定義
+enum LogLevel {INFO, DEBUG, ERROR}
+
 func _ready():
 	novel_system = get_parent()
-	print("TestScenario ready - NovelSystem:", novel_system)
+	log_message("TestScenario ready - NovelSystem: " + str(novel_system), LogLevel.INFO)
 	
 	if novel_system:
 		novel_system.initialized.connect(_on_novel_system_initialized)
-		print("Signal connected")
+		novel_system.text_click_processed.connect(_on_click_processed)
+		novel_system.text_completed.connect(_on_text_completed)
+		log_message("Signals connected", LogLevel.DEBUG)
 	else:
-		print("Error: Novel system not found")
+		log_message("Error: Novel system not found", LogLevel.ERROR)
 
 func _on_novel_system_initialized():
-	print("Novel system initialized, starting scenario")
+	log_message("Novel system initialized, starting scenario", LogLevel.INFO)
 	execute_current_command()
 
 func execute_current_command():
 	if current_index >= scenario.size():
-		print("Scenario complete")
+		log_message("Scenario complete", LogLevel.INFO)
 		return
 	
 	var command = scenario[current_index]
-	print("Executing command: ", command.type, " at index ", current_index)
+	log_message("Executing command: " + command.type + " at index " + str(current_index), LogLevel.DEBUG)
 	
 	match command.type:
 		"background":
@@ -135,17 +140,19 @@ func execute_current_command():
 			var new_page = command.get("new_page", false)
 			var go_next = command.get("go_next", false)
 			
+			log_message("Processing dialogue: new_page=" + str(new_page) + ", go_next=" + str(go_next), LogLevel.DEBUG)
+			
 			if new_page:
 				novel_system.clear_text_buffers()
-				novel_system.show_text(current_dialog)
-				print("Started new page with text: ", current_dialog)
+				novel_system.show_text(current_dialog, true, go_next)
+				log_message("Started new page with text: " + current_dialog, LogLevel.DEBUG)
 			else:
 				if novel_system.page_text_buffer.size() == 0:
-					novel_system.show_text(current_dialog)
-					print("First text in buffer: ", current_dialog)
+					novel_system.show_text(current_dialog, true, go_next)
+					log_message("First text in buffer: " + current_dialog, LogLevel.DEBUG)
 				else:
 					novel_system.add_to_page_buffer(current_dialog, go_next)
-					print("Added text to buffer: ", current_dialog)
+					log_message("Added text to buffer: " + current_dialog, LogLevel.DEBUG)
 			
 			waiting_for_click = true
 		"bgm":
@@ -155,7 +162,7 @@ func execute_current_command():
 			novel_system.play_sfx(command.path)
 			proceed_to_next()
 		_:
-			print("Unknown command type: ", command.type)
+			log_message("Unknown command type: " + command.type, LogLevel.ERROR)
 			proceed_to_next()
 
 func proceed_to_next():
@@ -166,22 +173,31 @@ func proceed_to_next():
 	if current_index < scenario.size():
 		execute_current_command()
 
-func on_text_completed():
-	print("Text completed signal received")
-	waiting_for_click = false
-	current_index += 1
-	execute_current_command()
+func _on_text_completed():
+	log_message("Text completed signal received", LogLevel.DEBUG)
+	# テキスト表示が完了した時の処理（必要に応じて）
 
-func on_click_received():
-	print("Click received in test_scenario")
+func _on_click_processed():
+	log_message("Click processed signal received", LogLevel.DEBUG)
 	
-	if novel_system.is_text_completed:
-		if novel_system.has_more_text_in_buffer():
-			novel_system.display_next_text_from_buffer()
-			print("Displaying next text from buffer")
-		else:
-			waiting_for_click = false
-			on_text_completed()
+	if novel_system.is_text_completed and not novel_system.has_more_text_in_buffer():
+		log_message("No more text in buffer, proceeding to next command", LogLevel.DEBUG)
+		waiting_for_click = false
+		current_index += 1
+		execute_current_command()
+
+# ログメッセージの出力（NovelSystemと同様のログ機能）
+func log_message(message, level = LogLevel.INFO):
+	if novel_system:
+		novel_system.log_message("[TestScenario] " + message, level)
 	else:
-		novel_system.complete_text_display()
-		print("Completed current text display")
+		var prefix = ""
+		match level:
+			LogLevel.INFO:
+				prefix = "[INFO] "
+			LogLevel.DEBUG:
+				prefix = "[DEBUG] "
+			LogLevel.ERROR:
+				prefix = "[ERROR] "
+		
+		print(prefix + "[TestScenario] " + message)

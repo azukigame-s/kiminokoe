@@ -3,13 +3,15 @@ extends Control
 # シグナル定義
 signal initialized
 signal text_click_processed
+signal text_completed
+
+# ログレベル定義
+enum LogLevel {INFO, DEBUG, ERROR}
+var current_log_level = LogLevel.INFO  # 本番環境ではERRORのみにするなど調整可能
 
 # テキスト表示関連の変数
 var current_text = ""
 var displayed_text = ""
-var text_speed = 0.05
-var is_text_completed = true
-var text_timer = 0.0
 var page_text_buffer = []
 var current_page_index = 0
 
@@ -17,13 +19,18 @@ var current_page_index = 0
 var current_background = ""
 var current_bgm = ""
 
-# インジケーター関連
+# インジケータ関連
 var show_indicator = false
-var indicator_symbol = "⏎"
-var page_indicator_symbol = "⎘"
 var indicator_visible = true
 var indicator_blink_timer = 0.0
-var indicator_blink_speed = 0.5
+
+# 設定値 - ProjectSettingsから取得するように変更
+var text_speed: float
+var indicator_blink_speed: float
+var indicator_symbol: String
+var page_indicator_symbol: String
+var is_text_completed = true
+var text_timer = 0.0
 
 # ノード参照
 @onready var background = $background
@@ -33,7 +40,10 @@ var indicator_blink_speed = 0.5
 @onready var sfx_player = $sfx_player
 
 func _ready():
-	print("Visual Novel System: Ready function called.")
+	log_message("Visual Novel System: Ready function called.", LogLevel.INFO)
+	
+	# 設定の読み込み
+	_load_settings()
 	
 	# 画面サイズの設定
 	size_flags_horizontal = Control.SIZE_FILL
@@ -42,54 +52,73 @@ func _ready():
 	anchor_bottom = 1.0
 	
 	await get_tree().process_frame
-	print("Updated Control size after frame: ", size)
+	log_message("Updated Control size after frame: " + str(size), LogLevel.DEBUG)
 	
-	_check_nodes()
-	
-	if background:
-		_setup_fullscreen_element(background)
-		print("Background setup complete. Size: ", background.size)
-	
-	_setup_text_panel()
-	
-	initialized.emit()
+	if _check_required_nodes():
+		if background:
+			_setup_fullscreen_element(background)
+			log_message("Background setup complete. Size: " + str(background.size), LogLevel.DEBUG)
+		
+		_setup_text_panel()
+		
+		initialized.emit()
+	else:
+		log_message("Initialization failed due to missing required nodes", LogLevel.ERROR)
 
-func _check_nodes():
-	print("Checking node references:")
-	print("- Background node: ", background)
-	print("- Text panel: ", text_panel)
-	print("- Dialogue text node: ", dialogue_text)
-	print("- BGM player: ", bgm_player)
-	print("- SFX player: ", sfx_player)
-	print("Control size: ", size)
+# 設定の読み込み - ProjectSettingsから取得
+func _load_settings():
+	# ProjectSettingsに設定がない場合のデフォルト値
+	text_speed = ProjectSettings.get_setting("visual_novel/text_speed", 0.05)
+	indicator_blink_speed = ProjectSettings.get_setting("visual_novel/indicator_blink_speed", 0.5)
+	indicator_symbol = ProjectSettings.get_setting("visual_novel/indicator_symbol", "⏎")
+	page_indicator_symbol = ProjectSettings.get_setting("visual_novel/page_indicator_symbol", "⎘")
+
+# 必要なノードが揃っているかをチェック
+func _check_required_nodes() -> bool:
+	log_message("Checking node references:", LogLevel.DEBUG)
+	log_message("- Background node: " + str(background), LogLevel.DEBUG)
+	log_message("- Text panel: " + str(text_panel), LogLevel.DEBUG)
+	log_message("- Dialogue text node: " + str(dialogue_text), LogLevel.DEBUG)
+	log_message("- BGM player: " + str(bgm_player), LogLevel.DEBUG)
+	log_message("- SFX player: " + str(sfx_player), LogLevel.DEBUG)
+	
+	var all_nodes_present = true
 	
 	if not background:
-		print("ERROR: Background node missing. Create a TextureRect named 'background' as a child of this Control node.")
+		log_message("ERROR: Background node missing. Create a TextureRect named 'background' as a child of this Control node.", LogLevel.ERROR)
+		all_nodes_present = false
 	
 	if not text_panel:
-		print("ERROR: Text panel missing. Create a Panel or Control named 'text_panel' as a child of this Control node.")
+		log_message("ERROR: Text panel missing. Create a Panel or Control named 'text_panel' as a child of this Control node.", LogLevel.ERROR)
+		all_nodes_present = false
 	
 	if not dialogue_text and text_panel:
-		print("ERROR: Dialogue text node missing. Create a RichTextLabel named 'dialogue_text' as a child of the text_panel.")
+		log_message("ERROR: Dialogue text node missing. Create a RichTextLabel named 'dialogue_text' as a child of the text_panel.", LogLevel.ERROR)
+		all_nodes_present = false
+	
+	return all_nodes_present
 
+# テキストパネルのセットアップ
 func _setup_text_panel():
-	if text_panel:
-		# かまいたちの夜スタイルのテキストパネル設定
-		text_panel.anchor_top = 0.0
-		text_panel.anchor_bottom = 1.0
-		text_panel.anchor_left = 0.0
-		text_panel.anchor_right = 1.0
-		text_panel.offset_left = 0
-		text_panel.offset_top = 0
-		text_panel.offset_right = 0
-		text_panel.offset_bottom = 0
+	if not text_panel:
+		return
 		
-		# 半透明の黒背景
-		var style_box = StyleBoxFlat.new()
-		style_box.bg_color = Color(0, 0, 0, 0.5)
-		text_panel.add_theme_stylebox_override("panel", style_box)
-		
-		print("Text panel setup complete for Kamaitachi style. Size: ", text_panel.size)
+	# かまいたちの夜スタイルのテキストパネル設定
+	text_panel.anchor_top = 0.0
+	text_panel.anchor_bottom = 1.0
+	text_panel.anchor_left = 0.0
+	text_panel.anchor_right = 1.0
+	text_panel.offset_left = 0
+	text_panel.offset_top = 0
+	text_panel.offset_right = 0
+	text_panel.offset_bottom = 0
+	
+	# 半透明の黒背景
+	var style_box = StyleBoxFlat.new()
+	style_box.bg_color = Color(0, 0, 0, 0.5)
+	text_panel.add_theme_stylebox_override("panel", style_box)
+	
+	log_message("Text panel setup complete for Kamaitachi style. Size: " + str(text_panel.size), LogLevel.DEBUG)
 	
 	if dialogue_text:
 		dialogue_text.bbcode_enabled = true
@@ -108,14 +137,18 @@ func _setup_text_panel():
 		dialogue_text.add_theme_color_override("default_color", Color(1, 1, 1, 1))
 		dialogue_text.add_theme_font_size_override("normal_font_size", 24)
 		
-		print("Dialogue text setup complete for Kamaitachi style. Size: ", dialogue_text.size)
+		log_message("Dialogue text setup complete for Kamaitachi style. Size: " + str(dialogue_text.size), LogLevel.DEBUG)
 		
 		var custom_theme = load("res://themes/novel_theme.tres")
 		if custom_theme:
 			dialogue_text.theme = custom_theme
-			print("Custom theme applied to dialogue text")
+			log_message("Custom theme applied to dialogue text", LogLevel.DEBUG)
 
+# 要素をフルスクリーンに設定
 func _setup_fullscreen_element(element):
+	if not element:
+		return
+		
 	element.anchor_left = 0.0
 	element.anchor_top = 0.0
 	element.anchor_right = 1.0
@@ -143,6 +176,7 @@ func _process(delta):
 				is_text_completed = true
 				show_indicator = true
 				_update_displayed_text()
+				text_completed.emit()
 	
 	# インジケーターの点滅処理
 	if is_text_completed and show_indicator:
@@ -152,74 +186,78 @@ func _process(delta):
 			indicator_visible = !indicator_visible
 			_update_displayed_text()
 		
+# 表示テキストの更新
 func _update_displayed_text():
-	if dialogue_text:
-		var base_text = ""
+	if not dialogue_text:
+		return
 		
-		if current_page_index > 0:
-			base_text = dialogue_text.text
-			var last_text_start = base_text.rfind("\n\n")
-			if last_text_start != -1:
-				var next_line = base_text.find("\n\n", last_text_start + 2)
-				if next_line != -1 and base_text.find("[color=#FFDD00][b]", last_text_start) != -1:
-					base_text = base_text.substr(0, next_line + 2)
-				else:
-					base_text = base_text.substr(0, last_text_start + 2)
-		
-		if current_page_index == 0:
-			var text_parts = dialogue_text.text.split("\n\n", false, 1)
-			if text_parts.size() > 0 and text_parts[0].begins_with("[color=#FFDD00][b]"):
-				base_text = text_parts[0] + "\n\n"
-		
-		var final_text = base_text + displayed_text
-		
-		if is_text_completed and show_indicator and indicator_visible:
-			final_text += _get_indicator_symbol()
-		
-		dialogue_text.text = final_text
+	var base_text = ""
+	
+	if current_page_index > 0:
+		base_text = dialogue_text.text
+		var last_text_start = base_text.rfind("\n\n")
+		if last_text_start != -1:
+			var next_line = base_text.find("\n\n", last_text_start + 2)
+			if next_line != -1 and base_text.find("[color=#FFDD00][b]", last_text_start) != -1:
+				base_text = base_text.substr(0, next_line + 2)
+			else:
+				base_text = base_text.substr(0, last_text_start + 2)
+	
+	if current_page_index == 0:
+		var text_parts = dialogue_text.text.split("\n\n", false, 1)
+		if text_parts.size() > 0 and text_parts[0].begins_with("[color=#FFDD00][b]"):
+			base_text = text_parts[0] + "\n\n"
+	
+	var final_text = base_text + displayed_text
+	
+	if is_text_completed and show_indicator and indicator_visible:
+		final_text += _get_indicator_symbol()
+	
+	dialogue_text.text = final_text
 
-func show_text(text, go_next = false):
-	print("Showing text: ", text)
+# テキスト表示の統合関数（show_textとshow_text_same_pageを統合）
+func show_text(text, new_page = true, go_next = false):
+	log_message("Showing text: " + text + " (new_page: " + str(new_page) + ")", LogLevel.INFO)
+	
+	if not dialogue_text:
+		log_message("Error: dialogue_text is null in show_text()", LogLevel.ERROR)
+		return
+		
 	current_text = text
 	displayed_text = ""
 	is_text_completed = false
 	text_timer = 0
 	
-	page_text_buffer = []
-	current_page_index = 0
-	
-	page_text_buffer.append({
-		"text": text,
-		"go_next": go_next
-	})
-	
-	if dialogue_text:
+	if new_page:
+		page_text_buffer = []
+		current_page_index = 0
+		
+		page_text_buffer.append({
+			"text": text,
+			"go_next": go_next
+		})
+		
 		dialogue_text.visible = true
 		dialogue_text.text = ""
 		
 		if text_panel:
 			text_panel.visible = true
 	else:
-		print("Error: dialogue_text is null in show_text()")
-
-func show_text_same_page(text):
-	print("Showing additional text in the same page: ", text)
-	
-	current_text = text
-	displayed_text = ""
-	is_text_completed = false
-	text_timer = 0
-	
-	if dialogue_text:
 		var current_displayed = dialogue_text.text
 		
 		if current_displayed != "":
 			current_displayed += "\n\n"
 		
 		dialogue_text.text = current_displayed
-	else:
-		print("Error: dialogue_text is null in show_text_same_page()")
+		
+		# 既に表示中のテキストに追加する場合はバッファに追加しない
+		if page_text_buffer.size() == 0:
+			page_text_buffer.append({
+				"text": text,
+				"go_next": go_next
+			})
 
+# インジケーターシンボルを取得
 func _get_indicator_symbol():
 	if current_page_index < page_text_buffer.size():
 		var current_item = page_text_buffer[current_page_index]
@@ -228,6 +266,7 @@ func _get_indicator_symbol():
 		
 	return indicator_symbol
 	
+# テキストバッファをクリア
 func clear_text_buffers():
 	page_text_buffer = []
 	current_page_index = 0
@@ -238,27 +277,32 @@ func clear_text_buffers():
 	if dialogue_text:
 		dialogue_text.text = ""
 	
-	print("All text buffers cleared")
+	log_message("All text buffers cleared", LogLevel.DEBUG)
 
+# バッファに次のテキストがあるかをチェック
 func has_more_text_in_buffer():
 	return current_page_index < page_text_buffer.size() - 1
 
+# バッファから次のテキストを表示
 func display_next_text_from_buffer():
 	if has_more_text_in_buffer():
 		current_page_index += 1
 		var next_text = page_text_buffer[current_page_index]
-		show_text_same_page(next_text["text"])
+		show_text(next_text["text"], false)
 		return true
 	return false
 
+# テキスト表示を即座に完了
 func complete_text_display():
 	if not is_text_completed:
 		displayed_text = current_text
 		is_text_completed = true
 		show_indicator = true
 		_update_displayed_text()
-		print("Text display completed instantly")
-		
+		text_completed.emit()
+		log_message("Text display completed instantly", LogLevel.DEBUG)
+
+# テキスト進行の処理
 func complete_text():
 	if not is_text_completed:
 		complete_text_display()
@@ -266,43 +310,41 @@ func complete_text():
 		if has_more_text_in_buffer():
 			display_next_text_from_buffer()
 		else:
-			print("All text in buffer displayed")
+			log_message("All text in buffer displayed", LogLevel.DEBUG)
 			show_indicator = false
 			_update_displayed_text()
-			
-			if has_node("test_scenario"):
-				$test_scenario.on_click_received()
+			text_click_processed.emit()
 
+# 背景変更
 func change_background(background_path):
+	if not background:
+		log_message("ERROR: Background node is null", LogLevel.ERROR)
+		return
+		
 	current_background = background_path
-	print("Loading background: ", background_path)
+	log_message("Loading background: " + background_path, LogLevel.INFO)
 	
 	var bg_texture = load(background_path)
 	if bg_texture == null:
-		print("ERROR: Failed to load background texture from path: ", background_path)
+		log_message("ERROR: Failed to load background texture from path: " + background_path, LogLevel.ERROR)
 		return
 		
-	print("Loaded texture: ", bg_texture)
+	background.modulate = Color(1, 1, 1, 1)
+	background.texture = bg_texture
+	background.visible = true
 	
-	if background != null:
-		background.modulate = Color(1, 1, 1, 1)
-		background.texture = bg_texture
-		background.visible = true
-		
-		print("Background properties:")
-		print("- Visible: ", background.visible)
-		print("- Modulate: ", background.modulate)
-		print("- Size: ", background.size)
-		print("- Global position: ", background.global_position)
-		
-		_setup_fullscreen_element(background)
-		print("Background changed successfully.")
-	else:
-		print("ERROR: Background node is null")
+	log_message("Background properties:", LogLevel.DEBUG)
+	log_message("- Visible: " + str(background.visible), LogLevel.DEBUG)
+	log_message("- Modulate: " + str(background.modulate), LogLevel.DEBUG)
+	log_message("- Size: " + str(background.size), LogLevel.DEBUG)
+	
+	_setup_fullscreen_element(background)
+	log_message("Background changed successfully.", LogLevel.INFO)
 
+# BGM再生
 func play_bgm(bgm_path):
-	if bgm_player == null:
-		print("ERROR: bgm_player is null")
+	if not bgm_player:
+		log_message("ERROR: bgm_player is null", LogLevel.ERROR)
 		return
 		
 	if current_bgm != bgm_path:
@@ -317,19 +359,24 @@ func play_bgm(bgm_path):
 		if audio_stream != null:
 			bgm_player.stream = audio_stream
 			bgm_player.play()
-			print("BGM playing: ", bgm_path)
+			log_message("BGM playing: " + bgm_path, LogLevel.INFO)
 		else:
-			print("ERROR: Failed to load audio: ", bgm_path)
+			log_message("ERROR: Failed to load audio: " + bgm_path, LogLevel.ERROR)
 
+# BGM停止
 func stop_bgm():
-	if bgm_player != null:
-		bgm_player.stop()
-		current_bgm = ""
-		print("BGM stopped")
+	if not bgm_player:
+		log_message("ERROR: bgm_player is null", LogLevel.ERROR)
+		return
+		
+	bgm_player.stop()
+	current_bgm = ""
+	log_message("BGM stopped", LogLevel.INFO)
 
+# 効果音再生
 func play_sfx(sfx_path):
-	if sfx_player == null:
-		print("ERROR: sfx_player is null")
+	if not sfx_player:
+		log_message("ERROR: sfx_player is null", LogLevel.ERROR)
 		return
 
 	var audio_stream
@@ -341,23 +388,36 @@ func play_sfx(sfx_path):
 	if audio_stream != null:
 		sfx_player.stream = audio_stream
 		sfx_player.play()
-		print("SFX playing: ", sfx_path)
+		log_message("SFX playing: " + sfx_path, LogLevel.INFO)
 	else:
-		print("ERROR: Failed to load audio: ", sfx_path)
+		log_message("ERROR: Failed to load audio: " + sfx_path, LogLevel.ERROR)
 
+# ページバッファに追加
 func add_to_page_buffer(text, go_next = false):
 	page_text_buffer.append({
 		"text": text,
 		"go_next": go_next
 	})
-	print("Added to page buffer: ", text)
-	print("Current buffer size: ", page_text_buffer.size())
+	log_message("Added to page buffer: " + text, LogLevel.DEBUG)
+	log_message("Current buffer size: " + str(page_text_buffer.size()), LogLevel.DEBUG)
 
+# 入力イベント処理
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			complete_text()
-			print("Mouse click detected - text advanced")
-			
-			if has_node("test_scenario") and is_text_completed:
-				$test_scenario.on_click_received()
+			log_message("Mouse click detected - text advanced", LogLevel.DEBUG)
+
+# ログメッセージの出力（ログレベルによるフィルタリング）
+func log_message(message, level = LogLevel.INFO):
+	if level >= current_log_level:
+		var prefix = ""
+		match level:
+			LogLevel.INFO:
+				prefix = "[INFO] "
+			LogLevel.DEBUG:
+				prefix = "[DEBUG] "
+			LogLevel.ERROR:
+				prefix = "[ERROR] "
+		
+		print(prefix + message)

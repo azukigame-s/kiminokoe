@@ -14,6 +14,11 @@ config/name="kiminokoe"
 run/main_scene="uid://bl4wlib7utapy"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+config/visual_novel/text_speed=0.05
+config/visual_novel/indicator_blink_speed=0.5
+config/visual_novel/indicator_symbol="⏎"
+config/visual_novel/page_indicator_symbol="⎘"
+config/visual_novel/default_log_level=2
 
 [rendering]
 
