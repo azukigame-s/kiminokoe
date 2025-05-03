@@ -99,10 +99,116 @@ var scenario = [
 		"type": "dialogue",
 		"text": "次のバス停を知らせる感情のない音声を待たずして、降車ボタンを押した人がいる。"
 	},
+	{
+		"type": "choice",
+		"choices": [
+			{
+				"id": "option1",
+				"text": "降りる",
+				"next_index": 100  # 次に実行するシナリオのインデックス
+			},
+			{
+				"id": "option2",
+				"text": "乗り続ける",
+				"next_index": 200  # 次に実行するシナリオのインデックス
+			},
+			{
+				"id": "option3",
+				"text": "運転手に話しかける",
+				"next_index": 300  # 次に実行するシナリオのインデックス
+			}
+		]
+	},
+	# 選択肢 option1 のシナリオ分岐
+	{
+		"type": "index",
+		"index": 100
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は次の停留所で降りることにした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "バスが止まると、僕は席を立ち、運転手に軽く会釈をして降りた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ここから先は歩いて行くことにしよう。"
+	},
+	{
+		"type": "jump",
+		"index": 999  # 共通エンドポイント
+	},
+	
+	# 選択肢 option2 のシナリオ分岐
+	{
+		"type": "index",
+		"index": 200
+	},
+	{
+		"type": "dialogue",
+		"text": "いや、まだ降りる必要はない。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はそのまま座席に座り、窓の外を見続けた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "行き先を決めずに、ただ車窓の景色を楽しむ旅――。"
+	},
+	{
+		"type": "jump",
+		"index": 999  # 共通エンドポイント
+	},
+	
+	# 選択肢 option3 のシナリオ分岐
+	{
+		"type": "index",
+		"index": 300
+	},
+	{
+		"type": "dialogue",
+		"text": "「すみません、この先の地蔵焚ってどんな場所なんですか？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "運転手は少し驚いた様子で僕を見た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「地蔵焚？ああ、昔ながらの温泉街だよ。最近は観光客も少なくなったけどね。」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「へぇ、そうなんですか。」"
+	},
+	{
+		"type": "jump",
+		"index": 999  # 共通エンドポイント
+	},
+	
+	# 共通エンドポイント
+	{
+		"type": "index",
+		"index": 999
+	},
+	{
+		"type": "dialogue",
+		"text": "そして、物語は続いていく……",
+		"new_page": true
+	}
 ]
 
 var current_index = 0
 var waiting_for_click = false
+
+# 現在のシナリオインデックスをフォローする辞書
+var index_map = {}
 
 # シグナルのエイリアス定義
 enum LogLevel {INFO, DEBUG, ERROR}
@@ -115,14 +221,50 @@ func _ready():
 		novel_system.initialized.connect(_on_novel_system_initialized)
 		novel_system.text_click_processed.connect(_on_click_processed)
 		novel_system.text_completed.connect(_on_text_completed)
+		novel_system.choice_selected.connect(_on_choice_selected)
 		log_message("Signals connected", LogLevel.DEBUG)
 	else:
 		log_message("Error: Novel system not found", LogLevel.ERROR)
+	
+	_initialize_index_map()
 
 func _on_novel_system_initialized():
 	log_message("Novel system initialized, starting scenario", LogLevel.INFO)
 	execute_current_command()
 
+# シナリオインデックスの初期化
+func _initialize_index_map():
+	index_map.clear()
+	for i in range(scenario.size()):
+		var command = scenario[i]
+		if command.type == "index":
+			index_map[command.index] = i
+			log_message("Mapped index " + str(command.index) + " to scenario position " + str(i), LogLevel.DEBUG)
+
+# 選択肢が選ばれた時の処理
+func _on_choice_selected(choice_id):
+	log_message("Choice selected: " + choice_id, LogLevel.INFO)
+	
+	# 現在のコマンド（選択肢コマンド）を取得
+	var current_command = scenario[current_index]
+	
+	if current_command.type == "choice":
+		for choice in current_command.choices:
+			if choice.id == choice_id:
+				if choice.has("next_index") and index_map.has(choice.next_index):
+					current_index = index_map[choice.next_index]
+					log_message("Jumping to choice branch index " + str(choice.next_index) + " (scenario position " + str(current_index) + ")", LogLevel.DEBUG)
+					waiting_for_click = false
+					execute_current_command()
+					return
+				else:
+					log_message("ERROR: Choice next_index not found: " + str(choice.get("next_index", "unknown")), LogLevel.ERROR)
+	
+	# 次のコマンドに進む
+	waiting_for_click = false
+	current_index += 1
+	execute_current_command()
+	
 func execute_current_command():
 	if current_index >= scenario.size():
 		log_message("Scenario complete", LogLevel.INFO)
@@ -164,6 +306,20 @@ func execute_current_command():
 		_:
 			log_message("Unknown command type: " + command.type, LogLevel.ERROR)
 			proceed_to_next()
+		"choice":
+			novel_system.show_choices(command.choices)
+			waiting_for_click = true
+		"index":
+			# インデックスマーカーはスキップ
+			proceed_to_next()
+		"jump":
+			if command.has("index") and index_map.has(command.index):
+				current_index = index_map[command.index]
+				log_message("Jumping to index " + str(command.index) + " (scenario position " + str(current_index) + ")", LogLevel.DEBUG)
+				proceed_to_next()
+			else:
+				log_message("ERROR: Jump target not found: " + str(command.get("index", "unknown")), LogLevel.ERROR)
+				proceed_to_next()
 
 func proceed_to_next():
 	if waiting_for_click:

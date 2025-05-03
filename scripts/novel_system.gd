@@ -4,6 +4,7 @@ extends Control
 signal initialized
 signal text_click_processed
 signal text_completed
+signal choice_selected(choice_id)
 
 # ログレベル定義
 enum LogLevel {INFO, DEBUG, ERROR}
@@ -38,6 +39,7 @@ var text_timer = 0.0
 @onready var dialogue_text = $text_panel/dialogue_text if has_node("text_panel") else null
 @onready var bgm_player = $bgm_player
 @onready var sfx_player = $sfx_player
+@onready var choice_system = $choice_system
 
 func _ready():
 	log_message("Visual Novel System: Ready function called.", LogLevel.INFO)
@@ -60,6 +62,9 @@ func _ready():
 			log_message("Background setup complete. Size: " + str(background.size), LogLevel.DEBUG)
 		
 		_setup_text_panel()
+		
+		# 選択肢システムのセットアップ
+		_setup_choice_system()
 		
 		initialized.emit()
 	else:
@@ -144,6 +149,14 @@ func _setup_text_panel():
 			dialogue_text.theme = custom_theme
 			log_message("Custom theme applied to dialogue text", LogLevel.DEBUG)
 
+# 選択肢システムのセットアップ
+func _setup_choice_system():
+	# シグナル接続
+	if choice_system:
+		choice_system.choice_made.connect(_on_choice_made)
+		log_message("Choice system setup complete", LogLevel.INFO)
+	else:
+		log_message("ERROR: Choice system is null after setup", LogLevel.ERROR)
 # 要素をフルスクリーンに設定
 func _setup_fullscreen_element(element):
 	if not element:
@@ -405,6 +418,19 @@ func add_to_page_buffer(text, go_next = false):
 	})
 	log_message("Added to page buffer: " + text, LogLevel.DEBUG)
 	log_message("Current buffer size: " + str(page_text_buffer.size()), LogLevel.DEBUG)
+
+# 選択肢の表示
+func show_choices(choices):
+	if choice_system:
+		log_message("Showing choices: " + str(choices.size()) + " options", LogLevel.INFO)
+		choice_system.show_choices(choices)
+	else:
+		log_message("ERROR: Choice system not initialized", LogLevel.ERROR)
+
+# 選択肢が選ばれた時の処理
+func _on_choice_made(choice_id):
+	log_message("Choice made: " + choice_id, LogLevel.INFO)
+	choice_selected.emit(choice_id)
 
 # 入力イベント処理
 func _input(event):
