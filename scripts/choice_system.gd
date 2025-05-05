@@ -50,6 +50,10 @@ func _on_novel_system_initialized():
 
 # 選択肢コンテナの初期化
 func _initialize_choice_container():
+	# 既存のコンテナがあれば削除
+	if choice_container and is_instance_valid(choice_container):
+		choice_container.queue_free()
+		
 	choice_container = Control.new()
 	choice_container.name = "choice_container"
 	choice_container.anchor_left = 0.0
@@ -100,6 +104,7 @@ func show_choices(choices):
 		log_message("Set choice_container to visible", LogLevel.INFO)
 	else:
 		log_message("ERROR: choice_container is null!", LogLevel.ERROR)
+		return  # コンテナがなければ終了
 	
 	# 弟切草スタイルの選択肢作成
 	var choice_labels = ["Ａ", "Ｂ", "Ｃ", "Ｄ", "Ｅ"]

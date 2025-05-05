@@ -206,6 +206,7 @@ var scenario = [
 
 var current_index = 0
 var waiting_for_click = false
+var last_choice_index = -1  # 最後に表示した選択肢のインデックスを記録
 
 # 現在のシナリオインデックスをフォローする辞書
 var index_map = {}
@@ -245,22 +246,27 @@ func _initialize_index_map():
 func _on_choice_selected(choice_id):
 	log_message("Choice selected: " + choice_id, LogLevel.INFO)
 	
-	# 現在のコマンド（選択肢コマンド）を取得
-	var current_command = scenario[current_index]
+	# 最後に表示した選択肢コマンドを使用
+	if last_choice_index >= 0 and last_choice_index < scenario.size():
+		var choice_command = scenario[last_choice_index]
+		
+		if choice_command.type == "choice":
+			for choice in choice_command.choices:
+				if choice.id == choice_id:
+					if choice.has("next_index") and index_map.has(choice.next_index):
+						current_index = index_map[choice.next_index]
+						log_message("Jumping to choice branch index " + str(choice.next_index) + " (scenario position " + str(current_index) + ")", LogLevel.DEBUG)
+						waiting_for_click = false
+						execute_current_command()
+						return
+					else:
+						log_message("ERROR: Choice next_index not found: " + str(choice.get("next_index", "unknown")), LogLevel.ERROR)
+		else:
+			log_message("ERROR: Last choice command is not of type 'choice': " + choice_command.type, LogLevel.ERROR)
+	else:
+		log_message("ERROR: Invalid last_choice_index: " + str(last_choice_index), LogLevel.ERROR)
 	
-	if current_command.type == "choice":
-		for choice in current_command.choices:
-			if choice.id == choice_id:
-				if choice.has("next_index") and index_map.has(choice.next_index):
-					current_index = index_map[choice.next_index]
-					log_message("Jumping to choice branch index " + str(choice.next_index) + " (scenario position " + str(current_index) + ")", LogLevel.DEBUG)
-					waiting_for_click = false
-					execute_current_command()
-					return
-				else:
-					log_message("ERROR: Choice next_index not found: " + str(choice.get("next_index", "unknown")), LogLevel.ERROR)
-	
-	# 次のコマンドに進む
+	# 選択肢が見つからない場合は次のコマンドに進む
 	waiting_for_click = false
 	current_index += 1
 	execute_current_command()
@@ -305,6 +311,7 @@ func execute_current_command():
 			proceed_to_next()
 		"choice":
 			log_message("Showing choices with " + str(command.choices.size()) + " options", LogLevel.INFO)
+			last_choice_index = current_index  # 選択肢コマンドのインデックスを記録
 			novel_system.show_choices(command.choices)
 			# 選択肢表示の確認
 			await get_tree().process_frame
@@ -339,6 +346,13 @@ func _on_text_completed():
 
 func _on_click_processed():
 	log_message("Click processed signal received", LogLevel.DEBUG)
+	
+	# 選択肢が表示されている場合は次のコマンドに進まない
+	if last_choice_index >= 0 and last_choice_index < scenario.size():
+		var choice_command = scenario[last_choice_index]
+		if choice_command.type == "choice" and current_index == last_choice_index:
+			log_message("Waiting for choice selection", LogLevel.DEBUG)
+			return
 	
 	if novel_system.is_text_completed and not novel_system.has_more_text_in_buffer():
 		log_message("No more text in buffer, proceeding to next command", LogLevel.DEBUG)
