@@ -23,12 +23,24 @@ var choice_container
 enum LogLevel {INFO, DEBUG, ERROR}
 
 func _ready():
-	# ノベルシステムの初期化を待つ
+	print("ChoiceSystem _ready called")
+	
+	# ノベルシステムの参照を取得
+	novel_system = get_parent()
 	if novel_system:
-		novel_system.initialized.connect(_on_novel_system_initialized)
-		log_message("Choice system ready - connected to NovelSystem", LogLevel.INFO)
+		log_message("Got parent: " + novel_system.name, LogLevel.INFO)
+		
+		# 初期化シグナルの接続
+		if not novel_system.initialized.is_connected(_on_novel_system_initialized):
+			novel_system.initialized.connect(_on_novel_system_initialized)
+			log_message("Connected to initialized signal", LogLevel.INFO)
 	else:
-		log_message("Error: Novel system not found", LogLevel.ERROR)
+		log_message("ERROR: Failed to get parent node", LogLevel.ERROR)
+	
+	# コンテナを直接初期化（シグナルを待たない）
+	_initialize_choice_container()
+	_create_button_styles()
+	log_message("Choice system initialized directly", LogLevel.INFO)
 
 func _on_novel_system_initialized():
 	# 選択肢コンテナの初期化
@@ -44,10 +56,7 @@ func _initialize_choice_container():
 	choice_container.anchor_top = 0.7
 	choice_container.anchor_right = 1.0
 	choice_container.anchor_bottom = 1.0
-	choice_container.offset_left = 0
-	choice_container.offset_top = 0
-	choice_container.offset_right = 0
-	choice_container.offset_bottom = 0
+	choice_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	choice_container.visible = false
 	
 	add_child(choice_container)
@@ -79,18 +88,29 @@ func _create_button_styles():
 
 # 選択肢の表示
 func show_choices(choices):
+	log_message("show_choices called with " + str(choices.size()) + " choices", LogLevel.INFO)
+	log_message("choice_container visible: " + str(choice_container != null) + ", parent: " + str(get_parent().name), LogLevel.INFO)
+
 	# 現在の選択肢をクリア
 	_clear_choices()
 	
 	current_choices = choices
-	choice_container.visible = true
+	if choice_container:
+		choice_container.visible = true
+		log_message("Set choice_container to visible", LogLevel.INFO)
+	else:
+		log_message("ERROR: choice_container is null!", LogLevel.ERROR)
 	
 	# 弟切草スタイルの選択肢作成
 	var choice_labels = ["Ａ", "Ｂ", "Ｃ", "Ｄ", "Ｅ"]
 	var button_height = 50
 	var button_spacing = 10
 	var total_buttons = min(choices.size(), choice_labels.size())
-	var container_height = choice_container.size.y
+	
+	# 画面下部にボタンを配置するための計算
+	var viewport_size = get_viewport_rect().size
+	var total_height = (button_height + button_spacing) * total_buttons
+	var start_y = viewport_size.y - total_height - 50  # 下部からのマージン
 	
 	for i in range(total_buttons):
 		var choice_data = choices[i]
@@ -110,11 +130,8 @@ func show_choices(choices):
 		button.add_theme_font_size_override("font_size", 20)
 		
 		# ボタンの配置（下から上に配置）
-		var button_y = container_height - (button_height + button_spacing) * (i + 1)
-		button.position.y = button_y
-		button.size.x = choice_container.size.x
-		button.size.y = button_height
-		button.anchor_right = 1.0
+		button.position = Vector2(50, start_y + (button_height + button_spacing) * i)
+		button.size = Vector2(viewport_size.x - 100, button_height)
 		
 		choice_container.add_child(button)
 		choice_buttons.append(button)
@@ -122,12 +139,16 @@ func show_choices(choices):
 		# シグナル接続
 		button.pressed.connect(_on_choice_button_pressed.bind(choice_id))
 		
-		log_message("Added choice button: " + choice_text + " with ID: " + choice_id, LogLevel.DEBUG)
+		log_message("Added choice button: " + choice_text + " with ID: " + choice_id, LogLevel.INFO)
 	
 	# キーボード選択のためのフォーカス設定
 	if choice_buttons.size() > 0:
 		choice_buttons[0].grab_focus()
 		selected_choice_index = 0
+		
+	# 選択肢表示のデバッグログ
+	log_message("Choices now visible: " + str(choice_container.visible) + 
+				" with " + str(choice_buttons.size()) + " buttons", LogLevel.INFO)
 
 func _on_choice_button_pressed(choice_id):
 	log_message("Choice selected: " + choice_id, LogLevel.INFO)

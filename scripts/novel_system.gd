@@ -154,9 +154,13 @@ func _setup_choice_system():
 	# シグナル接続
 	if choice_system:
 		choice_system.choice_made.connect(_on_choice_made)
-		log_message("Choice system setup complete", LogLevel.INFO)
+		# 選択肢システムの表示設定
+		choice_system.visible = true
+		choice_system.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		log_message("Choice system setup complete and set visible", LogLevel.INFO)
 	else:
 		log_message("ERROR: Choice system is null after setup", LogLevel.ERROR)
+
 # 要素をフルスクリーンに設定
 func _setup_fullscreen_element(element):
 	if not element:

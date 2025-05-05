@@ -303,11 +303,12 @@ func execute_current_command():
 		"sfx":
 			novel_system.play_sfx(command.path)
 			proceed_to_next()
-		_:
-			log_message("Unknown command type: " + command.type, LogLevel.ERROR)
-			proceed_to_next()
 		"choice":
+			log_message("Showing choices with " + str(command.choices.size()) + " options", LogLevel.INFO)
 			novel_system.show_choices(command.choices)
+			# 選択肢表示の確認
+			await get_tree().process_frame
+			log_message("Choice visibility status: attempting to show choices", LogLevel.INFO)
 			waiting_for_click = true
 		"index":
 			# インデックスマーカーはスキップ
@@ -320,6 +321,9 @@ func execute_current_command():
 			else:
 				log_message("ERROR: Jump target not found: " + str(command.get("index", "unknown")), LogLevel.ERROR)
 				proceed_to_next()
+		_:
+			log_message("Unknown command type: " + command.type, LogLevel.ERROR)
+			proceed_to_next()
 
 func proceed_to_next():
 	if waiting_for_click:
