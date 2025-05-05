@@ -7,14 +7,19 @@ extends Control
 signal choice_made(choice_id)
 
 # スタイリング設定
-var choice_button_style: StyleBoxFlat
-var choice_button_hover_style: StyleBoxFlat
+var choice_text_color = Color(1, 1, 1, 1)
+var choice_text_hover_color = Color(1, 0.8, 0, 1)  # 弟切草風の黄色いハイライト
+var choice_text_size = 22
 var selected_choice_index = -1
 
 # 選択肢データ
 var current_choices = []
-var choice_buttons = []
+var choice_labels = []  # 選択肢ラベル (プレフィックス + テキスト全体)
 var choice_container
+var choice_background
+
+# フォント設定
+var choice_font
 
 # ノード参照
 @onready var novel_system = get_parent()
@@ -39,13 +44,13 @@ func _ready():
 	
 	# コンテナを直接初期化（シグナルを待たない）
 	_initialize_choice_container()
-	_create_button_styles()
+	_create_text_styles()
 	log_message("Choice system initialized directly", LogLevel.INFO)
 
 func _on_novel_system_initialized():
 	# 選択肢コンテナの初期化
 	_initialize_choice_container()
-	_create_button_styles()
+	_create_text_styles()
 	log_message("Choice system initialized", LogLevel.INFO)
 
 # 選択肢コンテナの初期化
@@ -57,38 +62,40 @@ func _initialize_choice_container():
 	choice_container = Control.new()
 	choice_container.name = "choice_container"
 	choice_container.anchor_left = 0.0
-	choice_container.anchor_top = 0.7
+	choice_container.anchor_top = 0.0
 	choice_container.anchor_right = 1.0
 	choice_container.anchor_bottom = 1.0
 	choice_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	choice_container.visible = false
 	
 	add_child(choice_container)
+	
+	# 全画面背景の作成 - より弟切草に近い暗い背景
+	choice_background = ColorRect.new()
+	choice_background.name = "choice_background"
+	choice_background.anchor_left = 0.0
+	choice_background.anchor_top = 0.0
+	choice_background.anchor_right = 1.0
+	choice_background.anchor_bottom = 1.0
+	choice_background.color = Color(0, 0, 0, 0.85)  # 弟切草風の暗い背景
+	
+	choice_container.add_child(choice_background)
 	log_message("Choice container created", LogLevel.DEBUG)
 
-# ボタンスタイルの作成
-func _create_button_styles():
-	# 通常のボタンスタイル
-	choice_button_style = StyleBoxFlat.new()
-	choice_button_style.bg_color = Color(0.1, 0.1, 0.1, 0.8)
-	choice_button_style.border_width_bottom = 2
-	choice_button_style.border_color = Color(0.7, 0.7, 0.7)
-	choice_button_style.content_margin_left = 20
-	choice_button_style.content_margin_top = 10
-	choice_button_style.content_margin_right = 20
-	choice_button_style.content_margin_bottom = 10
+# テキストスタイルの作成
+func _create_text_styles():
+	# フォントをロード（プロジェクトにフォントがある場合）
+	var font_path = "res://fonts/gothic.tres"
+	if ResourceLoader.exists(font_path):
+		choice_font = load(font_path)
+		log_message("Choice font loaded", LogLevel.DEBUG)
 	
-	# ホバー時のボタンスタイル
-	choice_button_hover_style = StyleBoxFlat.new()
-	choice_button_hover_style.bg_color = Color(0.3, 0.3, 0.3, 0.9)
-	choice_button_hover_style.border_width_bottom = 2
-	choice_button_hover_style.border_color = Color(1, 1, 1)
-	choice_button_hover_style.content_margin_left = 20
-	choice_button_hover_style.content_margin_top = 10
-	choice_button_hover_style.content_margin_right = 20
-	choice_button_hover_style.content_margin_bottom = 10
+	# ノベルシステムからフォントを取得（フォント統一のため）
+	if novel_system and novel_system.dialogue_text and novel_system.dialogue_text.get_theme_font("normal_font"):
+		choice_font = novel_system.dialogue_text.get_theme_font("normal_font")
+		log_message("Using dialogue text font for choices", LogLevel.DEBUG)
 	
-	log_message("Button styles created", LogLevel.DEBUG)
+	log_message("Text styles created", LogLevel.DEBUG)
 
 # 選択肢の表示
 func show_choices(choices):
@@ -97,6 +104,12 @@ func show_choices(choices):
 
 	# 現在の選択肢をクリア
 	_clear_choices()
+	
+	# ノベルシステムのテキストパネルは残して、テキストだけを非表示
+	if novel_system and novel_system.dialogue_text:
+		novel_system.dialogue_text.visible = false
+	if novel_system and novel_system.text_panel:
+		novel_system.text_panel.visible = true  # パネル自体は表示したまま
 	
 	current_choices = choices
 	if choice_container:
@@ -107,59 +120,107 @@ func show_choices(choices):
 		return  # コンテナがなければ終了
 	
 	# 弟切草スタイルの選択肢作成
-	var choice_labels = ["Ａ", "Ｂ", "Ｃ", "Ｄ", "Ｅ"]
-	var button_height = 50
-	var button_spacing = 10
-	var total_buttons = min(choices.size(), choice_labels.size())
+	var choice_prefixes = ["Ａ", "Ｂ", "Ｃ", "Ｄ", "Ｅ"]
+	var total_choices = min(choices.size(), choice_prefixes.size())
 	
-	# 画面下部にボタンを配置するための計算
+	# 選択ページのタイトル表示 - より弟切草風に
+	var title_label = Label.new()
+	title_label.name = "title_label"
+	title_label.text = "どうする？"  # 弟切草風のタイトル
+	title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title_label.anchor_left = 0.0
+	title_label.anchor_top = 0.35  # タイトルの位置を調整
+	title_label.anchor_right = 1.0
+	title_label.add_theme_font_size_override("font_size", 32)  # 少し大きく
+	title_label.add_theme_color_override("font_color", Color(1, 1, 1))
+	
+	# タイトルにもメインのフォントを適用
+	if choice_font:
+		title_label.add_theme_font_override("font", choice_font)
+	
+	choice_container.add_child(title_label)
+	
+	# 選択肢の配置計算（弟切草スタイル - 画面下部固定）
 	var viewport_size = get_viewport_rect().size
-	var total_height = (button_height + button_spacing) * total_buttons
-	var start_y = viewport_size.y - total_height - 50  # 下部からのマージン
+	var choice_spacing = viewport_size.y * 0.08  # 画面高さの8%を選択肢間隔に
+	var start_y = viewport_size.y * 0.5  # 画面高さの50%の位置から開始
 	
-	for i in range(total_buttons):
+	for i in range(total_choices):
 		var choice_data = choices[i]
 		var choice_id = choice_data.get("id", str(i))
 		var choice_text = choice_data.get("text", "選択肢 " + str(i+1))
 		
-		# ボタン作成
-		var button = Button.new()
-		button.name = "choice_button_" + str(i)
-		button.text = choice_labels[i] + "： " + choice_text
-		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		# 選択肢全体を含むコンテナを作成
+		var choice_panel = Control.new()
+		choice_panel.name = "choice_panel_" + str(i)
+		choice_panel.anchor_left = 0.1
+		choice_panel.anchor_right = 0.9
+		choice_panel.position.y = start_y + (choice_spacing * i)
+		choice_panel.size.y = choice_spacing
 		
-		# ボタンのスタイリング
-		button.add_theme_stylebox_override("normal", choice_button_style)
-		button.add_theme_stylebox_override("hover", choice_button_hover_style)
-		button.add_theme_stylebox_override("focus", choice_button_hover_style)
-		button.add_theme_font_size_override("font_size", 20)
+		choice_container.add_child(choice_panel)
 		
-		# ボタンの配置（下から上に配置）
-		button.position = Vector2(50, start_y + (button_height + button_spacing) * i)
-		button.size = Vector2(viewport_size.x - 100, button_height)
+		# 弟切草風の選択肢ラベル作成
+		var label = Label.new()
+		label.name = "choice_label_" + str(i)
+		label.text = choice_prefixes[i] + "　" + choice_text  # 全角スペースで間隔調整
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		label.anchor_left = 0.0
+		label.anchor_right = 1.0
+		label.anchor_top = 0.0
+		label.anchor_bottom = 1.0
 		
-		choice_container.add_child(button)
-		choice_buttons.append(button)
+		# スタイル設定
+		label.add_theme_font_size_override("font_size", choice_text_size)
+		label.add_theme_color_override("font_color", choice_text_color)
+		if choice_font:
+			label.add_theme_font_override("font", choice_font)
+		
+		choice_panel.add_child(label)
+		choice_labels.append(label)
+		
+		# クリック可能エリアの作成 - 選択肢全体に
+		var click_area = Control.new()
+		click_area.name = "click_area_" + str(i)
+		click_area.anchor_left = 0.0
+		click_area.anchor_top = 0.0
+		click_area.anchor_right = 1.0
+		click_area.anchor_bottom = 1.0
+		click_area.mouse_filter = Control.MOUSE_FILTER_STOP
 		
 		# シグナル接続
-		button.pressed.connect(_on_choice_button_pressed.bind(choice_id))
+		click_area.gui_input.connect(_on_choice_area_input.bind(i, choice_id))
 		
-		log_message("Added choice button: " + choice_text + " with ID: " + choice_id, LogLevel.INFO)
+		choice_panel.add_child(click_area)
+		
+		log_message("Added choice label: " + choice_text + " with ID: " + choice_id, LogLevel.INFO)
 	
-	# キーボード選択のためのフォーカス設定
-	if choice_buttons.size() > 0:
-		choice_buttons[0].grab_focus()
-		selected_choice_index = 0
-		
+	# キーボード選択のための初期設定
+	selected_choice_index = 0
+	_update_choice_highlight()
+	
 	# 選択肢表示のデバッグログ
 	log_message("Choices now visible: " + str(choice_container.visible) + 
-				" with " + str(choice_buttons.size()) + " buttons", LogLevel.INFO)
+				" with " + str(choice_labels.size()) + " labels", LogLevel.INFO)
 
-func _on_choice_button_pressed(choice_id):
+func _on_choice_area_input(event, choice_index, choice_id):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			_select_choice(choice_id)
+	elif event is InputEventMouseMotion:
+		if selected_choice_index != choice_index:
+			selected_choice_index = choice_index
+			_update_choice_highlight()
+
+func _select_choice(choice_id):
 	log_message("Choice selected: " + choice_id, LogLevel.INFO)
 	
 	# 選択肢を非表示に
 	choice_container.visible = false
+	
+	# テキストパネルを再表示（選択後にテキストを表示するため）
+	if novel_system and novel_system.dialogue_text:
+		novel_system.dialogue_text.visible = true
 	
 	# 選択シグナルの発行
 	choice_made.emit(choice_id)
@@ -169,55 +230,61 @@ func _on_choice_button_pressed(choice_id):
 
 # 選択肢のクリア
 func _clear_choices():
-	for button in choice_buttons:
-		if is_instance_valid(button):
-			button.queue_free()
+	for child in choice_container.get_children():
+		if child != choice_background:  # 背景は保持
+			child.queue_free()
 	
-	choice_buttons.clear()
+	choice_labels.clear()
 	current_choices.clear()
 	selected_choice_index = -1
 	
 	log_message("Choices cleared", LogLevel.DEBUG)
 
+# 選択肢ハイライトの更新
+func _update_choice_highlight():
+	for i in range(choice_labels.size()):
+		if i == selected_choice_index:
+			choice_labels[i].add_theme_color_override("font_color", choice_text_hover_color)
+		else:
+			choice_labels[i].add_theme_color_override("font_color", choice_text_color)
+
 # キーボード入力処理
 func _input(event):
-	if not choice_container.visible or choice_buttons.size() == 0:
+	if not choice_container or not choice_container.visible or choice_labels.size() == 0:
 		return
 		
 	if event is InputEventKey and event.pressed:
-		var key_handled = false
+		var key_handled = true
 		
 		match event.keycode:
 			KEY_UP:
 				if selected_choice_index > 0:
 					selected_choice_index -= 1
-					choice_buttons[selected_choice_index].grab_focus()
-					key_handled = true
+					_update_choice_highlight()
 			KEY_DOWN:
-				if selected_choice_index < choice_buttons.size() - 1:
+				if selected_choice_index < choice_labels.size() - 1:
 					selected_choice_index += 1
-					choice_buttons[selected_choice_index].grab_focus()
-					key_handled = true
+					_update_choice_highlight()
+			KEY_ENTER, KEY_SPACE:
+				if selected_choice_index >= 0 and selected_choice_index < current_choices.size():
+					_select_choice(current_choices[selected_choice_index].get("id", str(selected_choice_index)))
 			KEY_A:
-				if choice_buttons.size() >= 1:
-					_on_choice_button_pressed(current_choices[0].get("id", "0"))
-					key_handled = true
+				if choice_labels.size() >= 1:
+					_select_choice(current_choices[0].get("id", "0"))
 			KEY_B:
-				if choice_buttons.size() >= 2:
-					_on_choice_button_pressed(current_choices[1].get("id", "1"))
-					key_handled = true
+				if choice_labels.size() >= 2:
+					_select_choice(current_choices[1].get("id", "1"))
 			KEY_C:
-				if choice_buttons.size() >= 3:
-					_on_choice_button_pressed(current_choices[2].get("id", "2"))
-					key_handled = true
+				if choice_labels.size() >= 3:
+					_select_choice(current_choices[2].get("id", "2"))
 			KEY_D:
-				if choice_buttons.size() >= 4:
-					_on_choice_button_pressed(current_choices[3].get("id", "3"))
-					key_handled = true
+				if choice_labels.size() >= 4:
+					_select_choice(current_choices[3].get("id", "3"))
 			KEY_E:
-				if choice_buttons.size() >= 5:
-					_on_choice_button_pressed(current_choices[4].get("id", "4"))
-					key_handled = true
+				if choice_labels.size() >= 5:
+					_select_choice(current_choices[4].get("id", "4"))
+			_:
+				key_handled = false
 		
 		if key_handled:
 			get_viewport().set_input_as_handled()
@@ -225,7 +292,7 @@ func _input(event):
 # ログメッセージの出力（NovelSystemと同様のログ機能）
 func log_message(message, level = LogLevel.INFO):
 	if novel_system:
-		novel_system.log_message("[TestScenario] " + message, level)
+		novel_system.log_message("[ChoiceSystem] " + message, level)
 	else:
 		var prefix = ""
 		match level:
@@ -236,4 +303,4 @@ func log_message(message, level = LogLevel.INFO):
 			LogLevel.ERROR:
 				prefix = "[ERROR] "
 		
-		print(prefix + "[TestScenario] " + message)
+		print(prefix + "[ChoiceSystem] " + message)
