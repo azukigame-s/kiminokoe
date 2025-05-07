@@ -160,7 +160,35 @@ func show_choices(choices):
 		
 		choice_container.add_child(choice_panel)
 		
-		# 弟切草風の選択肢ラベル作成
+		# ここでボタンを使用する代わりに
+		var button = Button.new()
+		button.name = "choice_button_" + str(i)
+		button.text = ""  # テキストは空に
+		button.flat = true  # フラットスタイル（背景を消す）
+		button.focus_mode = Control.FOCUS_NONE
+		button.custom_minimum_size.x = 800
+		button.anchor_left = 0.0
+		button.anchor_right = 1.0
+		button.anchor_top = 0.0
+		button.anchor_bottom = 1.0
+		button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND  # ホバー時の手のカーソル
+		
+		# ボタン背景を完全に透明に
+		var normal_style = StyleBoxEmpty.new()
+		var hover_style = StyleBoxEmpty.new()
+		var pressed_style = StyleBoxEmpty.new()
+		
+		button.add_theme_stylebox_override("normal", normal_style)
+		button.add_theme_stylebox_override("hover", hover_style)
+		button.add_theme_stylebox_override("pressed", pressed_style)
+		
+		# ボタンのシグナル接続
+		button.pressed.connect(_on_choice_button_pressed.bind(choice_id))
+		button.mouse_entered.connect(_on_choice_button_mouse_entered.bind(i))
+		
+		choice_panel.add_child(button)
+		
+		# 弟切草風の選択肢ラベル作成 - ボタンの上にラベルを重ねる
 		var label = Label.new()
 		label.name = "choice_label_" + str(i)
 		label.text = choice_prefixes[i] + "　" + choice_text  # 全角スペースで間隔調整
@@ -169,6 +197,7 @@ func show_choices(choices):
 		label.anchor_right = 1.0
 		label.anchor_top = 0.0
 		label.anchor_bottom = 1.0
+		label.mouse_filter = Control.MOUSE_FILTER_IGNORE  # マウスイベントを無視
 		
 		# スタイル設定
 		label.add_theme_font_size_override("font_size", choice_text_size)
@@ -178,20 +207,6 @@ func show_choices(choices):
 		
 		choice_panel.add_child(label)
 		choice_labels.append(label)
-		
-		# クリック可能エリアの作成 - 選択肢全体に
-		var click_area = Control.new()
-		click_area.name = "click_area_" + str(i)
-		click_area.anchor_left = 0.0
-		click_area.anchor_top = 0.0
-		click_area.anchor_right = 1.0
-		click_area.anchor_bottom = 1.0
-		click_area.mouse_filter = Control.MOUSE_FILTER_STOP
-		
-		# シグナル接続
-		click_area.gui_input.connect(_on_choice_area_input.bind(i, choice_id))
-		
-		choice_panel.add_child(click_area)
 		
 		log_message("Added choice label: " + choice_text + " with ID: " + choice_id, LogLevel.INFO)
 	
@@ -203,14 +218,13 @@ func show_choices(choices):
 	log_message("Choices now visible: " + str(choice_container.visible) + 
 				" with " + str(choice_labels.size()) + " labels", LogLevel.INFO)
 
-func _on_choice_area_input(event, choice_index, choice_id):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			_select_choice(choice_id)
-	elif event is InputEventMouseMotion:
-		if selected_choice_index != choice_index:
-			selected_choice_index = choice_index
-			_update_choice_highlight()
+func _on_choice_button_pressed(choice_id):
+	_select_choice(choice_id)
+
+func _on_choice_button_mouse_entered(choice_index):
+	if selected_choice_index != choice_index:
+		selected_choice_index = choice_index
+		_update_choice_highlight()
 
 func _select_choice(choice_id):
 	log_message("Choice selected: " + choice_id, LogLevel.INFO)
