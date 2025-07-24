@@ -77,7 +77,7 @@ func _initialize_choice_container():
 	choice_background.anchor_top = 0.0
 	choice_background.anchor_right = 1.0
 	choice_background.anchor_bottom = 1.0
-	choice_background.color = Color(0, 0, 0, 0.7) 
+	choice_background.color = Color(0, 0, 0, 0) 
 	
 	choice_container.add_child(choice_background)
 	log_message("Choice container created", LogLevel.DEBUG)
