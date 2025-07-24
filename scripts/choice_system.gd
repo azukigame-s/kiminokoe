@@ -77,7 +77,7 @@ func _initialize_choice_container():
 	choice_background.anchor_top = 0.0
 	choice_background.anchor_right = 1.0
 	choice_background.anchor_bottom = 1.0
-	choice_background.color = Color(0, 0, 0, 0.85)  # 弟切草風の暗い背景
+	choice_background.color = Color(0, 0, 0, 0.7) 
 	
 	choice_container.add_child(choice_background)
 	log_message("Choice container created", LogLevel.DEBUG)
@@ -126,12 +126,17 @@ func show_choices(choices):
 	# 選択ページのタイトル表示 - より弟切草風に
 	var title_label = Label.new()
 	title_label.name = "title_label"
-	title_label.text = "どうする？"  # 弟切草風のタイトル
-	title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title_label.anchor_left = 0.0
-	title_label.anchor_top = 0.35  # タイトルの位置を調整
-	title_label.anchor_right = 1.0
-	title_label.add_theme_font_size_override("font_size", 32)  # 少し大きく
+	title_label.text = "どうする？"
+	title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	title_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+	
+	var viewport_size = get_viewport_rect().size
+	title_label.position.x = viewport_size.x * 0.1  # 左マージン10%
+	title_label.position.y = viewport_size.y * 0.1  # 上マージン10%
+	title_label.size.x = viewport_size.x * 0.8      # 幅80%
+	title_label.size.y = 40          
+
+	title_label.add_theme_font_size_override("font_size", 24) 
 	title_label.add_theme_color_override("font_color", Color(1, 1, 1))
 	
 	# タイトルにもメインのフォントを適用
@@ -141,9 +146,8 @@ func show_choices(choices):
 	choice_container.add_child(title_label)
 	
 	# 選択肢の配置計算（弟切草スタイル - 画面下部固定）
-	var viewport_size = get_viewport_rect().size
-	var choice_spacing = viewport_size.y * 0.08  # 画面高さの8%を選択肢間隔に
-	var start_y = viewport_size.y * 0.5  # 画面高さの50%の位置から開始
+	var choice_spacing = 50
+	var start_y = viewport_size.y * 0.1 + 80  # タイトルの下から開始0
 	
 	for i in range(total_choices):
 		var choice_data = choices[i]
@@ -152,26 +156,22 @@ func show_choices(choices):
 		
 		# 選択肢全体を含むコンテナを作成
 		var choice_panel = Control.new()
-		choice_panel.name = "choice_panel_" + str(i)
-		choice_panel.anchor_left = 0.1
-		choice_panel.anchor_right = 0.9
+		choice_panel.position.x = viewport_size.x * 0.1  # 左マージン10%
 		choice_panel.position.y = start_y + (choice_spacing * i)
-		choice_panel.size.y = choice_spacing
+		choice_panel.size.x = viewport_size.x * 0.8      # 幅80%
+		choice_panel.size.y = 40  
 		
 		choice_container.add_child(choice_panel)
 		
 		# ここでボタンを使用する代わりに
 		var button = Button.new()
 		button.name = "choice_button_" + str(i)
-		button.text = ""  # テキストは空に
-		button.flat = true  # フラットスタイル（背景を消す）
+		button.text = ""
+		button.flat = true
 		button.focus_mode = Control.FOCUS_NONE
-		button.custom_minimum_size.x = 800
-		button.anchor_left = 0.0
-		button.anchor_right = 1.0
-		button.anchor_top = 0.0
-		button.anchor_bottom = 1.0
-		button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND  # ホバー時の手のカーソル
+		button.position = Vector2.ZERO
+		button.size = choice_panel.size
+		button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		
 		# ボタン背景を完全に透明に
 		var normal_style = StyleBoxEmpty.new()
@@ -191,13 +191,12 @@ func show_choices(choices):
 		# 弟切草風の選択肢ラベル作成 - ボタンの上にラベルを重ねる
 		var label = Label.new()
 		label.name = "choice_label_" + str(i)
-		label.text = choice_prefixes[i] + "　" + choice_text  # 全角スペースで間隔調整
+		label.text = choice_prefixes[i] + "　" + choice_text
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
-		label.anchor_left = 0.0
-		label.anchor_right = 1.0
-		label.anchor_top = 0.0
-		label.anchor_bottom = 1.0
-		label.mouse_filter = Control.MOUSE_FILTER_IGNORE  # マウスイベントを無視
+		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		label.position = Vector2.ZERO
+		label.size = choice_panel.size
+		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		
 		# スタイル設定
 		label.add_theme_font_size_override("font_size", choice_text_size)
