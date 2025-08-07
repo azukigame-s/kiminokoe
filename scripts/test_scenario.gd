@@ -101,106 +101,233 @@ var scenario = [
 	},
 	{
 		"type": "choice",
+		"type": "dialogue",
+		"text": "「へへへ、イチバーン」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あんまり早く押すとまた運転手さんに怒られるぞ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "ひとつ後ろの席に座る弟――、スグに向かい僕は言った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ニヤニヤと笑いながらスグは口を開く。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「だって早く帰りたいじゃん！　なんてったって今日は――」"
+	},
+	{
+		"type": "dialogue",
+		"text": "満面の笑顔だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そう。今日は１０月１０日。"
+	},
+	{
+		"type": "dialogue",
+		"text": "弟の８歳の誕生日だった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "そんなやり取りをしているうちにバスはスピードを落とし、バス停に着く。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕が席を立とうとすると、その横をスグが横切る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ちょっとスグ、先に行っちゃ……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ありがとうございましたー。ほら、お兄ぃも早く！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "普段は僕の後ろをついてくる弟も、今日は気持ちが高鳴っているのかそそくさとバスを降りてしまう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ありがとうございました」"
+	},
+	{
+		"type": "dialogue",
+		"text": "運転手さんの顔も見ずお礼をし、慌ててあとを追った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "バスを降りてもそこにスグの姿がない。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「えっ、どこ？　スグぅ？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "ランドセルがバスの後ろに回るのが見えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そっちはダメだ！",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「スグっ！　そっちは――――――」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ドンッ！！！！"
+	},
+	{
+		"type": "dialogue",
+		"text": "キキーーッ！　ガシャン！！"
+	},
+	{
+		"type": "dialogue",
+		"text": "「…………す……ぐ……？」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "今日は１０月１０日。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "弟の８歳の誕生日だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "１０月にしては青すぎる世界がかすみ、白くなる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして、真っ暗になった――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "誰かが遠くから叫ぶ声が聞こえる――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あたりの音も聞こえなくなるなか、鳶の鳴き声だけが耳に残っていた――――。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "『――だき西口。次は、地蔵焚西口です』",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "車窓の景色は流れるのをやめ、やがて停車する。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は小さめのボストンバッグを持ち上げて立ち上がり、大口を開けて待つロボに小銭を与え、静かにバスを降りた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "１０月にしては強い日差しが目を眩ませる。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "右手で日差しを遮り目を慣らせ、ゆっくりと手を下ろすと――、そこにはひとりの少女が立っていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おかえり！　私のこと覚えてる？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "天真爛漫を絵に書いたような彼女はこちらに笑顔を見せている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は――。"
+	},
+	{
+		"type": "choice",
 		"choices": [
 			{
-				"id": "option1",
-				"text": "降りる",
-				"next_index": 100  # 次に実行するシナリオのインデックス
+				"id": "remember_yes",
+				"text": "はい",
+				"next_index": 400
 			},
 			{
-				"id": "option2",
-				"text": "乗り続ける",
-				"next_index": 200  # 次に実行するシナリオのインデックス
-			},
-			{
-				"id": "option3",
-				"text": "運転手に話しかける",
-				"next_index": 300  # 次に実行するシナリオのインデックス
+				"id": "remember_no",
+				"text": "いいえ",
+				"next_index": 500
 			}
 		]
 	},
-	# 選択肢 option1 のシナリオ分岐
+	
+	# 「はい」を選択した場合の分岐
 	{
 		"type": "index",
-		"index": 100
+		"index": 400
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は次の停留所で降りることにした。",
+		"text": "「ふふふ、良かった。改めてお兄ちゃんおかえり！」",
 		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "バスが止まると、僕は席を立ち、運転手に軽く会釈をして降りた。"
-	},
-	{
-		"type": "dialogue",
-		"text": "ここから先は歩いて行くことにしよう。"
 	},
 	{
 		"type": "jump",
-		"index": 999  # 共通エンドポイント
+		"index": 600  # 共通の続きに
 	},
 	
-	# 選択肢 option2 のシナリオ分岐
+	# 「いいえ」を選択した場合の分岐
 	{
 		"type": "index",
-		"index": 200
+		"index": 500
 	},
 	{
 		"type": "dialogue",
-		"text": "いや、まだ降りる必要はない。",
+		"text": "「ちょっとぉ、お兄ちゃんの冗談分かりづらいんだからやめてよね！」",
 		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "僕はそのまま座席に座り、窓の外を見続けた。"
-	},
-	{
-		"type": "dialogue",
-		"text": "行き先を決めずに、ただ車窓の景色を楽しむ旅――。"
 	},
 	{
 		"type": "jump",
-		"index": 999  # 共通エンドポイント
+		"index": 600  # 共通の続きに
 	},
 	
-	# 選択肢 option3 のシナリオ分岐
+	# 共通の続き
 	{
 		"type": "index",
-		"index": 300
+		"index": 600
 	},
 	{
 		"type": "dialogue",
-		"text": "「すみません、この先の地蔵焚ってどんな場所なんですか？」",
-		"new_page": true
+		"text": "そう、彼女はイロ。中学２年生の妹だ。"
 	},
 	{
 		"type": "dialogue",
-		"text": "運転手は少し驚いた様子で僕を見た。"
+		"text": "「荷物は……大丈夫そうだね！　じゃあ帰ろう！」"
 	},
 	{
 		"type": "dialogue",
-		"text": "「地蔵焚？ああ、昔ながらの温泉街だよ。最近は観光客も少なくなったけどね。」"
+		"text": "今日は１０月１０日。"
 	},
 	{
 		"type": "dialogue",
-		"text": "「へぇ、そうなんですか。」"
-	},
-	{
-		"type": "jump",
-		"index": 999  # 共通エンドポイント
-	},
-	
-	# 共通エンドポイント
-	{
-		"type": "index",
-		"index": 999
-	},
-	{
-		"type": "dialogue",
-		"text": "そして、物語は続いていく……",
-		"new_page": true
+		"text": "弟の命日だった。"
 	}
 ]
 
