@@ -35,12 +35,20 @@ func _setup_ui():
 	anchor_right = 1.0
 	anchor_bottom = 1.0
 	
-	# タイトルテキスト設定
+	# VBoxContainerを画面右から3分の1の範囲に配置
+	var vbox = $VBoxContainer
+	if vbox:
+		vbox.anchor_left = 0.7  # 画面の右3分の1から開始（2/3の位置）
+		vbox.anchor_top = 0.3    # 少し下から開始（中央配置）
+		vbox.anchor_right = 1.0  # 右端まで
+		vbox.anchor_bottom = 0.7 # 少し上で終了（中央配置）
+		vbox.offset_left = 20    # 少し右にずらす
+		vbox.offset_right = -20  # 右端から少し内側
+		vbox.alignment = BoxContainer.ALIGNMENT_CENTER # 垂直中央配置
+	
+	# タイトルラベルを非表示にする（画像にタイトルが含まれているため）
 	if title_label:
-		title_label.text = title_text
-		title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		title_label.add_theme_font_size_override("font_size", 48)
-		title_label.add_theme_color_override("font_color", Color.WHITE)
+		title_label.visible = false
 	
 	# バージョンラベル設定
 	if version_label:
@@ -48,7 +56,7 @@ func _setup_ui():
 		version_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		version_label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
 		version_label.add_theme_font_size_override("font_size", 16)
-		version_label.add_theme_color_override("font_color", Color(0.8, 0.8, 0.8))
+		version_label.add_theme_color_override("font_color", Color.BLACK)
 
 # ボタンのセットアップ
 func _setup_buttons():
@@ -76,38 +84,45 @@ func _style_button(button: Button):
 		return
 	
 	button.add_theme_font_size_override("font_size", 24)
-	button.add_theme_color_override("font_color", Color.WHITE)
-	button.add_theme_color_override("font_hover_color", Color.YELLOW)
-	button.custom_minimum_size = Vector2(200, 50)
+	# 明示的にすべての状態で文字色を設定
+	button.add_theme_color_override("font_color", Color.BLACK)         # 通常時黒色
+	button.add_theme_color_override("font_hover_color", Color.WHITE)   # ホバー時白色
+	button.add_theme_color_override("font_pressed_color", Color.WHITE) # 押下時白色
+	button.add_theme_color_override("font_focus_color", Color.BLACK)   # フォーカス時黒色
+	button.add_theme_color_override("font_disabled_color", Color.GRAY) # 無効時グレー
+	button.custom_minimum_size = Vector2(250, 50) # 少し幅を広げる
 	
-	# ボタン背景のスタイル設定
-	var normal_style = StyleBoxFlat.new()
-	normal_style.bg_color = Color(0.2, 0.2, 0.2, 0.8)
-	normal_style.corner_radius_top_left = 8
-	normal_style.corner_radius_top_right = 8
-	normal_style.corner_radius_bottom_left = 8
-	normal_style.corner_radius_bottom_right = 8
-	normal_style.border_width_left = 2
-	normal_style.border_width_right = 2
-	normal_style.border_width_top = 2
-	normal_style.border_width_bottom = 2
-	normal_style.border_color = Color(0.5, 0.5, 0.5)
+	# ボタンテキストを左寄せに設定
+	button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	
+	# テーマの継承をリセット（既存のテーマの影響を排除）
+	button.theme = null
+	
+	# 透明な背景スタイル
+	var transparent_style = StyleBoxFlat.new()
+	transparent_style.bg_color = Color.TRANSPARENT  # 完全に透明
+	transparent_style.border_width_left = 0
+	transparent_style.border_width_right = 0
+	transparent_style.border_width_top = 0
+	transparent_style.border_width_bottom = 0
+	
+	# ホバー時のスタイル（透明背景）
 	var hover_style = StyleBoxFlat.new()
-	hover_style.bg_color = Color(0.3, 0.3, 0.3, 0.9)
+	hover_style.bg_color = Color.TRANSPARENT  # 完全に透明
 	hover_style.corner_radius_top_left = 8
 	hover_style.corner_radius_top_right = 8
 	hover_style.corner_radius_bottom_left = 8
 	hover_style.corner_radius_bottom_right = 8
-	hover_style.border_width_left = 2
-	hover_style.border_width_right = 2
-	hover_style.border_width_top = 2
-	hover_style.border_width_bottom = 2
-	hover_style.border_color = Color.YELLOW
+	hover_style.border_width_left = 0
+	hover_style.border_width_right = 0
+	hover_style.border_width_top = 0
+	hover_style.border_width_bottom = 0
 	
-	button.add_theme_stylebox_override("normal", normal_style)
+	# 各状態にスタイルを適用
+	button.add_theme_stylebox_override("normal", transparent_style)
 	button.add_theme_stylebox_override("hover", hover_style)
 	button.add_theme_stylebox_override("pressed", hover_style)
+	button.add_theme_stylebox_override("focus", transparent_style)
 
 # 背景設定
 func _setup_background():
@@ -119,7 +134,7 @@ func _setup_background():
 			if bg_texture:
 				background.texture = bg_texture
 				background.expand = true
-				background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+				background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
 		else:
 			# 背景画像がない場合はグラデーション背景を作成
 			background.texture = _create_gradient_background()
