@@ -83,12 +83,12 @@ func _style_button(button: Button):
 	if not button:
 		return
 	
-	button.add_theme_font_size_override("font_size", 24)
+	button.add_theme_font_size_override("font_size", 32)
 	# 明示的にすべての状態で文字色を設定
-	button.add_theme_color_override("font_color", Color.BLACK)         # 通常時黒色
+	button.add_theme_color_override("font_color", Color(0.223529412, 0.196078431, 0.2, 1))         # 通常時黒色
 	button.add_theme_color_override("font_hover_color", Color.WHITE)   # ホバー時白色
 	button.add_theme_color_override("font_pressed_color", Color.WHITE) # 押下時白色
-	button.add_theme_color_override("font_focus_color", Color.BLACK)   # フォーカス時黒色
+	button.add_theme_color_override("font_focus_color", Color(0.223529412, 0.196078431, 0.2, 1))   # フォーカス時黒色
 	button.add_theme_color_override("font_disabled_color", Color.GRAY) # 無効時グレー
 	button.custom_minimum_size = Vector2(250, 50) # 少し幅を広げる
 	
