@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cj36ss042ie7t"]
+
+[ext_resource type="Script" uid="uid://ba8v24nunbo4w" path="res://scripts/title_scene.gd" id="1_6jsh8"]
+
+[node name="TitleScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6jsh8")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+layout_mode = 2
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
