@@ -135,6 +135,12 @@ var scenario = [
 		"go_next": true
 	},
 	{
+		"type": "subtitle",
+		"text": "10月10日",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
 		"type": "dialogue",
 		"text": "そんなやり取りをしているうちにバスはスピードを落とし、バス停に着く。",
 		"new_page": true
@@ -357,6 +363,7 @@ var scenario = [
 var current_index = 0
 var waiting_for_click = false
 var last_choice_index = -1  # 最後に表示した選択肢のインデックスを記録
+var waiting_for_subtitle = false  # サブタイトル表示待ちフラグ
 
 # 現在のシナリオインデックスをフォローする辞書
 var index_map = {}
@@ -373,6 +380,7 @@ func _ready():
 		novel_system.text_click_processed.connect(_on_click_processed)
 		novel_system.text_completed.connect(_on_text_completed)
 		novel_system.choice_selected.connect(_on_choice_selected)
+		novel_system.subtitle_completed.connect(_on_subtitle_completed)
 		log_message("Signals connected", LogLevel.DEBUG)
 	else:
 		log_message("Error: Novel system not found", LogLevel.ERROR)
@@ -407,6 +415,8 @@ func _on_choice_selected(choice_id):
 						current_index = index_map[choice.next_index]
 						log_message("Jumping to choice branch index " + str(choice.next_index) + " (scenario position " + str(current_index) + ")", LogLevel.DEBUG)
 						waiting_for_click = false
+						# 選択肢選択後にテキストバッファをクリア
+						novel_system.clear_text_buffers()
 						execute_current_command()
 						return
 					else:
@@ -418,6 +428,8 @@ func _on_choice_selected(choice_id):
 	
 	# 選択肢が見つからない場合は次のコマンドに進む
 	waiting_for_click = false
+	# 選択肢選択後にテキストバッファをクリア
+	novel_system.clear_text_buffers()
 	current_index += 1
 	execute_current_command()
 	
@@ -459,6 +471,14 @@ func execute_current_command():
 		"sfx":
 			novel_system.play_sfx(command.path)
 			proceed_to_next()
+		"subtitle":
+			var subtitle_text = command.get("text", "")
+			var fade_time = command.get("fade_time", 1.0)
+			var display_time = command.get("display_time", 2.0)
+			log_message("Showing subtitle: " + subtitle_text, LogLevel.INFO)
+			novel_system.show_subtitle(subtitle_text, fade_time, display_time)
+			waiting_for_subtitle = true
+			waiting_for_click = true
 		"choice":
 			log_message("Showing choices with " + str(command.choices.size()) + " options", LogLevel.INFO)
 			last_choice_index = current_index  # 選択肢コマンドのインデックスを記録
@@ -509,6 +529,14 @@ func _on_click_processed():
 		waiting_for_click = false
 		current_index += 1
 		execute_current_command()
+
+# サブタイトルが完了した時の処理
+func _on_subtitle_completed():
+	log_message("Subtitle completed signal received", LogLevel.DEBUG)
+	waiting_for_subtitle = false
+	waiting_for_click = false
+	current_index += 1
+	execute_current_command()
 
 # ログメッセージの出力（NovelSystemと同様のログ機能）
 func log_message(message, level = LogLevel.INFO):

@@ -5,6 +5,7 @@ signal initialized
 signal text_click_processed
 signal text_completed
 signal choice_selected(choice_id)
+signal subtitle_completed
 
 # ログレベル定義
 enum LogLevel {INFO, DEBUG, ERROR}
@@ -25,6 +26,9 @@ var show_indicator = false
 var indicator_visible = true
 var indicator_blink_timer = 0.0
 
+# サブタイトル表示状態
+var is_showing_subtitle = false
+
 # 設定値 - ProjectSettingsから取得するように変更
 var text_speed: float
 var indicator_blink_speed: float
@@ -40,6 +44,7 @@ var text_timer = 0.0
 @onready var bgm_player = $bgm_player
 @onready var sfx_player = $sfx_player
 @onready var choice_system = $choice_system
+@onready var subtitle_scene = $subtitle_scene if has_node("subtitle_scene") else null
 
 func _ready():
 	log_message("Visual Novel System: Ready function called.", LogLevel.INFO)
@@ -65,6 +70,9 @@ func _ready():
 		
 		# 選択肢システムのセットアップ
 		_setup_choice_system()
+		
+		# サブタイトルシステムのセットアップ
+		_setup_subtitle_system()
 		
 		initialized.emit()
 	else:
@@ -160,6 +168,24 @@ func _setup_choice_system():
 		log_message("Choice system setup complete and set visible", LogLevel.INFO)
 	else:
 		log_message("ERROR: Choice system is null after setup", LogLevel.ERROR)
+
+# サブタイトルシステムのセットアップ
+func _setup_subtitle_system():
+	if subtitle_scene:
+		# サブタイトルスクリプトがアタッチされているかチェック
+		if subtitle_scene.get_script() and subtitle_scene.has_signal("subtitle_completed"):
+			subtitle_scene.subtitle_completed.connect(_on_subtitle_completed)
+			# サブタイトルシーンを最前面に配置
+			subtitle_scene.z_index = 100
+			subtitle_scene.visible = false  # 初期状態では非表示
+			log_message("Subtitle system setup complete", LogLevel.INFO)
+		else:
+			log_message("WARNING: Subtitle scene exists but script not attached - disabling subtitle functionality", LogLevel.INFO)
+			# 無効なサブタイトルシーンを非表示にして無効化
+			subtitle_scene.visible = false
+			subtitle_scene = null
+	else:
+		log_message("WARNING: Subtitle scene not found - subtitle functionality disabled", LogLevel.INFO)
 
 # 要素をフルスクリーンに設定
 func _setup_fullscreen_element(element):
@@ -436,8 +462,29 @@ func _on_choice_made(choice_id):
 	log_message("Choice made: " + choice_id, LogLevel.INFO)
 	choice_selected.emit(choice_id)
 
+# サブタイトルが完了した時の処理
+func _on_subtitle_completed():
+	log_message("Subtitle completed", LogLevel.INFO)
+	is_showing_subtitle = false
+	subtitle_completed.emit()
+
+# サブタイトル表示
+func show_subtitle(text: String, fade_time: float = 1.0, display_time: float = 2.0):
+	if subtitle_scene and subtitle_scene.get_script() and subtitle_scene.has_method("show_subtitle"):
+		log_message("Showing subtitle: " + text, LogLevel.INFO)
+		is_showing_subtitle = true
+		subtitle_scene.show_subtitle(text, fade_time, display_time)
+	else:
+		log_message("WARNING: Subtitle scene not available - skipping subtitle: " + text, LogLevel.INFO)
+		# サブタイトルシーンがない場合は即座に完了シグナルを発行
+		subtitle_completed.emit()
+
 # 入力イベント処理
 func _input(event):
+	# サブタイトル表示中は入力を受け付けない
+	if is_showing_subtitle:
+		return
+		
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			complete_text()
