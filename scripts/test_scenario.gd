@@ -188,8 +188,16 @@ var scenario = [
 		"new_page": true
 	},
 	{
+		"type": "sfx",
+		"path": "res://assets/sounds/bang_sfx.mp3"
+	},
+	{
 		"type": "dialogue",
 		"text": "ドンッ！！！！"
+	},
+	{
+		"type": "sfx",
+		"path": "res://assets/sounds/crash_sfx.mp3"
 	},
 	{
 		"type": "dialogue",
@@ -222,14 +230,30 @@ var scenario = [
 		"text": "誰かが遠くから叫ぶ声が聞こえる――。"
 	},
 	{
+		"type": "sfx",
+		"path": "res://assets/sounds/kite_sfx.mp3"
+	},
+	{
 		"type": "dialogue",
 		"text": "あたりの音も聞こえなくなるなか、鳶の鳴き声だけが耳に残っていた――――。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "『――だき西口。次は、地蔵焚西口です』",
+		"text": "……。",
 		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "『――だき西口。次は、地蔵焚西口です』",
 	},
 	{
 		"type": "dialogue",
