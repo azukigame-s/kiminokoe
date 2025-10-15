@@ -135,6 +135,13 @@ var scenario = [
 		"go_next": true
 	},
 	{
+		"type": "subtitle",
+		"text": "10月10日",
+		"fade_time": 0.5,
+		"display_time": 2.0,
+		"typewriter_speed": 0.1
+	},
+	{
 		"type": "dialogue",
 		"text": "そんなやり取りをしているうちにバスはスピードを落とし、バス停に着く。",
 		"new_page": true
@@ -207,6 +214,13 @@ var scenario = [
 		"type": "dialogue",
 		"text": "「…………す……ぐ……？」",
 		"go_next": true
+	},
+	{
+		"type": "subtitle",
+		"text": "10月10日",
+		"fade_time": 0.5,
+		"display_time": 3.0,
+		"typewriter_speed": 0.15
 	},
 	{
 		"type": "dialogue",
@@ -357,6 +371,7 @@ var scenario = [
 var current_index = 0
 var waiting_for_click = false
 var last_choice_index = -1  # 最後に表示した選択肢のインデックスを記録
+var waiting_for_subtitle = false  # サブタイトル表示待ちフラグ
 
 # 現在のシナリオインデックスをフォローする辞書
 var index_map = {}
@@ -373,6 +388,7 @@ func _ready():
 		novel_system.text_click_processed.connect(_on_click_processed)
 		novel_system.text_completed.connect(_on_text_completed)
 		novel_system.choice_selected.connect(_on_choice_selected)
+		novel_system.subtitle_completed.connect(_on_subtitle_completed)
 		log_message("Signals connected", LogLevel.DEBUG)
 	else:
 		log_message("Error: Novel system not found", LogLevel.ERROR)
@@ -459,6 +475,15 @@ func execute_current_command():
 		"sfx":
 			novel_system.play_sfx(command.path)
 			proceed_to_next()
+		"subtitle":
+			var subtitle_text = command.get("text", "")
+			var fade_time = command.get("fade_time", 1.0)
+			var display_time = command.get("display_time", 2.0)
+			var typewriter_speed = command.get("typewriter_speed", 0.05)
+			log_message("Showing subtitle: " + subtitle_text, LogLevel.INFO)
+			novel_system.show_subtitle(subtitle_text, fade_time, display_time, typewriter_speed)
+			waiting_for_subtitle = true
+			waiting_for_click = true
 		"choice":
 			log_message("Showing choices with " + str(command.choices.size()) + " options", LogLevel.INFO)
 			last_choice_index = current_index  # 選択肢コマンドのインデックスを記録
@@ -483,7 +508,7 @@ func execute_current_command():
 			proceed_to_next()
 
 func proceed_to_next():
-	if waiting_for_click:
+	if waiting_for_click or waiting_for_subtitle:
 		return
 		
 	current_index += 1
@@ -509,6 +534,14 @@ func _on_click_processed():
 		waiting_for_click = false
 		current_index += 1
 		execute_current_command()
+
+# サブタイトルが完了した時の処理
+func _on_subtitle_completed():
+	log_message("Subtitle completed signal received", LogLevel.DEBUG)
+	waiting_for_subtitle = false
+	waiting_for_click = false
+	current_index += 1
+	execute_current_command()
 
 # ログメッセージの出力（NovelSystemと同様のログ機能）
 func log_message(message, level = LogLevel.INFO):
