@@ -58,6 +58,7 @@ script = ExtResource("3_u6jom")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("4_clyij")
 
 [node name="background" type="ColorRect" parent="subtitle_scene"]
 layout_mode = 0
@@ -68,4 +69,3 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-script = ExtResource("4_clyij")

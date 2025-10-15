@@ -171,7 +171,13 @@ func _setup_choice_system():
 
 # サブタイトルシステムのセットアップ
 func _setup_subtitle_system():
+	log_message("Setting up subtitle system...", LogLevel.DEBUG)
+	log_message("subtitle_scene exists: " + str(subtitle_scene != null), LogLevel.DEBUG)
+	
 	if subtitle_scene:
+		log_message("subtitle_scene has script: " + str(subtitle_scene.get_script() != null), LogLevel.DEBUG)
+		log_message("subtitle_scene has subtitle_completed signal: " + str(subtitle_scene.has_signal("subtitle_completed")), LogLevel.DEBUG)
+		
 		# サブタイトルスクリプトがアタッチされているかチェック
 		if subtitle_scene.get_script() and subtitle_scene.has_signal("subtitle_completed"):
 			subtitle_scene.subtitle_completed.connect(_on_subtitle_completed)
@@ -470,6 +476,13 @@ func _on_subtitle_completed():
 
 # サブタイトル表示
 func show_subtitle(text: String, fade_time: float = 1.0, display_time: float = 2.0):
+	log_message("show_subtitle called with text: " + text, LogLevel.DEBUG)
+	log_message("subtitle_scene exists: " + str(subtitle_scene != null), LogLevel.DEBUG)
+	
+	if subtitle_scene:
+		log_message("subtitle_scene has script: " + str(subtitle_scene.get_script() != null), LogLevel.DEBUG)
+		log_message("subtitle_scene has show_subtitle method: " + str(subtitle_scene.has_method("show_subtitle")), LogLevel.DEBUG)
+	
 	if subtitle_scene and subtitle_scene.get_script() and subtitle_scene.has_method("show_subtitle"):
 		log_message("Showing subtitle: " + text, LogLevel.INFO)
 		is_showing_subtitle = true

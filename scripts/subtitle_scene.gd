@@ -25,6 +25,12 @@ func _ready():
 	visible = false
 	z_index = 1000  # 最前面に表示
 	
+	# サブタイトルシーン自体のレイアウト設定
+	anchor_left = 0.0
+	anchor_top = 0.0
+	anchor_right = 1.0
+	anchor_bottom = 1.0
+	
 	# ノード参照を取得
 	background = get_node_or_null("background")
 	subtitle_label = get_node_or_null("subtitle_label")
@@ -36,11 +42,23 @@ func _ready():
 		background.anchor_top = 0.0
 		background.anchor_right = 1.0
 		background.anchor_bottom = 1.0
+		background.offset_left = 0
+		background.offset_top = 0
+		background.offset_right = 0
+		background.offset_bottom = 0
 	
 	# サブタイトルラベルの設定
 	if subtitle_label:
 		subtitle_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		subtitle_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		subtitle_label.anchor_left = 0.0
+		subtitle_label.anchor_top = 0.0
+		subtitle_label.anchor_right = 1.0
+		subtitle_label.anchor_bottom = 1.0
+		subtitle_label.offset_left = 0
+		subtitle_label.offset_top = 0
+		subtitle_label.offset_right = 0
+		subtitle_label.offset_bottom = 0
 		subtitle_label.add_theme_font_size_override("font_size", 36)
 		subtitle_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
 		
@@ -48,8 +66,8 @@ func _ready():
 		var font_path = "res://themes/novel_theme.tres"
 		if ResourceLoader.exists(font_path):
 			var theme = load(font_path)
-			if theme and theme.get_font("normal_font"):
-				subtitle_label.add_theme_font_override("font", theme.get_font("normal_font"))
+			if theme and theme.has_font("normal_font", "Label"):
+				subtitle_label.add_theme_font_override("font", theme.get_font("normal_font", "Label"))
 
 # サブタイトル表示
 func show_subtitle(text: String, fade_time: float = 1.0, display_time: float = 2.0):
