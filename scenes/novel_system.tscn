@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl4wlib7utapy"]
+[gd_scene load_steps=4 format=3 uid="uid://bl4wlib7utapy"]
 
 [ext_resource type="Script" uid="uid://brkat7pgvdug3" path="res://scripts/novel_system.gd" id="1_07qo2"]
 [ext_resource type="Script" uid="uid://c6ch5dthq8lig" path="res://scripts/test_scenario.gd" id="2_gu5rf"]
 [ext_resource type="Script" uid="uid://7ei8jqeahdb0" path="res://scripts/choice_system.gd" id="3_u6jom"]
-[ext_resource type="Script" uid="uid://d8kc2hskxfv" path="res://scripts/subtitle_scene.gd" id="4_subtitle"]
 
 [node name="NovelSystem" type="Control"]
 layout_mode = 3
@@ -53,32 +52,3 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_u6jom")
-
-[node name="subtitle_scene" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_subtitle")
-
-[node name="Background" type="ColorRect" parent="subtitle_scene"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="SubtitleLabel" type="Label" parent="subtitle_scene"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "サブタイトル"
-horizontal_alignment = 1
-vertical_alignment = 1
