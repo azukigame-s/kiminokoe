@@ -135,12 +135,6 @@ var scenario = [
 		"go_next": true
 	},
 	{
-		"type": "subtitle",
-		"text": "10月10日",
-		"fade_time": 0.5,
-		"display_time": 2.0
-	},
-	{
 		"type": "dialogue",
 		"text": "そんなやり取りをしているうちにバスはスピードを落とし、バス停に着く。",
 		"new_page": true
@@ -275,6 +269,10 @@ var scenario = [
 		"go_next": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/busstop.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "右手で日差しを遮り目を慣らせ、ゆっくりと手を下ろすと――、そこにはひとりの少女が立っていた。",
 		"new_page": true
@@ -357,7 +355,22 @@ var scenario = [
 	{
 		"type": "dialogue",
 		"text": "弟の命日だった。"
-	}
+	},
+	{
+		"type": "subtitle",
+		"text": "10月10日",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/underpass.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "つづく",
+		"new_page": true
+	},
 ]
 
 var current_index = 0
