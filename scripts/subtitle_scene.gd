@@ -47,6 +47,7 @@ func _ready():
 		background.offset_top = 0
 		background.offset_right = 0
 		background.offset_bottom = 0
+		background.visible = false  # 初期状態では非表示
 	
 	# サブタイトルラベルの設定
 	if subtitle_label:
@@ -62,6 +63,7 @@ func _ready():
 		subtitle_label.offset_bottom = 0
 		subtitle_label.add_theme_font_size_override("font_size", 48)  # 少し大きく
 		subtitle_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+		subtitle_label.modulate = Color(1, 1, 1, 0)  # 初期状態では透明
 		
 		# フォントをロード（プロジェクトにフォントがある場合）
 		var font_path = "res://themes/novel_theme.tres"
@@ -91,7 +93,11 @@ func show_subtitle(text: String, p_fade_time: float = 1.0, p_display_time: float
 	# テキスト設定
 	subtitle_label.text = text
 	
-	# 初期状態設定
+	# 初期状態設定（背景も含めて非表示から開始）
+	if background:
+		background.visible = true
+		background.modulate = Color(1, 1, 1, 0)  # 背景も透明から開始
+	subtitle_label.modulate = Color(1, 1, 1, 0)  # テキストも透明から開始
 	visible = true
 	modulate = Color(1, 1, 1, 0)
 	
@@ -106,11 +112,27 @@ func _start_fade_in():
 	if current_animation:
 		current_animation.kill()
 	
+	# 背景を先にフェードイン
+	if background:
+		current_animation = create_tween()
+		current_animation.tween_property(background, "modulate", Color(1, 1, 1, 1), fade_time)
+		current_animation.tween_callback(_on_background_fade_in_complete)
+	else:
+		# 背景がない場合は即座にテキストのフェードインを開始
+		_on_background_fade_in_complete()
+
+# 背景フェードイン完了
+func _on_background_fade_in_complete():
+	log_message("Background fade in completed")
+	# 背景のフェードイン完了後にテキストをフェードイン
+	if current_animation:
+		current_animation.kill()
+	
 	current_animation = create_tween()
-	current_animation.tween_property(self, "modulate", Color(1, 1, 1, 1), fade_time)
+	current_animation.tween_property(subtitle_label, "modulate", Color(1, 1, 1, 1), fade_time)
 	current_animation.tween_callback(_on_fade_in_complete)
 
-# フェードイン完了
+# フェードイン完了（テキストのフェードイン完了後）
 func _on_fade_in_complete():
 	log_message("Fade in completed")
 	
@@ -123,6 +145,8 @@ func _finish_subtitle():
 	log_message("Subtitle finished")
 	is_showing_subtitle = false
 	visible = false
+	if background:
+		background.visible = false  # 背景も非表示にする
 	
 	# z_indexを下げて背景が表示されるようにする
 	z_index = -1

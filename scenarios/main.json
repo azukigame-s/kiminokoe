@@ -8,10 +8,6 @@
 		"path": "res://assets/music/sample_bgm.mp3"
 	},
 	{
-		"type": "load_scenario",
-		"path": "episode_04"
-	},
-	{
 		"type": "dialogue",
 		"text": "車窓を流れる景色――。見えるのは青い空、そして青い海。"
 	},
@@ -35,6 +31,12 @@
 		"type": "dialogue",
 		"text": "そう思うかもしれないが、それでも、僕はこの席が好きだった。",
 		"go_next": true
+	},
+	{
+		"type": "subtitle",
+		"text": "10月10日",
+		"fade_time": 0.5,
+		"display_time": 5.0
 	},
 	{
 		"type": "dialogue",
@@ -346,7 +348,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "弟の命日だった。"
+		"text": "弟の命日だった。",
+		"go_next": true
 	},
 	{
 		"type": "subtitle",

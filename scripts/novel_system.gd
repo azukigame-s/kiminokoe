@@ -6,6 +6,7 @@ signal text_click_processed
 signal text_completed
 signal choice_selected(choice_id)
 signal subtitle_completed
+signal background_fade_in_completed
 
 # ログレベル定義
 enum LogLevel {INFO, DEBUG, ERROR}
@@ -369,8 +370,10 @@ func complete_text():
 			if has_more_text_in_buffer():
 				display_next_text_from_buffer()
 
-# 背景変更
-func change_background(background_path):
+# 背景変更（フェードイン付き）
+var background_fade_in_progress: bool = false
+
+func change_background(background_path, use_fade: bool = true, fade_duration: float = 0.5):
 	if not background:
 		log_message("ERROR: Background node is null", LogLevel.ERROR)
 		return
@@ -382,17 +385,41 @@ func change_background(background_path):
 	if bg_texture == null:
 		log_message("ERROR: Failed to load background texture from path: " + background_path, LogLevel.ERROR)
 		return
-		
-	background.modulate = Color(1, 1, 1, 1)
+	
+	if use_fade and background_fade_in_progress:
+		# 既にフェードイン処理中の場合は待つ
+		await get_tree().create_timer(0.1).timeout
+		return await change_background(background_path, use_fade, fade_duration)
+	
+	# 背景を設定
 	background.texture = bg_texture
 	background.visible = true
+	_setup_fullscreen_element(background)
+	
+	if use_fade:
+		# フェードイン処理
+		background_fade_in_progress = true
+		background.modulate = Color(1, 1, 1, 0)  # 最初は透明
+		
+		var tween = create_tween()
+		if tween:
+			tween.tween_property(background, "modulate", Color(1, 1, 1, 1), fade_duration)
+			await tween.finished
+		else:
+			# ツイーンが作成できない場合は即座に表示
+			background.modulate = Color(1, 1, 1, 1)
+			await get_tree().create_timer(fade_duration).timeout
+		
+		background_fade_in_progress = false
+		background_fade_in_completed.emit()  # フェードイン完了を通知
+	else:
+		# フェードなしの場合は即座に表示
+		background.modulate = Color(1, 1, 1, 1)
 	
 	log_message("Background properties:", LogLevel.DEBUG)
 	log_message("- Visible: " + str(background.visible), LogLevel.DEBUG)
 	log_message("- Modulate: " + str(background.modulate), LogLevel.DEBUG)
 	log_message("- Size: " + str(background.size), LogLevel.DEBUG)
-	
-	_setup_fullscreen_element(background)
 	log_message("Background changed successfully.", LogLevel.INFO)
 
 # BGM再生
@@ -494,12 +521,15 @@ func show_subtitle(text: String, fade_time: float = 1.0, display_time: float = 2
 
 # 入力イベント処理
 func _input(event):
-	# サブタイトル表示中は入力を受け付けない
-	if is_showing_subtitle:
-		return
-		
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			# サブタイトル表示中はスキップ
+			if is_showing_subtitle and subtitle_scene:
+				if subtitle_scene.has_method("skip_subtitle"):
+					subtitle_scene.skip_subtitle()
+					log_message("Subtitle skipped by click", LogLevel.DEBUG)
+				return
+			# 通常のテキスト進行
 			complete_text()
 			log_message("Mouse click detected - text advanced", LogLevel.DEBUG)
 

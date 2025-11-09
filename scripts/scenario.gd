@@ -25,6 +25,7 @@ var current_index = 0
 var waiting_for_click = false
 var last_choice_index = -1  # 最後に表示した選択肢のインデックスを記録
 var waiting_for_subtitle = false  # サブタイトル表示待ちフラグ
+var waiting_for_background_fade = false  # 背景フェードイン待ちフラグ
 
 # 現在のシナリオインデックスをフォローする辞書
 var index_map = {}
@@ -54,6 +55,7 @@ func _ready():
 		novel_system.text_completed.connect(_on_text_completed)
 		novel_system.choice_selected.connect(_on_choice_selected)
 		novel_system.subtitle_completed.connect(_on_subtitle_completed)
+		novel_system.background_fade_in_completed.connect(_on_background_fade_in_completed)
 		log_message("Signals connected", LogLevel.DEBUG)
 	else:
 		log_message("Error: Novel system not found", LogLevel.ERROR)
@@ -157,7 +159,7 @@ func execute_current_command():
 	
 	match command.type:
 		"background":
-			novel_system.change_background(command.path)
+			await novel_system.change_background(command.path)
 			proceed_to_next()
 		"dialogue":
 			var current_dialog = command.text
@@ -190,6 +192,24 @@ func execute_current_command():
 			var fade_time = command.get("fade_time", 1.0)
 			var display_time = command.get("display_time", 2.0)
 			log_message("Showing subtitle: " + subtitle_text, LogLevel.INFO)
+			# 直前のコマンドが背景変更かどうかを確認
+			var previous_was_background = false
+			if current_index > 0:
+				var previous_command = scenario[current_index - 1]
+				if previous_command.type == "background":
+					previous_was_background = true
+					log_message("Previous command was background change, waiting for fade in...", LogLevel.DEBUG)
+			
+			# 背景のフェードインが完了するまで待つ
+			if previous_was_background or novel_system.background_fade_in_progress:
+				# フェードイン完了シグナルを待つ
+				while novel_system.background_fade_in_progress:
+					log_message("Waiting for background fade in to complete...", LogLevel.DEBUG)
+					waiting_for_background_fade = true
+					await novel_system.background_fade_in_completed
+					waiting_for_background_fade = false
+				# さらに少し待ってからサブタイトルを表示（フェードイン完了を確実にする）
+				await get_tree().create_timer(0.2).timeout
 			novel_system.show_subtitle(subtitle_text, fade_time, display_time)
 			waiting_for_subtitle = true
 			waiting_for_click = true
@@ -275,6 +295,11 @@ func _on_subtitle_completed():
 	waiting_for_click = false
 	current_index += 1
 	execute_current_command()
+
+# 背景フェードイン完了時の処理
+func _on_background_fade_in_completed():
+	log_message("Background fade in completed signal received", LogLevel.DEBUG)
+	waiting_for_background_fade = false
 
 # エピソードIDをパスから抽出
 func _extract_episode_id_from_path(scenario_path: String) -> String:
