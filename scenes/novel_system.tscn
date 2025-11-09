@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bl4wlib7utapy"]
 
 [ext_resource type="Script" uid="uid://brkat7pgvdug3" path="res://scripts/novel_system.gd" id="1_07qo2"]
-[ext_resource type="Script" uid="uid://c6ch5dthq8lig" path="res://scripts/test_scenario.gd" id="2_gu5rf"]
+[ext_resource type="Script" uid="uid://xcrkqwvhrgtx" path="res://scripts/scenario.gd" id="2_clyij"]
 [ext_resource type="Script" uid="uid://7ei8jqeahdb0" path="res://scripts/choice_system.gd" id="3_u6jom"]
 [ext_resource type="Script" uid="uid://cjl6x6ooo57jj" path="res://scripts/subtitle_scene.gd" id="4_clyij"]
 
@@ -45,8 +45,8 @@ offset_bottom = 40.0
 
 [node name="sfx_player" type="AudioStreamPlayer" parent="."]
 
-[node name="test_scenario" type="Node" parent="."]
-script = ExtResource("2_gu5rf")
+[node name="scenario" type="Node" parent="."]
+script = ExtResource("2_clyij")
 
 [node name="choice_system" type="Control" parent="."]
 anchors_preset = 0
