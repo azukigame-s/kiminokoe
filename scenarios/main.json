@@ -9,11 +9,7 @@
 	},
 	{
 		"type": "load_scenario",
-		"path": "episode_01"
-	},
-	{
-		"type": "load_scenario",
-		"path": "episode_02"
+		"path": "episode_04"
 	},
 	{
 		"type": "dialogue",

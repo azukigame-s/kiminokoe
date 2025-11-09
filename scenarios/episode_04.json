@@ -1,0 +1,236 @@
+[
+	{
+		"type": "dialogue",
+		"text": "「――おにぃ。…………ありがとう」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………聞き覚えのある声が聞こえてくる。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は弟とキャッチボールをしていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "なぜキャッチボールを始めたかは覚えていない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "今日、弟は学校を休んでいた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "朝は体調が悪いと言っていたが、どうやらそうではなかったらしい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "おばあちゃんにスグと話してほしいと頼まれ、今に至る。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「なにがあったの？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はボールを放りながら声をかけた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ボールは緩やかな弧を描き、グローブに吸い込まれていく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「…………」"
+	},
+	{
+		"type": "dialogue",
+		"text": "弟は何やら考えている様子で、無言でボールを投げ返してきた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちは小学校のクラブで野球をしていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "弟はまだチームに入れる年齢ではなかったが、兄弟がいたり知り合いがいると体験的に参加できたため、スグもチームに入っていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「嫌なことでもあった？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "弟は僕と違って運動神経が良いため、キャッチボールをしていても対等に行える。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんな弟が口を開いた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「…………ゆうたが、言ったんだ。お兄ちゃんが下手だって」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「へ？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕のことを？"
+	},
+	{
+		"type": "dialogue",
+		"text": "正直、僕は補欠だし、上手じゃない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、それ自体に劣等感は感じていなかった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「僕、言い返したかったんだけど、おにぃ僕とそんなに変わらないじゃん？　だから……」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――言い返せなかったと。"
+	},
+	{
+		"type": "dialogue",
+		"text": "何とも情けない兄だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「そんなこと気にしなくていいよ。僕は下手だけど野球が好きだから。スグもだろ？」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "弟は意外そうに僕の顔を見て、ボールを投げた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「うん、野球が好きだよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「だったら、僕が下手とか、そんなこと気にしなくていいよ。ましてや学校を休むなんて……。今日の給食カレーだったぞ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「え！？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "弟の表情が明らかに明るくなったのがわかった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「カレー食べたかったなぁ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "受け取る球から力強さが伝わってくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「だから、明日学校行こうぜ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「うん！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の投げる球にも力が入る。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「――おにぃ。…………ありがとう」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「どういたしま…………あっ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "力みすぎたのか手元が狂い、僕の投げる球が弟の足元でショートバウンドした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "弟はうまくグラブで救い上げたが、そのままグラブからボールが抜けて飛んでいった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "パリーーーン！！",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「「………………」」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕とスグは目を見合わせた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「おばあちゃーん、やばいよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "ふたりで走って家に入った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は弟に対して、ちゃんとお兄ちゃんしていたんだ。",
+		"go_next": true
+	}
+]
+

@@ -24,7 +24,8 @@ var unlocked_trophies: Dictionary = {}
 var episode_ids: Array[String] = [
 	"episode_01",
 	"episode_02",
-	"episode_03"
+	"episode_03",
+	"episode_04"
 ]
 
 # エピソードごとの称号名の定義
@@ -32,6 +33,7 @@ var episode_trophy_names: Dictionary = {
 	"episode_01": "エピソード#1 カード",
 	"episode_02": "エピソード#2 海",
 	"episode_03": "エピソード#3 バス停",
+	"episode_04": "エピソード#4 キャッチボール",
 	"all_episodes_clear": "全エピソードクリア"
 }
 
