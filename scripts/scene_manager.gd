@@ -25,8 +25,9 @@ func _ready():
 	# フェードオーバーレイの作成
 	_create_fade_overlay()
 	
-	# ゲーム開始時はタイトルシーンへ
-	call_deferred("change_scene", TITLE_SCENE)
+	# ゲーム開始時はタイトルシーンへ（フェード無し、遅延実行）
+	await get_tree().process_frame
+	change_scene_instant(TITLE_SCENE)
 
 # フェードオーバーレイの作成
 func _create_fade_overlay():
@@ -53,6 +54,12 @@ func change_scene(scene_path: String, use_fade: bool = true):
 		print("[SceneManager] Scene transition already in progress")
 		return
 	
+	# シーンツリーが利用可能かチェック
+	if not is_inside_tree():
+		print("[SceneManager] Not inside tree, deferring scene change")
+		call_deferred("change_scene", scene_path, use_fade)
+		return
+	
 	scene_transition_in_progress = true
 	var from_scene = current_scene_name
 	current_scene_name = scene_path
@@ -64,7 +71,14 @@ func change_scene(scene_path: String, use_fade: bool = true):
 		await _fade_out()
 	
 	# シーン変更実行
-	get_tree().change_scene_to_file(scene_path)
+	var error = get_tree().change_scene_to_file(scene_path)
+	if error != OK:
+		print("[SceneManager] ERROR: Failed to change scene: " + str(error))
+		scene_transition_in_progress = false
+		return
+	
+	# シーン変更後、新しいシーンツリーが構築されるまで待つ
+	await get_tree().process_frame
 	
 	if use_fade:
 		await _fade_in()
@@ -75,23 +89,37 @@ func change_scene(scene_path: String, use_fade: bool = true):
 
 # フェードアウト
 func _fade_out():
+	if not is_inside_tree() or not fade_overlay:
+		print("[SceneManager] Cannot fade out: not ready")
+		return
+	
 	fade_overlay.modulate.a = 0.0
 	fade_overlay.visible = true
 	
 	var tween = create_tween()
-	tween.tween_property(fade_overlay, "modulate:a", 1.0, fade_duration)
-	await tween.finished
+	if tween:
+		tween.tween_property(fade_overlay, "modulate:a", 1.0, fade_duration)
+		await tween.finished
+	else:
+		print("[SceneManager] WARNING: Failed to create tween for fade out")
 
 # フェードイン
 func _fade_in():
+	if not is_inside_tree() or not fade_overlay:
+		print("[SceneManager] Cannot fade in: not ready")
+		return
+	
 	fade_overlay.modulate.a = 1.0
 	fade_overlay.visible = true
 	
 	var tween = create_tween()
-	tween.tween_property(fade_overlay, "modulate:a", 0.0, fade_duration)
-	await tween.finished
-	
-	fade_overlay.visible = false
+	if tween:
+		tween.tween_property(fade_overlay, "modulate:a", 0.0, fade_duration)
+		await tween.finished
+		fade_overlay.visible = false
+	else:
+		print("[SceneManager] WARNING: Failed to create tween for fade in")
+		fade_overlay.visible = false
 
 # 即座にシーン変更（フェード無し）
 func change_scene_instant(scene_path: String):

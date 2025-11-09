@@ -39,39 +39,56 @@ var episode_trophy_names: Dictionary = {
 var toast_notification: Control = null
 
 func _ready():
+	# オートロードの場合は_ready()が呼ばれた時点で既にシーンツリーに追加されている
+	# ただし、ファイルシステムへのアクセスは安全に実行できる
 	_load_trophy_data()
-	_setup_toast_notification()
+	# トースト通知のセットアップは遅延実行（シーンが読み込まれた後に実行）
+	# 最初のシーンが読み込まれるまで待つため、複数フレーム待つ
+	call_deferred("_delayed_setup")
 	log_message("TrophyManager initialized", LogLevel.INFO)
+
+# 遅延セットアップ（複数フレーム待ってから実行）
+func _delayed_setup():
+	await get_tree().process_frame
+	await get_tree().process_frame
+	_setup_toast_notification()
 
 # トースト通知のセットアップ
 func _setup_toast_notification():
+	# シーンツリーが利用可能かチェック
+	if not is_inside_tree():
+		call_deferred("_setup_toast_notification")
+		return
+	
 	# ノベルシステムシーンを探す（複数の方法で試行）
 	var novel_system_scene = null
 	
 	# 方法1: シーンツリーから探す
 	var root = get_tree().root
-	for child in root.get_children():
-		if child.name == "NovelSystem" or child.has_method("change_background"):
-			novel_system_scene = child
-			break
+	if root:
+		for child in root.get_children():
+			if child and (child.name == "NovelSystem" or child.has_method("change_background")):
+				novel_system_scene = child
+				break
 	
 	# 方法2: まだ見つからない場合は、シーン変更後に再試行
 	if not novel_system_scene:
-		call_deferred("_setup_toast_notification")
+		# タイトルシーンが読み込まれている場合は、ノベルシステムシーンはまだ存在しない
+		log_message("NovelSystem scene not found yet, will retry when needed", LogLevel.DEBUG)
 		return
 	
 	# トースト通知が既に存在する場合は参照を取得
-	if novel_system_scene.has_node("ToastNotification"):
-		toast_notification = novel_system_scene.get_node("ToastNotification")
+	if novel_system_scene.has_node("toast_notification"):
+		toast_notification = novel_system_scene.get_node("toast_notification")
 		log_message("Toast notification already exists", LogLevel.DEBUG)
 		return
+	elif novel_system_scene.has_node("ToastNotification"):
+		toast_notification = novel_system_scene.get_node("ToastNotification")
+		log_message("Toast notification already exists (capitalized)", LogLevel.DEBUG)
+		return
 	
-	# トースト通知を作成
-	toast_notification = Control.new()
-	toast_notification.set_script(load("res://scripts/toast_notification.gd"))
-	toast_notification.name = "ToastNotification"
-	novel_system_scene.add_child(toast_notification)
-	log_message("Toast notification added to novel system", LogLevel.DEBUG)
+	# トースト通知はシーンファイルに追加されているため、ここでは作成しない
+	log_message("Toast notification will be found when needed", LogLevel.DEBUG)
 
 # エピソードがクリア済みかどうかを判定
 func is_episode_cleared(episode_id: String) -> bool:
@@ -190,30 +207,39 @@ func _load_trophy_data():
 				unlocked_trophies[trophy_id] = config.get_value("trophies", trophy_id, {})
 		
 		log_message("Trophy data loaded successfully", LogLevel.DEBUG)
-	else:
+	elif error == ERR_FILE_NOT_FOUND:
 		log_message("Trophy data file not found, using defaults", LogLevel.INFO)
+	else:
+		log_message("ERROR: Failed to load trophy data: " + str(error), LogLevel.ERROR)
 
 # トロフィー取得時のトースト通知を表示
 func _show_trophy_toast(trophy_name: String):
+	# シーンツリーが利用可能かチェック
+	if not is_inside_tree():
+		log_message("Cannot show toast: not inside tree", LogLevel.DEBUG)
+		return
+	
 	# トースト通知への参照を取得（確実に取得するため、毎回探す）
 	var toast_node = null
 	
 	# ノベルシステムシーンを探す
 	var root = get_tree().root
-	for child in root.get_children():
-		if child.name == "NovelSystem" or child.has_method("change_background"):
-			# トースト通知が既に存在する場合は取得（シーンファイルに追加されている場合）
-			if child.has_node("toast_notification"):
-				toast_node = child.get_node("toast_notification")
-				break
-			# 後方互換性のため、大文字小文字を区別しない検索も試行
-			elif child.has_node("ToastNotification"):
-				toast_node = child.get_node("ToastNotification")
-				break
+	if root:
+		for child in root.get_children():
+			if child and (child.name == "NovelSystem" or child.has_method("change_background")):
+				# トースト通知が既に存在する場合は取得（シーンファイルに追加されている場合）
+				if child.has_node("toast_notification"):
+					toast_node = child.get_node("toast_notification")
+					break
+				# 後方互換性のため、大文字小文字を区別しない検索も試行
+				elif child.has_node("ToastNotification"):
+					toast_node = child.get_node("ToastNotification")
+					break
 	
 	# トースト通知が利用可能な場合のみ表示
 	if toast_node and toast_node.has_method("show_toast"):
-		var toast_text = "🏆 " + trophy_name + " を獲得しました！"
+		# 「を獲得しました！」を2行目に固定（中央揃えなのでスペースは不要）
+		var toast_text = "🔖 " + trophy_name + "\nを獲得しました！"
 		toast_node.show_toast(toast_text)
 		log_message("Showing trophy toast: " + trophy_name, LogLevel.DEBUG)
 		# 参照を保存

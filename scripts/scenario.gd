@@ -44,9 +44,9 @@ func _ready():
 	# トロフィーマネージャーの参照を取得（オートロードとして設定されている場合）
 	if has_node("/root/TrophyManager"):
 		trophy_manager = get_node("/root/TrophyManager")
-		log_message("TrophyManager found", LogLevel.DEBUG)
+		log_message("TrophyManager found", LogLevel.INFO)
 	else:
-		log_message("TrophyManager not found (not set as autoload)", LogLevel.DEBUG)
+		log_message("WARNING: TrophyManager not found (not set as autoload). Trophy system will not work!", LogLevel.ERROR)
 	
 	if novel_system:
 		novel_system.initialized.connect(_on_novel_system_initialized)
@@ -285,9 +285,10 @@ func _extract_episode_id_from_path(scenario_path: String) -> String:
 # エピソードをクリア済みとして記録
 func _clear_episode(episode_id: String):
 	if trophy_manager:
+		log_message("Calling TrophyManager.clear_episode(" + episode_id + ")", LogLevel.INFO)
 		trophy_manager.clear_episode(episode_id)
 	else:
-		log_message("TrophyManager not available, cannot clear episode: " + episode_id, LogLevel.DEBUG)
+		log_message("ERROR: TrophyManager not available, cannot clear episode: " + episode_id, LogLevel.ERROR)
 
 # 元のシナリオに戻る
 func _return_to_previous_scenario():
@@ -322,16 +323,23 @@ func _return_to_previous_scenario():
 
 # シナリオ終了時にエピソードをクリア済みとして記録（自動判定）
 func _check_and_clear_episode():
+	log_message("Checking episode clear status...", LogLevel.INFO)
+	log_message("Current scenario path: " + current_scenario_path, LogLevel.INFO)
+	log_message("TrophyManager available: " + str(trophy_manager != null), LogLevel.INFO)
+	
 	if not trophy_manager:
+		log_message("ERROR: TrophyManager not available, cannot clear episode", LogLevel.ERROR)
 		return
 	
 	# 現在のシナリオパスからエピソードIDを抽出
 	var episode_id = _extract_episode_id_from_path(current_scenario_path)
+	log_message("Extracted episode_id: " + episode_id, LogLevel.INFO)
 	
 	if episode_id != "":
+		log_message("Clearing episode: " + episode_id, LogLevel.INFO)
 		_clear_episode(episode_id)
 	else:
-		log_message("Could not determine episode_id from scenario path: " + current_scenario_path, LogLevel.DEBUG)
+		log_message("Could not determine episode_id from scenario path: " + current_scenario_path, LogLevel.ERROR)
 
 # ログメッセージの出力（NovelSystemと同様のログ機能）
 func log_message(message, level = LogLevel.INFO):

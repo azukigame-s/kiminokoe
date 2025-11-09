@@ -33,14 +33,9 @@ func _setup_toast_ui():
 	toast_panel = Panel.new()
 	toast_panel.name = "toast_panel"
 	
-	# スタイル設定（半透明の黒背景）
+	# スタイル設定（半透明の黒背景、ボーダーなし）
 	var style_box = StyleBoxFlat.new()
 	style_box.bg_color = Color(0, 0, 0, 0.8)
-	style_box.border_width_left = 2
-	style_box.border_width_top = 2
-	style_box.border_width_right = 2
-	style_box.border_width_bottom = 2
-	style_box.border_color = Color(1, 0.8, 0, 1)  # 金色の枠
 	style_box.corner_radius_top_left = 8
 	style_box.corner_radius_top_right = 8
 	style_box.corner_radius_bottom_left = 8
@@ -53,30 +48,40 @@ func _setup_toast_ui():
 	toast_panel.anchor_top = 0.0
 	toast_panel.anchor_right = 1.0
 	toast_panel.anchor_bottom = 0.0
-	toast_panel.offset_left = -350  # パネルの幅
+	toast_panel.offset_left = -400  # パネルの幅を広げる
 	toast_panel.offset_top = 20
 	toast_panel.offset_right = -20
-	toast_panel.offset_bottom = 100  # パネルの高さ
+	toast_panel.offset_bottom = 100  # パネルの高さ（2行対応）
 	
 	add_child(toast_panel)
 	
 	# アイコン（トロフィーアイコン用、オプション）
 	toast_icon = TextureRect.new()
 	toast_icon.name = "toast_icon"
-	toast_icon.position = Vector2(15, 15)
-	toast_icon.size = Vector2(50, 50)
+	toast_icon.position = Vector2(10, 15)  # 左マージンを減らす
+	toast_icon.size = Vector2(40, 40)  # サイズを少し小さく
 	toast_icon.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
+	toast_icon.visible = false  # 現在は使用していない（🔖はテキスト内）
 	toast_panel.add_child(toast_icon)
 	
-	# ラベル
+	# ラベル（パネルの幅全体を使用）
 	toast_label = Label.new()
 	toast_label.name = "toast_label"
-	toast_label.position = Vector2(80, 15)
-	toast_label.size = Vector2(250, 70)
-	toast_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	toast_label.position = Vector2(15, 10)  # 左マージンを最小限に
+	toast_label.size = Vector2(365, 70)  # パネルの幅全体を使用（400 - 15 - 20 = 365）
+	toast_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART  # 2行対応で改行を許可
+	toast_label.clip_contents = false  # クリップを無効化
 	toast_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	toast_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER  # 中央揃え
 	toast_label.add_theme_font_size_override("font_size", 18)
 	toast_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+	
+	# シナリオ表示と同じフォントを適用
+	var custom_theme = load("res://themes/novel_theme.tres")
+	if custom_theme:
+		toast_label.theme = custom_theme
+		log_message("Custom theme applied to toast label", LogLevel.DEBUG)
+	
 	toast_panel.add_child(toast_label)
 	
 	# 最前面に表示
