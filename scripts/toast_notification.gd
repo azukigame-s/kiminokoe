@@ -43,7 +43,6 @@ func _setup_toast_ui():
 	toast_panel.add_theme_stylebox_override("panel", style_box)
 	
 	# 位置とサイズ（右上）
-	var viewport_size = get_viewport_rect().size
 	toast_panel.anchor_left = 1.0
 	toast_panel.anchor_top = 0.0
 	toast_panel.anchor_right = 1.0

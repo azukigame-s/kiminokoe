@@ -278,7 +278,7 @@ func print_trophy_status():
 	for trophy_id in unlocked_trophies.keys():
 		var trophy_data = unlocked_trophies[trophy_id]
 		var trophy_name = trophy_data.get("name", "Unknown")
-		var unlocked_at = trophy_data.get("unlocked_at", 0)
+		var _unlocked_at = trophy_data.get("unlocked_at", 0)
 		log_message("  ✓ " + trophy_id + ": " + trophy_name, LogLevel.INFO)
 	
 	log_message("Progress: " + str(get_cleared_episode_count()) + " / " + str(get_total_episode_count()) + " episodes", LogLevel.INFO)
