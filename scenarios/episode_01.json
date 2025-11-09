@@ -1,0 +1,160 @@
+[
+	{
+		"type": "dialogue",
+		"text": "「おにぃばっかりズルいよ……。うぇぇん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………聞き覚えのある声が聞こえてくる。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "昔ここには商店があった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ダキは小さな村で今は個人商店くらいしか残っていないのだけど、センターと呼ばれて皆に親しまれていた直売所だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お店の前にはガチャガチャやカード自販機が並び、村の子供たちのたまり場になっていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お母さん、これやりたい！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの元気な声が母親に届く。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「はいはい、お兄ちゃんもやる？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "母は僕の方に向き直って尋ねた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は弟とは違い控えめな性格だったが、カードは集めていて弟や友達と見せ合うのが好きだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "静かにうなずいて応えると、母は財布からコインを取り出した。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「僕からやるね！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグがハンドルを回すと、5枚一組のカードの束が姿を現した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "弟は束をまとめているテープをびりびりと破り中身を確認している。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それを横目に、僕もコインを入れた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あっ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "自分の束の中に、ひときわ目を引くキラキラしたカードがあった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "『キラ』と呼ばれているレアリティの高いカードだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あーっ、おにぃキラじゃん。いいなぁ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは自分のカードを見つめ、僕のカードに目を向け、また自分のカードに戻す。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんな動作を繰り返しながら、少しずつ表情が曇ってきた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "目にうっすらと涙が浮かび、唇が震える。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おにぃばっかりズルいよ……。うぇぇん」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "とうとう泣き出してしまい、母も困った表情になった。眉を下げて僕を見つめている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃんなんだからスグちゃんにあげなさい」"
+	},
+	{
+		"type": "dialogue",
+		"text": "母の表情は申し訳なさそうだったが、口調は強かった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は唇をかみしめた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "せっかく当てたキラなのに――そう思いながらも、1枚のカードを束から抜き出し、スグに差し出す。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はこの出来事が嫌で、スグと喧嘩をしたんだ。",
+		"go_next": true
+	}
+]
+

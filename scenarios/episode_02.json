@@ -1,0 +1,148 @@
+[
+	{
+		"type": "dialogue",
+		"text": "「おにぃ！　大丈夫、おにぃ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………聞き覚えのある声が聞こえてくる。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ダキは海に面した村で小さな海水浴場もある。"
+	},
+	{
+		"type": "dialogue",
+		"text": "近くに有名で大きな海水浴場があるため人は多くないが、それでも1年で一番村に人が来る時期だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たち家族も年に何度か海水浴に行っており、この時もそうだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お昼にカップラーメンを食べた後、大人たちは休憩モードに入っている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おにぃ！　もう一回海に行こうよ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "弟はつまらなさそうで、僕を誘ってきた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も休憩ばかりしていてもつまらないと同感だったので、うなずいた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「うーんブイまで浮き輪で行くのはやったし、何しようかな……」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あ、そうだ！　波のところでどっちが足を動かさず立っていられるか勝負しよ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "子供は大人では思いつかないような発想をする。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ波打ち際で立っているだけの遊びだけど、子供のころはそれが楽しかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "この日は前日が雨だったこともあり波が高かった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんなことお構いなしで、僕らは遊びを始めた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "何度か波との闘いを繰り返した後のことだった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も夢中になっていて、少し注意力が散漫になっていたのかもしれない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ひときわ大きな波――僕の背丈に届くような波がやってきて、弟は後ろに下がる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "だけど僕は下がらなかった。弟にいいところを見せたくて、強がって波に立ち向かった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そこからは記憶がない。"		
+	},
+	{
+		"type": "dialogue",
+		"text": "波に揉まれながら、弟の声だけが耳に届いていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おにぃ！　大丈夫、おにぃ！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "どうやら弟が大人たちを呼びに行ってくれたようで、目を覚ました僕はビーチパラソルの下で横になっていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "鼻の奥がツンと痛む。海水を飲んでしまったらしい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ぼんやりとした景色の中、弟の心配そうな顔が印象に残った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も弟に強がって、お兄ちゃんらしいところを見せようとしたこともあったんだ。",
+		"go_next": true
+	}
+]
+
