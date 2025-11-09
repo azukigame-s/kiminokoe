@@ -8,6 +8,10 @@
 		"path": "res://assets/music/sample_bgm.mp3"
 	},
 	{
+		"type": "load_scenario",
+		"path": "episode_01"
+	},
+	{
 		"type": "dialogue",
 		"text": "車窓を流れる景色――。見えるのは青い空、そして青い海。"
 	},

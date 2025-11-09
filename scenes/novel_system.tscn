@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl4wlib7utapy"]
+[gd_scene load_steps=6 format=3 uid="uid://bl4wlib7utapy"]
 
 [ext_resource type="Script" uid="uid://brkat7pgvdug3" path="res://scripts/novel_system.gd" id="1_07qo2"]
 [ext_resource type="Script" uid="uid://xcrkqwvhrgtx" path="res://scripts/scenario.gd" id="2_clyij"]
 [ext_resource type="Script" uid="uid://7ei8jqeahdb0" path="res://scripts/choice_system.gd" id="3_u6jom"]
 [ext_resource type="Script" uid="uid://cjl6x6ooo57jj" path="res://scripts/subtitle_scene.gd" id="4_clyij"]
+[ext_resource type="Script" uid="uid://5qidacp16cb8" path="res://scripts/toast_notification.gd" id="5_toast"]
 
 [node name="NovelSystem" type="Control"]
 layout_mode = 3
@@ -69,3 +70,9 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="toast_notification" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_toast")

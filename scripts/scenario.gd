@@ -6,8 +6,17 @@ var novel_system
 # シナリオマネージャーへの参照
 var scenario_manager
 
+# トロフィーマネージャーへの参照（オートロードとして設定されている場合）
+var trophy_manager = null
+
 # 現在のシナリオデータ（シナリオマネージャーから取得）
 var scenario = []
+
+# 現在のシナリオパス（エピソードIDの抽出に使用）
+var current_scenario_path: String = ""
+
+# シナリオスタック（元のシナリオに戻るために使用）
+var scenario_stack: Array = []  # [{scenario: Array, path: String, index: int, new_page_after_return: bool}]
 
 # 初期シナリオファイル
 const INITIAL_SCENARIO = "main"
@@ -32,6 +41,13 @@ func _ready():
 	scenario_manager.set_script(load("res://scripts/scenario_manager.gd"))
 	add_child(scenario_manager)
 	
+	# トロフィーマネージャーの参照を取得（オートロードとして設定されている場合）
+	if has_node("/root/TrophyManager"):
+		trophy_manager = get_node("/root/TrophyManager")
+		log_message("TrophyManager found", LogLevel.DEBUG)
+	else:
+		log_message("TrophyManager not found (not set as autoload)", LogLevel.DEBUG)
+	
 	if novel_system:
 		novel_system.initialized.connect(_on_novel_system_initialized)
 		novel_system.text_click_processed.connect(_on_click_processed)
@@ -48,13 +64,26 @@ func _on_novel_system_initialized():
 	load_scenario(INITIAL_SCENARIO)
 
 # シナリオを読み込む
-func load_scenario(scenario_path: String):
+func load_scenario(scenario_path: String, save_current: bool = true, new_page_after_return: bool = true, return_index: int = -1):
 	if not scenario_manager:
 		log_message("ERROR: Scenario manager not found", LogLevel.ERROR)
 		return
 	
+	# 現在のシナリオの状態をスタックに保存（元のシナリオに戻るため）
+	if save_current and current_scenario_path != "":
+		# return_indexが指定されている場合はそれを使用、そうでない場合はcurrent_index + 1を使用
+		var saved_index = return_index if return_index >= 0 else current_index + 1
+		scenario_stack.push_back({
+			"scenario": scenario.duplicate(true),
+			"path": current_scenario_path,
+			"index": saved_index,
+			"new_page_after_return": new_page_after_return
+		})
+		log_message("Saved current scenario to stack: " + current_scenario_path + " at index " + str(saved_index) + " (new_page_after_return: " + str(new_page_after_return) + ")", LogLevel.DEBUG)
+	
 	if scenario_manager.load_scenario(scenario_path):
 		scenario = scenario_manager.get_current_scenario()
+		current_scenario_path = scenario_manager.get_current_scenario_path()
 		current_index = 0
 		_initialize_index_map()
 		log_message("Scenario loaded: " + scenario_path, LogLevel.INFO)
@@ -115,6 +144,12 @@ func _on_choice_selected(choice_id):
 func execute_current_command():
 	if current_index >= scenario.size():
 		log_message("Scenario complete", LogLevel.INFO)
+		# シナリオ終了時にエピソードをクリア済みとして記録
+		_check_and_clear_episode()
+		
+		# スタックに元のシナリオがある場合は戻る
+		if scenario_stack.size() > 0:
+			_return_to_previous_scenario()
 		return
 	
 	var command = scenario[current_index]
@@ -180,13 +215,27 @@ func execute_current_command():
 		"load_scenario":
 			# 別のシナリオファイルを読み込む
 			var scenario_path = command.get("path", "")
+			var new_page_after_return = command.get("new_page_after_return", true)  # デフォルトでtrue
 			if scenario_path != "":
-				log_message("Loading scenario: " + scenario_path, LogLevel.INFO)
+				log_message("Loading scenario: " + scenario_path + " (new_page_after_return: " + str(new_page_after_return) + ")", LogLevel.INFO)
 				waiting_for_click = false
-				load_scenario(scenario_path)
+				# 次のインデックス（load_scenarioコマンドの次のコマンド）を保存するため、current_index + 1を渡す
+				load_scenario(scenario_path, true, new_page_after_return, current_index + 1)
 			else:
 				log_message("ERROR: load_scenario command missing 'path' parameter", LogLevel.ERROR)
 				proceed_to_next()
+		"episode_clear":
+			# エピソードをクリア済みとして記録（明示的なコマンド）
+			var episode_id = command.get("episode_id", "")
+			if episode_id == "":
+				# episode_idが指定されていない場合は、現在のシナリオパスから自動抽出
+				episode_id = _extract_episode_id_from_path(current_scenario_path)
+			
+			if episode_id != "":
+				_clear_episode(episode_id)
+			else:
+				log_message("ERROR: episode_clear command: Could not determine episode_id", LogLevel.ERROR)
+			proceed_to_next()
 		_:
 			log_message("Unknown command type: " + command.type, LogLevel.ERROR)
 			proceed_to_next()
@@ -226,6 +275,63 @@ func _on_subtitle_completed():
 	waiting_for_click = false
 	current_index += 1
 	execute_current_command()
+
+# エピソードIDをパスから抽出
+func _extract_episode_id_from_path(scenario_path: String) -> String:
+	if not trophy_manager:
+		return ""
+	return trophy_manager.extract_episode_id(scenario_path)
+
+# エピソードをクリア済みとして記録
+func _clear_episode(episode_id: String):
+	if trophy_manager:
+		trophy_manager.clear_episode(episode_id)
+	else:
+		log_message("TrophyManager not available, cannot clear episode: " + episode_id, LogLevel.DEBUG)
+
+# 元のシナリオに戻る
+func _return_to_previous_scenario():
+	if scenario_stack.size() == 0:
+		log_message("No previous scenario to return to", LogLevel.DEBUG)
+		return
+	
+	var previous = scenario_stack.pop_back()
+	scenario = previous.scenario
+	current_scenario_path = previous.path
+	current_index = previous.index
+	var new_page_after_return = previous.get("new_page_after_return", true)
+	_initialize_index_map()
+	
+	log_message("Returned to previous scenario: " + current_scenario_path + " at index " + str(current_index), LogLevel.INFO)
+	
+	# ページ区切りが必要な場合は、次のコマンドにnew_pageを適用
+	if new_page_after_return and current_index < scenario.size():
+		var next_command = scenario[current_index]
+		if next_command is Dictionary and next_command.has("type"):
+			# 次のコマンドがdialogueの場合、new_pageを追加
+			if next_command.type == "dialogue":
+				# new_pageが既に設定されていない場合のみ追加
+				if not next_command.has("new_page") or not next_command.new_page:
+					next_command["new_page"] = true
+					log_message("Applied new_page to next command after returning from episode", LogLevel.DEBUG)
+			# テキストバッファをクリア（新しいページの開始）
+			novel_system.clear_text_buffers()
+	
+	# 次のコマンドを実行
+	execute_current_command()
+
+# シナリオ終了時にエピソードをクリア済みとして記録（自動判定）
+func _check_and_clear_episode():
+	if not trophy_manager:
+		return
+	
+	# 現在のシナリオパスからエピソードIDを抽出
+	var episode_id = _extract_episode_id_from_path(current_scenario_path)
+	
+	if episode_id != "":
+		_clear_episode(episode_id)
+	else:
+		log_message("Could not determine episode_id from scenario path: " + current_scenario_path, LogLevel.DEBUG)
 
 # ログメッセージの出力（NovelSystemと同様のログ機能）
 func log_message(message, level = LogLevel.INFO):
