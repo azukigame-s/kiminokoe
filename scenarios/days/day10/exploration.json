@@ -1,7 +1,7 @@
 [
 	{
 		"type": "dialogue",
-		"text": "どこに行こうか？",
+		"text": "さて、どこに行こうか？",
 		"new_page": true
 	},
 	{
@@ -9,22 +9,22 @@
 		"choices": [
 			{
 				"id": "beach",
-				"text": "海辺",
+				"text": "北（海の方）に向かう",
 				"scenario": "branches/day10/location_beach"
 			},
 			{
 				"id": "busstop",
-				"text": "バス停",
+				"text": "東（湧き水の方）に向かう",
 				"scenario": "branches/day10/location_busstop"
 			},
 			{
 				"id": "underpass",
-				"text": "地下道",
+				"text": "南（お寺の方）に向かう",
 				"scenario": "branches/day10/location_underpass"
 			},
 			{
 				"id": "home",
-				"text": "実家",
+				"text": "西（バス停の方）に向かう",
 				"scenario": "branches/day10/location_home"
 			}
 		]
