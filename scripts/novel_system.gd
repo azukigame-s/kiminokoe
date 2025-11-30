@@ -361,14 +361,31 @@ func complete_text():
 			display_next_text_from_buffer()
 		else:
 			log_message("All text in buffer displayed", LogLevel.DEBUG)
+			
+			# 現在のテキストアイテムの go_next フラグを確認
+			var should_clear = false
+			if current_page_index < page_text_buffer.size():
+				var current_item = page_text_buffer[current_page_index]
+				if current_item.get("go_next", false):
+					should_clear = true
+					log_message("go_next flag is true, clearing text buffers", LogLevel.DEBUG)
+			
 			show_indicator = false
 			_update_displayed_text()
-			text_click_processed.emit()
 			
-			# ここでTestScenarioの処理を待ち、次のテキストがバッファに追加されたかチェック
-			await get_tree().process_frame
-			if has_more_text_in_buffer():
-				display_next_text_from_buffer()
+			# go_next が true の場合はテキストをクリア
+			if should_clear:
+				clear_text_buffers()
+				# go_next の場合は、次のテキストを待たずにすぐに次のコマンドに進む
+				text_click_processed.emit()
+			else:
+				# go_next でない場合は、従来通り次のテキストがバッファに追加されるのを待つ
+				text_click_processed.emit()
+				
+				# ここでTestScenarioの処理を待ち、次のテキストがバッファに追加されたかチェック
+				await get_tree().process_frame
+				if has_more_text_in_buffer():
+					display_next_text_from_buffer()
 
 # 背景変更（フェードイン付き）
 var background_fade_in_progress: bool = false
