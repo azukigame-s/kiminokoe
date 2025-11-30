@@ -275,6 +275,11 @@ func _on_text_completed():
 func _on_click_processed():
 	log_message("Click processed signal received", LogLevel.DEBUG)
 	
+	# サブタイトル表示中は次のコマンドに進まない
+	if waiting_for_subtitle:
+		log_message("Waiting for subtitle to complete", LogLevel.DEBUG)
+		return
+	
 	# 選択肢が表示されている場合は次のコマンドに進まない
 	if last_choice_index >= 0 and last_choice_index < scenario.size():
 		var choice_command = scenario[last_choice_index]
