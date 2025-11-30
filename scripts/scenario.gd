@@ -210,9 +210,30 @@ func execute_current_command():
 					waiting_for_background_fade = false
 				# さらに少し待ってからサブタイトルを表示（フェードイン完了を確実にする）
 				await get_tree().create_timer(0.2).timeout
+			
+			# サブタイトル表示を開始
 			novel_system.show_subtitle(subtitle_text, fade_time, display_time)
-			waiting_for_subtitle = true
-			waiting_for_click = true
+			
+			# 次のコマンドが background タイプかどうかを確認
+			var next_is_background = false
+			if current_index + 1 < scenario.size():
+				var next_command = scenario[current_index + 1]
+				if next_command.type == "background":
+					next_is_background = true
+					log_message("Next command is background, executing in parallel", LogLevel.DEBUG)
+			
+			if next_is_background:
+				# 次のコマンドが background の場合は並列実行
+				# サブタイトル完了を待たずに次のコマンドを実行
+				waiting_for_subtitle = true  # フラグは設定するが、完了を待たない
+				waiting_for_click = true
+				# 次のコマンドを並列で実行
+				current_index += 1
+				execute_current_command()
+			else:
+				# それ以外の場合は従来通りサブタイトル完了を待つ
+				waiting_for_subtitle = true
+				waiting_for_click = true
 		"choice":
 			log_message("Showing choices with " + str(command.choices.size()) + " options", LogLevel.INFO)
 			last_choice_index = current_index  # 選択肢コマンドのインデックスを記録
@@ -298,8 +319,27 @@ func _on_subtitle_completed():
 	log_message("Subtitle completed signal received", LogLevel.DEBUG)
 	waiting_for_subtitle = false
 	waiting_for_click = false
-	current_index += 1
-	execute_current_command()
+	
+	# 次のコマンドが既に実行されているかどうかを確認
+	# (background の場合は既に実行されているため、current_index を進めない)
+	var should_advance = true
+	if current_index < scenario.size():
+		var current_command = scenario[current_index]
+		# 現在のコマンドが background で、まだ実行中の場合（フェードイン中）は待つ
+		if current_command.type == "background" and novel_system.background_fade_in_progress:
+			should_advance = false
+			log_message("Background fade in still in progress, waiting...", LogLevel.DEBUG)
+			# 背景フェードイン完了を待つ
+			while novel_system.background_fade_in_progress:
+				await novel_system.background_fade_in_completed
+	
+	if should_advance:
+		current_index += 1
+		execute_current_command()
+	else:
+		# 背景フェードイン完了後に次のコマンドに進む
+		current_index += 1
+		execute_current_command()
 
 # 背景フェードイン完了時の処理
 func _on_background_fade_in_completed():
