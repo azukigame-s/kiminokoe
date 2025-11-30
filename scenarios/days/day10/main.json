@@ -1,0 +1,260 @@
+[
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/busstop.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "右手で日差しを遮り目を慣らせ、ゆっくりと手を下ろすと――、そこにはひとりの少女が立っていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おかえり！　私のこと覚えてる？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "天真爛漫を絵に書いたような彼女はこちらに笑顔を見せている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は――。"
+	},
+	{
+		"type": "choice",
+		"choices": [
+			{
+				"id": "remember_yes",
+				"text": "はい",
+				"next_index": 400
+			},
+			{
+				"id": "remember_no",
+				"text": "いいえ",
+				"next_index": 500
+			}
+		]
+	},
+	{
+		"type": "index",
+		"index": 400
+	},
+	{
+		"type": "dialogue",
+		"text": "「ふふふ、良かった。改めてお兄ちゃんおかえり！」",
+		"new_page": true
+	},
+	{
+		"type": "jump",
+		"index": 600
+	},
+	{
+		"type": "index",
+		"index": 500
+	},
+	{
+		"type": "dialogue",
+		"text": "「ちょっとぉ、お兄ちゃんの冗談分かりづらいんだからやめてよね！」",
+		"new_page": true
+	},
+	{
+		"type": "jump",
+		"index": 600
+	},
+	{
+		"type": "index",
+		"index": 600
+	},
+	{
+		"type": "dialogue",
+		"text": "そう、彼女はイロ。中学２年生の妹だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「荷物は……大丈夫そうだね！　じゃあ帰ろう！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "今日は１０月１０日。"
+	},
+	{
+		"type": "dialogue",
+		"text": "弟の命日だった。",
+		"go_next": true
+	},
+	{
+		"type": "subtitle",
+		"text": "10月10日",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/underpass.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "バス停は海に面しており、潮の香りがした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "歩道には地下へと続く階段が伸びている。バス停から村側へ渡るための地下道へ続く階段だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "辺鄙な村を走る車道のため信号や横断歩道がない。バスで通学を行う小学生が安全に道路を渡れるようにと作られたものらしい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「わたし地下道嫌いなんだよね～」"
+	},
+	{
+		"type": "dialogue",
+		"text": "妹のそんな言葉に耳を傾けながら階段を降りていくと、あたりは次第に薄暗くなっていく。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "とはいえ、以前に比べて随分明るかった。弟のことがあってから照明が整備されたそうだ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "照明が整備されたのは中学生になってからだし、中学は自転車通学だったから明るくなった地下道を通るのは初めてかもしれない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「……でね、その先輩がね――。あれ？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんな妹の反応と同時に、ひとりの少年の姿が僕の目にも飛び込んできた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "肌が白く少しカールした黒髪の少年は、地下道の突き当りにぽつんと立っていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "小学校低学年くらいだろうか……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "少年はこちらの姿をじっと見つめたあと、地下道から海へと続く階段の方へ姿を消してしまった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちは地下道を突き当りまで進み、その階段の方を見たが、すでに少年の姿はなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "こんな季節に、海に行く用事があったのだろうか？"
+	},
+	{
+		"type": "dialogue",
+		"text": "そもそも低学年がひとりで海に行くのは少し危ないのでは？"
+	},
+	{
+		"type": "dialogue",
+		"text": "いろいろな疑問が頭を駆け巡っていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「う～ん……。あんな子、ダキにいたかな？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ダキ――、懐かしい響きだった。この村に住む人は地蔵焚《ジゾウダキ》という地名にちなんで村のことを『ダキ』と呼んでいた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "考えても仕方がない。頭を悩ませていた疑問はいったん置いておくことにした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "妹も同じ結論に達したようで、右手を顎にあて頭をかしげていたが、すぐに僕の方に向き直った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「まっ、考えていても仕方ないね。帰ろっか！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷き、階段とは反対の村へと続く道を進んだ。",
+		"go_next": true
+	},
+	{
+		"type": "subtitle",
+		"text": "15:30",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "「ただいまー」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "久しぶりの実家だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "妹の張りのある声を聞いて祖母が顔をのぞかせた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「おかえり、[主人公]ちゃん。梨用意しとるけぇ食べないな」"
+	},
+	{
+		"type": "dialogue",
+		"text": "なまりの強い言葉に懐かしさを感じつつ、僕はうなずき中に入った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の実家は和室中心の一軒家で、二階にある妹の部屋と、かつて僕が使っていた部屋だけが洋室になっている。このあたりではごく一般的な造りの家だった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "弟の法事は明日の午後から予定されいている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "今日、明日と２泊して、明後日１０月１２日の夕方のバスで変える予定だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "客間として利用している和室、座敷机に置かれた梨を頬張りながら今後の予定を整理していた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "法事だからといって、僕自身がなにかするわけではない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お皿にはカットされた梨が気の向くままに散らばっている。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "それをひとつ手に取り、口に放り込み僕は席を立った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "時計を見ると16時前。夕食まで時間もあるし、久しぶりにダキを見て回ろう。"
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day10/exploration",
+		"new_page_after_return": true
+	}
+]
+

@@ -1,0 +1,33 @@
+[
+	{
+		"type": "dialogue",
+		"text": "どこに行こうか？",
+		"new_page": true
+	},
+	{
+		"type": "choice",
+		"choices": [
+			{
+				"id": "beach",
+				"text": "海辺",
+				"scenario": "branches/day10/location_beach"
+			},
+			{
+				"id": "busstop",
+				"text": "バス停",
+				"scenario": "branches/day10/location_busstop"
+			},
+			{
+				"id": "underpass",
+				"text": "地下道",
+				"scenario": "branches/day10/location_underpass"
+			},
+			{
+				"id": "home",
+				"text": "実家",
+				"scenario": "branches/day10/location_home"
+			}
+		]
+	}
+]
+
