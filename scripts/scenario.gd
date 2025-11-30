@@ -159,7 +159,8 @@ func execute_current_command():
 	
 	match command.type:
 		"background":
-			await novel_system.change_background(command.path)
+			var effect = command.get("effect", "normal")  # "normal", "sepia", "grayscale"
+			await novel_system.change_background(command.path, true, 0.5, effect)
 			proceed_to_next()
 		"dialogue":
 			var current_dialog = command.text
@@ -276,6 +277,15 @@ func execute_current_command():
 				_clear_episode(episode_id)
 			else:
 				log_message("ERROR: episode_clear command: Could not determine episode_id", LogLevel.ERROR)
+			proceed_to_next()
+		"flashback_start":
+			# 回想モード開始
+			var effect_type = command.get("effect", "sepia")  # "sepia" または "grayscale"
+			novel_system.start_flashback(effect_type)
+			proceed_to_next()
+		"flashback_end":
+			# 回想モード終了
+			novel_system.end_flashback()
 			proceed_to_next()
 		_:
 			log_message("Unknown command type: " + command.type, LogLevel.ERROR)

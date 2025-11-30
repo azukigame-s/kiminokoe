@@ -73,6 +73,10 @@
 		"go_next": true
 	},
 	{
+		"type": "flashback_start",
+		"effect": "grayscale"
+	},
+	{
 		"type": "dialogue",
 		"text": "『次は――』",
 		"new_page": true
@@ -231,6 +235,9 @@
 		"type": "dialogue",
 		"text": "あたりの音も聞こえなくなるなか、鳶の鳴き声だけが耳に残っていた――――。",
 		"go_next": true
+	},
+	{
+		"type": "flashback_end"
 	},
 	{
 		"type": "dialogue",

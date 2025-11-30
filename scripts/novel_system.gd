@@ -389,8 +389,11 @@ func complete_text():
 
 # 背景変更（フェードイン付き）
 var background_fade_in_progress: bool = false
+var current_background_effect: String = "normal"  # "normal", "sepia", "grayscale"
+var is_flashback_mode: bool = false  # 回想モード中かどうか
+var flashback_effect_type: String = "sepia"  # 回想時のエフェクトタイプ（"sepia" または "grayscale"）
 
-func change_background(background_path, use_fade: bool = true, fade_duration: float = 0.5):
+func change_background(background_path, use_fade: bool = true, fade_duration: float = 0.5, effect: String = "normal"):
 	if not background:
 		log_message("ERROR: Background node is null", LogLevel.ERROR)
 		return
@@ -412,6 +415,14 @@ func change_background(background_path, use_fade: bool = true, fade_duration: fl
 	background.texture = bg_texture
 	background.visible = true
 	_setup_fullscreen_element(background)
+	
+	# エフェクトを適用（回想モード中は自動的に色調変更を適用）
+	var effect_to_apply = effect
+	if is_flashback_mode and effect == "normal":
+		# 回想モード中は指定されたエフェクトを適用
+		effect_to_apply = flashback_effect_type
+	# 背景変更時はアニメーションなしで即座に適用（フェードインと同時に色調も適用）
+	_apply_background_effect(effect_to_apply, false)
 	
 	if use_fade:
 		# フェードイン処理
@@ -437,7 +448,73 @@ func change_background(background_path, use_fade: bool = true, fade_duration: fl
 	log_message("- Visible: " + str(background.visible), LogLevel.DEBUG)
 	log_message("- Modulate: " + str(background.modulate), LogLevel.DEBUG)
 	log_message("- Size: " + str(background.size), LogLevel.DEBUG)
+	log_message("- Effect: " + effect, LogLevel.DEBUG)
 	log_message("Background changed successfully.", LogLevel.INFO)
+
+# 背景エフェクトを適用（アニメーション付き）
+func _apply_background_effect(effect: String, use_animation: bool = true, duration: float = 0.8):
+	if not background:
+		return
+	
+	current_background_effect = effect
+	
+	var target_material: ShaderMaterial = null
+	var target_modulate: Color = Color(1, 1, 1, 1)
+	
+	match effect:
+		"sepia":
+			# セピア調エフェクト（シェーダーを使用）
+			var sepia_shader = load("res://shaders/sepia.gdshader")
+			if sepia_shader:
+				target_material = ShaderMaterial.new()
+				target_material.shader = sepia_shader
+				log_message("Applied sepia effect to background", LogLevel.DEBUG)
+			else:
+				log_message("ERROR: Failed to load sepia shader", LogLevel.ERROR)
+		"grayscale":
+			# グレースケールエフェクト（シェーダーを使用）
+			var grayscale_shader = load("res://shaders/grayscale.gdshader")
+			if grayscale_shader:
+				target_material = ShaderMaterial.new()
+				target_material.shader = grayscale_shader
+				log_message("Applied grayscale effect to background", LogLevel.DEBUG)
+			else:
+				log_message("ERROR: Failed to load grayscale shader", LogLevel.ERROR)
+		"normal", _:
+			# エフェクトを解除
+			target_material = null
+			log_message("Removed background effect", LogLevel.DEBUG)
+	
+	if use_animation:
+		# アニメーションでエフェクトを切り替え
+		# フェードアウト → エフェクト変更 → フェードイン
+		var current_alpha = background.modulate.a
+		var half_duration = duration / 2.0
+		
+		# フェードアウト
+		var fade_out_tween = create_tween()
+		if fade_out_tween:
+			fade_out_tween.tween_property(background, "modulate:a", 0.0, half_duration)
+			await fade_out_tween.finished
+		else:
+			background.modulate.a = 0.0
+			await get_tree().create_timer(half_duration).timeout
+		
+		# エフェクトを適用（alpha は 0 のまま）
+		background.material = target_material
+		background.modulate = Color(target_modulate.r, target_modulate.g, target_modulate.b, 0.0)
+		
+		# フェードイン（保存した alpha に戻す）
+		var fade_in_tween = create_tween()
+		if fade_in_tween:
+			fade_in_tween.tween_property(background, "modulate:a", current_alpha, half_duration)
+			await fade_in_tween.finished
+		else:
+			background.modulate.a = current_alpha
+	else:
+		# アニメーションなしで即座に適用
+		background.material = target_material
+		background.modulate = target_modulate
 
 # BGM再生
 func play_bgm(bgm_path):
@@ -563,3 +640,20 @@ func log_message(message, level = LogLevel.INFO):
 				prefix = "[ERROR] "
 		
 		print(prefix + message)
+
+# 回想モード開始
+func start_flashback(effect_type: String = "sepia"):
+	log_message("Starting flashback mode with effect: " + effect_type, LogLevel.INFO)
+	is_flashback_mode = true
+	flashback_effect_type = effect_type
+	# 現在の背景にエフェクトを適用（アニメーション付き）
+	if background and background.visible:
+		await _apply_background_effect(flashback_effect_type, true, 0.8)
+
+# 回想モード終了
+func end_flashback():
+	log_message("Ending flashback mode", LogLevel.INFO)
+	is_flashback_mode = false
+	# 現在の背景のエフェクトを解除（アニメーション付き）
+	if background and background.visible:
+		await _apply_background_effect("normal", true, 0.8)
