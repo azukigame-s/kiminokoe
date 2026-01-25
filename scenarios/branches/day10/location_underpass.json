@@ -1,0 +1,74 @@
+[
+	{
+		"type": "dialogue",
+		"text": "家を出て南に進むと、お寺が見えてきた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "明日はここの住職に法要をしてもらうことになる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "子供のころはお寺の鐘をついて遊んだり、ここを溜まり場にしていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺の片隅には湧水があり、柄杓が置かれている。スグとよくここで水を飲んだものだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺の敷地に入り、境内を歩いていると、ふと裏山の大きな木のことを思い出した。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグと秘密基地にしていた場所だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はそこに足を運んだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺を出て裏山を少し登ると、雑木林が開けた場所に出た。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "その中央には立派な木がそびえ立っていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "まるで御神木のような佇まいだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "いや……お寺だから御仏木か――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんなくだらないことを考えている自分に、少し苦笑いした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "木の根元――僕たちの秘密基地は、雑草に覆われていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグと最後にここに来たのはいつだっただろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "今の子供たちはもうここで遊んでいないようだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "なんとなく物寂しい気持ちになり、僕はその場を後にした。"
+	}
+]
+

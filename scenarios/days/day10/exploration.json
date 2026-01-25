@@ -1,8 +1,12 @@
 [
 	{
 		"type": "dialogue",
-		"text": "さて、どこに行こうか？",
+		"text": "僕の実家は村のちょうど真ん中くらいにあり、東西南北に道が伸びている。",
 		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "さて、どこに行こうか？"
 	},
 	{
 		"type": "choice",

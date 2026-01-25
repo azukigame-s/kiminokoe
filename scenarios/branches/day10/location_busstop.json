@@ -1,0 +1,68 @@
+[
+	{
+		"type": "dialogue",
+		"text": "ダキには「兄の水」「弟の水」と呼ばれる二筋の清流がある。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "家から東に進むと程なく「兄の水」にたどり着いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "山から流れるこの水は透き通っており、いまだに飲み水として村で利用されている。遠方から水を汲みに来る人もいるほどだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「兄の水」は軟水、「弟の水」は硬水らしく、コーヒーに使い分ける人もいるそうだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "柄杓で水をひとすくいし口へ運んだ。冷たくておいしい。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――兄と弟、か。"
+	},
+	{
+		"type": "dialogue",
+		"text": "なぜこのような名前なのか知らなかったが、なんとなく自分とスグを思い浮かべていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "水の流れる音に耳を澄ませていると、聞き覚えのある声が聞こえた気がした――。",
+		"new_page": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/episode_06",
+		"new_page_after_return": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「兄の水」を立ち去ろうとすると、入れ違いに水を汲みに来たおばあさんとすれ違った。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "おばあさんは手に空のペットボトルを持ち、何かを口ずさんでいる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "耳を凝らすと聞き覚えのあるメロディーだった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "どこで聞いたのだろう？",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "子供のころに聞いた記憶はあるのだが、思い出せなかった。"
+	}
+]
+

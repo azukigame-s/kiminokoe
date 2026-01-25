@@ -1,0 +1,57 @@
+[
+	{
+		"type": "dialogue",
+		"text": "家から西に進む。先ほどバス停から実家へ向かった道を戻ることにした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "村の様子はあまり変わっていなかった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "村唯一の自動販売機。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "いまだに現役で稼働しているようだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "公民館。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "看板は少し色褪せているが、昔と変わらない佇まいだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――ひとつだけ変わっていた。海が見える高台に、大きな空き地が広がっていたのだ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "軽トラックが数台停まっており、今は駐車場として利用されているようだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "空き地に足を踏み入れ、そこから見える海を眺める。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "薄暗くなり始めた空を見上げると、聞き覚えのある声が聞こえた気がした――。",
+		"new_page": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/episode_01",
+		"new_page_after_return": true
+	}
+]
+
