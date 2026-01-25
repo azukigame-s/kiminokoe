@@ -30,6 +30,13 @@ var indicator_blink_timer = 0.0
 # サブタイトル表示状態
 var is_showing_subtitle = false
 
+# スキップモード関連
+var is_skip_mode = false
+var ctrl_hold_timer = 0.0
+var ctrl_hold_duration = 2.0  # 2秒長押し
+var is_ctrl_pressed = false
+var skip_confirmation_dialog = null
+
 # 設定値 - ProjectSettingsから取得するように変更
 var text_speed: float
 var indicator_blink_speed: float
@@ -74,6 +81,9 @@ func _ready():
 		
 		# サブタイトルシステムのセットアップ
 		_setup_subtitle_system()
+		
+		# スキップ確認ダイアログのセットアップ
+		_setup_skip_dialog()
 		
 		initialized.emit()
 	else:
@@ -194,6 +204,42 @@ func _setup_subtitle_system():
 	else:
 		log_message("WARNING: Subtitle scene not found - subtitle functionality disabled", LogLevel.INFO)
 
+# スキップ確認ダイアログのセットアップ
+func _setup_skip_dialog():
+	skip_confirmation_dialog = ConfirmationDialog.new()
+	skip_confirmation_dialog.dialog_text = "スキップしますか？\n選択肢まで自動で進みます。"
+	skip_confirmation_dialog.ok_button_text = "はい"
+	skip_confirmation_dialog.cancel_button_text = "いいえ"
+	skip_confirmation_dialog.confirmed.connect(_on_skip_confirmed)
+	skip_confirmation_dialog.canceled.connect(_on_skip_canceled)  # ×ボタンでも発行される
+	add_child(skip_confirmation_dialog)
+	log_message("Skip confirmation dialog setup complete", LogLevel.DEBUG)
+
+# スキップ確認ダイアログで「はい」が選択された
+func _on_skip_confirmed():
+	is_skip_mode = true
+	log_message("Skip mode enabled", LogLevel.INFO)
+	skip_confirmation_dialog.hide()
+	# スキップモード開始時、現在のテキストを即座に完了
+	if not is_text_completed:
+		complete_text_display()
+
+# スキップ確認ダイアログで「いいえ」が選択された（×ボタンでも発行される）
+func _on_skip_canceled():
+	log_message("Skip mode cancelled", LogLevel.DEBUG)
+	skip_confirmation_dialog.hide()
+	# Ctrlキーのタイマーをリセット（再度ダイアログが表示されないように）
+	ctrl_hold_timer = 0.0
+	is_ctrl_pressed = false
+
+# スキップモードを停止
+func stop_skip_mode():
+	is_skip_mode = false
+	log_message("Skip mode disabled", LogLevel.INFO)
+	# Ctrlキーの状態とタイマーもリセット（再度ダイアログが表示されないように）
+	ctrl_hold_timer = 0.0
+	is_ctrl_pressed = false
+
 # 要素をフルスクリーンに設定
 func _setup_fullscreen_element(element):
 	if not element:
@@ -214,8 +260,27 @@ func _setup_fullscreen_element(element):
 		element.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 
 func _process(delta):
-	# 文字送り処理
-	if not is_text_completed:
+	# Ctrlキーの長押し検出
+	if is_ctrl_pressed:
+		ctrl_hold_timer += delta
+		if ctrl_hold_timer >= ctrl_hold_duration and not skip_confirmation_dialog.visible:
+			# 2秒長押しで確認ダイアログを表示
+			if not is_skip_mode:
+				skip_confirmation_dialog.popup_centered()
+				log_message("Skip confirmation dialog shown", LogLevel.DEBUG)
+				# ダイアログ表示後、タイマーをリセット（連続表示を防ぐ）
+				ctrl_hold_timer = 0.0
+	else:
+		ctrl_hold_timer = 0.0
+	
+	# スキップモード中の処理
+	if is_skip_mode:
+		# テキストが未完了の場合は即座に完了
+		if not is_text_completed:
+			complete_text_display()
+	
+	# 文字送り処理（スキップモード中はスキップ）
+	if not is_skip_mode and not is_text_completed:
 		text_timer += delta
 		if text_timer >= text_speed:
 			text_timer = 0
@@ -228,8 +293,8 @@ func _process(delta):
 				_update_displayed_text()
 				text_completed.emit()
 	
-	# インジケーターの点滅処理
-	if is_text_completed and show_indicator:
+	# インジケーターの点滅処理（スキップモード中は非表示）
+	if not is_skip_mode and is_text_completed and show_indicator:
 		indicator_blink_timer += delta
 		if indicator_blink_timer >= indicator_blink_speed:
 			indicator_blink_timer = 0
@@ -381,11 +446,11 @@ func complete_text():
 			else:
 				# go_next でない場合は、従来通り次のテキストがバッファに追加されるのを待つ
 				text_click_processed.emit()
-				
-				# ここでTestScenarioの処理を待ち、次のテキストがバッファに追加されたかチェック
-				await get_tree().process_frame
-				if has_more_text_in_buffer():
-					display_next_text_from_buffer()
+			
+			# ここでTestScenarioの処理を待ち、次のテキストがバッファに追加されたかチェック
+			await get_tree().process_frame
+			if has_more_text_in_buffer():
+				display_next_text_from_buffer()
 
 # 背景変更（フェードイン付き）
 var background_fade_in_progress: bool = false
@@ -615,6 +680,13 @@ func show_subtitle(text: String, fade_time: float = 1.0, display_time: float = 2
 
 # 入力イベント処理
 func _input(event):
+	# Ctrlキーの押下状態を検出
+	if event is InputEventKey:
+		if event.keycode == KEY_CTRL or event.keycode == KEY_META:  # Macの場合はMETAキー
+			is_ctrl_pressed = event.pressed
+			if not event.pressed:
+				ctrl_hold_timer = 0.0
+	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			# サブタイトル表示中はスキップ
@@ -622,6 +694,9 @@ func _input(event):
 				if subtitle_scene.has_method("skip_subtitle"):
 					subtitle_scene.skip_subtitle()
 					log_message("Subtitle skipped by click", LogLevel.DEBUG)
+				return
+			# スキップモード中は自動進行のためクリック処理をスキップ
+			if is_skip_mode:
 				return
 			# 通常のテキスト進行
 			complete_text()

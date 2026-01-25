@@ -182,6 +182,10 @@ func execute_current_command():
 					log_message("Added text to buffer: " + current_dialog, LogLevel.DEBUG)
 			
 			waiting_for_click = true
+			
+			# スキップモード中はテキストを即座に完了（自動進行は_processで処理）
+			if novel_system.is_skip_mode:
+				novel_system.complete_text_display()
 		"bgm":
 			novel_system.play_bgm(command.path)
 			proceed_to_next()
@@ -189,6 +193,11 @@ func execute_current_command():
 			novel_system.play_sfx(command.path)
 			proceed_to_next()
 		"subtitle":
+			# スキップモード中はサブタイトルをスキップ
+			if novel_system.is_skip_mode:
+				proceed_to_next()
+				return
+			
 			var subtitle_text = command.get("text", "")
 			var fade_time = command.get("fade_time", 1.0)
 			var display_time = command.get("display_time", 2.0)
@@ -236,6 +245,9 @@ func execute_current_command():
 				waiting_for_subtitle = true
 				waiting_for_click = true
 		"choice":
+			# 選択肢でスキップモードを停止
+			if novel_system.is_skip_mode:
+				novel_system.stop_skip_mode()
 			log_message("Showing choices with " + str(command.choices.size()) + " options", LogLevel.INFO)
 			last_choice_index = current_index  # 選択肢コマンドのインデックスを記録
 			novel_system.show_choices(command.choices)
@@ -292,12 +304,35 @@ func execute_current_command():
 			proceed_to_next()
 
 func proceed_to_next():
-	if waiting_for_click:
+	if waiting_for_click and not novel_system.is_skip_mode:
 		return
 		
 	current_index += 1
 	if current_index < scenario.size():
 		execute_current_command()
+
+func _process(delta):
+	# スキップモード中の自動進行処理
+	if novel_system and novel_system.is_skip_mode:
+		# サブタイトル表示中は待つ
+		if waiting_for_subtitle:
+			return
+		# 選択肢が表示されている場合は待つ
+		if last_choice_index >= 0 and last_choice_index < scenario.size():
+			var choice_command = scenario[last_choice_index]
+			if choice_command.type == "choice" and current_index == last_choice_index:
+				return
+		# スキップモード中は、テキストが完了していれば自動進行
+		if waiting_for_click and novel_system.is_text_completed:
+			# バッファに次のテキストがある場合は、それを表示
+			if novel_system.has_more_text_in_buffer():
+				novel_system.display_next_text_from_buffer()
+			# バッファに次のテキストがない場合は、次のコマンドに進む
+			else:
+				waiting_for_click = false
+				current_index += 1
+				if current_index < scenario.size():
+					execute_current_command()
 
 func _on_text_completed():
 	log_message("Text completed signal received", LogLevel.DEBUG)
@@ -305,6 +340,10 @@ func _on_text_completed():
 
 func _on_click_processed():
 	log_message("Click processed signal received", LogLevel.DEBUG)
+	
+	# スキップモード中は自動進行のため、クリック処理をスキップ
+	if novel_system.is_skip_mode:
+		return
 	
 	# サブタイトル表示中は次のコマンドに進まない
 	if waiting_for_subtitle:

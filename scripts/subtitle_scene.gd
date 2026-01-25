@@ -133,7 +133,6 @@ func _update_label_position():
 		return
 	
 	var screen_width = get_viewport_rect().size.x
-	var screen_height = get_viewport_rect().size.y
 	var label_width = screen_width * 0.8  # 画面幅の80%
 	var font_size = 48
 	
