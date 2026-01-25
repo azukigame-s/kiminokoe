@@ -10,6 +10,10 @@
 		"go_next": true
 	},
 	{
+		"type": "flashback_start",
+		"effect": "grayscale"
+	},
+	{
 		"type": "dialogue",
 		"text": "……。",
 		"new_page": true
@@ -222,6 +226,9 @@
 	{
 		"type": "dialogue",
 		"text": "………………。"
+	},
+	{
+		"type": "flashback_end"
 	},
 	{
 		"type": "dialogue",
