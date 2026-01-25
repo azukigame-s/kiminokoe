@@ -1,0 +1,41 @@
+[
+	{
+		"type": "dialogue",
+		"text": "海岸沿いを西に進むと砂浜が広く開けてきた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "砂浜の先には古めかしい建物――夏は海の家に使われている建物――も見えるが、今の季節は人気もない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "バス停で見た白い服の少年はこの辺りに降りてきたはずだが……その姿もなかった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "砂浜から波打ち際を眺めていると、波が思ったより穏やかなことに気づく。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "子供のころにはなかったテトラポットが設置されており、波を抑えているようだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "安全に海水浴を楽しむための工夫なのだろう。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "波の音に混じって、聞き覚えのある声が聞こえた気がした――。",
+		"new_page": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/episode_02",
+		"new_page_after_return": true
+	}
+]
+

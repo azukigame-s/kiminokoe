@@ -1,0 +1,45 @@
+[
+	{
+		"type": "dialogue",
+		"text": "海岸沿いを東に進むと徐々に岩場が目立つようになる。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "西の海水浴場は遠浅の海なのだが、東は岩場が多く泳ぐのには適していない地形だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただダキの子供たちは海水浴場で泳ぐのには飽きているので、岩場で潜って魚を捕ったりして楽しんでいた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は泳ぎが得意ではないのであまりできなかったが。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "そんなことを考えていると、川から海への合流地点にたどり着いた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "国道の下を川が通っており、子供たちの間では秘密基地のような場所として親しまれていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "今思うと子供だけで遊ぶのには危ない気もするが……。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "国道の下の用水路を見ていると、聞き覚えのある声が聞こえた気がした――。",
+		"new_page": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/episode_05",
+		"new_page_after_return": true
+	}
+]
+

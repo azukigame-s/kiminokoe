@@ -52,6 +52,21 @@
 		"type": "dialogue",
 		"text": "懐かしさはあるものの、ただ眺めているだけでは物足りなくなり、どちらかに歩いてみようと左右を見返した。",
 		"go_next": true
+	},
+	{
+		"type": "choice",
+		"choices": [
+			{
+				"id": "rocky_area",
+				"text": "岩場がある右に進む",
+				"scenario": "branches/day10/location_beach_rocky"
+			},
+			{
+				"id": "beach_area",
+				"text": "海水浴場がある左に進む",
+				"scenario": "branches/day10/location_beach_sandy"
+			}
+		]
 	}
 ]
 
