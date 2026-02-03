@@ -59,12 +59,12 @@
 			{
 				"id": "rocky_area",
 				"text": "岩場がある右に進む",
-				"scenario": "branches/day10/location_beach_rocky"
+				"scenario": "branches/day_1010/day_1010_c_1"
 			},
 			{
 				"id": "beach_area",
 				"text": "海水浴場がある左に進む",
-				"scenario": "branches/day10/location_beach_sandy"
+				"scenario": "branches/day_1010/shared_day_1010_c"
 			}
 		]
 	}

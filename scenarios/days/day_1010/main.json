@@ -253,7 +253,7 @@
 	},
 	{
 		"type": "load_scenario",
-		"path": "days/day10/exploration",
+		"path": "days/day_1010/exploration",
 		"new_page_after_return": true
 	}
 ]

@@ -14,22 +14,22 @@
 			{
 				"id": "beach",
 				"text": "北（海の方）に向かう",
-				"scenario": "branches/day10/location_beach"
+				"scenario": "branches/day_1010/day_1010_b_1"
 			},
 			{
 				"id": "busstop",
 				"text": "東（湧き水の方）に向かう",
-				"scenario": "branches/day10/location_busstop"
+				"scenario": "branches/day_1010/day_1010_b_2"
 			},
 			{
 				"id": "underpass",
 				"text": "南（お寺の方）に向かう",
-				"scenario": "branches/day10/location_underpass"
+				"scenario": "branches/day_1010/day_1010_b_3"
 			},
 			{
 				"id": "home",
 				"text": "西（バス停の方）に向かう",
-				"scenario": "branches/day10/location_home"
+				"scenario": "branches/day_1010/day_1010_b_4"
 			}
 		]
 	}

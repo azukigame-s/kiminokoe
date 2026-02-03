@@ -271,7 +271,7 @@
 	},
 	{
 		"type": "load_scenario",
-		"path": "days/day10/main",
+		"path": "days/day_1010/main",
 		"new_page_after_return": true
 	}
 ]

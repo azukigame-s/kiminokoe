@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="kiminokoe"
 run/main_scene="uid://cj36ss042ie7t"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 config/visual_novel/text_speed=0.05
 config/visual_novel/indicator_blink_speed=0.5

@@ -285,21 +285,25 @@ kiminokoe/
 
 シナリオJSONは以下の規則で統一する：
 
+#### 基本ルール
+- 選択肢ID `opt_day_MMDD_X_N` → ファイル名 `day_MMDD_X_N.json`
+- 共通シナリオ → ファイル名 `shared_day_MMDD_X.json`
+
 ```
 scenarios/
 ├── main.json                          # エントリーポイント
 ├── days/
-│   ├── day_1010_main.json             # 10月10日メイン
-│   ├── day_1010_exploration.json      # 10月10日 自由時間
-│   ├── day_1011_main.json             # 10月11日メイン
-│   └── day_1012_main.json             # 10月12日メイン
+│   └── day_1010/                      # 10月10日
+│       ├── main.json                  # メインシナリオ
+│       └── exploration.json           # 自由時間（4方向の選択肢）
 ├── branches/
-│   ├── day_1010_north.json            # 北（海）
-│   ├── day_1010_north_rocky.json      # 北（岩場）
-│   ├── shared_day_1010_c.json         # 海水浴場（岩場・直行の両経路から呼び出される共通部分）
-│   ├── day_1010_east.json             # 東（湧き水）
-│   ├── day_1010_south.json            # 南（お寺）
-│   └── day_1010_west.json             # 西（バス停）
+│   └── day_1010/                      # 10月10日の分岐シナリオ
+│       ├── day_1010_b_1.json         # opt_day_1010_b_1: 北（海の入口）
+│       ├── day_1010_b_2.json         # opt_day_1010_b_2: 東（湧き水・兄の水）
+│       ├── day_1010_b_3.json         # opt_day_1010_b_3: 南（お寺）
+│       ├── day_1010_b_4.json         # opt_day_1010_b_4: 西（バス停方面）
+│       ├── day_1010_c_1.json         # opt_day_1010_c_1: 岩場
+│       └── shared_day_1010_c.json    # opt_day_1010_c_2: 共通（海水浴場）
 └── episodes/
     ├── ep_00.json                     # 命日（喧嘩バージョン）
     ├── ep_00_beta.json                # 命日（仲良しバージョン）
@@ -311,10 +315,22 @@ scenarios/
     └── ep_06.json                     # 沢蟹
 ```
 
+#### 選択肢とファイルの対応表
+
+| 選択肢ID | 選択肢テキスト | ファイル名 | 内容 |
+|---------|--------------|-----------|------|
+| opt_day_1010_b_1 | 北（海の方）に向かう | day_1010_b_1.json | 海の入口 |
+| opt_day_1010_b_2 | 東（湧き水の方）に向かう | day_1010_b_2.json | 兄の水（湧き水） |
+| opt_day_1010_b_3 | 南（お寺の方）に向かう | day_1010_b_3.json | お寺 |
+| opt_day_1010_b_4 | 西（バス停の方）に向かう | day_1010_b_4.json | バス停方面 |
+| opt_day_1010_c_1 | 東（岩場がある方）に進む | day_1010_c_1.json | 岩場 |
+| opt_day_1010_c_2 | 西（海水浴場がある方）に進む | shared_day_1010_c.json | 海水浴場（共通） |
+
 #### shared_ ファイルの命名規則
 - 複数の経路から呼び出される共通シナリオは、対応する選択肢識別子の `opt` を `shared` に置換したものを命名する
 - 例: 選択肢識別子が `opt_day_1010_c` なら、共通シナリオは `shared_day_1010_c`
 - これにより「どの選択肢の共通部分か」がファイル名から一見でわかる
+- 選択肢ID `opt_day_1010_c_2` に対応するが、ファイル名は `shared_day_1010_c.json` となる（`_2` は付けない）
 
 ### 未実装・今後の課題
 - ep_6「沢蟹」のエピソード本体

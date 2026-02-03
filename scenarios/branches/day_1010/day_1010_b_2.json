@@ -38,7 +38,7 @@
 	},
 	{
 		"type": "load_scenario",
-		"path": "episodes/episode_06",
+		"path": "episodes/ep_06",
 		"new_page_after_return": true
 	},
 	{
