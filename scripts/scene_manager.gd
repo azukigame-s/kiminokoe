@@ -24,9 +24,15 @@ var fade_duration: float = 0.5
 func _ready():
 	# フェードオーバーレイの作成
 	_create_fade_overlay()
-	
-	# ゲーム開始時はタイトルシーンへ（フェード無し、遅延実行）
+
+	# 現在のシーンがテストシーンの場合はスキップ
 	await get_tree().process_frame
+	var current_scene = get_tree().current_scene
+	if current_scene and current_scene.name == "TestScene":
+		print("[SceneManager] Test scene detected, skipping auto scene change")
+		return
+
+	# ゲーム開始時はタイトルシーンへ（フェード無し、遅延実行）
 	change_scene_instant(TITLE_SCENE)
 
 # フェードオーバーレイの作成
