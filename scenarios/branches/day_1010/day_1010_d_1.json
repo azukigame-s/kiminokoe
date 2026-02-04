@@ -1,0 +1,125 @@
+[
+	{
+		"type": "dialogue",
+		"text": "海岸沿いは定期的に階段が用意されていて、岩場がある西側にも階段が備え付けられていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はその階段を上がる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "階段の中ほどまで進んだところで、頬に大粒の雨粒が当たった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "空を見上げるとどんよりと暗い。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は慌てて階段を駆け上がり、バス停の待合用の小屋に逃げ込んだ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "そこにつく頃には雨は本降りになり始めていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "幸い屋根付きの小屋であったため、雨宿りはできていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "10月の雨は冷たい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "少し濡れたこともあり、体が冷えて僕は両腕を抱えながらこすり温めた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "以前にもこんなことがあった気がする……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "体を温めながら波が高くなってきた海を眺めていると、雨音に混じって、聞き覚えのある声が聞こえた気がした――。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/ep_03",
+		"new_page_after_return": true
+	},
+	{
+		"type": "dialogue",
+		"text": "向かいに見える反対車線のバス停の小屋に、白い服の少年が立っていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "真っ白な服、少しカールした黒髪。"
+	},
+	{
+		"type": "dialogue",
+		"text": "少年はじっとこちら見つめている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕もまっすぐと彼を見ていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "まるで靄でもかかっているかのように曖昧な姿に見えた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "眼の前を自動車が通り、改めて見た少年は雨に溶け込むように消えてしまっていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん！　こんなところにいたの！」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "明るいトーンの声に僕は現実に戻される。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "声の主はイロだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "右手に傘を差し、もう一つの傘を小脇に抱えている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "きっと僕の傘を届けてくれたのだろう。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あ～あ、濡れちゃってるじゃん。風邪を引かないうちに帰ろう！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はイロにありがとうと伝えるとともに、もう一度向かいのバス停を見た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "やはり誰もいない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの方に向き直り、家に帰ることにした。"
+	}
+]
+

@@ -1,0 +1,35 @@
+[
+	{
+		"type": "dialogue",
+		"text": "僕はもう少し海を見て回ろうと、来た道を戻り更に進んだ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "この先は海水浴場。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……っと言っても、この季節は閑散としているだろうけど。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それでも、せっかく久しぶりに帰った故郷で、足を運ぶことにした。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "branches/day_1010/shared_day_1010_c",
+		"new_page_after_return": true
+	},
+	{
+		"type": "dialogue",
+		"text": "天気も崩れてきたし、僕は家に帰ることにした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "小走りで実家へと向かった。"
+	}
+]
+

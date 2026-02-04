@@ -40,6 +40,44 @@
 		"type": "load_scenario",
 		"path": "episodes/ep_05",
 		"new_page_after_return": true
+	},
+	{
+		"type": "dialogue",
+		"text": "用水路はこのまま進んでも行き止まりだ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は来た道を戻り、岩場の見える海岸まで戻った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "さて、もう少し時間があるがどうしよう？"
+	},
+	{
+		"type": "dialogue",
+		"text": "天気も崩れそうなので家に帰ることもできるが……。",
+		"go_next": true
+	},
+	{
+		"type": "choice",
+		"choices": [
+			{
+				"id": "go_south",
+				"text": "階段を上がり南に向かう",
+				"scenario": "branches/day_1010/day_1010_d_1"
+			},
+			{
+				"id": "go_west",
+				"text": "来た道を戻り西（海水浴場がある方）に向かう",
+				"scenario": "branches/day_1010/day_1010_d_2"
+			},
+			{
+				"id": "go_home",
+				"text": "家に帰る",
+				"scenario": "branches/day_1010/day_1010_d_3"
+			}
+		]
 	}
 ]
 
