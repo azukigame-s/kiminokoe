@@ -150,6 +150,104 @@ scenarios/
    - 梨のシーン: 「スグはこの梨が好きだっただろうか？――思い出せない」
    - 地下道: 「白い服の少年――どこかで見たような気がする。でも、思い出せなかった」
 
+### 課題4: スキップモード復帰時の動作改善（未対応）
+
+#### 現状の問題
+エピソードやsharedシナリオからの復帰時、スキップモードが一時停止してしまう問題があります。
+
+**具体的な症状**:
+- エピソード（`episodes/ep_00.json`など）から`main.json`に復帰した際
+- Sharedシナリオ（`shared/shared_ep_3_after.json`など）から元のシナリオに復帰した際
+- スキップモードが継続せず、ユーザーが一度クリックする必要がある
+
+#### 暫定対応（実施済み）
+復帰後の最初のテキストは手動クリックが必要という仕様を受け入れ、それ以降はスキップモードが継続する実装としています。
+
+**理由**:
+- 動作が安全で確実
+- 他の機能に影響を与えない
+- プレイヤー体験上、大きな問題ではない（一度のクリックのみ）
+
+#### 根本的な解決（推奨・未実装）
+
+スキップモードの実装全体を見直し、シナリオスタックとの連携を改善することで、復帰後も自動進行が継続するようにします。
+
+**必要な作業**:
+
+1. **`_process()`と`execute_current_command()`の役割整理**
+   - 現状: `_process()`がスキップモード中の自動進行を担当
+   - 問題: 復帰直後は`_process()`が動作するタイミングが不安定
+   - 対応: スキップモードの自動進行ロジックを一元化し、復帰時も確実に動作するようにする
+
+2. **シナリオ復帰時の状態管理を明確化**
+   - 現状: `_return_to_previous_scenario()`で復帰後、`execute_current_command()`を呼ぶ
+   - 問題: `waiting_for_click`や`is_text_completed`の状態が不整合になる
+   - 対応: 復帰時の状態を明確に定義し、スキップモード中の処理フローを統一
+
+3. **dialogue コマンドの処理見直し**
+   - 現状: スキップモード中は`complete_text_display()`を呼ぶが、自動進行は`_process()`に依存
+   - 問題: 復帰直後は`_process()`が動作しないタイミングがある
+   - 対応: `dialogue`コマンド自体でスキップモード時の完全な処理を行う、または復帰時専用の処理を追加
+
+**技術的な詳細**:
+
+参照ファイル:
+- `scripts/scenario.gd` - シナリオ管理とスタック処理
+  - `_return_to_previous_scenario()` (413-446行): 復帰処理
+  - `execute_current_command()` (146-305行): コマンド実行
+  - `_process()` (314-336行): スキップモード自動進行
+  - `dialogue`コマンド処理 (165-189行): テキスト表示
+- `scripts/novel_system.gd` - テキスト表示とスキップモード管理
+  - `is_skip_mode`: スキップモードフラグ
+  - `complete_text_display()`: テキスト即時完了
+  - `is_text_completed`: テキスト完了フラグ
+
+**提案する修正方針**:
+
+**案A: `dialogue`コマンドでスキップモード時に自動進行**
+```gdscript
+# dialogueコマンド処理内で
+if novel_system.is_skip_mode:
+    novel_system.complete_text_display()
+    # バッファ処理も含めた完全な自動進行
+    call_deferred("_handle_skip_mode_auto_advance")
+```
+
+**案B: 復帰時専用の処理を追加**
+```gdscript
+func _return_to_previous_scenario():
+    # ... 既存の処理 ...
+    execute_current_command()
+    
+    # スキップモード中の復帰時は特別処理
+    if novel_system.is_skip_mode:
+        _ensure_skip_mode_continues()
+```
+
+**案C: `_process()`を常に確実に動作させる**
+```gdscript
+# 復帰時にフレーム待機を確実に入れる
+func _return_to_previous_scenario():
+    # ... 既存の処理 ...
+    execute_current_command()
+    await get_tree().process_frame  # 1フレーム待機
+    # この時点で_process()が動作し、自動進行が開始される
+```
+
+#### テスト項目
+
+修正後は以下のケースでスキップモードが継続することを確認:
+1. `main.json` → `episodes/ep_00.json` → `main.json` 復帰
+2. `main.json` → `shared/shared_ep_3_after.json` → `main.json` 復帰
+3. 複数のエピソードを連続でスキップ
+4. エピソード内でもスキップモードが正常動作
+5. 選択肢でスキップモードが停止
+6. 通常進行（スキップなし）に影響がないこと
+
+#### 優先度
+
+**中**: プレイヤー体験の向上のため実装推奨ですが、ゲームの進行自体は問題なく動作します。
+
 ---
 
 ## 📋 作業の進め方
