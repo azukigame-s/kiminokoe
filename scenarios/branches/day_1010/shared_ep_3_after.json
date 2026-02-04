@@ -1,0 +1,92 @@
+[
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は弟に対して、優しくできていたこともあったんだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "向かいに見える反対車線のバス停の小屋に、白い服の少年が立っていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "真っ白な服、少しカールした黒髪。"
+	},
+	{
+		"type": "dialogue",
+		"text": "少年はじっとこちら見つめている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕もまっすぐと彼を見ていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "まるで靄でもかかっているかのように曖昧な姿に見えた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "眼の前を自動車が通り、改めて見た少年は雨に溶け込むように消えてしまっていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん！　こんなところにいたの！」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "明るいトーンの声に僕は現実に戻される。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "声の主はイロだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "右手に傘を差し、もう一つの傘を小脇に抱えている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "きっと僕の傘を届けてくれたのだろう。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あ～あ、濡れちゃってるじゃん。風邪を引かないうちに帰ろう！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はイロにありがとうと伝えるとともに、もう一度向かいのバス停を見た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "やはり誰もいない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの方に向き直り、家に帰ることにした。"
+	}
+]
+

@@ -1,0 +1,356 @@
+[
+	{
+		"type": "dialogue",
+		"text": "「待ってて！　誰か呼んでくる！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………聞き覚えのある声が聞こえてくる。",
+		"go_next": true
+	},
+	{
+		"type": "flashback_start",
+		"effect": "grayscale"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕とスグは神社の境内で遊んでいた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "鳥居の上に小石を投げて乗せる遊びだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "上にうまく乗れば得点、落ちたら失点。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ルールは単純だが、意外と難しい。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「よし、僕も……えいっ！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが投げた石は鳥居の横木にカツンと当たり、ぽとりと落ちた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あ～、惜しい！」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "最初の内は夢中になって遊んでいたが、何度か繰り返しているうちに飽きてしまった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「ねえ、他のことして遊ぼうよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが言った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「そうだね。何する？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちは境内を歩き回り、何か面白いものがないか探し始めた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "神社の裏に回ると、崖を削った斜面が見えた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "崖崩れを防ぐためのコンクリートの擁壁が、階段のように連なっている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ひとつひとつの段が大きく、傾斜もきつい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "普通の階段とは大きく違っていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「わぁ、すごい高い！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが見上げた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も一緒に見上げる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "頂上は見えないくらい高い。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「登ってみようよ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はそう言った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「え……でも、危ないんじゃない？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが心配そうな顔をした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「大丈夫だよ。ほら、段になってるし」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「でも……怒られるよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「バレなきゃ大丈夫だって」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は強がってそう言った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "本当は少し怖かったけど、弟の前で弱いところは見せたくなかった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は擁壁の段に手をかけて、よじ登り始めた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おにぃ……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの心配そうな声が下から聞こえる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「平気平気！　余裕だよ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は明るく返事をしながら、どんどん登っていった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "最初は楽しかった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "段が大きいから、ちょっとした冒険をしているみたいだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "一段、二段、三段――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "順調に登っていく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、五段、六段と登るうちに、違和感が出てきた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "段が進むにつれ違和感は大きくなるが、なるべく意識しないように上だけを見ていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "やっと最上段に手をかけた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "登り切った！"
+	},
+	{
+		"type": "dialogue",
+		"text": "達成感が胸に広がる――その瞬間、ふと下を見た。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――高い。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "すごく、高い。"
+	},
+	{
+		"type": "dialogue",
+		"text": "足がすくんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "心臓がドキドキする。"
+	},
+	{
+		"type": "dialogue",
+		"text": "手に汗がにじむ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「……お、おにぃ？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの声が遠くに聞こえる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は動けなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "登ることも、降りることもできない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "コンクリートの冷たさだけが、手のひらに伝わってくる。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おにぃ！　大丈夫！？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの声が大きくなった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は何も答えられなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ、擁壁にしがみついているだけだった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「待ってて！　誰か呼んでくる！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが走っていく足音が聞こえた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――ごめん、スグ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "心の中でそう思った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "どれくらい経っただろう。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "大人の声が聞こえて、誰かが僕を抱えて降ろしてくれた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "地面に足がついたとき、やっと息ができた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「おにぃ！　大丈夫！？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが駆け寄ってきた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "顔が真っ赤で、泣きそうだった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「……ありがとう」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はそう言うのが精一杯だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは首を横に振った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あの時のスグの顔、今でも覚えている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "flashback_end"
+	}
+]
+

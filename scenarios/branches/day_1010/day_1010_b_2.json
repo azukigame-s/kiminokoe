@@ -32,18 +32,52 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "なぜこのような名前なのか知らなかったが、なんとなく自分とスグを思い浮かべていた。",
+		"text": "なぜこのような名前なのか知らなかったが、なんとなく自分とスグを思い浮かべていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "兄弟の名を持ちながら東と西に離ればなれになっている清流。"
+	},
+	{
+		"type": "dialogue",
+		"text": "喧嘩したまま、二度と会えなくなってしまった僕たちみたいだ。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "水の流れる音に耳を澄ませていると、聞き覚えのある声が聞こえた気がした――。",
+		"text": "そんなことを考えながら水の流れる音に耳を澄ませていると、聞き覚えのある声が聞こえた気がした――。",
 		"new_page": true
 	},
 	{
 		"type": "load_scenario",
 		"path": "episodes/ep_06",
 		"new_page_after_return": true
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕とスグはここでよく遊んでいたんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それにしても……今思えばカニスケもありきたりな気がするな。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
@@ -67,6 +101,49 @@
 	{
 		"type": "dialogue",
 		"text": "子供のころに聞いた記憶はあるのだが、思い出せなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "その場を立ち去り、おばあさんの口ずさむ歌声が次第に小さくなる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "なぜか胸の奥がざわざわする。"
+	},
+	{
+		"type": "dialogue",
+		"text": "不安なのか、懐かしいのか、自分でもよくわからなかった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "さて、もう少し時間があるがどうしよう？",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "天気も崩れそうなので家に帰ることもできるが……。",
+		"go_next": true
+	},
+	{
+		"type": "choice",
+		"choices": [
+			{
+				"id": "go_north_from_east",
+				"text": "海のある北に向かう",
+				"scenario": "branches/day_1010/day_1010_e_1"
+			},
+			{
+				"id": "go_south_from_east",
+				"text": "民家の間を進み南に向かう",
+				"scenario": "branches/day_1010/day_1010_e_2"
+			},
+			{
+				"id": "go_home_from_east",
+				"text": "家に帰る",
+				"scenario": "branches/day_1010/day_1010_e_3"
+			}
+		]
 	}
 ]
 
