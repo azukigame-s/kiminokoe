@@ -1,0 +1,164 @@
+[
+	{
+		"type": "dialogue",
+		"text": "『次は――』",
+		"new_page": true
+	},
+	{
+		"type": "sfx",
+		"path": "res://assets/sounds/sample_sfx.mp3"
+	},
+	{
+		"type": "dialogue",
+		"text": "ピンポーンと軽い音が鳴る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "『――だき西口。次は、地蔵焚《ジゾウダキ》西口です』"
+	},
+	{
+		"type": "dialogue",
+		"text": "次のバス停を知らせる感情のない音声を待たずして、降車ボタンの音が鳴った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "後ろの席を覗き込むと不機嫌な顔をした弟――、スグが窓の外を見ていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あんまり早く押すとまた運転手さんに怒られるぞ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は言ったが、スグは無反応だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あの日、スグと僕は喧嘩をしていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "理由は思い出せない。きっと些細なことだったのだろう。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "今日は１０月１０日。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "弟の８歳の誕生日だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "本来なら楽しく嬉しい１日のはずが、気持ちはどんよりとしている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "バスはスピードを落とし、バス停に着く。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕が席を立とうとすると、その横をスグが横切る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ちょっとスグ、先に行っちゃ……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ありがとうございました」"
+	},
+	{
+		"type": "dialogue",
+		"text": "普段は僕の後ろをついてくる弟だったが、不機嫌なままバスを降りてしまう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ありがとうございました」"
+	},
+	{
+		"type": "dialogue",
+		"text": "運転手さんに目もくれずお礼だけ言って、慌ててあとを追った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "バスを降りてもそこにスグの姿がない。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「えっ、どこ？　スグぅ？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "ランドセルがバスの後ろに回るのが見えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そっちはダメだ！",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「スグっ！　そっちは――――――」",
+		"new_page": true
+	},
+	{
+		"type": "sfx",
+		"path": "res://assets/sounds/bang_sfx.mp3"
+	},
+	{
+		"type": "dialogue",
+		"text": "ドンッ！！！！"
+	},
+	{
+		"type": "sfx",
+		"path": "res://assets/sounds/crash_sfx.mp3"
+	},
+	{
+		"type": "dialogue",
+		"text": "キキーーッ！　ガシャン！！"
+	},
+	{
+		"type": "dialogue",
+		"text": "「…………す……ぐ……？」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "今日は１０月１０日。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "弟の８歳の誕生日だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "１０月にしては青すぎる世界がかすみ、白くなる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして、真っ暗になった――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "誰かが遠くから叫ぶ声が聞こえる――。"
+	},
+	{
+		"type": "sfx",
+		"path": "res://assets/sounds/kite_sfx.mp3"
+	},
+	{
+		"type": "dialogue",
+		"text": "あたりの音も聞こえなくなるなか、鳶の鳴き声だけが耳に残っていた――――。"
+	}
+]
+
