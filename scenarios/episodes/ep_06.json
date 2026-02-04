@@ -1,0 +1,244 @@
+[
+	{
+		"type": "dialogue",
+		"text": "「おにぃ、石の下に何かいるの？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………聞き覚えのある声が聞こえてくる。",
+		"go_next": true
+	},
+	{
+		"type": "flashback_start",
+		"effect": "grayscale"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "兄の水は村の人たちに親しまれている場所だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "透き通った水が湧き出る場所には、飲用のための柄杓が置かれ、石で囲まれた水溜まりが作られている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちもよくここに遊びに来ていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "夏は冷たい水で火照った体を冷やし、秋は紅葉を眺めながら水の音に耳を傾ける。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "この日、僕とスグは学校帰りに兄の水に立ち寄っていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ランドセルを水溜まりの脇に置いて、僕は水の中の石をじっと見つめていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おにぃ、何見てるの？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが隣にしゃがみ込む。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「いいものを教えてあげる」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はそう言って、水の中に手を入れた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "冷たい水に手を浸し、大きめの石をゆっくりと持ち上げる。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "石の下――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "小さな沢蟹が、慌てて逃げようとしている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「わぁ！　カニだ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが目を輝かせた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「石の下にはね、こうやって沢蟹がいることがあるんだよ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「すごい！　他にもいるかな？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグはさっそく別の石を持ち上げ始めた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、その下には何もいなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あれ？　いないよ？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「いたり、いなかったりするんだ。だから探すのが面白いんだよ」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちは水溜まりの石を次々と持ち上げていった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "なかなか見つからない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "もういくつ持ち上げたかわからなかったが、スグが「いた！」と叫んだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "小さな沢蟹が、スグの指先から逃げようと必死に動いている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「捕まえた！　見て見て、おにぃ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは両手で包み込むように沢蟹を掬い上げた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「これ、持って帰っていい？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの目は真剣だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「飼うの？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「うん！　ちゃんと面倒見るよ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は少し考えた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "沢蟹を飼ったことはないけど、おばあちゃんなら知ってるかもしれない。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おばあちゃんに聞いてみよう」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「やった！」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "家に帰ると、僕たちは使っていない水槽を物置から引っ張り出してきた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "水を張り、兄の水から持ってきた石を配置する。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは沢蟹をそっと水槽に放した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "沢蟹は少し戸惑ったように動き回ったあと、石の下に隠れた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「ねえ、名前つけようよ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが嬉しそうに言った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「カニ太郎とか？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「それ、ありきたりじゃん！　えっとね……カニスケ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「カニスケ……まあ、いいんじゃない」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちは水槽を覗き込みながら笑った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "flashback_end"
+	}
+]
+
