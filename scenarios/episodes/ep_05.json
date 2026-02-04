@@ -1,0 +1,206 @@
+[
+	{
+		"type": "dialogue",
+		"text": "「にゃあ……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………聞き覚えのある――いや、懐かしい鳴き声が聞こえてくる。",
+		"go_next": true
+	},
+	{
+		"type": "flashback_start",
+		"effect": "grayscale"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あの日、僕たちは用水路の近くを歩いていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "国道の下を通る川の合流地点。"
+	},
+	{
+		"type": "dialogue",
+		"text": "放課後、しんちゃんとまーくんと一緒に探検をしていたのだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あっ、何か……」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "まーくんが立ち止まった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "用水路の縁、冷たいコンクリートに不自然な小さな段ボール箱が置かれていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「えっ、捨て猫？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "まだ幼い子猫が一頭、段ボール箱で小さくなっていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "覗き込むと、子猫は小さく鳴いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「にゃあ……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "まだ目がろくに開いていない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "体も小さくて、ぶるぶると震えている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「かわそうだな……」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "まーくんが静かに言った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「飼おうよ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが声をあげた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の方を見て、目を輝かせている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、飼えるかどうかは子供たちだけでは判断できなかった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「とりあえず、各自で家に聞いてみようよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "しんちゃんの提案にみんなが頷いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "念のため交代で猫を見張るということにして、僕たちはそれぞれ家に戻った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "母に聞くまでもなかった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "母は動物が苦手だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "やっぱり、ダメだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「スグ、ごめんね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の言葉を聞いたスグは、唇を噛んで下を向いた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「……しんちゃんやまーくんは？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「一緒に聞きに行ってみよう」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの顔に少し明るさが戻った様子だった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "その日の夜には、しんちゃんから連絡があった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「僕の家で飼えるって！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "しんちゃんの言葉を聞いてスグはジャンプして喜んだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "親にも付き添ってもらい、僕たちは一緒にしんちゃんの家に行って、子猫の引き渡しをした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは小さく手を振って、子猫に声をかけた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「ねこちゃん、ちゃんと大事にしてもらうんだよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "あの時のスグの笑顔、今でも覚えている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "flashback_end"
+	}
+]
+

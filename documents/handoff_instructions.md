@@ -7,7 +7,7 @@
 
 ### 必読ドキュメント（優先順）
 
-1. **`documents/project_overview_v2.md`**
+1. **`documents/project_overview.md`**
    - ゲーム全体の仕様書
    - ストーリー、キャラクター、技術仕様が全て記載されています
    - **最重要**: これを読まずに作業しないでください
@@ -78,7 +78,7 @@
 - 選択肢の記法が2種類混在
 
 #### 対応方針
-**ファイル命名規則の統一**（project_overview_v2.md参照）
+**ファイル命名規則の統一**（project_overview.md参照）
 
 ```
 scenarios/
@@ -146,7 +146,7 @@ scenarios/
    - 修正前: 「肌が白く」
    - 修正後: 「真っ白な服を着て少しカールした黒髪の」
 
-2. **記憶の混濁の描写** ※詳細はproject_overview_v2.md参照
+2. **記憶の混濁の描写** ※詳細はproject_overview.md参照
    - 梨のシーン: 「スグはこの梨が好きだっただろうか？――思い出せない」
    - 地下道: 「白い服の少年――どこかで見たような気がする。でも、思い出せなかった」
 
@@ -159,7 +159,7 @@ scenarios/
 以下を実施してください：
 
 1. **ドキュメントの熟読**
-   - [ ] `project_overview_v2.md` を読む
+   - [ ] `project_overview.md` を読む
    - [ ] `scenarios.md` を読む（少なくとも構造を理解する）
 
 2. **既存ファイルの確認**
@@ -221,7 +221,7 @@ scenarios/
    - JSONはscenarios.mdを忠実に変換したものでなければなりません
 
 2. **記法やコマンドの仕様を独自に変更しない**
-   - `project_overview_v2.md` の「シナリオJSON記法」セクションを参照
+   - `project_overview.md` の「シナリオJSON記法」セクションを参照
    - 変更が必要な場合は必ず相談してください
 
 3. **GDScriptの大幅な書き換えをしない**
@@ -229,7 +229,7 @@ scenarios/
    - バグ修正以外の機能追加は相談してください
 
 4. **ドキュメントを読まずに作業しない**
-   - 必ず `project_overview_v2.md` を先に読んでください
+   - 必ず `project_overview.md` を先に読んでください
 
 ### やるべきこと ✅
 
@@ -328,7 +328,7 @@ scenarios/
 
 作業開始前に以下を確認してください：
 
-- [ ] `project_overview_v2.md` を読んだ
+- [ ] `project_overview.md` を読んだ
 - [ ] `scenarios.md` の構造を理解した
 - [ ] ゲームの3つのミスリードを理解した
 - [ ] ファイル命名規則を理解した

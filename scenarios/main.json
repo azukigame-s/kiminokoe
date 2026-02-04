@@ -78,7 +78,7 @@
 	},
 	{
 		"type": "load_scenario",
-		"path": "episodes/ep_0",
+		"path": "episodes/ep_00",
 		"new_page_after_return": true
 	},
 	{

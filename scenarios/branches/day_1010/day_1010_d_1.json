@@ -56,7 +56,7 @@
 	},
 	{
 		"type": "load_scenario",
-		"path": "branches/day_1010/shared_ep_3_after",
+		"path": "shared/shared_ep_3_after",
 		"new_page_after_return": true
 	}
 ]

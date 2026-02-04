@@ -19,7 +19,7 @@
 	},
 	{
 		"type": "load_scenario",
-		"path": "branches/day_1010/shared_day_1010_c",
+		"path": "shared/shared_day_1010_c",
 		"new_page_after_return": true
 	},
 	{
