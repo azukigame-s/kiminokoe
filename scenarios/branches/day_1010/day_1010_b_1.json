@@ -62,12 +62,12 @@
 		"choices": [
 			{
 				"id": "rocky_area",
-				"text": "岩場がある右に進む",
+				"text": "東（岩場がある方）に進む",
 				"scenario": "branches/day_1010/day_1010_c_1"
 			},
 			{
 				"id": "beach_area",
-				"text": "海水浴場がある左に進む",
+				"text": "西（海水浴場がある方）に進む",
 				"scenario": "branches/day_1010/shared_day_1010_c"
 			}
 		]
