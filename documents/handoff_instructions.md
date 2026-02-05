@@ -261,6 +261,54 @@ func _return_to_previous_scenario():
 
 ---
 
+## 🔄 ScenarioEngine リファクタリング（進行中）
+
+### 概要
+
+既存の `scripts/scenario.gd` と `scripts/novel_system.gd` は試行錯誤で複雑化しています。
+新しい設計でゼロから書き直し、完成後に移行する計画です。
+
+### 6ステップ計画
+
+| Step | 内容 | 状況 | 備考 |
+|------|------|------|------|
+| 1 | 基盤作成 | ✅ 完了 | ScenarioEngine, CommandExecutor, SkipController |
+| 2 | 基本機能 | ✅ 完了 | 背景、BGM/SFX、テキストバッファ |
+| 3 | スキップモード | 未着手 | 課題4の根本解決を含む |
+| 4 | シナリオスタック | 未着手 | エピソード呼び出し、復帰処理 |
+| 5 | 選択肢 | 未着手 | next_index, scenario 両対応 |
+| 6 | 移行 | 未着手 | 既存システムから新システムへの切り替え |
+
+### 関連ファイル（新規作成）
+
+```
+scripts/
+├── core/
+│   ├── scenario_engine.gd      # メインエンジン（async/await パターン）
+│   ├── command_executor.gd     # コマンド実行
+│   └── skip_controller.gd      # スキップモード管理
+├── ui/
+│   ├── text_display.gd         # テキスト表示（バッファ、インジケーター対応）
+│   ├── background_display.gd   # 背景表示（フェード、エフェクト対応）
+│   └── audio_manager.gd        # BGM/SFX管理
+└── test_scenario_engine.gd     # テストシナリオ
+```
+
+### テストシーン
+
+- `scenes/test_scenario_engine.tscn` - 新システムのテスト用シーン
+- Godotで実行して動作確認可能
+- Sキーでスキップモード切り替え
+
+### 設計方針
+
+1. **async/await パターン**: コマンド実行を非同期で処理
+2. **コンポーネント分離**: 各機能を独立したクラスに分離
+3. **preload + set_script**: 動的なスクリプト読み込み（class_name の問題回避）
+4. **既存コードを変更しない**: 新システム完成まで既存は維持
+
+---
+
 ## 📋 作業の進め方
 
 ### Step 1: 現状把握（必須）

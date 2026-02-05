@@ -184,6 +184,11 @@ func run_test_scenario():
 			"type": "background",
 			"path": "res://assets/backgrounds/busstop.jpg"
 		},
+		# SE再生テスト
+		{
+			"type": "sfx",
+			"path": "res://assets/sounds/sample_sfx.mp3"
+		},
 		# 新しいページ
 		{
 			"type": "dialogue",
@@ -193,7 +198,7 @@ func run_test_scenario():
 		# テスト完了
 		{
 			"type": "dialogue",
-			"text": "【Step 2 テスト完了】背景、BGM、テキストバッファが動作しました！",
+			"text": "【Step 2 テスト完了】背景、BGM、SFX、テキストバッファが動作しました！",
 			"new_page": true
 		}
 	]
