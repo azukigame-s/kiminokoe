@@ -6,33 +6,25 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "村の様子はあまり変わっていなかった。",
+		"text": "村の様子はあまり変わっていなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "村唯一の自動販売機は、いまだに現役で稼働している。"
+	},
+	{
+		"type": "dialogue",
+		"text": "公民館の看板は色褪せているが、佇まいは昔のままだ。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "村唯一の自動販売機。",
+		"text": "……ひとつだけ変わっていた。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "いまだに現役で稼働しているようだ。",
-		"go_next": true
-	},
-	{
-		"type": "dialogue",
-		"text": "公民館。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "看板は少し色褪せているが、昔と変わらない佇まいだ。",
-		"go_next": true
-	},
-	{
-		"type": "dialogue",
-		"text": "――ひとつだけ変わっていた。海が見える高台に、大きな空き地が広がっていたのだ。",
-		"new_page": true
+		"text": "海が見える高台に、大きな空き地が広がっていたのだ。"
 	},
 	{
 		"type": "dialogue",
@@ -40,18 +32,314 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "空き地に足を踏み入れ、そこから見える海を眺める。",
-		"go_next": true
+		"text": "空き地に足を踏み入れ、そこから見える海を眺める。"
 	},
 	{
 		"type": "dialogue",
 		"text": "薄暗くなり始めた空を見上げると、聞き覚えのある声が聞こえた気がした――。",
-		"new_page": true
+		"go_next": true
 	},
 	{
 		"type": "load_scenario",
 		"path": "episodes/ep_01",
 		"new_page_after_return": true
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はこの日のことが嫌で、スグと喧嘩をしたんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも――なんだろう……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "その違和感がぬぐい切れなかった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ふと、視線を感じた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "振り返ると、少し離れた場所に白い服の少年が立っていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "真っ白な服、少しカールした黒髪――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "その姿はぼんやりとしていて、輪郭が曖昧だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "まるで夕暮れの光に溶け込んでいるようだった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "少年はこちらを見つめている。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "目をこすると、もう誰もいなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あれは――スグ？"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの顔――はっきりと思い出せない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "しばらくその場で立ち尽くしていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――でも、ずっとこうしていても仕方がない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "まだ時間もあるし、もう少し回ってみようか。"
+	},
+	{
+		"type": "dialogue",
+		"text": "天気が崩れそうなので家に帰ることもできるが……。",
+		"go_next": true
+	},
+	{
+		"type": "choice",
+		"options": [
+			{
+				"text": "地下道で見た少年が気になるので北に向かう",
+				"next_index": 31
+			},
+			{
+				"text": "子供の頃にあまり近づかなかった南に向かう",
+				"next_index": 40
+			},
+			{
+				"text": "家に帰る",
+				"next_index": 72
+			}
+		]
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は高台の空き地を後にして、バス停まで戻ってきた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "地下道で見た白い服の少年が、どうしても気になったのだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "さっき見た少年も……ダキに帰ってきてからどうも様子がおかしい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "バス停から地下道に伸びる階段を降りた。相変わらず薄暗い。"
+	},
+	{
+		"type": "dialogue",
+		"text": "天気が崩れてきていることもあり、先程よりも不気味に感じた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "地下道を反対車線側に進み、海に降りるための階段へと足を伸ばした。",
+		"new_page": true,
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "shared/shared_day_1010_c",
+		"new_page_after_return": true
+	},
+	{
+		"type": "dialogue",
+		"text": "天気も崩れてきたし、僕は家に帰ることにした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "小走りで実家へと向かった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "空き地になってしまったセンター跡を後にした僕は、バス停へと伸びる道を素通りして真っすぐ進んだ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "このあたりには道路に沿って墓地が建ち並んでいる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "子供の頃でこそ不気味であったが、日中に見る分には特に不気味さは感じない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "道の右に広がる墓地を眺めながら歩いていると――ふと、視線を感じた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "振り返る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "道の反対側、草むらの中に地蔵が1体だけ、こちらを向いて立っていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ダキには2体並びの「ふたこじぞう」があちこちにある。"
+	},
+	{
+		"type": "dialogue",
+		"text": "なのに、ここには1体だけ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "もう1体は――どこにいったのだろう？",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "地蔵の視線を感じたまま横に目をやると、木々に覆われた細道が暗がりへ続いていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "草が鬱蒼と生い茂り、道というよりは轍のような感じだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "左右に広がる背の高い木々のせいで、薄暗く不気味だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "子供の頃の記憶を辿っても、この道に入った覚えはない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "不思議な子供の姿を見たからだろうか――それとも、地蔵に導かれたのか――僕は吸い込まれるように暗闇の方へ足を進めた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………どのくらい歩いただろうか？",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "進むほどに足元は荒れ、低く垂れ下がった枝を避けながら歩く。"
+	},
+	{
+		"type": "dialogue",
+		"text": "額に汗が滲み、首筋を伝う。"
+	},
+	{
+		"type": "dialogue",
+		"text": "薄暗い道を更に進んだところで景色が開けた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "草が刈られており――といっても靴が埋まるくらいは生えているが――広場のようになっている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "草の向こうに、コンクリートの舗装が見えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "建物の跡だろうか――黒ずみ、ひび割れている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "近くで見てみたかったが、左右の大木にロープが張られていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ロープには木の御札のようなものがいくつも吊るされている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "入ってはいけない――そんな気がした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "その場に立ち尽くしていると、頬に冷たいものが触れた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "雨だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "木々の合間から見える空は、真っ黒な雲に覆われている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そろそろ潮時かもしれない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "その時、風が吹いた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "木の枝が揺れ、御札がカラカラと乾いた音を立てる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――まるで、何かが僕を見送っているような。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はその場を引き返し、急ぎ足で家に帰ることにした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "空はどんよりと黒くなり、小さな雨粒が頬に落ちた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は小走りで家に帰った。",
+		"go_next": true
 	}
 ]
-

@@ -14,7 +14,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "お寺の片隅には湧水があり、柄杓が置かれている。スグとよくここで水を飲んだものだ。",
+		"text": "お寺の片隅には湧水があり、柄杓が置かれている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグとここでよく水を飲んだのを思い出した。",
 		"go_next": true
 	},
 	{
@@ -28,17 +32,43 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕はそこに足を運んだ。",
+		"text": "僕はそこに足を運ぶことにした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺を出て裏山を少し登ると、雑木林が開けた場所に出る。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "お寺を出て裏山を少し登ると、雑木林が開けた場所に出た。",
+		"text": "脇にある木の根元に、２体の地蔵が半ば埋もれるように佇んでいた。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "その中央には立派な木がそびえ立っていた。"
+		"text": "苔と落ち葉に覆われ、誰も手入れをしていないようだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "こんなところにも「ふたこじぞう」があったのか――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "子供の頃は気づかなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "いや、気にしていなかっただけかもしれない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "2体の地蔵はこちらを見つめているようで、少し居心地が悪かった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "雑木林に囲まれた広場の中央には、立派な木がそびえ立っていた。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -55,20 +85,53 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "木の根元――僕たちの秘密基地は、雑草に覆われていた。",
+		"text": "僕たちの秘密基地であった木の根元は、雑草に覆われていた。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "スグと最後にここに来たのはいつだっただろう。"
+		"text": "スグと最後にここに来たのはいつだっただろう？"
 	},
 	{
 		"type": "dialogue",
-		"text": "今の子供たちはもうここで遊んでいないようだ。"
+		"text": "今の子供たちは、もうここで遊んでいないようだ。"
 	},
 	{
 		"type": "dialogue",
-		"text": "なんとなく物寂しい気持ちになり、僕はその場を後にした。"
+		"text": "物寂しさを感じて、僕はその場を後にした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "さて、もう少し時間があるがどうしよう？",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "天気も崩れそうなので家に帰ることもできるが……。",
+		"go_next": true
+	},
+	{
+		"type": "choice",
+		"options": [
+			{
+				"text": "山道を下り北に向かう",
+				"scenario": "shared/shared_ep_7_shrine"
+			},
+			{
+				"text": "家に帰る",
+				"next_index": 26
+			}
+		]
+	},
+	{
+		"type": "dialogue",
+		"text": "空はどんよりと黒くなり、小さな雨粒が頬に落ちた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は小走りで家に帰った。",
+		"go_next": true
 	}
 ]
-

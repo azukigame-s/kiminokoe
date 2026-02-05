@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(tree:*)",
-      "Bash(awk:*)"
+      "Bash(awk:*)",
+      "Bash(git -C \"c:\\\\Users\\\\azuki\\\\Documents\\\\workspaces\\\\github.com\\\\azukigame-s\\\\kiminokoe\" log --oneline -10)",
+      "Bash(git -C \"c:\\\\Users\\\\azuki\\\\Documents\\\\workspaces\\\\github.com\\\\azukigame-s\\\\kiminokoe\" diff 1fbc8a9..HEAD --name-only)"
     ]
   }
 }
