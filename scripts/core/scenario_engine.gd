@@ -30,6 +30,9 @@ func _init():
 	add_child(scenario_stack)
 	add_child(skip_controller)
 
+	# スキップコントローラとの連携を設定
+	command_executor.connect_skip_controller(skip_controller)
+
 func _ready():
 	print("[ScenarioEngine] Ready")
 

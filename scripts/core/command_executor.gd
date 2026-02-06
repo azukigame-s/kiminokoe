@@ -12,8 +12,31 @@ var audio_manager: AudioManager
 # シグナル
 signal command_completed
 
+# スキップコントローラ参照（スキップモード変更検知用）
+var _skip_controller_ref: SkipController = null
+
 func _ready():
 	print("[CommandExecutor] 準備完了")
+
+## スキップコントローラとの連携を設定
+func connect_skip_controller(skip_controller: SkipController) -> void:
+	if _skip_controller_ref:
+		_skip_controller_ref.skip_mode_changed.disconnect(_on_skip_mode_changed)
+
+	_skip_controller_ref = skip_controller
+	skip_controller.skip_mode_changed.connect(_on_skip_mode_changed)
+
+## スキップモード変更時のコールバック
+func _on_skip_mode_changed(is_skipping: bool) -> void:
+	if is_skipping and text_display:
+		# スキップモードがONになったら、アニメーション中のテキストを即座に完了
+		if text_display.is_animating:
+			text_display.complete_animation()
+		# 即座表示モードを有効化
+		text_display.set_instant_display(true)
+	elif text_display:
+		# スキップモードがOFFになったら、即座表示モードを無効化
+		text_display.set_instant_display(false)
 
 ## コマンドを実行
 func execute(command: Dictionary, skip_controller: SkipController) -> void:
@@ -64,17 +87,24 @@ func execute_dialogue(command: Dictionary, skip_controller: SkipController) -> v
 	var new_page = command.get("new_page", false)
 	var go_next = command.get("go_next", false)
 
-	print("[CommandExecutor] dialogue: %s (new_page: %s, go_next: %s)" % [text, new_page, go_next])
+	print("[CommandExecutor] dialogue: %s (new_page: %s, go_next: %s, skip: %s)" % [text, new_page, go_next, skip_controller.is_skipping])
+
+	# スキップモード中は即座表示モードを有効化
+	text_display.set_instant_display(skip_controller.is_skipping)
 
 	# テキストを表示
 	text_display.show_text(text, new_page, go_next)
 
-	# 入力待機（スキップモード対応）
-	await wait_for_input(skip_controller)
+	# スキップモード中でアニメーションが開始された場合、即座に完了
+	if skip_controller.is_skipping and text_display.is_animating:
+		text_display.complete_animation()
 
-	# go_next の場合は自動的に次へ進む（クリック待ちなし）
+	# go_next の場合は入力待機をスキップ
 	if go_next:
 		return
+
+	# 入力待機（スキップモード対応）
+	await wait_for_input(skip_controller)
 
 ## background コマンドを実行
 func execute_background(command: Dictionary, skip_controller: SkipController) -> void:
