@@ -18,6 +18,7 @@ var skip_controller: SkipController
 var current_scenario: Array = []
 var current_index: int = 0
 var is_running: bool = false
+var current_scenario_path: String = ""  # セーブ/ロード用
 
 func _init():
 	# コンポーネントの初期化
@@ -37,68 +38,141 @@ func _ready():
 	print("[ScenarioEngine] Ready")
 
 ## シナリオを開始
-func start_scenario(scenario_data: Array) -> void:
+func start_scenario(scenario_data: Array, scenario_path: String = "") -> void:
 	if is_running:
 		push_warning("[ScenarioEngine] Scenario is already running")
 		return
 
 	current_scenario = scenario_data
 	current_index = 0
+	current_scenario_path = scenario_path
 	is_running = true
 
 	scenario_started.emit()
-	print("[ScenarioEngine] Starting scenario with %d commands" % scenario_data.size())
+	print("[ScenarioEngine] Starting scenario: %s (%d commands)" % [scenario_path, scenario_data.size()])
 
 	await execute_scenario()
 
 	is_running = false
 	scenario_completed.emit()
-	print("[ScenarioEngine] Scenario completed")
+	print("[ScenarioEngine] Scenario completed: %s" % scenario_path)
 
 ## シナリオ実行のメインループ
 func execute_scenario() -> void:
 	while current_index < current_scenario.size():
 		var command = current_scenario[current_index]
+		var command_type = command.get("type", "unknown")
 
-		print("[ScenarioEngine] Executing command %d: %s" % [current_index, command.get("type", "unknown")])
+		print("[ScenarioEngine] Executing command %d: %s" % [current_index, command_type])
 
+		# 特殊コマンドの処理（ScenarioEngine側で処理）
+		match command_type:
+			"load_scenario":
+				await handle_load_scenario(command)
+				current_index += 1
+				continue
+			"jump":
+				handle_jump(command)
+				continue  # current_indexはjumpで設定済み
+			"episode_clear":
+				handle_episode_clear(command)
+				current_index += 1
+				continue
+
+		# 通常のコマンドはCommandExecutorで処理
 		await command_executor.execute(command, skip_controller)
 
 		command_executed.emit(command)
 		current_index += 1
+
+## load_scenario コマンドの処理
+func handle_load_scenario(command: Dictionary) -> void:
+	var path = command.get("path", "")
+	if path.is_empty():
+		push_error("[ScenarioEngine] load_scenario: path が指定されていません")
+		return
+
+	# episodes/ 配下はグレースケール適用
+	var is_episode = path.begins_with("episodes/")
+	print("[ScenarioEngine] load_scenario: %s (episode: %s)" % [path, is_episode])
+
+	await call_subscenario(path, is_episode)
+
+## jump コマンドの処理
+func handle_jump(command: Dictionary) -> void:
+	var target_index = command.get("index", -1)
+	if target_index < 0:
+		push_error("[ScenarioEngine] jump: index が指定されていません")
+		current_index += 1
+		return
+
+	# indexマーカーを探す
+	for i in range(current_scenario.size()):
+		var cmd = current_scenario[i]
+		if cmd.get("type") == "index" and cmd.get("index") == target_index:
+			print("[ScenarioEngine] jump: index %d → position %d" % [target_index, i])
+			current_index = i + 1  # indexマーカーの次から実行
+			return
+
+	push_error("[ScenarioEngine] jump: index %d が見つかりません" % target_index)
+	current_index += 1
+
+## episode_clear コマンドの処理
+func handle_episode_clear(command: Dictionary) -> void:
+	var episode_id = command.get("id", "")
+	if episode_id.is_empty():
+		push_error("[ScenarioEngine] episode_clear: id が指定されていません")
+		return
+
+	print("[ScenarioEngine] episode_clear: %s" % episode_id)
+
+	# TrophyManagerが存在する場合は呼び出す
+	if Engine.has_singleton("TrophyManager"):
+		var trophy_manager = Engine.get_singleton("TrophyManager")
+		trophy_manager.clear_episode(episode_id)
+	else:
+		# オートロードとして設定されている場合
+		var trophy_manager = get_node_or_null("/root/TrophyManager")
+		if trophy_manager:
+			trophy_manager.clear_episode(episode_id)
+		else:
+			push_warning("[ScenarioEngine] TrophyManager が見つかりません")
 
 ## サブシナリオ呼び出し（エピソード/共用シナリオ）
 func call_subscenario(scenario_path: String, apply_grayscale: bool = false) -> void:
 	# 現在の状態をスタックに保存
 	scenario_stack.push({
 		"scenario": current_scenario,
-		"index": current_index
+		"index": current_index,
+		"path": current_scenario_path
 	})
 
 	print("[ScenarioEngine] Calling subscenario: %s (grayscale: %s)" % [scenario_path, apply_grayscale])
 
-	# グレースケール効果を適用
+	# グレースケール効果を適用（エピソード呼び出し時）
 	if apply_grayscale:
-		# TODO: グレースケール効果の実装
-		pass
+		await command_executor.execute_flashback_start({"effect": "grayscale"}, skip_controller)
 
 	# サブシナリオを読み込んで実行
+	# is_running フラグを一時的に解除（サブシナリオでstart_scenarioを呼ぶため）
+	is_running = false
 	var subscenario_data = await load_scenario_data(scenario_path)
 	if subscenario_data:
-		await start_scenario(subscenario_data)
+		await start_scenario(subscenario_data, scenario_path)
 
 	# 元のシナリオに復帰
 	var previous_state = scenario_stack.pop()
 	if previous_state:
 		current_scenario = previous_state.scenario
 		current_index = previous_state.index + 1  # 次のコマンドから再開
+		current_scenario_path = previous_state.path
+		is_running = true  # 実行状態を復元
 
-		print("[ScenarioEngine] Returned from subscenario")
+		print("[ScenarioEngine] Returned from subscenario to: %s" % current_scenario_path)
 
-		# グレースケール効果を解除
+		# グレースケール効果を解除（エピソード呼び出し時）
 		if apply_grayscale:
-			# TODO: グレースケール効果の解除
-			pass
+			await command_executor.execute_flashback_end({}, skip_controller)
 
 ## シナリオデータを読み込む
 func load_scenario_data(scenario_path: String) -> Array:
@@ -129,3 +203,65 @@ func load_scenario_data(scenario_path: String) -> Array:
 func toggle_skip_mode() -> void:
 	skip_controller.toggle()
 	print("[ScenarioEngine] Skip mode: %s" % skip_controller.is_skipping)
+
+## セーブ用の状態を取得
+func get_save_state() -> Dictionary:
+	return {
+		"scenario_path": current_scenario_path,
+		"index": current_index,
+		"stack": _serialize_stack()
+	}
+
+## スタックをシリアライズ（パスとインデックスのみ）
+func _serialize_stack() -> Array:
+	var serialized = []
+	for i in range(scenario_stack.size()):
+		var state = scenario_stack.stack[i]
+		serialized.append({
+			"path": state.get("path", ""),
+			"index": state.get("index", 0)
+		})
+	return serialized
+
+## セーブ状態から復元
+func load_from_save_state(save_state: Dictionary) -> void:
+	var scenario_path = save_state.get("scenario_path", "")
+	var index = save_state.get("index", 0)
+	var stack_data = save_state.get("stack", [])
+
+	if scenario_path.is_empty():
+		push_error("[ScenarioEngine] load_from_save_state: scenario_path が空です")
+		return
+
+	# スタックを復元
+	scenario_stack.clear()
+	for state in stack_data:
+		var path = state.get("path", "")
+		var state_index = state.get("index", 0)
+		var scenario_data = await load_scenario_data(path)
+		scenario_stack.push({
+			"scenario": scenario_data,
+			"index": state_index,
+			"path": path
+		})
+
+	# シナリオを読み込み
+	var scenario_data = await load_scenario_data(scenario_path)
+	if scenario_data.is_empty():
+		push_error("[ScenarioEngine] load_from_save_state: シナリオ読み込み失敗: %s" % scenario_path)
+		return
+
+	# 状態を設定
+	current_scenario = scenario_data
+	current_scenario_path = scenario_path
+	current_index = index
+	is_running = true
+
+	print("[ScenarioEngine] Loaded from save: %s (index: %d)" % [scenario_path, index])
+
+	# シナリオを再開
+	scenario_started.emit()
+	await execute_scenario()
+
+	is_running = false
+	scenario_completed.emit()

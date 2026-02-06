@@ -20,22 +20,49 @@ var cleared_episodes: Dictionary = {}
 # トロフィーの解除状態
 var unlocked_trophies: Dictionary = {}
 
-# エピソードIDの定義（シナリオファイル名から自動判定も可能）
+# エピソードIDの定義
 var episode_ids: Array[String] = [
-	"episode_01",
-	"episode_02",
-	"episode_03",
-	"episode_04"
+	"ep_1",   # カード
+	"ep_2",   # 海
+	"ep_3",   # バス停
+	"ep_4",   # キャッチボール
+	"ep_5",   # 捨て猫
+	"ep_6",   # 沢蟹
+	"ep_7",   # 神社
 ]
 
 # エピソードごとの称号名の定義
 var episode_trophy_names: Dictionary = {
-	"episode_01": "エピソード#1 カード",
-	"episode_02": "エピソード#2 海",
-	"episode_03": "エピソード#3 バス停",
-	"episode_04": "エピソード#4 キャッチボール",
+	"ep_1": "カード",
+	"ep_2": "海",
+	"ep_3": "バス停",
+	"ep_4": "キャッチボール",
+	"ep_5": "捨て猫",
+	"ep_6": "沢蟹",
+	"ep_7": "神社",
 	"all_episodes_clear": "全エピソードクリア"
 }
+
+# シークレットトロフィーの定義
+var secret_trophy_ids: Array[String] = [
+	"secret_base",    # 秘密基地
+	"futako_jizo",    # ふたこじぞう（全地蔵発見）
+	"takiba",         # 焚き場
+	"kiminokoe",      # キミノコエ（トゥルーエンド）
+	"iro_story",      # イロの想い（マル秘ストーリー）
+]
+
+# シークレットトロフィーの名称
+var secret_trophy_names: Dictionary = {
+	"secret_base": "秘密基地",
+	"futako_jizo": "ふたこじぞう",
+	"takiba": "焚き場",
+	"kiminokoe": "キミノコエ",
+	"iro_story": "イロの想い",
+}
+
+# 訪問済み場所（シークレットトロフィー用）
+var visited_locations: Dictionary = {}
 
 # トースト通知への参照
 var toast_notification: Control = null
@@ -111,18 +138,93 @@ func clear_episode(episode_id: String):
 
 # シナリオファイル名からエピソードIDを抽出
 func extract_episode_id(scenario_path: String) -> String:
-	# パスからファイル名を取得（例: "res://scenarios/episode_01.json" → "episode_01"）
+	# パスからファイル名を取得（例: "res://scenarios/episodes/ep_01.json" → "ep_01"）
 	var file_name = scenario_path.get_file()
 	# 拡張子を削除
 	if file_name.ends_with(".json"):
 		file_name = file_name.substr(0, file_name.length() - 5)
-	
-	# episode_で始まる場合はエピソードIDとして扱う
-	if file_name.begins_with("episode_"):
+
+	# ep_で始まる場合はエピソードIDとして扱う
+	if file_name.begins_with("ep_"):
 		return file_name
-	
+
 	# エピソードIDとして認識できない場合は空文字列を返す
 	return ""
+
+## 場所を訪問済みとして記録
+func visit_location(location_id: String) -> void:
+	if not visited_locations.get(location_id, false):
+		visited_locations[location_id] = true
+		_save_trophy_data()
+		log_message("Location visited: " + location_id, LogLevel.INFO)
+
+		# 場所に応じたシークレットトロフィーのチェック
+		_check_location_trophies(location_id)
+
+## 場所が訪問済みかどうかを判定
+func is_location_visited(location_id: String) -> bool:
+	return visited_locations.get(location_id, false)
+
+## 場所訪問に応じたシークレットトロフィーのチェック
+func _check_location_trophies(location_id: String) -> void:
+	match location_id:
+		"secret_base":
+			unlock_trophy("secret_base", secret_trophy_names.get("secret_base", "秘密基地"))
+		"takiba":
+			unlock_trophy("takiba", secret_trophy_names.get("takiba", "焚き場"))
+
+	# ふたこじぞうのチェック（4箇所すべて訪問）
+	_check_futako_jizo()
+
+## ふたこじぞうトロフィーのチェック
+func _check_futako_jizo() -> void:
+	var jizo_locations = ["jizo_north", "jizo_east", "jizo_south", "jizo_west"]
+	for loc in jizo_locations:
+		if not is_location_visited(loc):
+			return
+	# 全地蔵発見
+	unlock_trophy("futako_jizo", secret_trophy_names.get("futako_jizo", "ふたこじぞう"))
+
+## トゥルーエンド条件をチェック
+func check_true_ending_condition() -> bool:
+	# 秘密基地 AND (ep_1 AND ep_2 AND ep_3)
+	if not is_location_visited("secret_base"):
+		return false
+	if not is_episode_cleared("ep_1"):
+		return false
+	if not is_episode_cleared("ep_2"):
+		return false
+	if not is_episode_cleared("ep_3"):
+		return false
+	return true
+
+## トゥルーエンドトロフィーを解除
+func unlock_true_ending_trophy() -> void:
+	unlock_trophy("kiminokoe", secret_trophy_names.get("kiminokoe", "キミノコエ"))
+
+## エピソード回収数を取得
+func get_episode_count() -> int:
+	var count = 0
+	for episode_id in episode_ids:
+		if is_episode_cleared(episode_id):
+			count += 1
+	return count
+
+## 10月10日エンド分岐の判定
+func get_day_1010_ending_type() -> String:
+	var episode_count = get_episode_count()
+	var has_true_condition = check_true_ending_condition()
+
+	if has_true_condition:
+		return "true_ready"
+	elif episode_count >= 5:
+		return "high"
+	elif episode_count >= 3:
+		return "medium"
+	elif episode_count >= 1:
+		return "low"
+	else:
+		return "minimum"
 
 # トロフィーが解除済みかどうかを判定
 func is_trophy_unlocked(trophy_id: String) -> bool:
@@ -177,15 +279,19 @@ func get_total_episode_count() -> int:
 # トロフィーデータの保存
 func _save_trophy_data():
 	var config = ConfigFile.new()
-	
+
 	# エピソードのクリア状態を保存
 	for episode_id in cleared_episodes.keys():
 		config.set_value("episodes", episode_id, cleared_episodes[episode_id])
-	
+
 	# トロフィーの解除状態を保存
 	for trophy_id in unlocked_trophies.keys():
 		config.set_value("trophies", trophy_id, unlocked_trophies[trophy_id])
-	
+
+	# 訪問済み場所を保存
+	for location_id in visited_locations.keys():
+		config.set_value("locations", location_id, visited_locations[location_id])
+
 	var error = config.save(SAVE_FILE_PATH)
 	if error == OK:
 		log_message("Trophy data saved successfully", LogLevel.DEBUG)
@@ -196,18 +302,23 @@ func _save_trophy_data():
 func _load_trophy_data():
 	var config = ConfigFile.new()
 	var error = config.load(SAVE_FILE_PATH)
-	
+
 	if error == OK:
 		# エピソードのクリア状態を読み込み
 		if config.has_section("episodes"):
 			for episode_id in config.get_section_keys("episodes"):
 				cleared_episodes[episode_id] = config.get_value("episodes", episode_id, false)
-		
+
 		# トロフィーの解除状態を読み込み
 		if config.has_section("trophies"):
 			for trophy_id in config.get_section_keys("trophies"):
 				unlocked_trophies[trophy_id] = config.get_value("trophies", trophy_id, {})
-		
+
+		# 訪問済み場所を読み込み
+		if config.has_section("locations"):
+			for location_id in config.get_section_keys("locations"):
+				visited_locations[location_id] = config.get_value("locations", location_id, false)
+
 		log_message("Trophy data loaded successfully", LogLevel.DEBUG)
 	elif error == ERR_FILE_NOT_FOUND:
 		log_message("Trophy data file not found, using defaults", LogLevel.INFO)
@@ -262,26 +373,35 @@ func set_episode_trophy_name(episode_id: String, trophy_name: String):
 func reset_trophy_data():
 	cleared_episodes.clear()
 	unlocked_trophies.clear()
+	visited_locations.clear()
 	_save_trophy_data()
 	log_message("Trophy data reset", LogLevel.INFO)
 
 # 現在のトロフィー獲得状況を表示（デバッグ用）
 func print_trophy_status():
 	log_message("=== Trophy Status ===", LogLevel.INFO)
+
 	log_message("Episodes cleared:", LogLevel.INFO)
 	for episode_id in episode_ids:
 		var cleared = is_episode_cleared(episode_id)
 		var status = "✓" if cleared else "✗"
 		log_message("  " + status + " " + episode_id + " (" + get_episode_trophy_name(episode_id) + ")", LogLevel.INFO)
-	
-	log_message("Trophies unlocked:", LogLevel.INFO)
-	for trophy_id in unlocked_trophies.keys():
-		var trophy_data = unlocked_trophies[trophy_id]
-		var trophy_name = trophy_data.get("name", "Unknown")
-		var _unlocked_at = trophy_data.get("unlocked_at", 0)
-		log_message("  ✓ " + trophy_id + ": " + trophy_name, LogLevel.INFO)
-	
+
+	log_message("Secret Trophies:", LogLevel.INFO)
+	for trophy_id in secret_trophy_ids:
+		var unlocked = is_trophy_unlocked(trophy_id)
+		var status = "✓" if unlocked else "?"
+		var name = secret_trophy_names.get(trophy_id, "???")
+		log_message("  " + status + " " + (name if unlocked else "???"), LogLevel.INFO)
+
+	log_message("Locations visited:", LogLevel.INFO)
+	for location_id in visited_locations.keys():
+		if visited_locations[location_id]:
+			log_message("  ✓ " + location_id, LogLevel.INFO)
+
 	log_message("Progress: " + str(get_cleared_episode_count()) + " / " + str(get_total_episode_count()) + " episodes", LogLevel.INFO)
+	log_message("True Ending Condition: " + str(check_true_ending_condition()), LogLevel.INFO)
+	log_message("Day 1010 Ending Type: " + get_day_1010_ending_type(), LogLevel.INFO)
 	log_message("Save file: " + SAVE_FILE_PATH, LogLevel.INFO)
 	log_message("===================", LogLevel.INFO)
 
