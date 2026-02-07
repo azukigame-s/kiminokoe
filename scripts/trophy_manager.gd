@@ -210,6 +210,21 @@ func get_episode_count() -> int:
 			count += 1
 	return count
 
+## 霊体エピソード（ep_1, ep_2, ep_3）を1つ以上見たかどうか
+func has_seen_ghost_episodes() -> bool:
+	return is_episode_cleared("ep_1") or is_episode_cleared("ep_2") or is_episode_cleared("ep_3")
+
+## 条件名から分岐結果を評価（branch コマンド用）
+func evaluate_condition(condition_name: String) -> String:
+	match condition_name:
+		"white_boy_sightings":
+			return "seen" if has_seen_ghost_episodes() else "not_seen"
+		"day_1010_ending":
+			return get_day_1010_ending_type()
+		_:
+			push_error("[TrophyManager] Unknown condition: " + condition_name)
+			return ""
+
 ## 10月10日エンド分岐の判定
 func get_day_1010_ending_type() -> String:
 	var episode_count = get_episode_count()

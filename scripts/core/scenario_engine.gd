@@ -81,6 +81,9 @@ func execute_scenario() -> void:
 			"choice":
 				await handle_choice(command)
 				continue  # current_indexはchoice内で設定済み
+			"branch":
+				handle_branch(command)
+				continue  # current_indexはbranch内で設定済み
 
 		# 通常のコマンドはCommandExecutorで処理
 		await command_executor.execute(command, skip_controller)
@@ -168,6 +171,33 @@ func handle_choice(command: Dictionary) -> void:
 		handle_jump({"index": target_index})
 	else:
 		# next_index も scenario もない場合は次のコマンドへ
+		current_index += 1
+
+## branch コマンドの処理（システムデータによる条件分岐）
+func handle_branch(command: Dictionary) -> void:
+	var condition = command.get("condition", "")
+	var branches = command.get("branches", {})
+
+	if condition.is_empty() or branches.is_empty():
+		push_error("[ScenarioEngine] branch: condition or branches is empty")
+		current_index += 1
+		return
+
+	# TrophyManager から条件を評価
+	var trophy_manager = get_node_or_null("/root/TrophyManager")
+	if not trophy_manager:
+		push_error("[ScenarioEngine] branch: TrophyManager が見つかりません")
+		current_index += 1
+		return
+
+	var result = trophy_manager.evaluate_condition(condition)
+	print("[ScenarioEngine] branch: condition=%s result=%s" % [condition, result])
+
+	if branches.has(result):
+		var target_index = branches[result]
+		handle_jump({"index": target_index})
+	else:
+		push_warning("[ScenarioEngine] branch: result '%s' に対応する分岐がありません" % result)
 		current_index += 1
 
 ## episode_clear コマンドの処理

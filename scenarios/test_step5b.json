@@ -1,0 +1,69 @@
+[
+	{"type": "background", "path": "res://assets/backgrounds/busstop.jpg"},
+
+	{"type": "dialogue", "text": "=== Step 5b テスト: branch（条件分岐） ===", "new_page": true},
+
+	{"type": "dialogue", "text": "テスト1: white_boy_sightings（霊体目撃）", "new_page": true},
+	{"type": "dialogue", "text": "霊体エピソード未回収の場合、「地下道のみ」に分岐します。"},
+
+	{
+		"type": "branch",
+		"condition": "white_boy_sightings",
+		"branches": {
+			"seen": 100,
+			"not_seen": 200
+		}
+	},
+
+	{"type": "index", "index": 100},
+	{"type": "dialogue", "text": "【seen】霊体を複数箇所で目撃しています。", "new_page": true},
+	{"type": "jump", "index": 300},
+
+	{"type": "index", "index": 200},
+	{"type": "dialogue", "text": "【not_seen】霊体は地下道でのみ目撃しています。", "new_page": true},
+	{"type": "jump", "index": 300},
+
+	{"type": "index", "index": 300},
+	{"type": "dialogue", "text": "white_boy_sightings テスト完了！", "new_page": true},
+
+	{"type": "dialogue", "text": "テスト2: day_1010_ending（エピソード回収率）", "new_page": true},
+	{"type": "dialogue", "text": "現在の回収率に応じた分岐に進みます。"},
+
+	{
+		"type": "branch",
+		"condition": "day_1010_ending",
+		"branches": {
+			"true_ready": 1000,
+			"high": 2000,
+			"medium": 3000,
+			"low": 4000,
+			"minimum": 5000
+		}
+	},
+
+	{"type": "index", "index": 1000},
+	{"type": "dialogue", "text": "【true_ready】トゥルー条件達成！秘密基地 + ep_1,2,3 回収済み", "new_page": true},
+	{"type": "jump", "index": 9000},
+
+	{"type": "index", "index": 2000},
+	{"type": "dialogue", "text": "【high】高回収（5個以上）", "new_page": true},
+	{"type": "jump", "index": 9000},
+
+	{"type": "index", "index": 3000},
+	{"type": "dialogue", "text": "【medium】中回収（3〜4個）", "new_page": true},
+	{"type": "jump", "index": 9000},
+
+	{"type": "index", "index": 4000},
+	{"type": "dialogue", "text": "【low】低回収（1〜2個）", "new_page": true},
+	{"type": "jump", "index": 9000},
+
+	{"type": "index", "index": 5000},
+	{"type": "dialogue", "text": "【minimum】最低（0個）", "new_page": true},
+	{"type": "jump", "index": 9000},
+
+	{"type": "index", "index": 9000},
+	{"type": "dialogue", "text": "day_1010_ending テスト完了！", "new_page": true},
+
+	{"type": "dialogue", "text": "=== Step 5b テスト完了 ===", "new_page": true},
+	{"type": "dialogue", "text": "条件分岐の動作が正常に確認されました！"}
+]

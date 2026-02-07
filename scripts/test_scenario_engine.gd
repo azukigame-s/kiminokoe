@@ -1,7 +1,7 @@
 extends Control
 
 ## ScenarioEngine のテストスクリプト
-## Step 5: 選択肢のテスト
+## Step 5b: branch（条件分岐）のテスト
 
 # スクリプトをpreloadで読み込み
 const BackgroundDisplayScript = preload("res://scripts/ui/background_display.gd")
@@ -144,12 +144,12 @@ func run_test_scenario():
 	print("[TestScenarioEngine] テストシナリオ実行開始")
 
 	# JSONファイルからテストシナリオを読み込み
-	var scenario_data = await scenario_engine.load_scenario_data("test_step5")
+	var scenario_data = await scenario_engine.load_scenario_data("test_step5b")
 	if scenario_data.is_empty():
 		print("[TestScenarioEngine] テストシナリオの読み込みに失敗しました")
 		return
 
-	await scenario_engine.start_scenario(scenario_data, "test_step5")
+	await scenario_engine.start_scenario(scenario_data, "test_step5b")
 
 	print("[TestScenarioEngine] テストシナリオ完了")
 
