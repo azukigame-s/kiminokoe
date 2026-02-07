@@ -1,7 +1,7 @@
 extends Control
 
 ## ScenarioEngine のテストスクリプト
-## Step 2: 背景、BGM/SFX、テキストバッファのテスト
+## Step 4: load_scenario, jump, episode_clear のテスト
 
 # スクリプトをpreloadで読み込み
 const BackgroundDisplayScript = preload("res://scripts/ui/background_display.gd")
@@ -134,81 +134,44 @@ func _on_skip_mode_changed(is_skipping: bool):
 func run_test_scenario():
 	print("[TestScenarioEngine] テストシナリオ実行開始")
 
-	# Step 2 のテストシナリオ
-	# 背景、BGM、テキストバッファ、go_next をテスト
-	var test_scenario = [
-		# 背景設定
-		{
-			"type": "background",
-			"path": "res://assets/backgrounds/sea.jpg"
-		},
-		# BGM再生（ファイルが存在しない場合は警告が出るだけ）
-		{
-			"type": "bgm",
-			"path": "res://assets/music/sample_bgm.mp3"
-		},
-		# テキスト表示（新しいページ）
-		{
-			"type": "dialogue",
-			"text": "車窓を流れる景色――。見えるのは青い空、そして青い海。",
-			"new_page": true
-		},
-		# テキスト追加（同じページに追加）
-		{
-			"type": "dialogue",
-			"text": "そんな景色を眺めながら僕はバスに揺られていた。"
-		},
-		# テキスト追加（同じページに追加、go_next付き）
-		{
-			"type": "dialogue",
-			"text": "僕はこの席が好きだった。",
-			"go_next": true
-		},
-		# 新しいページ
-		{
-			"type": "dialogue",
-			"text": "理由は２つ。",
-			"new_page": true
-		},
-		{
-			"type": "dialogue",
-			"text": "フロントガラスから左の車窓にかけて、大パノラマの景色を拝むことができるというのがひとつ。"
-		},
-		{
-			"type": "dialogue",
-			"text": "運賃箱を見るのが好き、というのがもうひとつだ。",
-			"go_next": true
-		},
-		# 背景変更
-		{
-			"type": "background",
-			"path": "res://assets/backgrounds/busstop.jpg"
-		},
-		# SE再生テスト
-		{
-			"type": "sfx",
-			"path": "res://assets/sounds/sample_sfx.mp3"
-		},
-		# 新しいページ
-		{
-			"type": "dialogue",
-			"text": "バス停に到着した。",
-			"new_page": true
-		},
-		# テスト完了
-		{
-			"type": "dialogue",
-			"text": "【Step 2 テスト完了】背景、BGM、SFX、テキストバッファが動作しました！",
-			"new_page": true
-		}
-	]
+	# JSONファイルからテストシナリオを読み込み
+	var scenario_data = await scenario_engine.load_scenario_data("test_step4")
+	if scenario_data.is_empty():
+		print("[TestScenarioEngine] テストシナリオの読み込みに失敗しました")
+		return
 
-	await scenario_engine.start_scenario(test_scenario)
+	await scenario_engine.start_scenario(scenario_data, "test_step4")
 
 	print("[TestScenarioEngine] テストシナリオ完了")
 
-## 入力処理（スキップモード切り替え）
+	# テスト結果をコンソールに出力
+	print_test_results()
+
+## テスト結果をコンソールに出力
+func print_test_results():
+	print("")
+	print("========== テスト結果 ==========")
+
+	# TrophyManager の状態確認
+	var trophy_manager = get_node_or_null("/root/TrophyManager")
+	if trophy_manager:
+		trophy_manager.print_trophy_status()
+	else:
+		print("[TestScenarioEngine] TrophyManager が見つかりません（オートロード未設定？）")
+
+	# ScenarioEngine のセーブ状態確認
+	var save_state = scenario_engine.get_save_state()
+	print("[TestScenarioEngine] セーブ状態: %s" % str(save_state))
+	print("================================")
+
+## 入力処理（スキップモード切り替え / デバッグ）
 func _input(event):
-	if event is InputEventKey:
-		if event.keycode == KEY_S and event.pressed:
-			scenario_engine.toggle_skip_mode()
+	if event is InputEventKey and event.pressed:
+		match event.keycode:
+			KEY_S:
+				scenario_engine.toggle_skip_mode()
+			KEY_T:
+				# Tキーでトロフィー状態を表示
+				var trophy_manager = get_node_or_null("/root/TrophyManager")
+				if trophy_manager:
+					trophy_manager.print_trophy_status()

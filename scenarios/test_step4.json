@@ -1,101 +1,40 @@
 [
-	{
-		"type": "dialogue",
-		"text": "=== Step 4 テスト開始 ===",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "1. load_scenario テスト（エピソード呼び出し）"
-	},
-	{
-		"type": "dialogue",
-		"text": "ep_01を呼び出します。グレースケールになるはずです。",
-		"go_next": true
-	},
-	{
-		"type": "load_scenario",
-		"path": "episodes/ep_01"
-	},
-	{
-		"type": "dialogue",
-		"text": "ep_01から戻りました。グレースケールが解除されているはずです。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "2. episode_clear テスト"
-	},
-	{
-		"type": "dialogue",
-		"text": "ep_1 をクリア済みとして記録します。",
-		"go_next": true
-	},
-	{
-		"type": "episode_clear",
-		"id": "ep_1"
-	},
-	{
-		"type": "dialogue",
-		"text": "ep_1 がクリア済みになりました。トースト通知が出たはずです。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "3. jump テスト"
-	},
-	{
-		"type": "dialogue",
-		"text": "index 100 にジャンプします。",
-		"go_next": true
-	},
-	{
-		"type": "jump",
-		"index": 100
-	},
-	{
-		"type": "dialogue",
-		"text": "このテキストはスキップされるはずです。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "このテキストもスキップされるはずです。"
-	},
-	{
-		"type": "index",
-		"index": 100
-	},
-	{
-		"type": "dialogue",
-		"text": "ジャンプ成功！index 100 に到達しました。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "4. load_scenario テスト（shared呼び出し）"
-	},
-	{
-		"type": "dialogue",
-		"text": "shared_ep_7_shrine を呼び出します。グレースケールにはならないはずです。",
-		"go_next": true
-	},
-	{
-		"type": "load_scenario",
-		"path": "shared/shared_ep_7_shrine"
-	},
-	{
-		"type": "dialogue",
-		"text": "shared から戻りました。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "=== Step 4 テスト完了 ===",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "すべてのテストが正常に動作しました！"
-	}
+	{"type": "dialogue", "text": "=== Step 4 テスト開始 ===", "new_page": true},
+	{"type": "dialogue", "text": "テスト1: jump コマンド"},
+	{"type": "dialogue", "text": "index 100 にジャンプします。次の2行はスキップされるはずです。", "go_next": true},
+
+	{"type": "jump", "index": 100},
+
+	{"type": "dialogue", "text": "【失敗】このテキストは表示されないはずです。", "new_page": true},
+	{"type": "dialogue", "text": "【失敗】このテキストも表示されないはずです。"},
+
+	{"type": "index", "index": 100},
+
+	{"type": "dialogue", "text": "【成功】ジャンプ成功！index 100 に到達しました。", "new_page": true},
+
+	{"type": "dialogue", "text": "テスト2: episode_clear コマンド", "new_page": true},
+	{"type": "dialogue", "text": "ep_1 をクリア済みとして記録します。コンソールにログが出ます。", "go_next": true},
+
+	{"type": "episode_clear", "id": "ep_1"},
+
+	{"type": "dialogue", "text": "【成功】ep_1 クリア記録完了。コンソールを確認してください。", "new_page": true},
+
+	{"type": "background", "path": "res://assets/backgrounds/sea.jpg"},
+
+	{"type": "dialogue", "text": "テスト3: load_scenario（エピソード呼び出し）", "new_page": true},
+	{"type": "dialogue", "text": "背景が海に変わりました。次のエピソード呼び出しでグレースケールになるはずです。"},
+
+	{"type": "load_scenario", "path": "episodes/test_mini_episode"},
+
+	{"type": "dialogue", "text": "【確認】エピソードから戻りました。グレースケールが解除されていますか？", "new_page": true},
+
+	{"type": "dialogue", "text": "テスト4: load_scenario（shared呼び出し）", "new_page": true},
+	{"type": "dialogue", "text": "ミニ共用シナリオを呼び出します。グレースケールにはならないはずです。"},
+
+	{"type": "load_scenario", "path": "shared/test_mini_shared"},
+
+	{"type": "dialogue", "text": "【確認】共用シナリオから戻りました。", "new_page": true},
+
+	{"type": "dialogue", "text": "=== Step 4 テスト完了 ===", "new_page": true},
+	{"type": "dialogue", "text": "すべてのテストが正常に動作しました！"}
 ]
