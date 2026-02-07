@@ -1,0 +1,133 @@
+[
+	{
+		"type": "subtitle",
+		"text": "22:00",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "白い服の少年。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "地下道で見た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして――他の場所でも。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "あれは、本当にいたのだろうか？",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロも見ていた――幻覚ではないはずだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも――。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "少しカールした黒髪。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "真っ白な服。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグに、似ていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "似ていたというよりも、記憶の中のスグそのものだった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、スグはもういない。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "12年前に、あの事故で――。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの顔も、はっきりとは思い出せない。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "明日は法事だ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんが来て、叔父さんたちも集まる。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "みんなでスグのことを話すのだろう。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は――ちゃんと、スグのことを思い出せるだろうか？",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "そんなことを考えていると、まぶたが重くなってきた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "体が、疲れを訴えている。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "今日はもう、休もう。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "目を閉じると、白い服の少年の姿が浮かんだ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "あの少年は――誰だったのだろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして、また会えるのだろうか。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "意識が、遠のいていく。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "薄れゆく意識の中で、僕は――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの名前を、心の中で呼んでいた。",
+		"go_next": true
+	}
+]
+

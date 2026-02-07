@@ -341,5 +341,10 @@
 		"type": "dialogue",
 		"text": "僕は小走りで家に帰った。",
 		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1010/dinner",
+		"new_page_after_return": true
 	}
 ]

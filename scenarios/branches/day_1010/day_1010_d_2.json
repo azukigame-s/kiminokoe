@@ -29,7 +29,13 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "小走りで実家へと向かった。"
+		"text": "小走りで実家へと向かった。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1010/dinner",
+		"new_page_after_return": true
 	}
 ]
 

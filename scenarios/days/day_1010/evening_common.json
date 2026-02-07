@@ -1,0 +1,116 @@
+[
+	{
+		"type": "subtitle",
+		"text": "21:00",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "食事が終わり、皿を片付け始めた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロと一緒に台所へ運ぶ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母が「ありがとうねぇ」と声をかけてくれた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、疲れたでしょ？　部屋で休んだら？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが気を遣ってくれる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷いて、自分の部屋へ向かうことにした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "階段を上りながら、さっきの食卓のことを思い返していた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの話。"
+	},
+	{
+		"type": "dialogue",
+		"text": "明日の法事。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして――今日、思い出したこと。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "自室のドアを開けた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "懐かしい部屋だった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "本棚には昔読んでいた漫画が並んでいる。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "机の上には、使い古した筆箱が置かれたままだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "何も変わっていない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "まるで時間が止まっているようだった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ベッドに腰を下ろし、そのまま仰向けに倒れ込んだ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "天井を見上げる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "今日は、長い一日だった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "バスの中で見た海。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "地下道で見た、白い服の少年。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして――思い出したスグとの記憶。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1010/evening_branch",
+		"new_page_after_return": true
+	}
+]
+

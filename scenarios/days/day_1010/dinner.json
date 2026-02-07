@@ -1,0 +1,220 @@
+[
+	{
+		"type": "subtitle",
+		"text": "19:00",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "実家のリビングに、夕食の良い香りが漂っていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母が台所で忙しそうに動いている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "テーブルには大皿に盛られた煮物、焼き魚、新鮮な野菜の天ぷらが並んでいた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「[主人公]ちゃん、手伝ってぇな？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "昼間も感じたが、祖母の鳥取弁が懐かしい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷いて、箸や茶碗を並べ始めた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロも一緒に手伝っている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、今日はいろいろ回ったんだよね？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが明るく話しかけてくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷いて、今日見て回った場所のことを伝えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは僕の手元を見ながら、「へぇ〜」と相槌を打つ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "やがて父も加わり、4人で食卓を囲んだ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "いただきます、と手を合わせる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "久しぶりの家族での食事だった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「久しぶりにみんなで食べれるねぇ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母が嬉しそうに言った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「[主人公]ちゃん、一人でちゃんと食べとるかえ？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は、ちゃんと食べていることを伝えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母は「そうかそうか」と安心したように頷いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「まぁ、都会の食べ物は味が濃いけぇね」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが箸を動かしながら話し始めた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「ねえねえ、このあいだ学校でさ――」"
+	},
+	{
+		"type": "dialogue",
+		"text": "妹の他愛もない話に、テーブルが和やかな雰囲気に包まれる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "父も時々相槌を打ちながら、静かに食事を続けていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ふと、祖母が煮物を僕の皿に取り分けてくれた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「これ、スグちゃんも好きだったねぇ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母の言葉に、テーブルが少し静かになった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は――何も言えなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが好きだった煮物。"
+	},
+	{
+		"type": "dialogue",
+		"text": "思い出せない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、きっと好きだったのだろう。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母がそう言うのだから。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は箸を伸ばし、煮物を口に運んだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "優しい味がした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "父が口を開いた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「明日はお寺さんが15時に来てくれることになっとる」"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母が頷く。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ほいで、夜は叔父さんたちも来てくれるけぇ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「久しぶりに賑やかになるねぇ」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが僕の方を見た。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、明日大丈夫？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "心配そうな表情だった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は大丈夫だよと応えた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは少し安心したように笑った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「そっか。じゃあ、私も頑張る」"
+	},
+	{
+		"type": "dialogue",
+		"text": "会話は途切れ途切れだったけれど、それでも温かかった。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1010/evening_common",
+		"new_page_after_return": true
+	}
+]
+
