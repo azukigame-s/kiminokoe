@@ -1,18 +1,20 @@
 extends Control
 
 ## ScenarioEngine のテストスクリプト
-## Step 4: load_scenario, jump, episode_clear のテスト
+## Step 5: 選択肢のテスト
 
 # スクリプトをpreloadで読み込み
 const BackgroundDisplayScript = preload("res://scripts/ui/background_display.gd")
 const AudioManagerScript = preload("res://scripts/ui/audio_manager.gd")
 const TextDisplayScript = preload("res://scripts/ui/text_display.gd")
+const ChoiceDisplayScript = preload("res://scripts/ui/choice_display.gd")
 const ScenarioEngineScript = preload("res://scripts/core/scenario_engine.gd")
 
 var scenario_engine
 var text_display
 var background_display
 var audio_manager
+var choice_display
 var skip_indicator: Label
 
 func _ready():
@@ -94,6 +96,12 @@ func setup_ui():
 	audio_manager.name = "AudioManager"
 	add_child(audio_manager)
 
+	# ChoiceDisplay の作成
+	choice_display = Control.new()
+	choice_display.set_script(ChoiceDisplayScript)
+	choice_display.name = "ChoiceDisplay"
+	add_child(choice_display)
+
 	print("[TestScenarioEngine] UI構築完了")
 
 ## ScenarioEngine の初期化
@@ -106,6 +114,7 @@ func setup_scenario_engine():
 	scenario_engine.command_executor.text_display = text_display
 	scenario_engine.command_executor.background_display = background_display
 	scenario_engine.command_executor.audio_manager = audio_manager
+	scenario_engine.command_executor.choice_display = choice_display
 
 	print("[TestScenarioEngine] ScenarioEngine 初期化完了")
 
@@ -135,12 +144,12 @@ func run_test_scenario():
 	print("[TestScenarioEngine] テストシナリオ実行開始")
 
 	# JSONファイルからテストシナリオを読み込み
-	var scenario_data = await scenario_engine.load_scenario_data("test_step4")
+	var scenario_data = await scenario_engine.load_scenario_data("test_step5")
 	if scenario_data.is_empty():
 		print("[TestScenarioEngine] テストシナリオの読み込みに失敗しました")
 		return
 
-	await scenario_engine.start_scenario(scenario_data, "test_step4")
+	await scenario_engine.start_scenario(scenario_data, "test_step5")
 
 	print("[TestScenarioEngine] テストシナリオ完了")
 

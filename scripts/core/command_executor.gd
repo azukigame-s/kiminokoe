@@ -8,6 +8,7 @@ class_name CommandExecutor
 var text_display: TextDisplay
 var background_display: BackgroundDisplay
 var audio_manager: AudioManager
+var choice_display: ChoiceDisplay
 
 # シグナル
 signal command_completed
@@ -56,7 +57,8 @@ func execute(command: Dictionary, skip_controller: SkipController) -> void:
 		"sfx":
 			await execute_sfx(command, skip_controller)
 		"choice":
-			await execute_choice(command, skip_controller)
+			# choice は ScenarioEngine で処理（フロー制御が必要なため）
+			pass
 		"load_scenario":
 			# load_scenario は ScenarioEngine で処理
 			pass
@@ -144,17 +146,15 @@ func execute_sfx(command: Dictionary, skip_controller: SkipController) -> void:
 	else:
 		push_warning("[CommandExecutor] AudioManager が設定されていません")
 
-## choice コマンドを実行
-func execute_choice(command: Dictionary, skip_controller: SkipController) -> void:
-	print("[CommandExecutor] choice")
+## 選択肢表示時にテキストを隠す
+func hide_text_for_choice() -> void:
+	if text_display:
+		text_display.visible = false
 
-	# 選択肢でスキップモードを停止
-	if skip_controller.is_skipping:
-		skip_controller.disable()
-
-	# TODO: 選択肢表示の実装（Step 5）
-	# choice_display.show_choices(command.choices)
-	# await choice_display.choice_selected
+## 選択肢終了後にテキストを再表示
+func show_text_after_choice() -> void:
+	if text_display:
+		text_display.visible = true
 
 ## subtitle コマンドを実行
 func execute_subtitle(command: Dictionary, skip_controller: SkipController) -> void:

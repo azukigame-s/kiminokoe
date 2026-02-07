@@ -78,6 +78,9 @@ func execute_scenario() -> void:
 				handle_episode_clear(command)
 				current_index += 1
 				continue
+			"choice":
+				await handle_choice(command)
+				continue  # current_indexはchoice内で設定済み
 
 		# 通常のコマンドはCommandExecutorで処理
 		await command_executor.execute(command, skip_controller)
@@ -116,6 +119,56 @@ func handle_jump(command: Dictionary) -> void:
 
 	push_error("[ScenarioEngine] jump: index %d が見つかりません" % target_index)
 	current_index += 1
+
+## choice コマンドの処理
+func handle_choice(command: Dictionary) -> void:
+	var choices = command.get("choices", [])
+	if choices.is_empty():
+		push_error("[ScenarioEngine] choice: choices が空です")
+		current_index += 1
+		return
+
+	print("[ScenarioEngine] choice: %d 個の選択肢" % choices.size())
+
+	# スキップモードを停止
+	if skip_controller.is_skipping:
+		skip_controller.disable()
+
+	# テキストを隠す
+	command_executor.hide_text_for_choice()
+
+	# ChoiceDisplay で選択肢を表示
+	var choice_display = command_executor.choice_display
+	if not choice_display:
+		push_error("[ScenarioEngine] ChoiceDisplay が設定されていません")
+		current_index += 1
+		return
+
+	choice_display.show_choices(choices)
+
+	# 選択を待機
+	var selected = await choice_display.choice_selected
+
+	# テキストを再表示
+	command_executor.show_text_after_choice()
+
+	print("[ScenarioEngine] choice selected: %s" % selected.get("text", ""))
+
+	# 選択結果に応じた処理
+	if selected.has("scenario"):
+		# 別シナリオに遷移（サブシナリオとして呼び出し）
+		var scenario_path = selected.get("scenario", "")
+		var is_episode = scenario_path.begins_with("episodes/")
+		await call_subscenario(scenario_path, is_episode)
+		# サブシナリオから戻ったら、choiceの次のコマンドへ
+		current_index += 1
+	elif selected.has("next_index"):
+		# 同一シナリオ内のindexへジャンプ
+		var target_index = selected.get("next_index", -1)
+		handle_jump({"index": target_index})
+	else:
+		# next_index も scenario もない場合は次のコマンドへ
+		current_index += 1
 
 ## episode_clear コマンドの処理
 func handle_episode_clear(command: Dictionary) -> void:
