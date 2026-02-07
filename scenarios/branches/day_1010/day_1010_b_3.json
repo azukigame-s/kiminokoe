@@ -113,7 +113,7 @@
 	},
 	{
 		"type": "choice",
-		"options": [
+		"choices": [
 			{
 				"text": "山道を下り北に向かう",
 				"scenario": "shared/shared_ep_7_shrine"

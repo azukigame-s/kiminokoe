@@ -134,7 +134,7 @@
 	},
 	{
 		"type": "choice",
-		"options": [
+		"choices": [
 			{
 				"text": "地下道で見た少年が気になるので北に向かう",
 				"next_index": 31
