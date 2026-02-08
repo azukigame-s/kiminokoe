@@ -319,6 +319,21 @@
 		"type": "load_scenario",
 		"path": "days/day_1010/exploration",
 		"new_page_after_return": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1010/dinner",
+		"new_page_after_return": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1010/evening_common",
+		"new_page_after_return": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1010/evening_branch",
+		"new_page_after_return": true
 	}
 ]
 

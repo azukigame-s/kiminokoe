@@ -6,7 +6,7 @@ extends Node
 
 # シーン定数
 const TITLE_SCENE = "res://scenes/title_scene.tscn"
-const GAME_SCENE = "res://scenes/novel_system.tscn"  # 既存のノベルシステム
+const GAME_SCENE = "res://scenes/game_scene.tscn"  # 新シナリオエンジン
 const SETTINGS_SCENE = "res://scenes/settings_scene.tscn"
 
 # シグナル定義

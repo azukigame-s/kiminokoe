@@ -9,6 +9,7 @@ var text_display: TextDisplay
 var background_display: BackgroundDisplay
 var audio_manager: AudioManager
 var choice_display: ChoiceDisplay
+var subtitle_display: SubtitleDisplay
 
 # シグナル
 signal command_completed
@@ -168,9 +169,11 @@ func execute_subtitle(command: Dictionary, skip_controller: SkipController) -> v
 	if skip_controller.is_skipping:
 		return
 
-	# TODO: サブタイトル表示の実装（Step 5）
-	# subtitle_display.show_subtitle(text, fade_time, display_time)
-	# await subtitle_display.subtitle_completed
+	if subtitle_display:
+		subtitle_display.show_subtitle(text, fade_time, display_time)
+		await subtitle_display.subtitle_completed
+	else:
+		push_warning("[CommandExecutor] SubtitleDisplay が設定されていません")
 
 ## flashback_start コマンドを実行（回想モード開始）
 func execute_flashback_start(command: Dictionary, skip_controller: SkipController) -> void:

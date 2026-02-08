@@ -88,11 +88,6 @@
 		"type": "dialogue",
 		"text": "イロの方に向き直り、家に帰ることにした。",
 		"go_next": true
-	},
-	{
-		"type": "load_scenario",
-		"path": "days/day_1010/dinner",
-		"new_page_after_return": true
 	}
 ]
 

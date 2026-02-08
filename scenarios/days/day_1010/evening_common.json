@@ -106,11 +106,6 @@
 		"type": "dialogue",
 		"text": "そして――思い出したスグとの記憶。",
 		"go_next": true
-	},
-	{
-		"type": "load_scenario",
-		"path": "days/day_1010/evening_branch",
-		"new_page_after_return": true
 	}
 ]
 

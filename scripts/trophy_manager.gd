@@ -96,7 +96,7 @@ func _setup_toast_notification():
 	var root = get_tree().root
 	if root:
 		for child in root.get_children():
-			if child and (child.name == "NovelSystem" or child.has_method("change_background")):
+			if child and (child.name == "NovelSystem" or child.name == "GameScene" or child.has_method("change_background")):
 				novel_system_scene = child
 				break
 	
@@ -354,7 +354,7 @@ func _show_trophy_toast(trophy_name: String):
 	var root = get_tree().root
 	if root:
 		for child in root.get_children():
-			if child and (child.name == "NovelSystem" or child.has_method("change_background")):
+			if child and (child.name == "NovelSystem" or child.name == "GameScene" or child.has_method("change_background")):
 				# トースト通知が既に存在する場合は取得（シーンファイルに追加されている場合）
 				if child.has_node("toast_notification"):
 					toast_node = child.get_node("toast_notification")

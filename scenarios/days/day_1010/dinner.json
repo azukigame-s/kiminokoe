@@ -210,11 +210,6 @@
 		"type": "dialogue",
 		"text": "会話は途切れ途切れだったけれど、それでも温かかった。",
 		"go_next": true
-	},
-	{
-		"type": "load_scenario",
-		"path": "days/day_1010/evening_common",
-		"new_page_after_return": true
 	}
 ]
 
