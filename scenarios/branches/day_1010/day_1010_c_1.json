@@ -18,6 +18,10 @@
 		"go_next": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/waterway.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "そんなことを考えていると、川から海への合流地点にたどり着いた。",
 		"new_page": true
@@ -49,6 +53,10 @@
 	{
 		"type": "dialogue",
 		"text": "僕は来た道を戻り、岩場の見える海岸まで戻った。"
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/sea_road.jpg"
 	},
 	{
 		"type": "dialogue",

@@ -1,5 +1,9 @@
 [
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/house_front.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "僕の実家は村のちょうど真ん中くらいにあり、東西南北に道が伸びている。",
 		"new_page": true

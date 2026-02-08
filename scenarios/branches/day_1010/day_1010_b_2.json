@@ -9,6 +9,10 @@
 		"text": "家から東に進むと程なく「兄の水」にたどり着いた。"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/ani_no_mizu.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "山から流れるこの水は透き通っており、いまだに飲み水として村で利用されている。"
 	},
@@ -33,6 +37,10 @@
 	{
 		"type": "dialogue",
 		"text": "なぜこのような名前なのか知らなかったが、なんとなく自分とスグを思い浮かべていた。"
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/ani_no_mizu.jpg"
 	},
 	{
 		"type": "dialogue",

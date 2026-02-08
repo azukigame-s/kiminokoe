@@ -31,6 +31,10 @@
 		"text": "本殿を回り込み裏側に足を進める。"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/retaining_wall.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "裏は山肌を削った崖になっており、見上げないと頂上が見えないほどの高さだ。"
 	},

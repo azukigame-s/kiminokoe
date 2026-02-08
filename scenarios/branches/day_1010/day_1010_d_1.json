@@ -23,6 +23,10 @@
 		"new_page": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/busstop2.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "そこにつく頃には雨は本降りになり始めていた。"
 	},

@@ -42,6 +42,23 @@
 - `shared_ep_7_shrine`: 神社（ep_7）
 - `shared_warabeuta`: 童歌ふたこじぞう
 
+#### 背景画像（2026年2月8日対応完了）
+
+scenarios.mdに追記された `> 🎨 [ファイル名]` 記法をJSONに反映しました。
+
+**対応済みファイル**:
+- `exploration.json`: house_front.jpg
+- `day_1010_b_1.json`: sea_road.jpg（sea.jpgから修正）
+- `day_1010_b_2.json`: ani_no_mizu.jpg（2箇所）
+- `day_1010_b_3.json`: secret_base.jpg
+- `day_1010_b_4.json`: busstop.jpg, underpass.jpg
+- `day_1010_c_1.json`: waterway.jpg, sea_road.jpg
+- `day_1010_d_1.json`: busstop2.jpg
+- `day_1010_e_1.json`: busstop2.jpg
+- `shared_ep_7_shrine.json`: retaining_wall.jpg
+
+**未対応**: `> 🎨 [no image]` 指定箇所（背景なし = backgroundコマンドを出力しない）
+
 ### ❌ 未完成
 
 #### シナリオ

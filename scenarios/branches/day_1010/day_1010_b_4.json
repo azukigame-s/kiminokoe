@@ -150,6 +150,10 @@
 		]
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/busstop.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "僕は高台の空き地を後にして、バス停まで戻ってきた。",
 		"new_page": true
@@ -161,6 +165,10 @@
 	{
 		"type": "dialogue",
 		"text": "さっき見た少年も……ダキに帰ってきてからどうも様子がおかしい。"
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/underpass.jpg"
 	},
 	{
 		"type": "dialogue",

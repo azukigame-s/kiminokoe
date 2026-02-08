@@ -66,6 +66,10 @@
 		"go_next": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/secret_base.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "雑木林に囲まれた広場の中央には、立派な木がそびえ立っていた。",
 		"new_page": true
