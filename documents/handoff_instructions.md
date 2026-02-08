@@ -55,6 +55,103 @@
 
 ------
 
+## 🚧 設計上の課題（要検討）
+
+### シナリオ管理構造の問題
+
+#### 現状の問題点
+
+**1. dinnerが9箇所から呼び出されている**
+- `days/day_1010/dinner.json`が全ルート共通なのに、各branchesファイルが個別に呼び出している
+- 呼び出し箇所: day_1010_b_3.json, day_1010_b_4.json, day_1010_c_2.json, day_1010_d_2.json, day_1010_d_3.json, day_1010_e_2.json, day_1010_e_3.json, shared_ep_3_after.json, shared_ep_7_shrine.json
+- 夜のフロー変更時、9箇所の修正が必要
+
+**2. メインスレッドの概念が不明確**
+```
+main.json
+  └─ exploration.json 呼び出し
+      └─ 選択肢で各branchesにジャンプ（戻ってこない）
+          └─ 各自がdinnerを呼び出し
+```
+
+**3. sharedの使い方が不統一**
+- `shared_ep_3_after`: エピソード後の共通部分のみ（ep_03は呼び出し元が呼び出す）
+- `shared_ep_7_shrine`: エピソード呼び出し（ep_07）を含む
+
+#### 設計案
+
+**案A: メインスレッド回帰方式** ⭐推奨
+
+探索終了後、main.jsonに戻り、メインスレッドが夜のフローを管理する方式
+
+```
+main.json
+  ├─ プロローグ〜実家（既存）
+  ├─ exploration.json 呼び出し（load_scenarioで戻ってくる）
+  ├─ dinner.json 呼び出し（1箇所のみ）
+  ├─ evening_common.json 呼び出し
+  ├─ evening_branch.json 呼び出し
+  └─ 翌日へ
+```
+
+**メリット**:
+- メインフローが一目瞭然
+- dinner呼び出しが1箇所だけ（保守性向上）
+- 夜のフロー変更が容易
+
+**デメリット**:
+- 各branchesが探索終了を通知する仕組みが必要
+- GDScriptの実装が必要
+
+**案B: 探索後共通フロー方式**
+
+探索終了後の共通フローを`shared/after_exploration.json`に集約する方式
+
+```
+exploration.json
+  └─ 選択肢（scenarioでジャンプ）
+      └─ 各branches
+          └─ shared/after_exploration.json にジャンプ
+
+shared/after_exploration.json
+  ├─ dinner 呼び出し（1箇所のみ）
+  ├─ evening_common 呼び出し
+  ├─ evening_branch 呼び出し
+  └─ 翌日へ
+```
+
+**メリット**:
+- dinner呼び出しが1箇所だけ（保守性向上）
+- 各branchesのジャンプ先が明確
+
+**デメリット**:
+- メインスレッドの概念が曖昧
+- after_explorationが実質的なメインになる
+
+#### 検討時の確認事項
+
+1. **GDScriptの`load_scenario`と`scenario`の仕様確認**
+   - `load_scenario`: 呼び出し元に戻るのか？
+   - `scenario`: ジャンプ（戻らない）なのか？
+   - scripts/core/command_executor.gd と scenario_engine.gd を確認
+
+2. **探索終了の判定方法**
+   - 各branchesがどのように探索終了を通知するか
+   - GDScriptで実装が必要か
+
+3. **他の日付への影響**
+   - 10月11日、10月12日も同様の構造か
+   - 統一的な設計にすべきか
+
+#### 決定事項（未定）
+
+**TODO**: どちらの設計案を採用するか決定してください
+- [ ] 案A（メインスレッド回帰方式）を採用
+- [ ] 案B（探索後共通フロー方式）を採用
+- [ ] 別の方式を検討
+
+------
+
 ## 📋 作業の優先順位
 
 ### 最優先 ⭐⭐⭐
