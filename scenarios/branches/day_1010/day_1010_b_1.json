@@ -68,7 +68,7 @@
 			{
 				"id": "beach_area",
 				"text": "西（海水浴場がある方）に進む",
-				"scenario": "shared/shared_day_1010_c"
+				"scenario": "branches/day_1010/day_1010_c_2"
 			}
 		]
 	}

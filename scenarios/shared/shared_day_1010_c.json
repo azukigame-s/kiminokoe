@@ -39,18 +39,73 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "天気も崩れてきたし、僕は家に帰ることにした。",
+		"text": "……。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "小走りで実家へと向かった。",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も弟に強がって、お兄ちゃんらしいところを見せようとしたこともあったんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは心配してくれた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それなのに、僕は――。",
 		"go_next": true
 	},
 	{
-		"type": "load_scenario",
-		"path": "days/day_1010/dinner",
-		"new_page_after_return": true
+		"type": "dialogue",
+		"text": "気が付くと、波打ち際に白い服の少年が立っていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "真っ白な服、少しカールした黒髪。"
+	},
+	{
+		"type": "dialogue",
+		"text": "少年は海を見つめている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "その姿は半透明で、波の泡のように儚い。"
+	},
+	{
+		"type": "dialogue",
+		"text": "潮風が吹くと、少年の姿はゆらりと揺れた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "声をかけようとした瞬間、瞬きをすると――。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "その姿はなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あの少年はスグだったのだろうか。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あの日のスグの顔が思い出せない。",
+		"go_next": true
 	}
 ]
 
