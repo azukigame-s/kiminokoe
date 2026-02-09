@@ -86,7 +86,9 @@ func execute_scenario() -> void:
 				continue  # current_indexはbranch内で設定済み
 
 		# 通常のコマンドはCommandExecutorで処理
+		print("[ScenarioEngine] Calling command_executor.execute() for command %d" % current_index)
 		await command_executor.execute(command, skip_controller)
+		print("[ScenarioEngine] command_executor.execute() completed for command %d" % current_index)
 
 		command_executed.emit(command)
 		current_index += 1

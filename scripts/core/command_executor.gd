@@ -91,21 +91,29 @@ func execute_dialogue(command: Dictionary, skip_controller: SkipController) -> v
 	var new_page = command.get("new_page", false)
 	var go_next = command.get("go_next", false)
 
+	print("[CommandExecutor] execute_dialogue() text=%s, new_page=%s, go_next=%s" % [text.substr(0, 20), new_page, go_next])
+
 	text_display.set_instant_display(skip_controller.is_skipping)
 	text_display.set_go_next(go_next)
 
 	# テキスト表示（アニメーション完了まで待機）
+	print("[CommandExecutor] execute_dialogue() calling show_text()")
 	await text_display.show_text(text, new_page)
+	print("[CommandExecutor] execute_dialogue() show_text() completed")
 
 	# go_next: アニメーション完了後に自動進行（クリック待機なし）
 	if go_next:
+		print("[CommandExecutor] execute_dialogue() go_next=true, skipping wait_for_advance()")
 		return
 
 	# クリック待機
 	if skip_controller.is_skipping:
+		print("[CommandExecutor] execute_dialogue() skipping, waiting timer")
 		await get_tree().create_timer(skip_controller.skip_wait_time).timeout
 	else:
+		print("[CommandExecutor] execute_dialogue() calling wait_for_advance()")
 		await text_display.wait_for_advance()
+		print("[CommandExecutor] execute_dialogue() wait_for_advance() completed")
 
 ## background コマンドを実行
 func execute_background(command: Dictionary, skip_controller: SkipController) -> void:
