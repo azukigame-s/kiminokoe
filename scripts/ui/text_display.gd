@@ -1,224 +1,211 @@
 extends Control
 class_name TextDisplay
 
-## テキスト表示クラス
-## テキストバッファ、ページ送り、アニメーション表示をサポート
+## テキスト表示クラス（ステートマシン版）
+## show_text() / wait_for_advance() の async API を提供
 
-# シグナル
-signal clicked
-signal text_animation_completed
+# 状態定義
+enum State { IDLE, ANIMATING, WAITING }
+
+# 内部シグナル（await 解決用）
+signal _animation_finished
+signal _advance_requested
 
 # テキスト表示設定
-var text_speed: float = 0.05  # 1文字あたりの表示時間（秒）
-var instant_display: bool = false  # 即座に全文表示
+var text_speed: float = 0.05
+var instant_display: bool = false
 
-# テキストバッファ
-var page_buffer: Array = []  # [{text: String, go_next: bool}, ...]
-var current_buffer_index: int = 0
+# 状態
+var _state: State = State.IDLE
+var _current_text: String = ""
+var _displayed_text: String = ""
+var _full_page_text: String = ""  # ページ内の過去テキスト
+var _char_index: int = 0
+var _animation_timer: float = 0.0
 
-# 現在の状態
-var current_text: String = ""
-var displayed_text: String = ""
-var full_page_text: String = ""  # ページ全体のテキスト（過去のテキストを含む）
-var is_animating: bool = false
-var animation_timer: float = 0.0
-var current_char_index: int = 0
+# go_next フラグ（インジケータ表示用）
+var _go_next: bool = false
 
-# 次のコマンドに自動進行するかどうか
-var should_go_next: bool = false
-
-# インジケータ設定
-var indicator_symbol: String = "▼"
-var page_indicator_symbol: String = "▽"
-var show_indicator: bool = true
-var indicator_visible: bool = true
-var indicator_blink_timer: float = 0.0
-var indicator_blink_speed: float = 0.5
+# インジケータ
+var _indicator_blink_timer: float = 0.0
+var _indicator_blink_speed: float = 0.5
+var _indicator_visible: bool = true
 
 # ノード参照
 var text_label: RichTextLabel = null
 
+# 後方互換プロパティ（外部から状態を確認する場合用）
+var is_animating: bool:
+	get:
+		return _state == State.ANIMATING
+
 func _ready():
 	print("[TextDisplay] 準備完了")
-
-	# クリック検知のための入力設定
-	set_process_input(true)
-
-	# TextLabel を探す（子ノードとして追加されている場合）
 	if has_node("TextLabel"):
 		text_label = get_node("TextLabel")
-		print("[TextDisplay] TextLabel を検出")
-	else:
-		print("[TextDisplay] TextLabel は後で設定されます")
 
 func _input(event):
+	# IDLE 状態では入力を無視
+	if _state == State.IDLE:
+		return
+
+	# クリック/キー判定
+	var is_click = false
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			_on_clicked()
+			is_click = true
 	elif event is InputEventKey:
-		if event.keycode == KEY_ENTER or event.keycode == KEY_SPACE:
-			if event.pressed:
-				_on_clicked()
+		if (event.keycode == KEY_ENTER or event.keycode == KEY_SPACE) and event.pressed:
+			is_click = true
+
+	if not is_click:
+		return
+
+	match _state:
+		State.ANIMATING:
+			# アニメーション中 → 即座に完了
+			_complete_animation()
+		State.WAITING:
+			# クリック待機中 → ページ送り
+			_state = State.IDLE
+			_advance_requested.emit()
 
 func _process(delta):
-	# テキストアニメーション処理
-	if is_animating and text_label:
-		animation_timer += delta
+	match _state:
+		State.ANIMATING:
+			_process_animation(delta)
+		State.WAITING:
+			_process_indicator_blink(delta)
 
-		# 次の文字を表示するタイミング
-		while animation_timer >= text_speed and current_char_index < current_text.length():
-			current_char_index += 1
-			displayed_text = current_text.substr(0, current_char_index)
-			_update_display()
-			animation_timer -= text_speed
+## アニメーション処理
+func _process_animation(delta: float) -> void:
+	if not text_label:
+		return
 
-		# アニメーション完了チェック
-		if current_char_index >= current_text.length():
-			is_animating = false
-			_finalize_text()
-			text_animation_completed.emit()
+	_animation_timer += delta
 
-	# インジケータの点滅処理
-	if not is_animating and show_indicator:
-		indicator_blink_timer += delta
-		if indicator_blink_timer >= indicator_blink_speed:
-			indicator_blink_timer = 0.0
-			indicator_visible = not indicator_visible
-			_update_display()
+	while _animation_timer >= text_speed and _char_index < _current_text.length():
+		_char_index += 1
+		_displayed_text = _current_text.substr(0, _char_index)
+		_update_display()
+		_animation_timer -= text_speed
 
-## テキストを表示（バッファに追加）
-func show_text(text: String, new_page: bool = false, go_next: bool = false) -> void:
+	# 全文字表示完了
+	if _char_index >= _current_text.length():
+		_complete_animation()
+
+## インジケータ点滅処理
+func _process_indicator_blink(delta: float) -> void:
+	_indicator_blink_timer += delta
+	if _indicator_blink_timer >= _indicator_blink_speed:
+		_indicator_blink_timer = 0.0
+		_indicator_visible = not _indicator_visible
+		_update_display()
+
+# ===== Public API =====
+
+## テキストを表示（async: アニメーション完了まで待機）
+func show_text(text: String, new_page: bool = false) -> void:
 	if not text_label:
 		push_error("[TextDisplay] text_label が設定されていません")
 		return
 
-	print("[TextDisplay] テキスト表示: %s (new_page: %s, go_next: %s)" % [text, new_page, go_next])
-
-	should_go_next = go_next
-
 	if new_page:
-		# 新しいページ: バッファをクリアして開始
-		clear()
+		_clear_internal()
 
-	# バッファに追加
-	page_buffer.append({
-		"text": text,
-		"go_next": go_next
-	})
-
-	# テキストを設定してアニメーション開始
-	current_text = text
-	current_char_index = 0
-	displayed_text = ""
-	animation_timer = 0.0
-	indicator_visible = true
+	_current_text = text
+	_char_index = 0
+	_displayed_text = ""
+	_animation_timer = 0.0
 
 	if instant_display:
-		# 即座に全文表示
-		displayed_text = current_text
-		current_char_index = current_text.length()
+		# 即座に全文表示して返る
+		_displayed_text = _current_text
+		_char_index = _current_text.length()
 		_finalize_text()
-		text_animation_completed.emit()
-	else:
-		# アニメーション開始
-		is_animating = true
+		return
 
-## テキストをクリア（新しいページ開始）
+	# アニメーション開始 → 完了まで待機
+	_state = State.ANIMATING
+	await _animation_finished
+
+## クリック待機（async: ユーザーのクリックまで待機）
+func wait_for_advance() -> void:
+	_state = State.WAITING
+	_indicator_visible = true
+	_indicator_blink_timer = 0.0
+	_update_display()
+	await _advance_requested
+
+## 強制完了（スキップモードから呼ばれる同期メソッド）
+## ANIMATING → アニメーション完了、WAITING → クリック待機解除
+func force_complete() -> void:
+	match _state:
+		State.ANIMATING:
+			_complete_animation()
+		State.WAITING:
+			_state = State.IDLE
+			_advance_requested.emit()
+
+## go_next フラグを設定（インジケータ種別の切り替え用）
+func set_go_next(value: bool) -> void:
+	_go_next = value
+
+## テキストをクリア
 func clear() -> void:
-	page_buffer.clear()
-	current_buffer_index = 0
-	current_text = ""
-	displayed_text = ""
-	full_page_text = ""
-	current_char_index = 0
-	is_animating = false
-	should_go_next = false
+	_clear_internal()
 
+## 即座表示モードの設定
+func set_instant_display(enabled: bool) -> void:
+	instant_display = enabled
+
+# ===== Internal =====
+
+func _clear_internal() -> void:
+	_state = State.IDLE
+	_current_text = ""
+	_displayed_text = ""
+	_full_page_text = ""
+	_char_index = 0
+	_animation_timer = 0.0
+	_go_next = false
 	if text_label:
 		text_label.text = ""
 
-	print("[TextDisplay] クリア")
+func _complete_animation() -> void:
+	_displayed_text = _current_text
+	_char_index = _current_text.length()
+	_state = State.IDLE
+	_finalize_text()
+	_animation_finished.emit()
 
-## アニメーションを完了（即座に全文表示）
-func complete_animation() -> void:
-	if is_animating and text_label:
-		displayed_text = current_text
-		current_char_index = current_text.length()
-		is_animating = false
-		_finalize_text()
-		text_animation_completed.emit()
-		print("[TextDisplay] アニメーション完了")
-
-## テキスト表示を確定
 func _finalize_text() -> void:
-	# 過去のテキストがあれば改行して追加
-	if full_page_text != "":
-		full_page_text += "\n\n" + displayed_text
+	if _full_page_text != "":
+		_full_page_text += "\n\n" + _displayed_text
 	else:
-		full_page_text = displayed_text
-
+		_full_page_text = _displayed_text
 	_update_display()
 
-## 表示を更新
 func _update_display() -> void:
 	if not text_label:
 		return
 
 	var display_text = ""
 
-	if is_animating:
-		# アニメーション中: 過去テキスト + 現在のアニメーション中テキスト
-		if full_page_text != "":
-			display_text = full_page_text + "\n\n" + displayed_text
-		else:
-			display_text = displayed_text
-	else:
-		# アニメーション完了: 全テキスト + インジケータ
-		display_text = full_page_text
-		if show_indicator and indicator_visible:
-			display_text += _get_indicator()
+	match _state:
+		State.ANIMATING:
+			# アニメーション中: 過去テキスト + アニメーション中テキスト
+			if _full_page_text != "":
+				display_text = _full_page_text + "\n\n" + _displayed_text
+			else:
+				display_text = _displayed_text
+		_:
+			# IDLE / WAITING: 確定済みテキスト + インジケータ
+			display_text = _full_page_text
+			if _state == State.WAITING and _indicator_visible:
+				if _go_next:
+					display_text += " ▽"
+				else:
+					display_text += " ▼"
 
 	text_label.text = display_text
-
-## インジケータを取得
-func _get_indicator() -> String:
-	if should_go_next:
-		return " " + page_indicator_symbol
-	else:
-		return " " + indicator_symbol
-
-## クリックされた時の処理
-func _on_clicked() -> void:
-	if is_animating:
-		# アニメーション中ならアニメーションを完了
-		complete_animation()
-	else:
-		# アニメーション完了後
-		if should_go_next:
-			# go_next フラグがある場合は自動的に次へ
-			clicked.emit()
-		else:
-			# 通常のクリック待機完了
-			clicked.emit()
-		print("[TextDisplay] クリック")
-
-## バッファに次のテキストがあるかチェック
-func has_more_in_buffer() -> bool:
-	return current_buffer_index < page_buffer.size() - 1
-
-## 次のテキストをバッファから表示
-func show_next_from_buffer() -> bool:
-	if has_more_in_buffer():
-		current_buffer_index += 1
-		var item = page_buffer[current_buffer_index]
-		show_text(item.text, false, item.go_next)
-		return true
-	return false
-
-## 即座表示モードの設定
-func set_instant_display(enabled: bool) -> void:
-	instant_display = enabled
-
-## go_next フラグを取得
-func is_go_next() -> bool:
-	return should_go_next

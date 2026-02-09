@@ -30,14 +30,15 @@ func connect_skip_controller(skip_controller: SkipController) -> void:
 
 ## スキップモード変更時のコールバック
 func _on_skip_mode_changed(is_skipping: bool) -> void:
-	if is_skipping and text_display:
-		# スキップモードがONになったら、アニメーション中のテキストを即座に完了
-		if text_display.is_animating:
-			text_display.complete_animation()
-		# 即座表示モードを有効化
+	if not text_display:
+		return
+
+	if is_skipping:
+		# スキップON: 現在の状態（アニメーション or クリック待機）を強制完了
+		text_display.force_complete()
 		text_display.set_instant_display(true)
-	elif text_display:
-		# スキップモードがOFFになったら、即座表示モードを無効化
+	else:
+		# スキップOFF: 即座表示モードを無効化
 		text_display.set_instant_display(false)
 
 ## コマンドを実行
@@ -90,34 +91,28 @@ func execute_dialogue(command: Dictionary, skip_controller: SkipController) -> v
 	var new_page = command.get("new_page", false)
 	var go_next = command.get("go_next", false)
 
-	print("[CommandExecutor] dialogue: %s (new_page: %s, go_next: %s, skip: %s)" % [text, new_page, go_next, skip_controller.is_skipping])
-
-	# スキップモード中は即座表示モードを有効化
 	text_display.set_instant_display(skip_controller.is_skipping)
+	text_display.set_go_next(go_next)
 
-	# テキストを表示
-	text_display.show_text(text, new_page, go_next)
+	# テキスト表示（アニメーション完了まで待機）
+	await text_display.show_text(text, new_page)
 
-	# スキップモード中でアニメーションが開始された場合、即座に完了
-	if skip_controller.is_skipping and text_display.is_animating:
-		text_display.complete_animation()
-
-	# go_next の場合は入力待機をスキップ
+	# go_next: アニメーション完了後に自動進行（クリック待機なし）
 	if go_next:
 		return
 
-	# 入力待機（スキップモード対応）
-	await wait_for_input(skip_controller)
+	# クリック待機
+	if skip_controller.is_skipping:
+		await get_tree().create_timer(skip_controller.skip_wait_time).timeout
+	else:
+		await text_display.wait_for_advance()
 
 ## background コマンドを実行
 func execute_background(command: Dictionary, skip_controller: SkipController) -> void:
 	var path = command.get("path", "")
 	var effect = command.get("effect", "normal")
 
-	print("[CommandExecutor] background: %s (effect: %s)" % [path, effect])
-
 	if background_display:
-		# スキップモード中はフェードなしで即座に変更
 		var use_fade = not skip_controller.is_skipping
 		await background_display.set_background(path, effect, use_fade)
 	else:
@@ -127,10 +122,7 @@ func execute_background(command: Dictionary, skip_controller: SkipController) ->
 func execute_bgm(command: Dictionary, skip_controller: SkipController) -> void:
 	var path = command.get("path", "")
 
-	print("[CommandExecutor] bgm: %s" % path)
-
 	if audio_manager:
-		# スキップモード中はフェードなしで即座に再生
 		var use_fade = not skip_controller.is_skipping
 		await audio_manager.play_bgm(path, use_fade)
 	else:
@@ -139,8 +131,6 @@ func execute_bgm(command: Dictionary, skip_controller: SkipController) -> void:
 ## sfx コマンドを実行
 func execute_sfx(command: Dictionary, skip_controller: SkipController) -> void:
 	var path = command.get("path", "")
-
-	print("[CommandExecutor] sfx: %s" % path)
 
 	if audio_manager:
 		audio_manager.play_sfx(path)
@@ -163,11 +153,13 @@ func execute_subtitle(command: Dictionary, skip_controller: SkipController) -> v
 	var fade_time = command.get("fade_time", 1.0)
 	var display_time = command.get("display_time", 2.0)
 
-	print("[CommandExecutor] subtitle: %s" % text)
-
 	# スキップモード中はサブタイトルをスキップ
 	if skip_controller.is_skipping:
 		return
+
+	# サブタイトル表示前にテキストをクリア（終了後に前のテキストがちらつくのを防止）
+	if text_display:
+		text_display.clear()
 
 	if subtitle_display:
 		subtitle_display.show_subtitle(text, fade_time, display_time)
@@ -179,8 +171,6 @@ func execute_subtitle(command: Dictionary, skip_controller: SkipController) -> v
 func execute_flashback_start(command: Dictionary, skip_controller: SkipController) -> void:
 	var effect = command.get("effect", "grayscale")
 
-	print("[CommandExecutor] flashback_start (effect: %s)" % effect)
-
 	if background_display:
 		var use_fade = not skip_controller.is_skipping
 		await background_display.set_effect(effect, use_fade)
@@ -189,23 +179,8 @@ func execute_flashback_start(command: Dictionary, skip_controller: SkipControlle
 
 ## flashback_end コマンドを実行（回想モード終了）
 func execute_flashback_end(command: Dictionary, skip_controller: SkipController) -> void:
-	print("[CommandExecutor] flashback_end")
-
 	if background_display:
 		var use_fade = not skip_controller.is_skipping
 		await background_display.set_effect("normal", use_fade)
 	else:
 		push_warning("[CommandExecutor] BackgroundDisplay が設定されていません")
-
-## 入力待機（スキップモード対応）
-func wait_for_input(skip_controller: SkipController) -> void:
-	if skip_controller.is_skipping:
-		# スキップモード: 短い待機時間
-		await get_tree().create_timer(skip_controller.skip_wait_time).timeout
-	else:
-		# 通常モード: クリック待機
-		if text_display:
-			await text_display.clicked
-		else:
-			# text_display が未設定の場合は短い待機
-			await get_tree().create_timer(0.1).timeout

@@ -98,11 +98,13 @@ func handle_load_scenario(command: Dictionary) -> void:
 		push_error("[ScenarioEngine] load_scenario: path が指定されていません")
 		return
 
+	var new_page_after_return = command.get("new_page_after_return", true)
+
 	# episodes/ 配下はグレースケール適用
 	var is_episode = path.begins_with("episodes/")
-	print("[ScenarioEngine] load_scenario: %s (episode: %s)" % [path, is_episode])
+	print("[ScenarioEngine] load_scenario: %s (episode: %s, new_page_after_return: %s)" % [path, is_episode, new_page_after_return])
 
-	await call_subscenario(path, is_episode)
+	await call_subscenario(path, is_episode, new_page_after_return)
 
 ## jump コマンドの処理
 func handle_jump(command: Dictionary) -> void:
@@ -222,7 +224,7 @@ func handle_episode_clear(command: Dictionary) -> void:
 			push_warning("[ScenarioEngine] TrophyManager が見つかりません")
 
 ## サブシナリオ呼び出し（エピソード/共用シナリオ）
-func call_subscenario(scenario_path: String, apply_grayscale: bool = false) -> void:
+func call_subscenario(scenario_path: String, apply_grayscale: bool = false, new_page_after_return: bool = true) -> void:
 	# 現在の状態をスタックに保存
 	scenario_stack.push({
 		"scenario": current_scenario,
@@ -256,6 +258,10 @@ func call_subscenario(scenario_path: String, apply_grayscale: bool = false) -> v
 		# グレースケール効果を解除（エピソード呼び出し時）
 		if apply_grayscale:
 			await command_executor.execute_flashback_end({}, skip_controller)
+
+		# サブシナリオ復帰後にテキストバッファをクリア（旧システムと同等）
+		if new_page_after_return and command_executor.text_display:
+			command_executor.text_display.clear()
 
 ## シナリオデータを読み込む
 func load_scenario_data(scenario_path: String) -> Array:
