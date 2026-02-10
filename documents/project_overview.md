@@ -128,6 +128,75 @@
 - 意味の解説はプレイヤーに考察させる
 - 東（湧き水）のルートで、おばあさんが口ずさんでいて発見される
 
+### シナリオフロー図（10月10日）
+
+```mermaid
+flowchart TD
+    Start([プロローグ]) --> Main[main.json<br/>15:30 実家到着]
+    Main --> Explore[exploration.json<br/>16:00 探索開始]
+    
+    Explore -->|1. 北| B1[day_1010_b_1.json<br/>海]
+    Explore -->|2. 東| B2[day_1010_b_2.json<br/>湧き水]
+    Explore -->|3. 南| B3[day_1010_b_3.json<br/>お寺]
+    Explore -->|4. 西| B4[day_1010_b_4.json<br/>バス停]
+    
+    B1 -->|選択| C1{opt_day_1010_c}
+    C1 -->|1. 東| C1_1[day_1010_c_1.json<br/>岩場 → ep_5]
+    C1 -->|2. 西| C1_2[shared_day_1010_c<br/>海水浴場 → ep_2]
+    
+    C1_1 -->|選択| D1{opt_day_1010_d}
+    D1 -->|1. 南| D1_1[ep_3 → shared_ep_3_after]
+    D1 -->|2. 西| D1_2[shared_day_1010_c<br/>海水浴場 → ep_2]
+    D1 -->|3. 家に帰る| D1_3[直接帰宅]
+    
+    C1_2 --> Dinner[19:00 夕食<br/>dinner.json]
+    
+    B2 -->|ep_6| E1{opt_day_1010_e}
+    E1 -->|1. 北| E1_1[ep_3 → shared_ep_3_after]
+    E1 -->|2. 南| E1_2[shared_ep_7_shrine<br/>神社 → ep_7]
+    E1 -->|3. 家に帰る| E1_3[直接帰宅]
+    
+    B3 -->|選択| F1{opt_day_1010_f}
+    F1 -->|1. 北| F1_1[shared_ep_7_shrine<br/>神社 → ep_7]
+    F1 -->|2. 家に帰る| F1_2[直接帰宅]
+    
+    B4 -->|ep_1| G1{opt_day_1010_g}
+    G1 -->|1. 北| G1_1[shared_day_1010_c<br/>海水浴場 → ep_2]
+    G1 -->|2. 南| G1_2[焚き場]
+    G1 -->|3. 家に帰る| G1_3[直接帰宅]
+    
+    D1_1 --> Dinner
+    D1_2 --> Dinner
+    D1_3 --> Dinner
+    E1_1 --> Dinner
+    E1_2 --> Dinner
+    E1_3 --> Dinner
+    F1_1 --> Dinner
+    F1_2 --> Dinner
+    G1_1 --> Dinner
+    G1_2 --> Dinner
+    G1_3 --> Dinner
+    
+    Dinner --> Evening[21:00 共通<br/>evening_common.json]
+    Evening --> Branch[22:00 分岐<br/>evening_branch.json]
+    Branch --> End([体験版エンディング])
+    
+    style Start fill:#e1f5ff
+    style End fill:#ffe1f5
+    style Dinner fill:#fff5e1
+    style Evening fill:#fff5e1
+    style Branch fill:#fff5e1
+```
+
+**フロー図の説明**:
+- プロローグから実家到着（15:30）を経て、16:00に探索開始
+- 4方向（北・東・南・西）から選択可能
+- 各ルートでさらに分岐があり、エピソードを取得
+- すべてのルートが19:00の夕食シーンに合流
+- 夕食後、21:00共通シーン、22:00分岐シーンを経て体験版エンディングへ
+
+**詳細なテストケースは `test_cases.md` を参照**
+
 ------
 
 ## 4. トロフィー/称号システム 仕様書
