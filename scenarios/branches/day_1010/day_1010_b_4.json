@@ -258,6 +258,10 @@
 		"go_next": true
 	},
 	{
+		"type": "visit_location",
+		"id": "jizou_west"
+	},
+	{
 		"type": "dialogue",
 		"text": "地蔵の視線を感じたまま横に目をやると、木々に覆われた細道が暗がりへ続いていた。",
 		"new_page": true
@@ -360,6 +364,10 @@
 		"type": "dialogue",
 		"text": "僕はその場を引き返し、急ぎ足で家に帰ることにした。",
 		"go_next": true
+	},
+	{
+		"type": "visit_location",
+		"id": "takiba"
 	},
 	{
 		"type": "jump",

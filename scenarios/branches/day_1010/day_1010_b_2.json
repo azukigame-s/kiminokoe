@@ -56,6 +56,10 @@
 		"go_next": true
 	},
 	{
+		"type": "visit_location",
+		"id": "jizou_east"
+	},
+	{
 		"type": "dialogue",
 		"text": "――兄と弟、か。",
 		"new_page": true

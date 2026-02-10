@@ -73,6 +73,10 @@ func execute_scenario() -> void:
 				handle_episode_clear(command)
 				current_index += 1
 				continue
+			"visit_location":
+				handle_visit_location(command)
+				current_index += 1
+				continue
 			"choice":
 				await handle_choice(command)
 				continue  # current_indexはchoice内で設定済み
@@ -190,6 +194,19 @@ func handle_branch(command: Dictionary) -> void:
 	else:
 		push_warning("[ScenarioEngine] branch: result '%s' に対応する分岐がありません" % result)
 		current_index += 1
+
+## visit_location コマンドの処理
+func handle_visit_location(command: Dictionary) -> void:
+	var location_id = command.get("id", "")
+	if location_id.is_empty():
+		push_error("[ScenarioEngine] visit_location: id が指定されていません")
+		return
+
+	var trophy_manager = get_node_or_null("/root/TrophyManager")
+	if trophy_manager:
+		trophy_manager.visit_location(location_id)
+	else:
+		push_warning("[ScenarioEngine] TrophyManager が見つかりません")
 
 ## episode_clear コマンドの処理
 func handle_episode_clear(command: Dictionary) -> void:

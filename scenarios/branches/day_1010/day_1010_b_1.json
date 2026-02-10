@@ -66,6 +66,10 @@
 		"go_next": true
 	},
 	{
+		"type": "visit_location",
+		"id": "jizou_north"
+	},
+	{
 		"type": "background",
 		"path": "res://assets/backgrounds/sea_road.jpg"
 	},

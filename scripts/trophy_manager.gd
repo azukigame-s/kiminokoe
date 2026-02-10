@@ -185,14 +185,18 @@ func _check_location_trophies(location_id: String) -> void:
 			unlock_trophy("secret_base", secret_trophy_names.get("secret_base", "秘密基地"))
 		"takiba":
 			unlock_trophy("takiba", secret_trophy_names.get("takiba", "焚き場"))
+		"kiminokoe":
+			unlock_trophy("kiminokoe", secret_trophy_names.get("kiminokoe", "キミノコエ"))
+		"iro_story":
+			unlock_trophy("iro_story", secret_trophy_names.get("iro_story", "イロの想い"))
 
 	# ふたこじぞうのチェック（4箇所すべて訪問）
 	_check_futako_jizo()
 
 ## ふたこじぞうトロフィーのチェック
 func _check_futako_jizo() -> void:
-	var jizo_locations = ["jizo_north", "jizo_east", "jizo_south", "jizo_west"]
-	for loc in jizo_locations:
+	var jizou_locations = ["jizou_north", "jizou_east", "jizou_south", "jizou_west"]
+	for loc in jizou_locations:
 		if not is_location_visited(loc):
 			return
 	# 全地蔵発見
@@ -256,7 +260,7 @@ func get_day_1010_ending_type() -> String:
 
 # トロフィーが解除済みかどうかを判定
 func is_trophy_unlocked(trophy_id: String) -> bool:
-	return unlocked_trophies.get(trophy_id, false)
+	return unlocked_trophies.has(trophy_id)
 
 # トロフィーを解除
 func unlock_trophy(trophy_id: String, trophy_name: String = ""):
@@ -449,4 +453,3 @@ func log_message(message: String, level: LogLevel = LogLevel.INFO):
 			prefix = "[ERROR] "
 	
 	print(prefix + "[TrophyManager] " + message)
-

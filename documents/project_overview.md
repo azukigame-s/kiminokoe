@@ -422,6 +422,7 @@ kiminokoe/
 | flashback_start | 回想モード開始（グレースケール） |
 | flashback_end   | 回想モード終了                   |
 | episode_clear   | エピソードクリア記録             |
+| visit_location  | 場所訪問記録（シークレットトロフィー用） |
 | index           | インデックスマーカー             |
 
 ### 実装済み機能
@@ -489,7 +490,11 @@ kiminokoe/
   {"type": "flashback_end"},
 
   // エピソードクリア記録
-  {"type": "episode_clear", "id": "ep_1"}
+  {"type": "episode_clear", "id": "ep_1"},
+
+  // 場所訪問記録（シークレットトロフィー用）
+  // id: secret_base, jizou_north/east/south/west, takiba, kiminokoe, iro_story
+  {"type": "visit_location", "id": "secret_base"}
 ]
 ```
 

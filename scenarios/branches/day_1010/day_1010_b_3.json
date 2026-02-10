@@ -70,6 +70,10 @@
 		"go_next": true
 	},
 	{
+		"type": "visit_location",
+		"id": "jizou_south"
+	},
+	{
 		"type": "background",
 		"path": "res://assets/backgrounds/secret_base.jpg"
 	},
@@ -108,6 +112,10 @@
 		"type": "dialogue",
 		"text": "物寂しさを感じて、僕はその場を後にした。",
 		"go_next": true
+	},
+	{
+		"type": "visit_location",
+		"id": "secret_base"
 	},
 	{
 		"type": "dialogue",
