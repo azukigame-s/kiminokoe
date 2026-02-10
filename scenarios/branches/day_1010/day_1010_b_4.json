@@ -224,6 +224,10 @@
 		"text": "振り返る。"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/jizou5.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "道の反対側、草むらの中に地蔵が1体だけ、こちらを向いて立っていた。"
 	},
@@ -244,6 +248,10 @@
 		"type": "dialogue",
 		"text": "地蔵の視線を感じたまま横に目をやると、木々に覆われた細道が暗がりへ続いていた。",
 		"new_page": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/untrodden_path.jpg"
 	},
 	{
 		"type": "dialogue",

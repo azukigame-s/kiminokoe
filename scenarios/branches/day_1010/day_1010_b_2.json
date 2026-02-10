@@ -32,7 +32,33 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "――兄と弟、か。"
+		"text": "ふと、湧水の脇に目をやると、苔むした2体の地蔵が並んでいた。"
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/jizou1.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ふたこじぞう」――村のあちこちで見かける、2体並びの地蔵だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "柄杓を戻しながら、なんとなく地蔵を見つめる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "兄の水にも、弟の水にも、こうして2体の地蔵が祀られている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "兄弟のように寄り添う2体の姿が、妙に目に留まった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――兄と弟、か。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",

@@ -40,6 +40,36 @@
 		"go_next": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/jizou4.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "階段の中腹、踊り場のような場所に小さな地蔵が2体並んでいた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "子供の頃から見慣れた光景だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ダキには至る所にこうした2体並びの地蔵があり、「ふたこじぞう」と呼ばれている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "今更ながら――なぜ2体なのだろう？"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんな疑問が頭をよぎったが、深く考えることなく下り続けた。",
+		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/sea_road.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "先ほどまできれいな青空が見えていたが、暗い雲が広がり始めていた。海も波が高い。",
 		"new_page": true

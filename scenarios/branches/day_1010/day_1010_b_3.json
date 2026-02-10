@@ -40,6 +40,10 @@
 		"go_next": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/jizou2.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "脇にある木の根元に、２体の地蔵が半ば埋もれるように佇んでいた。",
 		"new_page": true
