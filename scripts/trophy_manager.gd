@@ -146,6 +146,19 @@ func extract_episode_id(scenario_path: String) -> String:
 
 	# ep_で始まる場合はエピソードIDとして扱う
 	if file_name.begins_with("ep_"):
+		# ゼロパディングを削除: "ep_01" → "ep_1", "ep_00_beta" → "ep_0_beta"
+		var parts = file_name.split("_", false)
+		if parts.size() >= 2:
+			# 数値部分を整数に変換してゼロパディングを削除
+			var num_str = parts[1]
+			if num_str.is_valid_int():
+				var num = num_str.to_int()
+				# ep_0_betaのような特殊ケースに対応
+				if parts.size() == 2:
+					return "ep_" + str(num)
+				else:
+					# ep_0_betaのような場合
+					return "ep_" + str(num) + "_" + "_".join(parts.slice(2))
 		return file_name
 
 	# エピソードIDとして認識できない場合は空文字列を返す

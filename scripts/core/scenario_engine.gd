@@ -242,6 +242,15 @@ func call_subscenario(scenario_path: String, apply_grayscale: bool = false, new_
 		if apply_grayscale:
 			await command_executor.execute_flashback_end({}, skip_controller)
 
+		# エピソード再生完了時に自動的にクリア記録（episodes/ 配下のみ）
+		if apply_grayscale and scenario_path.begins_with("episodes/"):
+			var trophy_manager = get_node_or_null("/root/TrophyManager")
+			if trophy_manager:
+				var episode_id = trophy_manager.extract_episode_id(scenario_path)
+				if not episode_id.is_empty():
+					trophy_manager.clear_episode(episode_id)
+					print("[ScenarioEngine] Auto-cleared episode: " + episode_id)
+
 		# サブシナリオ復帰後にテキストバッファをクリア（旧システムと同等）
 		if new_page_after_return and command_executor.text_display:
 			command_executor.text_display.clear()
