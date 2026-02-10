@@ -35,7 +35,7 @@ func _init():
 	command_executor.connect_skip_controller(skip_controller)
 
 func _ready():
-	print("[ScenarioEngine] Ready")
+	pass
 
 ## シナリオを開始
 func start_scenario(scenario_data: Array, scenario_path: String = "") -> void:
@@ -49,21 +49,17 @@ func start_scenario(scenario_data: Array, scenario_path: String = "") -> void:
 	is_running = true
 
 	scenario_started.emit()
-	print("[ScenarioEngine] Starting scenario: %s (%d commands)" % [scenario_path, scenario_data.size()])
 
 	await execute_scenario()
 
 	is_running = false
 	scenario_completed.emit()
-	print("[ScenarioEngine] Scenario completed: %s" % scenario_path)
 
 ## シナリオ実行のメインループ
 func execute_scenario() -> void:
 	while current_index < current_scenario.size():
 		var command = current_scenario[current_index]
 		var command_type = command.get("type", "unknown")
-
-		print("[ScenarioEngine] Executing command %d: %s" % [current_index, command_type])
 
 		# 特殊コマンドの処理（ScenarioEngine側で処理）
 		match command_type:
@@ -86,9 +82,7 @@ func execute_scenario() -> void:
 				continue  # current_indexはbranch内で設定済み
 
 		# 通常のコマンドはCommandExecutorで処理
-		print("[ScenarioEngine] Calling command_executor.execute() for command %d" % current_index)
 		await command_executor.execute(command, skip_controller)
-		print("[ScenarioEngine] command_executor.execute() completed for command %d" % current_index)
 
 		command_executed.emit(command)
 		current_index += 1
@@ -104,7 +98,6 @@ func handle_load_scenario(command: Dictionary) -> void:
 
 	# episodes/ 配下はグレースケール適用
 	var is_episode = path.begins_with("episodes/")
-	print("[ScenarioEngine] load_scenario: %s (episode: %s, new_page_after_return: %s)" % [path, is_episode, new_page_after_return])
 
 	await call_subscenario(path, is_episode, new_page_after_return)
 
@@ -120,7 +113,6 @@ func handle_jump(command: Dictionary) -> void:
 	for i in range(current_scenario.size()):
 		var cmd = current_scenario[i]
 		if cmd.get("type") == "index" and cmd.get("index") == target_index:
-			print("[ScenarioEngine] jump: index %d → position %d" % [target_index, i])
 			current_index = i + 1  # indexマーカーの次から実行
 			return
 
@@ -134,8 +126,6 @@ func handle_choice(command: Dictionary) -> void:
 		push_error("[ScenarioEngine] choice: choices が空です")
 		current_index += 1
 		return
-
-	print("[ScenarioEngine] choice: %d 個の選択肢" % choices.size())
 
 	# スキップモードを停止
 	if skip_controller.is_skipping:
@@ -158,8 +148,6 @@ func handle_choice(command: Dictionary) -> void:
 
 	# テキストを再表示
 	command_executor.show_text_after_choice()
-
-	print("[ScenarioEngine] choice selected: %s" % selected.get("text", ""))
 
 	# 選択結果に応じた処理
 	if selected.has("scenario"):
@@ -195,7 +183,6 @@ func handle_branch(command: Dictionary) -> void:
 		return
 
 	var result = trophy_manager.evaluate_condition(condition)
-	print("[ScenarioEngine] branch: condition=%s result=%s" % [condition, result])
 
 	if branches.has(result):
 		var target_index = branches[result]
@@ -210,8 +197,6 @@ func handle_episode_clear(command: Dictionary) -> void:
 	if episode_id.is_empty():
 		push_error("[ScenarioEngine] episode_clear: id が指定されていません")
 		return
-
-	print("[ScenarioEngine] episode_clear: %s" % episode_id)
 
 	# TrophyManagerが存在する場合は呼び出す
 	if Engine.has_singleton("TrophyManager"):
@@ -234,8 +219,6 @@ func call_subscenario(scenario_path: String, apply_grayscale: bool = false, new_
 		"path": current_scenario_path
 	})
 
-	print("[ScenarioEngine] Calling subscenario: %s (grayscale: %s)" % [scenario_path, apply_grayscale])
-
 	# グレースケール効果を適用（エピソード呼び出し時）
 	if apply_grayscale:
 		await command_executor.execute_flashback_start({"effect": "grayscale"}, skip_controller)
@@ -254,8 +237,6 @@ func call_subscenario(scenario_path: String, apply_grayscale: bool = false, new_
 		current_index = previous_state.index + 1  # 次のコマンドから再開
 		current_scenario_path = previous_state.path
 		is_running = true  # 実行状態を復元
-
-		print("[ScenarioEngine] Returned from subscenario to: %s" % current_scenario_path)
 
 		# グレースケール効果を解除（エピソード呼び出し時）
 		if apply_grayscale:
@@ -293,7 +274,6 @@ func load_scenario_data(scenario_path: String) -> Array:
 ## スキップモードの切り替え
 func toggle_skip_mode() -> void:
 	skip_controller.toggle()
-	print("[ScenarioEngine] Skip mode: %s" % skip_controller.is_skipping)
 
 ## セーブ用の状態を取得
 func get_save_state() -> Dictionary:
@@ -347,8 +327,6 @@ func load_from_save_state(save_state: Dictionary) -> void:
 	current_scenario_path = scenario_path
 	current_index = index
 	is_running = true
-
-	print("[ScenarioEngine] Loaded from save: %s (index: %d)" % [scenario_path, index])
 
 	# シナリオを再開
 	scenario_started.emit()
