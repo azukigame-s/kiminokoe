@@ -124,13 +124,17 @@
 		"choices": [
 			{
 				"text": "山道を下り北に向かう",
-				"scenario": "shared/shared_ep_7_shrine"
+				"next_index": 100
 			},
 			{
 				"text": "家に帰る",
 				"next_index": 26
 			}
 		]
+	},
+	{
+		"type": "index",
+		"index": 26
 	},
 	{
 		"type": "dialogue",
@@ -141,5 +145,22 @@
 		"type": "dialogue",
 		"text": "僕は小走りで家に帰った。",
 		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 100
+	},
+	{
+		"type": "load_scenario",
+		"path": "shared/shared_ep_7_shrine",
+		"new_page_after_return": true
+	},
+	{
+		"type": "index",
+		"index": 999
 	}
 ]

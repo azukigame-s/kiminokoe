@@ -534,6 +534,104 @@ scenarios/
 - 霊体を出すエピソードは、その後に霊体の描写を入れる
 - 霊体を出さないエピソードは、温かい余韻で終わる
 
+### choice コマンドのパターンと注意点
+
+**問題となるパターン:**
+```json
+{
+    "type": "choice",
+    "choices": [
+        {
+            "text": "選択肢A（サブシナリオへ）",
+            "scenario": "shared/some_scenario"
+        },
+        {
+            "text": "選択肢B",
+            "next_index": 26
+        }
+    ]
+},
+{
+    "type": "dialogue",
+    "text": "選択肢Bの内容..."
+}
+```
+
+**何が起こるか:**
+- 選択肢Aを選ぶと、サブシナリオが実行される
+- サブシナリオから戻ると、`current_index += 1` が実行される
+- その結果、choiceの次のコマンド（選択肢Bの内容）が実行されてしまう
+- これは通常、意図しない動作
+
+**正しいパターン:**
+```json
+{
+    "type": "choice",
+    "choices": [
+        {
+            "text": "選択肢A（サブシナリオへ）",
+            "next_index": 100
+        },
+        {
+            "text": "選択肢B",
+            "next_index": 26
+        }
+    ]
+},
+{
+    "type": "index",
+    "index": 26
+},
+{
+    "type": "dialogue",
+    "text": "選択肢Bの内容..."
+},
+{
+    "type": "jump",
+    "index": 999
+},
+{
+    "type": "index",
+    "index": 100
+},
+{
+    "type": "load_scenario",
+    "path": "shared/some_scenario",
+    "new_page_after_return": true
+},
+{
+    "type": "index",
+    "index": 999
+}
+```
+
+**ポイント:**
+- 全ての選択肢で `next_index` を使う
+- 各選択肢の内容を index マーカーで分離する
+- サブシナリオを呼ぶ場合は `load_scenario` コマンドを配置する
+- `jump` コマンドを使って、各分岐が終了後に共通の終了点（index 999 など）に移動させる
+- こうすることで、各選択肢の処理が互いに干渉しない
+
+**または、より単純なパターン:**
+
+choiceの後にコマンドを一切置かず、全ての選択肢で `scenario` パラメータを使う（各選択肢が別シナリオを呼び出す）:
+```json
+{
+    "type": "choice",
+    "choices": [
+        {
+            "text": "選択肢A",
+            "scenario": "branches/path_a"
+        },
+        {
+            "text": "選択肢B",
+            "scenario": "branches/path_b"
+        }
+    ]
+}
+// ここで終了（choiceの後にコマンドを置かない）
+```
+
 ------
 
 ## 8. マルチシナリオ（将来予定）

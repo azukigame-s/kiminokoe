@@ -65,8 +65,7 @@ func execute_scenario() -> void:
 		match command_type:
 			"load_scenario":
 				await handle_load_scenario(command)
-				current_index += 1
-				continue
+				continue  # current_indexはcall_subscenario内で設定済み
 			"jump":
 				handle_jump(command)
 				continue  # current_indexはjumpで設定済み
