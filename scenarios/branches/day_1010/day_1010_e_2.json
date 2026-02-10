@@ -1,5 +1,9 @@
 [
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/road2.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "地蔵焚はとても入り組んでいる集落だ。",
 		"new_page": true

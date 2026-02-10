@@ -1,5 +1,9 @@
 [
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/shrine.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "この地域にある唯一の神社だ。",
 		"new_page": true

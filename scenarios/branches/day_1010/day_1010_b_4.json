@@ -1,5 +1,9 @@
 [
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/road1.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "家から西に進む。先ほどバス停から実家へ向かった道を戻ることにした。",
 		"new_page": true
@@ -21,6 +25,10 @@
 		"type": "dialogue",
 		"text": "……ひとつだけ変わっていた。",
 		"new_page": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/former_coap.jpg"
 	},
 	{
 		"type": "dialogue",
@@ -219,6 +227,10 @@
 		"new_page": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/cemetery.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "このあたりには道路に沿って墓地が建ち並んでいる。"
 	},
@@ -305,8 +317,13 @@
 		"text": "薄暗い道を更に進んだところで景色が開けた。"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/fire_pit.jpg"
+	},
+	{
 		"type": "dialogue",
-		"text": "草が刈られており――といっても靴が埋まるくらいは生えているが――広場のようになっている。"
+		"text": "草が刈られており――といっても靴が埋まるくらいは生えているが――広場のようになっている。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",

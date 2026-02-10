@@ -1,5 +1,9 @@
 [
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/temple.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "家を出て南に進むと、お寺が見えてきた。",
 		"new_page": true
@@ -162,6 +166,20 @@
 	{
 		"type": "index",
 		"index": 100
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/road2.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "秘密基地から山を下ると、途中から民家が立ち並ぶ細道に合流する。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "少し歩くと右手に階段と、その上に鳥居が見えた。",
+		"go_next": true
 	},
 	{
 		"type": "load_scenario",
