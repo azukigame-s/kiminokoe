@@ -14,6 +14,7 @@
 	},
 	{
 		"type": "choice",
+		"prompt": "どこに行こうか？",
 		"choices": [
 			{
 				"id": "beach",

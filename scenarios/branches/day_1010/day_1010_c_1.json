@@ -69,6 +69,7 @@
 	},
 	{
 		"type": "choice",
+		"prompt": "どこに行こうか？",
 		"choices": [
 			{
 				"id": "go_south",

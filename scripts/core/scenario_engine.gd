@@ -121,6 +121,7 @@ func handle_jump(command: Dictionary) -> void:
 ## choice コマンドの処理
 func handle_choice(command: Dictionary) -> void:
 	var choices = command.get("choices", [])
+	var prompt = command.get("prompt", "どうする？")
 	if choices.is_empty():
 		push_error("[ScenarioEngine] choice: choices が空です")
 		current_index += 1
@@ -140,7 +141,7 @@ func handle_choice(command: Dictionary) -> void:
 		current_index += 1
 		return
 
-	choice_display.show_choices(choices)
+	choice_display.show_choices(choices, prompt)
 
 	# 選択を待機
 	var selected = await choice_display.choice_selected

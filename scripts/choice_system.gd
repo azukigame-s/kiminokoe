@@ -98,8 +98,8 @@ func _create_text_styles():
 	log_message("Text styles created", LogLevel.DEBUG)
 
 # 選択肢の表示
-func show_choices(choices):
-	log_message("show_choices called with " + str(choices.size()) + " choices", LogLevel.INFO)
+func show_choices(choices, prompt: String = "どうする？"):
+	log_message("show_choices called with " + str(choices.size()) + " choices, prompt: " + prompt, LogLevel.INFO)
 	log_message("choice_container visible: " + str(choice_container != null) + ", parent: " + str(get_parent().name), LogLevel.INFO)
 
 	# 現在の選択肢をクリア
@@ -126,7 +126,7 @@ func show_choices(choices):
 	# 選択ページのタイトル表示 - より弟切草風に
 	var title_label = Label.new()
 	title_label.name = "title_label"
-	title_label.text = "どうする？"
+	title_label.text = prompt
 	title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	title_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 	

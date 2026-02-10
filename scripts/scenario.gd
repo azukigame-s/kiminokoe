@@ -248,9 +248,10 @@ func execute_current_command():
 			# 選択肢でスキップモードを停止
 			if novel_system.is_skip_mode:
 				novel_system.stop_skip_mode()
-			log_message("Showing choices with " + str(command.choices.size()) + " options", LogLevel.INFO)
+			var prompt = command.get("prompt", "どうする？")
+			log_message("Showing choices with " + str(command.choices.size()) + " options, prompt: " + prompt, LogLevel.INFO)
 			last_choice_index = current_index  # 選択肢コマンドのインデックスを記録
-			novel_system.show_choices(command.choices)
+			novel_system.show_choices(command.choices, prompt)
 			# 選択肢表示の確認
 			await get_tree().process_frame
 			log_message("Choice visibility status: attempting to show choices", LogLevel.INFO)

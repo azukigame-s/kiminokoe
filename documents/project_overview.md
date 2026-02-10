@@ -466,6 +466,7 @@ kiminokoe/
   // 選択肢
   {
     "type": "choice",
+    "prompt": "さて、どうしよう？",  // オプション：プロンプトテキスト（省略時は「どうする？」）
     "choices": [
       {"id": "choice_a", "text": "選択肢A", "next_index": 400},
       {"id": "choice_b", "text": "選択肢B", "next_index": 500}

@@ -642,10 +642,10 @@ func add_to_page_buffer(text, go_next = false):
 	log_message("Current buffer size: " + str(page_text_buffer.size()), LogLevel.DEBUG)
 
 # 選択肢の表示
-func show_choices(choices):
+func show_choices(choices, prompt: String = "どうする？"):
 	if choice_system:
-		log_message("Showing choices: " + str(choices.size()) + " options", LogLevel.INFO)
-		choice_system.show_choices(choices)
+		log_message("Showing choices: " + str(choices.size()) + " options, prompt: " + prompt, LogLevel.INFO)
+		choice_system.show_choices(choices, prompt)
 	else:
 		log_message("ERROR: Choice system not initialized", LogLevel.ERROR)
 

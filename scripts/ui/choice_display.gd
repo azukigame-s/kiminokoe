@@ -45,7 +45,7 @@ func _setup_container():
 	_choice_container.add_child(_choice_background)
 
 ## 選択肢を表示
-func show_choices(choices: Array) -> void:
+func show_choices(choices: Array, prompt: String = "どうする？") -> void:
 	_clear_choices()
 	_current_choices = choices
 	_is_active = true
@@ -58,7 +58,7 @@ func show_choices(choices: Array) -> void:
 	# タイトル
 	var title = Label.new()
 	title.name = "ChoiceTitle"
-	title.text = "どうする？"
+	title.text = prompt
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	title.position.x = viewport_size.x * 0.1
 	title.position.y = viewport_size.y * 0.1

@@ -89,6 +89,7 @@
 	},
 	{
 		"type": "choice",
+		"prompt": "どちらに歩いていく？",
 		"choices": [
 			{
 				"id": "rocky_area",

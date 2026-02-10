@@ -22,15 +22,16 @@
 	},
 	{
 		"type": "choice",
+		"prompt": "この少女を覚えている？",
 		"choices": [
 			{
 				"id": "remember_yes",
-				"text": "はい",
+				"text": "もちろん覚えている",
 				"next_index": 400
 			},
 			{
 				"id": "remember_no",
-				"text": "いいえ",
+				"text": "えぇっと……だれだっけ？",
 				"next_index": 500
 			}
 		]
