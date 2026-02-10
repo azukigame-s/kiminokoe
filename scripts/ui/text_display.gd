@@ -203,8 +203,8 @@ func _update_display() -> void:
 			display_text = _full_page_text
 			if _state == State.WAITING and _indicator_visible:
 				if _go_next:
-					display_text += " ▽"
+					display_text += " ⎘"  # ページ送り（旧システムのpage_indicator_symbol）
 				else:
-					display_text += " ▼"
+					display_text += " ⏎"  # 通常の文字送り（旧システムのindicator_symbol）
 
 	text_label.text = display_text
