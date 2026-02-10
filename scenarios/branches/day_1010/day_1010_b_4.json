@@ -150,6 +150,10 @@
 		]
 	},
 	{
+		"type": "index",
+		"index": 31
+	},
+	{
 		"type": "background",
 		"path": "res://assets/backgrounds/busstop.jpg"
 	},
@@ -199,6 +203,14 @@
 		"type": "dialogue",
 		"text": "小走りで実家へと向かった。",
 		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 40
 	},
 	{
 		"type": "dialogue",
@@ -349,6 +361,14 @@
 		"go_next": true
 	},
 	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 72
+	},
+	{
 		"type": "dialogue",
 		"text": "空はどんよりと黒くなり、小さな雨粒が頬に落ちた。",
 		"new_page": true
@@ -357,5 +377,18 @@
 		"type": "dialogue",
 		"text": "僕は小走りで家に帰った。",
 		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 999
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1010/dinner",
+		"new_page_after_return": true
 	}
 ]

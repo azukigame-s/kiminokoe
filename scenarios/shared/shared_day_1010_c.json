@@ -1,5 +1,9 @@
 [
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/beach.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "海岸沿いを西に進むと砂浜が広く開けてきた。",
 		"new_page": true
