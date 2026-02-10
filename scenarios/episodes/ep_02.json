@@ -141,15 +141,6 @@
 	},
 	{
 		"type": "flashback_end"
-	},
-	{
-		"type": "dialogue",
-		"text": "――そうだ……思い出した。"
-	},
-	{
-		"type": "dialogue",
-		"text": "僕も弟に強がって、お兄ちゃんらしいところを見せようとしたこともあったんだ。",
-		"go_next": true
 	}
 ]
 

@@ -135,15 +135,6 @@
 	},
 	{
 		"type": "flashback_end"
-	},
-	{
-		"type": "dialogue",
-		"text": "――そうだ……思い出した。"
-	},
-	{
-		"type": "dialogue",
-		"text": "僕は弟に対して、優しくできていたこともあったんだ。",
-		"go_next": true
 	}
 ]
 

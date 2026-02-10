@@ -153,15 +153,6 @@
 	},
 	{
 		"type": "flashback_end"
-	},
-	{
-		"type": "dialogue",
-		"text": "――そうだ……思い出した。"
-	},
-	{
-		"type": "dialogue",
-		"text": "僕はこの出来事が嫌で、スグと喧嘩をしたんだ。",
-		"go_next": true
 	}
 ]
 
