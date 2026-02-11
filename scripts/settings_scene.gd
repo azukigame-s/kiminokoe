@@ -1,7 +1,7 @@
-# settings_scene.gd
-# 保存先: res://scripts/settings_scene.gd
-
 extends Control
+
+## 設定画面
+## UIConstants / UIStyleHelper を使用した統一スタイル
 
 # UI要素への参照
 @onready var title_label: Label = $VBoxContainer/TitleLabel
@@ -29,140 +29,89 @@ var settings_file_path = "user://settings.cfg"
 
 func _ready():
 	print("[SettingsScene] Settings scene initialized")
-	
+
 	# 設定の読み込み
 	_load_settings()
-	
+
 	# UI要素のセットアップ
 	_setup_ui()
 	_setup_controls()
 	_setup_background()
-	
+
 	# 現在の設定値をUIに反映
 	_apply_settings_to_ui()
-	
+
 	# 初期フォーカス設定
 	if text_speed_slider:
 		text_speed_slider.grab_focus()
 
 # UI要素のセットアップ
 func _setup_ui():
-	# フルスクリーン設定
-	anchor_left = 0.0
-	anchor_top = 0.0
-	anchor_right = 1.0
-	anchor_bottom = 1.0
-	
-	# タイトル設定
+	set_anchors_preset(Control.PRESET_FULL_RECT)
+
 	if title_label:
 		title_label.text = "設定"
 		title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		title_label.add_theme_font_size_override("font_size", 36)
-		title_label.add_theme_color_override("font_color", Color.WHITE)
+		title_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_TITLE)
+		title_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
 
 # コントロール要素のセットアップ
 func _setup_controls():
-	# テキスト速度スライダー
+	# テキスト速度
 	if text_speed_slider:
 		text_speed_slider.min_value = 0.01
 		text_speed_slider.max_value = 0.2
 		text_speed_slider.step = 0.01
 		text_speed_slider.value_changed.connect(_on_text_speed_changed)
-	
-	if text_speed_label:
-		text_speed_label.text = "テキスト速度"
-		text_speed_label.add_theme_font_size_override("font_size", 20)
-		text_speed_label.add_theme_color_override("font_color", Color.WHITE)
-	
-	if text_speed_value:
-		text_speed_value.add_theme_font_size_override("font_size", 16)
-		text_speed_value.add_theme_color_override("font_color", Color.WHITE)
-	
-	# マスター音量スライダー
+
+	_style_label(text_speed_label, "テキスト速度")
+	_style_value_label(text_speed_value)
+
+	# マスター音量
 	if master_volume_slider:
 		master_volume_slider.min_value = 0.0
 		master_volume_slider.max_value = 1.0
 		master_volume_slider.step = 0.1
 		master_volume_slider.value_changed.connect(_on_master_volume_changed)
-	
-	if master_volume_label:
-		master_volume_label.text = "マスター音量"
-		master_volume_label.add_theme_font_size_override("font_size", 20)
-		master_volume_label.add_theme_color_override("font_color", Color.WHITE)
-	
-	if master_volume_value:
-		master_volume_value.add_theme_font_size_override("font_size", 16)
-		master_volume_value.add_theme_color_override("font_color", Color.WHITE)
-	
-	# フルスクリーンチェックボックス
+
+	_style_label(master_volume_label, "マスター音量")
+	_style_value_label(master_volume_value)
+
+	# フルスクリーン
 	if fullscreen_checkbox:
 		fullscreen_checkbox.toggled.connect(_on_fullscreen_toggled)
-		fullscreen_checkbox.add_theme_font_size_override("font_size", 18)
-		fullscreen_checkbox.add_theme_color_override("font_color", Color.WHITE)
-	
-	if fullscreen_label:
-		fullscreen_label.text = "フルスクリーン"
-		fullscreen_label.add_theme_font_size_override("font_size", 20)
-		fullscreen_label.add_theme_color_override("font_color", Color.WHITE)
-	
-	# ボタン設定
+		fullscreen_checkbox.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION + 2)
+		fullscreen_checkbox.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+
+	_style_label(fullscreen_label, "フルスクリーン")
+
+	# ボタン
 	if back_button:
 		back_button.text = "戻る"
 		back_button.pressed.connect(_on_back_button_pressed)
-		_style_button(back_button)
-	
+		UIStyleHelper.style_menu_button(back_button)
+
 	if apply_button:
 		apply_button.text = "適用"
 		apply_button.pressed.connect(_on_apply_button_pressed)
-		_style_button(apply_button)
+		UIStyleHelper.style_menu_button(apply_button)
 
-# ボタンスタイリング
-func _style_button(button: Button):
-	if not button:
-		return
-	
-	button.add_theme_font_size_override("font_size", 20)
-	button.add_theme_color_override("font_color", Color.WHITE)
-	button.add_theme_color_override("font_hover_color", Color.YELLOW)
-	button.custom_minimum_size = Vector2(120, 40)
-	
-	# ボタン背景のスタイル設定
-	var normal_style = StyleBoxFlat.new()
-	normal_style.bg_color = Color(0.2, 0.2, 0.2, 0.8)
-	normal_style.corner_radius_top_left = 8
-	normal_style.corner_radius_top_right = 8
-	normal_style.corner_radius_bottom_left = 8
-	normal_style.corner_radius_bottom_right = 8
-	normal_style.border_width_left = 2
-	normal_style.border_width_right = 2
-	normal_style.border_width_top = 2
-	normal_style.border_width_bottom = 2
-	normal_style.border_color = Color(0.5, 0.5, 0.5)
-	
-	var hover_style = StyleBoxFlat.new()
-	hover_style.bg_color = Color(0.3, 0.3, 0.3, 0.9)
-	hover_style.corner_radius_top_left = 8
-	hover_style.corner_radius_top_right = 8
-	hover_style.corner_radius_bottom_left = 8
-	hover_style.corner_radius_bottom_right = 8
-	hover_style.border_width_left = 2
-	hover_style.border_width_right = 2
-	hover_style.border_width_top = 2
-	hover_style.border_width_bottom = 2
-	hover_style.border_color = Color.YELLOW
-	
-	button.add_theme_stylebox_override("normal", normal_style)
-	button.add_theme_stylebox_override("hover", hover_style)
-	button.add_theme_stylebox_override("pressed", hover_style)
+func _style_label(label: Label, text: String) -> void:
+	if label:
+		label.text = text
+		label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BUTTON_NORMAL)
+		label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+
+func _style_value_label(label: Label) -> void:
+	if label:
+		label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
+		label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
 
 # 背景設定
 func _setup_background():
 	if background:
-		background.color = Color(0.1, 0.1, 0.1, 0.9)
-		background.anchor_left = 0.0
-		background.anchor_top = 0.0
-		background.anchor_right = 1.0
-		background.anchor_bottom = 1.0
+		background.color = UIConstants.COLOR_BG_DARK
+		background.set_anchors_preset(Control.PRESET_FULL_RECT)
 
 # 設定値をUIに反映
 func _apply_settings_to_ui():
@@ -172,7 +121,7 @@ func _apply_settings_to_ui():
 		master_volume_slider.value = settings_data.master_volume
 	if fullscreen_checkbox:
 		fullscreen_checkbox.button_pressed = settings_data.fullscreen
-	
+
 	_update_value_labels()
 
 # 値ラベルの更新
@@ -190,9 +139,9 @@ func _on_text_speed_changed(value: float):
 func _on_master_volume_changed(value: float):
 	settings_data.master_volume = value
 	_update_value_labels()
-	
+
 	# 音量をリアルタイムで適用
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),
 		linear_to_db(settings_data.master_volume))
 
 func _on_fullscreen_toggled(pressed: bool):
@@ -211,10 +160,10 @@ func _on_apply_button_pressed():
 # 設定の保存
 func _save_settings():
 	var config = ConfigFile.new()
-	
+
 	for key in settings_data.keys():
 		config.set_value("settings", key, settings_data[key])
-	
+
 	var error = config.save(settings_file_path)
 	if error == OK:
 		print("[SettingsScene] Settings saved successfully")
@@ -225,7 +174,7 @@ func _save_settings():
 func _load_settings():
 	var config = ConfigFile.new()
 	var error = config.load(settings_file_path)
-	
+
 	if error == OK:
 		for key in settings_data.keys():
 			if config.has_section_key("settings", key):
@@ -238,17 +187,17 @@ func _load_settings():
 func _apply_settings():
 	# ProjectSettingsに反映（ノベルシステムが参照）
 	ProjectSettings.set_setting("visual_novel/text_speed", settings_data.text_speed)
-	
+
 	# 音量設定の適用
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), 
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),
 		linear_to_db(settings_data.master_volume))
-	
+
 	# フルスクリーン設定の適用
 	if settings_data.fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	
+
 	print("[SettingsScene] Settings applied")
 
 # キーボード入力処理

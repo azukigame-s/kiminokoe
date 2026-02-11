@@ -11,6 +11,7 @@ const ChoiceDisplayScript = preload("res://scripts/ui/choice_display.gd")
 const SubtitleDisplayScript = preload("res://scripts/ui/subtitle_display.gd")
 const ToastNotificationScript = preload("res://scripts/toast_notification.gd")
 const ScenarioEngineScript = preload("res://scripts/core/scenario_engine.gd")
+const PauseMenuScript = preload("res://scripts/ui/pause_menu.gd")
 
 # コンポーネント参照
 var scenario_engine
@@ -21,19 +22,13 @@ var choice_display
 var subtitle_display
 var toast_notification
 var skip_indicator: Label
+var pause_menu: Control
 
 func _ready():
 	print("[GameScene] 初期化開始")
 
 	# 自身をフルスクリーンに設定
-	anchor_left = 0.0
-	anchor_top = 0.0
-	anchor_right = 1.0
-	anchor_bottom = 1.0
-	offset_left = 0
-	offset_top = 0
-	offset_right = 0
-	offset_bottom = 0
+	set_anchors_preset(Control.PRESET_FULL_RECT)
 
 	# UI構築
 	_setup_ui()
@@ -43,6 +38,9 @@ func _ready():
 
 	# スキップインジケータの設定
 	_setup_skip_indicator()
+
+	# ポーズメニューの設定
+	_setup_pause_menu()
 
 	# TrophyManager にトースト通知を接続
 	_setup_trophy_manager()
@@ -63,13 +61,8 @@ func _setup_ui():
 	# テキスト表示用の半透明パネル
 	var text_panel = Panel.new()
 	text_panel.name = "TextPanel"
-	text_panel.anchor_left = 0.0
-	text_panel.anchor_top = 0.0
-	text_panel.anchor_right = 1.0
-	text_panel.anchor_bottom = 1.0
-
-	var style_box = StyleBoxFlat.new()
-	style_box.bg_color = Color(0, 0, 0, 0.5)
+	text_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
+	var style_box = UIStyleHelper.create_panel_style(UIConstants.COLOR_BG_OVERLAY, 0)
 	text_panel.add_theme_stylebox_override("panel", style_box)
 	add_child(text_panel)
 
@@ -77,21 +70,18 @@ func _setup_ui():
 	text_display = Control.new()
 	text_display.set_script(TextDisplayScript)
 	text_display.name = "TextDisplay"
-	text_display.anchor_left = 0.0
-	text_display.anchor_top = 0.0
-	text_display.anchor_right = 1.0
-	text_display.anchor_bottom = 1.0
+	text_display.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(text_display)
 
 	# TextLabel（RichTextLabel）
 	var text_label = RichTextLabel.new()
 	text_label.name = "TextLabel"
-	text_label.anchor_left = 0.1
-	text_label.anchor_top = 0.1
-	text_label.anchor_right = 0.9
-	text_label.anchor_bottom = 0.9
-	text_label.add_theme_font_size_override("normal_font_size", 24)
-	text_label.add_theme_color_override("default_color", Color.WHITE)
+	text_label.anchor_left = UIConstants.MARGIN_TEXT
+	text_label.anchor_top = UIConstants.MARGIN_TEXT
+	text_label.anchor_right = 1.0 - UIConstants.MARGIN_TEXT
+	text_label.anchor_bottom = 1.0 - UIConstants.MARGIN_TEXT
+	text_label.add_theme_font_size_override("normal_font_size", UIConstants.FONT_SIZE_BODY)
+	text_label.add_theme_color_override("default_color", UIConstants.COLOR_TEXT_PRIMARY)
 
 	# テーマ適用
 	var theme_path = "res://themes/novel_theme.tres"
@@ -145,17 +135,39 @@ func _setup_scenario_engine():
 
 	print("[GameScene] ScenarioEngine 初期化完了")
 
-## スキップインジケータの設定
+## スキップインジケータの設定（アンカーベース・レスポンシブ）
 func _setup_skip_indicator():
 	skip_indicator = Label.new()
-	skip_indicator.text = "⏩ SKIP"
-	skip_indicator.position = Vector2(900, 20)
-	skip_indicator.add_theme_font_size_override("font_size", 32)
-	skip_indicator.add_theme_color_override("font_color", Color.RED)
+	skip_indicator.text = ">> SKIP"
+	skip_indicator.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_SKIP_INDICATOR)
+	skip_indicator.add_theme_color_override("font_color", UIConstants.COLOR_SKIP_INDICATOR)
 	skip_indicator.visible = false
+
+	# アンカーベースで右上に配置
+	skip_indicator.anchor_left = 1.0
+	skip_indicator.anchor_top = 0.0
+	skip_indicator.anchor_right = 1.0
+	skip_indicator.anchor_bottom = 0.0
+	skip_indicator.offset_left = -120
+	skip_indicator.offset_top = 20
+	skip_indicator.offset_right = -20
+	skip_indicator.offset_bottom = 50
+
 	add_child(skip_indicator)
 
 	scenario_engine.skip_controller.skip_mode_changed.connect(_on_skip_mode_changed)
+
+## ポーズメニューの設定
+func _setup_pause_menu():
+	pause_menu = Control.new()
+	pause_menu.set_script(PauseMenuScript)
+	pause_menu.name = "PauseMenu"
+	add_child(pause_menu)
+
+	pause_menu.title_requested.connect(_on_title_requested)
+	pause_menu.settings_requested.connect(_on_settings_requested)
+
+	print("[GameScene] ポーズメニュー設定完了")
 
 ## TrophyManager との接続
 func _setup_trophy_manager():
@@ -183,13 +195,25 @@ func _start_game():
 func _on_skip_mode_changed(is_skipping: bool):
 	skip_indicator.visible = is_skipping
 
+## ポーズメニューからのシグナル処理
+func _on_title_requested():
+	SceneManager.goto_title()
+
+func _on_settings_requested():
+	SceneManager.goto_settings()
+
 ## 入力処理
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		match event.keycode:
+			KEY_ESCAPE:
+				# Escapeキーでポーズメニュー開閉
+				if not pause_menu.is_open:
+					pause_menu.open()
 			KEY_S:
-				# Sキーでスキップモード切り替え
-				scenario_engine.toggle_skip_mode()
+				# Sキーでスキップモード切り替え（ポーズ中は無視）
+				if not pause_menu.is_open:
+					scenario_engine.toggle_skip_mode()
 			KEY_T:
 				# Tキーでトロフィー状態表示（デバッグ用）
 				var trophy_manager = get_node_or_null("/root/TrophyManager")

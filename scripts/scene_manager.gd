@@ -6,8 +6,9 @@ extends Node
 
 # シーン定数
 const TITLE_SCENE = "res://scenes/title_scene.tscn"
-const GAME_SCENE = "res://scenes/game_scene.tscn"  # 新シナリオエンジン
+const GAME_SCENE = "res://scenes/game_scene.tscn"
 const SETTINGS_SCENE = "res://scenes/settings_scene.tscn"
+const TROPHY_SCENE = "res://scenes/trophy_screen.tscn"
 
 # シグナル定義
 signal scene_changed(scene_name)
@@ -142,6 +143,10 @@ func goto_game():
 # 設定シーンへ
 func goto_settings():
 	change_scene(SETTINGS_SCENE)
+
+# トロフィー画面へ
+func goto_trophy():
+	change_scene(TROPHY_SCENE)
 
 # ゲーム終了
 func quit_game():
