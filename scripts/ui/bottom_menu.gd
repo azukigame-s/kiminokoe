@@ -36,7 +36,7 @@ func _build_ui():
 	_container.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_container)
 
-	_log_button = _create_button("ログ")
+	_log_button = _create_button("足跡")
 	_log_button.pressed.connect(func(): log_pressed.emit())
 	_container.add_child(_log_button)
 

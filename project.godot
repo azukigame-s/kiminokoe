@@ -24,6 +24,10 @@ config/visual_novel/indicator_symbol="⏎"
 config/visual_novel/page_indicator_symbol="⎘"
 config/visual_novel/default_log_level=2
 
+[gui]
+
+theme/custom_font="res://assets/fonts/ShipporiMincho-SemiBold.ttf"
+
 [autoload]
 
 SceneManager="*res://scripts/scene_manager.gd"

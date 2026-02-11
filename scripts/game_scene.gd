@@ -160,12 +160,18 @@ func _setup_bottom_menu():
 	# 選択肢表示中は下部メニューを隠す
 	choice_display.visibility_changed.connect(_on_choice_visibility_changed)
 
-## ポーズメニューの設定
+## ポーズメニューの設定（CanvasLayer で確実に最前面に描画）
 func _setup_pause_menu():
+	var pause_layer = CanvasLayer.new()
+	pause_layer.name = "PauseMenuLayer"
+	pause_layer.layer = 40  # ゲーム画面より上、バックログ(50)より下
+	pause_layer.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	add_child(pause_layer)
+
 	pause_menu = Control.new()
 	pause_menu.set_script(PauseMenuScript)
 	pause_menu.name = "PauseMenu"
-	add_child(pause_menu)
+	pause_layer.add_child(pause_menu)
 
 	pause_menu.title_requested.connect(_on_title_requested)
 	pause_menu.settings_requested.connect(_on_settings_requested)

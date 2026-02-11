@@ -160,6 +160,10 @@ func handle_choice(command: Dictionary) -> void:
 	# テキストを再表示
 	command_executor.show_text_after_choice()
 
+	# 選択した内容をバックログに記録
+	if backlog_manager and selected.has("text"):
+		backlog_manager.add_entry("▸ " + selected.get("text", ""))
+
 	# 選択結果に応じた処理
 	if selected.has("scenario"):
 		# 別シナリオに遷移（サブシナリオとして呼び出し）

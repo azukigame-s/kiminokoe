@@ -4,19 +4,19 @@
 
 4つのサブステップに分割して実施する。テキスト表示は現状の全画面オーバーレイ（かまいたちの夜風）を維持。
 
-| サブステップ | 内容 | 優先度 |
-|---|---|---|
-| 7a | 全画面統合UI改善 | 最優先（他の基盤） |
-| 7b | テキストログ（バックログ） | 中 |
-| 7c | トロフィー画面 | 中 |
-| 7d | セーブ/ロード機能 | 最後（最も複雑） |
+| サブステップ | 内容 | 優先度 | 状態 |
+|---|---|---|---|
+| 7a | 全画面統合UI改善 | 最優先（他の基盤） | **完了** |
+| 7b | テキストログ（足跡） | 中 | **完了** |
+| 7c | トロフィー画面 | 中 | 未着手 |
+| 7d | セーブ/ロード機能 | 最後（最も複雑） | 未着手 |
 
 ### 実施順序と理由
 
 ```
-7a (UI統一) ← 共通スタイル定数・ヘルパーを確立
-  ├── 7c (トロフィー画面) ← 独立機能、仕様書あり
-  ├── 7b (バックログ) ← TextDisplay改修が必要
+7a (UI統一) ← 共通スタイル定数・ヘルパーを確立     ✅ 完了
+  ├── 7b (足跡/バックログ) ← TextDisplay改修が必要  ✅ 完了
+  ├── 7c (トロフィー画面) ← 独立機能、仕様書あり    ← 次
   └── 7d (セーブ/ロード) ← 最も複雑、全体が安定してから
 ```
 
@@ -116,65 +116,42 @@ skip_indicator.offset_top = 20
 
 ---
 
-## 7b: テキストログ（バックログ）
+## 7b: 足跡（テキストログ） ✅ 完了
 
-### 目的
+### 概要
 
-セッション中の全テキスト履歴を閲覧可能にする。マウスホイール上 or Lキーで開閉。
+セッション中の全テキスト履歴を「足跡」として閲覧可能。Lキー / 下部メニュー / ポーズメニューから開閉。
 
-### 設計
+### 実装済みファイル
 
-- **保存先**: `BacklogManager`（GameScene のコンポーネント）にセッション単位で蓄積
-- **キャプチャ対象**: `dialogue` コマンドのテキストのみ（subtitle, choice は除外）
-- **キャプチャポイント**: `CommandExecutor.execute_dialogue()` 内
-- **入力ブロック**: バックログ表示中は `get_tree().paused = true`
+#### `scripts/core/backlog_manager.gd`
 
-### 新規作成ファイル
+- `class_name BacklogManager` — エントリを `{ "text": text }` 辞書で保存
+- `MAX_ENTRIES = 500`
+- `add_entry()` / `get_history()` / `clear()`
 
-#### `scripts/ui/backlog_manager.gd`
+#### `scripts/ui/backlog_display.gd`
 
-```gdscript
-class_name BacklogManager extends Node
+- CanvasLayer(layer=50) 上に配置（`game_scene.gd` で設定）
+- `process_mode` は親 CanvasLayer から継承（WHEN_PAUSED）
+- 和風ノベル風デザイン:
+  - 装飾線タイトル（── 足跡 ──）、深紅アクセント
+  - PanelContainer エントリ（左3px深紅ボーダー、カード型背景）
+  - 背景: `Color(COLOR_BASE_DARK, 0.85)`（半透明漆黒緑）
+- 閉じるヒント: 「Esc / L」
+- 入力: Escape / Lキーで閉じる
 
-var history: Array[String] = []
-const MAX_ENTRIES = 500
+### キャプチャ対象
 
-func add_entry(text: String) -> void:
-    history.append(text)
-    if history.size() > MAX_ENTRIES:
-        history.pop_front()
+- `dialogue` テキスト → `command_executor.execute_dialogue()` で記録
+- 選択した選択肢 → `scenario_engine.handle_choice()` で「▸ 選択肢テキスト」として記録
 
-func get_history() -> Array[String]:
-    return history
+### 操作方法
 
-func clear() -> void:
-    history.clear()
-```
-
-#### `scripts/ui/backlog_panel.gd`
-
-オーバーレイUI（シーン遷移なし、GameScene の子ノード）。
-
-```
-BacklogPanel (Control, z_index=500)
-  ├── Background (ColorRect, Color(0, 0, 0, 0.85))
-  ├── HeaderLabel ("テキストログ")
-  ├── ScrollContainer (margin: 5%-95%)
-  │   └── VBoxContainer
-  │       └── LogEntry (Label) × N （動的生成）
-  └── CloseHint ("クリックまたはEscで閉じる")
-```
-
-- 開いた時は最下部（最新テキスト）にスクロール
-- SawarabiMincho 20px、白文字、各エントリ間にセパレータ
-- Click / Escape / Lキーで閉じる
-
-### 修正ファイル
-
-| ファイル | 変更内容 |
-|---|---|
-| `scripts/core/command_executor.gd` | `backlog_manager` 参照を追加、`execute_dialogue()` でテキストを push |
-| `scripts/game_scene.gd` | BacklogManager / BacklogPanel 生成・接続、入力処理（ホイール上 / Lキー） |
+- **Lキー**: バックログ開閉（ゲーム中）
+- **下部メニュー「足跡」ボタン**: バックログを開く
+- **ポーズメニュー「足跡」ボタン**: バックログを開く（ポーズメニューは一時非表示、閉じると戻る）
+- **Esc / Lキー**: バックログを閉じる
 
 ---
 
