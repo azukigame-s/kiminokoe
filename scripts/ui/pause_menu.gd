@@ -6,6 +6,7 @@ extends Control
 signal resumed
 signal title_requested
 signal settings_requested
+signal backlog_requested
 
 var is_open: bool = false
 
@@ -68,7 +69,7 @@ func _build_ui():
 	menu_container.add_child(resume_button)
 
 	backlog_button = _create_button("バックログ")
-	backlog_button.disabled = true  # 7b で有効化
+	backlog_button.pressed.connect(_on_backlog)
 	menu_container.add_child(backlog_button)
 
 	save_button = _create_button("セーブ")
@@ -135,6 +136,9 @@ func _input(event):
 
 func _on_resume():
 	close()
+
+func _on_backlog():
+	backlog_requested.emit()
 
 func _on_settings():
 	settings_requested.emit()

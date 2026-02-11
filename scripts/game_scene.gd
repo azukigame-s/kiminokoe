@@ -12,6 +12,8 @@ const SubtitleDisplayScript = preload("res://scripts/ui/subtitle_display.gd")
 const ToastNotificationScript = preload("res://scripts/toast_notification.gd")
 const ScenarioEngineScript = preload("res://scripts/core/scenario_engine.gd")
 const PauseMenuScript = preload("res://scripts/ui/pause_menu.gd")
+const BottomMenuScript = preload("res://scripts/ui/bottom_menu.gd")
+const BacklogDisplayScript = preload("res://scripts/ui/backlog_display.gd")
 
 # コンポーネント参照
 var scenario_engine
@@ -21,7 +23,8 @@ var audio_manager
 var choice_display
 var subtitle_display
 var toast_notification
-var skip_indicator: Label
+var bottom_menu: Control
+var backlog_display: Control
 var pause_menu: Control
 
 func _ready():
@@ -36,11 +39,14 @@ func _ready():
 	# ScenarioEngine の初期化
 	_setup_scenario_engine()
 
-	# スキップインジケータの設定
-	_setup_skip_indicator()
+	# 下部メニューの設定
+	_setup_bottom_menu()
 
 	# ポーズメニューの設定
 	_setup_pause_menu()
+
+	# バックログ表示の設定
+	_setup_backlog_display()
 
 	# TrophyManager にトースト通知を接続
 	_setup_trophy_manager()
@@ -136,27 +142,23 @@ func _setup_scenario_engine():
 
 	print("[GameScene] ScenarioEngine 初期化完了")
 
-## スキップインジケータの設定（アンカーベース・レスポンシブ）
-func _setup_skip_indicator():
-	skip_indicator = Label.new()
-	skip_indicator.text = ">> SKIP"
-	skip_indicator.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_HEADING)
-	skip_indicator.add_theme_color_override("font_color", UIConstants.COLOR_SKIP_ACTIVE)
-	skip_indicator.visible = false
+## 下部メニューの設定（ログ / スキップ / メニュー）
+func _setup_bottom_menu():
+	bottom_menu = Control.new()
+	bottom_menu.set_script(BottomMenuScript)
+	bottom_menu.name = "BottomMenu"
+	add_child(bottom_menu)
 
-	# アンカーベースで右上に配置
-	skip_indicator.anchor_left = 1.0
-	skip_indicator.anchor_top = 0.0
-	skip_indicator.anchor_right = 1.0
-	skip_indicator.anchor_bottom = 0.0
-	skip_indicator.offset_left = -120
-	skip_indicator.offset_top = 20
-	skip_indicator.offset_right = -20
-	skip_indicator.offset_bottom = 50
+	# シグナル接続
+	bottom_menu.log_pressed.connect(_on_log_pressed)
+	bottom_menu.skip_pressed.connect(_on_skip_pressed)
+	bottom_menu.menu_pressed.connect(_on_menu_pressed)
 
-	add_child(skip_indicator)
-
+	# スキップモード変更を下部メニューに反映
 	scenario_engine.skip_controller.skip_mode_changed.connect(_on_skip_mode_changed)
+
+	# 選択肢表示中は下部メニューを隠す
+	choice_display.visibility_changed.connect(_on_choice_visibility_changed)
 
 ## ポーズメニューの設定
 func _setup_pause_menu():
@@ -167,8 +169,20 @@ func _setup_pause_menu():
 
 	pause_menu.title_requested.connect(_on_title_requested)
 	pause_menu.settings_requested.connect(_on_settings_requested)
+	pause_menu.backlog_requested.connect(_on_backlog_from_pause)
 
 	print("[GameScene] ポーズメニュー設定完了")
+
+## バックログ表示の設定
+func _setup_backlog_display():
+	backlog_display = Control.new()
+	backlog_display.set_script(BacklogDisplayScript)
+	backlog_display.name = "BacklogDisplay"
+	add_child(backlog_display)
+
+	backlog_display.closed.connect(_on_backlog_closed)
+
+	print("[GameScene] バックログ表示設定完了")
 
 ## TrophyManager との接続
 func _setup_trophy_manager():
@@ -194,7 +208,56 @@ func _start_game():
 
 ## スキップモード変更時のコールバック
 func _on_skip_mode_changed(is_skipping: bool):
-	skip_indicator.visible = is_skipping
+	bottom_menu.set_skip_active(is_skipping)
+
+## 下部メニューからのシグナル処理
+func _on_log_pressed():
+	_open_backlog()
+
+func _on_skip_pressed():
+	scenario_engine.toggle_skip_mode()
+
+func _on_menu_pressed():
+	if not pause_menu.is_open:
+		pause_menu.open()
+
+## 選択肢表示状態の変更時
+func _on_choice_visibility_changed():
+	if choice_display.visible:
+		bottom_menu.visible = false
+	else:
+		bottom_menu.visible = true
+
+## バックログを開く
+var _backlog_paused_by_us: bool = false
+
+func _open_backlog():
+	# ポーズメニューから開いた場合はすでに一時停止中
+	if not get_tree().paused:
+		get_tree().paused = true
+		_backlog_paused_by_us = true
+	var history = scenario_engine.backlog_manager.get_history()
+	print("[GameScene] バックログ表示: %d 件のエントリ" % history.size())
+	if history.size() > 0:
+		print("[GameScene] 最新エントリ: %s" % history[-1].get("text", "(empty)"))
+	backlog_display.open(history)
+	bottom_menu.visible = false
+
+## ポーズメニューからバックログを開く
+func _on_backlog_from_pause():
+	pause_menu.visible = false
+	_open_backlog()
+
+## バックログが閉じられた時
+func _on_backlog_closed():
+	if pause_menu.is_open:
+		# ポーズメニューから開いた場合 → ポーズメニューに戻る
+		pause_menu.visible = true
+	elif _backlog_paused_by_us:
+		# 下部メニューから開いた場合 → 一時停止を解除
+		get_tree().paused = false
+	_backlog_paused_by_us = false
+	bottom_menu.visible = true
 
 ## ポーズメニューからのシグナル処理
 func _on_title_requested():
@@ -208,20 +271,19 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		match event.keycode:
 			KEY_ESCAPE:
-				# Escapeキーでポーズメニュー開閉
-				if not pause_menu.is_open:
+				if backlog_display.is_open:
+					backlog_display.close()
+				elif not pause_menu.is_open:
 					pause_menu.open()
 			KEY_S:
-				# Sキーでスキップモード切り替え（ポーズ中は無視）
-				if not pause_menu.is_open:
+				# Sキーでスキップモード切り替え（ポーズ中・バックログ中は無視）
+				if not pause_menu.is_open and not backlog_display.is_open:
 					scenario_engine.toggle_skip_mode()
 			KEY_T:
 				var trophy_manager = get_node_or_null("/root/TrophyManager")
 				if trophy_manager:
 					if event.shift_pressed:
-						# Shift+Tでトロフィーデータをリセット（デバッグ用）
 						trophy_manager.reset_trophy_data()
 						print("[GameScene] トロフィーデータをリセットしました")
 					else:
-						# Tキーでトロフィー状態表示（デバッグ用）
 						trophy_manager.print_trophy_status()

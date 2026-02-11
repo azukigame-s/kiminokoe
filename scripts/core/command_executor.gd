@@ -17,6 +17,9 @@ signal command_completed
 # スキップコントローラ参照（スキップモード変更検知用）
 var _skip_controller_ref: SkipController = null
 
+# バックログマネージャ参照
+var backlog_manager: BacklogManager
+
 func _ready():
 	pass
 
@@ -96,6 +99,10 @@ func execute_dialogue(command: Dictionary, skip_controller: SkipController) -> v
 
 	# テキスト表示（アニメーション完了まで待機）
 	await text_display.show_text(text, new_page)
+
+	# バックログに記録
+	if backlog_manager:
+		backlog_manager.add_entry(text)
 
 	# go_next フラグはインディケーター制御のみに使用（text_display.set_go_next()で設定済み）
 	# クリック待機は go_next に関わらず常に行う

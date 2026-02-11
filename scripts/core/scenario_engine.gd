@@ -13,6 +13,7 @@ signal command_executed(command: Dictionary)
 var command_executor: CommandExecutor
 var scenario_stack: ScenarioStack
 var skip_controller: SkipController
+var backlog_manager: BacklogManager
 
 # 現在の状態
 var current_scenario: Array = []
@@ -25,14 +26,19 @@ func _init():
 	command_executor = CommandExecutor.new()
 	scenario_stack = ScenarioStack.new()
 	skip_controller = SkipController.new()
+	backlog_manager = BacklogManager.new()
 
 	# コンポーネントを子ノードとして追加
 	add_child(command_executor)
 	add_child(scenario_stack)
 	add_child(skip_controller)
+	add_child(backlog_manager)
 
 	# スキップコントローラとの連携を設定
 	command_executor.connect_skip_controller(skip_controller)
+
+	# バックログマネージャとの連携を設定
+	command_executor.backlog_manager = backlog_manager
 
 func _ready():
 	pass

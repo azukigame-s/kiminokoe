@@ -64,8 +64,9 @@ func show_choices(choices: Array, prompt: String = "どうする？") -> void:
 	title.position.y = viewport_size.y * 0.1
 	title.size.x = viewport_size.x * 0.8
 	title.size.y = 40
-	title.add_theme_font_size_override("font_size", 24)
-	title.add_theme_color_override("font_color", Color.WHITE)
+	title.add_theme_font_size_override("font_size", text_size)
+	title.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+	UIStyleHelper.apply_outline_to_label(title)
 	_choice_container.add_child(title)
 
 	# 選択肢を配置

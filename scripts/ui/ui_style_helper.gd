@@ -78,6 +78,24 @@ static func style_menu_button(button: Button) -> void:
 	button.add_theme_stylebox_override("pressed", hover_style)
 	button.add_theme_stylebox_override("focus", normal_style)
 
+## ゲーム画面下部メニュー用ボタン（透明背景、グレー文字、ホバーで薄紅）
+static func style_bottom_menu_button(button: Button) -> void:
+	if not button:
+		return
+
+	button.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
+	button.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_SECONDARY)
+	button.add_theme_color_override("font_hover_color", UIConstants.COLOR_TEXT_ACCENT)
+	button.add_theme_color_override("font_pressed_color", UIConstants.COLOR_TEXT_ACCENT)
+	button.add_theme_color_override("font_focus_color", UIConstants.COLOR_TEXT_SECONDARY)
+	apply_outline_to_button(button)
+
+	var transparent = StyleBoxEmpty.new()
+	button.add_theme_stylebox_override("normal", transparent)
+	button.add_theme_stylebox_override("hover", transparent)
+	button.add_theme_stylebox_override("pressed", transparent)
+	button.add_theme_stylebox_override("focus", transparent)
+
 ## タイトル用ボタン（透明背景、ダーク文字、ホバーで白）
 static func style_title_button(button: Button) -> void:
 	if not button:
