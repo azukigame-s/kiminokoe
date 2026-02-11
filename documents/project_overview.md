@@ -609,103 +609,70 @@ scenarios/
 - 霊体を出すエピソードは、その後に霊体の描写を入れる
 - 霊体を出さないエピソードは、温かい余韻で終わる
 
+### current_index のインクリメント規則
+
+`scenario_engine.gd` のメインループにおける `current_index` の進行責務は以下の通り：
+
+| コマンド種別 | インクリメント担当 | 理由 |
+|---|---|---|
+| `load_scenario` | メインループ | `call_subscenario` は状態復帰のみ |
+| `episode_clear`, `visit_location` | メインループ | 単純な処理後に次へ進む |
+| `jump`, `choice`, `branch` | 各ハンドラ | フロー制御コマンドのため自分で行き先を設定 |
+| 通常コマンド（dialogue等） | メインループ | CommandExecutor 実行後に次へ進む |
+
+**重要な原則:**
+- `call_subscenario()` は元の index に復帰するだけで、進行しない
+- 進行の責任は常に呼び出し元（メインループまたはハンドラ）にある
+
 ### choice コマンドのパターンと注意点
 
-**問題となるパターン:**
+choice で `scenario` パラメータを使うと、サブシナリオから戻った後に **choice の次のコマンド** が実行される。これは `handle_choice()` 内で `current_index += 1` されるため。
+
+**問題となるパターン（scenario と next_index の混在）:**
 ```json
 {
     "type": "choice",
     "choices": [
-        {
-            "text": "選択肢A（サブシナリオへ）",
-            "scenario": "shared/some_scenario"
-        },
-        {
-            "text": "選択肢B",
-            "next_index": 26
-        }
+        { "text": "選択肢A", "scenario": "shared/some_scenario" },
+        { "text": "選択肢B", "next_index": 26 }
     ]
 },
-{
-    "type": "dialogue",
-    "text": "選択肢Bの内容..."
-}
+{ "type": "dialogue", "text": "選択肢Bでのみ表示したいテキスト" }
 ```
+→ 選択肢Aから戻った後も「選択肢Bでのみ表示したいテキスト」が実行されてしまう。
 
-**何が起こるか:**
-- 選択肢Aを選ぶと、サブシナリオが実行される
-- サブシナリオから戻ると、`current_index += 1` が実行される
-- その結果、choiceの次のコマンド（選択肢Bの内容）が実行されてしまう
-- これは通常、意図しない動作
+**正しいパターン①: index マーカーで分岐を分離**
 
-**正しいパターン:**
+全選択肢で `next_index` を使い、各分岐を明確に分離する：
 ```json
 {
     "type": "choice",
     "choices": [
-        {
-            "text": "選択肢A（サブシナリオへ）",
-            "next_index": 100
-        },
-        {
-            "text": "選択肢B",
-            "next_index": 26
-        }
+        { "text": "選択肢A", "next_index": 100 },
+        { "text": "選択肢B", "next_index": 26 }
     ]
 },
-{
-    "type": "index",
-    "index": 26
-},
-{
-    "type": "dialogue",
-    "text": "選択肢Bの内容..."
-},
-{
-    "type": "jump",
-    "index": 999
-},
-{
-    "type": "index",
-    "index": 100
-},
-{
-    "type": "load_scenario",
-    "path": "shared/some_scenario",
-    "new_page_after_return": true
-},
-{
-    "type": "index",
-    "index": 999
-}
+{ "type": "index", "index": 26 },
+{ "type": "dialogue", "text": "選択肢Bの内容" },
+{ "type": "jump", "index": 999 },
+{ "type": "index", "index": 100 },
+{ "type": "load_scenario", "path": "shared/some_scenario", "new_page_after_return": true },
+{ "type": "index", "index": 999 }
 ```
 
-**ポイント:**
-- 全ての選択肢で `next_index` を使う
-- 各選択肢の内容を index マーカーで分離する
-- サブシナリオを呼ぶ場合は `load_scenario` コマンドを配置する
-- `jump` コマンドを使って、各分岐が終了後に共通の終了点（index 999 など）に移動させる
-- こうすることで、各選択肢の処理が互いに干渉しない
+**正しいパターン②: 全選択肢で scenario を使う**
 
-**または、より単純なパターン:**
-
-choiceの後にコマンドを一切置かず、全ての選択肢で `scenario` パラメータを使う（各選択肢が別シナリオを呼び出す）:
+choice の後にコマンドを一切置かない：
 ```json
 {
     "type": "choice",
     "choices": [
-        {
-            "text": "選択肢A",
-            "scenario": "branches/path_a"
-        },
-        {
-            "text": "選択肢B",
-            "scenario": "branches/path_b"
-        }
+        { "text": "選択肢A", "scenario": "branches/path_a" },
+        { "text": "選択肢B", "scenario": "branches/path_b" }
     ]
 }
-// ここで終了（choiceの後にコマンドを置かない）
 ```
+→ choice が最後のコマンドなので、どの選択肢から戻っても安全にシナリオが終了する。
 
 ------
 

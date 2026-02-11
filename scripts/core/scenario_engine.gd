@@ -65,7 +65,8 @@ func execute_scenario() -> void:
 		match command_type:
 			"load_scenario":
 				await handle_load_scenario(command)
-				continue  # current_indexはcall_subscenario内で設定済み
+				current_index += 1
+				continue
 			"jump":
 				handle_jump(command)
 				continue  # current_indexはjumpで設定済み
@@ -247,11 +248,11 @@ func call_subscenario(scenario_path: String, apply_grayscale: bool = false, new_
 	if subscenario_data:
 		await start_scenario(subscenario_data, scenario_path)
 
-	# 元のシナリオに復帰
+	# 元のシナリオに復帰（元のindexに戻すだけ。進行は呼び出し元が責任を持つ）
 	var previous_state = scenario_stack.pop()
 	if previous_state:
 		current_scenario = previous_state.scenario
-		current_index = previous_state.index + 1  # 次のコマンドから再開
+		current_index = previous_state.index
 		current_scenario_path = previous_state.path
 		is_running = true  # 実行状態を復元
 
