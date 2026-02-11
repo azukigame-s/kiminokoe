@@ -37,13 +37,26 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "国道の下の用水路を見ていると、聞き覚えのある声が聞こえた気がした――。",
+		"text": "国道の下の用水路を見ていると、声が聞こえた気がした――。",
 		"new_page": true
 	},
 	{
 		"type": "load_scenario",
 		"path": "episodes/ep_05",
 		"new_page_after_return": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕とスグは、あの子猫を一緒に心配していたんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あの時のスグの笑顔は、はっきりと覚えている。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",

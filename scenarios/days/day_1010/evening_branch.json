@@ -1,65 +1,144 @@
 [
 	{
-		"type": "subtitle",
-		"text": "22:00",
-		"fade_time": 0.5,
-		"display_time": 2.0
+		"type": "branch",
+		"condition": "day_1010_ending",
+		"branches": {
+			"true_ready": 100,
+			"high": 200,
+			"medium": 300,
+			"low": 400,
+			"minimum": 500
+		}
+	},
+	{
+		"type": "index",
+		"index": 100
 	},
 	{
 		"type": "dialogue",
-		"text": "白い服の少年。",
+		"text": "今日、いくつもの記憶を思い出した。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "地下道で見た。"
+		"text": "スグと過ごした日々が、鮮明に蘇ってきている。"
 	},
 	{
 		"type": "dialogue",
-		"text": "そして――他の場所でも。",
+		"text": "でも――何かが、まだ足りない気がする。"
+	},
+	{
+		"type": "dialogue",
+		"text": "何か大切なことを、忘れている気がする。",
 		"go_next": true
 	},
 	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 200
+	},
+	{
 		"type": "dialogue",
-		"text": "あれは、本当にいたのだろうか？",
+		"text": "今日、たくさんの記憶を思い出した。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "イロも見ていた――幻覚ではないはずだ。"
+		"text": "スグと過ごした日々が、少しずつ蘇ってきている。"
 	},
 	{
 		"type": "dialogue",
-		"text": "でも――。",
+		"text": "もう少し……もう少し思い出せば何かが変わる気がする。",
 		"go_next": true
 	},
 	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 300
+	},
+	{
 		"type": "dialogue",
-		"text": "少しカールした黒髪。",
+		"text": "今日、いくつかの記憶を思い出した。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "真っ白な服。"
+		"text": "スグと過ごした日々が、少しずつ蘇ってきている。"
 	},
 	{
 		"type": "dialogue",
-		"text": "スグに、似ていた。"
+		"text": "でも、まだ足りない。"
 	},
 	{
 		"type": "dialogue",
-		"text": "似ていたというよりも、記憶の中のスグそのものだった。",
+		"text": "まだ、思い出せないことがたくさんある。",
 		"go_next": true
 	},
 	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 400
+	},
+	{
 		"type": "dialogue",
-		"text": "でも、スグはもういない。",
+		"text": "今日、わずかな記憶を思い出した。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "12年前に、あの事故で――。",
+		"text": "でも、それだけだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグのこと――もっと思い出したいのに。"
+	},
+	{
+		"type": "dialogue",
+		"text": "思い出せない。",
 		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 500
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は目をこすった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "考えても、わからない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "わからないことだらけだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "明日の法事で、何か思い出せるだろうか。",
+		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 999
 	},
 	{
 		"type": "dialogue",
@@ -130,4 +209,3 @@
 		"go_next": true
 	}
 ]
-

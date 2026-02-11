@@ -1,9 +1,5 @@
 [
 	{
-		"type": "background",
-		"path": "res://assets/backgrounds/sea_road.jpg"
-	},
-	{
 		"type": "dialogue",
 		"text": "北に少し出ると海に出ることができる。",
 		"new_page": true
@@ -19,6 +15,10 @@
 	{
 		"type": "dialogue",
 		"text": "家を出てほどなくすると東西に走る国道を挟んで海が見えた。"
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/sea_road.jpg"
 	},
 	{
 		"type": "dialogue",
@@ -45,7 +45,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "階段の中腹、踊り場のような場所に小さな地蔵が2体並んでいた。",
+		"text": "階段の中腹、踊り場のような場所に小さな地蔵が２体並んでいた。",
 		"new_page": true
 	},
 	{
@@ -54,11 +54,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "ダキには至る所にこうした2体並びの地蔵があり、「ふたこじぞう」と呼ばれている。"
+		"text": "ダキには至る所にこうした２体並びの地蔵があり、「ふたこじぞう」と呼ばれている。"
 	},
 	{
 		"type": "dialogue",
-		"text": "今更ながら――なぜ2体なのだろう？"
+		"text": "今更ながら――なぜ２体なのだろう？"
 	},
 	{
 		"type": "dialogue",
