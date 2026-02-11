@@ -173,12 +173,18 @@ func _setup_pause_menu():
 
 	print("[GameScene] ポーズメニュー設定完了")
 
-## バックログ表示の設定
+## バックログ表示の設定（CanvasLayer で確実に最前面に描画）
 func _setup_backlog_display():
+	var backlog_layer = CanvasLayer.new()
+	backlog_layer.name = "BacklogLayer"
+	backlog_layer.layer = 50  # ゲーム画面より上、SceneManager のフェード(1000)より下
+	backlog_layer.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	add_child(backlog_layer)
+
 	backlog_display = Control.new()
 	backlog_display.set_script(BacklogDisplayScript)
 	backlog_display.name = "BacklogDisplay"
-	add_child(backlog_display)
+	backlog_layer.add_child(backlog_display)
 
 	backlog_display.closed.connect(_on_backlog_closed)
 
@@ -275,6 +281,12 @@ func _input(event):
 					backlog_display.close()
 				elif not pause_menu.is_open:
 					pause_menu.open()
+			KEY_L:
+				# Lキーでバックログ開閉
+				if backlog_display.is_open:
+					backlog_display.close()
+				elif not pause_menu.is_open:
+					_open_backlog()
 			KEY_S:
 				# Sキーでスキップモード切り替え（ポーズ中・バックログ中は無視）
 				if not pause_menu.is_open and not backlog_display.is_open:
