@@ -140,8 +140,8 @@ func _setup_scenario_engine():
 func _setup_skip_indicator():
 	skip_indicator = Label.new()
 	skip_indicator.text = ">> SKIP"
-	skip_indicator.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_SKIP_INDICATOR)
-	skip_indicator.add_theme_color_override("font_color", UIConstants.COLOR_SKIP_INDICATOR)
+	skip_indicator.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_HEADING)
+	skip_indicator.add_theme_color_override("font_color", UIConstants.COLOR_SKIP_ACTIVE)
 	skip_indicator.visible = false
 
 	# アンカーベースで右上に配置

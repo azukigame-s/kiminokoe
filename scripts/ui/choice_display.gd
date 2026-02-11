@@ -8,9 +8,9 @@ class_name ChoiceDisplay
 signal choice_selected(choice_data: Dictionary)
 
 # スタイリング
-var text_color = Color(1, 1, 1, 1)
-var hover_color = Color(1, 0.8, 0, 1)  # 弟切草風の黄色いハイライト
-var text_size = 22
+var text_color = UIConstants.COLOR_TEXT_PRIMARY
+var hover_color = UIConstants.COLOR_TEXT_ACCENT
+var text_size = UIConstants.FONT_SIZE_BODY
 
 # 内部状態
 var _choice_container: Control
@@ -114,6 +114,7 @@ func show_choices(choices: Array, prompt: String = "どうする？") -> void:
 		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		label.add_theme_font_size_override("font_size", text_size)
 		label.add_theme_color_override("font_color", text_color)
+		UIStyleHelper.apply_outline_to_label(label)
 		panel.add_child(label)
 
 		_choice_labels.append(label)
