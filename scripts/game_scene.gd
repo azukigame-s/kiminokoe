@@ -82,6 +82,7 @@ func _setup_ui():
 	text_label.anchor_bottom = 1.0 - UIConstants.MARGIN_TEXT
 	text_label.add_theme_font_size_override("normal_font_size", UIConstants.FONT_SIZE_BODY)
 	text_label.add_theme_color_override("default_color", UIConstants.COLOR_TEXT_PRIMARY)
+	UIStyleHelper.apply_outline_to_rich_text(text_label)
 
 	# テーマ適用
 	var theme_path = "res://themes/novel_theme.tres"

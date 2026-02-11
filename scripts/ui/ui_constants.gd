@@ -26,6 +26,10 @@ const COLOR_BORDER_HOVER = Color(1.0, 0.8, 0.0, 1.0)       # ホバーボーダ�
 # スキップインジケータ
 const COLOR_SKIP_INDICATOR = Color.RED
 
+# アウトライン（縁取り）
+const COLOR_OUTLINE = Color(0, 0, 0, 0.9)                  # 黒縁取り
+const OUTLINE_SIZE = 2                                      # 縁取りの太さ（px）
+
 # === Font Sizes ===
 const FONT_SIZE_TITLE = 36
 const FONT_SIZE_HEADING = 28

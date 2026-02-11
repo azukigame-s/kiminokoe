@@ -25,6 +25,29 @@ static func create_panel_style(
 		style.border_color = border_color
 	return style
 
+# === アウトライン（縁取り） ===
+
+## Label にアウトラインを適用
+static func apply_outline_to_label(label: Label) -> void:
+	if not label:
+		return
+	label.add_theme_constant_override("outline_size", UIConstants.OUTLINE_SIZE)
+	label.add_theme_color_override("font_outline_color", UIConstants.COLOR_OUTLINE)
+
+## RichTextLabel にアウトラインを適用
+static func apply_outline_to_rich_text(rtl: RichTextLabel) -> void:
+	if not rtl:
+		return
+	rtl.add_theme_constant_override("outline_size", UIConstants.OUTLINE_SIZE)
+	rtl.add_theme_color_override("font_outline_color", UIConstants.COLOR_OUTLINE)
+
+## Button にアウトラインを適用
+static func apply_outline_to_button(button: Button) -> void:
+	if not button:
+		return
+	button.add_theme_constant_override("outline_size", UIConstants.OUTLINE_SIZE)
+	button.add_theme_color_override("font_outline_color", UIConstants.COLOR_OUTLINE)
+
 # === ボタンスタイル ===
 
 ## 設定/メニュー用ボタン（ボーダー付き、白文字）
