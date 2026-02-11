@@ -16,8 +16,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "テーブルには大皿に盛られた煮物、焼き魚、新鮮な野菜の天ぷらが並んでいた。",
-		"go_next": true
+		"text": "テーブルには大皿に盛られた煮物、焼き魚、新鮮な野菜の天ぷらが並んでいた。"
 	},
 	{
 		"type": "dialogue",
@@ -70,8 +69,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「久しぶりにみんなで食べれるねぇ」",
-		"new_page": true
+		"text": "「久しぶりにみんなで食べれるねぇ」"
 	},
 	{
 		"type": "dialogue",
@@ -83,11 +81,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は、ちゃんと食べていることを伝えた。"
-	},
-	{
-		"type": "dialogue",
-		"text": "祖母は「そうかそうか」と安心したように頷いた。"
+		"text": "ちゃんと食べていることを伝えると、祖母は「そうかそうか」と安心したように頷いた。"
 	},
 	{
 		"type": "dialogue",
@@ -140,21 +134,22 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "でも、きっと好きだったのだろう。",
+		"text": "僕は箸を伸ばし、煮物を口に運んだ。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "祖母がそう言うのだから。"
+		"text": "スグもきっと好きだったのだろう。"
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は箸を伸ばし、煮物を口に運んだ。"
-	},
-	{
-		"type": "dialogue",
-		"text": "優しい味がした。",
+		"text": "こんなにも優しい味なんだから。",
 		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "父が口を開いた。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -167,7 +162,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "祖母が頷く。"
+		"text": "お寺さんとはお寺の住職のことだ。ダキではそう呼ばれていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "父の言葉に頷く祖母。"
 	},
 	{
 		"type": "dialogue",

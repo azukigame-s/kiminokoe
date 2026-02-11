@@ -106,6 +106,103 @@
 		"type": "dialogue",
 		"text": "そして――思い出したスグとの記憶。",
 		"go_next": true
+	},
+	{
+		"type": "branch",
+		"condition": "white_boy_sightings",
+		"branches": {
+			"seen": 100,
+			"not_seen": 200
+		}
+	},
+	{
+		"type": "index",
+		"index": 100
+	},
+	{
+		"type": "dialogue",
+		"text": "白い服の少年。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "地下道で見た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして――他の場所でも。",
+		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 300
+	},
+	{
+		"type": "index",
+		"index": 200
+	},
+	{
+		"type": "dialogue",
+		"text": "白い服の少年。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "地下道で見た――。",
+		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 300
+	},
+	{
+		"type": "index",
+		"index": 300
+	},
+	{
+		"type": "dialogue",
+		"text": "あれは、本当にいたのだろうか？",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロも見ていた――幻覚ではないはずだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも――。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "少しカールした黒髪。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "真っ白な服。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグに、似ていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "似ていたというよりも、記憶の中のスグそのものだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、スグはもういない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "１２年前に、あの事故で――。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1010/evening_branch",
+		"new_page_after_return": true
 	}
 ]
 
