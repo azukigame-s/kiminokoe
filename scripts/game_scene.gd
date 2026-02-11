@@ -216,7 +216,12 @@ func _input(event):
 				if not pause_menu.is_open:
 					scenario_engine.toggle_skip_mode()
 			KEY_T:
-				# Tキーでトロフィー状態表示（デバッグ用）
 				var trophy_manager = get_node_or_null("/root/TrophyManager")
 				if trophy_manager:
-					trophy_manager.print_trophy_status()
+					if event.shift_pressed:
+						# Shift+Tでトロフィーデータをリセット（デバッグ用）
+						trophy_manager.reset_trophy_data()
+						print("[GameScene] トロフィーデータをリセットしました")
+					else:
+						# Tキーでトロフィー状態表示（デバッグ用）
+						trophy_manager.print_trophy_status()
