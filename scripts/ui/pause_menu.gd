@@ -22,11 +22,7 @@ var trophy_button: Button
 var settings_button: Button
 var title_button: Button
 
-# デザイン定数（足跡と共通）
-const TITLE_RULE_COLOR = Color(0.725, 0.165, 0.31, 0.5)
-const BUTTON_HOVER_BG = Color(0.725, 0.165, 0.31, 0.08)
-const BUTTON_BORDER_COLOR = Color(0.725, 0.165, 0.31, 0.4)
-const SEPARATOR_COLOR = Color(0.725, 0.165, 0.31, 0.15)
+# デザイン定数（UIConstants から参照）
 
 func _ready():
 	visible = false
@@ -145,7 +141,7 @@ func _create_rule() -> Control:
 	rule_wrapper.custom_minimum_size.y = 1
 
 	var rule = ColorRect.new()
-	rule.color = TITLE_RULE_COLOR
+	rule.color = UIConstants.COLOR_RULE
 	rule.set_anchors_preset(Control.PRESET_CENTER)
 	rule.anchor_left = 0.0
 	rule.anchor_right = 1.0
@@ -160,7 +156,7 @@ func _create_rule() -> Control:
 ## 区切り線を作成
 func _create_separator() -> ColorRect:
 	var sep = ColorRect.new()
-	sep.color = SEPARATOR_COLOR
+	sep.color = UIConstants.COLOR_SEPARATOR
 	sep.custom_minimum_size = Vector2(0, 1)
 	sep.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	return sep
@@ -193,9 +189,9 @@ func _create_menu_button(text: String) -> Button:
 
 	# ホバー: 微かな背景 + 深紅の左ボーダー
 	var hover_style = StyleBoxFlat.new()
-	hover_style.bg_color = BUTTON_HOVER_BG
+	hover_style.bg_color = UIConstants.COLOR_BUTTON_HOVER_TINT
 	hover_style.border_width_left = 3
-	hover_style.border_color = BUTTON_BORDER_COLOR
+	hover_style.border_color = UIConstants.COLOR_ENTRY_BORDER
 	hover_style.corner_radius_top_right = 2
 	hover_style.corner_radius_bottom_right = 2
 	hover_style.content_margin_left = 16

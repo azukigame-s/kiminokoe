@@ -13,11 +13,7 @@ var _background: ColorRect
 var _scroll_container: ScrollContainer
 var _text_container: VBoxContainer
 
-# デザイン定数
-const ENTRY_BG_COLOR = Color(0.05, 0.11, 0.07, 0.6)       # エントリ背景（漆黒緑系、微透過）
-const ENTRY_BORDER_COLOR = Color(0.725, 0.165, 0.31, 0.4)  # 左ボーダー（深紅、控えめ）
-const SEPARATOR_COLOR = Color(0.725, 0.165, 0.31, 0.15)    # 区切り線（深紅、極薄）
-const TITLE_RULE_COLOR = Color(0.725, 0.165, 0.31, 0.5)    # タイトル装飾線（深紅）
+# デザイン定数（UIConstants から参照）
 
 func _ready():
 	visible = false
@@ -104,7 +100,7 @@ func _create_rule() -> Control:
 	rule_wrapper.custom_minimum_size.y = 1
 
 	var rule = ColorRect.new()
-	rule.color = TITLE_RULE_COLOR
+	rule.color = UIConstants.COLOR_RULE
 	rule.set_anchors_preset(Control.PRESET_CENTER)
 	rule.anchor_left = 0.0
 	rule.anchor_right = 1.0
@@ -166,9 +162,9 @@ func _create_entry(text: String) -> PanelContainer:
 	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 	var style = StyleBoxFlat.new()
-	style.bg_color = ENTRY_BG_COLOR
+	style.bg_color = UIConstants.COLOR_ENTRY_BG
 	style.border_width_left = 3
-	style.border_color = ENTRY_BORDER_COLOR
+	style.border_color = UIConstants.COLOR_ENTRY_BORDER
 	style.corner_radius_top_right = 2
 	style.corner_radius_bottom_right = 2
 	style.content_margin_left = 16
