@@ -2,53 +2,51 @@ class_name UIConstants
 
 ## 全画面共通のデザイントークン
 ## 色・フォントサイズ・レイアウト定数を一元管理する
+##
+## テーマカラー（const）を変更すれば、派生色（static var）が自動で追従する
 
-# === Theme Colors ===
-# 提案A: 感動・郷愁重視 — 白(#ffffff) × 深紅(#b92a4f) × 深い青紫(#1a1a2e)
+# === Theme Colors（3色 + サブ2色） ===
+# 和風・古き良き日本 — 生成り(#f5f5dc) × 赤銅(#a04030) × 墨色(#1c1c1c)
 
-# テーマカラー
-const COLOR_ACCENT = Color(0.725, 0.165, 0.31)           # 深紅 #b92a4f
-const COLOR_ACCENT_LIGHT = Color(0.851, 0.29, 0.435)     # 薄紅 #d94a6f（ホバー用）
-const COLOR_ACCENT_DARK = Color(0.541, 0.122, 0.231)     # 暗紅 #8a1f3b（pressed用）
-const COLOR_BASE_DARK = Color(0.102, 0.102, 0.18)        # 深い青紫 #1a1a2e
+const COLOR_ACCENT = Color(0.627, 0.251, 0.188)           # 赤銅 #a04030
+const COLOR_BASE_DARK = Color(0.11, 0.11, 0.11)          # 墨色 #1c1c1c
+const COLOR_BASE_LIGHT = Color(0.961, 0.961, 0.863)      # 生成り #f5f5dc
+const COLOR_SUB_ACCENT = Color(0.549, 0.478, 0.420)       # 丁子茶 #8c7a6b
+const COLOR_SPIRIT = Color(0.784, 0.761, 0.714)          # 灰白 #c8c2b6
 
-# サブアクセント（提案A固有）
-const COLOR_SUB_ACCENT = Color(0.553, 0.643, 0.722)      # 薄青灰 #8da4b8（郷愁、10月の空）
-const COLOR_SPIRIT = Color(0.784, 0.835, 0.878)          # 淡青白 #c8d5e0（霊体）
-
-# === Color Palette ===
+# === 以下すべてテーマカラーから派生 ===
 
 # テキスト
-const COLOR_TEXT_PRIMARY = Color(1.0, 1.0, 1.0, 1.0)       # 白
-const COLOR_TEXT_SECONDARY = Color(0.553, 0.643, 0.722, 1.0) # 薄青灰
-const COLOR_TEXT_DISABLED = Color(0.4, 0.4, 0.4, 1.0)      # 無効
-const COLOR_TEXT_ACCENT = Color(0.851, 0.29, 0.435, 1.0)   # 薄紅（ホバー）
-const COLOR_TEXT_TITLE_DARK = Color(0.224, 0.196, 0.2, 1.0) # タイトル用ダーク
+static var COLOR_TEXT_PRIMARY: Color = Color(COLOR_BASE_LIGHT, 1.0)
+static var COLOR_TEXT_SECONDARY: Color = Color(COLOR_SUB_ACCENT, 1.0)
+static var COLOR_TEXT_ACCENT: Color = Color(COLOR_ACCENT, 1.0)
+static var COLOR_TEXT_DISABLED: Color = Color(COLOR_BASE_DARK.lightened(0.33), 1.0)
+static var COLOR_TEXT_TITLE_DARK: Color = Color(COLOR_BASE_DARK.lightened(0.13), 1.0)
 
-# 背景（深い青紫ベース）
-const COLOR_BG_OVERLAY = Color(0.102, 0.102, 0.18, 0.5)    # 半透明青紫（ゲーム画面テキストパネル）
-const COLOR_BG_PANEL = Color(0.102, 0.102, 0.18, 0.85)     # パネル背景
-const COLOR_BG_DARK = Color(0.102, 0.102, 0.18, 0.9)       # 設定/メニュー背景
-const COLOR_BG_BUTTON = Color(0.165, 0.165, 0.306, 0.8)    # ボタン通常（やや明るい青紫）
-const COLOR_BG_BUTTON_HOVER = Color(0.2, 0.2, 0.35, 0.9)   # ボタンホバー
+# 背景（墨色 × アルファ）
+static var COLOR_BG_OVERLAY: Color = Color(COLOR_BASE_DARK, 0.5)
+static var COLOR_BG_PANEL: Color = Color(COLOR_BASE_DARK, 0.85)
+static var COLOR_BG_DARK: Color = Color(COLOR_BASE_DARK, 0.9)
+static var COLOR_BG_BUTTON: Color = Color(COLOR_BASE_DARK.lightened(0.08), 0.8)
+static var COLOR_BG_BUTTON_HOVER: Color = Color(COLOR_BASE_DARK.lightened(0.12), 0.9)
 
 # ボーダー
-const COLOR_BORDER_NORMAL = Color(0.553, 0.643, 0.722)     # 薄青灰
-const COLOR_BORDER_HOVER = Color(0.725, 0.165, 0.31, 1.0)  # ホバーボーダー（深紅）
+static var COLOR_BORDER_NORMAL: Color = Color(COLOR_SUB_ACCENT, 1.0)
+static var COLOR_BORDER_HOVER: Color = Color(COLOR_ACCENT, 1.0)
 
 # スキップ
-const COLOR_SKIP_ACTIVE = Color(0.725, 0.165, 0.31, 1.0)   # スキップ中（深紅）
+static var COLOR_SKIP_ACTIVE: Color = Color(COLOR_ACCENT, 1.0)
 
-# 和風UIパーツ（足跡・メニュー共通）
-const COLOR_ENTRY_BG = Color(0.13, 0.13, 0.22, 0.6)        # エントリ背景（深い青紫系、微透過）
-const COLOR_RULE = Color(0.725, 0.165, 0.31, 0.5)          # 装飾線（深紅）
-const COLOR_ENTRY_BORDER = Color(0.725, 0.165, 0.31, 0.4)  # 左ボーダー（深紅、控えめ）
-const COLOR_SEPARATOR = Color(0.725, 0.165, 0.31, 0.15)    # 区切り線（深紅、極薄）
-const COLOR_BUTTON_HOVER_TINT = Color(0.725, 0.165, 0.31, 0.08) # ボタンホバー背景（深紅、極薄）
+# 装飾パーツ（朱色 × アルファ）
+static var COLOR_ENTRY_BG: Color = Color(COLOR_BASE_DARK.lightened(0.05), 0.6)
+static var COLOR_RULE: Color = Color(COLOR_ACCENT, 0.5)
+static var COLOR_ENTRY_BORDER: Color = Color(COLOR_ACCENT, 0.4)
+static var COLOR_SEPARATOR: Color = Color(COLOR_ACCENT, 0.15)
+static var COLOR_BUTTON_HOVER_TINT: Color = Color(COLOR_ACCENT, 0.08)
 
 # アウトライン（縁取り）
-const COLOR_OUTLINE = Color(0, 0, 0, 0.9)                  # 黒縁取り
-const OUTLINE_SIZE = 2                                      # 縁取りの太さ（px）
+static var COLOR_OUTLINE: Color = Color(COLOR_BASE_DARK.darkened(1.0), 0.9)
+const OUTLINE_SIZE = 2
 
 # === Font Sizes ===
 const FONT_SIZE_TITLE = 36
@@ -59,7 +57,7 @@ const FONT_SIZE_BUTTON_NORMAL = 20
 const FONT_SIZE_CAPTION = 16
 
 # === Layout ===
-const MARGIN_TEXT = 0.1       # テキスト表示エリアのマージン（アンカー比率）
+const MARGIN_TEXT = 0.1
 const CORNER_RADIUS = 8
 const BORDER_WIDTH = 2
 const BUTTON_MIN_SIZE_LARGE = Vector2(250, 50)
