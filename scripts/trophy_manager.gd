@@ -61,6 +61,26 @@ var secret_trophy_names: Dictionary = {
 	"iro_story": "イロの想い",
 }
 
+# エピソードトロフィーの説明文
+var episode_trophy_descriptions: Dictionary = {
+	"ep_1": "キミと喧嘩をした日",
+	"ep_2": "波との戦い",
+	"ep_3": "吹雪と兄弟",
+	"ep_4": "下手だけど好きだから",
+	"ep_5": "シロとの出会い",
+	"ep_6": "このカニ食べれるの？",
+	"ep_7": "実は高所恐怖症の兄",
+}
+
+# シークレットトロフィーの説明文
+var secret_trophy_descriptions: Dictionary = {
+	"secret_base": "僕たちだけの場所",
+	"futako_jizo": "2体並びの地蔵",
+	"takiba": "忘れられた場所",
+	"kiminokoe": "失った声を取り戻した",
+	"iro_story": "妹の秘密",
+}
+
 # 訪問済み場所（シークレットトロフィー用）
 var visited_locations: Dictionary = {}
 
@@ -436,6 +456,53 @@ func print_trophy_status():
 	log_message("Day 1010 Ending Type: " + get_day_1010_ending_type(), LogLevel.INFO)
 	log_message("Save file: " + SAVE_FILE_PATH, LogLevel.INFO)
 	log_message("===================", LogLevel.INFO)
+
+## トロフィー画面用の表示データを取得
+func get_trophy_display_data() -> Dictionary:
+	var normal_trophies: Array = []
+	for ep_id in episode_ids:
+		var trophy_id = ep_id + "_clear"
+		var unlocked = is_trophy_unlocked(trophy_id)
+		normal_trophies.append({
+			"id": trophy_id,
+			"name": episode_trophy_names.get(ep_id, ""),
+			"description": episode_trophy_descriptions.get(ep_id, ""),
+			"unlocked": unlocked,
+			"is_secret": false,
+		})
+
+	var secret_trophies: Array = []
+	for trophy_id in secret_trophy_ids:
+		var unlocked = is_trophy_unlocked(trophy_id)
+		secret_trophies.append({
+			"id": trophy_id,
+			"name": secret_trophy_names.get(trophy_id, ""),
+			"description": secret_trophy_descriptions.get(trophy_id, ""),
+			"unlocked": unlocked,
+			"is_secret": true,
+		})
+
+	return {
+		"normal": normal_trophies,
+		"secret": secret_trophies,
+		"unlocked_count": get_unlocked_trophy_count(),
+		"total_count": get_total_trophy_count(),
+	}
+
+## 解除済みトロフィーの総数を取得（画面に表示される12個のみカウント）
+func get_unlocked_trophy_count() -> int:
+	var count = 0
+	for ep_id in episode_ids:
+		if is_trophy_unlocked(ep_id + "_clear"):
+			count += 1
+	for trophy_id in secret_trophy_ids:
+		if is_trophy_unlocked(trophy_id):
+			count += 1
+	return count
+
+## 全トロフィー数を取得（通常7 + シークレット5 = 12）
+func get_total_trophy_count() -> int:
+	return episode_ids.size() + secret_trophy_ids.size()
 
 # セーブファイルのパスを取得（OSの実際のパス）
 func get_save_file_path() -> String:
