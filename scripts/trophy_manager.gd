@@ -75,10 +75,10 @@ var episode_trophy_descriptions: Dictionary = {
 # シークレットトロフィーの説明文
 var secret_trophy_descriptions: Dictionary = {
 	"secret_base": "僕たちだけの場所",
-	"futako_jizo": "2体並びの地蔵",
-	"takiba": "忘れられた場所",
-	"kiminokoe": "失った声を取り戻した",
-	"iro_story": "妹の秘密",
+	"futako_jizo": "古くから村を守ってきた存在",
+	"takiba": "忘れ去られたしきたり",
+	"kiminokoe": "喉が……のど飴を常備しないと",
+	"iro_story": "実は計画的な妹",
 }
 
 # 訪問済み場所（シークレットトロフィー用）
