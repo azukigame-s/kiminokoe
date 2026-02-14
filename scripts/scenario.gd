@@ -312,7 +312,7 @@ func proceed_to_next():
 	if current_index < scenario.size():
 		execute_current_command()
 
-func _process(delta):
+func _process(_delta):
 	# スキップモード中の自動進行処理
 	if novel_system and novel_system.is_skip_mode:
 		# サブタイトル表示中は待つ
