@@ -443,8 +443,8 @@ func print_trophy_status():
 	for trophy_id in secret_trophy_ids:
 		var unlocked = is_trophy_unlocked(trophy_id)
 		var status = "✓" if unlocked else "?"
-		var name = secret_trophy_names.get(trophy_id, "???")
-		log_message("  " + status + " " + (name if unlocked else "???"), LogLevel.INFO)
+		var trophy_name = secret_trophy_names.get(trophy_id, "???")
+		log_message("  " + status + " " + (trophy_name if unlocked else "???"), LogLevel.INFO)
 
 	log_message("Locations visited:", LogLevel.INFO)
 	for location_id in visited_locations.keys():

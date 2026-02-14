@@ -144,7 +144,7 @@ func run_test_scenario():
 	print("[TestScenarioEngine] テストシナリオ実行開始")
 
 	# JSONファイルからテストシナリオを読み込み
-	var scenario_data = await scenario_engine.load_scenario_data("test_step5b")
+	var scenario_data = scenario_engine.load_scenario_data("test_step5b")
 	if scenario_data.is_empty():
 		print("[TestScenarioEngine] テストシナリオの読み込みに失敗しました")
 		return

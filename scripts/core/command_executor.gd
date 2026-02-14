@@ -60,7 +60,7 @@ func execute(command: Dictionary, skip_controller: SkipController) -> void:
 		"bgm":
 			await execute_bgm(command, skip_controller)
 		"sfx":
-			await execute_sfx(command, skip_controller)
+			execute_sfx(command, skip_controller)
 		"choice":
 			# choice は ScenarioEngine で処理（フロー制御が必要なため）
 			pass
@@ -135,7 +135,7 @@ func execute_bgm(command: Dictionary, skip_controller: SkipController) -> void:
 		push_warning("[CommandExecutor] AudioManager が設定されていません")
 
 ## sfx コマンドを実行
-func execute_sfx(command: Dictionary, skip_controller: SkipController) -> void:
+func execute_sfx(command: Dictionary, _skip_controller: SkipController) -> void:
 	var path = command.get("path", "")
 
 	if audio_manager:
@@ -184,7 +184,7 @@ func execute_flashback_start(command: Dictionary, skip_controller: SkipControlle
 		push_warning("[CommandExecutor] BackgroundDisplay が設定されていません")
 
 ## flashback_end コマンドを実行（回想モード終了）
-func execute_flashback_end(command: Dictionary, skip_controller: SkipController) -> void:
+func execute_flashback_end(_command: Dictionary, skip_controller: SkipController) -> void:
 	if background_display:
 		var use_fade = not skip_controller.is_skipping
 		await background_display.set_effect("normal", use_fade)

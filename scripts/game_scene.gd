@@ -209,7 +209,7 @@ func _setup_trophy_manager():
 func _start_game():
 	print("[GameScene] メインシナリオ読み込み開始")
 
-	var scenario_data = await scenario_engine.load_scenario_data("main")
+	var scenario_data = scenario_engine.load_scenario_data("main")
 	if scenario_data.is_empty():
 		push_error("[GameScene] メインシナリオの読み込みに失敗しました")
 		return

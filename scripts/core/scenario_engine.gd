@@ -254,7 +254,7 @@ func call_subscenario(scenario_path: String, apply_grayscale: bool = false, new_
 	# サブシナリオを読み込んで実行
 	# is_running フラグを一時的に解除（サブシナリオでstart_scenarioを呼ぶため）
 	is_running = false
-	var subscenario_data = await load_scenario_data(scenario_path)
+	var subscenario_data = load_scenario_data(scenario_path)
 	if subscenario_data:
 		await start_scenario(subscenario_data, scenario_path)
 
@@ -346,7 +346,7 @@ func load_from_save_state(save_state: Dictionary) -> void:
 	for state in stack_data:
 		var path = state.get("path", "")
 		var state_index = state.get("index", 0)
-		var scenario_data = await load_scenario_data(path)
+		var scenario_data = load_scenario_data(path)
 		scenario_stack.push({
 			"scenario": scenario_data,
 			"index": state_index,
@@ -354,13 +354,13 @@ func load_from_save_state(save_state: Dictionary) -> void:
 		})
 
 	# シナリオを読み込み
-	var scenario_data = await load_scenario_data(scenario_path)
-	if scenario_data.is_empty():
+	var current_scenario_data = load_scenario_data(scenario_path)
+	if current_scenario_data.is_empty():
 		push_error("[ScenarioEngine] load_from_save_state: シナリオ読み込み失敗: %s" % scenario_path)
 		return
 
 	# 状態を設定
-	current_scenario = scenario_data
+	current_scenario = current_scenario_data
 	current_scenario_path = scenario_path
 	current_index = index
 	is_running = true
