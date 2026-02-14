@@ -227,6 +227,10 @@
 		"display_time": 2.0
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/no_image.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "「ただいまー」",
 		"new_page": true

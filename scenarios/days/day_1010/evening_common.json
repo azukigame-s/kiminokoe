@@ -52,6 +52,10 @@
 		"go_next": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/no_image.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "自室のドアを開けた。",
 		"new_page": true

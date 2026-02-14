@@ -6,6 +6,10 @@
 		"display_time": 2.0
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/no_image.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "実家のリビングに、夕食の良い香りが漂っていた。",
 		"new_page": true
