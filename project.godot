@@ -31,7 +31,7 @@ TrophyManager="*res://scripts/trophy_manager.gd"
 
 [gui]
 
-theme/custom_font="res://assets/fonts/ShipporiMincho-SemiBold.ttf"
+theme/custom_font="res://assets/fonts/Nosutaru-dotMPlusH-10-Regular.ttf"
 
 [rendering]
 
