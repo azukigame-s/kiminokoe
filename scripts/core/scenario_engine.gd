@@ -325,8 +325,30 @@ func get_save_state() -> Dictionary:
 	return {
 		"scenario_path": current_scenario_path,
 		"index": current_index,
-		"stack": _serialize_stack()
+		"stack": _serialize_stack(),
+		"background_path": _get_background_path(),
+		"bgm_path": _get_bgm_path(),
+		"effect": _get_current_effect(),
+		"backlog": backlog_manager.serialize(),
 	}
+
+## 現在の背景パスを取得
+func _get_background_path() -> String:
+	if command_executor and command_executor.background_display:
+		return command_executor.background_display.current_background_path
+	return ""
+
+## 現在のBGMパスを取得
+func _get_bgm_path() -> String:
+	if command_executor and command_executor.audio_manager:
+		return command_executor.audio_manager.current_bgm_path
+	return ""
+
+## 現在のエフェクトを取得
+func _get_current_effect() -> String:
+	if command_executor and command_executor.background_display:
+		return command_executor.background_display.current_effect
+	return "normal"
 
 ## スタックをシリアライズ（パスとインデックスのみ）
 func _serialize_stack() -> Array:
@@ -378,9 +400,44 @@ func load_from_save_state(save_state: Dictionary) -> void:
 	current_index = index
 	is_running = true
 
+	# 視覚/音声状態の復元（シナリオ再開前）
+	var bg_path = save_state.get("background_path", "")
+	var bgm_path = save_state.get("bgm_path", "")
+	var effect = save_state.get("effect", "normal")
+	await _restore_visual_state(bg_path, bgm_path, effect)
+
+	# バックログの復元
+	var backlog_data = save_state.get("backlog", [])
+	backlog_manager.deserialize(backlog_data)
+
 	# シナリオを再開
 	scenario_started.emit()
 	await execute_scenario()
 
+	# スタックの巻き戻し: 親シナリオを順に再開
+	# 通常フローでは call_subscenario が push/pop を管理するが、
+	# ロード時は手動でスタックを積んでいるため、ここで巻き戻す必要がある
+	while not scenario_stack.is_empty():
+		var parent_state = scenario_stack.pop()
+		current_scenario = parent_state.scenario
+		current_index = parent_state.index + 1  # 呼び出し元コマンドの次から再開
+		current_scenario_path = parent_state.path
+		is_running = true
+		print("[ScenarioEngine] Stack unwind: resuming %s at index %d" % [current_scenario_path, current_index])
+		await execute_scenario()
+
 	is_running = false
 	scenario_completed.emit()
+
+## 視覚/音声状態を復元（フェードなし）
+func _restore_visual_state(bg_path: String, bgm_path: String, effect: String) -> void:
+	if not command_executor:
+		return
+	# 背景復元
+	if not bg_path.is_empty() and command_executor.background_display:
+		await command_executor.background_display.set_background(bg_path, effect, false)
+	elif effect != "normal" and command_executor.background_display:
+		command_executor.background_display.set_effect(effect, false)
+	# BGM復元
+	if not bgm_path.is_empty() and command_executor.audio_manager:
+		await command_executor.audio_manager.play_bgm(bgm_path, false)

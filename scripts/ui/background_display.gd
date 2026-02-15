@@ -14,6 +14,9 @@ var is_fading: bool = false
 # エフェクト状態
 var current_effect: String = "normal"  # "normal", "grayscale", "sepia"
 
+# 現在の背景パス（セーブ/ロード用）
+var current_background_path: String = ""
+
 func _ready():
 	print("[BackgroundDisplay] 準備完了")
 
@@ -28,6 +31,8 @@ func _ready():
 ## 背景を設定（フェード付き）
 func set_background(path: String, effect: String = "normal", use_fade: bool = true) -> void:
 	print("[BackgroundDisplay] 背景設定: %s (エフェクト: %s)" % [path, effect])
+
+	current_background_path = path
 
 	# テクスチャを読み込み
 	var new_texture = load(path)

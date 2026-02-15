@@ -246,6 +246,10 @@ func _continue_game():
 		"scenario_path": save_data.get("scenario_path", ""),
 		"index": save_data.get("index", 0),
 		"stack": save_data.get("stack", []),
+		"background_path": save_data.get("background_path", ""),
+		"bgm_path": save_data.get("bgm_path", ""),
+		"effect": save_data.get("effect", "normal"),
+		"backlog": save_data.get("backlog", []),
 	}
 	await scenario_engine.load_from_save_state(engine_state)
 

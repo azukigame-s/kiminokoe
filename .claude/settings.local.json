@@ -10,7 +10,8 @@
       "Bash(do grep -l \"load_scenario.*path.*episodes\" \"$f\")",
       "Bash(echo:*)",
       "Bash(done)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(wc:*)"
     ]
   }
 }

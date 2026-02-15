@@ -186,6 +186,10 @@ func auto_save(save_state: Dictionary) -> void:
 	config.set_value("save", "scenario_path", save_state.get("scenario_path", ""))
 	config.set_value("save", "index", save_state.get("index", 0))
 	config.set_value("save", "stack", save_state.get("stack", []))
+	config.set_value("save", "background_path", save_state.get("background_path", ""))
+	config.set_value("save", "bgm_path", save_state.get("bgm_path", ""))
+	config.set_value("save", "effect", save_state.get("effect", "normal"))
+	config.set_value("save", "backlog", save_state.get("backlog", []))
 	var error = config.save(SAVE_FILE_PATH)
 	if error != OK:
 		push_error("[SceneManager] Failed to auto-save: %s" % str(error))
@@ -202,6 +206,10 @@ func load_save_data() -> Dictionary:
 		"scenario_path": config.get_value("save", "scenario_path", ""),
 		"index": config.get_value("save", "index", 0),
 		"stack": config.get_value("save", "stack", []),
+		"background_path": config.get_value("save", "background_path", ""),
+		"bgm_path": config.get_value("save", "bgm_path", ""),
+		"effect": config.get_value("save", "effect", "normal"),
+		"backlog": config.get_value("save", "backlog", []),
 	}
 
 # セーブデータの削除
