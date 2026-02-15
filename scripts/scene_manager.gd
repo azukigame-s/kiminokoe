@@ -10,6 +10,7 @@ const GAME_SCENE = "res://scenes/game_scene.tscn"
 const SETTINGS_SCENE = "res://scenes/settings_scene.tscn"
 const TROPHY_SCENE = "res://scenes/trophy_screen.tscn"
 const NAME_INPUT_SCENE = "res://scenes/name_input_scene.tscn"
+const SAVE_INFO_SCENE = "res://scenes/save_info_scene.tscn"
 
 # セーブデータ
 const SAVE_FILE_PATH = "user://save_data.cfg"
@@ -19,6 +20,9 @@ var protagonist_name: String = "コウ"
 
 # ゲーム開始モード（"new_game" / "continue"）
 var game_start_mode: String = "new_game"
+
+# プレイ時間（秒）
+var play_time: float = 0.0
 
 # シグナル定義
 signal scene_changed(scene_name)
@@ -162,6 +166,10 @@ func goto_settings():
 func goto_trophy():
 	change_scene(TROPHY_SCENE)
 
+# セーブ情報画面へ
+func goto_save_info():
+	change_scene(SAVE_INFO_SCENE)
+
 # ゲーム終了
 func quit_game():
 	print("[SceneManager] Quitting game")
@@ -190,6 +198,7 @@ func auto_save(save_state: Dictionary) -> void:
 	config.set_value("save", "bgm_path", save_state.get("bgm_path", ""))
 	config.set_value("save", "effect", save_state.get("effect", "normal"))
 	config.set_value("save", "backlog", save_state.get("backlog", []))
+	config.set_value("save", "play_time", save_state.get("play_time", 0.0))
 	var error = config.save(SAVE_FILE_PATH)
 	if error != OK:
 		push_error("[SceneManager] Failed to auto-save: %s" % str(error))
@@ -210,6 +219,7 @@ func load_save_data() -> Dictionary:
 		"bgm_path": config.get_value("save", "bgm_path", ""),
 		"effect": config.get_value("save", "effect", "normal"),
 		"backlog": config.get_value("save", "backlog", []),
+		"play_time": config.get_value("save", "play_time", 0.0),
 	}
 
 # セーブデータの削除

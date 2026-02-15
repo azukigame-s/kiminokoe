@@ -215,9 +215,15 @@ func _start_game():
 	else:
 		await _new_game()
 
+## プレイ時間の計測
+func _process(delta):
+	if not get_tree().paused:
+		SceneManager.play_time += delta
+
 ## 新規ゲーム開始（メインシナリオを最初から）
 func _new_game():
 	print("[GameScene] 新規ゲーム開始")
+	SceneManager.play_time = 0.0
 
 	var scenario_data = scenario_engine.load_scenario_data("main")
 	if scenario_data.is_empty():
@@ -238,8 +244,9 @@ func _continue_game():
 		await _new_game()
 		return
 
-	# 主人公名を復元
+	# 主人公名とプレイ時間を復元
 	SceneManager.protagonist_name = save_data.get("protagonist_name", "コウ")
+	SceneManager.play_time = save_data.get("play_time", 0.0)
 
 	# シナリオエンジンの状態を復元
 	var engine_state = {
@@ -257,6 +264,7 @@ func _continue_game():
 
 ## オートセーブ処理
 func _on_auto_save_requested(save_state: Dictionary) -> void:
+	save_state["play_time"] = SceneManager.play_time
 	SceneManager.auto_save(save_state)
 
 ## スキップモード変更時のコールバック

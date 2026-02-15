@@ -26,9 +26,7 @@ func _ready():
 	_setup_background()
 
 	# 初期フォーカス設定
-	if continue_button and continue_button.visible:
-		continue_button.grab_focus()
-	elif start_button:
+	if start_button:
 		start_button.grab_focus()
 
 # UI要素のセットアップ
@@ -61,15 +59,13 @@ func _setup_ui():
 # ボタンのセットアップ
 func _setup_buttons():
 	if start_button:
-		start_button.text = "はじめから"
+		start_button.text = "ゲームを始める"
 		start_button.pressed.connect(_on_start_button_pressed)
 		UIStyleHelper.style_title_button(start_button)
 
+	# ContinueButton は不要（セーブ情報画面に統合）
 	if continue_button:
-		continue_button.text = "つづきから"
-		continue_button.pressed.connect(_on_continue_button_pressed)
-		UIStyleHelper.style_title_button(continue_button)
-		continue_button.visible = SceneManager.has_save_data()
+		continue_button.visible = false
 
 	if trophy_button:
 		trophy_button.text = "トロフィー"
@@ -116,13 +112,8 @@ func _create_gradient_background() -> GradientTexture2D:
 
 # ボタンイベント処理
 func _on_start_button_pressed():
-	print("[TitleScene] Start (New Game) button pressed")
-	SceneManager.goto_name_input()
-
-func _on_continue_button_pressed():
-	print("[TitleScene] Continue button pressed")
-	SceneManager.game_start_mode = "continue"
-	SceneManager.goto_game()
+	print("[TitleScene] Start button pressed")
+	SceneManager.goto_save_info()
 
 func _on_trophy_button_pressed():
 	print("[TitleScene] Trophy button pressed")
