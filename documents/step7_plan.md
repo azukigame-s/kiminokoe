@@ -390,151 +390,19 @@ SaveLoadScreen (Control, full rect)
 
 ---
 
-# 実装計画: 主人公名入力 + オートセーブ + タイトル画面改修 + ポーズメニュー簡素化
+### テキスト送り時の上下のブレについて
 
-## Context
+#### Q.
 
-カラーテーマ確定後の次ステップとして、以下の4つの関連機能をまとめて実装する。
+> ゲーム中のインジケーター表示時に、点滅と一緒にそのテキストが上下に揺れるような挙動をしています。
+ドットのフォントを採用してから起こり始めたのですが、対処法はありますか？
 
-- 主人公名「コウ」のデフォルト設定とプレイヤーによるカスタム入力
-- 手動セーブ/ロードを廃止し、オートセーブ方式に移行（周回プレイ前提の設計）
-- タイトル画面に「はじめから」「つづきから」のフローを追加
-- ポーズメニューから不要なボタン（セーブ/ロード/トロフィー）を削除
+#### A.
 
-## 変更ファイル一覧
+> インジケータ文字（⎘/⏎）がドットフォントに存在せずフォールバックフォントになるため、行のベースラインが変わるのが根本原因です。透明にしてもフォールバックフォントのメトリクスは効いてしまいます。
 
-| ファイル                           | 変更種別 | 概要                                                |
-| ---------------------------------- | -------- | --------------------------------------------------- |
-| `scripts/scene_manager.gd`         | 修正     | 主人公名・開始モード・オートセーブ/ロード機能を追加 |
-| `scripts/core/command_executor.gd` | 修正     | `[主人公]` プレースホルダー置換（2行追加）          |
-| `scripts/core/scenario_engine.gd`  | 修正     | オートセーブシグナル追加、dialogue後に発火          |
-| `scripts/game_scene.gd`            | 修正     | 新規/続行の分岐処理、オートセーブ接続               |
-| `scripts/title_scene.gd`           | 修正     | ボタンテキスト変更、つづきからボタン追加            |
-| `scenes/title_scene.tscn`          | 修正     | ContinueButton ノード追加                           |
-| `scripts/ui/pause_menu.gd`         | 修正     | セーブ/ロード/トロフィーボタン削除                  |
-| `scripts/name_input_scene.gd`      | **新規** | 名前入力画面（コードベースUI）                      |
-| `scenes/name_input_scene.tscn`     | **新規** | 名前入力画面の最小シーンファイル                    |
+> フォントは「ノスタルドット M+ H 10」ですね。JIS X 0208 準拠なので ▼ や ▽ は含まれていますが、⎘ (U+2398) や ⏎ (U+23CE) は含まれていません。
 
-------
+#### 方針
 
-## Step 1: SceneManager に主人公名・セーブ機能を追加
-
-**ファイル**: `scripts/scene_manager.gd`
-
-追加する変数・定数:
-
-- `const NAME_INPUT_SCENE` — 名前入力シーンのパス
-- `const SAVE_FILE_PATH = "user://save_data.cfg"`
-- `var protagonist_name: String = "コウ"`
-- `var game_start_mode: String = "new_game"` — `"new_game"` or `"continue"`
-
-追加するメソッド:
-
-- `goto_name_input()` — 名前入力画面へ遷移
-- `has_save_data() -> bool` — `FileAccess.file_exists()` でチェック
-- `auto_save(save_state: Dictionary)` — ConfigFile で保存（protagonist_name, scenario_path, index, stack）
-- `load_save_data() -> Dictionary` — セーブデータ読み込み
-- `clear_save_data()` — セーブファイル削除（はじめから選択時）
-
-## Step 2: `[主人公]` プレースホルダー置換
-
-**ファイル**: `scripts/core/command_executor.gd` L93付近
-
-`execute_dialogue()` の `var text = command.get("text", "")` 直後に追加:
-
-
-
-```gdscript
-var _scene_mgr = get_node_or_null("/root/SceneManager")
-if _scene_mgr:
-    text = text.replace("[主人公]", _scene_mgr.protagonist_name)
-```
-
-テキスト表示前 & バックログ記録前の1箇所で置換。
-
-## Step 3: オートセーブシグナル
-
-**ファイル**: `scripts/core/scenario_engine.gd`
-
-- `signal auto_save_requested(save_state: Dictionary)` を追加
-- メインループ `execute_scenario()` 内、`dialogue` コマンド完了後（L98 `current_index += 1` の後）にシグナル発火
-- `handle_choice()` 完了後にもシグナル発火
-- `load_from_save_state()` にインデックス範囲チェックを追加
-
-## Step 4: 名前入力画面（新規ファイル）
-
-**ファイル**: `scripts/name_input_scene.gd` + `scenes/name_input_scene.tscn`
-
-UI構成（既存の trophy_screen.gd と同じコードベースUIパターン）:
-
-- 墨色背景（95%不透明）
-- 装飾線タイトル「── 名前の入力 ──」
-- 説明ラベル「主人公の名前を入力してください」
-- LineEdit（デフォルト「コウ」、最大8文字、中央揃え）
-- 「ゲームを始める」ボタン
-- Esc でタイトルに戻る
-
-ボタン押下時:
-
-1. 名前を `SceneManager.protagonist_name` に設定（空欄ならデフォルト「コウ」）
-2. `SceneManager.game_start_mode = "new_game"`
-3. `SceneManager.clear_save_data()` で前回セーブ削除
-4. `SceneManager.goto_game()`
-
-## Step 5: GameScene の新規/続行分岐
-
-**ファイル**: `scripts/game_scene.gd`
-
-`_start_game()` を分岐:
-
-- `"new_game"` → 従来通り `"main"` シナリオ開始
-- `"continue"` → セーブデータ読み込み → `protagonist_name` 復元 → `load_from_save_state()` で復帰（失敗時は新規ゲームにフォールバック）
-
-`scenario_engine.auto_save_requested` シグナルを接続 → `SceneManager.auto_save()` を呼び出し。
-
-## Step 6: タイトル画面のボタン改修
-
-**ファイル**: `scripts/title_scene.gd` + `scenes/title_scene.tscn`
-
-tscn に `ContinueButton` ノードを追加（StartButton と TrophyButton の間）。
-
-| ボタン         | テキスト   | 動作                                                         |
-| -------------- | ---------- | ------------------------------------------------------------ |
-| StartButton    | はじめから | `SceneManager.goto_name_input()`                             |
-| ContinueButton | つづきから | `game_start_mode = "continue"` → `goto_game()`。セーブなしなら非表示 |
-| TrophyButton   | トロフィー | 既存のまま                                                   |
-| SettingsButton | 設定       | 既存のまま                                                   |
-| QuitButton     | 終了       | 既存のまま                                                   |
-
-初期フォーカス: セーブデータあれば「つづきから」、なければ「はじめから」。
-
-## Step 7: ポーズメニュー簡素化
-
-**ファイル**: `scripts/ui/pause_menu.gd`
-
-削除: `save_button`, `load_button`, `trophy_button` のメンバ変数と `_build_ui()` 内の生成コード（L72-88）。
-
-残るボタン: ゲームに戻る / 足跡 / ── / 設定 / ── / タイトルへ戻る
-
-------
-
-## 実装順序
-
-1. SceneManager（他すべてが依存）
-2. CommandExecutor の `[主人公]` 置換
-3. ScenarioEngine のオートセーブシグナル
-4. 名前入力画面（新規ファイル）
-5. GameScene の新規/続行分岐 + オートセーブ接続
-6. タイトル画面 + tscn
-7. ポーズメニュー簡素化
-
-## 検証方法
-
-1. タイトル「はじめから」→ 名前入力画面が表示される
-2. デフォルト「コウ」で開始 → dinner.json で「コウちゃん、手伝ってぇな？」と表示
-3. カスタム名で開始 → プレースホルダーが置換される
-4. ページ送り → `user://save_data.cfg` が生成される
-5. タイトルに戻る → 「つづきから」ボタンが表示される
-6. 「つづきから」→ セーブ地点から再開、主人公名も復元
-7. ポーズメニューに「セーブ/ロード/トロフィー」がない
-8. 「はじめから」→ 前回セーブが削除され、名前入力から再スタート
+ゲームの方針としては、インジケータ文字はそのままにしたい。
