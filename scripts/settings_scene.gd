@@ -149,36 +149,35 @@ func _create_separator() -> ColorRect:
 func _create_setting_entry(label_text: String, setting_key: String) -> PanelContainer:
 	var panel = PanelContainer.new()
 	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	
+
 	var style = StyleBoxFlat.new()
-	style.content_margin_left = 12
-	style.content_margin_right = 12
-	style.content_margin_top = 6
-	style.content_margin_bottom = 6
+	style.content_margin_left = 16
+	style.content_margin_right = 16
+	style.content_margin_top = 10
+	style.content_margin_bottom = 10
 	style.corner_radius_top_right = 2
 	style.corner_radius_bottom_right = 2
 	style.bg_color = UIConstants.COLOR_ENTRY_BG
 	style.border_width_left = 3
 	style.border_color = UIConstants.COLOR_ENTRY_BORDER
-	
+
 	panel.add_theme_stylebox_override("panel", style)
-	
+
 	var hbox = HBoxContainer.new()
-	hbox.add_theme_constant_override("separation", 10)
+	hbox.add_theme_constant_override("separation", 16)
+	hbox.alignment = BoxContainer.ALIGNMENT_CENTER
 	panel.add_child(hbox)
-	
+
 	var font_size = UIConstants.FONT_SIZE_BUTTON_NORMAL
-	
+
 	# ラベル
 	var name_label = Label.new()
 	name_label.text = label_text
 	name_label.add_theme_font_size_override("font_size", font_size)
 	name_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
-	# ラベルの幅を画面の30%に設定
-	var viewport_size = get_viewport().get_visible_rect().size
-	name_label.custom_minimum_size.x = viewport_size.x * 0.3
+	name_label.custom_minimum_size.x = 160
 	hbox.add_child(name_label)
-	
+
 	# コントロール
 	if setting_key == "text_speed":
 		var slider = HSlider.new()
@@ -187,10 +186,12 @@ func _create_setting_entry(label_text: String, setting_key: String) -> PanelCont
 		slider.max_value = 0.2
 		slider.step = 0.01
 		slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		slider.custom_minimum_size.y = 24
 		slider.value_changed.connect(_on_text_speed_changed)
+		_style_slider(slider)
 		text_speed_slider = slider
 		hbox.add_child(slider)
-		
+
 		var value_label = Label.new()
 		value_label.name = "TextSpeedValue"
 		value_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
@@ -199,7 +200,7 @@ func _create_setting_entry(label_text: String, setting_key: String) -> PanelCont
 		value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		text_speed_value = value_label
 		hbox.add_child(value_label)
-		
+
 	elif setting_key == "master_volume":
 		var slider = HSlider.new()
 		slider.name = "MasterVolumeSlider"
@@ -207,10 +208,12 @@ func _create_setting_entry(label_text: String, setting_key: String) -> PanelCont
 		slider.max_value = 1.0
 		slider.step = 0.1
 		slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		slider.custom_minimum_size.y = 24
 		slider.value_changed.connect(_on_master_volume_changed)
+		_style_slider(slider)
 		master_volume_slider = slider
 		hbox.add_child(slider)
-		
+
 		var value_label = Label.new()
 		value_label.name = "MasterVolumeValue"
 		value_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
@@ -219,19 +222,16 @@ func _create_setting_entry(label_text: String, setting_key: String) -> PanelCont
 		value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		master_volume_value = value_label
 		hbox.add_child(value_label)
-		
+
 	elif setting_key == "window_mode":
-		# 現在の選択を表示するボタン（クリックで次の選択肢に切り替え）
 		var mode_button = Button.new()
 		mode_button.name = "WindowModeButton"
 		mode_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		mode_button.add_theme_font_size_override("font_size", font_size)
-		mode_button.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
 		mode_button.pressed.connect(_on_window_mode_clicked)
-		_style_toggle_button(mode_button)
+		UIStyleHelper.style_menu_button(mode_button)
 		window_mode_button = mode_button
 		hbox.add_child(mode_button)
-	
+
 	return panel
 
 ## ボタンエリアを作成
@@ -247,62 +247,40 @@ func _build_button_area():
 	
 	# 適用ボタン
 	apply_button = Button.new()
-	apply_button.text = "適用"
-	apply_button.custom_minimum_size = UIConstants.BUTTON_MIN_SIZE_NORMAL
+	apply_button.text = "適用する"
 	apply_button.pressed.connect(_on_apply_button_pressed)
-	_style_button(apply_button)
+	UIStyleHelper.style_title_button(apply_button)
+	apply_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
 	button_container.add_child(apply_button)
 
-## ボタンのスタイル設定
-func _style_button(button: Button):
-	button.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BUTTON_NORMAL)
-	button.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
-	
-	var style_normal = StyleBoxFlat.new()
-	style_normal.bg_color = UIConstants.COLOR_BG_BUTTON
-	style_normal.border_width_left = 2
-	style_normal.border_width_top = 2
-	style_normal.border_width_right = 2
-	style_normal.border_width_bottom = 2
-	style_normal.border_color = UIConstants.COLOR_BORDER_NORMAL
-	style_normal.corner_radius_top_left = 2
-	style_normal.corner_radius_top_right = 2
-	style_normal.corner_radius_bottom_left = 2
-	style_normal.corner_radius_bottom_right = 2
-	button.add_theme_stylebox_override("normal", style_normal)
-	
-	var style_hover = style_normal.duplicate()
-	style_hover.bg_color = UIConstants.COLOR_BG_BUTTON_HOVER
-	style_hover.border_color = UIConstants.COLOR_BORDER_HOVER
-	button.add_theme_stylebox_override("hover", style_hover)
-	
-	var style_pressed = style_hover.duplicate()
-	style_pressed.bg_color = UIConstants.COLOR_BG_BUTTON
-	button.add_theme_stylebox_override("pressed", style_pressed)
+## スライダーの和風スタイル設定
+func _style_slider(slider: HSlider):
+	# トラック（背景線）— 丁子茶の薄い線
+	var track_style = StyleBoxFlat.new()
+	track_style.bg_color = Color(UIConstants.COLOR_SUB_ACCENT, 0.3)
+	track_style.content_margin_top = 4
+	track_style.content_margin_bottom = 4
+	track_style.corner_radius_top_left = 2
+	track_style.corner_radius_top_right = 2
+	track_style.corner_radius_bottom_left = 2
+	track_style.corner_radius_bottom_right = 2
+	slider.add_theme_stylebox_override("slider", track_style)
 
-## トグルボタンのスタイル設定（小さなボタン用）
-func _style_toggle_button(button: Button):
-	var style_normal = StyleBoxFlat.new()
-	style_normal.bg_color = UIConstants.COLOR_BG_BUTTON
-	style_normal.border_width_left = 1
-	style_normal.border_width_top = 1
-	style_normal.border_width_right = 1
-	style_normal.border_width_bottom = 1
-	style_normal.border_color = UIConstants.COLOR_BORDER_NORMAL
-	style_normal.corner_radius_top_left = 2
-	style_normal.corner_radius_top_right = 2
-	style_normal.corner_radius_bottom_left = 2
-	style_normal.corner_radius_bottom_right = 2
-	button.add_theme_stylebox_override("normal", style_normal)
-	
-	var style_hover = style_normal.duplicate()
-	style_hover.bg_color = UIConstants.COLOR_BG_BUTTON_HOVER
-	style_hover.border_color = UIConstants.COLOR_BORDER_HOVER
-	button.add_theme_stylebox_override("hover", style_hover)
-	
-	var style_pressed = style_hover.duplicate()
-	style_pressed.bg_color = UIConstants.COLOR_BG_BUTTON
-	button.add_theme_stylebox_override("pressed", style_pressed)
+	# 選択済み部分 — 赤銅
+	var fill_style = StyleBoxFlat.new()
+	fill_style.bg_color = Color(UIConstants.COLOR_ACCENT, 0.6)
+	fill_style.content_margin_top = 4
+	fill_style.content_margin_bottom = 4
+	fill_style.corner_radius_top_left = 2
+	fill_style.corner_radius_top_right = 2
+	fill_style.corner_radius_bottom_left = 2
+	fill_style.corner_radius_bottom_right = 2
+	slider.add_theme_stylebox_override("grabber_area", fill_style)
+
+	# ホバー時 — 赤銅を強調
+	var highlight_style = fill_style.duplicate()
+	highlight_style.bg_color = Color(UIConstants.COLOR_ACCENT, 0.85)
+	slider.add_theme_stylebox_override("grabber_area_highlight", highlight_style)
 
 # 設定値をUIに反映
 func _apply_settings_to_ui():

@@ -59,7 +59,7 @@ func _setup_ui():
 # ボタンのセットアップ
 func _setup_buttons():
 	if start_button:
-		start_button.text = "ゲームを始める"
+		start_button.text = "はじめる"
 		start_button.pressed.connect(_on_start_button_pressed)
 		UIStyleHelper.style_title_button(start_button)
 
