@@ -1,27 +1,29 @@
 extends Control
 
 ## 設定画面
-## UIConstants / UIStyleHelper を使用した統一スタイル
+## トロフィー画面と同じデザインで統一
 
 # UI要素への参照
-@onready var title_label: Label = $VBoxContainer/TitleLabel
-@onready var text_speed_label: Label = $VBoxContainer/SettingsContainer/TextSpeedContainer/TextSpeedLabel
-@onready var text_speed_slider: HSlider = $VBoxContainer/SettingsContainer/TextSpeedContainer/TextSpeedSlider
-@onready var text_speed_value: Label = $VBoxContainer/SettingsContainer/TextSpeedContainer/TextSpeedValue
-@onready var master_volume_label: Label = $VBoxContainer/SettingsContainer/VolumeContainer/MasterVolumeLabel
-@onready var master_volume_slider: HSlider = $VBoxContainer/SettingsContainer/VolumeContainer/MasterVolumeSlider
-@onready var master_volume_value: Label = $VBoxContainer/SettingsContainer/VolumeContainer/MasterVolumeValue
-@onready var fullscreen_label: Label = $VBoxContainer/SettingsContainer/FullscreenContainer/FullscreenLabel
-@onready var fullscreen_checkbox: CheckBox = $VBoxContainer/SettingsContainer/FullscreenContainer/FullscreenCheckBox
-@onready var back_button: Button = $VBoxContainer/ButtonContainer/BackButton
-@onready var apply_button: Button = $VBoxContainer/ButtonContainer/ApplyButton
-@onready var background: ColorRect = $Background
+var text_speed_slider: HSlider
+var text_speed_value: Label
+var master_volume_slider: HSlider
+var master_volume_value: Label
+var window_mode_button: Button
+var apply_button: Button
+
+# ウィンドウモードの選択肢（循環）
+var window_mode_options = [
+	{"id": "fullscreen", "label": "フルスクリーン"},
+	{"id": "1280x720", "label": "1280 × 720"},
+	{"id": "1920x1080", "label": "1920 × 1080"}
+]
+var current_window_mode_index = 0
 
 # 設定値
 var settings_data = {
 	"text_speed": 0.05,
 	"master_volume": 0.8,
-	"fullscreen": false
+	"window_mode": "fullscreen"  # "fullscreen", "1280x720", "1920x1080"
 }
 
 # 設定ファイルパス
@@ -29,89 +31,278 @@ var settings_file_path = "user://settings.cfg"
 
 func _ready():
 	print("[SettingsScene] Settings scene initialized")
-
+	
 	# 設定の読み込み
 	_load_settings()
-
-	# UI要素のセットアップ
-	_setup_ui()
-	_setup_controls()
-	_setup_background()
-
+	
+	# UI要素の構築
+	_build_ui()
+	
 	# 現在の設定値をUIに反映
 	_apply_settings_to_ui()
-
+	
 	# 初期フォーカス設定
 	if text_speed_slider:
 		text_speed_slider.grab_focus()
 
-# UI要素のセットアップ
-func _setup_ui():
+func _build_ui():
 	set_anchors_preset(Control.PRESET_FULL_RECT)
+	
+	# 背景（墨色 95%）
+	var bg = ColorRect.new()
+	bg.color = Color(UIConstants.COLOR_BASE_DARK, 0.95)
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	add_child(bg)
+	
+	# ── タイトルエリア ──
+	_build_title_area()
+	
+	# スクロールコンテナ
+	var scroll = ScrollContainer.new()
+	scroll.name = "ScrollContainer"
+	scroll.anchor_left = 0.12
+	scroll.anchor_top = 0.0
+	scroll.anchor_right = 0.88
+	scroll.anchor_bottom = 1.0
+	scroll.offset_top = 70
+	scroll.offset_bottom = -80
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	add_child(scroll)
+	
+	var content = VBoxContainer.new()
+	content.name = "Content"
+	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	content.add_theme_constant_override("separation", 4)
+	scroll.add_child(content)
+	
+	# 設定項目
+	content.add_child(_create_setting_entry("テキスト速度", "text_speed"))
+	content.add_child(_create_separator())
+	content.add_child(_create_setting_entry("マスター音量", "master_volume"))
+	content.add_child(_create_separator())
+	content.add_child(_create_setting_entry("ウィンドウモード", "window_mode"))
+	
+	# ボタンエリア（スクロール外、画面下部に固定）
+	_build_button_area()
+	
+	# 閉じるヒント
+	var hint = Label.new()
+	hint.text = "Esc"
+	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hint.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
+	hint.add_theme_color_override("font_color", Color(UIConstants.COLOR_ACCENT, 0.5))
+	hint.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	hint.offset_top = -35
+	hint.offset_bottom = -12
+	add_child(hint)
 
-	if title_label:
-		title_label.text = "設定"
-		title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		title_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_TITLE)
-		title_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+## タイトルエリア（装飾線 ── 設定 ── の形）
+func _build_title_area():
+	var title_container = HBoxContainer.new()
+	title_container.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	title_container.offset_top = 22
+	title_container.offset_bottom = 58
+	title_container.offset_left = 60
+	title_container.offset_right = -60
+	title_container.alignment = BoxContainer.ALIGNMENT_CENTER
+	title_container.add_theme_constant_override("separation", 16)
+	add_child(title_container)
+	
+	title_container.add_child(_create_rule())
+	
+	var title = Label.new()
+	title.text = "設定"
+	title.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_HEADING)
+	title.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+	title_container.add_child(title)
+	
+	title_container.add_child(_create_rule())
 
-# コントロール要素のセットアップ
-func _setup_controls():
-	# テキスト速度
-	if text_speed_slider:
-		text_speed_slider.min_value = 0.01
-		text_speed_slider.max_value = 0.2
-		text_speed_slider.step = 0.01
-		text_speed_slider.value_changed.connect(_on_text_speed_changed)
+## 装飾線を作成
+func _create_rule() -> Control:
+	var rule_wrapper = Control.new()
+	rule_wrapper.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	rule_wrapper.custom_minimum_size.y = 1
+	
+	var rule = ColorRect.new()
+	rule.color = UIConstants.COLOR_RULE
+	rule.set_anchors_preset(Control.PRESET_CENTER)
+	rule.anchor_left = 0.0
+	rule.anchor_right = 1.0
+	rule.offset_top = -0.5
+	rule.offset_bottom = 0.5
+	rule.offset_left = 0
+	rule.offset_right = 0
+	rule_wrapper.add_child(rule)
+	
+	return rule_wrapper
 
-	_style_label(text_speed_label, "テキスト速度")
-	_style_value_label(text_speed_value)
+## 区切り線を作成
+func _create_separator() -> ColorRect:
+	var sep = ColorRect.new()
+	sep.color = UIConstants.COLOR_SEPARATOR
+	sep.custom_minimum_size = Vector2(0, 1)
+	sep.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	return sep
 
-	# マスター音量
-	if master_volume_slider:
-		master_volume_slider.min_value = 0.0
-		master_volume_slider.max_value = 1.0
-		master_volume_slider.step = 0.1
-		master_volume_slider.value_changed.connect(_on_master_volume_changed)
+## 設定項目エントリを作成
+func _create_setting_entry(label_text: String, setting_key: String) -> PanelContainer:
+	var panel = PanelContainer.new()
+	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	
+	var style = StyleBoxFlat.new()
+	style.content_margin_left = 12
+	style.content_margin_right = 12
+	style.content_margin_top = 6
+	style.content_margin_bottom = 6
+	style.corner_radius_top_right = 2
+	style.corner_radius_bottom_right = 2
+	style.bg_color = UIConstants.COLOR_ENTRY_BG
+	style.border_width_left = 3
+	style.border_color = UIConstants.COLOR_ENTRY_BORDER
+	
+	panel.add_theme_stylebox_override("panel", style)
+	
+	var hbox = HBoxContainer.new()
+	hbox.add_theme_constant_override("separation", 10)
+	panel.add_child(hbox)
+	
+	var font_size = UIConstants.FONT_SIZE_BUTTON_NORMAL
+	
+	# ラベル
+	var name_label = Label.new()
+	name_label.text = label_text
+	name_label.add_theme_font_size_override("font_size", font_size)
+	name_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+	# ラベルの幅を画面の30%に設定
+	var viewport_size = get_viewport().get_visible_rect().size
+	name_label.custom_minimum_size.x = viewport_size.x * 0.3
+	hbox.add_child(name_label)
+	
+	# コントロール
+	if setting_key == "text_speed":
+		var slider = HSlider.new()
+		slider.name = "TextSpeedSlider"
+		slider.min_value = 0.01
+		slider.max_value = 0.2
+		slider.step = 0.01
+		slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		slider.value_changed.connect(_on_text_speed_changed)
+		text_speed_slider = slider
+		hbox.add_child(slider)
+		
+		var value_label = Label.new()
+		value_label.name = "TextSpeedValue"
+		value_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
+		value_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_SECONDARY)
+		value_label.custom_minimum_size.x = 60
+		value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		text_speed_value = value_label
+		hbox.add_child(value_label)
+		
+	elif setting_key == "master_volume":
+		var slider = HSlider.new()
+		slider.name = "MasterVolumeSlider"
+		slider.min_value = 0.0
+		slider.max_value = 1.0
+		slider.step = 0.1
+		slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		slider.value_changed.connect(_on_master_volume_changed)
+		master_volume_slider = slider
+		hbox.add_child(slider)
+		
+		var value_label = Label.new()
+		value_label.name = "MasterVolumeValue"
+		value_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
+		value_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_SECONDARY)
+		value_label.custom_minimum_size.x = 60
+		value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		master_volume_value = value_label
+		hbox.add_child(value_label)
+		
+	elif setting_key == "window_mode":
+		# 現在の選択を表示するボタン（クリックで次の選択肢に切り替え）
+		var mode_button = Button.new()
+		mode_button.name = "WindowModeButton"
+		mode_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		mode_button.add_theme_font_size_override("font_size", font_size)
+		mode_button.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+		mode_button.pressed.connect(_on_window_mode_clicked)
+		_style_toggle_button(mode_button)
+		window_mode_button = mode_button
+		hbox.add_child(mode_button)
+	
+	return panel
 
-	_style_label(master_volume_label, "マスター音量")
-	_style_value_label(master_volume_value)
+## ボタンエリアを作成
+func _build_button_area():
+	var button_container = HBoxContainer.new()
+	button_container.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	button_container.offset_top = -80
+	button_container.offset_bottom = -60
+	button_container.offset_left = 60
+	button_container.offset_right = -60
+	button_container.alignment = BoxContainer.ALIGNMENT_CENTER
+	add_child(button_container)
+	
+	# 適用ボタン
+	apply_button = Button.new()
+	apply_button.text = "適用"
+	apply_button.custom_minimum_size = UIConstants.BUTTON_MIN_SIZE_NORMAL
+	apply_button.pressed.connect(_on_apply_button_pressed)
+	_style_button(apply_button)
+	button_container.add_child(apply_button)
 
-	# フルスクリーン
-	if fullscreen_checkbox:
-		fullscreen_checkbox.toggled.connect(_on_fullscreen_toggled)
-		fullscreen_checkbox.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION + 2)
-		fullscreen_checkbox.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+## ボタンのスタイル設定
+func _style_button(button: Button):
+	button.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BUTTON_NORMAL)
+	button.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+	
+	var style_normal = StyleBoxFlat.new()
+	style_normal.bg_color = UIConstants.COLOR_BG_BUTTON
+	style_normal.border_width_left = 2
+	style_normal.border_width_top = 2
+	style_normal.border_width_right = 2
+	style_normal.border_width_bottom = 2
+	style_normal.border_color = UIConstants.COLOR_BORDER_NORMAL
+	style_normal.corner_radius_top_left = 2
+	style_normal.corner_radius_top_right = 2
+	style_normal.corner_radius_bottom_left = 2
+	style_normal.corner_radius_bottom_right = 2
+	button.add_theme_stylebox_override("normal", style_normal)
+	
+	var style_hover = style_normal.duplicate()
+	style_hover.bg_color = UIConstants.COLOR_BG_BUTTON_HOVER
+	style_hover.border_color = UIConstants.COLOR_BORDER_HOVER
+	button.add_theme_stylebox_override("hover", style_hover)
+	
+	var style_pressed = style_hover.duplicate()
+	style_pressed.bg_color = UIConstants.COLOR_BG_BUTTON
+	button.add_theme_stylebox_override("pressed", style_pressed)
 
-	_style_label(fullscreen_label, "フルスクリーン")
-
-	# ボタン
-	if back_button:
-		back_button.text = "戻る"
-		back_button.pressed.connect(_on_back_button_pressed)
-		UIStyleHelper.style_menu_button(back_button)
-
-	if apply_button:
-		apply_button.text = "適用"
-		apply_button.pressed.connect(_on_apply_button_pressed)
-		UIStyleHelper.style_menu_button(apply_button)
-
-func _style_label(label: Label, text: String) -> void:
-	if label:
-		label.text = text
-		label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BUTTON_NORMAL)
-		label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
-
-func _style_value_label(label: Label) -> void:
-	if label:
-		label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
-		label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
-
-# 背景設定
-func _setup_background():
-	if background:
-		background.color = UIConstants.COLOR_BG_DARK
-		background.set_anchors_preset(Control.PRESET_FULL_RECT)
+## トグルボタンのスタイル設定（小さなボタン用）
+func _style_toggle_button(button: Button):
+	var style_normal = StyleBoxFlat.new()
+	style_normal.bg_color = UIConstants.COLOR_BG_BUTTON
+	style_normal.border_width_left = 1
+	style_normal.border_width_top = 1
+	style_normal.border_width_right = 1
+	style_normal.border_width_bottom = 1
+	style_normal.border_color = UIConstants.COLOR_BORDER_NORMAL
+	style_normal.corner_radius_top_left = 2
+	style_normal.corner_radius_top_right = 2
+	style_normal.corner_radius_bottom_left = 2
+	style_normal.corner_radius_bottom_right = 2
+	button.add_theme_stylebox_override("normal", style_normal)
+	
+	var style_hover = style_normal.duplicate()
+	style_hover.bg_color = UIConstants.COLOR_BG_BUTTON_HOVER
+	style_hover.border_color = UIConstants.COLOR_BORDER_HOVER
+	button.add_theme_stylebox_override("hover", style_hover)
+	
+	var style_pressed = style_hover.duplicate()
+	style_pressed.bg_color = UIConstants.COLOR_BG_BUTTON
+	button.add_theme_stylebox_override("pressed", style_pressed)
 
 # 設定値をUIに反映
 func _apply_settings_to_ui():
@@ -119,10 +310,9 @@ func _apply_settings_to_ui():
 		text_speed_slider.value = settings_data.text_speed
 	if master_volume_slider:
 		master_volume_slider.value = settings_data.master_volume
-	if fullscreen_checkbox:
-		fullscreen_checkbox.button_pressed = settings_data.fullscreen
-
+	
 	_update_value_labels()
+	_update_window_mode_display()
 
 # 値ラベルの更新
 func _update_value_labels():
@@ -130,6 +320,20 @@ func _update_value_labels():
 		text_speed_value.text = str(snapped(settings_data.text_speed, 0.01))
 	if master_volume_value:
 		master_volume_value.text = str(int(settings_data.master_volume * 100)) + "%"
+
+# ウィンドウモード表示の更新
+func _update_window_mode_display():
+	# 現在の設定値からインデックスを取得
+	var mode_id = settings_data.get("window_mode", "fullscreen")
+	for i in range(window_mode_options.size()):
+		if window_mode_options[i].id == mode_id:
+			current_window_mode_index = i
+			break
+	
+	# ボタンのテキストを更新
+	if window_mode_button:
+		var option = window_mode_options[current_window_mode_index]
+		window_mode_button.text = option.label
 
 # 設定変更イベント
 func _on_text_speed_changed(value: float):
@@ -139,32 +343,40 @@ func _on_text_speed_changed(value: float):
 func _on_master_volume_changed(value: float):
 	settings_data.master_volume = value
 	_update_value_labels()
-
+	
 	# 音量をリアルタイムで適用
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),
 		linear_to_db(settings_data.master_volume))
 
-func _on_fullscreen_toggled(pressed: bool):
-	settings_data.fullscreen = pressed
+# ウィンドウモードボタンクリック時（次の選択肢に切り替え）
+func _on_window_mode_clicked():
+	current_window_mode_index = (current_window_mode_index + 1) % window_mode_options.size()
+	var option = window_mode_options[current_window_mode_index]
+	settings_data.window_mode = option.id
+	_update_window_mode_display()
 
 # ボタンイベント
-func _on_back_button_pressed():
-	print("[SettingsScene] Back button pressed")
-	SceneManager.goto_title()
-
 func _on_apply_button_pressed():
 	print("[SettingsScene] Apply button pressed")
 	_save_settings()
 	_apply_settings()
+	# 設定画面を閉じてトップ画面に戻る
+	SceneManager.goto_title()
 
 # 設定の保存
 func _save_settings():
 	var config = ConfigFile.new()
-
+	
+	# 既存の設定を読み込んで、古いキーを削除
+	var error = config.load(settings_file_path)
+	if error == OK and config.has_section_key("settings", "fullscreen"):
+		config.erase_section_key("settings", "fullscreen")
+	
+	# 現在の設定を保存
 	for key in settings_data.keys():
 		config.set_value("settings", key, settings_data[key])
-
-	var error = config.save(settings_file_path)
+	
+	error = config.save(settings_file_path)
 	if error == OK:
 		print("[SettingsScene] Settings saved successfully")
 	else:
@@ -174,11 +386,23 @@ func _save_settings():
 func _load_settings():
 	var config = ConfigFile.new()
 	var error = config.load(settings_file_path)
-
+	
 	if error == OK:
 		for key in settings_data.keys():
 			if config.has_section_key("settings", key):
 				settings_data[key] = config.get_value("settings", key)
+		
+		# 互換性: 既存のfullscreen設定をwindow_modeに変換
+		if config.has_section_key("settings", "fullscreen"):
+			var old_fullscreen = config.get_value("settings", "fullscreen")
+			if old_fullscreen is bool:
+				settings_data.window_mode = "fullscreen" if old_fullscreen else "1280x720"
+				# 古い設定を削除（次回保存時に）
+		
+		# 互換性: 既存のwindowed設定を1280x720に変換
+		if settings_data.get("window_mode") == "windowed":
+			settings_data.window_mode = "1280x720"
+		
 		print("[SettingsScene] Settings loaded successfully")
 	else:
 		print("[SettingsScene] Settings file not found, using defaults")
@@ -187,17 +411,28 @@ func _load_settings():
 func _apply_settings():
 	# ProjectSettingsに反映（ノベルシステムが参照）
 	ProjectSettings.set_setting("visual_novel/text_speed", settings_data.text_speed)
-
+	
 	# 音量設定の適用
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),
 		linear_to_db(settings_data.master_volume))
-
-	# フルスクリーン設定の適用
-	if settings_data.fullscreen:
+	
+	# ウィンドウモード設定の適用
+	var mode = settings_data.get("window_mode", "fullscreen")
+	if mode == "fullscreen":
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-
+		# 解像度指定（例: "1280x720", "1920x1080"）
+		var parts = mode.split("x")
+		if parts.size() == 2:
+			var width = int(parts[0])
+			var height = int(parts[1])
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_size(Vector2i(width, height))
+			# 画面中央に配置
+			var screen_size = DisplayServer.screen_get_size()
+			var window_pos = (screen_size - Vector2i(width, height)) / 2
+			DisplayServer.window_set_position(window_pos)
+	
 	print("[SettingsScene] Settings applied")
 
 # キーボード入力処理
@@ -205,6 +440,8 @@ func _input(event):
 	if event is InputEventKey and event.pressed:
 		match event.keycode:
 			KEY_ESCAPE:
-				_on_back_button_pressed()
+				get_viewport().set_input_as_handled()
+				SceneManager.goto_title()
 			KEY_ENTER:
+				get_viewport().set_input_as_handled()
 				_on_apply_button_pressed()
