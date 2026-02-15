@@ -33,6 +33,9 @@ layout_mode = 2
 [node name="StartButton" type="Button" parent="VBoxContainer/ButtonContainer"]
 layout_mode = 2
 
+[node name="ContinueButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+layout_mode = 2
+
 [node name="TrophyButton" type="Button" parent="VBoxContainer/ButtonContainer"]
 layout_mode = 2
 

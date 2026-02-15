@@ -16,9 +16,6 @@ var _background: ColorRect
 var _menu_container: VBoxContainer
 var resume_button: Button
 var backlog_button: Button
-var save_button: Button
-var load_button: Button
-var trophy_button: Button
 var settings_button: Button
 var title_button: Button
 
@@ -71,21 +68,6 @@ func _build_ui():
 
 	# 区切り線
 	_menu_container.add_child(_create_separator())
-
-	save_button = _create_menu_button("セーブ")
-	save_button.disabled = true  # 7d で有効化
-	_menu_container.add_child(save_button)
-
-	load_button = _create_menu_button("ロード")
-	load_button.disabled = true  # 7d で有効化
-	_menu_container.add_child(load_button)
-
-	# 区切り線
-	_menu_container.add_child(_create_separator())
-
-	trophy_button = _create_menu_button("トロフィー")
-	trophy_button.disabled = true  # 7c で有効化
-	_menu_container.add_child(trophy_button)
 
 	settings_button = _create_menu_button("設定")
 	settings_button.pressed.connect(_on_settings)

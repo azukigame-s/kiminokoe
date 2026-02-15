@@ -9,6 +9,16 @@ const TITLE_SCENE = "res://scenes/title_scene.tscn"
 const GAME_SCENE = "res://scenes/game_scene.tscn"
 const SETTINGS_SCENE = "res://scenes/settings_scene.tscn"
 const TROPHY_SCENE = "res://scenes/trophy_screen.tscn"
+const NAME_INPUT_SCENE = "res://scenes/name_input_scene.tscn"
+
+# セーブデータ
+const SAVE_FILE_PATH = "user://save_data.cfg"
+
+# 主人公名（デフォルト: コウ）
+var protagonist_name: String = "コウ"
+
+# ゲーム開始モード（"new_game" / "continue"）
+var game_start_mode: String = "new_game"
 
 # シグナル定義
 signal scene_changed(scene_name)
@@ -140,6 +150,10 @@ func goto_title():
 func goto_game():
 	change_scene(GAME_SCENE)
 
+# 名前入力画面へ
+func goto_name_input():
+	change_scene(NAME_INPUT_SCENE)
+
 # 設定シーンへ
 func goto_settings():
 	change_scene(SETTINGS_SCENE)
@@ -160,3 +174,39 @@ func get_current_scene_name() -> String:
 # シーン遷移中かどうか
 func is_transitioning() -> bool:
 	return scene_transition_in_progress
+
+# セーブデータが存在するか
+func has_save_data() -> bool:
+	return FileAccess.file_exists(SAVE_FILE_PATH)
+
+# オートセーブ
+func auto_save(save_state: Dictionary) -> void:
+	var config = ConfigFile.new()
+	config.set_value("save", "protagonist_name", protagonist_name)
+	config.set_value("save", "scenario_path", save_state.get("scenario_path", ""))
+	config.set_value("save", "index", save_state.get("index", 0))
+	config.set_value("save", "stack", save_state.get("stack", []))
+	var error = config.save(SAVE_FILE_PATH)
+	if error != OK:
+		push_error("[SceneManager] Failed to auto-save: %s" % str(error))
+
+# セーブデータの読み込み
+func load_save_data() -> Dictionary:
+	var config = ConfigFile.new()
+	var error = config.load(SAVE_FILE_PATH)
+	if error != OK:
+		push_error("[SceneManager] Failed to load save data: %s" % str(error))
+		return {}
+	return {
+		"protagonist_name": config.get_value("save", "protagonist_name", "コウ"),
+		"scenario_path": config.get_value("save", "scenario_path", ""),
+		"index": config.get_value("save", "index", 0),
+		"stack": config.get_value("save", "stack", []),
+	}
+
+# セーブデータの削除
+func clear_save_data() -> void:
+	if FileAccess.file_exists(SAVE_FILE_PATH):
+		DirAccess.remove_absolute(
+			OS.get_user_data_dir() + "/" + SAVE_FILE_PATH.trim_prefix("user://")
+		)

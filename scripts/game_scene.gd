@@ -140,6 +140,9 @@ func _setup_scenario_engine():
 	executor.choice_display = choice_display
 	executor.subtitle_display = subtitle_display
 
+	# オートセーブシグナル接続
+	scenario_engine.auto_save_requested.connect(_on_auto_save_requested)
+
 	print("[GameScene] ScenarioEngine 初期化完了")
 
 ## 下部メニューの設定（ログ / スキップ / メニュー）
@@ -205,9 +208,16 @@ func _setup_trophy_manager():
 	else:
 		print("[GameScene] TrophyManager が見つかりません")
 
-## ゲーム開始（メインシナリオを読み込み）
+## ゲーム開始
 func _start_game():
-	print("[GameScene] メインシナリオ読み込み開始")
+	if SceneManager.game_start_mode == "continue":
+		await _continue_game()
+	else:
+		await _new_game()
+
+## 新規ゲーム開始（メインシナリオを最初から）
+func _new_game():
+	print("[GameScene] 新規ゲーム開始")
 
 	var scenario_data = scenario_engine.load_scenario_data("main")
 	if scenario_data.is_empty():
@@ -217,6 +227,33 @@ func _start_game():
 	await scenario_engine.start_scenario(scenario_data, "main")
 
 	print("[GameScene] シナリオ完了")
+
+## セーブデータからの続行
+func _continue_game():
+	print("[GameScene] セーブデータから続行")
+
+	var save_data = SceneManager.load_save_data()
+	if save_data.is_empty() or save_data.get("scenario_path", "").is_empty():
+		push_error("[GameScene] セーブデータの読み込みに失敗しました。新規ゲームを開始します")
+		await _new_game()
+		return
+
+	# 主人公名を復元
+	SceneManager.protagonist_name = save_data.get("protagonist_name", "コウ")
+
+	# シナリオエンジンの状態を復元
+	var engine_state = {
+		"scenario_path": save_data.get("scenario_path", ""),
+		"index": save_data.get("index", 0),
+		"stack": save_data.get("stack", []),
+	}
+	await scenario_engine.load_from_save_state(engine_state)
+
+	print("[GameScene] シナリオ完了")
+
+## オートセーブ処理
+func _on_auto_save_requested(save_state: Dictionary) -> void:
+	SceneManager.auto_save(save_state)
 
 ## スキップモード変更時のコールバック
 func _on_skip_mode_changed(is_skipping: bool):

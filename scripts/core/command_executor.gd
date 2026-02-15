@@ -91,6 +91,10 @@ func execute_dialogue(command: Dictionary, skip_controller: SkipController) -> v
 		return
 
 	var text = command.get("text", "")
+	# 主人公名プレースホルダーの置換
+	var _scene_mgr = get_node_or_null("/root/SceneManager")
+	if _scene_mgr:
+		text = text.replace("[主人公]", _scene_mgr.protagonist_name)
 	var new_page = command.get("new_page", false)
 	var go_next = command.get("go_next", false)
 

@@ -8,6 +8,7 @@ class_name ScenarioEngine
 signal scenario_started
 signal scenario_completed
 signal command_executed(command: Dictionary)
+signal auto_save_requested(save_state: Dictionary)
 
 # 依存コンポーネント
 var command_executor: CommandExecutor
@@ -97,6 +98,10 @@ func execute_scenario() -> void:
 		command_executed.emit(command)
 		current_index += 1
 
+		# dialogue 完了後にオートセーブ
+		if command_type == "dialogue":
+			auto_save_requested.emit(get_save_state())
+
 ## load_scenario コマンドの処理
 func handle_load_scenario(command: Dictionary) -> void:
 	var path = command.get("path", "")
@@ -179,6 +184,9 @@ func handle_choice(command: Dictionary) -> void:
 	else:
 		# next_index も scenario もない場合は次のコマンドへ
 		current_index += 1
+
+	# 選択後にオートセーブ
+	auto_save_requested.emit(get_save_state())
 
 ## branch コマンドの処理（システムデータによる条件分岐）
 func handle_branch(command: Dictionary) -> void:
@@ -358,6 +366,11 @@ func load_from_save_state(save_state: Dictionary) -> void:
 	if current_scenario_data.is_empty():
 		push_error("[ScenarioEngine] load_from_save_state: シナリオ読み込み失敗: %s" % scenario_path)
 		return
+
+	# インデックスの範囲チェック（シナリオが変更された場合の安全策）
+	if index >= current_scenario_data.size():
+		push_warning("[ScenarioEngine] Save index %d exceeds scenario size %d, clamping" % [index, current_scenario_data.size()])
+		index = max(0, current_scenario_data.size() - 1)
 
 	# 状態を設定
 	current_scenario = current_scenario_data
