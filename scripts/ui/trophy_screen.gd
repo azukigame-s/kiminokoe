@@ -1,6 +1,6 @@
 extends Control
 
-## トロフィー閲覧画面
+## 軌跡閲覧画面
 ## タイトル画面からシーン遷移でアクセス。Escでタイトルに戻る。
 ## メニュー / 足跡と統一した和風デザイン。
 
@@ -84,7 +84,7 @@ func _build_ui():
 	hint.offset_bottom = -12
 	add_child(hint)
 
-## タイトルエリア（装飾線 ── トロフィー ── の形）
+## タイトルエリア（装飾線 ── 軌跡 ── の形）
 func _build_title_area():
 	var title_container = HBoxContainer.new()
 	title_container.set_anchors_preset(Control.PRESET_TOP_WIDE)
@@ -99,7 +99,7 @@ func _build_title_area():
 	title_container.add_child(_create_rule())
 
 	var title = Label.new()
-	title.text = "トロフィー"
+	title.text = "軌跡"
 	title.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_HEADING)
 	title.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
 	title_container.add_child(title)

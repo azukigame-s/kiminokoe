@@ -68,7 +68,7 @@ func _setup_buttons():
 		continue_button.visible = false
 
 	if trophy_button:
-		trophy_button.text = "トロフィー"
+		trophy_button.text = "軌跡"
 		trophy_button.pressed.connect(_on_trophy_button_pressed)
 		UIStyleHelper.style_title_button(trophy_button)
 

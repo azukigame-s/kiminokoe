@@ -91,7 +91,7 @@ func _build_ui():
 	hint.offset_bottom = -12
 	add_child(hint)
 
-## タイトルエリア（装飾線 ── メニュー ── の形）
+## タイトルエリア（装飾線 ── 一息 ── の形）
 func _build_title_area():
 	var title_container = HBoxContainer.new()
 	title_container.set_anchors_preset(Control.PRESET_TOP_WIDE)
@@ -108,7 +108,7 @@ func _build_title_area():
 
 	# タイトルテキスト
 	var title = Label.new()
-	title.text = "メニュー"
+	title.text = "一息"
 	title.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_HEADING)
 	title.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
 	title_container.add_child(title)

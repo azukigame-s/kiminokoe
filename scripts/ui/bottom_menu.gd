@@ -2,7 +2,7 @@ extends Control
 class_name BottomMenu
 
 ## ゲーム画面下部メニュー
-## ログ / スキップ / メニュー の3ボタンを常設表示する
+## 足跡 / 早歩き / 一息 の3ボタンを常設表示する
 
 signal log_pressed
 signal skip_pressed
@@ -40,11 +40,11 @@ func _build_ui():
 	_log_button.pressed.connect(func(): log_pressed.emit())
 	_container.add_child(_log_button)
 
-	_skip_button = _create_button("スキップ")
+	_skip_button = _create_button("早歩き")
 	_skip_button.pressed.connect(func(): skip_pressed.emit())
 	_container.add_child(_skip_button)
 
-	_menu_button = _create_button("メニュー")
+	_menu_button = _create_button("一息")
 	_menu_button.pressed.connect(func(): menu_pressed.emit())
 	_container.add_child(_menu_button)
 
