@@ -5,10 +5,12 @@ extends Control
 ## 「つづきからはじめる」/「はじめる」の選択、データリセット機能を提供。
 
 var _start_button: Button
+var _new_game_button: Button
 var _reset_button: Button
 var _info_container: VBoxContainer
 var _no_save_label: Label
 var _confirm_overlay: ColorRect
+var _confirm_mode: String = ""  # "new_game" or "reset"
 
 func _ready():
 	set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -48,22 +50,38 @@ func _build_ui():
 	spacer.custom_minimum_size.y = 16
 	center.add_child(spacer)
 
-	# 開始ボタン
-	_start_button = Button.new()
-	_start_button.text = "つづきからはじめる" if has_save else "はじめる"
-	UIStyleHelper.style_title_button(_start_button)
-	_start_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_start_button.pressed.connect(_on_start_pressed)
-	center.add_child(_start_button)
+	if has_save:
+		# つづきからはじめる（メインアクション）
+		_start_button = Button.new()
+		_start_button.text = "つづきからはじめる"
+		UIStyleHelper.style_title_button(_start_button)
+		_start_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_start_button.pressed.connect(_on_continue_pressed)
+		center.add_child(_start_button)
 
-	# リセットボタン（セーブあり時のみ）
-	_reset_button = Button.new()
-	_reset_button.text = "データをリセット"
-	_reset_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_style_reset_button(_reset_button)
-	_reset_button.pressed.connect(_on_reset_pressed)
-	_reset_button.visible = has_save
-	center.add_child(_reset_button)
+		# はじめからはじめる（サブアクション）
+		_new_game_button = Button.new()
+		_new_game_button.text = "はじめからはじめる"
+		UIStyleHelper.style_title_button(_new_game_button)
+		_new_game_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_new_game_button.pressed.connect(_on_new_game_pressed)
+		center.add_child(_new_game_button)
+
+		# データをリセット（最下部、控えめ）
+		_reset_button = Button.new()
+		_reset_button.text = "データをリセット"
+		_reset_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_style_reset_button(_reset_button)
+		_reset_button.pressed.connect(_on_reset_pressed)
+		center.add_child(_reset_button)
+	else:
+		# セーブなし: はじめるのみ
+		_start_button = Button.new()
+		_start_button.text = "はじめる"
+		UIStyleHelper.style_title_button(_start_button)
+		_start_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_start_button.pressed.connect(_on_new_game_start)
+		center.add_child(_start_button)
 
 	# 閉じるヒント
 	var hint = Label.new()
@@ -116,15 +134,15 @@ func _build_save_info(parent: VBoxContainer):
 	play_time_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
 	_info_container.add_child(play_time_label)
 
-	# トロフィー進捗
+	# 軌跡（トロフィー）進捗
 	var trophy_label = Label.new()
 	var trophy_mgr = get_node_or_null("/root/TrophyManager")
 	if trophy_mgr:
 		var unlocked = trophy_mgr.get_unlocked_trophy_count()
 		var total = trophy_mgr.get_total_trophy_count()
-		trophy_label.text = "トロフィー: %d/%d" % [unlocked, total]
+		trophy_label.text = "軌跡: %d/%d" % [unlocked, total]
 	else:
-		trophy_label.text = "トロフィー: ---"
+		trophy_label.text = "軌跡: ---"
 	trophy_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BODY)
 	trophy_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
 	_info_container.add_child(trophy_label)
@@ -175,24 +193,30 @@ func _format_play_time(seconds: float) -> String:
 	var secs = total_sec % 60
 	return "%02d:%02d:%02d" % [hours, minutes, secs]
 
-## 開始ボタン
-func _on_start_pressed():
-	if SceneManager.has_save_data():
-		print("[SaveInfoScene] Continue game")
-		SceneManager.game_start_mode = "continue"
-		SceneManager.goto_game()
-	else:
-		print("[SaveInfoScene] New game")
-		SceneManager.goto_name_input()
+## つづきからはじめる
+func _on_continue_pressed():
+	print("[SaveInfoScene] Continue game")
+	SceneManager.game_start_mode = "continue"
+	SceneManager.goto_game()
+
+## はじめからはじめる（セーブあり時）
+func _on_new_game_pressed():
+	_show_confirm_dialog("new_game")
+
+## はじめる（セーブなし時）
+func _on_new_game_start():
+	print("[SaveInfoScene] New game")
+	SceneManager.goto_name_input()
 
 ## リセットボタン
 func _on_reset_pressed():
-	_show_confirm_dialog()
+	_show_confirm_dialog("reset")
 
 ## 確認ダイアログ表示
-func _show_confirm_dialog():
+func _show_confirm_dialog(mode: String):
 	if _confirm_overlay:
 		return
+	_confirm_mode = mode
 
 	# オーバーレイ背景
 	_confirm_overlay = ColorRect.new()
@@ -223,8 +247,8 @@ func _show_confirm_dialog():
 	dialog_style.content_margin_bottom = 24
 	dialog.add_theme_stylebox_override("panel", dialog_style)
 	dialog.set_anchors_preset(Control.PRESET_CENTER)
-	dialog.offset_left = -180
-	dialog.offset_right = 180
+	dialog.offset_left = -200
+	dialog.offset_right = 200
 	dialog.offset_top = -80
 	dialog.offset_bottom = 80
 	_confirm_overlay.add_child(dialog)
@@ -234,9 +258,12 @@ func _show_confirm_dialog():
 	vbox.add_theme_constant_override("separation", 20)
 	dialog.add_child(vbox)
 
-	# 警告メッセージ
+	# メッセージ（モードで切り替え）
 	var msg = Label.new()
-	msg.text = "すべてのデータをリセットしますか？\nセーブデータとトロフィーが消去されます"
+	if mode == "new_game":
+		msg.text = "セーブデータを消去して\nシナリオを最初からプレーしますか？"
+	else:
+		msg.text = "すべてのデータをリセットしますか？\nセーブデータと軌跡が消去されます"
 	msg.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	msg.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BODY)
 	msg.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
@@ -249,14 +276,14 @@ func _show_confirm_dialog():
 	vbox.add_child(btn_row)
 
 	var yes_btn = Button.new()
-	yes_btn.text = "リセットする"
+	yes_btn.text = "はい" if mode == "new_game" else "リセットする"
 	yes_btn.custom_minimum_size = Vector2(140, 40)
 	_style_reset_button(yes_btn)
-	yes_btn.pressed.connect(_execute_reset)
+	yes_btn.pressed.connect(_execute_confirm)
 	btn_row.add_child(yes_btn)
 
 	var no_btn = Button.new()
-	no_btn.text = "やめる"
+	no_btn.text = "いいえ" if mode == "new_game" else "やめる"
 	no_btn.custom_minimum_size = Vector2(140, 40)
 	UIStyleHelper.style_menu_button(no_btn)
 	no_btn.pressed.connect(_close_confirm_dialog)
@@ -272,9 +299,24 @@ func _close_confirm_dialog():
 	if _start_button:
 		_start_button.grab_focus()
 
-## データリセット実行
+## 確認ダイアログの「はい」ボタン
+func _execute_confirm():
+	if _confirm_mode == "new_game":
+		_execute_new_game()
+	else:
+		_execute_reset()
+
+## はじめからはじめる実行（セーブデータのみ消去、名前・軌跡・プレー時間は保持）
+func _execute_new_game():
+	print("[SaveInfoScene] New game from beginning (save data cleared)")
+	SceneManager.clear_save_data()
+	_close_confirm_dialog()
+	SceneManager.game_start_mode = "new"
+	SceneManager.goto_game()
+
+## データリセット実行（全データ消去）
 func _execute_reset():
-	print("[SaveInfoScene] Data reset executed")
+	print("[SaveInfoScene] Full data reset executed")
 	SceneManager.clear_save_data()
 	SceneManager.protagonist_name = "コウ"
 	SceneManager.play_time = 0.0
@@ -283,7 +325,6 @@ func _execute_reset():
 		trophy_mgr.reset_trophy_data()
 
 	_close_confirm_dialog()
-	# 画面を再構築
 	_refresh_display()
 
 ## 画面を再構築（リセット後）

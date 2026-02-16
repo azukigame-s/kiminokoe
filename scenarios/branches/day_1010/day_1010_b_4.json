@@ -411,10 +411,5 @@
 	{
 		"type": "index",
 		"index": 999
-	},
-	{
-		"type": "load_scenario",
-		"path": "days/day_1010/dinner",
-		"new_page_after_return": true
 	}
 ]

@@ -221,9 +221,9 @@ func _process(delta):
 		SceneManager.play_time += delta
 
 ## 新規ゲーム開始（メインシナリオを最初から）
+## play_time は保持（「はじめからはじめる」でも累計を維持するため）
 func _new_game():
 	print("[GameScene] 新規ゲーム開始")
-	SceneManager.play_time = 0.0
 
 	var scenario_data = scenario_engine.load_scenario_data("main")
 	if scenario_data.is_empty():
