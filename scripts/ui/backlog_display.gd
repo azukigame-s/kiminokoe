@@ -55,16 +55,16 @@ func _build_ui():
 	_text_container.add_theme_constant_override("separation", 4)
 	_scroll_container.add_child(_text_container)
 
-	# ── 閉じるヒント ──
-	var hint = Label.new()
-	hint.text = "Esc / L"
-	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	hint.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
-	hint.add_theme_color_override("font_color", Color(UIConstants.COLOR_ACCENT, 0.5))
-	hint.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	hint.offset_top = -35
-	hint.offset_bottom = -12
-	add_child(hint)
+	# もどるボタン
+	var back_button = Button.new()
+	back_button.text = "もどる"
+	back_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
+	UIStyleHelper.style_back_button(back_button)
+	back_button.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	back_button.offset_top = -35
+	back_button.offset_bottom = -12
+	back_button.pressed.connect(close)
+	add_child(back_button)
 
 ## タイトルエリア（装飾線 ── バックログ ── の形）
 func _build_title_area():

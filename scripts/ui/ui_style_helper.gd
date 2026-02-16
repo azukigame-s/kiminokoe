@@ -96,6 +96,24 @@ static func style_bottom_menu_button(button: Button) -> void:
 	button.add_theme_stylebox_override("pressed", transparent)
 	button.add_theme_stylebox_override("focus", transparent)
 
+## 「もどる」ボタン（画面下部に配置、控えめなテキストボタン）
+static func style_back_button(button: Button) -> void:
+	if not button:
+		return
+
+	button.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
+	button.add_theme_color_override("font_color", Color(UIConstants.COLOR_ACCENT, 0.5))
+	button.add_theme_color_override("font_hover_color", UIConstants.COLOR_ACCENT)
+	button.add_theme_color_override("font_pressed_color", UIConstants.COLOR_ACCENT)
+	button.add_theme_color_override("font_focus_color", Color(UIConstants.COLOR_ACCENT, 0.5))
+	button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+
+	var transparent = StyleBoxEmpty.new()
+	button.add_theme_stylebox_override("normal", transparent)
+	button.add_theme_stylebox_override("hover", transparent)
+	button.add_theme_stylebox_override("pressed", transparent)
+	button.add_theme_stylebox_override("focus", transparent)
+
 ## タイトル用ボタン（透明背景、ダーク文字、ホバーで白）
 static func style_title_button(button: Button) -> void:
 	if not button:

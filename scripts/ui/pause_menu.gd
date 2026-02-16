@@ -14,7 +14,6 @@ var is_open: bool = false
 # UI要素
 var _background: ColorRect
 var _menu_container: VBoxContainer
-var resume_button: Button
 var backlog_button: Button
 var settings_button: Button
 var title_button: Button
@@ -58,10 +57,6 @@ func _build_ui():
 	add_child(_menu_container)
 
 	# ボタン生成
-	resume_button = _create_menu_button("ゲームに戻る")
-	resume_button.pressed.connect(_on_resume)
-	_menu_container.add_child(resume_button)
-
 	backlog_button = _create_menu_button("足跡")
 	backlog_button.pressed.connect(_on_backlog)
 	_menu_container.add_child(backlog_button)
@@ -76,20 +71,20 @@ func _build_ui():
 	# 区切り線
 	_menu_container.add_child(_create_separator())
 
-	title_button = _create_menu_button("タイトルへ戻る")
+	title_button = _create_menu_button("タイトルへもどる")
 	title_button.pressed.connect(_on_title)
 	_menu_container.add_child(title_button)
 
-	# ── 閉じるヒント ──
-	var hint = Label.new()
-	hint.text = "Esc"
-	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	hint.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
-	hint.add_theme_color_override("font_color", Color(UIConstants.COLOR_ACCENT, 0.5))
-	hint.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	hint.offset_top = -35
-	hint.offset_bottom = -12
-	add_child(hint)
+	# もどるボタン
+	var back_button = Button.new()
+	back_button.text = "もどる"
+	back_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
+	UIStyleHelper.style_back_button(back_button)
+	back_button.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	back_button.offset_top = -35
+	back_button.offset_bottom = -12
+	back_button.pressed.connect(_on_resume)
+	add_child(back_button)
 
 ## タイトルエリア（装飾線 ── 一息 ── の形）
 func _build_title_area():
@@ -195,7 +190,7 @@ func open():
 	is_open = true
 	visible = true
 	get_tree().paused = true
-	resume_button.grab_focus()
+	backlog_button.grab_focus()
 	print("[PauseMenu] Opened")
 
 func close():
