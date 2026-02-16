@@ -189,22 +189,37 @@ func _update_display() -> void:
 	if not text_label:
 		return
 
+	# BBCodeモードを有効化（インジケータの色制御に使用）
+	if not text_label.bbcode_enabled:
+		text_label.bbcode_enabled = true
+
 	var display_text = ""
+	var indicator_char = " [font_size=19]⎘[/font_size]" if _go_next else " [font_size=19]⏎[/font_size]"
+	var transparent_indicator = "[color=#00000000]" + indicator_char + "[/color]"
 
 	match _state:
 		State.ANIMATING:
 			# アニメーション中: 過去テキスト + アニメーション中テキスト
 			if _full_page_text != "":
-				display_text = _full_page_text + "\n\n" + _displayed_text
+				display_text = _escape_bbcode(_full_page_text) + "\n\n" + _escape_bbcode(_displayed_text)
 			else:
-				display_text = _displayed_text
+				display_text = _escape_bbcode(_displayed_text)
+			# レイアウト安定化のため透明インジケータを常に配置
+			display_text += transparent_indicator
 		_:
 			# IDLE / WAITING: 確定済みテキスト + インジケータ
-			display_text = _full_page_text
-			if _state == State.WAITING and _indicator_visible:
-				if _go_next:
-					display_text += " ⎘"  # ページ送り（旧システムのpage_indicator_symbol）
+			display_text = _escape_bbcode(_full_page_text)
+			if _state == State.WAITING:
+				if _indicator_visible:
+					display_text += indicator_char
 				else:
-					display_text += " ⏎"  # 通常の文字送り（旧システムのindicator_symbol）
+					display_text += transparent_indicator
+			elif _full_page_text != "":
+				# IDLE状態でもレイアウト安定化のため透明インジケータを配置
+				display_text += transparent_indicator
 
 	text_label.text = display_text
+
+## BBCodeタグのエスケープ（テキスト内の [ をリテラルとして表示）
+func _escape_bbcode(text: String) -> String:
+	return text.replace("[", "[lb]")
