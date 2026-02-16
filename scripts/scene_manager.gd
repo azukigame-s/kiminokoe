@@ -37,6 +37,9 @@ var fade_overlay: ColorRect
 var fade_duration: float = 0.5
 
 func _ready():
+	# 保存済み設定の読み込みと適用
+	_load_and_apply_settings()
+
 	# フェードオーバーレイの作成
 	_create_fade_overlay()
 
@@ -228,3 +231,47 @@ func clear_save_data() -> void:
 		DirAccess.remove_absolute(
 			OS.get_user_data_dir() + "/" + SAVE_FILE_PATH.trim_prefix("user://")
 		)
+
+# 保存済み設定の読み込みと適用（起動時に呼ばれる）
+func _load_and_apply_settings() -> void:
+	var config = ConfigFile.new()
+	var error = config.load("user://settings.cfg")
+	if error != OK:
+		return
+
+	# テキスト速度
+	if config.has_section_key("settings", "text_speed"):
+		var text_speed = config.get_value("settings", "text_speed")
+		ProjectSettings.set_setting("visual_novel/text_speed", text_speed)
+
+	# マスター音量
+	if config.has_section_key("settings", "master_volume"):
+		var master_volume = config.get_value("settings", "master_volume")
+		AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Master"),
+			linear_to_db(master_volume))
+
+	# ウィンドウモード
+	var window_mode = config.get_value("settings", "window_mode", "")
+	# 互換性: 旧fullscreen設定
+	if config.has_section_key("settings", "fullscreen"):
+		var old_fullscreen = config.get_value("settings", "fullscreen")
+		if old_fullscreen is bool and window_mode == "":
+			window_mode = "fullscreen" if old_fullscreen else "1280x720"
+	# 互換性: windowed → 1280x720
+	if window_mode == "windowed":
+		window_mode = "1280x720"
+	if window_mode == "fullscreen":
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	elif window_mode != "":
+		var parts = window_mode.split("x")
+		if parts.size() == 2:
+			var width = int(parts[0])
+			var height = int(parts[1])
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_size(Vector2i(width, height))
+			var screen_size = DisplayServer.screen_get_size()
+			var window_pos = (screen_size - Vector2i(width, height)) / 2
+			DisplayServer.window_set_position(window_pos)
+
+	print("[SceneManager] Settings loaded and applied")
