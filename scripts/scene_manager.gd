@@ -5,6 +5,7 @@
 extends Node
 
 # シーン定数
+const SPLASH_SCENE = "res://scenes/splash_scene.tscn"
 const TITLE_SCENE = "res://scenes/title_scene.tscn"
 const GAME_SCENE = "res://scenes/game_scene.tscn"
 const SETTINGS_SCENE = "res://scenes/settings_scene.tscn"
@@ -53,8 +54,8 @@ func _ready():
 		print("[SceneManager] Test scene detected, skipping auto scene change")
 		return
 
-	# ゲーム開始時はタイトルシーンへ（フェード無し、遅延実行）
-	change_scene_instant(TITLE_SCENE)
+	# ゲーム開始時はスプラッシュ画面へ（フェード無し）
+	change_scene_instant(SPLASH_SCENE)
 
 # フェードオーバーレイの作成
 func _create_fade_overlay():
