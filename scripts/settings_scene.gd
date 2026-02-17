@@ -93,7 +93,7 @@ func _build_ui():
 	back_button.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	back_button.offset_top = -35
 	back_button.offset_bottom = -12
-	back_button.pressed.connect(func(): SceneManager.goto_title())
+	back_button.pressed.connect(func(): SceneManager.goto_return_from_settings())
 	add_child(back_button)
 
 ## タイトルエリア（装飾線 ── 設定 ── の形）
@@ -339,7 +339,7 @@ func _on_apply_button_pressed():
 	_save_settings()
 	_apply_settings()
 	# 設定画面を閉じてトップ画面に戻る
-	SceneManager.goto_title()
+	SceneManager.goto_return_from_settings()
 
 # 設定の保存
 func _save_settings():
@@ -419,7 +419,7 @@ func _input(event):
 		match event.keycode:
 			KEY_ESCAPE:
 				get_viewport().set_input_as_handled()
-				SceneManager.goto_title()
+				SceneManager.goto_return_from_settings()
 			KEY_ENTER:
 				get_viewport().set_input_as_handled()
 				_on_apply_button_pressed()

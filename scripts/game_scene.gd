@@ -325,7 +325,13 @@ func _on_title_requested():
 	SceneManager.goto_title()
 
 func _on_settings_requested():
-	SceneManager.goto_settings()
+	# 設定画面へ遷移する前にオートセーブを実行
+	var save_state = scenario_engine.get_save_state()
+	save_state["play_time"] = SceneManager.play_time
+	SceneManager.auto_save(save_state)
+	# ポーズを解除（シーン遷移でゲームツリーが破棄されるため）
+	get_tree().paused = false
+	SceneManager.goto_settings("game")
 
 ## 入力処理
 func _input(event):

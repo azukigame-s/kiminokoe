@@ -24,6 +24,9 @@ var game_start_mode: String = "new_game"
 # プレイ時間（秒）
 var play_time: float = 0.0
 
+# 設定画面からの戻り先（"title" or "game"）
+var settings_return_to: String = "title"
+
 # シグナル定義
 signal scene_changed(scene_name)
 signal scene_change_started(from_scene, to_scene)
@@ -161,9 +164,18 @@ func goto_game():
 func goto_name_input():
 	change_scene(NAME_INPUT_SCENE)
 
-# 設定シーンへ
-func goto_settings():
+# 設定シーンへ（return_to: 戻り先 "title" or "game"）
+func goto_settings(return_to: String = "title"):
+	settings_return_to = return_to
 	change_scene(SETTINGS_SCENE)
+
+# 設定画面からの戻り
+func goto_return_from_settings():
+	if settings_return_to == "game":
+		game_start_mode = "continue"
+		goto_game()
+	else:
+		goto_title()
 
 # トロフィー画面へ
 func goto_trophy():
