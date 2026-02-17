@@ -5,11 +5,21 @@ extends Control
 
 # UI要素への参照
 var text_speed_slider: HSlider
-var text_speed_value: Label
+var text_speed_label: Label
 var master_volume_slider: HSlider
 var master_volume_value: Label
 var window_mode_button: Button
 var apply_button: Button
+
+# テキスト速度の段階定義（スライダー値 → ラベル）
+# スライダーは 1〜5 の整数値、左がゆっくり・右が速い
+var text_speed_steps = [
+	{"value": 1, "speed": 0.16, "label": "とてもゆっくり"},
+	{"value": 2, "speed": 0.10, "label": "ゆっくり"},
+	{"value": 3, "speed": 0.06, "label": "ふつう"},
+	{"value": 4, "speed": 0.04, "label": "速い"},
+	{"value": 5, "speed": 0.02, "label": "とても速い"}
+]
 
 # ウィンドウモードの選択肢（循環）
 var window_mode_options = [
@@ -21,7 +31,7 @@ var current_window_mode_index = 0
 
 # 設定値
 var settings_data = {
-	"text_speed": 0.05,
+	"text_speed": 0.06,
 	"master_volume": 0.8,
 	"window_mode": "fullscreen"  # "fullscreen", "1280x720", "1920x1080"
 }
@@ -182,9 +192,9 @@ func _create_setting_entry(label_text: String, setting_key: String) -> PanelCont
 	if setting_key == "text_speed":
 		var slider = HSlider.new()
 		slider.name = "TextSpeedSlider"
-		slider.min_value = 0.01
-		slider.max_value = 0.2
-		slider.step = 0.01
+		slider.min_value = 1
+		slider.max_value = 5
+		slider.step = 1
 		slider.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		slider.custom_minimum_size.y = 24
 		slider.value_changed.connect(_on_text_speed_changed)
@@ -193,12 +203,12 @@ func _create_setting_entry(label_text: String, setting_key: String) -> PanelCont
 		hbox.add_child(slider)
 
 		var value_label = Label.new()
-		value_label.name = "TextSpeedValue"
+		value_label.name = "TextSpeedLabel"
 		value_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
 		value_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_SECONDARY)
-		value_label.custom_minimum_size.x = 60
+		value_label.custom_minimum_size.x = 120
 		value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		text_speed_value = value_label
+		text_speed_label = value_label
 		hbox.add_child(value_label)
 
 	elif setting_key == "master_volume":
@@ -285,17 +295,16 @@ func _style_slider(slider: HSlider):
 # 設定値をUIに反映
 func _apply_settings_to_ui():
 	if text_speed_slider:
-		text_speed_slider.value = settings_data.text_speed
+		text_speed_slider.value = _speed_to_step(settings_data.text_speed)
 	if master_volume_slider:
 		master_volume_slider.value = settings_data.master_volume
-	
+
+	_update_text_speed_label()
 	_update_value_labels()
 	_update_window_mode_display()
 
 # 値ラベルの更新
 func _update_value_labels():
-	if text_speed_value:
-		text_speed_value.text = str(snapped(settings_data.text_speed, 0.01))
 	if master_volume_value:
 		master_volume_value.text = str(int(settings_data.master_volume * 100)) + "%"
 
@@ -313,11 +322,39 @@ func _update_window_mode_display():
 		var option = window_mode_options[current_window_mode_index]
 		window_mode_button.text = option.label
 
-# 設定変更イベント
-func _on_text_speed_changed(value: float):
-	settings_data.text_speed = value
-	_update_value_labels()
+# テキスト速度: スライダー値(1-5) → 秒数
+func _step_to_speed(step: int) -> float:
+	for s in text_speed_steps:
+		if s.value == step:
+			return s.speed
+	return 0.06
 
+# テキスト速度: 秒数 → 最も近いスライダー値(1-5)
+func _speed_to_step(speed: float) -> int:
+	var best_step = 3
+	var best_diff = 999.0
+	for s in text_speed_steps:
+		var diff = absf(s.speed - speed)
+		if diff < best_diff:
+			best_diff = diff
+			best_step = s.value
+	return best_step
+
+# テキスト速度ラベルの更新
+func _update_text_speed_label():
+	if text_speed_label:
+		var step = _speed_to_step(settings_data.text_speed)
+		for s in text_speed_steps:
+			if s.value == step:
+				text_speed_label.text = s.label
+				break
+
+# テキスト速度スライダー変更時
+func _on_text_speed_changed(value: float):
+	settings_data.text_speed = _step_to_speed(int(value))
+	_update_text_speed_label()
+
+# 設定変更イベント
 func _on_master_volume_changed(value: float):
 	settings_data.master_volume = value
 	_update_value_labels()

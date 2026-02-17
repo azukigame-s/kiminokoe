@@ -11,8 +11,10 @@ enum State { IDLE, ANIMATING, WAITING }
 signal _animation_finished
 signal _advance_requested
 
-# テキスト表示設定
-var text_speed: float = 0.05
+# テキスト表示設定（ProjectSettings から読み込み、設定画面で変更可能）
+var text_speed: float = 0.06:
+	get:
+		return ProjectSettings.get_setting("visual_novel/text_speed", 0.06)
 var instant_display: bool = false
 
 # 状態
