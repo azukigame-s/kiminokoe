@@ -20,96 +20,12 @@
 	{
 		"type": "dialogue",
 		"text": "少し歩くと左手に階段と、その上に鳥居が見えた。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "この地域にある唯一の神社だ。"
-	},
-	{
-		"type": "dialogue",
-		"text": "とはいっても、平常時は人がいない無人の神社なので、すごく規模が小さなものだ。"
-	},
-	{
-		"type": "dialogue",
-		"text": "階段を上がると、物置小屋程度の大きさの本殿が見える。"
-	},
-	{
-		"type": "dialogue",
-		"text": "何も持たずに出てきてしまったので、お賽銭はできなかったが、せっかくなので手を合わせてお祈りした。",
 		"go_next": true
-	},
-	{
-		"type": "dialogue",
-		"text": "今も昔も大きく変化がない。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "少し本殿が痛んできただろうか。"
-	},
-	{
-		"type": "dialogue",
-		"text": "本殿を回り込み裏側に足を進める。"
-	},
-	{
-		"type": "dialogue",
-		"text": "裏は山肌を削った崖になっており、見上げないと頂上が見えないほどの高さだ。"
-	},
-	{
-		"type": "dialogue",
-		"text": "崖崩れ防止の擁壁工が、傾斜のきつい階段状に連なっている。"
-	},
-	{
-		"type": "dialogue",
-		"text": "頂上を見上げながら、そこからの景色を想像して身震いした。",
-		"go_next": true
-	},
-	{
-		"type": "dialogue",
-		"text": "その場を立ち去ろうと振り返った時、聞き覚えのある声が聞こえた気がした――。",
-		"new_page": true
 	},
 	{
 		"type": "load_scenario",
-		"path": "episodes/ep_07",
+		"path": "shared/shared_ep_7_shrine",
 		"new_page_after_return": true
-	},
-	{
-		"type": "dialogue",
-		"text": "……。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "…………。"
-	},
-	{
-		"type": "dialogue",
-		"text": "………………。"
-	},
-	{
-		"type": "dialogue",
-		"text": "――そうだ……思い出した。"
-	},
-	{
-		"type": "dialogue",
-		"text": "弟は僕を助けようとしてくれていたんだ。",
-		"go_next": true
-	},
-	{
-		"type": "dialogue",
-		"text": "空はどんよりと黒くなり、小さな雨粒が頬に落ちた。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "濡れて風邪でも引いたら大変だ。"
-	},
-	{
-		"type": "dialogue",
-		"text": "僕は小走りで家に帰った。",
-		"go_next": true
 	}
 ]
 
