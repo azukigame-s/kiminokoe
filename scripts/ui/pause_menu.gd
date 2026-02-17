@@ -222,6 +222,7 @@ func _on_backlog():
 	backlog_requested.emit()
 
 func _on_settings():
+	close()
 	settings_requested.emit()
 
 func _on_title():
