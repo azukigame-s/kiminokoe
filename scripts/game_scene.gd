@@ -233,6 +233,7 @@ func _new_game():
 	await scenario_engine.start_scenario(scenario_data, "main")
 
 	print("[GameScene] シナリオ完了")
+	await _show_demo_ending()
 
 ## セーブデータからの続行
 func _continue_game():
@@ -261,6 +262,109 @@ func _continue_game():
 	await scenario_engine.load_from_save_state(engine_state)
 
 	print("[GameScene] シナリオ完了")
+	await _show_demo_ending()
+
+## 体験版エンディング画面
+func _show_demo_ending():
+	# 体験版コンプリートトロフィーのチェック
+	TrophyManager.check_demo_complete(SceneManager.play_time)
+
+	# 下部メニューを非表示
+	bottom_menu.visible = false
+
+	# ED用オーバーレイ（CanvasLayer で最前面に）
+	var canvas = CanvasLayer.new()
+	canvas.layer = 50
+	add_child(canvas)
+
+	var overlay = ColorRect.new()
+	overlay.color = UIConstants.COLOR_BASE_DARK
+	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	overlay.offset_left = 0
+	overlay.offset_top = 0
+	overlay.offset_right = 0
+	overlay.offset_bottom = 0
+	overlay.modulate.a = 0.0
+	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	canvas.add_child(overlay)
+
+	# フェードイン
+	var fade_tween = create_tween()
+	fade_tween.tween_property(overlay, "modulate:a", 1.0, 1.5)
+	await fade_tween.finished
+
+	# コンテンツ用コンテナ
+	var content = VBoxContainer.new()
+	content.set_anchors_preset(Control.PRESET_CENTER)
+	content.offset_left = -300
+	content.offset_right = 300
+	content.offset_top = -150
+	content.offset_bottom = 150
+	content.alignment = BoxContainer.ALIGNMENT_CENTER
+	content.add_theme_constant_override("separation", 24)
+	overlay.add_child(content)
+
+	# 「体験版はここまでです」
+	var thanks_label = Label.new()
+	thanks_label.text = "体験版をプレイしていただき\nありがとうございました"
+	thanks_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	thanks_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_HEADING)
+	thanks_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+	content.add_child(thanks_label)
+
+	# 装飾線
+	var rule = ColorRect.new()
+	rule.color = UIConstants.COLOR_RULE
+	rule.custom_minimum_size = Vector2(200, 1)
+	rule.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	content.add_child(rule)
+
+	# トロフィー取得状況
+	var trophy_data = TrophyManager.get_trophy_display_data()
+	var unlocked = trophy_data.unlocked_count
+	var total = trophy_data.total_count
+
+	var trophy_label = Label.new()
+	trophy_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	trophy_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BODY)
+
+	if unlocked < total:
+		trophy_label.text = "軌跡: %d / %d\nまだ見つけていない軌跡があるようです" % [unlocked, total]
+		trophy_label.add_theme_color_override("font_color", UIConstants.COLOR_SUB_ACCENT)
+	else:
+		trophy_label.text = "軌跡: %d / %d\nすべての軌跡を見つけました" % [unlocked, total]
+		trophy_label.add_theme_color_override("font_color", UIConstants.COLOR_ACCENT)
+
+	content.add_child(trophy_label)
+
+	# コンテンツをフェードイン
+	content.modulate.a = 0.0
+	var content_tween = create_tween()
+	content_tween.tween_property(content, "modulate:a", 1.0, 1.0)
+	await content_tween.finished
+
+	# 少し待ってから「クリックでタイトルへ」を表示
+	await get_tree().create_timer(1.5).timeout
+
+	var hint_label = Label.new()
+	hint_label.text = "クリックでタイトルへもどる"
+	hint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hint_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
+	hint_label.add_theme_color_override("font_color", Color(UIConstants.COLOR_TEXT_SECONDARY, 0.5))
+	content.add_child(hint_label)
+
+	# クリック待ち
+	var click_received = false
+	while not click_received:
+		var event = await overlay.gui_input
+		if event is InputEventMouseButton and event.pressed:
+			click_received = true
+
+	# セーブデータをクリア（体験版完了）
+	SceneManager.clear_save_data()
+
+	# タイトルへ
+	SceneManager.goto_title()
 
 ## オートセーブ処理
 func _on_auto_save_requested(save_state: Dictionary) -> void:

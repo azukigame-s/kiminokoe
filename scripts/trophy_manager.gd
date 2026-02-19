@@ -48,6 +48,7 @@ var secret_trophy_ids: Array[String] = [
 	"secret_base",    # 秘密基地
 	"futako_jizo",    # ふたこじぞう（全地蔵発見）
 	"takiba",         # 焚き場
+	"demo_complete",  # 体験版コンプリート
 	"kiminokoe",      # キミノコエ（トゥルーエンド）
 	"iro_story",      # イロの想い（マル秘ストーリー）
 ]
@@ -57,6 +58,7 @@ var secret_trophy_names: Dictionary = {
 	"secret_base": "秘密基地",
 	"futako_jizo": "ふたこじぞう",
 	"takiba": "焚き場",
+	"demo_complete": "地蔵焚の旅人",
 	"kiminokoe": "キミノコエ",
 	"iro_story": "イロの想い",
 }
@@ -77,6 +79,7 @@ var secret_trophy_descriptions: Dictionary = {
 	"secret_base": "僕たちだけの場所",
 	"futako_jizo": "古くから村を守ってきた存在",
 	"takiba": "忘れ去られたしきたり",
+	"demo_complete": "体験版でそこまでする？",
 	"kiminokoe": "喉が……のど飴を常備しないと",
 	"iro_story": "実は計画的な妹",
 }
@@ -238,6 +241,30 @@ func check_true_ending_condition() -> bool:
 ## トゥルーエンドトロフィーを解除
 func unlock_true_ending_trophy() -> void:
 	unlock_trophy("kiminokoe", secret_trophy_names.get("kiminokoe", "キミノコエ"))
+
+## 体験版コンプリートのチェック（シナリオ完了時に呼ばれる）
+func check_demo_complete(play_time: float) -> void:
+	if is_trophy_unlocked("demo_complete"):
+		return
+
+	# 条件1: プレイ時間3時間以上
+	if play_time < 10800.0:  # 3時間 = 10800秒
+		return
+
+	# 条件2: 体験版で取得可能な通常トロフィー6個（ep_4以外）
+	var demo_episodes = ["ep_1", "ep_2", "ep_3", "ep_5", "ep_6", "ep_7"]
+	for ep_id in demo_episodes:
+		if not is_trophy_unlocked(ep_id + "_clear"):
+			return
+
+	# 条件3: 体験版で取得可能なシークレットトロフィー3個
+	var demo_secrets = ["secret_base", "futako_jizo", "takiba"]
+	for trophy_id in demo_secrets:
+		if not is_trophy_unlocked(trophy_id):
+			return
+
+	# すべての条件を満たした
+	unlock_trophy("demo_complete", secret_trophy_names.get("demo_complete", "地蔵焚の旅人"))
 
 ## エピソード回収数を取得
 func get_episode_count() -> int:
