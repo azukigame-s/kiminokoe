@@ -16,7 +16,7 @@ func _ready():
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	_build_ui()
 	# 続行可能なら「つづきから」、不可なら「はじめから」にフォーカス
-	if _start_button and not _start_button.disabled:
+	if _start_button and _start_button.focus_mode != Control.FOCUS_NONE:
 		_start_button.grab_focus()
 	elif _new_game_button:
 		_new_game_button.grab_focus()
@@ -65,7 +65,13 @@ func _build_ui():
 		if can_continue:
 			_start_button.pressed.connect(_on_continue_pressed)
 		else:
-			_start_button.disabled = true
+			# disabled は背景色が変わるので使わず、色とマウスで非活性を表現
+			_start_button.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_DISABLED)
+			_start_button.add_theme_color_override("font_hover_color", UIConstants.COLOR_TEXT_DISABLED)
+			_start_button.add_theme_color_override("font_pressed_color", UIConstants.COLOR_TEXT_DISABLED)
+			_start_button.add_theme_color_override("font_focus_color", UIConstants.COLOR_TEXT_DISABLED)
+			_start_button.mouse_default_cursor_shape = Control.CURSOR_ARROW
+			_start_button.focus_mode = Control.FOCUS_NONE
 		center.add_child(_start_button)
 
 		# はじめからはじめる（サブアクション）
@@ -210,7 +216,13 @@ func _on_continue_pressed():
 
 ## はじめからはじめる（セーブあり時）
 func _on_new_game_pressed():
-	_show_confirm_dialog("new_game")
+	if SceneManager.can_continue():
+		# シナリオ進行がある場合は確認ダイアログ
+		_show_confirm_dialog("new_game")
+	else:
+		# シナリオ進行がない場合は消すデータがないので直接開始
+		SceneManager.game_start_mode = "new"
+		SceneManager.goto_game()
 
 ## はじめる（セーブなし時）
 func _on_new_game_start():

@@ -225,6 +225,11 @@ func _process(delta):
 func _new_game():
 	print("[GameScene] 新規ゲーム開始")
 
+	# セーブファイルにプレイ時間が残っている場合は復元
+	if SceneManager.has_save_data():
+		var save_data = SceneManager.load_save_data()
+		SceneManager.play_time = save_data.get("play_time", SceneManager.play_time)
+
 	var scenario_data = scenario_engine.load_scenario_data("main")
 	if scenario_data.is_empty():
 		push_error("[GameScene] メインシナリオの読み込みに失敗しました")
@@ -306,7 +311,7 @@ func _show_demo_ending():
 
 	# 「体験版はここまでです」
 	var thanks_label = Label.new()
-	thanks_label.text = "体験版をプレイしていただき\nありがとうございました"
+	thanks_label.text = "体験版をプレイしていただき\nありがとうございました。"
 	thanks_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	thanks_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_HEADING)
 	thanks_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
@@ -329,26 +334,26 @@ func _show_demo_ending():
 	trophy_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BODY)
 
 	if unlocked < total:
-		trophy_label.text = "軌跡: %d / %d\nまだ見つけていない軌跡があるようです" % [unlocked, total]
+		trophy_label.text = "軌跡: %d / %d\n体験版でまだ見つけていない軌跡があるようです" % [unlocked, total]
 		trophy_label.add_theme_color_override("font_color", UIConstants.COLOR_SUB_ACCENT)
 	else:
-		trophy_label.text = "軌跡: %d / %d\nすべての軌跡を見つけました" % [unlocked, total]
+		trophy_label.text = "軌跡: %d / %d\n体験版のすべての軌跡を見つけました" % [unlocked, total]
 		trophy_label.add_theme_color_override("font_color", UIConstants.COLOR_ACCENT)
 
 	content.add_child(trophy_label)
 
-	# コンテンツをフェードイン
-	content.modulate.a = 0.0
-	var content_tween = create_tween()
-	content_tween.tween_property(content, "modulate:a", 1.0, 1.0)
-	await content_tween.finished
-
-	# もどるボタン（コンテンツと一緒に表示）
+	# もどるボタン（コンテンツに含めてからフェードイン）
 	var back_button = Button.new()
 	back_button.text = "タイトルへもどる"
 	back_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	UIStyleHelper.style_back_button(back_button)
 	content.add_child(back_button)
+
+	# コンテンツを一括フェードイン
+	content.modulate.a = 0.0
+	var content_tween = create_tween()
+	content_tween.tween_property(content, "modulate:a", 1.0, 1.0)
+	await content_tween.finished
 
 	# ボタン押下待ち
 	await back_button.pressed
