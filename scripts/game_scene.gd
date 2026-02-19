@@ -343,25 +343,18 @@ func _show_demo_ending():
 	content_tween.tween_property(content, "modulate:a", 1.0, 1.0)
 	await content_tween.finished
 
-	# 少し待ってから「クリックでタイトルへ」を表示
-	await get_tree().create_timer(1.5).timeout
+	# もどるボタン（コンテンツと一緒に表示）
+	var back_button = Button.new()
+	back_button.text = "タイトルへもどる"
+	back_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	UIStyleHelper.style_back_button(back_button)
+	content.add_child(back_button)
 
-	var hint_label = Label.new()
-	hint_label.text = "クリックでタイトルへもどる"
-	hint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	hint_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
-	hint_label.add_theme_color_override("font_color", Color(UIConstants.COLOR_TEXT_SECONDARY, 0.5))
-	content.add_child(hint_label)
+	# ボタン押下待ち
+	await back_button.pressed
 
-	# クリック待ち
-	var click_received = false
-	while not click_received:
-		var event = await overlay.gui_input
-		if event is InputEventMouseButton and event.pressed:
-			click_received = true
-
-	# セーブデータをクリア（体験版完了）
-	SceneManager.clear_save_data()
+	# シナリオ進行のみクリア（名前・プレイ時間・軌跡は保持）
+	SceneManager.clear_scenario_progress()
 
 	# タイトルへ
 	SceneManager.goto_title()

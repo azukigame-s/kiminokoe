@@ -238,12 +238,34 @@ func load_save_data() -> Dictionary:
 		"play_time": config.get_value("save", "play_time", 0.0),
 	}
 
-# セーブデータの削除
+# つづきからはじめるが可能か（シナリオ進行データがあるか）
+func can_continue() -> bool:
+	if not has_save_data():
+		return false
+	var data = load_save_data()
+	var scenario_path = data.get("scenario_path", "")
+	return scenario_path != ""
+
+# セーブデータの全削除
 func clear_save_data() -> void:
 	if FileAccess.file_exists(SAVE_FILE_PATH):
 		DirAccess.remove_absolute(
 			OS.get_user_data_dir() + "/" + SAVE_FILE_PATH.trim_prefix("user://")
 		)
+
+# シナリオ進行のみクリア（名前・プレイ時間・軌跡は保持）
+func clear_scenario_progress() -> void:
+	if not has_save_data():
+		return
+	var config = ConfigFile.new()
+	var error = config.load(SAVE_FILE_PATH)
+	if error != OK:
+		return
+	# シナリオ関連キーを削除
+	for key in ["scenario_path", "index", "stack", "background_path", "bgm_path", "effect", "backlog"]:
+		if config.has_section_key("save", key):
+			config.set_value("save", key, null)
+	config.save(SAVE_FILE_PATH)
 
 # 保存済み設定の読み込みと適用（起動時に呼ばれる）
 func _load_and_apply_settings() -> void:

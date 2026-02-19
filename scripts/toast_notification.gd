@@ -1,5 +1,5 @@
 # toast_notification.gd
-# トースト通知システム（和風テーマ）
+# トースト通知システム（和風テーマ + 紙アイコン）
 
 extends Control
 
@@ -11,6 +11,7 @@ var toast_panel: Panel
 var title_label: Label
 var desc_label: Label
 var accent_bar: ColorRect
+var trophy_icon: TextureRect
 
 # アニメーション用
 var tween: Tween
@@ -19,8 +20,9 @@ var is_showing: bool = false
 # 設定
 var show_duration: float = 3.0
 var fade_duration: float = 0.4
-var panel_width: float = 380.0
+var panel_width: float = 400.0
 var panel_height: float = 80.0
+var icon_size: float = 56.0
 
 func _ready():
 	_setup_toast_ui()
@@ -38,7 +40,6 @@ func _setup_toast_ui():
 	style_box.corner_radius_top_right = UIConstants.CORNER_RADIUS
 	style_box.corner_radius_bottom_left = UIConstants.CORNER_RADIUS
 	style_box.corner_radius_bottom_right = UIConstants.CORNER_RADIUS
-	# 深紅の外枠（上下左右）
 	style_box.border_color = UIConstants.COLOR_ENTRY_BORDER
 	style_box.border_width_top = 1
 	style_box.border_width_bottom = 1
@@ -57,11 +58,29 @@ func _setup_toast_ui():
 	accent_bar.size = Vector2(4, panel_height)
 	toast_panel.add_child(accent_bar)
 
+	# 紙テクスチャアイコン（左側）
+	trophy_icon = TextureRect.new()
+	trophy_icon.name = "trophy_icon"
+	var icon_margin = (panel_height - icon_size) / 2.0
+	trophy_icon.position = Vector2(12, icon_margin)
+	trophy_icon.size = Vector2(icon_size, icon_size)
+	trophy_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	trophy_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	# 角丸クリップ用にクリップ有効化
+	trophy_icon.clip_contents = true
+	var icon_texture = load("res://assets/backgrounds/trophy.jpg")
+	if icon_texture:
+		trophy_icon.texture = icon_texture
+	toast_panel.add_child(trophy_icon)
+
+	# テキスト開始位置（アイコンの右側）
+	var text_x = 12 + icon_size + 12
+
 	# タイトルラベル（トロフィー名）
 	title_label = Label.new()
 	title_label.name = "title_label"
-	title_label.position = Vector2(16, 12)
-	title_label.size = Vector2(panel_width - 32, 28)
+	title_label.position = Vector2(text_x, 12)
+	title_label.size = Vector2(panel_width - text_x - 16, 28)
 	title_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	title_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BUTTON_NORMAL)
@@ -71,8 +90,8 @@ func _setup_toast_ui():
 	# 説明ラベル（トロフィー説明）
 	desc_label = Label.new()
 	desc_label.name = "desc_label"
-	desc_label.position = Vector2(16, 42)
-	desc_label.size = Vector2(panel_width - 32, 26)
+	desc_label.position = Vector2(text_x, 42)
+	desc_label.size = Vector2(panel_width - text_x - 16, 26)
 	desc_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	desc_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	desc_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)

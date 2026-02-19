@@ -15,7 +15,12 @@ var _confirm_mode: String = ""  # "new_game" or "reset"
 func _ready():
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	_build_ui()
-	if _start_button:
+	# 続行可能なら「つづきから」、不可なら「はじめから」にフォーカス
+	if _start_button and not _start_button.disabled:
+		_start_button.grab_focus()
+	elif _new_game_button:
+		_new_game_button.grab_focus()
+	elif _start_button:
 		_start_button.grab_focus()
 
 func _build_ui():
@@ -39,6 +44,7 @@ func _build_ui():
 	add_child(center)
 
 	var has_save = SceneManager.has_save_data()
+	var can_continue = SceneManager.can_continue()
 
 	if has_save:
 		_build_save_info(center)
@@ -51,12 +57,15 @@ func _build_ui():
 	center.add_child(spacer)
 
 	if has_save:
-		# つづきからはじめる（メインアクション）
+		# つづきからはじめる（シナリオ進行がない場合は非活性）
 		_start_button = Button.new()
 		_start_button.text = "つづきからはじめる"
 		UIStyleHelper.style_title_button(_start_button)
 		_start_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
-		_start_button.pressed.connect(_on_continue_pressed)
+		if can_continue:
+			_start_button.pressed.connect(_on_continue_pressed)
+		else:
+			_start_button.disabled = true
 		center.add_child(_start_button)
 
 		# はじめからはじめる（サブアクション）
