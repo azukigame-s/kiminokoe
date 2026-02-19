@@ -66,8 +66,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "弟は何やら考えている様子で、無言でボールを投げ返してきた。",
-		"go_next": true
+		"text": "弟は何やら考えている様子で、無言でボールを投げ返してきた。"
 	},
 	{
 		"type": "dialogue",
@@ -76,7 +75,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "弟はまだチームに入れる年齢ではなかったが、兄弟がいたり知り合いがいると体験的に参加できたため、スグもチームに入っていた。"
+		"text": "弟はまだチームに入れる年齢ではなかったが、兄弟がいたり知り合いがいると体験的に参加できたため、スグもチームに入っていた。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
@@ -88,8 +88,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "そんな弟が口を開いた。",
-		"go_next": true
+		"text": "そんな弟が口を開いた。"
 	},
 	{
 		"type": "dialogue",
@@ -102,7 +101,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕のことを？"
+		"text": "僕のことを？",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
@@ -110,8 +110,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "でも、それ自体に劣等感は感じていなかった。",
-		"go_next": true
+		"text": "でも、それ自体に劣等感は感じていなかった。"
 	},
 	{
 		"type": "dialogue",
@@ -124,12 +123,12 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "何とも情けない兄だ。"
+		"text": "何とも情けない兄だ。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「そんなこと気にしなくていいよ。僕は下手だけど野球が好きだから。スグもだろ？」",
-		"go_next": true
+		"text": "「そんなこと気にしなくていいよ。僕は下手だけど野球が好きだから。スグもだろ？」"
 	},
 	{
 		"type": "dialogue",
@@ -150,8 +149,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "弟の表情が明らかに明るくなったのがわかった。",
-		"go_next": true
+		"text": "弟の表情が明らかに明るくなったのがわかった。"
 	},
 	{
 		"type": "dialogue",
@@ -160,7 +158,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "受け取る球から力強さが伝わってくる。"
+		"text": "受け取る球から力強さが伝わってくる。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
@@ -172,8 +171,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕の投げる球にも力が入る。",
-		"go_next": true
+		"text": "僕の投げる球にも力が入る。"
 	},
 	{
 		"type": "dialogue",
@@ -190,12 +188,12 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "弟はうまくグラブで救い上げたが、そのままグラブからボールが抜けて飛んでいった。"
+		"text": "弟はうまくグラブで救い上げたが、そのままグラブからボールが抜けて飛んでいった。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "パリーーーン！！",
-		"go_next": true
+		"text": "パリーーーン！！"
 	},
 	{
 		"type": "dialogue",
@@ -212,7 +210,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "ふたりで走って家に入った。"
+		"text": "ふたりで走って家に入った。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
