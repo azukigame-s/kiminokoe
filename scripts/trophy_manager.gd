@@ -430,8 +430,7 @@ func _show_trophy_toast(trophy_name: String):
 	
 	# トースト通知が利用可能な場合のみ表示
 	if toast_node and toast_node.has_method("show_toast"):
-		# 「を獲得しました！」を2行目に固定（中央揃えなのでスペースは不要）
-		var toast_text = "🔖 " + trophy_name + "\nを獲得しました！"
+		var toast_text = trophy_name + "\nを獲得しました"
 		toast_node.show_toast(toast_text)
 		log_message("Showing trophy toast: " + trophy_name, LogLevel.DEBUG)
 		# 参照を保存
