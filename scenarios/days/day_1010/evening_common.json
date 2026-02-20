@@ -16,8 +16,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "祖母が「ありがとうねぇ」と声をかけてくれた。",
-		"go_next": true
+		"text": "祖母が「ありがとうねぇ」と声をかけてくれた。"
 	},
 	{
 		"type": "dialogue",
@@ -48,8 +47,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "そして――今日、思い出したこと。",
-		"go_next": true
+		"text": "そして――今日、思い出したこと。"
 	},
 	{
 		"type": "background",

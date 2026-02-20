@@ -39,8 +39,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "ルールは単純だが、意外と難しい。",
-		"go_next": true
+		"text": "ルールは単純だが、意外と難しい。"
 	},
 	{
 		"type": "dialogue",
@@ -333,8 +332,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "あの時のスグの顔、今でも覚えている。",
-		"go_next": true
+		"text": "あの時のスグの顔、今でも覚えている。"
 	},
 	{
 		"type": "dialogue",

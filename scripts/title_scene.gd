@@ -15,7 +15,7 @@ extends Control
 
 # 設定値
 var title_text: String = "あなたのゲームタイトル"
-var version_text: String = "Version 1.0.0"
+var version_text: String = "v" + ProjectSettings.get_setting("application/config/version", "0.0.0")
 
 func _ready():
 	print("[TitleScene] Title scene initialized")
@@ -51,10 +51,18 @@ func _setup_ui():
 	# バージョンラベル設定
 	if version_label:
 		version_label.text = version_text
-		version_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		version_label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+		version_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		version_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+		version_label.anchor_left = 0.0
+		version_label.anchor_top = 0.0
+		version_label.anchor_right = 0.5
+		version_label.anchor_bottom = 0.0
+		version_label.offset_left = 12
+		version_label.offset_top = 12
+		version_label.offset_right = 0
+		version_label.offset_bottom = 32
 		version_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
-		version_label.add_theme_color_override("font_color", Color.BLACK)
+		version_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
 
 # ボタンのセットアップ
 func _setup_buttons():

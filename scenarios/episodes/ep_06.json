@@ -35,18 +35,17 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕たちもよくここに遊びに来ていた。",
-		"go_next": true
+		"text": "僕たちもよくここに遊びに来ていた。"
 	},
 	{
 		"type": "dialogue",
 		"text": "夏は冷たい水で火照った体を冷やし、秋は紅葉を眺めながら水の音に耳を傾ける。",
-		"new_page": true
+		"new_page": true,
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "この日、僕とスグは学校帰りに兄の水に立ち寄っていた。",
-		"go_next": true
+		"text": "この日、僕とスグは学校帰りに兄の水に立ち寄っていた。"
 	},
 	{
 		"type": "dialogue",
@@ -163,8 +162,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は少し考えた。",
-		"go_next": true
+		"text": "僕は少し考えた。"
 	},
 	{
 		"type": "dialogue",
@@ -221,8 +219,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕たちは水槽を覗き込みながら笑った。",
-		"go_next": true
+		"text": "僕たちは水槽を覗き込みながら笑った。"
 	},
 	{
 		"type": "dialogue",

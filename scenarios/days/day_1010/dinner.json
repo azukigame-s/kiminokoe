@@ -69,7 +69,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "久しぶりの家族での食事だった。"
+		"text": "久しぶりの家族での食事だった。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
@@ -157,11 +158,6 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "父が口を開いた。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
 		"text": "「明日はお寺さんが１５時に来てくれることになっとる」"
 	},
 	{
@@ -192,8 +188,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "心配そうな表情だった。",
-		"go_next": true
+		"text": "心配そうな表情だった。"
 	},
 	{
 		"type": "dialogue",
