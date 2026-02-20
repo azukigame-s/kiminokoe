@@ -29,8 +29,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "何か大切なことを、忘れている気がする。",
-		"go_next": true
+		"text": "何か大切なことを、忘れている気がする。"
 	},
 	{
 		"type": "jump",
@@ -51,8 +50,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "もう少し……もう少し思い出せば何かが変わる気がする。",
-		"go_next": true
+		"text": "もう少し……もう少し思い出せば何かが変わる気がする。"
 	},
 	{
 		"type": "jump",
@@ -77,8 +75,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "まだ、思い出せないことがたくさんある。",
-		"go_next": true
+		"text": "まだ、思い出せないことがたくさんある。"
 	},
 	{
 		"type": "jump",
@@ -103,8 +100,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "思い出せない。",
-		"go_next": true
+		"text": "思い出せない。"
 	},
 	{
 		"type": "jump",
@@ -116,8 +112,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は目をこすった。",
-		"new_page": true
+		"text": "僕は目をこすった。"
 	},
 	{
 		"type": "dialogue",
@@ -147,23 +142,19 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "明日は法事だ。",
-		"go_next": true
+		"text": "明日は法事だ。"
 	},
 	{
 		"type": "dialogue",
-		"text": "お寺さんが来て、叔父さんたちも集まる。",
-		"new_page": true
+		"text": "お寺さんが来て、叔父さんたちも集まる。"
 	},
 	{
 		"type": "dialogue",
-		"text": "みんなでスグのことを話すのだろう。",
-		"go_next": true
+		"text": "みんなでスグのことを話すのだろう。"
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は――ちゃんと、スグのことを思い出せるだろうか？",
-		"new_page": true
+		"text": "僕は――ちゃんと、スグのことを思い出せるだろうか？"
 	},
 	{
 		"type": "dialogue",
@@ -177,13 +168,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "今日はもう、休もう。",
-		"go_next": true
+		"text": "今日はもう、休もう。"
 	},
 	{
 		"type": "dialogue",
-		"text": "目を閉じると、白い服の少年の姿が浮かんだ。",
-		"new_page": true
+		"text": "目を閉じると、白い服の少年の姿が浮かんだ。"
 	},
 	{
 		"type": "dialogue",

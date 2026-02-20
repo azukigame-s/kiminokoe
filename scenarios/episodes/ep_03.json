@@ -5,8 +5,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "…………聞き覚えのある声が聞こえてくる。",
-		"go_next": true
+		"text": "…………聞き覚えのある声が聞こえてくる。"
 	},
 	{
 		"type": "flashback_start",
@@ -14,8 +13,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "……。",
-		"new_page": true
+		"text": "……。"
 	},
 	{
 		"type": "dialogue",
@@ -23,11 +21,13 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。"
+		"text": "………………。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "あの日は１２月。寒い日だった。"
+		"text": "あの日は１２月。寒い日だった。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -35,8 +35,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "田舎のバスは本数が少ない。",
-		"new_page": true
+		"text": "田舎のバスは本数が少ない。"
 	},
 	{
 		"type": "dialogue",
@@ -52,21 +51,21 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "そう声をかける弟は、こんな日に限ってベンチコートを忘れたため隣で寒そうに震えている。"
-	},
-	{
-		"type": "dialogue",
-		"text": "バス停に屋根はあるものの、横殴りの雪は容赦なく体に当たる。"
-	},
-	{
-		"type": "dialogue",
-		"text": "ベンチコートを着た僕も寒さで震えるほどだ。",
+		"text": "そう声をかける弟は、こんな日に限ってベンチコートを忘れたため隣で寒そうに震えている。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「…………」",
+		"text": "バス停に屋根はあるものの、横殴りの雪は容赦なく体に当たる。",
 		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ベンチコートを着た僕も寒さで震えるほどだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「…………」"
 	},
 	{
 		"type": "dialogue",
@@ -86,17 +85,17 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "強くうなずき、また正面を向いた。"
-	},
-	{
-		"type": "dialogue",
-		"text": "寒くはあったものの、僕はそんなに寒さに弱いわけではない。",
+		"text": "強くうなずき、また正面を向いた。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「ありがとう」",
+		"text": "寒くはあったものの、僕はそんなに寒さに弱いわけではない。",
 		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「ありがとう」"
 	},
 	{
 		"type": "dialogue",
@@ -112,16 +111,17 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「大丈夫」"
+		"text": "「大丈夫」",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "どんどん体は冷えていくが、心は温かかった。"
-	},
-	{
-		"type": "dialogue",
-		"text": "……。",
+		"text": "どんどん体は冷えていくが、心は温かかった。",
 		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "……。"
 	},
 	{
 		"type": "dialogue",

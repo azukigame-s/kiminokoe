@@ -5,8 +5,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "…………聞き覚えのある――いや、懐かしい鳴き声が聞こえてくる。",
-		"go_next": true
+		"text": "…………聞き覚えのある――いや、懐かしい鳴き声が聞こえてくる。"
 	},
 	{
 		"type": "flashback_start",
@@ -14,8 +13,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "……。",
-		"new_page": true
+		"text": "……。"
 	},
 	{
 		"type": "dialogue",
@@ -23,11 +21,13 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。"
+		"text": "………………。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "あの日、僕たちは用水路の近くを歩いていた。"
+		"text": "あの日、僕たちは用水路の近くを歩いていた。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -39,8 +39,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「あっ、何か……」",
-		"new_page": true
+		"text": "「あっ、何か……」"
 	},
 	{
 		"type": "dialogue",
@@ -74,21 +73,21 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "体も小さくて、ぶるぶると震えている。",
+		"text": "体も小さくて、ぶるぶると震えている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「かわそうだな……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "まーくんが静かに言った。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「かわそうだな……」",
+		"text": "「飼おうよ！」",
 		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "まーくんが静かに言った。"
-	},
-	{
-		"type": "dialogue",
-		"text": "「飼おうよ！」"
 	},
 	{
 		"type": "dialogue",
@@ -96,13 +95,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕の方を見て、目を輝かせている。",
-		"go_next": true
+		"text": "僕の方を見て、目を輝かせている。"
 	},
 	{
 		"type": "dialogue",
-		"text": "でも、飼えるかどうかは子供たちだけでは判断できなかった。",
-		"new_page": true
+		"text": "でも、飼えるかどうかは子供たちだけでは判断できなかった。"
 	},
 	{
 		"type": "dialogue",
@@ -140,8 +137,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「……しんちゃんやまーくんは？」",
-		"new_page": true
+		"text": "「……しんちゃんやまーくんは？」"
 	},
 	{
 		"type": "dialogue",
@@ -171,8 +167,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "スグは小さく手を振って、子猫に声をかけた。",
-		"new_page": true
+		"text": "スグは小さく手を振って、子猫に声をかけた。"
 	},
 	{
 		"type": "dialogue",
@@ -180,7 +175,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "あの時のスグの笑顔、今でも覚えている。"
+		"text": "あの時のスグの笑顔、今でも覚えている。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",

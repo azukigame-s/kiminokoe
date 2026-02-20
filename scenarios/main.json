@@ -82,9 +82,6 @@
 		"new_page_after_return": true
 	},
 	{
-		"type": "flashback_end"
-	},
-	{
 		"type": "dialogue",
 		"text": "……。",
 		"new_page": true
@@ -96,6 +93,9 @@
 	{
 		"type": "dialogue",
 		"text": "………………。"
+	},
+	{
+		"type": "flashback_end"
 	},
 	{
 		"type": "dialogue",

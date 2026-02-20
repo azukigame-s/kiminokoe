@@ -18,7 +18,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は――。"
+		"text": "僕は――。",
+		"go_next": true
 	},
 	{
 		"type": "choice",
@@ -134,8 +135,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕がここを使っていたころはもっと暗くて、夕方は通るのが怖かったのを覚えている。",
-		"go_next": true
+		"text": "僕がここを使っていたころはもっと暗くて、夕方は通るのが怖かったのを覚えている。"
 	},
 	{
 		"type": "dialogue",
@@ -249,13 +249,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "なまりの強い言葉に懐かしさを感じつつ、僕はうなずき中に入った。",
-		"go_next": true
+		"text": "なまりの強い言葉に懐かしさを感じつつ、僕はうなずき中に入った。"
 	},
 	{
 		"type": "dialogue",
-		"text": "僕の実家は和室中心の一軒家だ。",
-		"new_page": true
+		"text": "僕の実家は和室中心の一軒家だ。"
 	},
 	{
 		"type": "dialogue",
@@ -263,11 +261,13 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "このあたりではごく一般的な造りの家だった。"
+		"text": "このあたりではごく一般的な造りの家だった。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "弟の法事は明日の午後から予定されている。"
+		"text": "弟の法事は明日の午後から予定されている。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -279,21 +279,21 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "法事だからといって、僕自身がなにかするわけではない。",
+		"text": "法事だからといって、僕自身がなにかするわけではない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お皿にはカットされた梨が思い思いに転がっている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんな姿をぼんやりと眺めながら、スグのことを考える。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "お皿にはカットされた梨が思い思いに転がっている。",
+		"text": "スグは、この梨が好きだっただろうか？",
 		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "そんな姿をぼんやりと眺めながら、スグのことを考える。"
-	},
-	{
-		"type": "dialogue",
-		"text": "スグは、この梨が好きだっただろうか？"
 	},
 	{
 		"type": "dialogue",
@@ -305,17 +305,17 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "気持ちを切り替えよう。",
-		"go_next": true
+		"text": "気持ちを切り替えよう。"
 	},
 	{
 		"type": "dialogue",
 		"text": "梨をひとつ手に取り、口に放り込み僕は席を立った。",
-		"new_page": true
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "時計を見ると１６時を少し回ったところだ。"
+		"text": "時計を見ると１６時を少し回ったところだ。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",

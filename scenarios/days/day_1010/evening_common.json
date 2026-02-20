@@ -20,8 +20,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「お兄ちゃん、疲れたでしょ？　部屋で休んだら？」",
-		"new_page": true
+		"text": "「お兄ちゃん、疲れたでしょ？　部屋で休んだら？」"
 	},
 	{
 		"type": "dialogue",
@@ -34,7 +33,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "階段を上りながら、さっきの食卓のことを思い返していた。",
+		"text": "階段を上りながら、さっきの会話のことを思い返していた。",
 		"new_page": true
 	},
 	{
@@ -55,8 +54,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "自室のドアを開けた。",
-		"new_page": true
+		"text": "自室のドアを開けた。"
 	},
 	{
 		"type": "dialogue",
@@ -78,27 +76,25 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "まるで時間が止まっているようだった。",
+		"text": "まるで時間が止まっているようだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ベッドに腰を下ろし、そのまま仰向けに倒れ込んだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "天井を見上げる。",
 		"go_next": true
-	},
-	{
-		"type": "dialogue",
-		"text": "ベッドに腰を下ろし、そのまま仰向けに倒れ込んだ。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "天井を見上げる。"
 	},
 	{
 		"type": "dialogue",
 		"text": "今日は、長い一日だった。",
-		"go_next": true
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "バスの中で見た海。",
-		"new_page": true
+		"text": "バスの中で見た海。"
 	},
 	{
 		"type": "dialogue",
@@ -106,8 +102,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "そして――思い出したスグとの記憶。",
-		"go_next": true
+		"text": "そして――思い出したスグとの記憶。"
 	},
 	{
 		"type": "branch",
@@ -123,8 +118,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "白い服の少年。",
-		"new_page": true
+		"text": "白い服の少年。"
 	},
 	{
 		"type": "dialogue",
@@ -145,8 +139,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "白い服の少年。",
-		"new_page": true
+		"text": "白い服の少年。"
 	},
 	{
 		"type": "dialogue",
@@ -172,13 +165,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "でも――。",
-		"go_next": true
+		"text": "でも――。"
 	},
 	{
 		"type": "dialogue",
-		"text": "少しカールした黒髪。",
-		"new_page": true
+		"text": "少しカールした黒髪。"
 	},
 	{
 		"type": "dialogue",

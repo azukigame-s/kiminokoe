@@ -6,13 +6,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は弟に対して、優しくできていたこともあったんだ。",
-		"go_next": true
+		"text": "僕は弟に対して、優しくできていたこともあったんだ。"
 	},
 	{
 		"type": "dialogue",
-		"text": "向かいに見える反対車線のバス停の小屋に、白い服の少年が立っていた。",
-		"new_page": true
+		"text": "向かいに見える反対車線のバス停の小屋に、白い服の少年が立っていた。"
 	},
 	{
 		"type": "dialogue",
@@ -28,23 +26,21 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "まるで靄でもかかっているかのように曖昧な姿に見えた。",
-		"go_next": true
+		"text": "まるで靄でもかかっているかのように曖昧な姿に見えた。"
 	},
 	{
 		"type": "dialogue",
 		"text": "眼の前を自動車が通り、改めて見た少年は雨に溶け込むように消えてしまっていた。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "「お兄ちゃん！　こんなところにいたの！」",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "明るいトーンの声に僕は現実に戻される。",
+		"text": "「お兄ちゃん！　こんなところにいたの！」",
 		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "明るいトーンの声に僕は現実に戻される。"
 	},
 	{
 		"type": "dialogue",

@@ -24,8 +24,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「[主人公]ちゃん、手伝ってぇな？」",
-		"new_page": true
+		"text": "「[主人公]ちゃん、手伝ってぇな？」"
 	},
 	{
 		"type": "dialogue",
@@ -55,13 +54,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "イロは僕の手元を見ながら、「へぇ〜」と相槌を打つ。",
-		"go_next": true
+		"text": "イロは僕の手元を見ながら、「へぇ〜」と相槌を打つ。"
 	},
 	{
 		"type": "dialogue",
-		"text": "やがて父も加わり、４人で食卓を囲んだ。",
-		"new_page": true
+		"text": "やがて父も加わり、４人で食卓を囲んだ。"
 	},
 	{
 		"type": "dialogue",
@@ -74,7 +71,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「久しぶりにみんなで食べれるねぇ」"
+		"text": "「久しぶりにみんなで食べれるねぇ」",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -192,8 +190,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は大丈夫だよと応えた。",
-		"new_page": true
+		"text": "僕は大丈夫だよと応えた。"
 	},
 	{
 		"type": "dialogue",
