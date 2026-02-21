@@ -5,7 +5,7 @@
 	},
 	{
 		"type": "bgm",
-		"path": "res://assets/music/sample_bgm.mp3"
+		"path": "res://assets/bgm/jizoudaki_bgm.mp3"
 	},
 	{
 		"type": "dialogue",

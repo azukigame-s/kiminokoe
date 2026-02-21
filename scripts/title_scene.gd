@@ -24,10 +24,22 @@ func _ready():
 	_setup_ui()
 	_setup_buttons()
 	_setup_background()
+	_setup_bgm()
 
 	# 初期フォーカス設定
 	if start_button:
 		start_button.grab_focus()
+
+# BGMのセットアップ
+func _setup_bgm():
+	var bgm_path = "res://assets/bgm/title_bgm.ogg"
+	if not ResourceLoader.exists(bgm_path):
+		return
+	var player = AudioStreamPlayer.new()
+	player.stream = load(bgm_path)
+	player.volume_db = 0.0
+	add_child(player)
+	player.play()
 
 # UI要素のセットアップ
 func _setup_ui():
