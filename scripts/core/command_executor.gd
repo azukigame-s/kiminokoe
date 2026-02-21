@@ -10,6 +10,7 @@ var background_display: BackgroundDisplay
 var audio_manager: AudioManager
 var choice_display: ChoiceDisplay
 var subtitle_display: SubtitleDisplay
+var poem_display  # PoemDisplay
 
 # シグナル
 signal command_completed
@@ -69,6 +70,8 @@ func execute(command: Dictionary, skip_controller: SkipController) -> void:
 			pass
 		"subtitle":
 			await execute_subtitle(command, skip_controller)
+		"poem":
+			await execute_poem(command, skip_controller)
 		"index":
 			# インデックスマーカーはスキップ
 			pass
@@ -176,6 +179,22 @@ func execute_subtitle(command: Dictionary, skip_controller: SkipController) -> v
 		await subtitle_display.subtitle_completed
 	else:
 		push_warning("[CommandExecutor] SubtitleDisplay が設定されていません")
+
+## poem コマンドを実行（童歌・詩のフルスクリーン表示）
+func execute_poem(command: Dictionary, skip_controller: SkipController) -> void:
+	# スキップモード中は詩表示をスキップ
+	if skip_controller.is_skipping:
+		return
+
+	var lines: Array = command.get("lines", [])
+	if lines.is_empty():
+		return
+
+	if poem_display:
+		poem_display.show_poem(lines)
+		await poem_display.poem_completed
+	else:
+		push_warning("[CommandExecutor] PoemDisplay が設定されていません")
 
 ## flashback_start コマンドを実行（回想モード開始）
 func execute_flashback_start(command: Dictionary, skip_controller: SkipController) -> void:

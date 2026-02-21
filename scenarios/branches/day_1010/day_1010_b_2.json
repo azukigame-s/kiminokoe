@@ -132,6 +132,10 @@
 		"go_next": true
 	},
 	{
+		"type": "load_scenario",
+		"path": "shared/shared_warabeuta"
+	},
+	{
 		"type": "dialogue",
 		"text": "どこで聞いたのだろう？",
 		"new_page": true

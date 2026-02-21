@@ -14,6 +14,7 @@ const ScenarioEngineScript = preload("res://scripts/core/scenario_engine.gd")
 const PauseMenuScript = preload("res://scripts/ui/pause_menu.gd")
 const BottomMenuScript = preload("res://scripts/ui/bottom_menu.gd")
 const BacklogDisplayScript = preload("res://scripts/ui/backlog_display.gd")
+const PoemDisplayScript = preload("res://scripts/ui/poem_display.gd")
 
 # コンポーネント参照
 var scenario_engine
@@ -22,6 +23,7 @@ var background_display
 var audio_manager
 var choice_display
 var subtitle_display
+var poem_display
 var toast_notification
 var bottom_menu: Control
 var backlog_display: Control
@@ -118,6 +120,15 @@ func _setup_ui():
 	subtitle_display.name = "SubtitleDisplay"
 	add_child(subtitle_display)
 
+	# PoemDisplay（CanvasLayer ベース）
+	poem_display = CanvasLayer.new()
+	poem_display.set_script(PoemDisplayScript)
+	poem_display.name = "PoemDisplay"
+	var poem_font_path = "res://assets/fonts/EnkaDotMincho24.ttf"
+	if ResourceLoader.exists(poem_font_path):
+		poem_display.poem_font = load(poem_font_path)
+	add_child(poem_display)
+
 	# ToastNotification
 	toast_notification = Control.new()
 	toast_notification.set_script(ToastNotificationScript)
@@ -139,6 +150,7 @@ func _setup_scenario_engine():
 	executor.audio_manager = audio_manager
 	executor.choice_display = choice_display
 	executor.subtitle_display = subtitle_display
+	executor.poem_display = poem_display
 
 	# オートセーブシグナル接続
 	scenario_engine.auto_save_requested.connect(_on_auto_save_requested)
