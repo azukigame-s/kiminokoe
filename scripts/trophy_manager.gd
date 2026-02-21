@@ -48,6 +48,7 @@ var secret_trophy_ids: Array[String] = [
 	"secret_base",    # 秘密基地
 	"futako_jizo",    # ふたこじぞう（全地蔵発見）
 	"takiba",         # 焚き場
+	"warabeuta",      # 童歌（詩の全行を聞いた）
 	"demo_complete",  # 体験版コンプリート
 	"kiminokoe",      # キミノコエ（トゥルーエンド）
 	"iro_story",      # イロの想い（マル秘ストーリー）
@@ -58,6 +59,7 @@ var secret_trophy_names: Dictionary = {
 	"secret_base": "秘密基地",
 	"futako_jizo": "ふたこじぞう",
 	"takiba": "焚き場",
+	"warabeuta": "童歌",
 	"demo_complete": "地蔵焚の旅人",
 	"kiminokoe": "キミノコエ",
 	"iro_story": "イロの想い",
@@ -79,6 +81,7 @@ var secret_trophy_descriptions: Dictionary = {
 	"secret_base": "僕たちだけの場所",
 	"futako_jizo": "古くから村を守ってきた存在",
 	"takiba": "忘れ去られたしきたり",
+	"warabeuta": "祈りは忘れられ、調べだけが継ぐ",
 	"demo_complete": "体験版でそこまでする？",
 	"kiminokoe": "喉が……のど飴を常備しないと",
 	"iro_story": "実は計画的な妹",
@@ -208,6 +211,8 @@ func _check_location_trophies(location_id: String) -> void:
 			unlock_trophy("secret_base", secret_trophy_names.get("secret_base", "秘密基地"))
 		"takiba":
 			unlock_trophy("takiba", secret_trophy_names.get("takiba", "焚き場"))
+		"warabeuta":
+			unlock_trophy("warabeuta", secret_trophy_names.get("warabeuta", "童歌"))
 		"kiminokoe":
 			unlock_trophy("kiminokoe", secret_trophy_names.get("kiminokoe", "キミノコエ"))
 		"iro_story":
@@ -257,8 +262,8 @@ func check_demo_complete(play_time: float) -> void:
 		if not is_trophy_unlocked(ep_id + "_clear"):
 			return
 
-	# 条件3: 体験版で取得可能なシークレットトロフィー3個
-	var demo_secrets = ["secret_base", "futako_jizo", "takiba"]
+	# 条件3: 体験版で取得可能なシークレットトロフィー4個
+	var demo_secrets = ["secret_base", "futako_jizo", "takiba", "warabeuta"]
 	for trophy_id in demo_secrets:
 		if not is_trophy_unlocked(trophy_id):
 			return
@@ -526,7 +531,7 @@ func get_unlocked_trophy_count() -> int:
 			count += 1
 	return count
 
-## 全トロフィー数を取得（通常7 + シークレット5 = 12）
+## 全トロフィー数を取得（通常7 + シークレット7 = 14）
 func get_total_trophy_count() -> int:
 	return episode_ids.size() + secret_trophy_ids.size()
 

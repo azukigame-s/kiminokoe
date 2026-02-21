@@ -72,6 +72,8 @@ func execute(command: Dictionary, skip_controller: SkipController) -> void:
 			await execute_subtitle(command, skip_controller)
 		"poem":
 			await execute_poem(command, skip_controller)
+		"visit_location":
+			execute_visit_location(command)
 		"index":
 			# インデックスマーカーはスキップ
 			pass
@@ -195,6 +197,18 @@ func execute_poem(command: Dictionary, skip_controller: SkipController) -> void:
 		await poem_display.poem_completed
 	else:
 		push_warning("[CommandExecutor] PoemDisplay が設定されていません")
+
+## visit_location コマンドを実行（場所訪問記録 → トロフィーチェック）
+func execute_visit_location(command: Dictionary) -> void:
+	var location_id = command.get("id", "")
+	if location_id.is_empty():
+		push_warning("[CommandExecutor] visit_location に id がありません")
+		return
+	var trophy_manager = get_node_or_null("/root/TrophyManager")
+	if trophy_manager:
+		trophy_manager.visit_location(location_id)
+	else:
+		push_warning("[CommandExecutor] TrophyManager が見つかりません")
 
 ## flashback_start コマンドを実行（回想モード開始）
 func execute_flashback_start(command: Dictionary, skip_controller: SkipController) -> void:
