@@ -38,16 +38,12 @@ func _setup_ripple():
 	# ボタンより手前・タイトルより奥に配置
 	move_child(ripple, get_child_count() - 2)
 
-# BGMのセットアップ
+# BGMのセットアップ（AudioManager オートロード経由でシーンをまたいで再生継続）
 func _setup_bgm():
 	var bgm_path = "res://assets/bgm/悠久の彼方.mp3"
 	if not ResourceLoader.exists(bgm_path):
 		return
-	var player = AudioStreamPlayer.new()
-	player.stream = load(bgm_path)
-	player.volume_db = 0.0
-	add_child(player)
-	player.play()
+	AudioManager.play_bgm(bgm_path, false)
 
 # UI要素のセットアップ
 func _setup_ui():

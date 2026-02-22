@@ -1,5 +1,4 @@
 extends Node
-class_name AudioManager
 
 ## オーディオ管理クラス
 ## BGMと効果音の再生を管理
@@ -12,7 +11,7 @@ var sfx_player: AudioStreamPlayer
 var current_bgm_path: String = ""
 
 # フェード設定
-var bgm_fade_duration: float = 0.5
+var bgm_fade_duration: float = 1.5
 var bgm_fade_start_db: float = -40.0  # フェードイン開始時の音量
 
 func _ready():

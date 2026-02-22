@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="kiminokoe"
 config/version="0.5.0"
-run/main_scene="uid://cj36ss042ie7t"
+run/main_scene="res://scenes/splash_scene.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 config/visual_novel/text_speed=0.06
@@ -29,6 +29,7 @@ config/visual_novel/default_log_level=2
 
 SceneManager="*res://scripts/scene_manager.gd"
 TrophyManager="*res://scripts/trophy_manager.gd"
+AudioManager="*res://scripts/ui/audio_manager.gd"
 
 [display]
 

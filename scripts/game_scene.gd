@@ -5,7 +5,6 @@ extends Control
 
 # スクリプトのpreload
 const BackgroundDisplayScript = preload("res://scripts/ui/background_display.gd")
-const AudioManagerScript = preload("res://scripts/ui/audio_manager.gd")
 const TextDisplayScript = preload("res://scripts/ui/text_display.gd")
 const ChoiceDisplayScript = preload("res://scripts/ui/choice_display.gd")
 const SubtitleDisplayScript = preload("res://scripts/ui/subtitle_display.gd")
@@ -102,11 +101,8 @@ func _setup_ui():
 	text_display.add_child(text_label)
 	text_display.text_label = text_label
 
-	# AudioManager
-	audio_manager = Node.new()
-	audio_manager.set_script(AudioManagerScript)
-	audio_manager.name = "AudioManager"
-	add_child(audio_manager)
+	# AudioManager（オートロードを参照）
+	audio_manager = AudioManager
 
 	# ChoiceDisplay
 	choice_display = Control.new()
