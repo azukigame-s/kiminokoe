@@ -24,11 +24,19 @@ func _ready():
 	_setup_ui()
 	_setup_buttons()
 	_setup_background()
+	_setup_ripple()
 	_setup_bgm()
 
 	# 初期フォーカス設定
 	if start_button:
 		start_button.grab_focus()
+
+# 波紋オーバーレイのセットアップ
+func _setup_ripple():
+	var ripple = load("res://scripts/ui/ripple_overlay.gd").new()
+	add_child(ripple)
+	# ボタンより手前・タイトルより奥に配置
+	move_child(ripple, get_child_count() - 2)
 
 # BGMのセットアップ
 func _setup_bgm():
