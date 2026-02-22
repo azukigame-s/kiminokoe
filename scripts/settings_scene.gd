@@ -228,7 +228,7 @@ func _create_setting_entry(label_text: String, setting_key: String) -> PanelCont
 		value_label.name = "MasterVolumeValue"
 		value_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_CAPTION)
 		value_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_SECONDARY)
-		value_label.custom_minimum_size.x = 60
+		value_label.custom_minimum_size.x = 120
 		value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		master_volume_value = value_label
 		hbox.add_child(value_label)
