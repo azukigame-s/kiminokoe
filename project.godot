@@ -30,17 +30,13 @@ config/visual_novel/default_log_level=2
 SceneManager="*res://scripts/scene_manager.gd"
 TrophyManager="*res://scripts/trophy_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [gui]
 
 theme/custom_font="res://assets/fonts/Nosutaru-dotMPlusH-10-Regular.ttf"
-
-[display]
-
-window/size/viewport_width=1152
-window/size/viewport_height=648
-window/size/resizable=true
-window/stretch/mode="canvas_items"
-window/stretch/aspect="keep"
 
 [rendering]
 

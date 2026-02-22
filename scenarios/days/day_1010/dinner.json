@@ -6,6 +6,10 @@
 		"display_time": 2.0
 	},
 	{
+		"type": "bgm",
+		"path": "res://assets/bgm/Old_home.mp3"
+	},
+	{
 		"type": "background",
 		"path": "res://assets/backgrounds/no_image.jpg"
 	},

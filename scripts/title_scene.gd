@@ -32,7 +32,7 @@ func _ready():
 
 # BGMのセットアップ
 func _setup_bgm():
-	var bgm_path = "res://assets/bgm/title_bgm.ogg"
+	var bgm_path = "res://assets/bgm/悠久の彼方.mp3"
 	if not ResourceLoader.exists(bgm_path):
 		return
 	var player = AudioStreamPlayer.new()

@@ -53,6 +53,10 @@
 		"new_page_after_return": true
 	},
 	{
+		"type": "bgm",
+		"path": "res://assets/bgm/桜花の記憶.mp3"
+	},
+	{
 		"type": "dialogue",
 		"text": "……。",
 		"new_page": true
@@ -274,6 +278,10 @@
 		"id": "jizou_west"
 	},
 	{
+		"type": "bgm",
+		"path": ""
+	},
+	{
 		"type": "dialogue",
 		"text": "地蔵の視線を感じたまま横に目をやると、木々に覆われた細道が暗がりへ続いていた。",
 		"new_page": true
@@ -319,6 +327,10 @@
 	{
 		"type": "background",
 		"path": "res://assets/backgrounds/fire_pit.jpg"
+	},
+	{
+		"type": "bgm",
+		"path": "res://assets/bgm/悲しい記憶.mp3"
 	},
 	{
 		"type": "dialogue",

@@ -133,13 +133,17 @@ func execute_background(command: Dictionary, skip_controller: SkipController) ->
 	else:
 		push_warning("[CommandExecutor] BackgroundDisplay が設定されていません")
 
-## bgm コマンドを実行
+## bgm コマンドを実行（path が空の場合はBGMを停止）
 func execute_bgm(command: Dictionary, skip_controller: SkipController) -> void:
 	var path = command.get("path", "")
 
 	if audio_manager:
-		var use_fade = not skip_controller.is_skipping
-		await audio_manager.play_bgm(path, use_fade)
+		if path.is_empty():
+			var use_fade = not skip_controller.is_skipping
+			await audio_manager.stop_bgm(use_fade)
+		else:
+			var use_fade = not skip_controller.is_skipping
+			await audio_manager.play_bgm(path, use_fade)
 	else:
 		push_warning("[CommandExecutor] AudioManager が設定されていません")
 

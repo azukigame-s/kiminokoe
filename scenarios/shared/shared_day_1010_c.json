@@ -42,6 +42,10 @@
 		"new_page_after_return": true
 	},
 	{
+		"type": "bgm",
+		"path": "res://assets/bgm/桜花の記憶.mp3"
+	},
+	{
 		"type": "dialogue",
 		"text": "――そうだ……思い出した。",
 		"new_page": true

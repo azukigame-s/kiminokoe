@@ -9,6 +9,10 @@
 		"go_next": true
 	},
 	{
+		"type": "bgm",
+		"path": "res://assets/bgm/Ancient_Travelers.mp3"
+	},
+	{
 		"type": "flashback_start",
 		"effect": "grayscale"
 	},

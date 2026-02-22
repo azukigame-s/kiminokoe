@@ -8,6 +8,10 @@
 		"text": "…………聞き覚えのある――いや、懐かしい鳴き声が聞こえてくる。"
 	},
 	{
+		"type": "bgm",
+		"path": "res://assets/bgm/Ancient_Travelers.mp3"
+	},
+	{
 		"type": "flashback_start",
 		"effect": "grayscale"
 	},

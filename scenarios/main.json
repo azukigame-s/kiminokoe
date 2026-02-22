@@ -5,7 +5,7 @@
 	},
 	{
 		"type": "bgm",
-		"path": "res://assets/bgm/jizoudaki_bgm.mp3"
+		"path": "res://assets/bgm/桜花の記憶.mp3"
 	},
 	{
 		"type": "dialogue",
@@ -73,6 +73,10 @@
 		"go_next": true
 	},
 	{
+		"type": "bgm",
+		"path": ""
+	},
+	{
 		"type": "flashback_start",
 		"effect": "grayscale"
 	},
@@ -96,6 +100,10 @@
 	},
 	{
 		"type": "flashback_end"
+	},
+	{
+		"type": "bgm",
+		"path": "res://assets/bgm/桜花の記憶.mp3"
 	},
 	{
 		"type": "dialogue",

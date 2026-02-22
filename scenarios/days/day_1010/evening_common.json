@@ -49,10 +49,6 @@
 		"text": "そして――今日、思い出したこと。"
 	},
 	{
-		"type": "background",
-		"path": "res://assets/backgrounds/no_image.jpg"
-	},
-	{
 		"type": "dialogue",
 		"text": "自室のドアを開けた。"
 	},
@@ -60,6 +56,14 @@
 		"type": "dialogue",
 		"text": "懐かしい部屋だった。",
 		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/no_image.jpg"
+	},
+	{
+		"type": "bgm",
+		"path": "res://assets/bgm/冬待人.mp3"
 	},
 	{
 		"type": "dialogue",
