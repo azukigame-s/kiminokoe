@@ -117,6 +117,13 @@ func _setup_background():
 
 		background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
+		# 波シェーダーを適用
+		var shader_path = "res://assets/shaders/water_wave.gdshader"
+		if ResourceLoader.exists(shader_path):
+			var mat = ShaderMaterial.new()
+			mat.shader = load(shader_path)
+			background.material = mat
+
 # グラデーション背景の作成
 func _create_gradient_background() -> GradientTexture2D:
 	var gradient = Gradient.new()
