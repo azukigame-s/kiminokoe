@@ -7,6 +7,7 @@ class_name SubtitleDisplay
 
 # シグナル
 signal subtitle_completed
+signal subtitle_fadeout_started  # フェードアウト開始時（背景切り替えタイミング用）
 
 # 内部ノード
 var _background: ColorRect
@@ -171,6 +172,7 @@ func _start_fade_out() -> void:
 
 	_state = State.FADING
 	print("[SubtitleDisplay] フェードアウト開始")
+	subtitle_fadeout_started.emit()  # 背景切り替え用シグナル（フェード開始と同時）
 
 	# 既存のTweenをキャンセル
 	if _current_tween:
@@ -235,8 +237,10 @@ func _update_label_position() -> void:
 	var screen_width = get_viewport_rect().size.x
 	var label_width = screen_width * 0.8
 	var font_size = 48
+	# 2行テキスト対応: 行間込みで約2.5行分の高さを確保
+	var half_height = font_size * 1.3
 
 	_label.offset_left = -label_width / 2.0
-	_label.offset_top = -font_size / 2.0
+	_label.offset_top = -half_height
 	_label.offset_right = label_width / 2.0
-	_label.offset_bottom = font_size / 2.0
+	_label.offset_bottom = half_height

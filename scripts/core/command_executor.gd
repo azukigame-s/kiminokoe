@@ -171,9 +171,13 @@ func execute_subtitle(command: Dictionary, skip_controller: SkipController) -> v
 	var text = command.get("text", "")
 	var fade_time = command.get("fade_time", 1.0)
 	var display_time = command.get("display_time", 2.0)
+	var next_bg = command.get("next_background", "")
 
 	# スキップモード中はサブタイトルをスキップ
 	if skip_controller.is_skipping:
+		# スキップ中でも背景は即時切り替え
+		if not next_bg.is_empty() and background_display:
+			await background_display.set_background(next_bg, "normal", false)
 		return
 
 	# サブタイトル表示前にテキストをクリア（終了後に前のテキストがちらつくのを防止）
@@ -181,6 +185,12 @@ func execute_subtitle(command: Dictionary, skip_controller: SkipController) -> v
 		text_display.clear()
 
 	if subtitle_display:
+		# フェードアウト開始時に背景を即時切り替え（旧背景がちらつくのを防止）
+		if not next_bg.is_empty() and background_display:
+			subtitle_display.subtitle_fadeout_started.connect(
+				func(): background_display.set_background(next_bg, "normal", false),
+				CONNECT_ONE_SHOT
+			)
 		subtitle_display.show_subtitle(text, fade_time, display_time)
 		await subtitle_display.subtitle_completed
 	else:

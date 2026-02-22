@@ -1,17 +1,14 @@
 [
 	{
 		"type": "subtitle",
-		"text": "19:00",
+		"text": "１０月１０日\n　１９：００",
 		"fade_time": 0.5,
-		"display_time": 2.0
+		"display_time": 2.0,
+		"next_background": "res://assets/backgrounds/no_image.jpg"
 	},
 	{
 		"type": "bgm",
 		"path": "res://assets/bgm/Old_home.mp3"
-	},
-	{
-		"type": "background",
-		"path": "res://assets/backgrounds/no_image.jpg"
 	},
 	{
 		"type": "dialogue",

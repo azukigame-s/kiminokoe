@@ -86,13 +86,10 @@
 	},
 	{
 		"type": "subtitle",
-		"text": "10月10日",
+		"text": "１０月１０日\n　１５：００",
 		"fade_time": 0.5,
-		"display_time": 2.0
-	},
-	{
-		"type": "background",
-		"path": "res://assets/backgrounds/underpass.jpg"
+		"display_time": 2.0,
+		"next_background": "res://assets/backgrounds/underpass.jpg"
 	},
 	{
 		"type": "dialogue",
@@ -222,13 +219,10 @@
 	},
 	{
 		"type": "subtitle",
-		"text": "15:30",
+		"text": "１０月１０日\n　１５：３０",
 		"fade_time": 0.5,
-		"display_time": 2.0
-	},
-	{
-		"type": "background",
-		"path": "res://assets/backgrounds/no_image.jpg"
+		"display_time": 2.0,
+		"next_background": "res://assets/backgrounds/no_image.jpg"
 	},
 	{
 		"type": "dialogue",
