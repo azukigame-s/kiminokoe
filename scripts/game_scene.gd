@@ -283,9 +283,6 @@ func _continue_game():
 
 ## 体験版エンディング画面
 func _show_demo_ending():
-	# 体験版コンプリートトロフィーのチェック
-	TrophyManager.check_demo_complete(SceneManager.play_time)
-
 	# 下部メニューを非表示
 	bottom_menu.visible = false
 

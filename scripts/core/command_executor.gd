@@ -195,6 +195,10 @@ func execute_poem(command: Dictionary, skip_controller: SkipController) -> void:
 	if poem_display:
 		poem_display.show_poem(lines)
 		await poem_display.poem_completed
+		# 童歌を最後まで聴いた場合にトロフィーを付与（スキップ時はここに到達しない）
+		TrophyManager.unlock_trophy("warabeuta", "童歌")
+		# 体験版コンプリートチェック（全条件が揃っていればこの瞬間に付与）
+		TrophyManager.check_demo_complete(SceneManager.play_time)
 	else:
 		push_warning("[CommandExecutor] PoemDisplay が設定されていません")
 
