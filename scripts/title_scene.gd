@@ -5,6 +5,9 @@ extends Control
 
 # UI要素への参照
 @onready var title_label: Label = $VBoxContainer/TitleLabel
+
+# 起動時フェードオーバーレイ（BGMフェードインと同期して黒→タイトルを演出）
+var _intro_overlay: ColorRect
 @onready var start_button: Button = $VBoxContainer/ButtonContainer/StartButton
 @onready var continue_button: Button = $VBoxContainer/ButtonContainer/ContinueButton
 @onready var trophy_button: Button = $VBoxContainer/ButtonContainer/TrophyButton
@@ -25,6 +28,15 @@ func _ready():
 	_setup_buttons()
 	_setup_background()
 	_setup_ripple()
+
+	# 黒オーバーレイを最前面に追加（BGMフェードインと同期してフェードアウトする）
+	_intro_overlay = ColorRect.new()
+	_intro_overlay.color = UIConstants.COLOR_BASE_DARK
+	_intro_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_intro_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_intro_overlay.z_index = 100
+	add_child(_intro_overlay)
+
 	_setup_bgm()
 
 	# 初期フォーカス設定
@@ -41,9 +53,25 @@ func _setup_ripple():
 # BGMのセットアップ（AudioManager オートロード経由でシーンをまたいで再生継続）
 func _setup_bgm():
 	var bgm_path = "res://assets/bgm/悠久の彼方.mp3"
-	if not ResourceLoader.exists(bgm_path):
+	var fade_duration = AudioManager.bgm_fade_duration
+
+	# 既にタイトルBGMが流れている（設定・軌跡画面などから戻った場合）→ 短くフェードイン
+	if not ResourceLoader.exists(bgm_path) or AudioManager.current_bgm_path == bgm_path:
+		var t = create_tween()
+		t.tween_property(_intro_overlay, "modulate:a", 0.0, 0.5)
+		await t.finished
+		_intro_overlay.queue_free()
+		_intro_overlay = null
 		return
-	AudioManager.play_bgm(bgm_path, false)
+
+	# スプラッシュからの初回遷移: 1秒待ってから BGMフェードイン と 黒→タイトル を同時に開始
+	await get_tree().create_timer(1.0).timeout
+	AudioManager.play_bgm(bgm_path, true)
+	var tween = create_tween()
+	tween.tween_property(_intro_overlay, "modulate:a", 0.0, fade_duration)
+	await tween.finished
+	_intro_overlay.queue_free()
+	_intro_overlay = null
 
 # UI要素のセットアップ
 func _setup_ui():

@@ -61,7 +61,7 @@ func _ready():
 func _create_fade_overlay():
 	fade_overlay = ColorRect.new()
 	fade_overlay.name = "FadeOverlay"
-	fade_overlay.color = Color.BLACK
+	fade_overlay.color = UIConstants.COLOR_BASE_DARK  # 墨色（全画面フェードをゲーム統一色に）
 	fade_overlay.anchor_left = 0.0
 	fade_overlay.anchor_top = 0.0
 	fade_overlay.anchor_right = 1.0

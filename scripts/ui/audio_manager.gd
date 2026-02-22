@@ -16,6 +16,8 @@ var bgm_fade_start_db: float = -40.0  # フェードイン開始時の音量
 
 func _ready():
 	print("[AudioManager] 準備完了")
+	# ゲームツリーがポーズ中（一息・足跡画面）でもBGMが止まらないようにする
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	# BGMプレイヤーの作成
 	bgm_player = AudioStreamPlayer.new()
