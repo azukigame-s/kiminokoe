@@ -5,7 +5,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "…………聞き覚えのある――いや、懐かしい鳴き声が聞こえてくる。"
+		"text": "…………聞き覚えのある――いや、懐かしい鳴き声が聞こえてくる。",
+		"go_next": true
 	},
 	{
 		"type": "bgm",
@@ -19,7 +20,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "……。"
+		"text": "……。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -27,13 +29,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"go_next": true
+		"text": "………………。"
 	},
 	{
 		"type": "dialogue",
-		"text": "あの日、僕たちは用水路の近くを歩いていた。",
-		"new_page": true
+		"text": "あの日、僕たちは用水路の近くを歩いていた。"
 	},
 	{
 		"type": "dialogue",
@@ -173,16 +173,17 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "スグは小さく手を振って、子猫に声をかけた。"
-	},
-	{
-		"type": "dialogue",
-		"text": "「ねこちゃん、ちゃんと大事にしてもらうんだよ」"
-	},
-	{
-		"type": "dialogue",
-		"text": "あの時のスグの笑顔、今でも覚えている。",
+		"text": "スグは小さく手を振って、子猫に声をかけた。",
 		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「ねこちゃん、ちゃんと大事にしてもらうんだよ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "あの時のスグの笑顔、今でも覚えている。"
 	},
 	{
 		"type": "flashback_end",
@@ -191,8 +192,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
+		"text": "………………。"
 	},
 	{
 		"type": "dialogue",
@@ -200,7 +200,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "……。"
+		"text": "……。",
+		"go_next": true
 	},
 	{
 		"type": "flashback_end"
