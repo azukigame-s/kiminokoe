@@ -426,7 +426,7 @@ kiminokoe/
 | --------------- | -------------------------------- |
 | dialogue        | テキスト表示                     |
 | background      | 背景変更                         |
-| bgm             | BGM再生                          |
+| bgm             | BGM再生（エイリアス名で指定）    |
 | sfx             | 効果音再生                       |
 | subtitle        | サブタイトル表示                 |
 | poem            | 詩・童歌フルスクリーン表示（1行ずつ） |
@@ -438,6 +438,22 @@ kiminokoe/
 | episode_clear   | エピソードクリア記録             |
 | visit_location  | 場所訪問記録（シークレットトロフィー用） |
 | index           | インデックスマーカー             |
+
+### BGMエイリアス一覧
+
+BGMのパス定義は `scripts/ui/audio_manager.gd` の `bgm_aliases` 辞書に集約されている。
+シナリオJSON・title_scene.gd ともにエイリアス名のみを指定することで、BGMファイルの変更が1箇所で完結する。
+
+| エイリアス名 | ファイル                       | 用途                         |
+| ------------ | ------------------------------ | ---------------------------- |
+| `title`      | 悠久の彼方.mp3                 | タイトル画面                 |
+| `main`       | 忘却の都.mp3                   | メイン・実家到着・探索シーン |
+| `flashback`  | Ancient_Travelers.mp3          | ep_01〜ep_07 回想BGM         |
+| `autumn`     | 秋の想い出.mp3                 | ep_00 回想BGM（プロローグ）  |
+| `dinner`     | Old_home.mp3                   | 夕食シーン                   |
+| `night`      | 冬待人.mp3                     | 夜・就寝シーン               |
+| `suspense`   | 悲しい記憶.mp3                 | 焚き場・不穏シーン           |
+| `stop`       | （空文字）                     | BGM停止                      |
 
 ### 実装済み機能
 
@@ -622,8 +638,9 @@ kiminokoe/
   // 効果音
   {"type": "sfx", "path": "res://assets/sounds/bang_sfx.mp3"},
 
-  // BGM
-  {"type": "bgm", "path": "res://assets/music/sample_bgm.mp3"},
+  // BGM（エイリアス名で指定。パスの定義は AudioManager.bgm_aliases に一元集約）
+  {"type": "bgm", "name": "main"},
+  {"type": "bgm", "name": "stop"},   // BGM停止
 
   // 選択肢
   {

@@ -6,7 +6,7 @@
 	},
 	{
 		"type": "sfx",
-		"path": "res://assets/sounds/sample_sfx.mp3"
+		"path": "res://assets/sounds/bus_button_sfx.mp3"
 	},
 	{
 		"type": "dialogue",

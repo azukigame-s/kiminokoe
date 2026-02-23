@@ -14,6 +14,26 @@ var current_bgm_path: String = ""
 var bgm_fade_duration: float = 1.5
 var bgm_fade_start_db: float = -40.0  # フェードイン開始時の音量
 
+# BGMエイリアス → パスの対応表（JSONからはエイリアス名で指定する）
+var bgm_aliases: Dictionary = {
+	"title":    "res://assets/bgm/悠久の彼方.mp3",
+	"main":     "res://assets/bgm/忘却の都.mp3",
+	"flashback":"res://assets/bgm/Ancient_Travelers.mp3",
+	"autumn":   "res://assets/bgm/秋の想い出.mp3",
+	"dinner":   "res://assets/bgm/Old_home.mp3",
+	"night":    "res://assets/bgm/冬待人.mp3",
+	"suspense": "res://assets/bgm/悲しい記憶.mp3",
+	"stop":     "",
+}
+
+## エイリアス名をファイルパスに解決する
+## 未定義のエイリアスは警告を出してそのまま返す（後方互換）
+func resolve_bgm_alias(name: String) -> String:
+	if bgm_aliases.has(name):
+		return bgm_aliases[name]
+	push_warning("[AudioManager] 未定義のBGMエイリアス: %s（パスとして使用）" % name)
+	return name
+
 func _ready():
 	print("[AudioManager] 準備完了")
 	# ゲームツリーがポーズ中（一息・足跡画面）でもBGMが止まらないようにする

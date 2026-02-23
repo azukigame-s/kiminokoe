@@ -135,7 +135,12 @@ func execute_background(command: Dictionary, skip_controller: SkipController) ->
 
 ## bgm コマンドを実行（フェードはバックグラウンドで実行、シナリオはブロックしない）
 func execute_bgm(command: Dictionary, skip_controller: SkipController) -> void:
-	var path = command.get("path", "")
+	# "name" キー（エイリアス）優先、なければ "path" キー（後方互換）
+	var path: String
+	if command.has("name"):
+		path = audio_manager.resolve_bgm_alias(command.get("name", "")) if audio_manager else ""
+	else:
+		path = command.get("path", "")
 
 	if audio_manager:
 		if path.is_empty():

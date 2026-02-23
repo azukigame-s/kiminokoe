@@ -9,7 +9,7 @@
 	},
 	{
 		"type": "bgm",
-		"path": "res://assets/bgm/Ancient_Travelers.mp3"
+		"name": "flashback"
 	},
 	{
 		"type": "flashback_start",

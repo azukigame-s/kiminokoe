@@ -61,7 +61,7 @@
 	},
 	{
 		"type": "bgm",
-		"path": "res://assets/bgm/忘却の都.mp3"
+		"name": "main"
 	},
 	{
 		"type": "dialogue",

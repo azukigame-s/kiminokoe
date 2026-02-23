@@ -8,7 +8,7 @@
 	},
 	{
 		"type": "bgm",
-		"path": "res://assets/bgm/Old_home.mp3"
+		"name": "dinner"
 	},
 	{
 		"type": "dialogue",

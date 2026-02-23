@@ -63,7 +63,7 @@
 	},
 	{
 		"type": "bgm",
-		"path": "res://assets/bgm/冬待人.mp3"
+		"name": "night"
 	},
 	{
 		"type": "dialogue",

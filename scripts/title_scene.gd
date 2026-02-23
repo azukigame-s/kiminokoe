@@ -52,11 +52,11 @@ func _setup_ripple():
 
 # BGMのセットアップ（AudioManager オートロード経由でシーンをまたいで再生継続）
 func _setup_bgm():
-	var bgm_path = "res://assets/bgm/悠久の彼方.mp3"
+	var bgm_path = AudioManager.resolve_bgm_alias("title")
 	var fade_duration = AudioManager.bgm_fade_duration
 
 	# 既にタイトルBGMが流れている（設定・軌跡画面などから戻った場合）→ 短くフェードイン
-	if not ResourceLoader.exists(bgm_path) or AudioManager.current_bgm_path == bgm_path:
+	if bgm_path.is_empty() or not ResourceLoader.exists(bgm_path) or AudioManager.current_bgm_path == bgm_path:
 		var t = create_tween()
 		t.tween_property(_intro_overlay, "modulate:a", 0.0, 0.5)
 		await t.finished

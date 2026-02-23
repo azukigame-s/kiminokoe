@@ -538,6 +538,11 @@ func get_unlocked_trophy_count() -> int:
 func get_total_trophy_count() -> int:
 	return episode_ids.size() + secret_trophy_ids.size()
 
+## 体験版で取得可能なエピソードID（ep_4「キャッチボール」は製品版限定のため除外）
+var demo_episode_ids: Array[String] = [
+	"ep_1", "ep_2", "ep_3", "ep_5", "ep_6", "ep_7",
+]
+
 ## 体験版で取得可能なシークレットトロフィーID（製品版限定を除く）
 var demo_secret_trophy_ids: Array[String] = [
 	"secret_base",
@@ -547,14 +552,14 @@ var demo_secret_trophy_ids: Array[String] = [
 	"demo_complete",
 ]
 
-## 体験版で取得可能なトロフィーの総数
+## 体験版で取得可能なトロフィーの総数（6 + 5 = 11）
 func get_demo_total_trophy_count() -> int:
-	return episode_ids.size() + demo_secret_trophy_ids.size()
+	return demo_episode_ids.size() + demo_secret_trophy_ids.size()
 
 ## 体験版で取得済みのトロフィー数
 func get_demo_unlocked_trophy_count() -> int:
 	var count = 0
-	for ep_id in episode_ids:
+	for ep_id in demo_episode_ids:
 		if is_trophy_unlocked(ep_id + "_clear"):
 			count += 1
 	for trophy_id in demo_secret_trophy_ids:

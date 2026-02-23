@@ -13,6 +13,8 @@ var _fiction_label: Label
 var _background: ColorRect
 var _crossfade_overlay: ColorRect  # 動画→フィクション間のクロスフェード用
 
+signal _advance_requested  # 内部フェーズ進行用（クリックまたは自然終了で発火）
+
 func _ready():
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
@@ -65,7 +67,11 @@ func _start_sequence():
 	# Phase 3: タイトル画面へ
 	SceneManager.goto_title()
 
-## ロゴ動画を再生し、終了まで待つ
+## _advance_requested を発火するヘルパー（video.finished / timer.timeout のコールバック用）
+func _emit_advance():
+	_advance_requested.emit()
+
+## ロゴ動画を再生し、終了またはクリックスキップまで待つ
 func _play_logo_video():
 	var stream = load(LOGO_VIDEO_PATH)
 	if not stream:
@@ -75,8 +81,13 @@ func _play_logo_video():
 	_video_player.stream = stream
 	_video_player.play()
 
-	# 動画終了を待つ
-	await _video_player.finished
+	# 動画が自然に終了した場合も _advance_requested を発火させる
+	_video_player.finished.connect(_emit_advance, CONNECT_ONE_SHOT)
+	await _advance_requested
+
+	# クリックスキップ時、finished の接続が残っていれば切る
+	if _video_player.finished.is_connected(_emit_advance):
+		_video_player.finished.disconnect(_emit_advance)
 
 	# 白→ゲーム背景色へクロスフェード
 	_crossfade_overlay.visible = true
@@ -90,7 +101,7 @@ func _play_logo_video():
 
 	_crossfade_overlay.visible = false
 
-## フィクション表記をフェードイン → 表示 → フェードアウト
+## フィクション表記をフェードイン → 表示（タイマーかクリック待ち）→ フェードアウト
 func _show_fiction_notice():
 	_fiction_label.visible = true
 
@@ -99,18 +110,25 @@ func _show_fiction_notice():
 	tween_in.tween_property(_fiction_label, "modulate:a", 1.0, FICTION_FADE_DURATION)
 	await tween_in.finished
 
-	# 表示維持
-	await get_tree().create_timer(FICTION_DISPLAY_DURATION).timeout
+	# 表示維持（タイマーかクリックで進む）
+	var timer = get_tree().create_timer(FICTION_DISPLAY_DURATION)
+	timer.timeout.connect(_emit_advance, CONNECT_ONE_SHOT)
+	await _advance_requested
+
+	# クリックで早送りした場合、タイマーの接続が残っていれば切る
+	if timer.timeout.is_connected(_emit_advance):
+		timer.timeout.disconnect(_emit_advance)
 
 	# フェードアウト
 	var tween_out = create_tween()
 	tween_out.tween_property(_fiction_label, "modulate:a", 0.0, FICTION_FADE_DURATION)
 	await tween_out.finished
 
-## クリックで演出をスキップ
+## クリックで現在のフェーズを進める
+## 注意: VideoStreamPlayer.stop() は finished を発火しないため _advance_requested を直接 emit する
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
-		# 動画再生中ならスキップ
 		if _video_player.is_playing():
 			_video_player.stop()
-			# finished シグナルが発火するので自動的に次へ進む
+		_advance_requested.emit()
+		get_viewport().set_input_as_handled()
