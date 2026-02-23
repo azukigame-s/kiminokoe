@@ -102,6 +102,28 @@
 	},
 	{
 		"type": "dialogue",
+		"text": "このカード――僕が欲しかったカード。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "友達の誰もまだ手に入れていない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "学校でみんなが話題にしていた、あのカード。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――やった！"
+	},
+	{
+		"type": "dialogue",
+		"text": "やっと手に入った！",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
 		"text": "「あーっ、おにぃキラじゃん。いいなぁ」",
 		"new_page": true
 	},
@@ -141,7 +163,45 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "せっかく当てたキラなのに――そう思いながらも、１枚のカードを束から抜き出し、スグに差し出す。"
+		"text": "せっかく当てたキラなのに――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "やっと手に入ったのに――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、スグの泣き顔を見ていると、何も言えなくなる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――僕がお兄ちゃんだから。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は深く息を吸って、１枚のカードを束から抜き出し、スグに差し出す。指先は少し震えていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「……本当に？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが目を丸くして僕を見た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷きながらも、顔はスグの方を向いてはいなかった。僕も泣いてしまいそうで……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「やった！　ありがとう、おにぃ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは喜んでいるようだったが、その声を……僕は聞きたくなかった。"
 	},
 	{
 		"type": "flashback_end",
