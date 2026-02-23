@@ -85,13 +85,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "それを横目に、僕もコインを入れた。",
-		"go_next": true
+		"text": "それを横目に、僕もコインを入れた。"
 	},
 	{
 		"type": "dialogue",
-		"text": "「あっ」",
-		"new_page": true
+		"text": "「あっ」"
 	},
 	{
 		"type": "dialogue",
@@ -99,11 +97,13 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "『キラ』と呼ばれているレアリティの高いカードだ。"
+		"text": "『キラ』と呼ばれているレアリティの高いカードだ。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「あーっ、おにぃキラじゃん。いいなぁ」"
+		"text": "「あーっ、おにぃキラじゃん。いいなぁ」",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -115,21 +115,21 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "目にうっすらと涙が浮かび、唇が震える。",
+		"text": "目にうっすらと涙が浮かび、唇が震える。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「おにぃばっかりズルいよ……。うぇぇん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "とうとう泣き出してしまい、母も困った表情になった。眉を下げて僕を見つめている。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「おにぃばっかりズルいよ……。うぇぇん」",
+		"text": "「お兄ちゃんなんだからスグちゃんにあげなさい」",
 		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "とうとう泣き出してしまい、母も困った表情になった。眉を下げて僕を見つめている。"
-	},
-	{
-		"type": "dialogue",
-		"text": "「お兄ちゃんなんだからスグちゃんにあげなさい」"
 	},
 	{
 		"type": "dialogue",
@@ -141,8 +141,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "せっかく当てたキラなのに――そう思いながらも、１枚のカードを束から抜き出し、スグに差し出す。",
-		"go_next": true
+		"text": "せっかく当てたキラなのに――そう思いながらも、１枚のカードを束から抜き出し、スグに差し出す。"
 	},
 	{
 		"type": "flashback_end",
@@ -151,8 +150,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
+		"text": "………………。"
 	},
 	{
 		"type": "dialogue",
@@ -160,7 +158,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "……。"
+		"text": "……。",
+		"go_next": true
 	},
 	{
 		"type": "flashback_end"

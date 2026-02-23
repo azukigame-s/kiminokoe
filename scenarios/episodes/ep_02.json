@@ -144,7 +144,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "……。"
+		"text": "……。",
+		"go_next": true
 	},
 	{
 		"type": "flashback_end"

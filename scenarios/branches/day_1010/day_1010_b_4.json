@@ -44,8 +44,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "薄暗くなり始めた空を見上げると、聞き覚えのある声が聞こえた気がした――。",
-		"go_next": true
+		"text": "薄暗くなり始めた空を見上げると、海からの風に混じって何か聞こえた気がした――。"
 	},
 	{
 		"type": "load_scenario",
@@ -55,19 +54,6 @@
 	{
 		"type": "bgm",
 		"path": "res://assets/bgm/忘却の都.mp3"
-	},
-	{
-		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "…………。"
-	},
-	{
-		"type": "dialogue",
-		"text": "……。"
 	},
 	{
 		"type": "dialogue",
@@ -307,10 +293,22 @@
 		"text": "不思議な子供の姿を見たからだろうか――それとも、地蔵に導かれたのか――僕は吸い込まれるように暗闇の方へ足を進めた。",
 		"go_next": true
 	},
+		{
+		"type": "dialogue",
+		"text": "…………。",
+		"new_page": true
+	},
 	{
 		"type": "dialogue",
-		"text": "…………どのくらい歩いただろうか？",
-		"new_page": true
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………どのくらい歩いただろうか？"
 	},
 	{
 		"type": "dialogue",
@@ -322,7 +320,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "薄暗い道を更に進んだところで景色が開けた。"
+		"text": "薄暗い道を更に進んだところで景色が開けた。",
+		"go_next": true
 	},
 	{
 		"type": "background",
@@ -343,13 +342,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "建物の跡だろうか――黒ずみ、ひび割れている。",
-		"go_next": true
+		"text": "建物の跡だろうか――黒ずみ、ひび割れている。"
 	},
 	{
 		"type": "dialogue",
-		"text": "近くで見てみたかったが、左右の大木にロープが張られていた。",
-		"new_page": true
+		"text": "近くで見てみたかったが、左右の大木にロープが張られていた。"
 	},
 	{
 		"type": "dialogue",
@@ -357,11 +354,13 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "入ってはいけない――そんな気がした。"
+		"text": "入ってはいけない――そんな気がした。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "その場に立ち尽くしていると、頬に冷たいものが触れた。"
+		"text": "その場に立ち尽くしていると、頬に冷たいものが触れた。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -373,13 +372,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "そろそろ潮時かもしれない。",
-		"go_next": true
+		"text": "そろそろ潮時かもしれない。"
 	},
 	{
 		"type": "dialogue",
-		"text": "その時、風が吹いた。",
-		"new_page": true
+		"text": "その時、風が吹いた。"
 	},
 	{
 		"type": "dialogue",
