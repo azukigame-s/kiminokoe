@@ -231,17 +231,28 @@ func execute_visit_location(command: Dictionary) -> void:
 ## flashback_start コマンドを実行（回想モード開始）
 func execute_flashback_start(command: Dictionary, skip_controller: SkipController) -> void:
 	var effect = command.get("effect", "grayscale")
+	var gradual = command.get("gradual", false)
+	var duration = command.get("duration", 4.5)
 
 	if background_display:
-		var use_fade = not skip_controller.is_skipping
-		await background_display.set_effect(effect, use_fade)
+		if gradual and not skip_controller.is_skipping:
+			background_display.begin_gradual_effect(effect, duration)
+		else:
+			var use_fade = not skip_controller.is_skipping
+			await background_display.set_effect(effect, use_fade)
 	else:
 		push_warning("[CommandExecutor] BackgroundDisplay が設定されていません")
 
 ## flashback_end コマンドを実行（回想モード終了）
-func execute_flashback_end(_command: Dictionary, skip_controller: SkipController) -> void:
+func execute_flashback_end(command: Dictionary, skip_controller: SkipController) -> void:
+	var gradual = command.get("gradual", false)
+	var duration = command.get("duration", 4.5)
+
 	if background_display:
-		var use_fade = not skip_controller.is_skipping
-		await background_display.set_effect("normal", use_fade)
+		if gradual and not skip_controller.is_skipping:
+			background_display.begin_gradual_effect("normal", duration)
+		else:
+			var use_fade = not skip_controller.is_skipping
+			await background_display.set_effect("normal", use_fade)
 	else:
 		push_warning("[CommandExecutor] BackgroundDisplay が設定されていません")

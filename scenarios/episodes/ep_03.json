@@ -13,7 +13,9 @@
 	},
 	{
 		"type": "flashback_start",
-		"effect": "grayscale"
+		"effect": "grayscale",
+		"gradual": true,
+		"duration": 4.5
 	},
 	{
 		"type": "dialogue",
@@ -122,6 +124,11 @@
 		"type": "dialogue",
 		"text": "どんどん体は冷えていくが、心は温かかった。",
 		"new_page": true
+	},
+	{
+		"type": "flashback_end",
+		"gradual": true,
+		"duration": 4.5
 	},
 	{
 		"type": "dialogue",

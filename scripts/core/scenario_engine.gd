@@ -255,10 +255,6 @@ func call_subscenario(scenario_path: String, apply_grayscale: bool = false, new_
 		"path": current_scenario_path
 	})
 
-	# グレースケール効果を適用（エピソード呼び出し時）
-	if apply_grayscale:
-		await command_executor.execute_flashback_start({"effect": "grayscale"}, skip_controller)
-
 	# サブシナリオを読み込んで実行
 	# is_running フラグを一時的に解除（サブシナリオでstart_scenarioを呼ぶため）
 	is_running = false
@@ -273,10 +269,6 @@ func call_subscenario(scenario_path: String, apply_grayscale: bool = false, new_
 		current_index = previous_state.index
 		current_scenario_path = previous_state.path
 		is_running = true  # 実行状態を復元
-
-		# グレースケール効果を解除（エピソード呼び出し時）
-		if apply_grayscale:
-			await command_executor.execute_flashback_end({}, skip_controller)
 
 		# エピソード再生完了時に自動的にクリア記録（episodes/ 配下のみ）
 		if apply_grayscale and scenario_path.begins_with("episodes/"):

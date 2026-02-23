@@ -5,8 +5,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "海岸沿いを西に進むと砂浜が広く開けてきた。",
-		"new_page": true
+		"text": "海岸沿いを西に進むと砂浜が広く開けてきた。"
 	},
 	{
 		"type": "dialogue",
@@ -28,13 +27,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "安全に海水浴を楽しむための工夫なのだろう。",
-		"go_next": true
+		"text": "安全に海水浴を楽しむための工夫なのだろう。"
 	},
 	{
 		"type": "dialogue",
-		"text": "波の音に混じって、誰かの声が聞こえた気がした――。",
-		"new_page": true
+		"text": "波の音に混じって、誰かの声が聞こえた気がした――。"
 	},
 	{
 		"type": "load_scenario",

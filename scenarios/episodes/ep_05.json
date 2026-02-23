@@ -13,7 +13,9 @@
 	},
 	{
 		"type": "flashback_start",
-		"effect": "grayscale"
+		"effect": "grayscale",
+		"gradual": true,
+		"duration": 4.5
 	},
 	{
 		"type": "dialogue",
@@ -181,6 +183,11 @@
 		"type": "dialogue",
 		"text": "あの時のスグの笑顔、今でも覚えている。",
 		"go_next": true
+	},
+	{
+		"type": "flashback_end",
+		"gradual": true,
+		"duration": 4.5
 	},
 	{
 		"type": "dialogue",

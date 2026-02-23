@@ -14,7 +14,9 @@
 	},
 	{
 		"type": "flashback_start",
-		"effect": "grayscale"
+		"effect": "grayscale",
+		"gradual": true,
+		"duration": 4.5
 	},
 	{
 		"type": "dialogue",
@@ -61,8 +63,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「うーんブイまで浮き輪で行くのはやったし、何しようかな……」",
-		"new_page": true
+		"text": "「うーんブイまで浮き輪で行くのはやったし、何しようかな……」"
 	},
 	{
 		"type": "dialogue",
@@ -126,13 +127,16 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "ぼんやりとした景色の中、弟の心配そうな顔が印象に残った。",
-		"go_next": true
+		"text": "ぼんやりとした景色の中、弟の心配そうな顔が印象に残った。"
+	},
+	{
+		"type": "flashback_end",
+		"gradual": true,
+		"duration": 4.5
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
+		"text": "………………。"
 	},
 	{
 		"type": "dialogue",

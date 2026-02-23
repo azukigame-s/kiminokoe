@@ -78,12 +78,19 @@
 	},
 	{
 		"type": "flashback_start",
-		"effect": "grayscale"
+		"effect": "grayscale",
+		"gradual": true,
+		"duration": 4.5
 	},
 	{
 		"type": "load_scenario",
 		"path": "episodes/ep_00",
 		"new_page_after_return": true
+	},
+	{
+		"type": "flashback_end",
+		"gradual": true,
+		"duration": 4.5
 	},
 	{
 		"type": "dialogue",

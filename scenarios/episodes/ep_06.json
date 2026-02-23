@@ -14,7 +14,9 @@
 	},
 	{
 		"type": "flashback_start",
-		"effect": "grayscale"
+		"effect": "grayscale",
+		"gradual": true,
+		"duration": 4.5
 	},
 	{
 		"type": "dialogue",
@@ -224,6 +226,11 @@
 	{
 		"type": "dialogue",
 		"text": "僕たちは水槽を覗き込みながら笑った。"
+	},
+	{
+		"type": "flashback_end",
+		"gradual": true,
+		"duration": 4.5
 	},
 	{
 		"type": "dialogue",

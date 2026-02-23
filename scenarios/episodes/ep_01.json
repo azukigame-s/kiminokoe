@@ -14,7 +14,9 @@
 	},
 	{
 		"type": "flashback_start",
-		"effect": "grayscale"
+		"effect": "grayscale",
+		"gradual": true,
+		"duration": 4.5
 	},
 	{
 		"type": "dialogue",
@@ -141,6 +143,11 @@
 		"type": "dialogue",
 		"text": "せっかく当てたキラなのに――そう思いながらも、１枚のカードを束から抜き出し、スグに差し出す。",
 		"go_next": true
+	},
+	{
+		"type": "flashback_end",
+		"gradual": true,
+		"duration": 4.5
 	},
 	{
 		"type": "dialogue",

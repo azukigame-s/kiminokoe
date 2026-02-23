@@ -14,6 +14,9 @@ var is_fading: bool = false
 # エフェクト状態
 var current_effect: String = "normal"  # "normal", "grayscale", "sepia"
 
+# 段階的エフェクト用 Tween
+var _gradual_tween: Tween = null
+
 # 現在の背景パス（セーブ/ロード用）
 var current_background_path: String = ""
 
@@ -58,6 +61,11 @@ func set_background(path: String, effect: String = "normal", use_fade: bool = tr
 
 ## エフェクトのみ変更
 func set_effect(effect: String, use_fade: bool = true) -> void:
+	# 段階的エフェクト中なら停止してから即時適用
+	if _gradual_tween:
+		_gradual_tween.kill()
+		_gradual_tween = null
+
 	if current_effect == effect:
 		return
 
@@ -71,6 +79,43 @@ func set_effect(effect: String, use_fade: bool = true) -> void:
 		_apply_effect(effect)
 
 	fade_completed.emit()
+
+## 段階的エフェクト開始（非ブロッキング）
+func begin_gradual_effect(target: String, duration: float) -> void:
+	if _gradual_tween:
+		_gradual_tween.kill()
+		_gradual_tween = null
+
+	if target == "grayscale":
+		var shader = load("res://shaders/grayscale.gdshader")
+		if not shader:
+			push_warning("[BackgroundDisplay] グレースケールシェーダー読み込み失敗")
+			return
+		var mat = ShaderMaterial.new()
+		mat.shader = shader
+		mat.set_shader_parameter("mix_amount", 0.0)
+		material = mat
+		current_effect = "grayscale"
+		_gradual_tween = create_tween()
+		_gradual_tween.tween_method(
+			func(v: float): if material is ShaderMaterial: material.set_shader_parameter("mix_amount", v),
+			0.0, 1.0, duration
+		)
+	elif target == "normal":
+		if not (material is ShaderMaterial):
+			material = null
+			current_effect = "normal"
+			return
+		_gradual_tween = create_tween()
+		_gradual_tween.tween_method(
+			func(v: float): if material is ShaderMaterial: material.set_shader_parameter("mix_amount", v),
+			1.0, 0.0, duration
+		)
+		_gradual_tween.tween_callback(func():
+			material = null
+			current_effect = "normal"
+			_gradual_tween = null
+		)
 
 ## エフェクトを適用
 func _apply_effect(effect: String) -> void:
