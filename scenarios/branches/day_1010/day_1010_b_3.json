@@ -1,12 +1,12 @@
 [
 	{
-		"type": "background",
-		"path": "res://assets/backgrounds/temple.jpg"
-	},
-	{
 		"type": "dialogue",
 		"text": "家を出て南に進むと、お寺が見えてきた。",
 		"new_page": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/temple.jpg"
 	},
 	{
 		"type": "dialogue",
@@ -22,13 +22,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "スグとここでよく水を飲んだのを思い出した。",
-		"go_next": true
+		"text": "スグとここでよく水を飲んだものだ。"
 	},
 	{
 		"type": "dialogue",
-		"text": "お寺の敷地に入り、境内を歩いていると、ふと裏山の大きな木のことを思い出した。",
-		"new_page": true
+		"text": "お寺の敷地に入り、境内を歩いていると、ふと裏山の大きな木のことを思い出した。"
 	},
 	{
 		"type": "dialogue",
@@ -36,21 +34,21 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕はそこに足を運ぶことにした。"
+		"text": "僕はそこに足を運ぶことにした。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
 		"text": "お寺を出て裏山を少し登ると、雑木林が開けた場所に出る。",
-		"go_next": true
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "脇にある木の根元に、２体の地蔵が半ば埋もれるように佇んでいた。"
 	},
 	{
 		"type": "background",
 		"path": "res://assets/backgrounds/jizou2.jpg"
-	},
-	{
-		"type": "dialogue",
-		"text": "脇にある木の根元に、２体の地蔵が半ば埋もれるように佇んでいた。",
-		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -96,13 +94,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "そんなくだらないことを考えている自分に、少し苦笑いした。",
-		"go_next": true
+		"text": "そんなくだらないことを考えている自分に、少し苦笑いした。"
 	},
 	{
 		"type": "dialogue",
-		"text": "僕たちの秘密基地であった木の根元は、雑草に覆われていた。",
-		"new_page": true
+		"text": "僕たちの秘密基地であった木の根元は、雑草に覆われていた。"
 	},
 	{
 		"type": "dialogue",
