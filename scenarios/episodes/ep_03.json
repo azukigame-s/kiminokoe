@@ -5,7 +5,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "…………聞き覚えのある声が聞こえてくる。"
+		"text": "…………聞き覚えのある声が聞こえてくる。",
+		"go_next": true
 	},
 	{
 		"type": "bgm",
@@ -19,7 +20,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "……。"
+		"text": "……。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -27,13 +29,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"go_next": true
+		"text": "………………。"
 	},
 	{
 		"type": "dialogue",
-		"text": "あの日は１２月。寒い日だった。",
-		"new_page": true
+		"text": "あの日は１２月。寒い日だった。"
 	},
 	{
 		"type": "dialogue",
@@ -45,33 +45,65 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "この日も一本前の便に乗り遅れ、５０分待ちだ。"
+		"text": "この日もひとつ前の便に乗り遅れ、５０分待ちだ。"
 	},
 	{
 		"type": "dialogue",
-		"text": "降り始めた雪はどんどん勢いを増し、吹雪の様相を呈している。"
-	},
-	{
-		"type": "dialogue",
-		"text": "「やばっ、どんどん強くなってるよ」"
-	},
-	{
-		"type": "dialogue",
-		"text": "そう声をかける弟は、こんな日に限ってベンチコートを忘れたため隣で寒そうに震えている。",
+		"text": "降り始めた雪はどんどん勢いを増し、吹雪の様相を呈している。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "バス停に屋根はあるものの、横殴りの雪は容赦なく体に当たる。",
+		"text": "「やばっ、どんどん強くなってるよ」",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "ベンチコートを着た僕も寒さで震えるほどだ。"
+		"text": "そう声をかける弟は、こんな日に限ってベンチコートを忘れたため隣で寒そうに震えている。"
 	},
 	{
 		"type": "dialogue",
-		"text": "「…………」"
+		"text": "バス停に屋根はあるものの、横殴りの雪は容赦なく体に当たる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ベンチコートを着た僕も寒さで震えるほどだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「さっきのバスに乗れてたらなぁ……」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが小さく言った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の帰りを待っていたから――スグ１人であればひとつ前のバスでも帰ることができたはずだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ごめんな」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「えっ？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「僕のせいで……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あ、いいよいいよ。お兄ちゃんのせいじゃないし」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「…………」",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -79,29 +111,65 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「…………」"
+		"text": "スグの震える肩が、視界の端に入る。"
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は自分のベンチコートを脱ぎ、弟の肩にかけた。"
+		"text": "――きっと寒いはずだ。"
 	},
 	{
 		"type": "dialogue",
-		"text": "「…………いいの？」"
-	},
-	{
-		"type": "dialogue",
-		"text": "強くうなずき、また正面を向いた。",
+		"text": "僕のせいで……。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "寒くはあったものの、僕はそんなに寒さに弱いわけではない。",
+		"text": "「…………」",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「ありがとう」"
+		"text": "僕は自分のベンチコートを脱いだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "一気に冷気が体を包む。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――でも、構わない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "うっすら震えている弟の肩にコートをかける。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「…………いいの？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが驚いた顔で僕を見た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は強くうなずき、また正面を向いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "寒くはあったものの、僕はそんなに寒さに弱いわけではない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――それに、これくらいはしてあげたい。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「ありがとう」",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -113,17 +181,41 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「……寒くない？　おにぃ」"
+		"text": "雪は降り続けている。"
 	},
 	{
 		"type": "dialogue",
-		"text": "「大丈夫」",
+		"text": "白い息が、次々と消えていく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "車の音だけが、時々聞こえる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "体の感覚が、だんだんと鈍くなってくる。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "どんどん体は冷えていくが、心は温かかった。",
+		"text": "「……寒くない？　おにぃ」",
 		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「…………大丈夫」"
+	},
+	{
+		"type": "dialogue",
+		"text": "どんどん体は冷えていくが、心は温かかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "隣を見ると、コートにくるまっているスグは何故か嬉しそうだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それだけで、十分だった。"
 	},
 	{
 		"type": "flashback_end",
