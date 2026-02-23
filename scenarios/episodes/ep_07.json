@@ -49,8 +49,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「よし、僕も……えいっ！」",
-		"new_page": true
+		"text": "「よし、僕も……えいっ！」"
 	},
 	{
 		"type": "dialogue",
@@ -219,7 +218,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "――高い。",
+		"text": "――高い！",
 		"new_page": true
 	},
 	{
@@ -276,13 +275,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "ただ、擁壁にしがみついているだけだった。",
-		"go_next": true
+		"text": "ただ、擁壁にしがみついているだけだった。"
 	},
 	{
 		"type": "dialogue",
-		"text": "「待ってて！　誰か呼んでくる！」",
-		"new_page": true
+		"text": "「待ってて！　誰か呼んでくる！」"
 	},
 	{
 		"type": "dialogue",
@@ -347,8 +344,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
+		"text": "………………。"
 	},
 	{
 		"type": "dialogue",
@@ -356,7 +352,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "……。"
+		"text": "……。",
+		"go_next": true
 	},
 	{
 		"type": "flashback_end"

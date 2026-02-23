@@ -46,17 +46,16 @@
 	{
 		"type": "dialogue",
 		"text": "夏は冷たい水で火照った体を冷やし、秋は紅葉を眺めながら水の音に耳を傾ける。",
-		"new_page": true,
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "この日、僕とスグは学校帰りに兄の水に立ち寄っていた。"
+		"text": "この日、僕とスグは学校帰りに兄の水に立ち寄っていた。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "ランドセルを水溜まりの脇に置いて、僕は水の中の石をじっと見つめていた。",
-		"new_page": true
+		"text": "ランドセルを水溜まりの脇に置いて、僕は水の中の石をじっと見つめていた。"
 	},
 	{
 		"type": "dialogue",
@@ -172,8 +171,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "沢蟹を飼ったことはないけど、おばあちゃんなら知ってるかもしれない。",
-		"new_page": true
+		"text": "沢蟹を飼ったことはないけど、おばあちゃんなら知ってるかもしれない。"
 	},
 	{
 		"type": "dialogue",
@@ -199,21 +197,21 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "沢蟹は少し戸惑ったように動き回ったあと、石の下に隠れた。",
+		"text": "沢蟹は少し戸惑ったように動き回ったあと、石の下に隠れた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ねえ、名前つけようよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが嬉しそうに言った。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「ねえ、名前つけようよ」",
+		"text": "「カニ太郎とか？」",
 		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "スグが嬉しそうに言った。"
-	},
-	{
-		"type": "dialogue",
-		"text": "「カニ太郎とか？」"
 	},
 	{
 		"type": "dialogue",
@@ -234,8 +232,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
+		"text": "………………。"
 	},
 	{
 		"type": "dialogue",
@@ -243,7 +240,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "……。"
+		"text": "……。",
+		"go_next": true
 	},
 	{
 		"type": "flashback_end"
