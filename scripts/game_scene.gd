@@ -329,10 +329,9 @@ func _show_demo_ending():
 	rule.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	content.add_child(rule)
 
-	# トロフィー取得状況
-	var trophy_data = TrophyManager.get_trophy_display_data()
-	var unlocked = trophy_data.unlocked_count
-	var total = trophy_data.total_count
+	# トロフィー取得状況（体験版で取得可能なもののみカウント）
+	var unlocked = TrophyManager.get_demo_unlocked_trophy_count()
+	var total = TrophyManager.get_demo_total_trophy_count()
 
 	var trophy_label = Label.new()
 	trophy_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

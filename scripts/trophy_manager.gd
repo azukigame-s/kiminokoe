@@ -331,10 +331,13 @@ func unlock_trophy(trophy_id: String, trophy_name: String = ""):
 
 # エピソードクリアに応じたトロフィーのチェック
 func _check_episode_trophies(episode_id: String):
+	# episode_ids に含まれないエピソード（ep_0, ep_0_betaなど）はトロフィーを付与しない
+	if not episode_id in episode_ids:
+		return
 	# エピソードごとのトロフィーIDを生成
 	var trophy_id = episode_id + "_clear"
 	var trophy_name = episode_trophy_names.get(episode_id, "エピソードクリア")
-	
+
 	unlock_trophy(trophy_id, trophy_name)
 	
 	# 全エピソードクリアのチェック
@@ -534,6 +537,30 @@ func get_unlocked_trophy_count() -> int:
 ## 全トロフィー数を取得（通常7 + シークレット7 = 14）
 func get_total_trophy_count() -> int:
 	return episode_ids.size() + secret_trophy_ids.size()
+
+## 体験版で取得可能なシークレットトロフィーID（製品版限定を除く）
+var demo_secret_trophy_ids: Array[String] = [
+	"secret_base",
+	"futako_jizo",
+	"takiba",
+	"warabeuta",
+	"demo_complete",
+]
+
+## 体験版で取得可能なトロフィーの総数
+func get_demo_total_trophy_count() -> int:
+	return episode_ids.size() + demo_secret_trophy_ids.size()
+
+## 体験版で取得済みのトロフィー数
+func get_demo_unlocked_trophy_count() -> int:
+	var count = 0
+	for ep_id in episode_ids:
+		if is_trophy_unlocked(ep_id + "_clear"):
+			count += 1
+	for trophy_id in demo_secret_trophy_ids:
+		if is_trophy_unlocked(trophy_id):
+			count += 1
+	return count
 
 # セーブファイルのパスを取得（OSの実際のパス）
 func get_save_file_path() -> String:
