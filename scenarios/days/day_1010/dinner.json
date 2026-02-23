@@ -17,11 +17,15 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "祖母が台所で忙しそうに動いている。"
+		"text": "台所では祖母が忙しそうに動いており、テーブルには大皿に盛られた煮物、焼き魚、新鮮な野菜の天ぷらが並んでいる。"
 	},
 	{
 		"type": "dialogue",
-		"text": "テーブルには大皿に盛られた煮物、焼き魚、新鮮な野菜の天ぷらが並んでいた。"
+		"text": "この匂い――懐かしい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "子供の頃、学校から帰ってくるといつもこの匂いがした。"
 	},
 	{
 		"type": "dialogue",
@@ -51,7 +55,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は頷いて、今日見て回った場所のことを伝えた。"
+		"text": "僕は頷いて、今日見てきた場所のことを伝えた。"
 	},
 	{
 		"type": "dialogue",
@@ -67,21 +71,25 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "久しぶりの家族での食事だった。",
+		"text": "久しぶりの家族での食事だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「久しぶりにみんなで食べれるねぇ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母が嬉しそうに言った。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「久しぶりにみんなで食べれるねぇ」",
+		"text": "「[主人公]ちゃん、一人でちゃんと食べとるかえ？」",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "祖母が嬉しそうに言った。"
-	},
-	{
-		"type": "dialogue",
-		"text": "「[主人公]ちゃん、一人でちゃんと食べとるかえ？」"
+		"text": "祖母の目が、心配そうに僕を見つめている。"
 	},
 	{
 		"type": "dialogue",
@@ -89,7 +97,23 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「まぁ、都会の食べ物は味が濃いけぇね」",
+		"text": "「まぁ、都会の食べ物は味が濃いけぇね――たまには帰ってきて、ちゃんとしたもん食べないねぇ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母の言葉には、優しさと、少しの寂しさが混じっていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ダキに帰ってくる機会が減ってしまったのは、やはりスグのことがあったからだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母もそれをわかっているから、それ以上のことは言わない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ、「帰ってきて」と言ってくれる。それが温かかった。",
 		"go_next": true
 	},
 	{
@@ -107,17 +131,25 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "父も時々相槌を打ちながら、静かに食事を続けていた。",
-		"go_next": true
+		"text": "父も時々相槌を打ちながら、静かに食事を続けていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "父は、あまり多くを語らない人だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、その静かさが――今日は、少し重く感じた。"
 	},
 	{
 		"type": "dialogue",
 		"text": "ふと、祖母が煮物を僕の皿に取り分けてくれた。",
-		"new_page": true
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「これ、スグちゃんも好きだったねぇ」"
+		"text": "「これ、スグちゃんも好きだったねぇ」",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -125,21 +157,37 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は――何も言えなかった。"
+		"text": "イロが箸を止め、父も視線を落とす。"
 	},
 	{
 		"type": "dialogue",
-		"text": "スグが好きだった煮物。"
+		"text": "――スグが好きだった。"
 	},
 	{
 		"type": "dialogue",
-		"text": "思い出せない。",
+		"text": "僕は皿の上の煮物を見つめた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが好きだった、煮物――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "思い出せない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグがこれを食べている姿が、浮かんでこなかった。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
 		"text": "僕は箸を伸ばし、煮物を口に運んだ。",
 		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "子供の頃から、ずっと変わらない味。"
 	},
 	{
 		"type": "dialogue",
@@ -152,7 +200,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "父が口を開いた。",
+		"text": "しばらく食事が続いた後、父が口を開いた。",
 		"new_page": true
 	},
 	{
@@ -161,7 +209,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "お寺さんとはお寺の住職のことだ。ダキではそう呼ばれていた。"
+		"text": "お寺さん――お寺の住職のことだ。ダキではそう呼ばれていた。"
 	},
 	{
 		"type": "dialogue",
@@ -178,12 +226,42 @@
 	},
 	{
 		"type": "dialogue",
+		"text": "僕は箸を止めた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "法事――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "親戚が集まって、みんなでスグのことを話す。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は、ちゃんと話せるだろうか。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグのこと、ちゃんと覚えているだろうか。"
+	},
+	{
+		"type": "dialogue",
+		"text": "不安が、胸の奥に広がっていく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷いて、また箸を動かした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
 		"text": "イロが僕の方を見た。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「お兄ちゃん、明日大丈夫？」"
+		"text": "「お兄ちゃん、大丈夫？」"
 	},
 	{
 		"type": "dialogue",
@@ -191,11 +269,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕は大丈夫だよと応えた。"
+		"text": "僕は、大丈夫だよと笑顔を作って応えた。"
 	},
 	{
 		"type": "dialogue",
-		"text": "イロは少し安心したように笑った。"
+		"text": "イロは少し安心したように笑顔を返す。"
 	},
 	{
 		"type": "dialogue",
