@@ -28,34 +28,63 @@
 	},
 	{
 		"type": "dialogue",
+		"text": "その優しさに、少しだけ救われる気持ちになった。"
+	},
+	{
+		"type": "dialogue",
 		"text": "僕は頷いて、自分の部屋へ向かうことにした。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "階段を上りながら、さっきの会話のことを思い返していた。",
+		"text": "階段を上りながら、さっきの食卓のことを思い返していた。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "スグの話。"
+		"text": "祖母の「スグちゃんも好きだった」という言葉――。"
 	},
 	{
 		"type": "dialogue",
-		"text": "明日の法事。"
+		"text": "でも、僕は思い出せなかった。"
 	},
 	{
 		"type": "dialogue",
-		"text": "そして――今日、思い出したこと。"
+		"text": "スグが煮物を食べている姿を、笑顔で「おいしい」と言っている姿を。"
 	},
 	{
 		"type": "dialogue",
-		"text": "自室のドアを開けた。"
+		"text": "それに、明日は法事だ。"
 	},
 	{
 		"type": "dialogue",
-		"text": "懐かしい部屋だった。",
+		"text": "親戚が集まって、みんなでスグのことを話す。"
+	},
+	{
+		"type": "dialogue",
+		"text": "きっと、たくさんのエピソードが出てくるだろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――僕だけが、覚えていないのかもしれない。",
 		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "二階の廊下の奥、突き当りに二つの部屋がある――イロの部屋と、かつて僕が使っていた部屋だ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "自室のドアノブに手をかけた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――どれくらいぶりだろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ドアを開けると、懐かしい景色が広がった。"
 	},
 	{
 		"type": "background",
@@ -67,8 +96,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "本棚には昔読んでいた漫画が並んでいる。",
-		"new_page": true
+		"text": "本棚には昔読んでいた漫画が並んでいる。"
 	},
 	{
 		"type": "dialogue",
@@ -80,25 +108,39 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "まるで時間が止まっているようだった。"
-	},
-	{
-		"type": "dialogue",
-		"text": "ベッドに腰を下ろし、そのまま仰向けに倒れ込んだ。"
-	},
-	{
-		"type": "dialogue",
-		"text": "天井を見上げる。",
+		"text": "まるで時間が止まっているようだった。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "今日は、長い一日だった。",
+		"text": "ベッドに腰を下ろし、そのまま仰向けに倒れ込んだ。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "バスの中で見た海。"
+		"text": "目に入ったベッドの脇には、古い野球のグローブが置かれている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "これは……僕のだったっけ？"
+	},
+	{
+		"type": "dialogue",
+		"text": "それとも――スグの？"
+	},
+	{
+		"type": "dialogue",
+		"text": "少し考えたが、結局思い出せなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "天井を見ながら今日の出来事を思い返す――本当に長い一日だった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "バスの中で見た、青い海。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -106,7 +148,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "そして――思い出したスグとの記憶。"
+		"text": "そして――思い出した、スグとの記憶。"
 	},
 	{
 		"type": "branch",
@@ -122,6 +164,10 @@
 	},
 	{
 		"type": "dialogue",
+		"text": "――そうだ。"
+	},
+	{
+		"type": "dialogue",
 		"text": "白い服の少年。"
 	},
 	{
@@ -130,7 +176,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "そして――他の場所でも。",
+		"text": "そして――他の場所でも。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あの少年を見るたびに、懐かしさと――不思議な感覚に襲われた。",
 		"go_next": true
 	},
 	{
@@ -143,11 +193,15 @@
 	},
 	{
 		"type": "dialogue",
+		"text": "――そうだ。"
+	},
+	{
+		"type": "dialogue",
 		"text": "白い服の少年。"
 	},
 	{
 		"type": "dialogue",
-		"text": "地下道で見た――。",
+		"text": "地下道で見た――あの少年。",
 		"go_next": true
 	},
 	{
@@ -165,11 +219,15 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "イロも見ていた――幻覚ではないはずだ。"
+		"text": "いや――イロも見ていた。"
 	},
 	{
 		"type": "dialogue",
-		"text": "でも――。"
+		"text": "幻覚ではないはずだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、それなら――あの少年は誰なんだ？"
 	},
 	{
 		"type": "dialogue",
@@ -181,19 +239,33 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "スグに、似ていた。"
+		"text": "そして――あの顔。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "似ていたというよりも、記憶の中のスグそのものだった。"
+		"text": "スグに、似ていた。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "でも、スグはもういない。"
+		"text": "似ていたというよりも――記憶の中のスグ、そのものだった。"
 	},
 	{
 		"type": "dialogue",
-		"text": "１２年前に、あの事故で――。",
+		"text": "でも、それはあり得ないんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグはもういない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "１２年前の今日――あの事故で――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "頭ではわかってるんだけど……でも……。",
 		"go_next": true
 	},
 	{
@@ -202,4 +274,3 @@
 		"new_page_after_return": true
 	}
 ]
-

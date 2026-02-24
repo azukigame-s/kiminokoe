@@ -1,5 +1,24 @@
 [
 	{
+		"type": "subtitle",
+		"text": "１０月１０日\n　２２：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "ふぅ、と長い息が自然と漏れた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "妹の配慮で早く自室に戻ったものの、結局眠れずにいる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "色々なことが起こりすぎて混乱して、頭の中の整理が追いつかなかった。"
+	},
+	{
 		"type": "branch",
 		"condition": "day_1010_ending",
 		"branches": {
@@ -16,20 +35,38 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "今日、いくつもの記憶を思い出した。",
+		"text": "スグとの記憶が、――霞んでいた日々が、鮮明に蘇ってきている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "喧嘩をした理由も、僕がちゃんとスグにお兄ちゃんとして振舞っていたことも――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして、あの裏山の秘密基地――スグと二人だけの場所も。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "でも――何かが足りない。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "スグと過ごした日々が、鮮明に蘇ってきている。"
+		"text": "パズルのピースがまだ揃っていない感覚……。"
 	},
 	{
 		"type": "dialogue",
-		"text": "でも――何かが、まだ足りない気がする。"
+		"text": "何か――何か大切なことを、忘れている気がする。"
 	},
 	{
 		"type": "dialogue",
-		"text": "何か大切なことを、忘れている気がする。"
+		"text": "でも、確かに感じる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "この帰省で――何かが変わる、何か大切なことに辿り着ける気がするんだ。",
+		"go_next": true
 	},
 	{
 		"type": "jump",
@@ -41,16 +78,34 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "今日、たくさんの記憶を思い出した。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
 		"text": "スグと過ごした日々が、少しずつ蘇ってきている。"
 	},
 	{
 		"type": "dialogue",
-		"text": "もう少し……もう少し思い出せば何かが変わる気がする。"
+		"text": "忘れていたと思っていた記憶が、確かに心の中にあった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、まだ全部じゃない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "もう少し――。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "もう少し思い出せば、何かが変わる気がする。"
+	},
+	{
+		"type": "dialogue",
+		"text": "もう一度ダキを回ろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そうすればスグとの日々が、もっとはっきりと見えてくる気がするんだ。",
+		"go_next": true
 	},
 	{
 		"type": "jump",
@@ -62,20 +117,34 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "今日、いくつかの記憶を思い出した。",
+		"text": "スグとの記憶が、少しずつ戻ってきている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、断片的だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "記憶が、まだ繋がっていない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "もっと――もっとたくさんの思い出があったはずだ。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "スグと過ごした日々が、少しずつ蘇ってきている。"
+		"text": "スグと過ごした日々が、こんなに少ないわけがない。"
 	},
 	{
 		"type": "dialogue",
-		"text": "でも、まだ足りない。"
+		"text": "もっとダキを歩けば、思い出せるかもしれない。"
 	},
 	{
 		"type": "dialogue",
-		"text": "まだ、思い出せないことがたくさんある。"
+		"text": "僕は思い出さないといけないんだ――スグのことを。",
+		"go_next": true
 	},
 	{
 		"type": "jump",
@@ -87,8 +156,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "今日、わずかな記憶を思い出した。",
-		"new_page": true
+		"text": "スグとの記憶――わずかに、戻ってきた。"
 	},
 	{
 		"type": "dialogue",
@@ -100,7 +168,30 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "思い出せない。"
+		"text": "もっと、たくさんの思い出があったはずなのに。"
+	},
+	{
+		"type": "dialogue",
+		"text": "なぜ、こんなにも思い出せないんだろう。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "明日の法事で――。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "親戚の人たちの話を聞けば、何か思い出せるかもしれない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "いや、思い出さなければ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグのために。",
+		"go_next": true
 	},
 	{
 		"type": "jump",
@@ -116,15 +207,41 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "考えても、わからない。"
+		"text": "――何も思い出せない。"
 	},
 	{
 		"type": "dialogue",
-		"text": "わからないことだらけだ。"
+		"text": "今日一日、ダキを歩いたのに、何も変わらなかった。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "明日の法事で、何か思い出せるだろうか。",
+		"text": "考えても、わからない。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "白い服の少年のこと。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグのこと。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして――僕自身のこと。"
+	},
+	{
+		"type": "dialogue",
+		"text": "記憶が、霧の中にあるような――手を伸ばしても、届かない感覚。"
+	},
+	{
+		"type": "dialogue",
+		"text": "明日の法事――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "せめて――せめてスグに、手を合わせよう。",
 		"go_next": true
 	},
 	{
@@ -137,34 +254,12 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "スグの顔も、はっきりとは思い出せない。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "明日は法事だ。"
-	},
-	{
-		"type": "dialogue",
-		"text": "お寺さんが来て、叔父さんたちも集まる。"
-	},
-	{
-		"type": "dialogue",
-		"text": "みんなでスグのことを話すのだろう。"
-	},
-	{
-		"type": "dialogue",
-		"text": "僕は――ちゃんと、スグのことを思い出せるだろうか？"
-	},
-	{
-		"type": "dialogue",
 		"text": "そんなことを考えていると、まぶたが重くなってきた。",
-		"go_next": true
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "体が、疲れを訴えている。",
-		"new_page": true
+		"text": "体が、疲れを訴えている。"
 	},
 	{
 		"type": "dialogue",
@@ -172,7 +267,15 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "目を閉じると、白い服の少年の姿が浮かんだ。"
+		"text": "布団をかぶり、目を閉じる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――すぐに、白い服の少年の姿が浮かんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――スグそっくりの、あの顔。"
 	},
 	{
 		"type": "dialogue",
@@ -180,13 +283,21 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "そして、また会えるのだろうか。",
+		"text": "また会えるだろうか……。",
 		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "意識が、遠のいていく。",
+		"text": "意識が、少しずつ遠のいていく。",
 		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "暗闇に向かって歩く、白い服の少年――その背中が小さくなっていく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――行かないでくれ。"
 	},
 	{
 		"type": "dialogue",
@@ -194,7 +305,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "スグの名前を、心の中で呼んでいた。",
+		"text": "弟の名前を呼んでいた。",
 		"go_next": true
 	}
 ]
