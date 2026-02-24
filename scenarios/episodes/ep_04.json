@@ -46,7 +46,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "おばあちゃんにスグと話してほしいと頼まれ、今に至る。",
+		"text": "おばあちゃんにスグと話してほしいと頼まれ、こうしてグローブを構えているわけだ。",
 		"go_next": true
 	},
 	{
@@ -212,8 +212,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "ふたりで走って家に入った。",
-		"go_next": true
+		"text": "ふたりで走って家に入った。"
 	},
 	{
 		"type": "flashback_end",
@@ -222,8 +221,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
+		"text": "………………。"
 	},
 	{
 		"type": "dialogue",
@@ -231,7 +229,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "……。"
+		"text": "……。",
+		"go_next": true
 	},
 	{
 		"type": "flashback_end"
