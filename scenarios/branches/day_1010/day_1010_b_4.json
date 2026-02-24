@@ -293,7 +293,11 @@
 		"text": "不思議な子供の姿を見たからだろうか――それとも、地蔵に導かれたのか――僕は吸い込まれるように暗闇の方へ足を進めた。",
 		"go_next": true
 	},
-		{
+	{
+		"type": "sfx_loop",
+		"path": "res://assets/sounds/ambient/grass_walk.mp3"
+	},
+	{
 		"type": "dialogue",
 		"text": "…………。",
 		"new_page": true
@@ -326,6 +330,14 @@
 	{
 		"type": "background",
 		"path": "res://assets/backgrounds/fire_pit.jpg"
+	},
+	{
+		"type": "sfx_loop_stop"
+	},
+	{
+		"type": "sfx_loop",
+		"path": "res://assets/sounds/ambient/wind_howl.mp3",
+		"channel": 2
 	},
 	{
 		"type": "bgm",
@@ -363,6 +375,11 @@
 		"new_page": true
 	},
 	{
+		"type": "sfx_loop",
+		"path": "res://assets/sounds/ambient/rain.mp3",
+		"channel": 1
+	},
+	{
 		"type": "dialogue",
 		"text": "雨だ。"
 	},
@@ -377,6 +394,10 @@
 	{
 		"type": "dialogue",
 		"text": "その時、風が吹いた。"
+	},
+	{
+		"type": "sfx",
+		"path": "res://assets/sounds/thunder_sfx.mp3"
 	},
 	{
 		"type": "dialogue",
@@ -394,6 +415,14 @@
 	{
 		"type": "visit_location",
 		"id": "takiba"
+	},
+	{
+		"type": "sfx_loop_stop",
+		"channel": 1
+	},
+	{
+		"type": "sfx_loop_stop",
+		"channel": 2
 	},
 	{
 		"type": "jump",

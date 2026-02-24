@@ -27,6 +27,11 @@
 		"path": "res://assets/backgrounds/busstop2.jpg"
 	},
 	{
+		"type": "sfx_loop",
+		"path": "res://assets/sounds/ambient/eaves_rain.mp3",
+		"channel": 1
+	},
+	{
 		"type": "dialogue",
 		"text": "そこにつく頃には雨は本降りになり始めていた。"
 	},
@@ -36,7 +41,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "10月の雨は冷たい。"
+		"text": "１０月の雨は冷たい。"
 	},
 	{
 		"type": "dialogue",

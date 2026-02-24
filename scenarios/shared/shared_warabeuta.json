@@ -8,6 +8,8 @@
 			"あたまおなか　手とあし",
 			"ぱちぱち燃えたら",
 			"川へゆく　川へゆく"
-		]
+		],
+		"mute_bgm": true,
+		"ambient": "res://assets/sounds/ambient/eerie_ambience.mp3"
 	}
 ]

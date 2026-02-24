@@ -62,6 +62,10 @@ func execute(command: Dictionary, skip_controller: SkipController) -> void:
 			await execute_bgm(command, skip_controller)
 		"sfx":
 			execute_sfx(command, skip_controller)
+		"sfx_loop":
+			execute_sfx_loop(command, skip_controller)
+		"sfx_loop_stop":
+			execute_sfx_loop_stop(command, skip_controller)
 		"choice":
 			# choice は ScenarioEngine で処理（フロー制御が必要なため）
 			pass
@@ -161,6 +165,42 @@ func execute_sfx(command: Dictionary, _skip_controller: SkipController) -> void:
 	else:
 		push_warning("[CommandExecutor] AudioManager が設定されていません")
 
+## sfx_loop コマンドを実行（環境音ループ再生、シナリオをブロックしない）
+## channel: 1=ch1（デフォルト）, 2=ch2（風・雨オーバーレイ用）
+## volume_db: 音量調整（デフォルト 0.0 dB）
+func execute_sfx_loop(command: Dictionary, skip_controller: SkipController) -> void:
+	var path = command.get("path", "")
+	if path.is_empty():
+		push_warning("[CommandExecutor] sfx_loop に path がありません")
+		return
+
+	var channel: int = command.get("channel", 1)
+	var volume_db: float = command.get("volume_db", 0.0)
+	if audio_manager:
+		var use_fade = not skip_controller.is_skipping
+		if channel == 2:
+			audio_manager.play_ambient2(path, use_fade, volume_db)
+		else:
+			audio_manager.play_ambient(path, use_fade, volume_db)
+	else:
+		push_warning("[CommandExecutor] AudioManager が設定されていません")
+
+## sfx_loop_stop コマンドを実行（環境音ループ停止、シナリオをブロックしない）
+## channel: 1=ch1（デフォルト）, 2=ch2
+## fade: true を指定した場合のみフェードアウト（デフォルト false=即時停止）
+## ※ 直後に sfx_loop で別トラックを開始する場合は必ず false にすること
+##   （fade=true のフェードアウトは非同期で動くため、1秒後に次のトラックを止めてしまう）
+func execute_sfx_loop_stop(command: Dictionary, _skip_controller: SkipController) -> void:
+	var channel: int = command.get("channel", 1)
+	var use_fade: bool = command.get("fade", false)
+	if audio_manager:
+		if channel == 2:
+			audio_manager.stop_ambient2(use_fade)
+		else:
+			audio_manager.stop_ambient(use_fade)
+	else:
+		push_warning("[CommandExecutor] AudioManager が設定されていません")
+
 ## 選択肢表示時にテキストを隠す
 func hide_text_for_choice() -> void:
 	if text_display:
@@ -202,6 +242,8 @@ func execute_subtitle(command: Dictionary, skip_controller: SkipController) -> v
 		push_warning("[CommandExecutor] SubtitleDisplay が設定されていません")
 
 ## poem コマンドを実行（童歌・詩のフルスクリーン表示）
+## オプション: mute_bgm=true で BGM を一時停止し詩終了後に復元
+## オプション: ambient="path" で詩の間ループSEを再生
 func execute_poem(command: Dictionary, skip_controller: SkipController) -> void:
 	# スキップモード中は詩表示をスキップ
 	if skip_controller.is_skipping:
@@ -210,6 +252,19 @@ func execute_poem(command: Dictionary, skip_controller: SkipController) -> void:
 	var lines: Array = command.get("lines", [])
 	if lines.is_empty():
 		return
+
+	var mute_bgm: bool = command.get("mute_bgm", false)
+	var ambient_path: String = command.get("ambient", "")
+
+	# BGM を一時停止（フェードアウト完了まで待つ）
+	var saved_bgm_path: String = ""
+	if mute_bgm and audio_manager:
+		saved_bgm_path = audio_manager.current_bgm_path
+		await audio_manager.stop_bgm(true)
+
+	# 環境音 SE のループ再生開始
+	if not ambient_path.is_empty() and audio_manager:
+		audio_manager.play_ambient(ambient_path, false)
 
 	if poem_display:
 		poem_display.show_poem(lines)
@@ -220,6 +275,14 @@ func execute_poem(command: Dictionary, skip_controller: SkipController) -> void:
 		TrophyManager.check_demo_complete(SceneManager.play_time)
 	else:
 		push_warning("[CommandExecutor] PoemDisplay が設定されていません")
+
+	# 環境音 SE を停止
+	if not ambient_path.is_empty() and audio_manager:
+		audio_manager.stop_ambient(false)
+
+	# BGM を復元（フェードインはバックグラウンドで実行）
+	if mute_bgm and not saved_bgm_path.is_empty() and audio_manager:
+		audio_manager.play_bgm(saved_bgm_path, true)
 
 ## visit_location コマンドを実行（場所訪問記録 → トロフィーチェック）
 func execute_visit_location(command: Dictionary) -> void:

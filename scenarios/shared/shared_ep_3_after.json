@@ -72,6 +72,10 @@
 		"type": "dialogue",
 		"text": "イロの方に向き直り、家に帰ることにした。",
 		"go_next": true
+	},
+	{
+		"type": "sfx_loop_stop",
+		"channel": 1
 	}
 ]
 
