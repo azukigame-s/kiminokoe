@@ -95,6 +95,11 @@
 		"name": "night"
 	},
 	{
+		"type": "sfx_loop",
+		"path": "res://assets/sounds/ambient/night_insects.mp3",
+		"channel": 1
+	},
+	{
 		"type": "dialogue",
 		"text": "本棚には昔読んでいた漫画が並んでいる。"
 	},

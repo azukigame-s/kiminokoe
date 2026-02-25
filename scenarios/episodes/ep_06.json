@@ -32,6 +32,11 @@
 		"text": "………………。"
 	},
 	{
+		"type": "sfx_loop",
+		"path": "res://assets/sounds/ambient/stream.mp3",
+		"channel": 1
+	},
+	{
 		"type": "dialogue",
 		"text": "兄の水は村の人たちに親しまれている場所だった。"
 	},
@@ -224,6 +229,10 @@
 	{
 		"type": "dialogue",
 		"text": "僕たちは水槽を覗き込みながら笑った。"
+	},
+	{
+		"type": "sfx_loop_stop",
+		"channel": 1
 	},
 	{
 		"type": "flashback_end",

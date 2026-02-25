@@ -477,8 +477,12 @@ SEファイルはすべて `assets/sounds/` 以下に配置する。
 | `sounds/ambient/blizzard.mp3` | ループ ch1 | 吹雪（12月の回想） |
 | `sounds/ambient/eerie_ambience.mp3` | ループ ch1 | 不穏な環境音（童歌演出用） |
 | `sounds/ambient/wind_howl.mp3` | ループ ch2 | 吹きすさぶ風（焚き場） |
+| `sounds/ambient/sea_waves.mp3` | ループ ch1 | 海の波音（海岸・砂浜） |
+| `sounds/ambient/rocky_waves.mp3` | ループ ch2 | 岩場の波音（東岸ルート） |
+| `sounds/ambient/underwater.mp3` | ループ ch1 | 水中SE（溺れる回想） |
+| `sounds/ambient/night_insects.mp3` | ループ ch1 | 夜の秋虫（就寝シーン） |
 
-**未配置（将来用）**: `stream.mp3`（川）/ `sea_waves.mp3`（波）/ `rocky_waves.mp3`（岩場の波）/ `night_insects.mp3`（夜の秋虫）/ `village_evening.mp3`（田舎の夕方）
+**未配置（将来用）**: `stream.mp3`（川）/ `village_evening.mp3`（田舎の夕方）
 
 #### シーン別SE配置
 
@@ -499,6 +503,15 @@ SEファイルはすべて `assets/sounds/` 以下に配置する。
 | | flashback_end（gradual）直前 | ch1（blizzard）停止 → `eaves_rain.mp3` ch1 再開 | 吹雪から10月雨へ復帰 |
 | **shared_ep_3_after** | 「家に帰ることにした。」の後 | ch1（eaves_rain）停止 | 雨宿りシーン終了 |
 | **shared_warabeuta** | poem表示中（ambient指定） | `eerie_ambience.mp3` ch1 開始・終了（poem内で自動管理） | BGMも一時停止（mute_bgm: true） |
+| **day_1010_b_1** | sea_road.jpg 表示時 | `sea_waves.mp3` ch1 開始 | 海岸到着（東西両ルートの親） |
+| **day_1010_c_1** | シナリオ冒頭 | ch1（sea_waves）停止 → `rocky_waves.mp3` ch1 開始 | 岩場ルート（波の質を切り替え） |
+| | waterway.jpg 切替前 | ch1（rocky_waves）停止 | 用水路へ入るタイミング |
+| **shared_day_1010_c** | beach.jpg 直後 | `sea_waves.mp3` ch1 開始 | 砂浜・白い少年のシーン |
+| | ep_02 復帰後（bgm: main 直後） | `sea_waves.mp3` ch1 再開 | 水中から砂浜へ戻る |
+| | シナリオ末尾 | ch1（sea_waves）停止 | 砂浜シーン終了 |
+| **ep_02**（flashback内） | 「――その瞬間。」の直後 | `underwater.mp3` ch1 開始 | 波に飲み込まれる |
+| | 「ただ青い景色が回る中…」の直後 | ch1（underwater）停止 | 意識が戻る（弟の声） |
+| **evening_common** | bgm: night 直後 | `night_insects.mp3` ch1 開始 | 帰宅・就寝シーン |
 
 #### チャンネル設計
 

@@ -147,6 +147,11 @@
 		"go_next": true
 	},
 	{
+		"type": "sfx_loop",
+		"path": "res://assets/sounds/ambient/underwater.mp3",
+		"channel": 1
+	},
+	{
 		"type": "dialogue",
 		"text": "巨大な壁が、僕を飲み込んだ。",
 		"new_page": true
@@ -163,6 +168,10 @@
 		"type": "dialogue",
 		"text": "ただ青い景色が回る中、弟の声だけが耳に届いていた。",
 		"go_next": true
+	},
+	{
+		"type": "sfx_loop_stop",
+		"channel": 1
 	},
 	{
 		"type": "dialogue",

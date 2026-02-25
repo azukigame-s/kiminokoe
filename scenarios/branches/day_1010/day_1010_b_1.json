@@ -21,6 +21,11 @@
 		"path": "res://assets/backgrounds/sea_road.jpg"
 	},
 	{
+		"type": "sfx_loop",
+		"path": "res://assets/sounds/ambient/sea_waves.mp3",
+		"channel": 1
+	},
+	{
 		"type": "dialogue",
 		"text": "うっすら潮のにおいもする。"
 	},
