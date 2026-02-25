@@ -262,7 +262,7 @@ func _continue_game():
 	SceneManager.protagonist_name = save_data.get("protagonist_name", "コウ")
 	SceneManager.play_time = save_data.get("play_time", 0.0)
 
-	# シナリオエンジンの状態を復元
+	# シナリオエンジンの状態を復元（環境音状態も含めて渡す）
 	var engine_state = {
 		"scenario_path": save_data.get("scenario_path", ""),
 		"index": save_data.get("index", 0),
@@ -271,6 +271,10 @@ func _continue_game():
 		"bgm_path": save_data.get("bgm_path", ""),
 		"effect": save_data.get("effect", "normal"),
 		"backlog": save_data.get("backlog", []),
+		"ambient_path": save_data.get("ambient_path", ""),
+		"ambient_volume_db": save_data.get("ambient_volume_db", 0.0),
+		"ambient2_path": save_data.get("ambient2_path", ""),
+		"ambient2_volume_db": save_data.get("ambient2_volume_db", 0.0),
 	}
 	await scenario_engine.load_from_save_state(engine_state)
 
@@ -371,6 +375,11 @@ func _show_demo_ending():
 ## オートセーブ処理
 func _on_auto_save_requested(save_state: Dictionary) -> void:
 	save_state["play_time"] = SceneManager.play_time
+	# 環境音の再生状態を保存（つづきから再開時に復元するため）
+	save_state["ambient_path"] = audio_manager.current_ambient_path
+	save_state["ambient_volume_db"] = audio_manager.current_ambient_volume_db
+	save_state["ambient2_path"] = audio_manager.current_ambient2_path
+	save_state["ambient2_volume_db"] = audio_manager.current_ambient2_volume_db
 	SceneManager.auto_save(save_state)
 
 ## スキップモード変更時のコールバック
@@ -428,13 +437,17 @@ func _on_backlog_closed():
 
 ## ポーズメニューからのシグナル処理
 func _on_title_requested():
+	# タイトルへ戻る前に現在の状態（アンビエント含む）をオートセーブ
+	var save_state = scenario_engine.get_save_state()
+	_on_auto_save_requested(save_state)
+	# ポーズを解除してからシーン遷移（goto_title内でstop_all_ambientが呼ばれるが、上でセーブ済み）
+	get_tree().paused = false
 	SceneManager.goto_title()
 
 func _on_settings_requested():
-	# 設定画面へ遷移する前にオートセーブを実行
+	# 設定画面へ遷移する前に現在の状態（アンビエント含む）をオートセーブ
 	var save_state = scenario_engine.get_save_state()
-	save_state["play_time"] = SceneManager.play_time
-	SceneManager.auto_save(save_state)
+	_on_auto_save_requested(save_state)
 	# ポーズを解除（シーン遷移でゲームツリーが破棄されるため）
 	get_tree().paused = false
 	SceneManager.goto_settings("game")

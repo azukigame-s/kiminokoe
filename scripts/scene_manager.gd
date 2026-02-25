@@ -155,6 +155,8 @@ func change_scene_instant(scene_path: String):
 
 # タイトルシーンへ
 func goto_title():
+	# 環境音をすべて即時停止してからシーン遷移
+	AudioManager.stop_all_ambient()
 	change_scene(TITLE_SCENE)
 
 # ゲームシーンへ（ノベルシステム）
@@ -215,6 +217,10 @@ func auto_save(save_state: Dictionary) -> void:
 	config.set_value("save", "effect", save_state.get("effect", "normal"))
 	config.set_value("save", "backlog", save_state.get("backlog", []))
 	config.set_value("save", "play_time", save_state.get("play_time", 0.0))
+	config.set_value("save", "ambient_path", save_state.get("ambient_path", ""))
+	config.set_value("save", "ambient_volume_db", save_state.get("ambient_volume_db", 0.0))
+	config.set_value("save", "ambient2_path", save_state.get("ambient2_path", ""))
+	config.set_value("save", "ambient2_volume_db", save_state.get("ambient2_volume_db", 0.0))
 	var error = config.save(SAVE_FILE_PATH)
 	if error != OK:
 		push_error("[SceneManager] Failed to auto-save: %s" % str(error))
@@ -236,6 +242,10 @@ func load_save_data() -> Dictionary:
 		"effect": config.get_value("save", "effect", "normal"),
 		"backlog": config.get_value("save", "backlog", []),
 		"play_time": config.get_value("save", "play_time", 0.0),
+		"ambient_path": config.get_value("save", "ambient_path", ""),
+		"ambient_volume_db": config.get_value("save", "ambient_volume_db", 0.0),
+		"ambient2_path": config.get_value("save", "ambient2_path", ""),
+		"ambient2_volume_db": config.get_value("save", "ambient2_volume_db", 0.0),
 	}
 
 # つづきからはじめるが可能か（シナリオ進行データがあるか）
@@ -262,7 +272,7 @@ func clear_scenario_progress() -> void:
 	if error != OK:
 		return
 	# シナリオ関連キーを削除
-	for key in ["scenario_path", "index", "stack", "background_path", "bgm_path", "effect", "backlog"]:
+	for key in ["scenario_path", "index", "stack", "background_path", "bgm_path", "effect", "backlog", "ambient_path", "ambient_volume_db", "ambient2_path", "ambient2_volume_db"]:
 		if config.has_section_key("save", key):
 			config.set_value("save", key, null)
 	config.save(SAVE_FILE_PATH)

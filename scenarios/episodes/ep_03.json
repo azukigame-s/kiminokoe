@@ -25,8 +25,7 @@
 	{
 		"type": "sfx_loop",
 		"path": "res://assets/sounds/ambient/blizzard.mp3",
-		"channel": 1,
-		"volume_db": 12.0
+		"channel": 1
 	},
 	{
 		"type": "dialogue",

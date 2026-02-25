@@ -396,7 +396,11 @@ func load_from_save_state(save_state: Dictionary) -> void:
 	var bg_path = save_state.get("background_path", "")
 	var bgm_path = save_state.get("bgm_path", "")
 	var effect = save_state.get("effect", "normal")
-	await _restore_visual_state(bg_path, bgm_path, effect)
+	var ambient_path = save_state.get("ambient_path", "")
+	var ambient_volume_db = save_state.get("ambient_volume_db", 0.0)
+	var ambient2_path = save_state.get("ambient2_path", "")
+	var ambient2_volume_db = save_state.get("ambient2_volume_db", 0.0)
+	await _restore_visual_state(bg_path, bgm_path, effect, ambient_path, ambient_volume_db, ambient2_path, ambient2_volume_db)
 
 	# バックログの復元
 	var backlog_data = save_state.get("backlog", [])
@@ -422,7 +426,9 @@ func load_from_save_state(save_state: Dictionary) -> void:
 	scenario_completed.emit()
 
 ## 視覚/音声状態を復元（フェードなし）
-func _restore_visual_state(bg_path: String, bgm_path: String, effect: String) -> void:
+func _restore_visual_state(bg_path: String, bgm_path: String, effect: String,
+		ambient_path: String = "", ambient_volume_db: float = 0.0,
+		ambient2_path: String = "", ambient2_volume_db: float = 0.0) -> void:
 	if not command_executor:
 		return
 	# 背景復元
@@ -433,3 +439,8 @@ func _restore_visual_state(bg_path: String, bgm_path: String, effect: String) ->
 	# BGM復元
 	if not bgm_path.is_empty() and command_executor.audio_manager:
 		await command_executor.audio_manager.play_bgm(bgm_path, false)
+	# 環境音復元（sfx_loop のセーブ状態を再開）
+	if not ambient_path.is_empty() and command_executor.audio_manager:
+		command_executor.audio_manager.play_ambient(ambient_path, false, ambient_volume_db)
+	if not ambient2_path.is_empty() and command_executor.audio_manager:
+		command_executor.audio_manager.play_ambient2(ambient2_path, false, ambient2_volume_db)

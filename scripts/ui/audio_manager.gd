@@ -12,9 +12,11 @@ var ambient2_player: AudioStreamPlayer  # 環境音 ch2（風・雨などオー�
 # 現在再生中のBGMパス
 var current_bgm_path: String = ""
 
-# 現在再生中の環境音パス
+# 現在再生中の環境音パスと音量（セーブ・ロード用）
 var current_ambient_path: String = ""
+var current_ambient_volume_db: float = 0.0
 var current_ambient2_path: String = ""
+var current_ambient2_volume_db: float = 0.0
 
 # フェード設定
 var bgm_fade_duration: float = 1.5
@@ -135,6 +137,7 @@ func play_ambient(path: String, fade_in: bool = false, volume_db: float = 0.0) -
 		stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 
 	current_ambient_path = path
+	current_ambient_volume_db = volume_db
 	ambient_player.stream = stream
 
 	if fade_in:
@@ -160,6 +163,7 @@ func stop_ambient(fade_out: bool = true) -> void:
 
 	ambient_player.stop()
 	current_ambient_path = ""
+	current_ambient_volume_db = 0.0
 
 ## 環境音 ch2 をループ再生（volume_db で音量調整）
 func play_ambient2(path: String, fade_in: bool = false, volume_db: float = 0.0) -> void:
@@ -182,6 +186,7 @@ func play_ambient2(path: String, fade_in: bool = false, volume_db: float = 0.0) 
 		stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 
 	current_ambient2_path = path
+	current_ambient2_volume_db = volume_db
 	ambient2_player.stream = stream
 
 	if fade_in:
@@ -207,6 +212,17 @@ func stop_ambient2(fade_out: bool = true) -> void:
 
 	ambient2_player.stop()
 	current_ambient2_path = ""
+	current_ambient2_volume_db = 0.0
+
+## ch1・ch2 の環境音をすべて即時停止（タイトルへ戻る時などに使用）
+func stop_all_ambient() -> void:
+	ambient_player.stop()
+	current_ambient_path = ""
+	current_ambient_volume_db = 0.0
+	ambient2_player.stop()
+	current_ambient2_path = ""
+	current_ambient2_volume_db = 0.0
+	print("[AudioManager] 全環境音停止")
 
 ## 効果音を再生
 func play_sfx(path: String) -> void:
