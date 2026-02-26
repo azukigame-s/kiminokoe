@@ -214,9 +214,9 @@
 		"text": "今日一日、ダキを歩いたのに、何も変わらなかった。",
 		"go_next": true
 	},
-	{
+		{
 		"type": "dialogue",
-		"text": "考えても、わからない。",
+		"text": "考えても、考えても――答えが出ない。",
 		"new_page": true
 	},
 	{
@@ -267,11 +267,19 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "布団をかぶり、目を閉じる。"
+		"text": "窓を閉めて、布団をかぶる。"
+	},
+	{
+		"type": "sfx_loop_stop",
+		"channel": 1
 	},
 	{
 		"type": "dialogue",
-		"text": "――すぐに、白い服の少年の姿が浮かんだ。"
+		"text": "目を閉じる――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "すぐに、あの少年の姿が浮かんできた。"
 	},
 	{
 		"type": "dialogue",

@@ -95,11 +95,6 @@
 		"name": "night"
 	},
 	{
-		"type": "sfx_loop",
-		"path": "res://assets/sounds/ambient/night_insects.mp3",
-		"channel": 1
-	},
-	{
 		"type": "dialogue",
 		"text": "本棚には昔読んでいた漫画が並んでいる。"
 	},
@@ -114,6 +109,38 @@
 	{
 		"type": "dialogue",
 		"text": "まるで時間が止まっているようだった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "閉め切っていたせいか、部屋の中は蒸し暑く、少し埃っぽくもあった。",
+		"new_page": true
+	},
+	{
+		"type": "sfx",
+		"path": "res://assets/sounds/window_open.mp3",
+		"volume_db": 12.0
+	},
+	{
+		"type": "dialogue",
+		"text": "窓を開けると冷たい夜風が流れ込んでくる。"
+	},
+	{
+		"type": "sfx_loop",
+		"path": "res://assets/sounds/ambient/night_insects.mp3",
+		"channel": 1
+	},
+	{
+		"type": "dialogue",
+		"text": "外からは虫の音――雨は、いつの間にか止んでいた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "雨上がりの、静かな夜。"
+	},
+	{
+		"type": "dialogue",
+		"text": "騒がしい都会よりも、虫の音が聞こえる夜の方がいい。",
 		"go_next": true
 	},
 	{

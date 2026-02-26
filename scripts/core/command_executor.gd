@@ -159,9 +159,10 @@ func execute_bgm(command: Dictionary, skip_controller: SkipController) -> void:
 ## sfx コマンドを実行
 func execute_sfx(command: Dictionary, _skip_controller: SkipController) -> void:
 	var path = command.get("path", "")
+	var volume_db: float = command.get("volume_db", 0.0)
 
 	if audio_manager:
-		audio_manager.play_sfx(path)
+		audio_manager.play_sfx(path, volume_db)
 	else:
 		push_warning("[CommandExecutor] AudioManager が設定されていません")
 

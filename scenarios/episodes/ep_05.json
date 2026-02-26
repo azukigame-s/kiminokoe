@@ -70,6 +70,10 @@
 		"text": "覗き込むと、子猫は小さく鳴いた。"
 	},
 	{
+		"type": "sfx",
+		"path": "res://assets/sounds/kitten_meow.mp3"
+	},
+	{
 		"type": "dialogue",
 		"text": "「にゃあ……」"
 	},

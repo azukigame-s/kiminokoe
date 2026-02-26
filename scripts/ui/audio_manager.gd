@@ -225,7 +225,7 @@ func stop_all_ambient() -> void:
 	print("[AudioManager] 全環境音停止")
 
 ## 効果音を再生
-func play_sfx(path: String) -> void:
+func play_sfx(path: String, volume_db: float = 0.0) -> void:
 	print("[AudioManager] 効果音再生: %s" % path)
 
 	var stream = load(path)
@@ -234,6 +234,7 @@ func play_sfx(path: String) -> void:
 		return
 
 	sfx_player.stream = stream
+	sfx_player.volume_db = volume_db
 	sfx_player.play()
 
 ## BGMフェードアウト
