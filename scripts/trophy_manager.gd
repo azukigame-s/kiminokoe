@@ -252,21 +252,29 @@ func check_demo_complete(play_time: float) -> void:
 	if is_trophy_unlocked("demo_complete"):
 		return
 
+	log_message("=== check_demo_complete (play_time=%.1f) ===" % play_time, LogLevel.INFO)
+
 	# 条件1: プレイ時間3時間以上
-	if play_time < 10800.0:  # 3時間 = 10800秒
+	if play_time < 10800.0:  # 3時間以上
+		log_message("条件1 NG: プレイ時間不足 (%.1f < 180.0)" % play_time, LogLevel.INFO)
 		return
+	log_message("条件1 OK: プレイ時間 %.1f 秒" % play_time, LogLevel.INFO)
 
 	# 条件2: 体験版で取得可能な通常トロフィー6個（ep_4以外）
 	var demo_episodes = ["ep_1", "ep_2", "ep_3", "ep_5", "ep_6", "ep_7"]
 	for ep_id in demo_episodes:
 		if not is_trophy_unlocked(ep_id + "_clear"):
+			log_message("条件2 NG: %s_clear が未取得" % ep_id, LogLevel.INFO)
 			return
+	log_message("条件2 OK: エピソードトロフィー6個すべて取得済み", LogLevel.INFO)
 
 	# 条件3: 体験版で取得可能なシークレットトロフィー4個
 	var demo_secrets = ["secret_base", "futako_jizo", "takiba", "warabeuta"]
 	for trophy_id in demo_secrets:
 		if not is_trophy_unlocked(trophy_id):
+			log_message("条件3 NG: %s が未取得" % trophy_id, LogLevel.INFO)
 			return
+	log_message("条件3 OK: シークレットトロフィー4個すべて取得済み", LogLevel.INFO)
 
 	# すべての条件を満たした
 	unlock_trophy("demo_complete", secret_trophy_names.get("demo_complete", "地蔵焚の旅人"))
