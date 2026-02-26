@@ -34,7 +34,8 @@
 	{
 		"type": "sfx_loop",
 		"path": "res://assets/sounds/ambient/stream.mp3",
-		"channel": 1
+		"channel": 1,
+		"volume_db": 12.0
 	},
 	{
 		"type": "dialogue",
