@@ -202,10 +202,10 @@ func _style_reset_button(button: Button):
 
 ## プレイ時間のフォーマット
 func _format_play_time(seconds: float) -> String:
-	var total_sec = int(seconds)
-	var hours = total_sec / 3600
-	var minutes = (total_sec % 3600) / 60
-	var secs = total_sec % 60
+	var total_sec: int = int(seconds)
+	var hours: int = total_sec / 3600
+	var minutes: int = (total_sec % 3600) / 60
+	var secs: int = total_sec % 60
 	return "%02d:%02d:%02d" % [hours, minutes, secs]
 
 ## つづきからはじめる

@@ -36,11 +36,11 @@ var bgm_aliases: Dictionary = {
 
 ## エイリアス名をファイルパスに解決する
 ## 未定義のエイリアスは警告を出してそのまま返す（後方互換）
-func resolve_bgm_alias(name: String) -> String:
-	if bgm_aliases.has(name):
-		return bgm_aliases[name]
-	push_warning("[AudioManager] 未定義のBGMエイリアス: %s（パスとして使用）" % name)
-	return name
+func resolve_bgm_alias(alias_name: String) -> String:
+	if bgm_aliases.has(alias_name):
+		return bgm_aliases[alias_name]
+	push_warning("[AudioManager] 未定義のBGMエイリアス: %s（パスとして使用）" % alias_name)
+	return alias_name
 
 func _ready():
 	print("[AudioManager] 準備完了")

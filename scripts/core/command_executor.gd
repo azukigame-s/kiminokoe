@@ -59,7 +59,7 @@ func execute(command: Dictionary, skip_controller: SkipController) -> void:
 		"background":
 			await execute_background(command, skip_controller)
 		"bgm":
-			await execute_bgm(command, skip_controller)
+			execute_bgm(command, skip_controller)
 		"sfx":
 			execute_sfx(command, skip_controller)
 		"sfx_loop":
