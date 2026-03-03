@@ -1,0 +1,72 @@
+name: 🐛 バグ報告
+description: ゲーム中に発生した不具合を報告する
+title: "🐛 [バグ] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ご報告ありがとうございます！
+        できるだけ詳しく教えていただけると助かります 🙏
+
+  - type: input
+    id: scene
+    attributes:
+      label: 📍 発生シーン
+      description: どのシーンで起きましたか？
+      placeholder: 例）10月10日 22:00、就寝前のシーン
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🔁 再現手順
+      description: バグを再現するための手順を教えてください
+      placeholder: |
+        1. ～を選択した
+        2. ～のテキストが表示された
+        3. ～が起きた
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ 期待していた動作
+      description: 本来どうなるべきだったか教えてください
+      placeholder: 例）次のシーンに進むはずだった
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: ❌ 実際の動作
+      description: 実際に何が起きましたか？
+      placeholder: 例）画面が固まって操作できなくなった
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: 📸 スクリーンショット・動画
+      description: あれば貼り付けてください（ドラッグ＆ドロップで添付できます）
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: 💻 OS
+      default: 0
+      options:
+        - Windows 11
+        - Windows 10
+        - macOS
+        - その他
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 📝 その他・補足
+      description: 気になったことや追加情報があれば
