@@ -18,6 +18,6 @@
 > ⚠️ 開発者向けドキュメントにはゲームの核心に触れるネタバレが含まれます。
 
 - [開発概要書](documents/dev/project_overview.md) - ゲーム仕様・ストーリー構成・技術仕様
-- [シナリオ本文](documents/dev/scenarios.md) - ゲームシナリオの原稿
+- [シナリオ本文](documents/dev/scenarios/) - ゲームシナリオの原稿（キミノコエ編・JMR編・お節介編）
 - [引継ぎ指示書](documents/dev/handoff_instructions.md) - 開発状況・優先タスク
 - [テストケース](documents/dev/test_cases.md) - テスト仕様
