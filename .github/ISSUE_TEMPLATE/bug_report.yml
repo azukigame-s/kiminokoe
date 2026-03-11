@@ -10,6 +10,13 @@ body:
         できるだけ詳しく教えていただけると助かります 🙏
 
   - type: input
+    id: version
+    attributes:
+      label: 🔖 バージョン
+      description: タイトル画面の左上に表示されているバージョンを入力してください
+      placeholder: 例）0.5.0
+
+  - type: input
     id: scene
     attributes:
       label: 📍 発生シーン
