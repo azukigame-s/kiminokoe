@@ -57,7 +57,9 @@ func _build_ui() -> void:
 	_container.add_child(_label)
 
 ## 詩を1行ずつ表示する（async）
-func show_poem(lines: Array) -> void:
+## font_color: 文字色。省略時は UIConstants.COLOR_ACCENT（赤銅）
+func show_poem(lines: Array, font_color: Color = UIConstants.COLOR_ACCENT) -> void:
+	_label.add_theme_color_override("font_color", font_color)
 	_container.modulate.a = 0.0
 	visible = true
 
