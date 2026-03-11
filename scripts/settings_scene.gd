@@ -33,7 +33,7 @@ var current_window_mode_index = 0
 var settings_data = {
 	"text_speed": 0.06,
 	"master_volume": 0.8,
-	"window_mode": "fullscreen"  # "fullscreen", "1280x720", "1920x1080"
+	"window_mode": "1280x720"  # "fullscreen", "1280x720", "1920x1080"
 }
 
 # 設定ファイルパス
@@ -42,9 +42,10 @@ var settings_file_path = "user://settings.cfg"
 func _ready():
 	print("[SettingsScene] Settings scene initialized")
 	
-	# 設定の読み込み
+	# 設定の読み込みと適用
 	_load_settings()
-	
+	_apply_settings()
+
 	# UI要素の構築
 	_build_ui()
 	

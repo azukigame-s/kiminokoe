@@ -11,7 +11,9 @@
       "Bash(echo:*)",
       "Bash(done)",
       "Bash(find:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "Bash(gh issue:*)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }

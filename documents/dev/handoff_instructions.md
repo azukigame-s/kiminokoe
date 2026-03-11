@@ -224,6 +224,14 @@ BGMの変更は `scripts/ui/audio_manager.gd` の `bgm_aliases` 辞書1箇所の
 | `fix/〇〇` | 体験版の不具合修正 | main から分岐、main にマージ後 release に cherry-pick |
 | `feature/〇〇` | 製品版の機能追加 | main から分岐、main にマージ |
 
+### ブランチ命名規則
+
+- 区切り文字は `-`（ハイフン）を使用。`_`（アンダースコア）は使わない
+- `fix/` ブランチは Issue 番号を先頭に付ける
+  - 例: `fix/1-default-window-size`（Issue #1 の修正）
+- `feature/` ブランチは機能名を簡潔に英語で
+  - 例: `feature/day1011-scenario`
+
 ### リリースブランチの作成手順
 
 ```bash
