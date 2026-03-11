@@ -263,6 +263,24 @@ git cherry-pick <commit-hash>
 git push
 ```
 
+### リリース（タグ・GitHub Release）手順
+
+リリースブランチが確定したら、タグを打って GitHub Release を作成する。
+
+```bash
+# リリースブランチ上でタグを作成
+git checkout release/demo_x_y_z
+git tag v0.5.1
+git push origin v0.5.1
+```
+
+その後 GitHub の Releases ページでタグを選択し、ビルド済みファイルを添付して公開する。
+
+- タグ名は `v{major}.{minor}.{patch}` 形式（例: `v0.5.1`）
+- バグ修正は patch バージョンを上げる（`0.5.0` → `0.5.1`）
+- 機能追加は minor バージョンを上げる（`0.5.x` → `0.6.0`）
+- 配布物は必ずリリースブランチのタグからビルドする（`main` から直接ビルドしない）
+
 ------
 
 ## 重要な注意事項
