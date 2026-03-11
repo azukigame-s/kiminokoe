@@ -52,6 +52,8 @@ var secret_trophy_ids: Array[String] = [
 	"demo_complete",  # 体験版コンプリート
 	"kiminokoe",      # キミノコエ（トゥルーエンド）
 	"iro_story",      # イロの想い（マル秘ストーリー）
+	"chosa_tai",      # 調査隊結成？（JMR編接続条件）
+	"jms_complete",   # 13年越しのおめでとう（JMS編クリア）
 ]
 
 # シークレットトロフィーの名称
@@ -63,6 +65,8 @@ var secret_trophy_names: Dictionary = {
 	"demo_complete": "地蔵焚の旅人",
 	"kiminokoe": "キミノコエ",
 	"iro_story": "イロの想い",
+	"chosa_tai": "調査隊結成？",
+	"jms_complete": "13年越しのおめでとう",
 }
 
 # エピソードトロフィーの説明文
@@ -85,6 +89,8 @@ var secret_trophy_descriptions: Dictionary = {
 	"demo_complete": "体験版でそこまでする？",
 	"kiminokoe": "喉が……のど飴を常備しないと",
 	"iro_story": "実は計画的な妹",
+	"chosa_tai": "（未定）",
+	"jms_complete": "（未定）",
 }
 
 # 訪問済み場所（シークレットトロフィー用）
