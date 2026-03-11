@@ -9,6 +9,8 @@ signal title_requested
 signal settings_requested
 signal backlog_requested
 
+const FEEDBACK_URL = "https://github.com/azukigame-s/kiminokoe/issues/new/choose"
+
 var is_open: bool = false
 
 # UI要素
@@ -16,6 +18,7 @@ var _background: ColorRect
 var _menu_container: VBoxContainer
 var backlog_button: Button
 var settings_button: Button
+var feedback_button: Button
 var title_button: Button
 
 # デザイン定数（UIConstants から参照）
@@ -67,6 +70,13 @@ func _build_ui():
 	settings_button = _create_menu_button("設定")
 	settings_button.pressed.connect(_on_settings)
 	_menu_container.add_child(settings_button)
+
+	# 区切り線
+	_menu_container.add_child(_create_separator())
+
+	feedback_button = _create_menu_button("要望・不具合を報告する")
+	feedback_button.pressed.connect(_on_feedback)
+	_menu_container.add_child(feedback_button)
 
 	# 区切り線
 	_menu_container.add_child(_create_separator())
@@ -224,6 +234,9 @@ func _on_backlog():
 func _on_settings():
 	close()
 	settings_requested.emit()
+
+func _on_feedback():
+	OS.shell_open(FEEDBACK_URL)
 
 func _on_title():
 	close()

@@ -3,6 +3,8 @@ extends Control
 ## タイトル画面
 ## UIConstants / UIStyleHelper を使用した統一スタイル
 
+const FEEDBACK_URL = "https://github.com/azukigame-s/kiminokoe/issues/new/choose"
+
 # UI要素への参照
 @onready var title_label: Label = $VBoxContainer/TitleLabel
 
@@ -129,6 +131,13 @@ func _setup_buttons():
 		settings_button.pressed.connect(_on_settings_button_pressed)
 		UIStyleHelper.style_title_button(settings_button)
 
+	var feedback_button = Button.new()
+	feedback_button.text = "要望・不具合"
+	feedback_button.pressed.connect(_on_feedback_button_pressed)
+	UIStyleHelper.style_title_button(feedback_button)
+	$VBoxContainer/ButtonContainer.add_child(feedback_button)
+	$VBoxContainer/ButtonContainer.move_child(feedback_button, quit_button.get_index())
+
 	if quit_button:
 		quit_button.text = "終了"
 		quit_button.pressed.connect(_on_quit_button_pressed)
@@ -181,6 +190,10 @@ func _on_trophy_button_pressed():
 func _on_settings_button_pressed():
 	print("[TitleScene] Settings button pressed")
 	SceneManager.goto_settings()
+
+func _on_feedback_button_pressed():
+	print("[TitleScene] Feedback button pressed")
+	OS.shell_open(FEEDBACK_URL)
 
 func _on_quit_button_pressed():
 	print("[TitleScene] Quit button pressed")

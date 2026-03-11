@@ -1,0 +1,46 @@
+name: 💡 要望・感想
+description: 機能の要望やゲームへの感想を伝える
+title: "💡 [要望] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ご意見ありがとうございます！
+        プレイヤーの声が開発の力になります 🙏
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: 📂 カテゴリ
+      default: 0
+      options:
+        - ゲームプレイ・操作感
+        - テキスト・シナリオ
+        - 音楽・効果音
+        - 画面デザイン・UI
+        - その他
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 💬 要望・感想の内容
+      description: どんな機能が欲しいか、どんな感想を持ったかを教えてください
+      placeholder: 例）テキストのスキップ速度をもっと細かく調整できると嬉しいです
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 🤔 その理由・背景
+      description: なぜそう思いましたか？どんなシーンで感じましたか？（任意）
+      placeholder: 例）周回プレイ時に既読テキストを早く読み飛ばしたいため
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 📝 その他・補足
+      description: 参考になる例や追加情報があれば
