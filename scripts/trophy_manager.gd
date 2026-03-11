@@ -316,9 +316,15 @@ func evaluate_condition(condition_name: String) -> String:
 			return "seen" if has_seen_ghost_episodes() else "not_seen"
 		"day_1010_ending":
 			return get_day_1010_ending_type()
+		"cond_true_day1011":
+			return "true" if check_true_day1011_condition() else "false"
 		_:
 			push_error("[TrophyManager] Unknown condition: " + condition_name)
 			return ""
+
+## 11日トゥルー条件判定（cond_true_day1010 かつ ep_4 クリア済み）
+func check_true_day1011_condition() -> bool:
+	return check_true_ending_condition() and is_episode_cleared("ep_4")
 
 ## 10月10日エンド分岐の判定
 func get_day_1010_ending_type() -> String:

@@ -1,0 +1,345 @@
+[
+	{
+		"type": "dialogue",
+		"text": "　寝ぼけまなこをこすりながら階段を下りる。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　ウキウキしている背中を見ながら昨日のことを思い出す。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　………………。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　――ここ数日、僕らは喧嘩をしていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　カードのこと。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　それで――喧嘩になった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　数日間、ほとんど口を聞いていない――朝も、学校から帰っても。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　スグは僕を避けていたし、僕もスグに話しかけられなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　でも――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　昨日の夜、スグが僕の部屋に来た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「……お兄ちゃん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "　小さな声だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「……これ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "　スグが差し出したのは、例のカードだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　大事そうに両手で端と端を持っている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「返す」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　僕は、少し驚いた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　でも――嬉しかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　カードが返ってきたことじゃない、スグが謝ってくれたことが。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　僕も、もう怒っていなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　仲直りしたかったんだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　だから――。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「いいよ、もう」"
+	},
+	{
+		"type": "dialogue",
+		"text": "　僕は首を横に振った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「え……？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「カードはいいから」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「でも――」"
+	},
+	{
+		"type": "dialogue",
+		"text": "　カードを差し出したままのスグは、改めて僕の顔を見返す。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「これ、お兄ちゃんのだから」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　僕は少し考えて――。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　そうだ、いい方法がある。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「じゃあ、誕生日プレゼントとしてあげるよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "　スグの目が、少し大きくなった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「いいの……？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「うん。明日、ちゃんとプレゼントとして」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　スグは、少し考えてから――。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　頷いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「……本当に？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「本当」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「……ありがとう、お兄ちゃん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "　そして――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　笑った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　久しぶりに見る、スグの笑顔だった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　ただの数日。でも、すごく久しぶりに感じた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、明日一緒に遊んでくれる？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "　スグの目が、キラキラしていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　僕も笑って、頷いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「もちろん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「やった！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "　スグは嬉しそうに部屋を出て行った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　――良かった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　仲直りできた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　そうだ、約束したんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　明日、一緒に遊ぶって。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　……。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　階段を下りながら、僕は笑顔になっていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　今日は――スグの誕生日だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　そして――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　ふと、思い出す。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　カードは、まだ机の中にある。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　スグから受け取って、そのまま机に入れた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　渡すのは――。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　学校から帰ってからでいいか。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　今は朝ごはんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　下から、お母さんの声が聞こえる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「朝ごはんできたよー！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "　スグが振り返って、僕を見た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　ニコニコしている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「早く早く！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　スグが手招きしている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　――まだ時間はある。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　カードは、後で渡そう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "　そう思っていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　それが――。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "　最後になるとは、思わずに。"
+	},
+	{
+		"type": "episode_clear",
+		"id": "ep_8_prime"
+	}
+]
