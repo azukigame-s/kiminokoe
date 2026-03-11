@@ -119,3 +119,103 @@
 ```
 
 のように記載。
+
+------
+
+## JSONコマンドリファレンス
+
+> 上記のMD記法に対応するJSONコマンドの実装仕様。シナリオJSONを直接編集する際に参照する。
+
+### コマンド一覧
+
+| コマンド        | 機能                             |
+| --------------- | -------------------------------- |
+| dialogue        | テキスト表示                     |
+| background      | 背景変更                         |
+| bgm             | BGM再生（エイリアス名で指定）    |
+| sfx             | 効果音再生（ワンショット）       |
+| sfx_loop        | 環境音ループ再生開始             |
+| sfx_loop_stop   | 環境音ループ停止                 |
+| subtitle        | サブタイトル表示                 |
+| poem            | 詩・童歌フルスクリーン表示（1行ずつ） |
+| choice          | 選択肢表示                       |
+| load_scenario   | 別シナリオ読み込み               |
+| jump            | インデックスジャンプ             |
+| flashback_start | 回想モード開始（グレースケール） |
+| flashback_end   | 回想モード終了                   |
+| episode_clear   | エピソードクリア記録             |
+| visit_location  | 場所訪問記録（シークレットトロフィー用） |
+| index           | インデックスマーカー             |
+
+### 記法サンプル
+
+```json
+[
+  {"type": "background", "path": "res://assets/backgrounds/busstop.jpg"},
+  {"type": "dialogue", "text": "テキスト本文。", "new_page": true},
+  {"type": "dialogue", "text": "続きのテキスト。"},
+  {"type": "dialogue", "text": "次は画面が切り替わります。", "go_next": true},
+  {"type": "subtitle", "text": "１０月１０日\n　１５：３０", "fade_time": 0.5, "display_time": 2.0, "next_background": "res://assets/backgrounds/home.jpg"},
+  {"type": "poem", "lines": ["じぞうさま　じぞうさま", "どちらの子が　ピーヒョロロ"]},
+  {"type": "sfx", "path": "res://assets/sounds/bang_sfx.mp3"},
+  {"type": "sfx_loop", "path": "res://assets/sounds/ambient/wind.mp3"},
+  {"type": "sfx_loop_stop"},
+  {"type": "bgm", "name": "main"},
+  {"type": "bgm", "name": "stop"},
+  {
+    "type": "choice",
+    "prompt": "さて、どうしよう？",
+    "choices": [
+      {"id": "choice_a", "text": "選択肢A", "next_index": 400},
+      {"id": "choice_b", "text": "選択肢B", "next_index": 500}
+    ]
+  },
+  {"type": "index", "index": 400},
+  {"type": "jump", "index": 600},
+  {"type": "load_scenario", "path": "episodes/episode_01", "new_page_after_return": true},
+  {"type": "flashback_start"},
+  {"type": "flashback_end"},
+  {"type": "episode_clear", "id": "ep_1"},
+  {"type": "visit_location", "id": "secret_base"}
+]
+```
+
+BGMエイリアス一覧は [audio_design.md](audio_design.md) 参照。
+
+### パラメータの規則
+
+- `new_page: true` → 新しいページで表示
+- `go_next: true` → 次のコマンドでページが切り替わることを示す（インディケーター▽表示、クリック待機は通常通り行う）
+- `index` と `jump` で選択肢の分岐と合流を管理
+- `load_scenario` でエピソードを呼び出し、終わったら元に戻る
+- `flashback_start/end` でエピソード内のグレースケールを管理
+
+### エピソード呼び出しとシナリオ呼び出しの区別
+
+`load_scenario` には2種類の呼び出し方がある。
+
+**エピソード呼び出し（episodes/ 配下）**
+
+- 過去の回想のため、グレースケールに切り替わる
+- `flashback_start / flashback_end` で囲まれる
+- 呼び出し後は元のシナリオに戻る
+
+**シナリオ呼び出し（shared/ 配下の shared_ ファイル）**
+
+- 複数の経路から呼び出される共通シナリオ（海水浴場、エピソード後の共通シーンなど）
+- グレースケールにはならない（現在時点のシーンなので）
+- 呼び出し後は元のシナリオに戻る
+
+### ファイル命名規則
+
+- 選択肢ID `opt_day_MMDD_X_N` → ファイル名 `day_MMDD_X_N.json`
+- 共通シナリオ → ファイル名 `shared_day_MMDD_X.json`（対応する選択肢識別子の `opt` を `shared` に置換）
+
+### 共用シナリオ一覧
+
+| シナリオID         | 内容                              | 呼び出し元                 | 状態 |
+| ------------------ | --------------------------------- | -------------------------- | ---- |
+| shared_day_1010_c  | 海水浴場（ep_2 + 霊体描写）       | 北→北西、北→北東→西、西→北 | 完成 |
+| shared_ep_3_after  | バス停の後（霊体描写 + イロ迎え） | 北→北東→南、東→北          | 完成 |
+| shared_ep_7_shrine | 神社（ep_7）                      | 東→南、南→北               | 完成 |
+| shared_warabeuta   | 童歌「ふたこじぞう」（PoemDisplay）| 東ルート（兄の水）         | 完成 |
