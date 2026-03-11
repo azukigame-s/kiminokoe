@@ -213,6 +213,50 @@ BGMの変更は `scripts/ui/audio_manager.gd` の `bgm_aliases` 辞書1箇所の
 
 ------
 
+## ブランチ戦略
+
+### 基本方針：trunk + release branches
+
+| ブランチ | 役割 | 備考 |
+|---------|------|------|
+| `main` | 開発の統合ブランチ（trunk） | 常に最新の開発状態 |
+| `release/demo_x_y_z` | リリース用凍結スナップショット | 配布物はここからビルド |
+| `fix/〇〇` | 体験版の不具合修正 | main から分岐、main にマージ後 release に cherry-pick |
+| `feature/〇〇` | 製品版の機能追加 | main から分岐、main にマージ |
+
+### リリースブランチの作成手順
+
+```bash
+# main が最新であることを確認
+git checkout main
+git pull
+
+# リリースブランチを作成してプッシュ
+git checkout -b release/demo_x_y_z
+git push -u origin release/demo_x_y_z
+
+# main に戻って開発を継続
+git checkout main
+```
+
+### 体験版の不具合を修正する手順
+
+```bash
+# main でバグ修正
+git checkout main
+git checkout -b fix/〇〇
+# 修正作業...
+git commit -m "🩹 〇〇を修正"
+git checkout main && git merge fix/〇〇
+
+# release ブランチにも cherry-pick
+git checkout release/demo_x_y_z
+git cherry-pick <commit-hash>
+git push
+```
+
+------
+
 ## 重要な注意事項
 
 ### やってはいけないこと
