@@ -282,6 +282,11 @@ func _load_and_apply_settings() -> void:
 	var config = ConfigFile.new()
 	var error = config.load("user://settings.cfg")
 	if error != OK:
+		# 設定ファイルがない場合はデフォルト値（1280×720）を適用
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		DisplayServer.window_set_size(Vector2i(1280, 720))
+		var screen_size = DisplayServer.screen_get_size()
+		DisplayServer.window_set_position((screen_size - Vector2i(1280, 720)) / 2)
 		return
 
 	# テキスト速度
