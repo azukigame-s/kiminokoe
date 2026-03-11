@@ -29,6 +29,10 @@ var episode_ids: Array[String] = [
 	"ep_5",   # 捨て猫
 	"ep_6",   # 沢蟹
 	"ep_7",   # 神社
+	"ep_8",   # 誕生日
+	"ep_9",   # 怪魚
+	"ep_10",  # クワガタ
+	"ep_11",  # 弟の水
 ]
 
 # エピソードごとの称号名の定義
@@ -40,6 +44,10 @@ var episode_trophy_names: Dictionary = {
 	"ep_5": "捨て猫",
 	"ep_6": "沢蟹",
 	"ep_7": "神社",
+	"ep_8": "誕生日",
+	"ep_9": "怪魚",
+	"ep_10": "クワガタ",
+	"ep_11": "弟の水",
 	"all_episodes_clear": "全エピソードクリア"
 }
 
@@ -78,6 +86,10 @@ var episode_trophy_descriptions: Dictionary = {
 	"ep_5": "シロとの出会い",
 	"ep_6": "このカニ食べれるの？",
 	"ep_7": "実は高所恐怖症の兄",
+	"ep_8": "（未定）",
+	"ep_9": "（未定）",
+	"ep_10": "（未定）",
+	"ep_11": "（未定）",
 }
 
 # シークレットトロフィーの説明文
@@ -548,7 +560,7 @@ func get_unlocked_trophy_count() -> int:
 			count += 1
 	return count
 
-## 全トロフィー数を取得（通常7 + シークレット7 = 14）
+## 全トロフィー数を取得（通常11 + シークレット9 = 20）
 func get_total_trophy_count() -> int:
 	return episode_ids.size() + secret_trophy_ids.size()
 
