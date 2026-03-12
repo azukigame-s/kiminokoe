@@ -60,6 +60,7 @@ func _build_ui() -> void:
 ## font_color: 文字色。省略時は UIConstants.COLOR_ACCENT（赤銅）
 func show_poem(lines: Array, font_color: Color = UIConstants.COLOR_ACCENT) -> void:
 	_label.add_theme_color_override("font_color", font_color)
+	_label.modulate.a = 0.0
 	_container.modulate.a = 0.0
 	visible = true
 

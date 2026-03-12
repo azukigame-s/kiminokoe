@@ -30,7 +30,12 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「起きて！　おーい、お兄ちゃん」",
+		"text": "「起きて！　おにぃ……おきてよ！」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おーい、お兄ちゃん」",
 		"new_page": true
 	},
 	{
@@ -91,7 +96,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「はーい。じゃあお兄ちゃん目が覚めたら降りてきてね。」"
+		"text": "「待ってー、いま降りるー！　じゃあお兄ちゃん、目が覚めたら降りてきてね。」"
 	},
 	{
 		"type": "dialogue",
@@ -118,6 +123,25 @@
 	{
 		"type": "dialogue",
 		"text": "そういうとすぐに部屋から出て行ってしまった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "忙しい妹だ……そう思った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頭をかく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――眠気を覚まそうとしたわけではなく、照れ隠しのためだった。",
+		"go_next": true
+	},
+	{
+		"type": "subtitle",
+		"text": "１０月１１日\n　１５：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
 	},
 	{
 		"type": "dialogue",
