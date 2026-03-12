@@ -48,11 +48,13 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "昨日の夜、スグが僕の部屋に来た。"
+		"text": "昨日の夜、スグが僕の部屋に来た。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「……お兄ちゃん」"
+		"text": "「……お兄ちゃん」",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -336,7 +338,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "最後になるとは、思わずに。"
+		"text": "最後になるとは、思わずに。",
+		"go_next": true
 	},
 	{
 		"type": "episode_clear",
