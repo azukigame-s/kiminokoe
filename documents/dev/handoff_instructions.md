@@ -25,7 +25,7 @@
 
 ------
 
-## 現在の作業状況（2026年2月23日時点）
+## 現在の作業状況（2026年3月12日時点）
 
 ### 完成済み
 
@@ -38,7 +38,11 @@
   - 地蔵の配置: 完了（各ルートに配置済み）
   - **夕食シーン（19:00）**: 完成
   - **体験版エンディング（21:00〜22:00）**: 完成
-- **10月11日**: 完成（法事シーン）
+- **10月11日**: シナリオ完成。JSONも実装済み（BGM・背景・SEは未配置）
+  - `scenarios/days/day_1011/main.json`: 法事・お説法・縁側・会食・夜のロビー
+  - `scenarios/episodes/ep_08.json`: 誕生日（分岐あり）
+  - `scenarios/episodes/ep_08_prime.json`: 仲直りした誕生日（トゥルールート）
+  - `ep_08.json` の分岐条件: `cond_true_day1011`（秘密基地 + ep_1,2,3 クリアで true）
 - **エピソード**: ep_0, ep_0_β, ep_1〜ep_8' すべて完成
 
 #### 共用シナリオ（shared）
@@ -80,6 +84,10 @@ scenarios/kiminokoe.md に追記された `> 🎨 [ファイル名]` 記法をJS
 - **BGMエイリアスシステム**: 完了（`AudioManager.bgm_aliases` 辞書にパスを一元集約し、JSONからはエイリアス名（`"main"`, `"flashback"` 等）で指定する方式に移行。14ファイル・20箇所を移行済み）
 - **スプラッシュ画面クリックフリーズ修正**: 完了（`VideoStreamPlayer.stop()` がGodot4では `finished` を発火しない問題を `signal _advance_requested` パターンで解決）
 - **体験版EDトロフィー数修正**: 完了（`ep_4`（キャッチボール）が製品版限定であるため `demo_episode_ids` を分離、合計11個に修正）
+- **フィードバックボタン追加**: 完了（ポーズメニュー・タイトル画面にGitHub Issuesへのリンクボタンを追加。`OS.shell_open(FEEDBACK_URL)`で外部ブラウザを開く）
+- **GitHub Issueテンプレート追加**: 完了（`.github/ISSUE_TEMPLATE/feature_request.yml` を追加。`bug_report.yml` にバージョン入力欄も追加）
+- **PoemDisplay 前詩残存バグ修正**: 完了（連続表示時に前の詩のテキストが透けて見える問題を `_label.modulate.a = 0.0` リセットで修正）
+- **トロフィー追加**: 完了（ep_8〜ep_11を `episode_ids` に追加、シークレットトロフィー「調査隊結成？」「13年越しのおめでとう」追加。全体20個）
 
 #### セーブデータ仕様
 
@@ -101,7 +109,7 @@ scenarios/kiminokoe.md に追記された `> 🎨 [ファイル名]` 記法をJS
 
 #### 実装
 
-なし
+- **day_1011 のBGM・背景・SE配置**: JSONは実装済みだが音声・背景画像が未配置
 
 ------
 
