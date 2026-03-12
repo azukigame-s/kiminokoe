@@ -1,0 +1,125 @@
+[
+	{
+		"type": "dialogue",
+		"text": "「起きて！　おにぃ――おきてよ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………聞き覚えのある声が聞こえてくる。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "体を揺さぶられ、ゆっくりと体を起こす。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "頭をかきむしる――目を覚ます効果を期待したけど、さほど効果はなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「スグ……おはよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "目の焦点が合いだした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "いつもは僕の方が早く起きてスグを起こしにいくのに、今日はやけに早起きだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ぼんやりとする頭で珍しいものだと考えていると、スグが右手をブーメランのように振り回しながらしゃべりだした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「だって！　今日は僕の誕生日じゃん！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "ブーメランには何の意味があったんだろう――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、そうか誕生日か。やっと頭が回りだした。",
+		"go_next": true
+	},
+	{
+		"type": "poem",
+		"lines": [
+			"あれ……？"
+		],
+		"font_color": "white"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ほらほら、早く起きて！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "今度は僕の手を引っ張り出した。頭が振られて目が回りそうだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「わかった……わかったから！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は弟をなだめてベッドから降りた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「今日が休みだったらいいのになぁ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが上機嫌だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「さすがに誕生日でも、学校は行かないとね。」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの後ろ姿を追って部屋から出た。",
+		"go_next": true
+	},
+	{
+		"type": "poem",
+		"lines": [
+			"ぼくは……スグとけんかしていたはずだよね？"
+		],
+		"font_color": "white"
+	},
+	{
+		"type": "branch",
+		"condition": "cond_true_day1011",
+		"branches": {
+			"true": 100,
+			"false": 200
+		}
+	},
+	{
+		"type": "index",
+		"index": 100
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/ep_08_prime"
+	},
+	{
+		"type": "jump",
+		"index": 200
+	},
+	{
+		"type": "index",
+		"index": 200
+	},
+	{
+		"type": "episode_clear",
+		"id": "ep_8"
+	}
+]

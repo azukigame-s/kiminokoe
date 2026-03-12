@@ -157,6 +157,7 @@
   {"type": "dialogue", "text": "次は画面が切り替わります。", "go_next": true},
   {"type": "subtitle", "text": "１０月１０日\n　１５：３０", "fade_time": 0.5, "display_time": 2.0, "next_background": "res://assets/backgrounds/home.jpg"},
   {"type": "poem", "lines": ["じぞうさま　じぞうさま", "どちらの子が　ピーヒョロロ"]},
+  {"type": "poem", "lines": ["あれ……？"], "font_color": "white"},
   {"type": "sfx", "path": "res://assets/sounds/bang_sfx.mp3"},
   {"type": "sfx_loop", "path": "res://assets/sounds/ambient/wind.mp3"},
   {"type": "sfx_loop_stop"},

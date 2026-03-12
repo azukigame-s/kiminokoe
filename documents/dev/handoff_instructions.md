@@ -25,7 +25,7 @@
 
 ------
 
-## 現在の作業状況（2026年2月23日時点）
+## 現在の作業状況（2026年3月12日時点）
 
 ### 完成済み
 
@@ -38,7 +38,11 @@
   - 地蔵の配置: 完了（各ルートに配置済み）
   - **夕食シーン（19:00）**: 完成
   - **体験版エンディング（21:00〜22:00）**: 完成
-- **10月11日**: 完成（法事シーン）
+- **10月11日**: シナリオ完成。JSONも実装済み（BGM・背景・SEは未配置）
+  - `scenarios/days/day_1011/main.json`: 法事・お説法・縁側・会食・夜のロビー
+  - `scenarios/episodes/ep_08.json`: 誕生日（分岐あり）
+  - `scenarios/episodes/ep_08_prime.json`: 仲直りした誕生日（トゥルールート）
+  - `ep_08.json` の分岐条件: `cond_true_day1011`（秘密基地 + ep_1,2,3 クリアで true）
 - **エピソード**: ep_0, ep_0_β, ep_1〜ep_8' すべて完成
 
 #### 共用シナリオ（shared）
@@ -80,6 +84,10 @@ scenarios/kiminokoe.md に追記された `> 🎨 [ファイル名]` 記法をJS
 - **BGMエイリアスシステム**: 完了（`AudioManager.bgm_aliases` 辞書にパスを一元集約し、JSONからはエイリアス名（`"main"`, `"flashback"` 等）で指定する方式に移行。14ファイル・20箇所を移行済み）
 - **スプラッシュ画面クリックフリーズ修正**: 完了（`VideoStreamPlayer.stop()` がGodot4では `finished` を発火しない問題を `signal _advance_requested` パターンで解決）
 - **体験版EDトロフィー数修正**: 完了（`ep_4`（キャッチボール）が製品版限定であるため `demo_episode_ids` を分離、合計11個に修正）
+- **フィードバックボタン追加**: 完了（ポーズメニュー・タイトル画面にGitHub Issuesへのリンクボタンを追加。`OS.shell_open(FEEDBACK_URL)`で外部ブラウザを開く）
+- **GitHub Issueテンプレート追加**: 完了（`.github/ISSUE_TEMPLATE/feature_request.yml` を追加。`bug_report.yml` にバージョン入力欄も追加）
+- **PoemDisplay 前詩残存バグ修正**: 完了（連続表示時に前の詩のテキストが透けて見える問題を `_label.modulate.a = 0.0` リセットで修正）
+- **トロフィー追加**: 完了（ep_8〜ep_11を `episode_ids` に追加、シークレットトロフィー「調査隊結成？」「13年越しのおめでとう」追加。全体20個）
 
 #### セーブデータ仕様
 
@@ -101,7 +109,7 @@ scenarios/kiminokoe.md に追記された `> 🎨 [ファイル名]` 記法をJS
 
 #### 実装
 
-なし
+- **day_1011 のBGM・背景・SE配置**: JSONは実装済みだが音声・背景画像が未配置
 
 ------
 
@@ -215,14 +223,16 @@ BGMの変更は `scripts/ui/audio_manager.gd` の `bgm_aliases` 辞書1箇所の
 
 ## ブランチ戦略
 
-### 基本方針：trunk + release branches
+### 基本方針：trunk + 永続 release ブランチ + タグ
 
 | ブランチ | 役割 | 備考 |
 |---------|------|------|
 | `main` | 開発の統合ブランチ（trunk） | 常に最新の開発状態 |
-| `release/demo_x_y_z` | リリース用凍結スナップショット | 配布物はここからビルド |
-| `fix/〇〇` | 体験版の不具合修正 | main から分岐、main にマージ後 release に cherry-pick |
-| `feature/〇〇` | 製品版の機能追加 | main から分岐、main にマージ |
+| `release/demo` | 体験版の配布用永続ブランチ | 配布物はここからビルド。バージョンはタグで管理 |
+| `fix/〇〇` | 不具合修正 | main から分岐、main にマージ後 release/demo に cherry-pick |
+| `feature/〇〇` | 機能追加・シナリオ実装 | main から分岐、main にマージ |
+
+**リリースブランチはバージョンごとに作らない。** `release/demo` を永続ブランチとして使い続け、リリースごとにタグを打つ。
 
 ### ブランチ命名規則
 
@@ -230,51 +240,51 @@ BGMの変更は `scripts/ui/audio_manager.gd` の `bgm_aliases` 辞書1箇所の
 - `fix/` ブランチは Issue 番号を先頭に付ける
   - 例: `fix/1-default-window-size`（Issue #1 の修正）
 - `feature/` ブランチは機能名を簡潔に英語で
-  - 例: `feature/day1011-scenario`
+  - 例: `feature/day1012-scenario`
 
-### リリースブランチの作成手順
-
-```bash
-# main が最新であることを確認
-git checkout main
-git pull
-
-# リリースブランチを作成してプッシュ
-git checkout -b release/demo_x_y_z
-git push -u origin release/demo_x_y_z
-
-# main に戻って開発を継続
-git checkout main
-```
-
-### 体験版の不具合を修正する手順
+### リリース手順
 
 ```bash
-# main でバグ修正
-git checkout main
-git checkout -b fix/〇〇
-# 修正作業...
-git commit -m "🩹 〇〇を修正"
-git checkout main && git merge fix/〇〇
-
-# release ブランチにも cherry-pick
-git checkout release/demo_x_y_z
+# 1. main の修正を release/demo に cherry-pick
+git checkout release/demo
 git cherry-pick <commit-hash>
 git push
-```
 
-### リリース（タグ・GitHub Release）手順
-
-リリースブランチが確定したら、タグを打って GitHub Release を作成する。
-
-```bash
-# リリースブランチ上でタグを作成
-git checkout release/demo_x_y_z
+# 2. タグを打って GitHub Release を作成
 git tag v0.5.1
 git push origin v0.5.1
 ```
 
 その後 GitHub の Releases ページでタグを選択し、ビルド済みファイルを添付して公開する。
+
+### 体験版の不具合を修正する手順
+
+```bash
+# 1. main から fix ブランチを作成して修正
+git checkout main
+git checkout -b fix/〇〇
+# 修正作業...
+git commit -m "🩹 〇〇を修正"
+
+# 2. main にマージ
+git checkout main && git merge fix/〇〇
+
+# 3. release/demo にも cherry-pick → タグ更新
+git checkout release/demo
+git cherry-pick <commit-hash>
+git push
+git tag v0.5.2
+git push origin v0.5.2
+```
+
+### feature ブランチに main の修正を取り込む手順
+
+fix が main にマージされた後、開発中の feature ブランチにも反映する。
+
+```bash
+git checkout feature/〇〇
+git merge main
+```
 
 - タグ名は `v{major}.{minor}.{patch}` 形式（例: `v0.5.1`）
 - バグ修正は patch バージョンを上げる（`0.5.0` → `0.5.1`）

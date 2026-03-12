@@ -1,0 +1,1023 @@
+[
+	{
+		"type": "subtitle",
+		"text": "１０月１１日\n　　",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "bgm",
+		"name": "flashback"
+	},
+	{
+		"type": "flashback_start",
+		"effect": "grayscale",
+		"gradual": true,
+		"duration": 4.5
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/ep_08"
+	},
+	{
+		"type": "flashback_end",
+		"gradual": true,
+		"duration": 4.5
+	},
+	{
+		"type": "bgm",
+		"name": "main"
+	},
+	{
+		"type": "subtitle",
+		"text": "１０月１１日\n　　７：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "「起きて！　おにぃ……おきてよ！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おーい、お兄ちゃん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "聞き覚えのある声で、ゆっくりと体を起こす。"
+	},
+	{
+		"type": "dialogue",
+		"text": "頭をかきむしる――目を覚ます効果を期待したけど、さほど効果はなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "かすむ目の先にはドアから顔を覗かすイロの姿があった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「よかった、おにいちゃん。うなされていたから心配しちゃったよ」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "うなされていた……。そうだ、あの夢はなんだったんだろう？",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの誕生日は「あの日」のはず。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あの日、僕はスグと喧嘩をしていたはずだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "なのにこの記憶――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "もしかして１年前の記憶なんだろうか？"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃんどうしたの？　ぼーっとしちゃって」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はイロにスグの夢を見たことを伝えた。仲良く過ごしていたことを。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「そうなんだね。でもお兄ちゃんてスグちゃんと仲が悪かったって言ってたよね？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕が答えようとすると、下から「イロちゃ～ん」と祖母の呼ぶ声。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「待ってー、いま降りるー！　じゃあお兄ちゃん、目が覚めたら降りてきてね。」"
+	},
+	{
+		"type": "dialogue",
+		"text": "そういうとイロは部屋を出て行った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も降りるとしよう。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あーそうだ！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロがひょこっと顔を出した。さすがにびっくりしてしまう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「私お兄ちゃんがスグちゃんと仲悪かったって思えないんだよね。だって――ほら！　私にだってこんなにやさしいじゃん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "そういうとすぐに部屋から出て行ってしまった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "忙しい妹だ……そう思った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頭をかく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――眠気を覚まそうとしたわけではなく、照れ隠しのためだった。",
+		"go_next": true
+	},
+	{
+		"type": "subtitle",
+		"text": "１０月１１日\n　１５：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "法事が始まった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "午前中は準備やら掃除やらでバタバタしていて、親戚が集まっても落ち着いて話す間もなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "居間には親戚が十人ほど集まっている――が、顔を覚えていない遠い親戚も多かった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "仏壇の前には、スグの遺影が飾られている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんが仏壇の前に座ると、花と線香の匂いに包まれながら読経が始まった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "低く響く声が部屋を満たしていく。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は正座をして、手を合わせた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "仏壇にはスグの遺影。"
+	},
+	{
+		"type": "dialogue",
+		"text": "写真の中のスグは、笑っている――ランドセルを背負って、こちらに向かって笑顔を向けていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――この笑顔、覚えている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "この写真を撮った日――煙のように記憶が霞んでいた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "どこで撮ったのか。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "誰が撮ったのか。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは何を話していたのか。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――思い出せない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "笑っている姿を考えたいのに……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "もっと思い出があったはずなのに……。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "そんな思いをよそに、読経は続く。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "低く響く声に、様々な思いが重くのしかかる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は遺影を見つめながら、心の中でスグに語りかけた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――スグ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――なんで喧嘩なんてしてしまったんだろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "答えは返ってこない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ、お経の声だけが響いている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうなんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――答えなんて、返ってくるわけない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "いつの間にか、読経が終わっていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんが立ち上がり、一礼をする。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちも一緒に頭を下げた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "姿勢を崩そうとすると痺れで足の感覚がなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "まるで自分の足ではない感覚――この思いも、なくなってしまえばいいのに……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "足の痛みは、なかなか取れなかった。"
+	},
+	{
+		"type": "subtitle",
+		"text": "１０月１１日\n　１６：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "「そのおばあさんは運転中、孫にもらった御守りを落としてしまったんです」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お焼香も終わり、僕たちはお寺さんのお説法を聞いていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「足元のそれが気になって事故を……。それも――お孫さんのクラスメイトを、轢いてしまったんです」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんは穏やかな口調であったが、部屋に小さなざわめきが起こった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんは、少し間を置いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「おばあさんは、『孫の御守りがあれば守ってくれる』と思っていたそうです」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「でも――」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「仏さんは私たちを見守ってくださいますが、守ってはくれませんので」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「御守りを持つことで気を付けないといけないな――そういう気持ちになって、結局のところ自分たちで安全にしないといけないわけです」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は唾を飲んだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんは、僕たちの顔を見渡した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「似たような話で、今日は十三回忌法要ですが」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「これは亡くなったスグさんのために開いてるものじゃないですからね」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「故人を思い出して、家族で集まる」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「そういう残された――生きている人達のために行うものですから」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんの言葉が、静かに響く。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――生きている人達のために。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お説法が終わり、お寺さんが一礼をする。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちも頭を下げた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "父が僕の方を見た。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「[主人公]、お寺さんをお見送りしてくれるか」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷き、立ち上がった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんの荷物を持ち、外へ出る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "秋の午後、少し傾いた日差しが庭を照らしていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんと並んで、お寺へ向かう道を歩く。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「[主人公]くん」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんが、不意に声をかけてきた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「この村は好きかい？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "唐突なお寺さんからの質問だったが、僕は頷いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「そうか、そうか。頷いてくれるだけで十分だよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんは優しく微笑んだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「僕もね、あぁ――僕は今のお寺に入ってから住み出したよそ者なんだけど」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「ここは人がいい。僕も好きなんだよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "子供のころからお寺さんとは関わりがあったが、こうやって二人で話すのは初めてだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「それでさ、最近になって村について色々と調べててね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんは、少し楽しそうだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「この村に伝わる童歌、知ってる？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は首を傾げた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "童歌なんてあっただろうか……。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「まあ、おばあちゃんなら知ってるかもしれんけど」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「そういう所とかさ調べると面白くなっちゃってね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんはこちらに笑顔を見せてから、お寺の門をくぐった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "門の向こう側で、お寺さんが立ち止まる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「少しきな臭いところもあるけど……ね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "振り返らずに、小さく呟いた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんが、こちらを向いた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「それじゃあありがとね、[主人公]くん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「さっきも言ったけど仏さんは助けてはくれない」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんは優しい目で僕を見た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「君を見ているとスグくんのことで未だに苦しんでいるように感じるんだ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「しっかりと自分の力で向き合うんだよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「明日までダキにいるんだろ？　村でも見てまわりながら、考えてごらん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "――自分の力で、向き合う。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はお辞儀をしてその場を離れた。",
+		"go_next": true
+	},
+	{
+		"type": "subtitle",
+		"text": "１０月１１日\n　１７：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "法事が終わり、親戚たちは会食の準備のため旅館へ向かった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たち家族は祖母の着替えを待って出掛けることになった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "少し外の空気が吸いたくて、一人で縁側に出た。"
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/no_image.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "秋の日差しが、庭を照らしている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "縁側に座り、外を眺めた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ここでスグとよく遊んだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "虫取りをしたり、シャボン玉をしたり。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの笑い声が聞こえた気がした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "振り返る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、そこには誰もいない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "記憶の断片が浮かんでは消える。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "庭の隅に、古いバットが立てかけられているのが見えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "立ち上がり、バットに近づいた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "手に取ると、ずっしりとした重み。"
+	},
+	{
+		"type": "dialogue",
+		"text": "グリップの裏には、スグの名前が書かれていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "握ってみる。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは、このバットを握って、何を思っていたのだろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "野球が好きだった弟。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ、キャッチボール。"
+	},
+	{
+		"type": "dialogue",
+		"text": "チクッと何かが引っかかる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "大切な記憶が、すぐそこにある気がするのに捕まえられない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、行くよー！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの声が聞こえた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はバットをそっと元の場所に戻し、家を出た。",
+		"go_next": true
+	},
+	{
+		"type": "subtitle",
+		"text": "１０月１１日\n　１９：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/no_image.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "会食は旅館で行われた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "畳敷きの広間には、法事用の御膳が並べられている――叔父をはじめとして、親戚が十人ほど集まっていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "子供の頃から会っていない人もいて、久しぶりの再会に懐かしさが込み上げてくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「おお、[主人公]！　大きくなったなぁ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「久しぶりやねぇ、元気しとった？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "次々と声をかけられる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷きながら、会場を見渡した。",
+		"go_next": true
+	},
+	{
+		"type": "choice",
+		"prompt": "誰かと話してみる？",
+		"choices": [
+			{
+				"id": "opt_day_1011_a_1",
+				"text": "叔父と話す",
+				"next_index": 100
+			},
+			{
+				"id": "opt_day_1011_a_2",
+				"text": "親戚のおじさんと話す",
+				"next_index": 200
+			},
+			{
+				"id": "opt_day_1011_a_3",
+				"text": "その場にとどまる",
+				"next_index": 300
+			}
+		]
+	},
+	{
+		"type": "index",
+		"index": 100
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は叔父の方へ近づいた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「[主人公]、覚えてるか？　昔お前とスグを連れて一緒にマンガを買いに行ったよな……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "正直あまり記憶になかったが、相槌を打ちながら聞いていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「スグのやつ、いつもつまんなそうな顔してたな。あいつはお前と違って野球の方が好きだったから……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "叔父さんは遠くを見つめるように目を細めた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「――でもな、スグはお前のこと、本当に慕ってたんだぞ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "叔父さんの言葉に、僕は顔を上げた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「野球の練習の時も、『お兄ちゃんが――』っていつも嬉しそうに話してた」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お前が補欠だろうが何だろうが関係ない。スグにとっては、お前が一番のヒーローだったんだ」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "胸が、熱くなる。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだったのか。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは、そんなことを言っていたのか。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「だから――」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "叔父さんは言葉を切った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「だから、もう自分を責めなくていいんだよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は――何も応えられなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ、頷くことしかできなかった。",
+		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 900
+	},
+	{
+		"type": "index",
+		"index": 200
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は親戚のおじさんの方へ近づいた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "おじさんは、まだ小さい従妹たちにバルーンアートを見せて喜ばせている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "一通り配り終えるのを見て話しかけた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「[主人公]！　久しぶりだな！　お前も風船いるか？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は首を横に振り、久しぶりだから挨拶に来たと伝えた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「スグのことはな、残念だったけどお前はお前の道を進めばいい。とりあえず若いうちは……」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "もともとテンションの高い人だとは思っていたが、お酒が入り更に勢いが増している。"
+	},
+	{
+		"type": "dialogue",
+		"text": "話は１０分ほど続いた……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "相変わらず元気で子供好きな人だ。安心するとともに、少し元気付けられた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はその場を離れた。",
+		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 900
+	},
+	{
+		"type": "index",
+		"index": 300
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが僕の方へ近づいてきた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、大丈夫？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの心配そうな顔が、僕を見つめている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷いた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あのね――私、スグちゃんのこと、ほとんど知らないんだ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの声が小さくなる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「写真でしか見たことないし、おばあちゃんもあまり話してくれなかったから」"
+	},
+	{
+		"type": "dialogue",
+		"text": "そうだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが生まれる前に、スグは――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして母も、それを追いかけるように他界してしまった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロにとって、スグは「会ったことのない兄」なんだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「でもね、お兄ちゃんが帰ってきて――」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは少し笑顔を見せた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「スグちゃんのこと、少し知れた気がする」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃんが話してくれる時の顔、見てると――スグちゃんも優しい人だったんだろうなって」"
+	},
+	{
+		"type": "dialogue",
+		"text": "――イロ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――ありがとう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の方が、イロや家族のおかげで元気付けられているよ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「そういえばお兄ちゃん、明日はどうするの？　もしダキをまわるのなら私もついていっていい？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんにも言われたし、もともとそのつもりだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はイロに向かって頷き、一緒に回ろうと伝えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「やった！　じゃあ明日、楽しみにしてるね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの笑顔が、少しだけ心を軽くしてくれた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――あの白い服の少年。"
+	},
+	{
+		"type": "dialogue",
+		"text": "また……会えるだろうか……。",
+		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 900
+	},
+	{
+		"type": "index",
+		"index": 900
+	},
+	{
+		"type": "subtitle",
+		"text": "１０月１１日\n　２１：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "会食は夜遅くまで続いた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "大人たちの声が賑やかに響いている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は席を外し、一人でロビーに出た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "夜のロビーは薄暗く、静まり返っている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "窓の向こうで、大きな月が淡い光を放っていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ソファーに座り、それを見上げる。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕のスグとの記憶も、満ち欠けせずに真ん丸ならいいのに……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――明日は、村を見て回ろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そう思った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "宴会場からは賑やかな笑い声が漏れている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は、重い腰をあげた。",
+		"go_next": true
+	}
+]

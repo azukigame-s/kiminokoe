@@ -267,8 +267,14 @@ func execute_poem(command: Dictionary, skip_controller: SkipController) -> void:
 	if not ambient_path.is_empty() and audio_manager:
 		audio_manager.play_ambient(ambient_path, false)
 
+	# font_color: "white" → 白、省略時は赤銅（デフォルト）
+	var font_color: Color = UIConstants.COLOR_ACCENT
+	var color_str: String = command.get("font_color", "")
+	if color_str == "white":
+		font_color = UIConstants.COLOR_BASE_LIGHT
+
 	if poem_display:
-		poem_display.show_poem(lines)
+		poem_display.show_poem(lines, font_color)
 		await poem_display.poem_completed
 		# 童歌を最後まで聴いた場合にトロフィーを付与（スキップ時はここに到達しない）
 		TrophyManager.unlock_trophy("warabeuta", "童歌")
