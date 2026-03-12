@@ -1,5 +1,11 @@
 [
 	{
+		"type": "subtitle",
+		"text": "１０月１１日\n　　",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
 		"type": "bgm",
 		"name": "flashback"
 	},
@@ -24,7 +30,7 @@
 	},
 	{
 		"type": "subtitle",
-		"text": "１０月１１日\n　　朝",
+		"text": "１０月１１日\n　　７：００",
 		"fade_time": 0.5,
 		"display_time": 2.0
 	},
@@ -91,7 +97,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕が答えようとすると、下から「イロちゃ～ん」とおばあちゃんの呼ぶ声。"
+		"text": "僕が答えようとすると、下から「イロちゃ～ん」と祖母の呼ぶ声。"
 	},
 	{
 		"type": "dialogue",
@@ -302,7 +308,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "お寺さんは穏やかな口調であったが、小さなざわめきが起こった。"
+		"text": "お寺さんは穏やかな口調であったが、部屋に小さなざわめきが起こった。"
 	},
 	{
 		"type": "dialogue",
@@ -532,7 +538,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕達家族は祖母の着替えを待って出掛けることになった。"
+		"text": "僕たち家族は祖母の着替えを待って出掛けることになった。"
 	},
 	{
 		"type": "dialogue",
@@ -777,7 +783,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "ただ、頷くことしかできなかった。"
+		"text": "ただ、頷くことしかできなかった。",
+		"go_next": true
 	},
 	{
 		"type": "jump",
@@ -828,7 +835,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "僕はその場を離れた。"
+		"text": "僕はその場を離れた。",
+		"go_next": true
 	},
 	{
 		"type": "jump",
@@ -867,13 +875,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「写真でしか見たことないし、お母さんもあまり話してくれなかったから」",
-		"go_next": true
+		"text": "「写真でしか見たことないし、おばあちゃんもあまり話してくれなかったから」"
 	},
 	{
 		"type": "dialogue",
-		"text": "そうだった。",
-		"new_page": true
+		"text": "そうだった。"
 	},
 	{
 		"type": "dialogue",
@@ -903,13 +909,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「お兄ちゃんが話してくれる時の顔、見てると――スグちゃんも優しい人だったんだろうなって」",
-		"go_next": true
+		"text": "「お兄ちゃんが話してくれる時の顔、見てると――スグちゃんも優しい人だったんだろうなって」"
 	},
 	{
 		"type": "dialogue",
-		"text": "――イロ。",
-		"new_page": true
+		"text": "――イロ。"
 	},
 	{
 		"type": "dialogue",
@@ -947,7 +951,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "また……会えるだろうか……。"
+		"text": "また……会えるだろうか……。",
+		"go_next": true
 	},
 	{
 		"type": "jump",
@@ -956,5 +961,63 @@
 	{
 		"type": "index",
 		"index": 900
+	},
+	{
+		"type": "subtitle",
+		"text": "１０月１１日\n　２１：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "会食は夜遅くまで続いた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "大人たちの声が賑やかに響いている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は席を外し、一人でロビーに出た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "夜のロビーは薄暗く、静まり返っている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "窓の向こうで、大きな月が淡い光を放っていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ソファーに座り、それを見上げる。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕のスグとの記憶も、満ち欠けせずに真ん丸ならいいのに……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――明日は、村を見て回ろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そう思った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "宴会場からは賑やかな笑い声が漏れている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は、重い腰をあげた。",
+		"go_next": true
 	}
 ]
