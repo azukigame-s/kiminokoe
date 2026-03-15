@@ -7,7 +7,7 @@
 	},
 	{
 		"type": "bgm",
-		"name": "flashback"
+		"name": "autumn"
 	},
 	{
 		"type": "flashback_start",
@@ -26,7 +26,7 @@
 	},
 	{
 		"type": "bgm",
-		"name": "main"
+		"name": "dinner"
 	},
 	{
 		"type": "subtitle",
@@ -147,6 +147,10 @@
 		"text": "１０月１１日\n　１５：００",
 		"fade_time": 0.5,
 		"display_time": 2.0
+	},
+	{
+		"type": "bgm",
+		"name": "main"
 	},
 	{
 		"type": "dialogue",
