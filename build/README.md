@@ -42,12 +42,14 @@
 - OS: Windows 11
 
 ### 🎮 プレイ方法
-1. zip ファイルを解凍する
-2. `kiminokoe_demo_v0.5.1_windows.exe` を実行する
+1. Assets 内の `kiminokoe_demo_v0.5.1_windows.exe.zip` をダウンロードする
+2. ダウンロードした zip ファイルを解凍する
+3. `kiminokoe_demo_v0.5.2_windows.exe` を実行する
 
 ### 🐛 既知の問題
 - 特になし
 
 ### 📝 変更履歴
+- v0.5.2: 背景画像の解像度をあわせる修正
 - v0.5.1: ゲーム起動時に設定が反映されないバグを修正
 - v0.5.0: 初回リリース
