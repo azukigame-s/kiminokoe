@@ -42,9 +42,9 @@
 - OS: Windows 11
 
 ### 🎮 プレイ方法
-1. Assets 内の `kiminokoe_demo_v0.5.1_windows.exe.zip` をダウンロードする
+1. Assets 内の `kiminokoe_demo_v0.5.3_windows.exe.zip` をダウンロードする
 2. ダウンロードした zip ファイルを解凍する
-3. `kiminokoe_demo_v0.5.2_windows.exe` を実行する
+3. `kiminokoe_demo_v0.5.3_windows.exe` を実行する
 
 ### 🐛 既知の問題
 - 特になし
