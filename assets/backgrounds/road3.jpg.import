@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://81qklftqou4a"
-path="res://.godot/imported/underpass.jpg-6456d3f44048c0d5f035c15de31f5330.ctex"
+uid="uid://chs4530f0021a"
+path="res://.godot/imported/road3.jpg-a39368eac062474c4fe11afee91c6dd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/underpass.jpg"
-dest_files=["res://.godot/imported/underpass.jpg-6456d3f44048c0d5f035c15de31f5330.ctex"]
+source_file="res://assets/backgrounds/road3.jpg"
+dest_files=["res://.godot/imported/road3.jpg-a39368eac062474c4fe11afee91c6dd5.ctex"]
 
 [params]
 
