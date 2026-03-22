@@ -133,10 +133,5 @@
 		"type": "load_scenario",
 		"path": "days/day_1010/main",
 		"new_page_after_return": true
-	},
-	{
-		"type": "load_scenario",
-		"path": "days/day_1011/main",
-		"new_page_after_return": true
 	}
 ]
