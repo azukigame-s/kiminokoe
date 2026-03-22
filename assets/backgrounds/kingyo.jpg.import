@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://81qklftqou4a"
-path="res://.godot/imported/underpass.jpg-6456d3f44048c0d5f035c15de31f5330.ctex"
+uid="uid://bjbbmwtksmki0"
+path="res://.godot/imported/kingyo.jpg-ee9d80e05b619731cf609cf2aa8e25fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/underpass.jpg"
-dest_files=["res://.godot/imported/underpass.jpg-6456d3f44048c0d5f035c15de31f5330.ctex"]
+source_file="res://assets/backgrounds/kingyo.jpg"
+dest_files=["res://.godot/imported/kingyo.jpg-ee9d80e05b619731cf609cf2aa8e25fb.ctex"]
 
 [params]
 
