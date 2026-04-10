@@ -30,7 +30,17 @@ jobs:
           mkdir -p "$TEMPLATES_DIR"
           wget -q "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_export_templates.tpz" -O templates.tpz
           unzip -q templates.tpz -d templates_tmp
-          mv templates_tmp/templates/* "$TEMPLATES_DIR/"
+          cp -r templates_tmp/templates/* "$TEMPLATES_DIR/"
+
+          # macos.zip の中から universal バイナリを直接展開して配置
+          cd "$TEMPLATES_DIR"
+          unzip -q macos.zip -d macos_extracted
+          find macos_extracted -name "*.universal" -exec cp {} . \;
+          rm -rf macos_extracted
+
+          # 配置確認
+          echo "=== Templates installed ==="
+          ls -la "$TEMPLATES_DIR/"
 
       - name: Create build directory
         run: mkdir -p build
