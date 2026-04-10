@@ -1,0 +1,47 @@
+name: macOS Build
+
+on:
+  push:
+    branches:
+      - release/demo
+  workflow_dispatch:
+
+jobs:
+  export-macos:
+    name: Export for macOS
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Godot 4.6.2
+        run: |
+          wget -q "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_macos.universal.zip" -O godot.zip
+          unzip -q godot.zip
+          chmod +x "Godot.app/Contents/MacOS/Godot"
+          sudo mv "Godot.app" /Applications/
+
+      - name: Install Export Templates
+        run: |
+          TEMPLATES_DIR="$HOME/Library/Application Support/Godot/export_templates/4.6.2.stable"
+          mkdir -p "$TEMPLATES_DIR"
+          wget -q "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_export_templates.tpz" -O templates.tpz
+          unzip -q templates.tpz -d templates_tmp
+          mv templates_tmp/templates/* "$TEMPLATES_DIR/"
+
+      - name: Create build directory
+        run: mkdir -p build
+
+      - name: Export macOS
+        run: |
+          /Applications/Godot.app/Contents/MacOS/Godot --headless --path . --export-release "macOS" ./build/キミノコエ体験版_macos.zip
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kiminokoe-macos
+          path: build/キミノコエ体験版_macos.zip
+          retention-days: 30
