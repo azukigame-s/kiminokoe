@@ -17,17 +17,57 @@ jobs:
         with:
           lfs: true
 
-      - name: Export
-        uses: firebelley/godot-export@v6.0.0
-        with:
-          godot_executable_download_url: "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_linux.x86_64.zip"
-          godot_export_templates_download_url: "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_export_templates.tpz"
-          relative_project_path: "./"
-          export_debug: false
+      - name: Setup Godot 4.6.2
+        run: |
+          mkdir -p ~/.local/share/godot
+          wget -q "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_linux.x86_64.zip" -O godot.zip
+          unzip -q godot.zip -d ~/.local/share/godot/
+          chmod +x ~/.local/share/godot/Godot_v4.6.2-stable_linux.x86_64
+          echo "GODOT=$HOME/.local/share/godot/Godot_v4.6.2-stable_linux.x86_64" >> $GITHUB_ENV
+
+      - name: Install Export Templates
+        run: |
+          TEMPLATES_DIR="$HOME/.local/share/godot/export_templates/4.6.2.stable"
+          mkdir -p "$TEMPLATES_DIR"
+          wget -q "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_export_templates.tpz" -O templates.tpz
+          unzip -o -j templates.tpz -d "$TEMPLATES_DIR"
+
+      - name: Fix macos.zip structure
+        run: |
+          TEMPLATES_DIR="$HOME/.local/share/godot/export_templates/4.6.2.stable"
+          cd "$TEMPLATES_DIR"
+
+          echo "=== Contents of macos.zip ==="
+          unzip -l macos.zip
+
+          # バイナリを抽出
+          unzip -q macos.zip -d macos_extracted
+          RELEASE_BIN=$(find macos_extracted -name "*release*.universal" | head -1)
+          DEBUG_BIN=$(find macos_extracted -name "*debug*.universal"   | head -1)
+          echo "Found release: $RELEASE_BIN"
+          echo "Found debug:   $DEBUG_BIN"
+
+          # バイナリをルートに持つ新しい macos.zip を作成
+          [ -f "$RELEASE_BIN" ] && cp "$RELEASE_BIN" godot_macos_release.universal
+          [ -f "$DEBUG_BIN" ]   && cp "$DEBUG_BIN"   godot_macos_debug.universal
+          zip -j macos_new.zip godot_macos_release.universal godot_macos_debug.universal
+          mv macos.zip macos.zip.bak
+          mv macos_new.zip macos.zip
+          rm -rf macos_extracted
+
+          echo "=== New macos.zip contents ==="
+          unzip -l macos.zip
+          echo "=== Templates dir ==="
+          ls -la "$TEMPLATES_DIR/"
+
+      - name: Export macOS
+        run: |
+          mkdir -p build
+          $GODOT --headless --path . --export-release "macOS" ./build/キミノコエ体験版_macos.zip
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: kiminokoe-macos
-          path: ${{ github.workspace }}/build/macOS
+          path: build/キミノコエ体験版_macos.zip
           retention-days: 30
