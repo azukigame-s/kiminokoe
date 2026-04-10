@@ -25,16 +25,31 @@ jobs:
           sudo mv "Godot.app" /Applications/
           echo "GODOT=/Applications/Godot.app/Contents/MacOS/Godot" >> $GITHUB_ENV
 
+      # tpz は zip。unzip -j はパスを潰すので避け、公式の階層のまま展開する。
+      # まれに 4.6.2.stable/macos.zip のように一段ネストするため、無ければ繰り上げる。
       - name: Install Export Templates
         run: |
+          set -e
           TEMPLATES_DIR="$HOME/Library/Application Support/Godot/export_templates/4.6.2.stable"
           mkdir -p "$TEMPLATES_DIR"
           wget -q "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_export_templates.tpz" -O templates.tpz
-          unzip -o -j templates.tpz -d "$TEMPLATES_DIR"
+          echo "=== tpz 先頭の一覧（構造確認用）==="
+          unzip -l templates.tpz | head -40
+          unzip -o templates.tpz -d "$TEMPLATES_DIR"
+          if [ ! -f "$TEMPLATES_DIR/macos.zip" ] && [ -f "$TEMPLATES_DIR/4.6.2.stable/macos.zip" ]; then
+            echo "=== ネストした 4.6.2.stable を繰り上げ ==="
+            mv "$TEMPLATES_DIR/4.6.2.stable/"* "$TEMPLATES_DIR/"
+            rmdir "$TEMPLATES_DIR/4.6.2.stable"
+          fi
+          if [ ! -f "$TEMPLATES_DIR/macos.zip" ]; then
+            echo "ERROR: macos.zip が $TEMPLATES_DIR にありません"
+            find "$TEMPLATES_DIR" -name macos.zip 2>/dev/null || true
+            exit 1
+          fi
           echo "=== Templates installed ==="
           ls -la "$TEMPLATES_DIR/"
-          echo "=== macos.zip contents ==="
-          unzip -l "$TEMPLATES_DIR/macos.zip" | head -20
+          echo "=== macos.zip 先頭 ==="
+          unzip -l "$TEMPLATES_DIR/macos.zip" | head -25
 
       - name: Export macOS
         run: |
