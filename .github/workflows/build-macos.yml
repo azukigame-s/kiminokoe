@@ -47,13 +47,18 @@ jobs:
           echo "Found release: $RELEASE_BIN"
           echo "Found debug:   $DEBUG_BIN"
 
-          # バイナリをルートに持つ新しい macos.zip を作成
-          [ -f "$RELEASE_BIN" ] && cp "$RELEASE_BIN" godot_macos_release.universal
-          [ -f "$DEBUG_BIN" ]   && cp "$DEBUG_BIN"   godot_macos_debug.universal
-          zip -j macos_new.zip godot_macos_release.universal godot_macos_debug.universal
+          # Contents/MacOS/ 構造で macos.zip を作り直す（Godotが期待するパス）
+          mkdir -p Contents/MacOS
+          mkdir -p Contents/Resources
+          [ -f "$RELEASE_BIN" ] && cp "$RELEASE_BIN" Contents/MacOS/godot_macos_release.universal
+          [ -f "$DEBUG_BIN" ]   && cp "$DEBUG_BIN"   Contents/MacOS/godot_macos_debug.universal
+          cp macos_extracted/macos_template.app/Contents/Info.plist    Contents/Info.plist
+          cp macos_extracted/macos_template.app/Contents/PkgInfo       Contents/PkgInfo
+          cp macos_extracted/macos_template.app/Contents/Resources/*   Contents/Resources/
+          zip -r macos_new.zip Contents/
           mv macos.zip macos.zip.bak
           mv macos_new.zip macos.zip
-          rm -rf macos_extracted
+          rm -rf macos_extracted Contents
 
           echo "=== New macos.zip contents ==="
           unzip -l macos.zip
