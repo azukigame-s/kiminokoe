@@ -15,28 +15,28 @@
 ## days
 
 - [x] `scenarios/days/day_1010/main.json`
-- [ ] `scenarios/days/day_1010/exploration.json`
-- [ ] `scenarios/days/day_1010/evening_branch.json`
-- [ ] `scenarios/days/day_1010/evening_common.json`
-- [ ] `scenarios/days/day_1010/dinner.json`
-- [ ] `scenarios/days/day_1011/main.json`
+- [x] `scenarios/days/day_1010/exploration.json`
+- [x] `scenarios/days/day_1010/evening_branch.json`
+- [x] `scenarios/days/day_1010/evening_common.json`
+- [x] `scenarios/days/day_1010/dinner.json`
+- [x] `scenarios/days/day_1011/main.json`
 
 ---
 
 ## branches（day_1010）
 
-- [ ] `scenarios/branches/day_1010/day_1010_b_1.json`
-- [ ] `scenarios/branches/day_1010/day_1010_b_2.json`
-- [ ] `scenarios/branches/day_1010/day_1010_b_3.json`
-- [ ] `scenarios/branches/day_1010/day_1010_b_4.json`
-- [ ] `scenarios/branches/day_1010/day_1010_c_1.json`
-- [ ] `scenarios/branches/day_1010/day_1010_c_2.json`
-- [ ] `scenarios/branches/day_1010/day_1010_d_1.json`
-- [ ] `scenarios/branches/day_1010/day_1010_d_2.json`
-- [ ] `scenarios/branches/day_1010/day_1010_d_3.json`
-- [ ] `scenarios/branches/day_1010/day_1010_e_1.json`
-- [ ] `scenarios/branches/day_1010/day_1010_e_2.json`
-- [ ] `scenarios/branches/day_1010/day_1010_e_3.json`
+- [x] `scenarios/branches/day_1010/day_1010_b_1.json`
+- [x] `scenarios/branches/day_1010/day_1010_b_2.json`
+- [x] `scenarios/branches/day_1010/day_1010_b_3.json`
+- [x] `scenarios/branches/day_1010/day_1010_b_4.json`
+- [x] `scenarios/branches/day_1010/day_1010_c_1.json`
+- [x] `scenarios/branches/day_1010/day_1010_c_2.json`
+- [x] `scenarios/branches/day_1010/day_1010_d_1.json`
+- [x] `scenarios/branches/day_1010/day_1010_d_2.json`
+- [x] `scenarios/branches/day_1010/day_1010_d_3.json`
+- [x] `scenarios/branches/day_1010/day_1010_e_1.json`
+- [x] `scenarios/branches/day_1010/day_1010_e_2.json`
+- [x] `scenarios/branches/day_1010/day_1010_e_3.json`
 
 ---
 
