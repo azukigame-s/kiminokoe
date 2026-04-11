@@ -14,7 +14,7 @@
 
 ## days
 
-- [ ] `scenarios/days/day_1010/main.json`
+- [x] `scenarios/days/day_1010/main.json`
 - [ ] `scenarios/days/day_1010/exploration.json`
 - [ ] `scenarios/days/day_1010/evening_branch.json`
 - [ ] `scenarios/days/day_1010/evening_common.json`
