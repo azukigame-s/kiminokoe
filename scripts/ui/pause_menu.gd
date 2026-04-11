@@ -232,7 +232,10 @@ func _on_backlog():
 	backlog_requested.emit()
 
 func _on_settings():
-	close()
+	# close() を呼ぶとポーズが解除されてしまうため、非表示のみ行う。
+	# ポーズ解除とシーン遷移は settings_requested を受けた側（game_scene）が責任を持つ。
+	is_open = false
+	visible = false
 	settings_requested.emit()
 
 func _on_feedback():
