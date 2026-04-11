@@ -42,26 +42,26 @@
 
 ## episodes
 
-- [ ] `scenarios/episodes/ep_00.json`
-- [ ] `scenarios/episodes/ep_00_beta.json`
-- [ ] `scenarios/episodes/ep_01.json`
-- [ ] `scenarios/episodes/ep_02.json`
-- [ ] `scenarios/episodes/ep_03.json`
-- [ ] `scenarios/episodes/ep_04.json`
-- [ ] `scenarios/episodes/ep_05.json`
-- [ ] `scenarios/episodes/ep_06.json`
-- [ ] `scenarios/episodes/ep_07.json`
-- [ ] `scenarios/episodes/ep_08.json`
-- [ ] `scenarios/episodes/ep_08_prime.json`
+- [x] `scenarios/episodes/ep_00.json`
+- [x] `scenarios/episodes/ep_00_beta.json`
+- [x] `scenarios/episodes/ep_01.json`
+- [x] `scenarios/episodes/ep_02.json`
+- [x] `scenarios/episodes/ep_03.json`
+- [x] `scenarios/episodes/ep_04.json`
+- [x] `scenarios/episodes/ep_05.json`
+- [x] `scenarios/episodes/ep_06.json`
+- [x] `scenarios/episodes/ep_07.json`
+- [x] `scenarios/episodes/ep_08.json`
+- [x] `scenarios/episodes/ep_08_prime.json`
 
 ---
 
 ## shared
 
-- [ ] `scenarios/shared/shared_day_1010_c.json`
-- [ ] `scenarios/shared/shared_ep_3_after.json`
-- [ ] `scenarios/shared/shared_ep_7_shrine.json`
-- [ ] `scenarios/shared/shared_warabeuta.json`
+- [x] `scenarios/shared/shared_day_1010_c.json`
+- [x] `scenarios/shared/shared_ep_3_after.json`
+- [x] `scenarios/shared/shared_ep_7_shrine.json`
+- [x] `scenarios/shared/shared_warabeuta.json`
 
 ---
 
