@@ -100,6 +100,8 @@ func _setup_ui():
 		if custom_theme:
 			text_label.theme = custom_theme
 
+	# RichTextLabel が _gui_input でクリックを横取りしないよう IGNORE に
+	text_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	text_display.add_child(text_label)
 	text_display.text_label = text_label
 
@@ -131,6 +133,7 @@ func _setup_ui():
 	toast_notification = Control.new()
 	toast_notification.set_script(ToastNotificationScript)
 	toast_notification.name = "toast_notification"
+	toast_notification.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(toast_notification)
 
 	# AutoSaveIndicator
@@ -196,6 +199,8 @@ func _setup_pause_menu():
 	pause_menu.title_requested.connect(_on_title_requested)
 	pause_menu.settings_requested.connect(_on_settings_requested)
 	pause_menu.backlog_requested.connect(_on_backlog_from_pause)
+	# 正常再開時（もどるボタン・ESC）に block_advance をリセット
+	pause_menu.resumed.connect(func(): if text_display: text_display.block_advance = false)
 
 	print("[GameScene] ポーズメニュー設定完了")
 
@@ -404,6 +409,9 @@ func _on_skip_pressed():
 
 func _on_menu_pressed():
 	if not pause_menu.is_open:
+		# ポーズ開始前にテキスト送りをブロック
+		if text_display:
+			text_display.block_advance = true
 		pause_menu.open()
 
 ## 選択肢表示状態の変更時
@@ -454,6 +462,9 @@ func _on_title_requested():
 	SceneManager.goto_title()
 
 func _on_settings_requested():
+	# テキスト送りをブロック（ポーズ解除後のイベント伝播による誤作動防止）
+	if text_display:
+		text_display.block_advance = true
 	# 設定画面へ遷移する前に現在の状態（アンビエント含む）をオートセーブ
 	var save_state = scenario_engine.get_save_state()
 	_on_auto_save_requested(save_state)

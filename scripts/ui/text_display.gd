@@ -28,6 +28,9 @@ var _animation_timer: float = 0.0
 # go_next フラグ（インジケータ表示用）
 var _go_next: bool = false
 
+# シーン遷移中などの入力ブロックフラグ
+var block_advance: bool = false
+
 # インジケータ
 var _indicator_blink_timer: float = 0.0
 var _indicator_blink_speed: float = 0.5
@@ -45,19 +48,25 @@ func _ready():
 	if has_node("TextLabel"):
 		text_label = get_node("TextLabel")
 
-func _input(event):
-	var is_click = false
-
+## マウスクリックによるテキスト送り
+## _gui_input を使うことで、z_index の高いボタン（一息等）が上にある場合は届かない
+func _gui_input(event):
+	if block_advance:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			is_click = true
-	elif event is InputEventKey:
-		if (event.keycode == KEY_ENTER or event.keycode == KEY_SPACE) and event.pressed:
-			is_click = true
+			accept_event()
+			_handle_advance()
 
-	if not is_click:
+## キーボードによるテキスト送り（_input = GUI より前に呼ばれるため全入力を受け取れる）
+func _input(event):
+	if block_advance:
 		return
+	if event is InputEventKey:
+		if (event.keycode == KEY_ENTER or event.keycode == KEY_SPACE) and event.pressed:
+			_handle_advance()
 
+func _handle_advance():
 	match _state:
 		State.ANIMATING:
 			_complete_animation()
