@@ -14,6 +14,7 @@ const PauseMenuScript = preload("res://scripts/ui/pause_menu.gd")
 const BottomMenuScript = preload("res://scripts/ui/bottom_menu.gd")
 const BacklogDisplayScript = preload("res://scripts/ui/backlog_display.gd")
 const PoemDisplayScript = preload("res://scripts/ui/poem_display.gd")
+const AutoSaveIndicatorScript = preload("res://scripts/ui/auto_save_indicator.gd")
 
 # コンポーネント参照
 var scenario_engine
@@ -24,6 +25,7 @@ var choice_display
 var subtitle_display
 var poem_display
 var toast_notification
+var auto_save_indicator
 var bottom_menu: Control
 var backlog_display: Control
 var pause_menu: Control
@@ -131,6 +133,12 @@ func _setup_ui():
 	toast_notification.name = "toast_notification"
 	add_child(toast_notification)
 
+	# AutoSaveIndicator
+	auto_save_indicator = Control.new()
+	auto_save_indicator.set_script(AutoSaveIndicatorScript)
+	auto_save_indicator.name = "AutoSaveIndicator"
+	add_child(auto_save_indicator)
+
 	print("[GameScene] UI構築完了")
 
 ## ScenarioEngine の初期化
@@ -150,6 +158,7 @@ func _setup_scenario_engine():
 
 	# オートセーブシグナル接続
 	scenario_engine.auto_save_requested.connect(_on_auto_save_requested)
+	scenario_engine.auto_advance_reached.connect(auto_save_indicator.show_indicator)
 
 	print("[GameScene] ScenarioEngine 初期化完了")
 

@@ -9,6 +9,7 @@ signal scenario_started
 signal scenario_completed
 signal command_executed(command: Dictionary)
 signal auto_save_requested(save_state: Dictionary)
+signal auto_advance_reached
 
 # 依存コンポーネント
 var command_executor: CommandExecutor
@@ -101,6 +102,8 @@ func execute_scenario() -> void:
 		# dialogue 完了後にオートセーブ
 		if command_type == "dialogue":
 			auto_save_requested.emit(get_save_state())
+			if command.get("go_next", false):
+				auto_advance_reached.emit()
 
 ## load_scenario コマンドの処理
 func handle_load_scenario(command: Dictionary) -> void:
