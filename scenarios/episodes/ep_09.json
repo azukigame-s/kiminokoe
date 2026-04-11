@@ -1,0 +1,285 @@
+[
+	{
+		"type": "dialogue",
+		"text": "「この子たち、大きく育てようね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………聞き覚えのある声が聞こえてくる。",
+		"go_next": true
+	},
+	{
+		"type": "bgm",
+		"name": "flashback"
+	},
+	{
+		"type": "flashback_start",
+		"effect": "grayscale",
+		"gradual": true,
+		"duration": 4.5
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕とスグは、地蔵祭に来ていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "村の小さな祭りだが、いくつかの屋台が並んでいて賑わっている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "子供たちにとっては数少ない村のイベントで、皆楽しみにしていた祭りだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "射的、輪投げ、そして――金魚すくい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが目を輝かせて、金魚すくいの屋台を指さした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「やりたい！　お兄ちゃんも一緒にやろうよ！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "金魚すくい……今まで一度も取れたことがなかったので自信はないけれど、僕もやりたいという気持ちだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「おばあちゃん……やってもいい？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕とスグは、両手を合わせてお願いのポーズをおばあちゃんに向けた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「いいよ、頑張るんだよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "おばあちゃんは満面の笑顔で応援してくれた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "おじさんにお金を払うと、二人分のポイを渡された。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「頑張れよ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "おじさんは気さくに笑っている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "水槽を覗き込むと、たくさんの金魚が泳いでいた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "赤、白、黒――まだら模様のものもいたり、色とりどりだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは真剣な顔でポイを構えている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「よーし、いっぱいとるぞ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も負けじとポイを水面に近づけた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――が。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "金魚は思ったより素早い。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ポイを近づけると、サッと逃げてしまう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグも苦戦しているようで、「あー！」と声を上げていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「くそっ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "何度か挑戦するうちに、僕のポイが破れた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグも――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あっ……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグのポイも、破れてしまった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "結局、二人とも一匹も取れなかった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あはは、ダメだったか」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "おじさんは笑いながら近づいてきた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "手に持ったウチワを置き、網に持ち替えさっと金魚をすくい上げた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「はい、これやるよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "おじさんは、ビニール袋に金魚を入れて渡してくれた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "中には、金魚が二匹。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「え、いいんですか？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は驚いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「いいのいいの。お前ら頑張ってたからな」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが嬉しそうに受け取った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ありがとうございます！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグがこちらを向いて袋を持ち上げて見せた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "袋の先に笑顔が見える。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「もういっちょ、こっちも持ってきな」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "おじさんはさらにもう一袋、金魚を二匹入れて渡してくれた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "合計四匹。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは大喜びだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「やったー！　お兄ちゃん、四匹も！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も、嬉しくなった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "帰り道、スグはずっと金魚の入った袋を大事そうに持っていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「この子たち、大きく育てようね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが笑顔で言った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も頷いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「うん、大切に育てよう」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの笑顔が、夏の夜に輝いていた。"
+	},
+	{
+		"type": "flashback_end",
+		"gradual": true,
+		"duration": 4.5
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"go_next": true
+	},
+	{
+		"type": "flashback_end"
+	}
+]

@@ -1,0 +1,620 @@
+[
+	{
+		"type": "dialogue",
+		"text": "肩で息をしながらあたりを見回す。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "相変わらず御仏木は中央を陣取っているし、ふたこじぞうはひっそりと佇んでいる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん……はあ……はあ……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが追いついてきて僕の横に立つ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「何か……あった？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は横に首を振った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "中央の木の幹に手を当ててみる。苔に覆われた表面は冷たく湿っていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "そのまま幹の周りを回るようにあたりを探すと、木の根元に不自然に掘り返された跡があった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "土はまだ新しく、誰かが最近ここを触ったことを物語っている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は吸い寄せられるようにその場に膝をつき、爪が汚れるのも構わず土をかき分けた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "カツっと指先に、硬い感触があった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "土の中から現れたのは、小さな錆びたビスケットの缶だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "丁寧に周りの土を落とす。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「…………」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの方を振り返ると、無言のまま頷いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "震える手で蓋を開けると、中には一枚の紙が入っていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ノートの端を破ったような、不格好な紙。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "『おにいちゃん、ごめんね。なか直りしたいです。\n\n　ずっと、だいすきだよ。』",
+		"new_page": true,
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――スグ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグなのか。"
+	},
+	{
+		"type": "dialogue",
+		"text": "君が、これを埋めておいてくれたのか？"
+	},
+	{
+		"type": "dialogue",
+		"text": "視界が急激に滲んでいく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "１２年前のあの日、渡せなかったカードへの後悔、言えなかった「ごめん」の言葉が、濁流のように胸に押し寄せた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「……あ、誰だよー！　僕の手紙、勝手に出したのは！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "背後から響いた、幼い少年の声。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ハッとして振り返ると、そこにはあの「白い服の少年」が立っていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして、その更に後ろには、少し背の高い少年がもう一人。"
+	},
+	{
+		"type": "dialogue",
+		"text": "困ったような顔で立っていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あ、それ……ごめんなさい、弟が……その……」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "弟――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "背の高い少年――白い服の少年の兄が、申し訳なさそうに僕たちを見た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "白い服の少年は照れくさそうに頭をかいている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――兄……弟。"
+	},
+	{
+		"type": "dialogue",
+		"text": "この子は、スグではなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "どこにでもいる兄弟だったんだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "全身の力が抜ける。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "手紙を――見直す。"
+	},
+	{
+		"type": "dialogue",
+		"text": "文字が揺れて、読めない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そのとき。"
+	},
+	{
+		"type": "dialogue",
+		"text": "目の前で手を繋ぎ、少し照れくさそうに笑い合う二人の姿を見た――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は、そこに「あの日」の自分たちを重ねていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "仲直りをして、笑い合っていたはずの――スグと僕を。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は腕に力を込め、立ち上がり、二人の少年に近づいた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "しゃがみ込んで二人の肩にそっと手を置く。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そうだ――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "伝えなければならない――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕ができなかったことを、この子たちには、ちゃんとしてほしい。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "喉の奥が、熱く焼けるように震えた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ずっと沈黙していた喉が――必死に空気を震わせる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "喉が、痛い。"
+	},
+	{
+		"type": "dialogue",
+		"text": "けれど、僕は構わずに――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「……お……と」"
+	},
+	{
+		"type": "dialogue",
+		"text": "……っ、……っ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "出そうとした言葉が形をなさず、咳となって溢れ出す。"
+	},
+	{
+		"type": "dialogue",
+		"text": "喉を手で抑える。"
+	},
+	{
+		"type": "dialogue",
+		"text": "強く――握る。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――それでも。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "空気を絞り出す。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ひび割れた音が、静かな広場に響いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「……弟を……大切に、な……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "初めて出た声は、自分でも驚くほど低く、震えていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "少年二人は、目を丸くして僕を見つめていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "その驚いた顔は、僕が声を絞り出したことへの畏怖か、あるいは、言葉への共感か。"
+	},
+	{
+		"type": "dialogue",
+		"text": "やがて、兄の方は神妙な顔つきで、強く一度だけ頷いた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん…………声……う、うわぁぁぁん……！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが耐えきれなくなったように泣き出してしまった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "声を上げて、子供のように泣いている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "年が離れていて、こんな姿も見たことがなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "妹に対して声がかけられたら良かったのだけど、もう、出せそうになかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は泣きじゃくるイロの肩を抱き、少年たちに別れを告げた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "彼らは少し不思議そうに、けれど笑顔で手を振って去っていった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕達も秘密基地を後にしようとゆっくり歩き出した。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――そのとき。"
+	},
+	{
+		"type": "dialogue",
+		"text": "爽やかな秋の風が、下から上へと吹き抜けた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ふと、背後に確かな気配を感じて、僕は足を止めた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "誰かに――見守られているような。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "振り返ると、そこにはただ、秋の空を背にどっしりと構える大きな木があるだけだった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "……ありがとう、スグ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は心の中で、一度だけそう呟いた。",
+		"go_next": true
+	},
+	{
+		"type": "visual_effect",
+		"description": "カメラが木を映しながらゆっくり上昇。枝の先に、白い服の少年が座っている。顔は逆光でよく見えないが、最高に輝く笑顔で笑っているのがわかる。再び強い風が吹き、一斉に木の葉が舞い上がる。視界が木の葉で埋め尽くされ、再び開けたとき――そこには、もう少年の姿はなかった。ただ、揺れる枝だけが残されている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――キミノコエ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――それは、君が思い出させてくれた、僕自身の声でもあった。",
+		"go_next": true
+	},
+	{
+		"type": "staff_roll"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕とイロは、ゆっくりと坂を下った。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "二人とも、無言だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "心は、軽かった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "家に戻ると、祖母が玄関で待っていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おかえり。お墓参り、行ってきたんかい？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "本当は――秘密基地に行っていたのだが。"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母は、優しく微笑んだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「バス、もうすぐだね」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロに言われ時計を見ると、もう１１時を過ぎていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "帰りのバスまで、あと１５分ほど。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――もう、行かなければ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母が、僕の荷物を持ってきてくれていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「気ぃつけてね。また来んさいよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母の言葉に、僕は深く息を吸い込み――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「……うん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "小さく、でも確かに、声を出して応えた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母の目が、少し大きくなった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "くしゃりと顔を歪めて、優しく、本当に優しく微笑んだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「[主人公]ちゃん……あぁ……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "その一言だけだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ、しきりに何度も、何度も頷いている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "その皺の刻まれた手が、僕の腕を一度だけ強く握った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も頷き、実家を後にした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロと二人で、バス停へ向かった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "海沿いの道を歩く。"
+	},
+	{
+		"type": "dialogue",
+		"text": "潮の香りが、心地よい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは、時々僕の方を見ては、にこにこ笑っている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "何かを言いたそうだけど、彼女は何も言わない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ、ただ嬉しそうだった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "田舎の路面バスというのは、当たり前のように遅れて到着する。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "到着予定時刻の５分前にはバス停に着いていたのだが、その時間を過ぎても未だにバスの姿は見えない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「なかなか来ないね……あっ！　きた！！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロがまるでUFOでも発見したかのようにはしゃいだ声をあげた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "海沿いの道路は開けて遠くまで見渡せる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "バスが来たと言っても、まだ米粒のようなサイズでしか確認できない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、たまには連絡――」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが言いかけて、止まった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "少し考えて――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ううん、たまには電話してよね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの笑顔。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "喉の奥が熱くなる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「………………わかったよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "声に出して、そう応えた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "バスが到着する。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ドアが開き、僕は左側の一番前――いつもの席に座った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "窓越しに見える妹に手を振った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロも、大きく手を振っている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――ありがとう、イロ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ありがとう。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "バスが動き出す。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの姿が、徐々に小さくなっていく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "バスの中に乗客は僕一人だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "窓の外に、景色が流れていく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――青い空。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――青い海。"
+	},
+	{
+		"type": "dialogue",
+		"text": "10月にしては青すぎる景色が広がっていた。"
+	}
+]

@@ -1,0 +1,123 @@
+[
+	{
+		"type": "dialogue",
+		"text": "イロと一緒に、お墓に向かった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "バス停の方へ続く道――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "頬に当たる風が心地よい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "道路に沿って墓地が建ち並んでいる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "集合墓地の中ほどに僕の家のお墓がある。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロと二人でお墓の前に立ち、お線香に火を灯す。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "あたりに線香の香りが広がり、煙で目が少し痛かった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "膝を曲げ、棹石を見上げる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――スグ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "目を閉じる。",
+		"new_page": true,
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――ごめん。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "あの日のこと、ずっと忘れていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "君が怖い思いをしたこと。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕が守れなかったこと。"
+	},
+	{
+		"type": "dialogue",
+		"text": "全部――歪んで、記憶の奥に沈んでいた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "でも――。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "やっと思い出せたよ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "君のことを、ちゃんと。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ゆっくりと目を開ける。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "秋の空が、青い。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――ありがとう、スグ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグも好きだった、青い空。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――また来るよ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "今度は、ちゃんと思い出を持って。"
+	},
+	{
+		"type": "dialogue",
+		"text": "横でイロも静かに手を合わせている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちは墓に一礼し、家へ戻った。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1012/ed_2"
+	}
+]

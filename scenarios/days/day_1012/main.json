@@ -1,0 +1,797 @@
+[
+	{
+		"type": "bgm",
+		"name": "main"
+	},
+	{
+		"type": "subtitle",
+		"text": "１０月１２日\n　　６：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "目が覚めた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "時計を見ると、まだ６時前。"
+	},
+	{
+		"type": "dialogue",
+		"text": "もう少し寝ていたかったが、トイレに行きたくなって体を起こした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――昨日は、疲れていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "旅館から帰って、部屋に入るなりベッドに倒れ込み――気が付いたら、朝だった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "昨日は、たくさんの人と話した。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "少しの会話だけで、こんなに疲れるなんて――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "一昨日から続く不思議な出来事のせいだろうか。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "みんな、優しかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "少しだけ、心が軽くなった気がする。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "古い木の階段が、軽く軋む音を立てた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "一階は、静まり返っている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "時計の音だけが、静かに響いていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "トイレ横の棚に、僕が工作で作った作品が埃をかぶっている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……立ち止まっている場合じゃない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "トイレ、トイレ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "トイレを済ませて出ると、台所に明かりがともっているのに気づく。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "そっと覗いてみると――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母が、一人で朝ごはんの準備をしていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母の後ろ姿を見ていると、胸が温かくなった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の母は、スグが亡くなった１年後に他界している。"
+	},
+	{
+		"type": "dialogue",
+		"text": "まだイロが手がかかる時期だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それを、祖母が支えてくれていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "今ではイロも立派に成長し、家事を手伝っているようだった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――手伝おう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は、半開きの戸に手をかけた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あら、[主人公]ちゃんか。早いねぇ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母はこちらを振り返ったが、手は動いていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "小豆の良い香りが台所に漂っている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「もうすぐ赤飯が炊けるけぇなあぁ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母は、特に大切な日ではなくても赤飯を炊く。"
+	},
+	{
+		"type": "dialogue",
+		"text": "運動会、参観日、そして今日――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕がいる、それだけで。"
+	},
+	{
+		"type": "dialogue",
+		"text": "小豆から炊くから、時間がかかると昔聞いたことがある。"
+	},
+	{
+		"type": "dialogue",
+		"text": "今の様子を見ると、今日も相当早くから準備しているのだろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は邪魔にならないように、洗い物を手伝うことにした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「いいよいいよ、お客さんなんだから」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母は少し困った顔をした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "大丈夫だよ、僕だってできる。そう伝えて祖母を納得させた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「そうかい、じゃあお願いするね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母は嬉しそうに笑った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "時折、祖母の昔話を聞きながら、僕たちは朝食の準備を進めた。"
+	},
+	{
+		"type": "subtitle",
+		"text": "１０月１２日\n　　７：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "「ごめーん、寝坊しちゃったぁー」"
+	},
+	{
+		"type": "dialogue",
+		"text": "準備が終わる頃、イロが起きてきた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "今日も元気だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あれ、お兄ちゃんもう起きてたの？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "意外そうな顔をしている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は少し不服そうな顔で返した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ははは、私も手伝うね！」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "三人で食卓を囲む。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "父はそのまま旅館で宴会を続けたらしく、家にはいなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お赤飯、お味噌汁、おかずは昨日の法事で配られたお惣菜だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "一人暮らしになってから朝を抜くこともある僕にとって、非常に豪華な朝ごはん。"
+	},
+	{
+		"type": "dialogue",
+		"text": "炊き立てのお赤飯が特にうまかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロも嬉しそうに食べている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母も、穏やかな表情だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "宴会で会った人たちが悪いわけではないけれど、やっぱり家族と過ごすほうが心が落ち着く。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そう感じられる朝だった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "食事が終わる頃、祖母が僕の方を見た。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「今日は何時に帰るだいな？　朝はゆっくりして帰るだら？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母はきっと僕と過ごしたいのだと思う。"
+	},
+	{
+		"type": "dialogue",
+		"text": "なかなか帰らないから――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ、今日はイロとダキを見て回る約束もしていた。",
+		"go_next": true
+	},
+	{
+		"type": "choice",
+		"prompt": "帰る時間までどう過ごそう？",
+		"choices": [
+			{
+				"id": "opt_day_1012_a_1",
+				"text": "うん、ゆっくり過ごすよ",
+				"next_index": 100
+			},
+			{
+				"id": "opt_day_1012_a_2",
+				"text": "ごめん、ダキを見て回ろうと思って……",
+				"next_index": 200
+			}
+		]
+	},
+	{
+		"type": "index",
+		"index": 100
+	},
+	{
+		"type": "dialogue",
+		"text": "午前中は実家でゆっくり過ごすことにした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ダキを回れなくてもよいかと聞かれると、それは回りたい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグとの記憶を思い出せるかもしれないんだから――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それでも、家族は大切にしたいと思った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんが言っていた「生きている人達のために」という言葉。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そういうことだと思っている。",
+		"go_next": true
+	},
+	{
+		"type": "subtitle",
+		"text": "１０月１２日\n　　１０：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
+		"type": "dialogue",
+		"text": "居間でテレビを見ながらゆっくり過ごした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "これまで家をあけていた分、話したいこと――話せていないこともたくさんあった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母も、自分の作った川柳――主に孫のことが中心の――を聞かせてくれたり、僕の小さかった頃の話を聞かせてくれた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "実は自分のことをあまり覚えていなかったので、自分のことながら新鮮な気持ちで聞くことができたのだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あら」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "急に祖母が声をあげた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「餌をやるのを忘れとったがん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あー金魚？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの返答を聞いて理解した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "うちの実家には玄関に水槽がおいてあり、そこに金魚を飼っている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「よっこらせ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母が立ち上がったので、僕も久しぶりに見てみようと思った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "玄関へ足を運ぶと「バチャン」っと水の跳ねる音がした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "昔は僕も餌やりをしていたので馴染みのある音。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんな音とともに、聞き覚えのある声が聞こえた気がした――。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/ep_09"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お祭りでスグと一緒に釣った金魚だったんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "しかし、それにしても――。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――大っきい！",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「だよね～」"
+	},
+	{
+		"type": "dialogue",
+		"text": "いつの間にかイロも見学に来ていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "まだ僕が低学年のころに釣った金魚。もう１０年以上生きていることになる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "体長が２０センチを優に超えており、一見したら鯉に見えるほどだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "２匹の金魚が気持ちよさそうに泳いでいたが、水槽は少し窮屈そうだった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「前ねぇ、おばあちゃんがこの金魚たちに名前をつけたんだよ、何だと思う？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "突然のクイズに僕はきょとんとしてしまった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは僕の答えを待たずに続けた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「なんとね、お兄ちゃんとスグちゃんと、わたし！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロはニヤニヤしている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母はばつが悪そうだ。下を向いてしまっている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「そしたらねぇ～、１匹死んじゃったの。だから名前を変えたんだ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "なるほど……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母も悪気はなかったけど、縁起でもないから――か。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ちなみに死んじゃった金魚さんはお兄ちゃん！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "みんなで笑った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "内心スグではなくて良かったと思いつつ、なんとも言えない気持ちになった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも、まあ、こういう他愛もない話ができるのって――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "いいな。"
+	},
+	{
+		"type": "dialogue",
+		"text": "素直にそう思った。"
+	},
+	{
+		"type": "load_scenario",
+		"path": "shared/shared_1012"
+	},
+	{
+		"type": "index",
+		"index": 200
+	},
+	{
+		"type": "dialogue",
+		"text": "今日はもう一度ダキを見て回るつもりだった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "それを伝えると祖母は悲しい表情を見せたものの、すぐに笑顔になった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「帰る前にスグちゃんのところに行ってぇな」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグちゃんのところ――お墓参りということだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "すでに玄関にはお線香の束が用意してあった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロがビニール袋にはいったそれを手に持つと、元気な声をあげた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「じゃあ、おばあちゃん行ってくるね！」",
+		"go_next": true
+	},
+	{
+		"type": "branch",
+		"condition": "cond_true_day1010",
+		"branches": {
+			"true": 300,
+			"false": 400
+		}
+	},
+	{
+		"type": "index",
+		"index": 300
+	},
+	{
+		"type": "dialogue",
+		"text": "二人で靴を履き、玄関を出ようとしたとき「あちゃ」と祖母の叫び声が聞こえてきた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "そのすぐ後――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「パリーン」となにかが割れる音。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あ～あ。なにか割れちゃったね。私見てくるよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは履いたばかりの靴を脱ぎ、中に入っていく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "皿が割れる音だったのだろうか……。それともガラス――？"
+	},
+	{
+		"type": "dialogue",
+		"text": "ガラス…………の音。"
+	},
+	{
+		"type": "dialogue",
+		"text": "なにか引っかかるところがあり考えていると、聞き覚えのある声が聞こえた気がした――。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/ep_04"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はスグに対して、ちゃんとお兄ちゃんしていたんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "玄関先で立ち尽くしていると、イロが戻ってきた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「どうしたのお兄ちゃん。ぼーっとしちゃって？」"
+	},
+	{
+		"type": "jump",
+		"index": 400
+	},
+	{
+		"type": "index",
+		"index": 400
+	},
+	{
+		"type": "branch",
+		"condition": "cond_true_day1011",
+		"branches": {
+			"true": 500,
+			"false": 600
+		}
+	},
+	{
+		"type": "index",
+		"index": 500
+	},
+	{
+		"type": "dialogue",
+		"text": "返答しようとイロの方を見たとき、イロの後ろに立つ少年の姿が目に飛び込んできた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "真っ白な服、少しカールした黒髪――。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「どうしたの？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の視線がイロを捉えていなかったのに気づき、そう言いながらイロは振り返った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "少年の姿がイロに完全に隠れてしまい、姿が見えない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ん？　誰もいないけど……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは不思議そうな表情でこっちを見て、もう一度振り返った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あれ？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロはそう言うと、少年が立っていたあたりまで小走りで向かい、かがみ込んだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、これ。手紙が落ちてた」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "戻ってきたイロの手には一枚の手紙――破ったノートを折りたたんだだけの紙があった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はそれを受け取り、――開いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "『おにいちゃん　みせたいものがあるから　ひみつきちに　きて』"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、見せたいものがあるから、秘密基地に、来て？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "横から覗き込んでいたイロが読み上げる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "これは――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「スグちゃんからの……手紙？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが、僕の考えていたことを口にした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はイロと目を見合わせた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "秘密基地――イロにそれを伝えるより先に僕は走り出していた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロも僕に続いてついてくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――お寺の横を抜け。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――裏の坂道を登り。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そして……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちの秘密基地へ。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1012/ed_1"
+	},
+	{
+		"type": "index",
+		"index": 600
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1012/exploration"
+	}
+]

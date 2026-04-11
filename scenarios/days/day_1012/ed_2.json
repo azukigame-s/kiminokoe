@@ -1,0 +1,180 @@
+[
+	{
+		"type": "dialogue",
+		"text": "家に戻ると、祖母が玄関で待っていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「おかえり。お墓参り、行ってきたんかい？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母は、優しく微笑んだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「バス、もうすぐだね」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロに言われ時計を見ると、もう１１時を過ぎていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "帰りのバスまで、あと１５分ほど。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――もう、行かなければ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母が、僕の荷物を持ってきてくれていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「気ぃつけてね。また来んさいよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は深く頷き、祖母に別れを告げた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロと二人で、バス停へ向かった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "海沿いの道を歩く。"
+	},
+	{
+		"type": "dialogue",
+		"text": "潮の香りが、心地よい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが僕の方を見て、目があった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「私ね――お兄ちゃんと色々回れて嬉しかった」"
+	},
+	{
+		"type": "dialogue",
+		"text": "笑顔を見せて、また前を向く。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も前を見る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "自然と笑顔になった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "田舎の路面バスというのは、当たり前のように遅れて到着する。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "到着予定時刻の５分前にはバス停に着いていたのだが、その時間を過ぎても未だにバスの姿は見えない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「なかなか来ないね……あっ！　きた！！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロがまるでUFOでも発見したかのようにはしゃいだ声をあげた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "海沿いの道路は開けて遠くまで見渡せる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "バスが来たと言っても、まだ米粒のようなサイズでしか確認できない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、たまには連絡してよね」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "深く頷いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "バスが到着する。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ドアが開き、僕は左側の一番前――いつもの席に座った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "窓越しに見える妹に手を振った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロも、大きく手を振っている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――そのとき。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ふと、イロの後ろに白い服の少年が立っているような気がした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "目を凝らしても、そこには誰もいない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "バスが動き出す。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの姿が、徐々に小さくなっていく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "バスの中に乗客は僕一人だ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "流れる景色を眺めながら、――また来よう。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "そう思った。"
+	}
+]
