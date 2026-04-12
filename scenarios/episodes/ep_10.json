@@ -1,0 +1,383 @@
+[
+	{
+		"type": "dialogue",
+		"text": "「クワガタいるかなぁ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………聞き覚えのある声が聞こえてくる。",
+		"go_next": true
+	},
+	{
+		"type": "bgm",
+		"name": "flashback"
+	},
+	{
+		"type": "flashback_start",
+		"effect": "grayscale",
+		"gradual": true,
+		"duration": 4.5
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あそこの犬……飛び出して来ないよね？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの不安そうな声を聞き、僕は遠目に猟師さんの家の方を見る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「多分……大丈夫だよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕もあの大きな犬が飛び出てきたら……と思うと落ち着かなかったが、これまで飛び出して来たことはないので、不安ながらそう応えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "二人で駆け足になりながら、山道に続く道を急いだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ミンミンと騒がしさが増してきた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "額には汗が流れてくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "今日はスグと二人でクワガタを捕まえに、お寺の先の山道に来ていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「クワガタいるかなぁ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが期待に胸を膨らませている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "先程までの不安はどこかに行ってくれたようで、一安心だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「いるさ。この辺りはクワガタの宝庫なんだから」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の不安も飛んでいったようで、自信満々にそう答えた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "参道に入って程なく木々が生い茂ってきた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "大きめの木を見つけては、幹を揺らす。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ガサガサと葉が揺れる音。"
+	},
+	{
+		"type": "dialogue",
+		"text": "葉はひらひらと舞うも、クワガタは落ちてこなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「次、次！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは元気な歩幅で歩みを進める。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちは、どんどん奥へと進んでいった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "何本目かの木を揺らしたとき――。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ふと、辺りが暗くなっていることに気づいた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "夕暮れが近い。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それに、木々が深くなっている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん……なんか暗くなってきたね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが不安そうに僕を見上げる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「大丈夫だよ。もう少し探そう」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はそう言ったものの、少し不安になっていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「流石に、そろそろ……落ちてくれよ――」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は渾身の力で木を揺らす。"
+	},
+	{
+		"type": "dialogue",
+		"text": "バサバサという音とともに、何かが落ちた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ひゃあっ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの小さな悲鳴を聞いたと思ったら、奥へ走り出してしまった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「スグ！　待って！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は慌てて追いかけた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「はあ……はあ……」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "すぐに追いついたものの、あたりの暗さは更に深まっている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ごめん……怖くて……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "肩で息をしているスグは、今にも泣きそうな様子だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「大丈夫だよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はスグの手を握った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「さ、帰ろう」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あれ？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――違う。"
+	},
+	{
+		"type": "dialogue",
+		"text": "右をみても、左を見ても、前を見ても……そこには木々が広がっているだけだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "どこから来たのか――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "分からない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん……？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが不安そうに僕を見る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――まずい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "道が、分からない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "来たはずの道が、どこにもない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――あ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "見覚えのある木――何度も揺らした木が見えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あそこ！　あの木！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は走り出した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグも必死についてくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして――。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちは、必死に走った。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "もう、クワガタのことなんて、どうでもよかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ――ただ、家に帰りたかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "木々を抜け。"
+	},
+	{
+		"type": "dialogue",
+		"text": "猟師さんの家が見えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺の門。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして――。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おばあちゃーん！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "見慣れた家が目に入る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが泣きながら叫ぶ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も――我慢できずに、泣いていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「なんだいな？　二人とも泣いてぇ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母が驚いて飛び出してくる。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「道に、迷って……」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "それだけ言うのが精一杯だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「そっか、そっか――」"
+	},
+	{
+		"type": "dialogue",
+		"text": "祖母は僕たちを抱きしめてくれた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "温かかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――帰ってこれた。"
+	},
+	{
+		"type": "flashback_end",
+		"gradual": true,
+		"duration": 4.5
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"go_next": true
+	},
+	{
+		"type": "flashback_end"
+	}
+]

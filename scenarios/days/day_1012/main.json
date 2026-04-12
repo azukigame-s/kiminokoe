@@ -787,11 +787,19 @@
 		"path": "days/day_1012/ed_1"
 	},
 	{
+		"type": "jump",
+		"index": 999
+	},
+	{
 		"type": "index",
 		"index": 600
 	},
 	{
 		"type": "load_scenario",
 		"path": "days/day_1012/exploration"
+	},
+	{
+		"type": "index",
+		"index": 999
 	}
 ]

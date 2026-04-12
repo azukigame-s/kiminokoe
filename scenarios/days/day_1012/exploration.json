@@ -1,0 +1,1641 @@
+[
+	{
+		"type": "dialogue",
+		"text": "何でもないよと伝えると、イロはキョトンとした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「変なの。――じゃあ元気に行ってみよー！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの元気な掛け声に後押しされ、探索を始めることにした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "帰りのバスの時間を考えると、回れるのは１箇所くらいだろう。",
+		"go_next": true
+	},
+	{
+		"type": "choice",
+		"prompt": "さて、どこに行こうか？",
+		"choices": [
+			{
+				"id": "opt_1012_north",
+				"text": "北（海の方）に向かう",
+				"next_index": 100
+			},
+			{
+				"id": "opt_1012_east",
+				"text": "東（湧き水の方）に向かう",
+				"next_index": 200
+			},
+			{
+				"id": "opt_1012_south",
+				"text": "南（お寺の方）に向かう",
+				"next_index": 300
+			},
+			{
+				"id": "opt_1012_west",
+				"text": "西（バス停の方）に向かう",
+				"next_index": 400
+			}
+		]
+	},
+	{
+		"type": "index",
+		"index": 100
+	},
+	{
+		"type": "dialogue",
+		"text": "北に少し出れば海に出られる。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "久しぶりに見る海だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "初日にバスから見えた景色がとても印象的だったので、僕は海へ向かうことにした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「海に行くんだね。私も普段行かないからなぁ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロもあまり海には行かないらしく、ウキウキしている様子だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "家を出てほどなくすると東西に走る国道を挟んで海が見えた。",
+		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/sea_road.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "うっすら潮のにおいもする。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "地蔵焚は海に面した村であるため、どの位置からでも北に向かえば海に出られる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "話すと大抵うらやましがられるが、子供の頃はいつか津波が来るのではと怖がっていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんなことを考えながら海岸に降りる階段を下った。",
+		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/jizou4.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "階段の中腹、踊り場のような場所に小さな地蔵が２体並んでいた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "子供の頃から見慣れた光景だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ダキには至るところにこうした２体並びの地蔵があり、「ふたこじぞう」と呼ばれている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "今更ながら――なぜ２体なのだろう？"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんな疑問が頭をよぎったが、深く考えることなく下り続けた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロも見慣れているのか、特に気にする様子もなかった。",
+		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/sea_road.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "初日こそ天気が崩れたものの、昨日今日と良い天気が続いている。波も穏やかだ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「いぇーい」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが急に走り出し波打ち際で波と戯れている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "この時期に濡れると相当冷たいのは知っていると思うのだけど……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんなイロは放っておいて、左右を見た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ダキの海は東西で対象的な海岸になっている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "西は夏は賑わう海水浴場、東は釣り人や地元民の遊び場の岩場がある。",
+		"go_next": true
+	},
+	{
+		"type": "choice",
+		"prompt": "どちらに歩いていく？",
+		"choices": [
+			{
+				"id": "opt_1012_c_east",
+				"text": "東（岩場がある方）に進む",
+				"next_index": 110
+			},
+			{
+				"id": "opt_1012_c_west",
+				"text": "西（海水浴場がある方）に進む",
+				"next_index": 120
+			}
+		]
+	},
+	{
+		"type": "index",
+		"index": 110
+	},
+	{
+		"type": "dialogue",
+		"text": "「ちょっと待ってよ～」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "置いていかれたイロが、慌てて追いかけてくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんなイロを尻目に海岸沿いを東に進むと、徐々に岩場が目立つようになる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "西の海水浴場は遠浅の海なのだが、東は岩場が多く泳ぐのには適していない地形だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "だがダキの子供たちは海水浴場で泳ぐのに飽きているので、岩場で潜って魚を捕ったりして楽しんでいた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は泳ぎが得意ではないのであまりできなかったが。",
+		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/waterway.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんなことを考えていると、川から海への合流地点にたどり着いた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "国道の下を川が通っており、子供たちの間では秘密基地のような場所として親しまれていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "今思うと子供だけで遊ぶのには危ない気もするが……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "国道の下の用水路を見ていると、声が聞こえた気がした――。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/ep_05"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕とスグは、あの子猫を一緒に心配していたんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あのときのスグの笑顔を、はっきりと思い出した。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「こんなところあったんだ。お兄ちゃん結構探検してたんだね」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが珍しそうに川の中を覗き込んでいる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "やっぱり男の子と女の子では遊び方が違うんだなと感じつつ、ここで捨て猫を発見したことをイロに伝えた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あっ、しんちゃん家の猫だっけ？　シロだよね。すごい威張ってて、道の真ん中で寝てて大変なんだよ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "笑いながら話すイロ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "シロがまだ元気だったなんて知らなかったし、そんなに威厳がある感じに育つとは思わなかったので、少し可笑しかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「今はねすごい太ってて貫禄あるよ。しんちゃんが甘やかすから」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロと二人でシロの話で盛り上がった後、僕たちは来た道を戻り、岩場の見える海岸まで戻った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "そろそろお墓参りに行こう。",
+		"new_page": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "shared/shared_1012"
+	},
+	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 120
+	},
+	{
+		"type": "dialogue",
+		"text": "初日にバス停で見かけた少年が気になり、海水浴場の方へ行ってみることにした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは覚えているのか気になって尋ねてみる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あーいたね男の子。私も見たことがないんだよね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「もしかしたら休みだったし、どこかの家の親戚の子とかかなって思ってた」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロも知らない子のようで、これ以上深掘りをすることもなく海岸沿いを歩いて行った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "西に進むと砂浜が広く開けてくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "砂浜の先には古めかしい建物――夏は海の家に使われている建物――も見えるが、今の季節は人気もない。",
+		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/beach.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "バス停で見た白い服の少年はこの辺りに降りてきたはずだが……その姿もなかった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "砂浜から波打ち際を眺めていると、波が周りより穏やかなことに気づく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "子供のころにはなかったテトラポットが設置されており、波を抑えているようだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "安全に海水浴を楽しむための工夫なのだろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "波の音に混じって、誰かの声が聞こえた気がした――。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/ep_02"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も弟に強がって、お兄ちゃんらしいところを見せようとしたこともあったんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは心配してくれた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それなのに、僕は――。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "気が付くと、波打ち際に白い服の少年が立っていた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "真っ白な服、少しカールした黒髪。"
+	},
+	{
+		"type": "dialogue",
+		"text": "少年は海を見つめている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "その姿は半透明で、波の泡のように儚い。"
+	},
+	{
+		"type": "dialogue",
+		"text": "潮風が吹くと、少年の姿はゆらりと揺れた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "声をかけようとしたが、砂に足をとられ躓いてしまう。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "顔を上げると――その姿はなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん大丈夫？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "躓いた僕を見て手を取ってくれるイロ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は大丈夫だと伝えたが、イロは心配そうだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ぼーっとしちゃって大丈夫？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "ちょうどイロの背後に見えた少年。イロは気づいていなかったんだろう。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "後ろにあの少年がいたと伝えると、イロは驚いた表情を見せた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「え？　そんなはずないと――思うけど……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ほら――もう泳ぐ時期でもないし、子供はほとんど海に行かないよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "言われてみればそうだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "もしかしたら見間違いなのかもしれない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ、その少年はスグに似ていた風貌だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あの日のスグの顔が思い出せない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "その顔は霞んでいて、ぼんやりとしていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "少年のことは気になるが、そろそろお墓参りに行かないといけない。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロと二人で歩き始めた。"
+	},
+	{
+		"type": "load_scenario",
+		"path": "shared/shared_1012"
+	},
+	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 200
+	},
+	{
+		"type": "dialogue",
+		"text": "ダキには「兄の水」「弟の水」と呼ばれる二筋の清流がある。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "家から東に進むと程なく「兄の水」にたどり着いた。",
+		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/ani_no_mizu.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "山から流れるこの水は透き通っており、いまだに飲み水として村で利用されている。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "遠方から水を汲みに来る人もいるほどだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「兄の水」は軟水、「弟の水」は硬水らしく、コーヒーを淹れるときに使い分ける人もいるそうだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん一緒に飲も！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが柄杓で水をひとすくいし、手渡してくれる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "柄杓を口へ運んだ。冷たくておいしい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ありがとうと伝え、今度は僕が柄杓で水を汲む。柄杓の中で水が輝いている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロに手渡すと一気に飲んだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ぷっは～」"
+	},
+	{
+		"type": "dialogue",
+		"text": "まるでおじさんだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ふと、湧水の脇に目をやると、苔むした２体の地蔵が並んでいた。",
+		"new_page": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/jizou1.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ふたこじぞう」――村のあちこちで見かける、２体並びの地蔵だ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "柄杓を戻しながら、なんとなく地蔵を見つめる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "兄の水にも、弟の水にも、こうして２体の地蔵が祀られている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "兄弟のように寄り添う２体の姿が、妙に目に留まった。",
+		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/ani_no_mizu.jpg"
+	},
+	{
+		"type": "dialogue",
+		"text": "――兄と弟、か。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "なぜこのような名前なのかは知らない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "だが、なんとなく自分とスグを思い浮かべていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "兄弟の名を持ちながら東と西に離ればなれになっている清流。"
+	},
+	{
+		"type": "dialogue",
+		"text": "喧嘩したまま、二度と会えなくなってしまった僕たちみたいだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんなことを考えながら水の流れる音に耳を澄ませていると、聞き覚えのある声が聞こえた気がした――。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/ep_06"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕とスグはここでよく遊んでいたんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それにしても、カニスケとは……。今思えば、なんともありきたりな名前だったな。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃんニヤニヤしてどうしたの？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロがこちらを見てニヤニヤしている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグと沢蟹に名前を付けた話を伝えると、イロも笑ってくれた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「へーカニがいるんだね。知らなかったなぁ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "そう言うとイロはしゃがみ込み、水の中に手を入れた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「――冷たっ！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "勢いよく手を引き上げたものだから、水が巻き上がった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕とイロの顔や体に水が降りかかる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「わー！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "大騒ぎだった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「ごめんごめん」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが笑いながらハンカチで濡れたところを拭いている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も笑って、服の水を払った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグとの思い出を探しに来たものの、それどころではなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "でも――一人ではこんなに楽しくは回れなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "これはこれで、良かったのかもしれない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちは「兄の水」を出てお墓参りに向かった。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "shared/shared_1012"
+	},
+	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 300
+	},
+	{
+		"type": "dialogue",
+		"text": "昨日、お寺さんと一緒に歩いた道――家から南に続く道を進むことにした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お寺さんの方かぁ、私はあまり行かないな」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロはそう言いながら、僕の少し後ろをついてくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "確かに南にはお寺くらいしかなく、その先は深い山へと続く山道しかない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ僕は、昨日聞いたお寺さんの話に、何かひかかっていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "程なくして、お寺の前に着く。",
+		"go_next": true
+	},
+	{
+		"type": "choice",
+		"prompt": "どうする？",
+		"choices": [
+			{
+				"id": "opt_1012_d_temple",
+				"text": "お寺さんに会いに行く",
+				"next_index": 310
+			},
+			{
+				"id": "opt_1012_d_mountain",
+				"text": "さらに南に進む",
+				"next_index": 320
+			}
+		]
+	},
+	{
+		"type": "index",
+		"index": 310
+	},
+	{
+		"type": "dialogue",
+		"text": "「やあ、やっぱり来たね」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ガラガラガラと大きな音を立てる引き戸を閉め、僕は家の中に踏み入り、大きく頷いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「私もだよ！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の背後からひょこっと顔を出すイロ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「おや、イロちゃんもか。いやはや、これは意外だったな」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんは頭をかく。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「意外？　そうかな？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「いやいや、確かに意外――というのは失礼だね。[主人公]君が久しぶりだったものだから、君たち二人が兄妹ということに慣れていないだけだよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "そう言うと、お寺さんは左手を部屋の奥の方に向けた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ささ、立ち話もなんだ、入りなさい」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちは靴を脱ぎ、後に続いた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "応接室のような洋間に通され、ソファーに座った。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺に併設された和風の家屋の中のはずだが、ここだけ洋館のようなインテリアだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「なんだか緊張するね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "ソワソワするイロと目を合わせ、キョロキョロと周りを見ていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんは僕たちをここに通すと、いったん席を外してしまっていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "ガチャリという音とともにドアが開き、お寺さんが戻ってきた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "手にはコーヒーカップが乗ったお盆があった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「どうぞ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "そう言うと、僕とイロの前にカップを運ぶ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「イロちゃんはココアにしておいたよ。[主人公]君はコーヒーで良かったかな？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷いた。イロもお礼を言う。"
+	},
+	{
+		"type": "dialogue",
+		"text": "実はコーヒーはあまり得意ではなかったが、飲めなくはない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「さて」と前置きをし、お寺さんは僕たち二人に目配せをした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「きっと、昨日話したこの村の歴史に付いてだね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんが真剣な表情になり、僕も姿勢を正した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「実はね、僕も調べ始めたのは最近だよ。――あぁ、これは昨日も言ったかな」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「きっかけは『ふたこじぞう』の童歌だった。[主人公]君は聞いたことがないっていってたね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あっ！　私歌えるよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕が頷くよりも先にイロが声をあげた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "驚いてイロの方を見る。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「じぞうさま～ってやつだよね？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「そうそう、よく知ってるね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "拍手をしながらお寺さんが言うと、イロは少し満足そうだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「おばあちゃんがね、たまに口ずさんでたから教えてもらったの」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「うんうん。この村に古くから伝わるものだからね、大抵の場合はおじいちゃんやおばあちゃんから教わることが多いみたいだ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんがコーヒーを口にしたので、僕も合わせてカップを口に運んだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「……それでね、その歌なんだけど」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんはカップを置き、少し身を乗り出した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「歌詞の中に『あたまおなか　手とあし』ってあるだろう？　イロちゃん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「おばあちゃんはそう歌ってたよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「うん。この童歌はこの村の祭で行う行事――最初はね、あの行事のことを歌ってるんだと思ってたんだ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "『地蔵祭』というこの村に続く秋祭りを、僕は思い浮かべた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お地蔵さんを火で焼くお祭りでしょ。割れたところが今年の厄を払ってくれるって」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロがココアを飲みながら答える。"
+	},
+	{
+		"type": "dialogue",
+		"text": "この村では当たり前の光景だ。地蔵の頭にヒビが入れば、その年は頭の病気や怪我から守られる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も子供の頃、自分の背丈ほどもある炎を見上げて、不思議な高揚感を感じたのを覚えている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「けれど、先日、村に昔から住むおばあさんが独り言のように歌っているのを、偶然聞いてしまったんだよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんの眼差しが、急に鋭くなる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「その人はね、『あたまおなか　のどくび』って……歌っていたんだ」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "のど、くび――。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "守られる部位だというのに、生々しい響きに感じてしまった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は無意識に、自分の喉元をさする。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「それからというもの、気になって蔵の書物を漁っているんだが……あいにく直接的な記録は見つかっていない。ただ、ひとつだけ確信に近い推測があるんだ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんは、視線を窓の外へと向けた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あの場所の、あの異様な雰囲気。……君も感じたんだろう？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は唾をゴクリとのむ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "『焚き看病』の行事――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "地蔵を焼く行事――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "脳裏に、あの日迷い込んだ場所の情景が蘇る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "立ち入りを禁ずるロープ、無数の御札。風に揺れてカラカラと鳴る、あの乾いた音。"
+	},
+	{
+		"type": "dialogue",
+		"text": "黒ずんだコンクリート。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あそこが――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "背筋を冷たいものが走り、全身に鳥肌が立った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あそこは、本当に石の地蔵だけを焼いていた場所なんだろうか……。地蔵ではなく、もっと別の『何か』を燃やしていたのではないか。……そんな恐ろしい推測が、頭から離れないんだ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんの言葉は、確信に近い響きを持っていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "もし、あそこで燃やされていたのが地蔵ではなかったとしたら。"
+	},
+	{
+		"type": "dialogue",
+		"text": "童歌が厄除けではなく、もっと別の意味を持っていたとしたら。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……考えれば考えるほど、喉の奥が締め付けられるような感覚に襲われる。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「おっと、すまない。楽しい帰省の最後に、こんな話をするつもりじゃなかったんだ」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんは、これまでの重苦しい雰囲気を振り払うように微笑み、時計を見た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「そろそろ準備をしなきゃ。午後から法要でね。続きは……また今度にしよう」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「続き？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが首を傾げる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ああ。もし君が……この村の『真実』に興味があるなら、いつでも連絡しておいで。この村の謎を一緒に調査しよう」"
+	},
+	{
+		"type": "dialogue",
+		"text": "お寺さんは悪戯っぽく笑い、僕の肩を叩いた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は、お寺さんの真剣な、どこか少年のようにも見える瞳を見て、一度だけ深く頷いた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "なぜだか分からないけれど。"
+	},
+	{
+		"type": "dialogue",
+		"text": "風に揺れて鳴る、あの乾いた音が――やけに耳に残っていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちは一礼し、お寺を後にした。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "shared/shared_1012"
+	},
+	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 320
+	},
+	{
+		"type": "dialogue",
+		"text": "「えっ？　そっち行くの？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが目を丸くして聞いてくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "てっきりお寺に行くものだと思っていたのだろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕がお寺を素通りして山道に入ったものだから、鳩が豆鉄砲を食らったような顔をしていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "山道の横には細い小川が流れていて、水面が秋の日差しを跳ね返している。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「オオサンショウウオ？　いるの？　ここに？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "子供の頃、この小川で天然記念物が見つかって大騒ぎになった話を伝えると、イロはまた目を丸くした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ほんと田舎だなぁ……。でも――そこがいいんだよね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "悪戯っぽく笑うイロの言葉に、僕は頷いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "自分の故郷を田舎呼ばわりしているが、悪口のようには聞こえなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ダキの住人は、少し不便でも自然がいっぱいのこの村が、本当は好きなのだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "更に山道を進むと、木々が頭上を覆い、辺りは急に薄暗くなった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "斑に差し込む光が山道に模様を作る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "頃合いのクヌギを見つけ、僕は幹に手を当て強く揺らしてみた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん何してるの？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "バサバサという乾いた音とともに、色づいた葉がひらひらと舞い落ちる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "だが、それだけだった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "やっぱり無理か――。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "子供の頃、夏になればここで競うようにクワガタを捕まえていた記憶が、不意に蘇る。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "季節外れの今は、揺らしても何も落ちてはこない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "もし落ちてきていたら、それはそれでイロが絶叫していたかもしれない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「男の子って昆虫好きだよね～。何がいいんだか」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは、心底ほっとしたように肩を撫で下ろしていた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "まだ葉はひらひらと宙を舞っている。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "その葉が擦れ合う微かな音が、誰かの声と重なって聞こえた気がした――。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/ep_10"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たち兄弟はここで遭難――というと大げさだが――しかけたんだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃんどうしたの？　なにか思い出した？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "不意に覗き込んできたイロの顔に、僕は思わず体をのけぞらせてしまった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ごめん、ごめん。驚かせちゃった？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "苦笑いする彼女に、ここでスグと迷子になった昔話を伝えた。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「確かに、この先はもっと暗そうだし、一人だと怖いかも」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは右手を額に当て、更に暗くなる山道の先を見据えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "まるで探検隊の隊長のようだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ダキって細い道多いし、私もちっちゃいとき迷子になったことあるもん。あのときは泣いたなぁ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は頷きつつ、ダキの道が格子状ではなく、網目のように入り組んでいることを思い出していた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグとの記憶も出口が見つかればいいな――そんな連想をしてしまった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「そろそろ時間かな？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの言葉で腕時計を見ると、確かにそろそろ準備をしないと行けない時間だった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちはお墓参りに向かうことにした。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "shared/shared_1012"
+	},
+	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 400
+	},
+	{
+		"type": "dialogue",
+		"text": "家を出て西に向かう。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "といってもバス停に向かう表通りではなく、家と家に囲まれた路地の方だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕には行きたいところがあった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "弟の水――兄の水と並ぶ、もうひとつの湧き水。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「弟の水かぁ。あんまり行かないんだよね」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の心を読んだような発言をしたイロは横を歩いている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "村でこの道を通って向かうところと言ったら弟の水になるから、そう言ったのだろう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "確かに、兄の水に比べると、知っている人も、水を汲みに来る人も少ない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "けれども、知っている人はちゃんと知っている場所だ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "細い道を進む。とても名水があるとは思えない道だ。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "特に開けるわけでもなく、家と家の間にひっそりとそれはあった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "家々に囲まれた、こじんまりとした場所。"
+	},
+	{
+		"type": "dialogue",
+		"text": "看板なども出ていないため、気づかずに通り過ぎてしまいそうな場所だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それでも落ち着いた雰囲気があった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「こっちの方が静かだね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが辺りを見回す。もちろん誰もいない。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "村の外から喫茶店の店主がわざわざ水を汲みに来る話を聞いたことがある。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "弟の水は硬水らしく、珈琲に使うと美味しいらしい。"
+	},
+	{
+		"type": "dialogue",
+		"text": "珈琲がそんなに得意ではなかったし、味の違いもわからないから、僕にはあまり縁のない話だけれど。"
+	},
+	{
+		"type": "dialogue",
+		"text": "その話をイロにすると、イロは何やら頷き出した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ふむふむ、それでは違いを見極めてしんぜよう」"
+	},
+	{
+		"type": "dialogue",
+		"text": "キャラがよくわからなかったが、せっかく来たのでお水を飲んでみることにした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "柄杓で水を一杯すくい、イロに渡す。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「いただきまーす」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは一口飲んで――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「んー……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "首を傾げている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も飲んでみる。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "硬水特有の味があるはずだが――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "違いが分かるか、イロに尋ねる仕草をした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「うん、確かに！　……わかんない！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは笑いながらバツのジェスチャーをしていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "正直、僕も違いが分からなかったので、思わず笑ってしまった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃんは、兄の水と弟の水、どっちが好き？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが突然聞いてくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――どっちが好き、か。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんなことを考えていると、水の音に混じって声が聞こえた気がした――。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "episodes/ep_11"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――そうだ……思い出した。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは、弟の水を気に入っていたんだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そして僕は兄の水を。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが覗き込んでくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "色々と聞きたそうな目をしていたので、僕は、スグとの水の飲み比べの話を伝えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あはは、可愛い。スグちゃんも味わかんなかったんだ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが笑う。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「二人とも味が分からないのに、好きな方は決まってるんだね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは少し考えて――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「じゃあ私も弟の水の方が好きかな」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は首を傾げて、理由を尋ねる仕草をした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「だって、妹だもん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロはスグと同じように、照れくさそうに笑った。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「そろそろ時間かな」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの言葉で反射的に腕時計を見る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "確かに、そろそろお墓参りに行かないと。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちは「弟の水」を後にした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグとイロ、二人の弟妹が好きな場所。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――また来よう。"
+	},
+	{
+		"type": "dialogue",
+		"text": "そう思った。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "shared/shared_1012"
+	},
+	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 999
+	}
+]

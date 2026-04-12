@@ -1,0 +1,225 @@
+[
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、兄の水と弟の水、どっちが美味しい？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………聞き覚えのある声が聞こえてくる。",
+		"go_next": true
+	},
+	{
+		"type": "bgm",
+		"name": "flashback"
+	},
+	{
+		"type": "flashback_start",
+		"effect": "grayscale",
+		"gradual": true,
+		"duration": 4.5
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグと僕は学校から帰って来て、兄の水に向かっていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「おばあちゃんが兄水と弟水の味が違うって言ってたんだけど、おにぃはわかる？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「兄の水と弟の水な。――たしかおばあちゃんがそんなことを言ってた気がするよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが発した水の味の違いについて、聞いたことはあったものの比べたことはなかったし、意識したこともなかった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「僕わからないんだよね～、違い」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「じゃあ比べてみようか」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "まずは兄の水でお互いに味を確かめる。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「どう？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の問いにスグは白い歯を見せた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「うまい！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ははは。まあ水だし味もないよね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "実際、味もいつもの美味しい水だったし、僕も笑ってそう答えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「じゃあ、次！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの掛け声とともに、僕たちは走って弟の水に向かった。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、兄の水と弟の水、どっちが美味しい？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "両方の水を飲み終え、スグが僕に尋ねた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "目を大きく見開いて僕の応えを待っている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「んー……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は首を傾げた。正直、どっちも同じような気がする。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「わかんない！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「僕も！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "思わず二人とも吹き出した。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「じゃあさ、どっちが好き？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグがもう一度聞いてくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「兄の水かなぁ、よく飲んでるし」"
+	},
+	{
+		"type": "dialogue",
+		"text": "「僕はね、弟の水の方が好き」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは自信満々に言った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "両腕を腰に当ててポーズまで決めている。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「味、わかんないって言ったじゃん」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「わかんないけど、弟の水の方が好き」"
+	},
+	{
+		"type": "dialogue",
+		"text": "なぜだろう？"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグはニヤニヤとこちらを見ている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「もしかして……弟だから？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕が聞くと、スグは照れくさそうに笑った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「……そう！」",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「じゃあ、やっぱり僕は兄の水が好き」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃんは兄だもんね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "二人で笑った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "味はわからなかったけど――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それでも、好きな方は決まっていた。"
+	},
+	{
+		"type": "flashback_end",
+		"gradual": true,
+		"duration": 4.5
+	},
+	{
+		"type": "dialogue",
+		"text": "………………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "…………。"
+	},
+	{
+		"type": "dialogue",
+		"text": "……。",
+		"go_next": true
+	},
+	{
+		"type": "flashback_end"
+	}
+]
