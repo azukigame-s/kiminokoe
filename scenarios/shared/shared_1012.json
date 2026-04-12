@@ -1,7 +1,8 @@
 [
 	{
 		"type": "dialogue",
-		"text": "イロと一緒に、お墓に向かった。"
+		"text": "イロと一緒に、お墓に向かった。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",

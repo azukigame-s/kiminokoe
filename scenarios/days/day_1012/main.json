@@ -11,7 +11,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "目が覚めた。"
+		"text": "目が覚めた。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -195,7 +196,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "時折、祖母の昔話を聞きながら、僕たちは朝食の準備を進めた。"
+		"text": "時折、祖母の昔話を聞きながら、僕たちは朝食の準備を進めた。",
+		"go_next": true
 	},
 	{
 		"type": "subtitle",
@@ -205,7 +207,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「ごめーん、寝坊しちゃったぁー」"
+		"text": "「ごめーん、寝坊しちゃったぁー」",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -529,11 +532,16 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "素直にそう思った。"
+		"text": "素直にそう思った。",
+		"go_next": true
 	},
 	{
 		"type": "load_scenario",
 		"path": "shared/shared_1012"
+	},
+	{
+		"type": "jump",
+		"index": 999
 	},
 	{
 		"type": "index",
@@ -660,7 +668,7 @@
 	},
 	{
 		"type": "branch",
-		"condition": "cond_true_day1011",
+		"condition": "cond_true_day1012",
 		"branches": {
 			"true": 500,
 			"false": 600

@@ -363,6 +363,12 @@
 		"type": "staff_roll"
 	},
 	{
+		"type": "subtitle",
+		"text": "１０月１２日\n　　１１：００",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+	{
 		"type": "dialogue",
 		"text": "僕とイロは、ゆっくりと坂を下った。",
 		"new_page": true

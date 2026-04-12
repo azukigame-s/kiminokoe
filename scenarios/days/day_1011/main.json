@@ -150,7 +150,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "法事が始まった。"
+		"text": "法事が始まった。",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
@@ -286,7 +287,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "足の痛みは、なかなか取れなかった。"
+		"text": "足の痛みは、なかなか取れなかった。",
+		"go_next": true
 	},
 	{
 		"type": "subtitle",
@@ -296,7 +298,8 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「そのおばあさんは運転中、孫にもらった御守りを落としてしまったんです」"
+		"text": "「そのおばあさんは運転中、孫にもらった御守りを落としてしまったんです」",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",
