@@ -24,19 +24,17 @@
       ├─ cond_true_day1010 = true
       │       └─ エピソード「キャッチボール」獲得（未取得時のみ）
       │
-      ├─ cond_true_day1011 = true（= キャッチボール取得済み）
-      │       └─ トゥルーエンドルートへ（探索スキップ）
-      │
-      └─ cond_true_day1011 = false
-              └─ ③ 探索選択へ
+      └─ ③ 探索選択へ（常に遷移）
 
 ③ 探索選択
   ※ 10日に訪問済みの方角は選択肢に表示されない
+  ※ cond_true_day1012 = true の場合、非表示スロットのどれか1つに「手紙ルート（→真エンド）」が出現
       │
-      ├─ 北（海の方）  → ④ 北ルート
-      ├─ 東（湧き水の方）→ ⑤ 東ルート
-      ├─ 南（お寺の方） → ⑥ 南ルート
-      └─ 西（バス停の方）→ ⑦ 西ルート
+      ├─ 北（海の方）  → ④ 北ルート      ┐ 10日訪問済みなら非表示
+      ├─ 東（湧き水の方）→ ⑤ 東ルート    ┤ （最大2方向が非表示になる）
+      ├─ 南（お寺の方） → ⑥ 南ルート      ┤
+      ├─ 西（バス停の方）→ ⑦ 西ルート    ┘
+      └─ 秘密基地へ向かう → 真エンド    ← cond_true_day1012 かつ 非表示スロットあり の場合のみ出現
 ```
 
 ---
@@ -91,14 +89,87 @@
 
 ---
 
+## 実装状況（2026-04-12時点）
+
+| 項目 | 状態 | 備考 |
+|------|------|------|
+| main.json（おばあちゃんの問い・探索前チェック） | 実装済み | cond_true_day1012 に修正済み |
+| exploration.json（探索4方向・各ルート本文） | 実装済み | ただし非表示処理は未実装 |
+| 10日訪問ルートの非表示（hidden_if） | **未実装** | エンジン対応が必要 |
+| cond_true_day1012 時の手紙ルート出現 | **未実装** | 非表示処理と同時に実装予定 |
+| day_1010 の訪問方向記録（visit_location） | **未実装** | day_1010_b_*.json に追加が必要 |
+
+---
+
+## 今後の開発方針
+
+### 選択肢の動作まとめ
+
+| 状態 | 表示される選択肢 | 合計 |
+|------|----------------|------|
+| `cond_true_day1012 = false` | 10日未訪問の3方向のみ | 3択 |
+| `cond_true_day1012 = true`  | 10日未訪問の3方向 ＋ 手紙ルート | 4択 |
+
+訪問済み方向は常に非表示。手紙ルートは true のときだけ表示。これで自然に4択・3択が切り替わる。
+
+---
+
+### Step 1：day_1010 の訪問方向を記録する
+
+`scenarios/days/day_1010/exploration.json` の choice id と `b_*.json` の対応：
+
+| choice id | 対応方向 | ファイル |
+|-----------|----------|---------|
+| `"beach"` | 北（海の方） | `branches/day_1010/day_1010_b_1.json` |
+| `"busstop"` | 東（湧き水の方） | `branches/day_1010/day_1010_b_2.json` |
+| `"underpass"` | 南（お寺の方） | `branches/day_1010/day_1010_b_3.json` |
+| `"home"` | 西（バス停の方） | `branches/day_1010/day_1010_b_4.json` |
+
+各 `b_*.json` の先頭に `visit_location` コマンドを追加する（choice id と同じ値を使用）。
+
+```json
+{ "type": "visit_location", "location": "beach" }
+```
+
+> `day_1010_c_*.json`〜`day_1010_e_*.json` は `b_*.json` 内のサブ分岐なので追加不要。
+
+---
+
+### Step 2：エンジンに `hidden_if` を実装する
+
+`choice` 選択肢に `hidden_if` フィールドを追加し、条件が true のとき非表示にする。
+
+**day_1012/exploration.json の choice イメージ：**
+
+```json
+{ "text": "北（海の方）に向かう",    "next_index": 100, "hidden_if": "visited_beach" },
+{ "text": "東（湧き水の方）に向かう", "next_index": 200, "hidden_if": "visited_busstop" },
+{ "text": "南（お寺の方）に向かう",   "next_index": 300, "hidden_if": "visited_underpass" },
+{ "text": "西（バス停の方）に向かう", "next_index": 400, "hidden_if": "visited_home" },
+{ "text": "秘密基地へ向かう",         "next_index": 500, "hidden_if": "not_cond_true_day1012" }
+```
+
+`evaluate_condition()` への追加：
+
+| 条件値 | 返す値 |
+|--------|--------|
+| `"visited_beach"` | `is_location_visited("beach")` |
+| `"visited_busstop"` | `is_location_visited("busstop")` |
+| `"visited_underpass"` | `is_location_visited("underpass")` |
+| `"visited_home"` | `is_location_visited("home")` |
+| `"not_cond_true_day1012"` | `NOT check_true_day1012_condition()` |
+
+---
+
 ## 必要なエンジン対応（実装時）
 
-| 対応内容 | 用途 |
-|----------|------|
-| `choice` に `hidden_if` フィールド追加 | 10日訪問済み選択肢の非表示 |
-| `set_flag` コマンド追加 | クワガタループのシーケンス追跡 |
-| `increment` コマンド追加 | クワガタループの試行回数カウント |
-| `branch_flag` / `branch_counter` コマンド追加 | 上記の条件分岐 |
+| 対応内容 | 用途 | 優先度 |
+|----------|------|--------|
+| `choice` に `hidden_if` フィールド追加 | 10日訪問済み選択肢の非表示 / 手紙ルート出現 | **高** |
+| `evaluate_condition()` に `visited_beach` 等追加 | hidden_if の条件評価 | **高** |
+| `set_flag` コマンド追加 | クワガタループのシーケンス追跡 | 中 |
+| `increment` コマンド追加 | クワガタループの試行回数カウント | 中 |
+| `branch_flag` / `branch_counter` コマンド追加 | 上記の条件分岐 | 中 |
 
 ---
 
@@ -107,3 +178,4 @@
 - 北・東でイロが同席している場合の台詞・描写をシナリオ執筆時に検討
 - 10日と12日の天気の違いをどのように表現するか
 - クワガタループの強制脱出時（10回）の演出をどうするか
+- `hidden_if: "not_cond_true_day1012"` の否定形評価をエンジンでどう扱うか（実装時に決定）
