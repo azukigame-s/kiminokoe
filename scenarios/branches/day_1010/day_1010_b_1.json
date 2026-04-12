@@ -1,5 +1,9 @@
 [
 	{
+		"type": "visit_location",
+		"id": "beach"
+	},
+	{
 		"type": "dialogue",
 		"text": "北に少し出れば海に出られる。",
 		"new_page": true

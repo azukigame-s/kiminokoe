@@ -93,11 +93,11 @@
 
 | 項目 | 状態 | 備考 |
 |------|------|------|
-| main.json（おばあちゃんの問い・探索前チェック） | 実装済み | cond_true_day1012 に修正済み |
-| exploration.json（探索4方向・各ルート本文） | 実装済み | ただし非表示処理は未実装 |
-| 10日訪問ルートの非表示（hidden_if） | **未実装** | エンジン対応が必要 |
-| cond_true_day1012 時の手紙ルート出現 | **未実装** | 非表示処理と同時に実装予定 |
-| day_1010 の訪問方向記録（visit_location） | **未実装** | day_1010_b_*.json に追加が必要 |
+| main.json（おばあちゃんの問い・探索前チェック） | 実装済み | cond_true_day1012 に修正済み、index 500 True End ブロック削除済み |
+| exploration.json（探索4方向・各ルート本文） | 実装済み | hidden_if・letter_route_index 実装済み、index 500 True End ブロック追加済み |
+| 10日訪問ルートの非表示（hidden_if） | **実装済み** | エンジン handle_choice() 実装済み |
+| cond_true_day1012 時の手紙ルート出現 | **実装済み** | letter_route_index によるスロット差し替え実装済み |
+| day_1010 の訪問方向記録（visit_location） | **実装済み** | day_1010_b_*.json に追加済み、trophy_manager.gd の day1010_last_dir で管理 |
 
 ---
 
@@ -128,26 +128,40 @@
 各 `b_*.json` の先頭に `visit_location` コマンドを追加する（choice id と同じ値を使用）。
 
 ```json
-{ "type": "visit_location", "location": "beach" }
+{ "type": "visit_location", "id": "beach" }
 ```
 
 > `day_1010_c_*.json`〜`day_1010_e_*.json` は `b_*.json` 内のサブ分岐なので追加不要。
 
 ---
 
-### Step 2：エンジンに `hidden_if` を実装する
+### Step 2：エンジンに `hidden_if` と `letter_route_index` を実装する
 
-`choice` 選択肢に `hidden_if` フィールドを追加し、条件が true のとき非表示にする。
+**`hidden_if`**: 選択肢に追加し、条件が `"true"` のとき非表示にする。
 
-**day_1012/exploration.json の choice イメージ：**
+**`letter_route_index`**: `choice` コマンド自体に追加するフィールド。
+`cond_true_day1012` 達成済みのとき、最初に `hidden_if` で除外された選択肢を
+**テキスト・位置はそのままで** `next_index` だけ `letter_route_index` の値に差し替えて復活させる。
+
+**day_1012/exploration.json の choice：**
 
 ```json
-{ "text": "北（海の方）に向かう",    "next_index": 100, "hidden_if": "visited_beach" },
-{ "text": "東（湧き水の方）に向かう", "next_index": 200, "hidden_if": "visited_busstop" },
-{ "text": "南（お寺の方）に向かう",   "next_index": 300, "hidden_if": "visited_underpass" },
-{ "text": "西（バス停の方）に向かう", "next_index": 400, "hidden_if": "visited_home" },
-{ "text": "秘密基地へ向かう",         "next_index": 500, "hidden_if": "not_cond_true_day1012" }
+{
+    "type": "choice",
+    "prompt": "さて、どこに行こうか？",
+    "letter_route_index": 500,
+    "choices": [
+        { "text": "北（海の方）に向かう",    "next_index": 100, "hidden_if": "visited_beach" },
+        { "text": "東（湧き水の方）に向かう", "next_index": 200, "hidden_if": "visited_busstop" },
+        { "text": "南（お寺の方）に向かう",   "next_index": 300, "hidden_if": "visited_underpass" },
+        { "text": "西（バス停の方）に向かう", "next_index": 400, "hidden_if": "visited_home" }
+    ]
+}
 ```
+
+> **動作例（10日に北を選んだ場合）**
+> - `cond_true_day1012 = false` → 東・南・西の3択
+> - `cond_true_day1012 = true`  → 「北（海の方）に向かう」がＡ位置で出現（行き先は手紙ルート）、東・南・西の計4択
 
 `evaluate_condition()` への追加：
 
@@ -157,19 +171,21 @@
 | `"visited_busstop"` | `is_location_visited("busstop")` |
 | `"visited_underpass"` | `is_location_visited("underpass")` |
 | `"visited_home"` | `is_location_visited("home")` |
-| `"not_cond_true_day1012"` | `NOT check_true_day1012_condition()` |
 
 ---
 
-## 必要なエンジン対応（実装時）
+## 必要なエンジン対応
 
-| 対応内容 | 用途 | 優先度 |
-|----------|------|--------|
-| `choice` に `hidden_if` フィールド追加 | 10日訪問済み選択肢の非表示 / 手紙ルート出現 | **高** |
-| `evaluate_condition()` に `visited_beach` 等追加 | hidden_if の条件評価 | **高** |
-| `set_flag` コマンド追加 | クワガタループのシーケンス追跡 | 中 |
-| `increment` コマンド追加 | クワガタループの試行回数カウント | 中 |
-| `branch_flag` / `branch_counter` コマンド追加 | 上記の条件分岐 | 中 |
+| 対応内容 | 用途 | 状態 |
+|----------|------|------|
+| `choice` に `hidden_if` フィールド追加 | 10日訪問済み選択肢の非表示 / 手紙ルート出現 | **実装済み** |
+| `choice` に `letter_route_index` フィールド追加 | 非表示スロットへの True End 差し込み | **実装済み** |
+| `evaluate_condition()` に `visited_beach` 等追加 | hidden_if の条件評価 | **実装済み** |
+| `evaluate_condition()` に `cond_true_day1012` 追加 | letter_route_index の発動条件 | **実装済み** |
+| `trophy_manager.gd` に `day1010_last_dir` 追加 | visit_location の上書き管理・セーブ対応 | **実装済み** |
+| `set_flag` コマンド追加 | クワガタループのシーケンス追跡 | 未実装（優先度：中） |
+| `increment` コマンド追加 | クワガタループの試行回数カウント | 未実装（優先度：中） |
+| `branch_flag` / `branch_counter` コマンド追加 | 上記の条件分岐 | 未実装（優先度：中） |
 
 ---
 
@@ -178,4 +194,3 @@
 - 北・東でイロが同席している場合の台詞・描写をシナリオ執筆時に検討
 - 10日と12日の天気の違いをどのように表現するか
 - クワガタループの強制脱出時（10回）の演出をどうするか
-- `hidden_if: "not_cond_true_day1012"` の否定形評価をエンジンでどう扱うか（実装時に決定）

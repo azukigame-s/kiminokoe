@@ -1,5 +1,9 @@
 [
 	{
+		"type": "visit_location",
+		"id": "underpass"
+	},
+	{
 		"type": "dialogue",
 		"text": "家を出て南に進むと、お寺が見えてきた。",
 		"new_page": true

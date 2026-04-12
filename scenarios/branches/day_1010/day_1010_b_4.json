@@ -1,5 +1,9 @@
 [
 	{
+		"type": "visit_location",
+		"id": "home"
+	},
+	{
 		"type": "background",
 		"path": "res://assets/backgrounds/road1.jpg"
 	},

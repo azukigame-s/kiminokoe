@@ -146,6 +146,43 @@ func handle_choice(command: Dictionary) -> void:
 		current_index += 1
 		return
 
+	# hidden_if フィールドで非表示の選択肢を除外
+	# letter_route_index が指定されている場合、最初に除外された選択肢を手紙ルートに差し替える
+	var trophy_manager = get_node_or_null("/root/TrophyManager")
+	var letter_route_index: int = command.get("letter_route_index", -1)
+	var letter_route_candidate: Dictionary = {}
+	var letter_route_position: int = -1
+
+	var filtered_choices: Array = []
+	for choice in choices:
+		var hidden_if = choice.get("hidden_if", "")
+		if hidden_if.is_empty():
+			filtered_choices.append(choice)
+		elif trophy_manager:
+			var result = trophy_manager.evaluate_condition(hidden_if)
+			if result != "true":
+				filtered_choices.append(choice)
+			else:
+				# 最初に除外された選択肢を手紙ルート候補として記録
+				if letter_route_candidate.is_empty():
+					letter_route_candidate = choice.duplicate()
+					letter_route_position = filtered_choices.size()
+		else:
+			filtered_choices.append(choice)
+
+	# 手紙ルート差し替え: letter_route_index 指定 かつ cond_true_day1012 達成済み
+	if letter_route_index >= 0 and not letter_route_candidate.is_empty() and trophy_manager:
+		if trophy_manager.evaluate_condition("cond_true_day1012") == "true":
+			var letter_choice = letter_route_candidate.duplicate()
+			letter_choice["next_index"] = letter_route_index
+			letter_choice.erase("hidden_if")
+			filtered_choices.insert(letter_route_position, letter_choice)
+
+	if filtered_choices.is_empty():
+		push_error("[ScenarioEngine] choice: すべての選択肢が非表示になりました")
+		current_index += 1
+		return
+
 	# スキップモードを停止
 	if skip_controller.is_skipping:
 		skip_controller.disable()
@@ -160,7 +197,7 @@ func handle_choice(command: Dictionary) -> void:
 		current_index += 1
 		return
 
-	choice_display.show_choices(choices, prompt)
+	choice_display.show_choices(filtered_choices, prompt)
 
 	# 選択を待機
 	var selected = await choice_display.choice_selected

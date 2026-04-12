@@ -78,6 +78,8 @@ func execute(command: Dictionary, skip_controller: SkipController) -> void:
 			await execute_poem(command, skip_controller)
 		"visit_location":
 			execute_visit_location(command)
+		"staff_roll":
+			await execute_staff_roll(command, skip_controller)
 		"index":
 			# インデックスマーカーはスキップ
 			pass
@@ -302,6 +304,17 @@ func execute_visit_location(command: Dictionary) -> void:
 		trophy_manager.visit_location(location_id)
 	else:
 		push_warning("[CommandExecutor] TrophyManager が見つかりません")
+
+
+## staff_roll コマンドを実行
+## スタッフロール表示完了後に「キミノコエ」称号を付与する
+## TODO: スタッフロールUIが実装されたらここで await する
+func execute_staff_roll(_command: Dictionary, _skip_controller: SkipController) -> void:
+	var trophy_manager = get_node_or_null("/root/TrophyManager")
+	if trophy_manager:
+		trophy_manager.unlock_trophy("kiminokoe", trophy_manager.secret_trophy_names.get("kiminokoe", "キミノコエ"))
+	else:
+		push_warning("[CommandExecutor] TrophyManager が見つかりません（staff_roll）")
 
 ## flashback_start コマンドを実行（回想モード開始）
 func execute_flashback_start(command: Dictionary, skip_controller: SkipController) -> void:

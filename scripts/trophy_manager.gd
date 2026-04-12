@@ -46,7 +46,7 @@ var episode_trophy_names: Dictionary = {
 	"ep_7": "神社",
 	"ep_8": "誕生日",
 	"ep_9": "怪魚",
-	"ep_10": "クワガタ",
+	"ep_10": "迷子",
 	"ep_11": "弟の水",
 	"all_episodes_clear": "全エピソードクリア"
 }
@@ -58,9 +58,10 @@ var secret_trophy_ids: Array[String] = [
 	"takiba",         # 焚き場
 	"warabeuta",      # 童歌（詩の全行を聞いた）
 	"demo_complete",  # 体験版コンプリート
+	"chosa_tai",      # 調査隊結成？（JMR編接続条件）
+	"normal_end",     # また来よう（通常エンド）
 	"kiminokoe",      # キミノコエ（トゥルーエンド）
 	"iro_story",      # イロの想い（マル秘ストーリー）
-	"chosa_tai",      # 調査隊結成？（JMR編接続条件）
 	"jms_complete",   # 13年越しのおめでとう（JMS編クリア）
 ]
 
@@ -71,9 +72,10 @@ var secret_trophy_names: Dictionary = {
 	"takiba": "焚き場",
 	"warabeuta": "童歌",
 	"demo_complete": "地蔵焚の旅人",
+	"chosa_tai": "調査隊結成？",
+	"normal_end": "また来よう",
 	"kiminokoe": "キミノコエ",
 	"iro_story": "イロの想い",
-	"chosa_tai": "調査隊結成？",
 	"jms_complete": "13年越しのおめでとう",
 }
 
@@ -86,10 +88,11 @@ var episode_trophy_descriptions: Dictionary = {
 	"ep_5": "シロとの出会い",
 	"ep_6": "このカニ食べれるの？",
 	"ep_7": "実は高所恐怖症の兄",
-	"ep_8": "（未定）",
-	"ep_9": "（未定）",
-	"ep_10": "（未定）",
-	"ep_11": "（未定）",
+	"ep_8": "喧嘩していたはずだよね？",
+	"ep_8_prime": "プレゼントは机の中に……",
+	"ep_9": "実は鯉なんじゃぁ",
+	"ep_10": "空からクワガタ落ちてきたら怖い",
+	"ep_11": "水飲みすぎてお腹がタプタプ",
 }
 
 # シークレットトロフィーの説明文
@@ -99,14 +102,21 @@ var secret_trophy_descriptions: Dictionary = {
 	"takiba": "忘れ去られたしきたり",
 	"warabeuta": "祈りは忘れられ、調べだけが継ぐ",
 	"demo_complete": "体験版でそこまでする？",
+	"chosa_tai": "オカルト好きなお寺さん",
+	"normal_end": "イロの後ろの人影は……だれ？",
 	"kiminokoe": "喉が……のど飴を常備しないと",
 	"iro_story": "実は計画的な妹",
-	"chosa_tai": "（未定）",
-	"jms_complete": "（未定）",
+	"jms_complete": "最後までプレーしてくれてありがとうございました！",
 }
 
 # 訪問済み場所（シークレットトロフィー用）
 var visited_locations: Dictionary = {}
+
+# day_1010 で最後に選択した方向（"beach" / "busstop" / "underpass" / "home"）
+var day1010_last_dir: String = ""
+
+# day_1010 の方向選択として扱うIDセット
+const DAY1010_DIRECTIONS = ["beach", "busstop", "underpass", "home"]
 
 # トースト通知への参照
 var toast_notification: Control = null
@@ -210,6 +220,13 @@ func extract_episode_id(scenario_path: String) -> String:
 
 ## 場所を訪問済みとして記録
 func visit_location(location_id: String) -> void:
+	# day_1010 の方向選択は単一値で上書き管理
+	if location_id in DAY1010_DIRECTIONS:
+		day1010_last_dir = location_id
+		_save_trophy_data()
+		log_message("Day1010 direction set: " + location_id, LogLevel.INFO)
+		return
+
 	if not visited_locations.get(location_id, false):
 		visited_locations[location_id] = true
 		_save_trophy_data()
@@ -220,6 +237,9 @@ func visit_location(location_id: String) -> void:
 
 ## 場所が訪問済みかどうかを判定
 func is_location_visited(location_id: String) -> bool:
+	# day_1010 の方向選択は単一値と比較
+	if location_id in DAY1010_DIRECTIONS:
+		return day1010_last_dir == location_id
 	return visited_locations.get(location_id, false)
 
 ## 場所訪問に応じたシークレットトロフィーのチェック
@@ -229,12 +249,16 @@ func _check_location_trophies(location_id: String) -> void:
 			unlock_trophy("secret_base", secret_trophy_names.get("secret_base", "秘密基地"))
 		"takiba":
 			unlock_trophy("takiba", secret_trophy_names.get("takiba", "焚き場"))
+			_check_chosa_tai_trophy()
 		"warabeuta":
 			unlock_trophy("warabeuta", secret_trophy_names.get("warabeuta", "童歌"))
-		"kiminokoe":
-			unlock_trophy("kiminokoe", secret_trophy_names.get("kiminokoe", "キミノコエ"))
 		"iro_story":
 			unlock_trophy("iro_story", secret_trophy_names.get("iro_story", "イロの想い"))
+		"temple_jmr":
+			# 12日お寺ルート完了（opt_1012_d_temple）
+			_check_chosa_tai_trophy()
+		"normal_end":
+			unlock_trophy("normal_end", secret_trophy_names.get("normal_end", "また来よう"))
 
 	# ふたこじぞうのチェック（4箇所すべて訪問）
 	_check_futako_jizo()
@@ -247,6 +271,20 @@ func _check_futako_jizo() -> void:
 			return
 	# 全地蔵発見
 	unlock_trophy("futako_jizo", secret_trophy_names.get("futako_jizo", "ふたこじぞう"))
+	_check_chosa_tai_trophy()
+
+## 調査隊結成？トロフィーのチェック
+## 条件: ふたこじぞう取得 AND 焚き場取得 AND 12日お寺ルート（opt_1012_d_temple）完了
+func _check_chosa_tai_trophy() -> void:
+	if is_trophy_unlocked("chosa_tai"):
+		return
+	if not is_trophy_unlocked("futako_jizo"):
+		return
+	if not is_trophy_unlocked("takiba"):
+		return
+	if not is_location_visited("temple_jmr"):
+		return
+	unlock_trophy("chosa_tai", secret_trophy_names.get("chosa_tai", "調査隊結成？"))
 
 ## トゥルーエンド条件をチェック
 func check_true_ending_condition() -> bool:
@@ -260,10 +298,6 @@ func check_true_ending_condition() -> bool:
 	if not is_episode_cleared("ep_3"):
 		return false
 	return true
-
-## トゥルーエンドトロフィーを解除
-func unlock_true_ending_trophy() -> void:
-	unlock_trophy("kiminokoe", secret_trophy_names.get("kiminokoe", "キミノコエ"))
 
 ## 体験版コンプリートのチェック（シナリオ完了時に呼ばれる）
 func check_demo_complete(play_time: float) -> void:
@@ -322,6 +356,14 @@ func evaluate_condition(condition_name: String) -> String:
 			return "true" if check_true_day1011_condition() else "false"
 		"cond_true_day1012":
 			return "true" if check_true_day1012_condition() else "false"
+		"visited_beach":
+			return "true" if is_location_visited("beach") else "false"
+		"visited_busstop":
+			return "true" if is_location_visited("busstop") else "false"
+		"visited_underpass":
+			return "true" if is_location_visited("underpass") else "false"
+		"visited_home":
+			return "true" if is_location_visited("home") else "false"
 		_:
 			push_error("[TrophyManager] Unknown condition: " + condition_name)
 			return ""
@@ -371,6 +413,17 @@ func unlock_trophy(trophy_id: String, trophy_name: String = ""):
 
 # エピソードクリアに応じたトロフィーのチェック
 func _check_episode_trophies(episode_id: String):
+	# ep_8_prime の特殊処理（進化トロフィー）
+	# ep_8 クリア済みであれば ep_8_clear の名称を「仲直りした誕生日」に更新する
+	if episode_id == "ep_8_prime":
+		if is_trophy_unlocked("ep_8_clear"):
+			var evolved_name = "仲直りした誕生日"
+			unlocked_trophies["ep_8_clear"]["name"] = evolved_name
+			_save_trophy_data()
+			trophy_unlocked.emit("ep_8_clear")
+			_show_trophy_toast(evolved_name)
+		return
+
 	# episode_ids に含まれないエピソード（ep_0, ep_0_betaなど）はトロフィーを付与しない
 	if not episode_id in episode_ids:
 		return
@@ -379,7 +432,7 @@ func _check_episode_trophies(episode_id: String):
 	var trophy_name = episode_trophy_names.get(episode_id, "エピソードクリア")
 
 	unlock_trophy(trophy_id, trophy_name)
-	
+
 	# 全エピソードクリアのチェック
 	if _are_all_episodes_cleared():
 		unlock_trophy("all_episodes_clear", episode_trophy_names.get("all_episodes_clear", "全エピソードクリア"))
@@ -419,6 +472,9 @@ func _save_trophy_data():
 	for location_id in visited_locations.keys():
 		config.set_value("locations", location_id, visited_locations[location_id])
 
+	# day_1010 の方向選択を保存
+	config.set_value("state", "day1010_last_dir", day1010_last_dir)
+
 	var error = config.save(SAVE_FILE_PATH)
 	if error == OK:
 		log_message("Trophy data saved successfully", LogLevel.DEBUG)
@@ -445,6 +501,9 @@ func _load_trophy_data():
 		if config.has_section("locations"):
 			for location_id in config.get_section_keys("locations"):
 				visited_locations[location_id] = config.get_value("locations", location_id, false)
+
+		# day_1010 の方向選択を読み込み
+		day1010_last_dir = config.get_value("state", "day1010_last_dir", "")
 
 		log_message("Trophy data loaded successfully", LogLevel.DEBUG)
 	elif error == ERR_FILE_NOT_FOUND:
@@ -537,10 +596,18 @@ func get_trophy_display_data() -> Dictionary:
 	for ep_id in episode_ids:
 		var trophy_id = ep_id + "_clear"
 		var unlocked = is_trophy_unlocked(trophy_id)
+		var name = episode_trophy_names.get(ep_id, "")
+		var description = episode_trophy_descriptions.get(ep_id, "")
+
+		# ep_8 の進化トロフィー: ep_8' クリア済みなら名称・説明文を上書き
+		if ep_id == "ep_8" and is_episode_cleared("ep_8_prime"):
+			name = "仲直りした誕生日"
+			description = episode_trophy_descriptions.get("ep_8_prime", description)
+
 		normal_trophies.append({
 			"id": trophy_id,
-			"name": episode_trophy_names.get(ep_id, ""),
-			"description": episode_trophy_descriptions.get(ep_id, ""),
+			"name": name,
+			"description": description,
 			"unlocked": unlocked,
 			"is_secret": false,
 		})

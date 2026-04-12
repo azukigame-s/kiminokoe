@@ -20,26 +20,31 @@
 	{
 		"type": "choice",
 		"prompt": "さて、どこに行こうか？",
+		"letter_route_index": 500,
 		"choices": [
 			{
 				"id": "opt_1012_north",
 				"text": "北（海の方）に向かう",
-				"next_index": 100
+				"next_index": 100,
+				"hidden_if": "visited_beach"
 			},
 			{
 				"id": "opt_1012_east",
 				"text": "東（湧き水の方）に向かう",
-				"next_index": 200
+				"next_index": 200,
+				"hidden_if": "visited_busstop"
 			},
 			{
 				"id": "opt_1012_south",
 				"text": "南（お寺の方）に向かう",
-				"next_index": 300
+				"next_index": 300,
+				"hidden_if": "visited_underpass"
 			},
 			{
 				"id": "opt_1012_west",
 				"text": "西（バス停の方）に向かう",
-				"next_index": 400
+				"next_index": 400,
+				"hidden_if": "visited_home"
 			}
 		]
 	},
@@ -1629,6 +1634,130 @@
 	{
 		"type": "load_scenario",
 		"path": "shared/shared_1012"
+	},
+	{
+		"type": "jump",
+		"index": 999
+	},
+	{
+		"type": "index",
+		"index": 500
+	},
+	{
+		"type": "dialogue",
+		"text": "返答しようとイロの方を見たとき、イロの後ろに立つ少年の姿が目に飛び込んできた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "真っ白な服、少しカールした黒髪――。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「どうしたの？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕の視線がイロを捉えていなかったのに気づき、そう言いながらイロは振り返った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "少年の姿がイロに完全に隠れてしまい、姿が見えない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「ん？　誰もいないけど……」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは不思議そうな表情でこっちを見て、もう一度振り返った。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あれ？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロはそう言うと、少年が立っていたあたりまで小走りで向かい、かがみ込んだ。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、これ。手紙が落ちてた」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "戻ってきたイロの手には一枚の手紙――破ったノートを折りたたんだだけの紙があった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はそれを受け取り、――開いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "『おにいちゃん　みせたいものがあるから　ひみつきちに　きて』"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん、見せたいものがあるから、秘密基地に、来て？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "横から覗き込んでいたイロが読み上げる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "これは――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「スグちゃんからの……手紙？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが、僕の考えていたことを口にした。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はイロと目を見合わせた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "秘密基地――イロにそれを伝えるより先に僕は走り出していた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロも僕に続いてついてくる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――お寺の横を抜け。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――裏の坂道を登り。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――そして……。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕たちの秘密基地へ。",
+		"go_next": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "days/day_1012/ed_1"
 	},
 	{
 		"type": "jump",

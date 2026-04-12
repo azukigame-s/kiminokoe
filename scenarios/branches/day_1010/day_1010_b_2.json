@@ -1,5 +1,9 @@
 [
 	{
+		"type": "visit_location",
+		"id": "busstop"
+	},
+	{
 		"type": "dialogue",
 		"text": "ダキには「兄の水」「弟の水」と呼ばれる二筋の清流がある。",
 		"new_page": true

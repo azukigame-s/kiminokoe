@@ -206,6 +206,16 @@ BGMの変更は `scripts/ui/audio_manager.gd` の `bgm_aliases` 辞書1箇所の
 - 霊体スグの最終出現
 - エンディング分岐（トゥルー/ノーマル）
 
+#### スタッフロール UI の実装
+
+- **現状**: `command_executor.gd` の `execute_staff_roll()` でコマンドを認識し、完了時に「キミノコエ」称号を付与するところまで実装済み
+- **未実装**: スタッフロール UI そのもの（スクロールクレジット画面）
+- **実装方針**:
+  1. スタッフロール用の CanvasLayer シーンを作成
+  2. `execute_staff_roll()` 内でシーンを表示し `await 完了シグナル` を追加
+  3. `await` の後に続く `unlock_trophy("kiminokoe", ...)` はそのまま残す（タイミングはUI完了後になる）
+- **参照**: `scenarios/days/day_1012/ed_1.json` の `staff_roll` コマンド
+
 #### ゲーム内設定画面の子ノード化
 
 - **現状**: ゲーム→一息→設定は別シーンへの遷移のため、オートセーブ→復元が必要
