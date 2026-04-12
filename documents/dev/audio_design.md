@@ -9,16 +9,23 @@
 BGMのパス定義は `scripts/ui/audio_manager.gd` の `bgm_aliases` 辞書に集約されている。
 シナリオJSON・title_scene.gd ともにエイリアス名のみを指定することで、BGMファイルの変更が1箇所で完結する。
 
-| エイリアス名 | ファイル                       | 用途                         |
-| ------------ | ------------------------------ | ---------------------------- |
-| `title`      | 悠久の彼方.mp3                 | タイトル画面                 |
-| `main`       | 忘却の都.mp3                   | メイン・実家到着・探索シーン |
-| `flashback`  | Ancient_Travelers.mp3          | ep_01〜ep_07 回想BGM         |
-| `autumn`     | 秋の想い出.mp3                 | ep_00 回想BGM（プロローグ）  |
-| `dinner`     | Old_home.mp3                   | 夕食シーン                   |
-| `night`      | 冬待人.mp3                     | 夜・就寝シーン               |
-| `suspense`   | 悲しい記憶.mp3                 | 焚き場・不穏シーン           |
-| `stop`       | （空文字）                     | BGM停止                      |
+| エイリアス名    | ファイル                  | 用途                              |
+| --------------- | ------------------------- | --------------------------------- |
+| `title`         | 悠久の彼方.mp3            | タイトル画面                      |
+| `main`          | 忘却の都.mp3              | メイン・実家到着・探索シーン      |
+| `flashback`     | Ancient_Travelers.mp3     | ep_01〜ep_09 回想BGM              |
+| `autumn`        | 秋の想い出.mp3            | ep_00 回想BGM（プロローグ）       |
+| `dinner`        | Old_home.mp3              | 夕食シーン                        |
+| `night`         | 冬待人.mp3                | 夜・就寝シーン                    |
+| `suspense`      | 魂の淵.mp3                | 焚き場・不穏シーン                |
+| `iro_theme`     | かくしごと.mp3            | イロのテーマ                      |
+| `jmr_theme`     | 古びた手帳.mp3            | JMRのテーマ                       |
+| `ending`        | 朝霧の守り.mp3            | エンディング（staff_roll後エピローグ） |
+| `staff_roll`    | 儚きは花なれど.mp3        | 真エンド スタッフロール（2:55）   |
+| `staff_roll_jmr`| あの日の僕へ.mp3          | JMR編 スタッフロール              |
+| `stop`          | （空文字）                | BGM停止                           |
+
+全楽曲の作曲者：**のる**（DOVA-SYNDROME）
 
 ------
 

@@ -4,6 +4,8 @@ class_name CommandExecutor
 ## コマンド実行クラス
 ## 各コマンドタイプの処理を実装
 
+const StaffRollDisplayScript = preload("res://scripts/ui/staff_roll_display.gd")
+
 # UI コンポーネント（後で設定）
 var text_display: TextDisplay
 var background_display: BackgroundDisplay
@@ -308,13 +310,21 @@ func execute_visit_location(command: Dictionary) -> void:
 
 ## staff_roll コマンドを実行
 ## スタッフロール表示完了後に「キミノコエ」称号を付与する
-## TODO: スタッフロールUIが実装されたらここで await する
-func execute_staff_roll(_command: Dictionary, _skip_controller: SkipController) -> void:
+## command の "bgm" フィールドでBGMエイリアスを指定可能（省略時は "staff_roll"）
+func execute_staff_roll(command: Dictionary, _skip_controller: SkipController) -> void:
+	# トロフィー解除
 	var trophy_manager = get_node_or_null("/root/TrophyManager")
 	if trophy_manager:
 		trophy_manager.unlock_trophy("kiminokoe", trophy_manager.secret_trophy_names.get("kiminokoe", "キミノコエ"))
 	else:
 		push_warning("[CommandExecutor] TrophyManager が見つかりません（staff_roll）")
+
+	# スタッフロール表示
+	var bgm_alias: String = command.get("bgm", "staff_roll")
+	var staff_roll: StaffRollDisplay = StaffRollDisplayScript.new()
+	add_child(staff_roll)
+	await staff_roll.play(bgm_alias)
+	staff_roll.queue_free()
 
 ## flashback_start コマンドを実行（回想モード開始）
 func execute_flashback_start(command: Dictionary, skip_controller: SkipController) -> void:

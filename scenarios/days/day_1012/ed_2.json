@@ -6,6 +6,10 @@
 		"display_time": 2.0
 	},
 	{
+		"type": "bgm",
+		"name": "ending"
+	},
+	{
 		"type": "dialogue",
 		"text": "家に戻ると、祖母が玄関で待っていた。"
 	},

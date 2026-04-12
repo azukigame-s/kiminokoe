@@ -30,8 +30,13 @@ var bgm_aliases: Dictionary = {
 	"autumn":   "res://assets/bgm/秋の想い出.mp3",
 	"dinner":   "res://assets/bgm/Old_home.mp3",
 	"night":    "res://assets/bgm/冬待人.mp3",
-	"suspense": "res://assets/bgm/悲しい記憶.mp3",
-	"stop":     "",
+	"suspense":      "res://assets/bgm/魂の淵.mp3",
+	"iro_theme":     "res://assets/bgm/かくしごと.mp3",
+	"jmr_theme":     "res://assets/bgm/古びた手帳.mp3",
+	"ending":        "res://assets/bgm/朝霧の守り.mp3",
+	"staff_roll":    "res://assets/bgm/儚きは花なれど.mp3",
+	"staff_roll_jmr":"res://assets/bgm/あの日の僕へ.mp3",
+	"stop":          "",
 }
 
 ## エイリアス名をファイルパスに解決する

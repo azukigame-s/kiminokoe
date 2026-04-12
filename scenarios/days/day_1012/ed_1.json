@@ -369,6 +369,10 @@
 		"display_time": 2.0
 	},
 	{
+		"type": "bgm",
+		"name": "ending"
+	},
+	{
 		"type": "dialogue",
 		"text": "僕とイロは、ゆっくりと坂を下った。",
 		"new_page": true
