@@ -780,14 +780,15 @@
 		"prompt": "どうする？",
 		"choices": [
 			{
-				"id": "opt_1012_d_temple",
-				"text": "お寺さんに会いに行く",
-				"next_index": 310
-			},
-			{
 				"id": "opt_1012_d_mountain",
 				"text": "さらに南に進む",
 				"next_index": 320
+			},
+			{
+				"id": "opt_1012_d_temple",
+				"text": "お寺さんに会いに行く",
+				"next_index": 310,
+				"hidden_if": "chosa_tai_prereq_not_met"
 			}
 		]
 	},
@@ -1334,6 +1335,382 @@
 		"type": "dialogue",
 		"text": "スグとの記憶も出口が見つかればいいな――そんな連想をしてしまった。",
 		"go_next": true
+	},
+	{
+		"type": "set_flag",
+		"name": "loop_seq",
+		"value": "0"
+	},
+	{
+		"type": "set_flag",
+		"name": "loop_count",
+		"value": "0"
+	},
+	{
+		"type": "dialogue",
+		"text": "そんなことを考えながら来た道を戻ろうとすると――",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あれ……こっちで合ってたっけ？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが首をかしげる。"
+	},
+	{
+		"type": "dialogue",
+		"text": "気がつくと、どこかで曲がってしまったのか、見覚えのない枝道に出ていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "木々の間から差し込む光も頼りない。",
+		"go_next": true
+	},
+	{
+		"type": "index",
+		"index": 330
+	},
+	{
+		"type": "choice",
+		"prompt": "どうする？",
+		"choices": [
+			{
+				"text": "まっすぐ進む",
+				"next_index": 340
+			},
+			{
+				"text": "来た道を戻る",
+				"next_index": 350
+			}
+		]
+	},
+	{
+		"type": "index",
+		"index": 340
+	},
+	{
+		"type": "branch_flag",
+		"name": "loop_seq",
+		"branches": {"0": 341, "1": 342, "2": 343, "3": 344}
+	},
+	{
+		"type": "index",
+		"index": 341
+	},
+	{
+		"type": "dialogue",
+		"text": "まっすぐ進んでみた。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "だが道は更に細くなり、どこへ向かっているのかわからない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「なんか変じゃない？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが不安そうにあたりを見回している。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "loop_count",
+		"threshold": 10,
+		"if_gte": 370,
+		"if_lt": 330
+	},
+	{
+		"type": "index",
+		"index": 342
+	},
+	{
+		"type": "set_flag",
+		"name": "loop_seq",
+		"value": "2"
+	},
+	{
+		"type": "dialogue",
+		"text": "さっきとは違う方向に進む。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「こっち？　本当に？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが疑わしそうについてくる。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "loop_count",
+		"threshold": 10,
+		"if_gte": 370,
+		"if_lt": 330
+	},
+	{
+		"type": "index",
+		"index": 343
+	},
+	{
+		"type": "set_flag",
+		"name": "loop_seq",
+		"value": "3"
+	},
+	{
+		"type": "dialogue",
+		"text": "もう一歩、前に踏み出す。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あ！　なんか光が見えてきた気がする！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが声を上げた。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "loop_count",
+		"threshold": 10,
+		"if_gte": 370,
+		"if_lt": 330
+	},
+	{
+		"type": "index",
+		"index": 344
+	},
+	{
+		"type": "jump",
+		"index": 360
+	},
+	{
+		"type": "index",
+		"index": 350
+	},
+	{
+		"type": "branch_flag",
+		"name": "loop_seq",
+		"branches": {"0": 351, "1": 352, "2": 353, "3": 354}
+	},
+	{
+		"type": "index",
+		"index": 351
+	},
+	{
+		"type": "set_flag",
+		"name": "loop_seq",
+		"value": "1"
+	},
+	{
+		"type": "dialogue",
+		"text": "一度戻ることにした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「そうそう、そっちは行ってきたじゃん」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの声に、なんとなく方向感覚が戻ってきた。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "loop_count",
+		"threshold": 10,
+		"if_gte": 370,
+		"if_lt": 330
+	},
+	{
+		"type": "index",
+		"index": 352
+	},
+	{
+		"type": "dialogue",
+		"text": "また戻る。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「えっ、また戻るの？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが少し焦り始めている。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "loop_count",
+		"threshold": 10,
+		"if_gte": 370,
+		"if_lt": 330
+	},
+	{
+		"type": "index",
+		"index": 353
+	},
+	{
+		"type": "set_flag",
+		"name": "loop_seq",
+		"value": "1"
+	},
+	{
+		"type": "dialogue",
+		"text": "やっぱり戻ることにした。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「行ったり来たりしてるよ？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロに苦笑いされた。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "loop_count",
+		"threshold": 10,
+		"if_gte": 370,
+		"if_lt": 330
+	},
+	{
+		"type": "index",
+		"index": 354
+	},
+	{
+		"type": "set_flag",
+		"name": "loop_seq",
+		"value": "1"
+	},
+	{
+		"type": "dialogue",
+		"text": "あと少しのところで、また戻ってしまった。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「もう！　お兄ちゃん、さっき光が見えたじゃん！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが頬を膨らませた。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "loop_count",
+		"threshold": 10,
+		"if_gte": 370,
+		"if_lt": 330
+	},
+	{
+		"type": "index",
+		"index": 360
+	},
+	{
+		"type": "dialogue",
+		"text": "そのまま踏み込むと、木々がひらけ――。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「道に出た！」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが笑顔で叫んだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "元の道に戻ることができた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「よかった～！　本当に迷子になるとこだったよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロの言葉通り、しばらく山の中を彷徨っていた気がした。",
+		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 380
+	},
+	{
+		"type": "index",
+		"index": 370
+	},
+	{
+		"type": "dialogue",
+		"text": "「――ちょっと待って、あっちに何か見える！」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが遠くを指差した。"
+	},
+	{
+		"type": "dialogue",
+		"text": "見ると、木々の隙間に屋根のようなものが見える。"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロに引っ張られて歩いていくと、お寺の裏手に出た。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「こんなところから出るとは思わなかったね」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロが笑いながらも、ほっとした表情を見せた。",
+		"go_next": true
+	},
+	{
+		"type": "index",
+		"index": 380
 	},
 	{
 		"type": "dialogue",

@@ -249,7 +249,6 @@ func _check_location_trophies(location_id: String) -> void:
 			unlock_trophy("secret_base", secret_trophy_names.get("secret_base", "秘密基地"))
 		"takiba":
 			unlock_trophy("takiba", secret_trophy_names.get("takiba", "焚き場"))
-			_check_chosa_tai_trophy()
 		"warabeuta":
 			unlock_trophy("warabeuta", secret_trophy_names.get("warabeuta", "童歌"))
 		"iro_story":
@@ -271,16 +270,12 @@ func _check_futako_jizo() -> void:
 			return
 	# 全地蔵発見
 	unlock_trophy("futako_jizo", secret_trophy_names.get("futako_jizo", "ふたこじぞう"))
-	_check_chosa_tai_trophy()
 
 ## 調査隊結成？トロフィーのチェック
-## 条件: ふたこじぞう取得 AND 焚き場取得 AND 12日お寺ルート（opt_1012_d_temple）完了
+## 条件: 12日お寺ルート（opt_1012_d_temple）完了
+## ※選択肢はふたこじぞう+焚き場取得で出現（hidden_if: chosa_tai_prereq_not_met）
 func _check_chosa_tai_trophy() -> void:
 	if is_trophy_unlocked("chosa_tai"):
-		return
-	if not is_trophy_unlocked("futako_jizo"):
-		return
-	if not is_trophy_unlocked("takiba"):
 		return
 	if not is_location_visited("temple_jmr"):
 		return
@@ -364,6 +359,10 @@ func evaluate_condition(condition_name: String) -> String:
 			return "true" if is_location_visited("underpass") else "false"
 		"visited_home":
 			return "true" if is_location_visited("home") else "false"
+		"chosa_tai_prereq_not_met":
+			# ふたこじぞう AND 焚き場 の両方取得済みなら false（選択肢表示）、未達なら true（非表示）
+			var met = is_trophy_unlocked("futako_jizo") and is_trophy_unlocked("takiba")
+			return "false" if met else "true"
 		_:
 			push_error("[TrophyManager] Unknown condition: " + condition_name)
 			return ""

@@ -23,6 +23,10 @@ var current_index: int = 0
 var is_running: bool = false
 var current_scenario_path: String = ""  # セーブ/ロード用
 
+# シナリオフラグ（ループ演出などの一時的な状態管理用・セーブ非対応）
+# increment コマンドで数値をカウント、set_flag で任意の文字列値をセット
+var scenario_flags: Dictionary = {}
+
 func _init():
 	# コンポーネントの初期化
 	command_executor = CommandExecutor.new()
@@ -92,6 +96,20 @@ func execute_scenario() -> void:
 			"branch":
 				handle_branch(command)
 				continue  # current_indexはbranch内で設定済み
+			"set_flag":
+				handle_set_flag(command)
+				current_index += 1
+				continue
+			"increment":
+				handle_increment(command)
+				current_index += 1
+				continue
+			"branch_flag":
+				handle_branch_flag(command)
+				continue  # current_index は handle_jump で設定
+			"branch_counter":
+				handle_branch_counter(command)
+				continue  # current_index は handle_jump で設定
 
 		# 通常のコマンドはCommandExecutorで処理
 		await command_executor.execute(command, skip_controller)
@@ -253,6 +271,62 @@ func handle_branch(command: Dictionary) -> void:
 	else:
 		push_warning("[ScenarioEngine] branch: result '%s' に対応する分岐がありません" % result)
 		current_index += 1
+
+## set_flag コマンドの処理（シナリオフラグを任意の値にセット）
+func handle_set_flag(command: Dictionary) -> void:
+	var name = command.get("name", "")
+	if name.is_empty():
+		push_error("[ScenarioEngine] set_flag: name が指定されていません")
+		return
+	scenario_flags[name] = str(command.get("value", ""))
+
+## increment コマンドの処理（シナリオフラグを整数としてインクリメント）
+func handle_increment(command: Dictionary) -> void:
+	var name = command.get("name", "")
+	if name.is_empty():
+		push_error("[ScenarioEngine] increment: name が指定されていません")
+		return
+	var current = scenario_flags.get(name, "0").to_int()
+	scenario_flags[name] = str(current + 1)
+
+## branch_flag コマンドの処理（フラグの値で分岐）
+## "branches" に値→インデックスのマップを指定する
+func handle_branch_flag(command: Dictionary) -> void:
+	var name = command.get("name", "")
+	var branches = command.get("branches", {})
+	if name.is_empty() or branches.is_empty():
+		push_error("[ScenarioEngine] branch_flag: name または branches が空です")
+		current_index += 1
+		return
+	var current_value = scenario_flags.get(name, "0")
+	if branches.has(current_value):
+		handle_jump({"index": branches[current_value]})
+	else:
+		push_warning("[ScenarioEngine] branch_flag: '%s' に対応する分岐がありません（flag=%s）" % [current_value, name])
+		current_index += 1
+
+## branch_counter コマンドの処理（カウンタのしきい値で分岐）
+## threshold 以上なら if_gte へ、未満なら if_lt へジャンプ
+func handle_branch_counter(command: Dictionary) -> void:
+	var name = command.get("name", "")
+	var threshold: int = command.get("threshold", 10)
+	if name.is_empty():
+		push_error("[ScenarioEngine] branch_counter: name が指定されていません")
+		current_index += 1
+		return
+	var current_count = scenario_flags.get(name, "0").to_int()
+	if current_count >= threshold:
+		var if_gte: int = command.get("if_gte", -1)
+		if if_gte >= 0:
+			handle_jump({"index": if_gte})
+		else:
+			current_index += 1
+	else:
+		var if_lt: int = command.get("if_lt", -1)
+		if if_lt >= 0:
+			handle_jump({"index": if_lt})
+		else:
+			current_index += 1
 
 ## visit_location コマンドの処理
 func handle_visit_location(command: Dictionary) -> void:

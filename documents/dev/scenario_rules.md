@@ -146,6 +146,10 @@
 | episode_clear   | エピソードクリア記録             |
 | visit_location  | 場所訪問記録（シークレットトロフィー用） |
 | index           | インデックスマーカー             |
+| set_flag        | シナリオフラグをセット（ループ演出用・セーブ非対応） |
+| increment       | シナリオフラグを+1（カウンタ用） |
+| branch_flag     | フラグの値で分岐                 |
+| branch_counter  | カウンタのしきい値で分岐         |
 
 ### 記法サンプル
 
@@ -177,7 +181,11 @@
   {"type": "flashback_start"},
   {"type": "flashback_end"},
   {"type": "episode_clear", "id": "ep_1"},
-  {"type": "visit_location", "id": "secret_base"}
+  {"type": "visit_location", "id": "secret_base"},
+  {"type": "set_flag", "name": "loop_seq", "value": "0"},
+  {"type": "increment", "name": "loop_count"},
+  {"type": "branch_flag", "name": "loop_seq", "branches": {"0": 100, "1": 200, "2": 300}},
+  {"type": "branch_counter", "name": "loop_count", "threshold": 10, "if_gte": 900, "if_lt": 100}
 ]
 ```
 
