@@ -25,41 +25,38 @@ jobs:
           sudo mv "Godot.app" /Applications/
           echo "GODOT=/Applications/Godot.app/Contents/MacOS/Godot" >> $GITHUB_ENV
 
-      # Godot 4.6 の tpz は templates/macos.zip のように「templates/」配下に各ファイルが入る。
-      # エディタが参照するのは export_templates/<version>/macos.zip（直下）なので、展開後に繰り上げる。
       - name: Install Export Templates
         run: |
           set -e
           TEMPLATES_DIR="$HOME/Library/Application Support/Godot/export_templates/4.6.2.stable"
           mkdir -p "$TEMPLATES_DIR"
           wget -q "https://github.com/godotengine/godot/releases/download/4.6.2-stable/Godot_v4.6.2-stable_export_templates.tpz" -O templates.tpz
-          echo "=== tpz 先頭の一覧（構造確認用）==="
-          unzip -l templates.tpz | head -40
           unzip -o templates.tpz -d "$TEMPLATES_DIR"
           if [ -d "$TEMPLATES_DIR/templates" ] && [ ! -f "$TEMPLATES_DIR/macos.zip" ]; then
-            echo "=== templates/ をバージョン直下へ繰り上げ（4.6 形式）==="
             mv "$TEMPLATES_DIR/templates/"* "$TEMPLATES_DIR/"
             rm -rf "$TEMPLATES_DIR/templates"
           fi
-          if [ ! -f "$TEMPLATES_DIR/macos.zip" ] && [ -f "$TEMPLATES_DIR/4.6.2.stable/macos.zip" ]; then
-            echo "=== ネストした 4.6.2.stable を繰り上げ（旧形式の保険）==="
-            mv "$TEMPLATES_DIR/4.6.2.stable/"* "$TEMPLATES_DIR/"
-            rm -rf "$TEMPLATES_DIR/4.6.2.stable"
-          fi
-          if [ ! -f "$TEMPLATES_DIR/macos.zip" ]; then
-            echo "ERROR: macos.zip が $TEMPLATES_DIR にありません"
-            find "$TEMPLATES_DIR" -name macos.zip 2>/dev/null || true
-            exit 1
-          fi
           echo "=== Templates installed ==="
           ls -la "$TEMPLATES_DIR/"
-          echo "=== macos.zip 先頭 ==="
-          unzip -l "$TEMPLATES_DIR/macos.zip" | head -25
 
       - name: Export macOS
         run: |
           mkdir -p build
-          "$GODOT" --headless --path . --export-release "macOS" ./build/キミノコエ体験版_macos.zip
+          "$GODOT" --headless --path . --export-release "macOS" ./build/キミノコエ体験版.app
+
+      - name: Fix permissions and sign (ad-hoc)
+        run: |
+          find "./build/キミノコエ体験版.app" -type f | while read f; do
+            if file "$f" | grep -q "executable"; then
+              chmod +x "$f"
+            fi
+          done
+          codesign --force --deep --sign - "./build/キミノコエ体験版.app"
+
+      - name: Package with ditto (権限保持zip)
+        run: |
+          cd build
+          ditto -c -k --keepParent "キミノコエ体験版.app" "キミノコエ体験版_macos.zip"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
