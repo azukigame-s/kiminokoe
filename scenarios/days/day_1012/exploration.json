@@ -797,10 +797,6 @@
 		"index": 310
 	},
 	{
-		"type": "visit_location",
-		"id": "temple_jmr"
-	},
-	{
 		"type": "dialogue",
 		"text": "「やあ、やっぱり来たね」",
 		"new_page": true
@@ -1145,6 +1141,10 @@
 		"type": "dialogue",
 		"text": "僕たちは一礼し、お寺を後にした。",
 		"go_next": true
+	},
+	{
+		"type": "visit_location",
+		"id": "temple_jmr"
 	},
 	{
 		"type": "load_scenario",
