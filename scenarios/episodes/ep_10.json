@@ -253,6 +253,264 @@
 		"go_next": true
 	},
 	{
+		"type": "set_flag",
+		"name": "ep10_loop_seq",
+		"value": "0"
+	},
+	{
+		"type": "set_flag",
+		"name": "ep10_loop_count",
+		"value": "0"
+	},
+	{
+		"type": "index",
+		"index": 10
+	},
+	{
+		"type": "choice",
+		"prompt": "どうする？",
+		"choices": [
+			{
+				"text": "まっすぐ進む",
+				"next_index": 20
+			},
+			{
+				"text": "来た道を戻る",
+				"next_index": 30
+			}
+		]
+	},
+	{
+		"type": "index",
+		"index": 20
+	},
+	{
+		"type": "branch_flag",
+		"name": "ep10_loop_seq",
+		"branches": {"0": 201, "1": 202, "2": 203, "3": 204}
+	},
+	{
+		"type": "index",
+		"index": 201
+	},
+	{
+		"type": "dialogue",
+		"text": "「まっすぐ進もう」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はスグの手を引いて、前に進んだ。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "ep10_loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "ep10_loop_count",
+		"threshold": 10,
+		"if_gte": 50,
+		"if_lt": 60
+	},
+	{
+		"type": "index",
+		"index": 202
+	},
+	{
+		"type": "set_flag",
+		"name": "ep10_loop_seq",
+		"value": "2"
+	},
+	{
+		"type": "dialogue",
+		"text": "「まっすぐ進もう」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はスグの手を引いて、前に進んだ。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "ep10_loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "ep10_loop_count",
+		"threshold": 10,
+		"if_gte": 50,
+		"if_lt": 60
+	},
+	{
+		"type": "index",
+		"index": 203
+	},
+	{
+		"type": "set_flag",
+		"name": "ep10_loop_seq",
+		"value": "3"
+	},
+	{
+		"type": "dialogue",
+		"text": "「まっすぐ進もう」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はスグの手を引いて、前に進んだ。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "ep10_loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "ep10_loop_count",
+		"threshold": 10,
+		"if_gte": 50,
+		"if_lt": 60
+	},
+	{
+		"type": "index",
+		"index": 204
+	},
+	{
+		"type": "jump",
+		"index": 40
+	},
+	{
+		"type": "index",
+		"index": 30
+	},
+	{
+		"type": "branch_flag",
+		"name": "ep10_loop_seq",
+		"branches": {"0": 301, "1": 302, "2": 303, "3": 304}
+	},
+	{
+		"type": "index",
+		"index": 301
+	},
+	{
+		"type": "set_flag",
+		"name": "ep10_loop_seq",
+		"value": "1"
+	},
+	{
+		"type": "dialogue",
+		"text": "「一回、戻ろう」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はスグの手を引いて、来た道を戻った。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "ep10_loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "ep10_loop_count",
+		"threshold": 10,
+		"if_gte": 50,
+		"if_lt": 60
+	},
+	{
+		"type": "index",
+		"index": 302
+	},
+	{
+		"type": "dialogue",
+		"text": "「一回、戻ろう」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はスグの手を引いて、来た道を戻った。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "ep10_loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "ep10_loop_count",
+		"threshold": 10,
+		"if_gte": 50,
+		"if_lt": 60
+	},
+	{
+		"type": "index",
+		"index": 303
+	},
+	{
+		"type": "set_flag",
+		"name": "ep10_loop_seq",
+		"value": "1"
+	},
+	{
+		"type": "dialogue",
+		"text": "「一回、戻ろう」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はスグの手を引いて、来た道を戻った。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "ep10_loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "ep10_loop_count",
+		"threshold": 10,
+		"if_gte": 50,
+		"if_lt": 60
+	},
+	{
+		"type": "index",
+		"index": 304
+	},
+	{
+		"type": "set_flag",
+		"name": "ep10_loop_seq",
+		"value": "1"
+	},
+	{
+		"type": "dialogue",
+		"text": "「一回、戻ろう」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はスグの手を引いて、来た道を戻った。",
+		"go_next": true
+	},
+	{
+		"type": "increment",
+		"name": "ep10_loop_count"
+	},
+	{
+		"type": "branch_counter",
+		"name": "ep10_loop_count",
+		"threshold": 10,
+		"if_gte": 50,
+		"if_lt": 60
+	},
+	{
+		"type": "index",
+		"index": 40
+	},
+	{
 		"type": "dialogue",
 		"text": "――あ。",
 		"new_page": true
@@ -277,6 +535,88 @@
 		"type": "dialogue",
 		"text": "そして――。",
 		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 80
+	},
+	{
+		"type": "index",
+		"index": 50
+	},
+	{
+		"type": "dialogue",
+		"text": "もう、どのくらい歩いたのか分からない。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが泣き出しそうになっていた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「お兄ちゃん……帰れる？」"
+	},
+	{
+		"type": "dialogue",
+		"text": "――帰れる。帰れなきゃ駄目だ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は必死に辺りを見回した。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――その時。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "木々の向こうに、見覚えのある形が見えた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「あそこ！」",
+		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 80
+	},
+	{
+		"type": "index",
+		"index": 60
+	},
+	{
+		"type": "dialogue",
+		"text": "――でも。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "やっぱり、道が分からない。"
+	},
+	{
+		"type": "dialogue",
+		"text": "周囲の木々が、僕たちをあざ笑うように同じ顔をして立っている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの手の震えが伝わり、僕も――怖かった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "それでも、スグの手を強く握り返した。",
+		"go_next": true
+	},
+	{
+		"type": "jump",
+		"index": 10
+	},
+	{
+		"type": "index",
+		"index": 80
 	},
 	{
 		"type": "dialogue",
