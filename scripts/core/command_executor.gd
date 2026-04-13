@@ -142,6 +142,7 @@ func execute_background(command: Dictionary, skip_controller: SkipController) ->
 		push_warning("[CommandExecutor] BackgroundDisplay が設定されていません")
 
 ## bgm コマンドを実行（フェードはバックグラウンドで実行、シナリオはブロックしない）
+## JSON に "fade": true を指定した場合のみフェードあり（デフォルト false＝即時切り替え）
 func execute_bgm(command: Dictionary, skip_controller: SkipController) -> void:
 	# "name" キー（エイリアス）優先、なければ "path" キー（後方互換）
 	var path: String
@@ -151,17 +152,20 @@ func execute_bgm(command: Dictionary, skip_controller: SkipController) -> void:
 		path = command.get("path", "")
 
 	if audio_manager:
+		# スキップ中は常にフェードなし。通常再生時は "fade": true の場合のみフェードあり
+		var use_fade = (not skip_controller.is_skipping) and command.get("fade", false)
 		if path.is_empty():
-			var use_fade = not skip_controller.is_skipping
 			audio_manager.stop_bgm(use_fade)
 		else:
-			var use_fade = not skip_controller.is_skipping
 			audio_manager.play_bgm(path, use_fade)
 	else:
 		push_warning("[CommandExecutor] AudioManager が設定されていません")
 
-## sfx コマンドを実行
-func execute_sfx(command: Dictionary, _skip_controller: SkipController) -> void:
+## sfx コマンドを実行（スキップ中は再生しない）
+func execute_sfx(command: Dictionary, skip_controller: SkipController) -> void:
+	if skip_controller.is_skipping:
+		return
+
 	var path = command.get("path", "")
 	var volume_db: float = command.get("volume_db", 0.0)
 

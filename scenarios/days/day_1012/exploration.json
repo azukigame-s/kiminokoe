@@ -797,6 +797,10 @@
 		"index": 310
 	},
 	{
+		"type": "visit_location",
+		"id": "temple_jmr"
+	},
+	{
 		"type": "dialogue",
 		"text": "「やあ、やっぱり来たね」",
 		"new_page": true
@@ -903,7 +907,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「きっと、昨日話したこの村の歴史に付いてだね」"
+		"text": "「きっと、昨日話したこの村の歴史についてだね」"
 	},
 	{
 		"type": "dialogue",
@@ -1588,11 +1592,13 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "イロが笑う。"
+		"text": "イロが笑う。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「二人とも味が分からないのに、好きな方は決まってるんだね」"
+		"text": "「二人とも味が分からないのに、好きな方は決まってるんだね」",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",

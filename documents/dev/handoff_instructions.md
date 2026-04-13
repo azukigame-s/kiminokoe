@@ -88,6 +88,10 @@ scenarios/kiminokoe.md に追記された `> 🎨 [ファイル名]` 記法をJS
 - **GitHub Issueテンプレート追加**: 完了（`.github/ISSUE_TEMPLATE/feature_request.yml` を追加。`bug_report.yml` にバージョン入力欄も追加）
 - **PoemDisplay 前詩残存バグ修正**: 完了（連続表示時に前の詩のテキストが透けて見える問題を `_label.modulate.a = 0.0` リセットで修正）
 - **トロフィー追加**: 完了（ep_8〜ep_11を `episode_ids` に追加、シークレットトロフィー「調査隊結成？」「13年越しのおめでとう」追加。全体20個）
+- **BGMコマンド フェード制御**: 完了（2026-04-13）`execute_bgm` のフェードはデフォルト無効。JSONで `"fade": true` を指定した場合のみフェードあり。スキップ中は常にフェードなし
+- **SFXスキップ中抑制**: 完了（2026-04-13）`execute_sfx` はスキップ中に再生をスキップするよう変更（タイミングずれ防止）
+- **全エピソードクリアトースト廃止**: 完了（2026-04-13）`_check_episode_trophies` から全クリアチェックを削除
+- **調査隊結成？ 前提条件修正**: 完了（2026-04-13）`chosa_tai_prereq_not_met` の条件を「ふたこじぞう」→「童歌（warabeuta）」に変更
 
 #### セーブデータ仕様
 
@@ -110,13 +114,16 @@ scenarios/kiminokoe.md に追記された `> 🎨 [ファイル名]` 記法をJS
   - `scenarios/shared/shared_1012.json`
   - `scenarios/episodes/ep_09.json`（金魚すくい）/ `ep_10.json`（クワガタ）/ `ep_11.json`（弟の水）
   - BGM・背景・SE配置は未実施
+  - **クワガタループ**（ep_10.json）: 実装済み（2026-04-13）
+    - 脱出正解シーケンス: 戻る→進む→進む→進む（`ep10_loop_seq` で追跡）
+    - `ep10_loop_seq` / `ep10_loop_count` フラグで制御（`set_flag` / `increment` / `branch_flag` / `branch_counter`）
+    - 10回以内に正解シーケンスを揃えると脱出（index 40）、10回超で強制脱出（index 50）
+  - **お寺ルート（index 310）**: `visit_location: temple_jmr` を先頭に追加済み（調査隊トロフィー解除に必要）
 
 #### 実装
 
 - **day_1011 / day_1012 のBGM・背景・SE配置**: JSONは実装済みだが音声・背景画像が未配置
 - **スタッフロール画像**: `assets/staff_roll/slide_01.png` ～ `slide_05.png` 未作成（ユーザーが描く予定）
-- **クワガタループ** (`set_flag` / `increment` / `branch_flag`): エンジン未実装（優先度：中）
-- **Staff roll UI**: 実装済み（`scripts/ui/staff_roll_display.gd`）
 
 ------
 
@@ -218,13 +225,12 @@ BGMの変更は `scripts/ui/audio_manager.gd` の `bgm_aliases` 辞書1箇所の
 
 #### スタッフロール UI の実装
 
-- **現状**: `command_executor.gd` の `execute_staff_roll()` でコマンドを認識し、完了時に「キミノコエ」称号を付与するところまで実装済み
-- **未実装**: スタッフロール UI そのもの（スクロールクレジット画面）
-- **実装方針**:
-  1. スタッフロール用の CanvasLayer シーンを作成
-  2. `execute_staff_roll()` 内でシーンを表示し `await 完了シグナル` を追加
-  3. `await` の後に続く `unlock_trophy("kiminokoe", ...)` はそのまま残す（タイミングはUI完了後になる）
-- **参照**: `scenarios/days/day_1012/ed_1.json` の `staff_roll` コマンド
+- **実装済み**（2026-04-13）: `scripts/ui/staff_roll_display.gd`（CanvasLayer layer=60）
+  - 5枚の手描きスライド画像（左右交互レイアウト）を BGM に合わせて表示
+  - BGM `staff_roll`（儚きは花なれど.mp3 / 2:55）に同期したタイミング設計
+  - スキップ機能なし（BGMをしっかり聞かせる）
+  - 締めテキスト: 「――そして、この声を聴いてくれた、あなたへ。」
+  - 画像ファイル（`assets/staff_roll/slide_01.png` ～ `slide_05.png`）は未作成（ユーザーが描く予定）
 
 #### ゲーム内設定画面の子ノード化
 

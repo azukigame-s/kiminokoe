@@ -360,8 +360,8 @@ func evaluate_condition(condition_name: String) -> String:
 		"visited_home":
 			return "true" if is_location_visited("home") else "false"
 		"chosa_tai_prereq_not_met":
-			# ふたこじぞう AND 焚き場 の両方取得済みなら false（選択肢表示）、未達なら true（非表示）
-			var met = is_trophy_unlocked("futako_jizo") and is_trophy_unlocked("takiba")
+			# 童歌 AND 焚き場 の両方取得済みなら false（選択肢表示）、未達なら true（非表示）
+			var met = is_trophy_unlocked("warabeuta") and is_trophy_unlocked("takiba")
 			return "false" if met else "true"
 		_:
 			push_error("[TrophyManager] Unknown condition: " + condition_name)
@@ -431,10 +431,6 @@ func _check_episode_trophies(episode_id: String):
 	var trophy_name = episode_trophy_names.get(episode_id, "エピソードクリア")
 
 	unlock_trophy(trophy_id, trophy_name)
-
-	# 全エピソードクリアのチェック
-	if _are_all_episodes_cleared():
-		unlock_trophy("all_episodes_clear", episode_trophy_names.get("all_episodes_clear", "全エピソードクリア"))
 
 # 全エピソードがクリア済みかどうかを判定
 func _are_all_episodes_cleared() -> bool:
