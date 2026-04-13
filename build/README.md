@@ -45,9 +45,9 @@
 ### 🎮 プレイ方法
 
 #### Windows
-1. Assets 内の `kiminokoe_demo_v0.5.4_windows.exe.zip` をダウンロードする
+1. Assets 内の `kiminokoe_demo_v0.5.4_windows.zip` をダウンロードする
 2. zip ファイルを解凍する
-3. `kiminokoe_demo_v0.5.4_windows.exe` を実行する
+3. `キミノコエ体験版.exe` を実行する
 
 #### macOS
 1. Assets 内の `kiminokoe_demo_v0.5.4_macos.zip` をダウンロードする
