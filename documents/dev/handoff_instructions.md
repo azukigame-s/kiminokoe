@@ -118,7 +118,7 @@ scenarios/kiminokoe.md に追記された `> 🎨 [ファイル名]` 記法をJS
     - 脱出正解シーケンス: 戻る→進む→進む→進む（`ep10_loop_seq` で追跡）
     - `ep10_loop_seq` / `ep10_loop_count` フラグで制御（`set_flag` / `increment` / `branch_flag` / `branch_counter`）
     - 10回以内に正解シーケンスを揃えると脱出（index 40）、10回超で強制脱出（index 50）
-  - **お寺ルート（index 310）**: `visit_location: temple_jmr` を先頭に追加済み（調査隊トロフィー解除に必要）
+  - **お寺ルート（index 310）**: `visit_location: temple_jmr` をルート完了時（「お寺を後にした」直後・`shared_1012` 呼び出し前）に追加済み（調査隊トロフィー解除に必要）
 
 #### 実装
 
