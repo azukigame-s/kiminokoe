@@ -112,7 +112,7 @@ scenarios/kiminokoe.md に追記された `> 🎨 [ファイル名]` 記法をJS
 - **10月12日**: **JSON実装済み（2026-04-12完成）**
   - `scenarios/days/day_1012/main.json` / `exploration.json` / `ed_1.json` / `ed_2.json`
   - `scenarios/shared/shared_1012.json`
-  - `scenarios/episodes/ep_09.json`（金魚すくい）/ `ep_10.json`（クワガタ）/ `ep_11.json`（弟の水）
+  - `scenarios/episodes/ep_09.json`（金魚すくい）/ `ep_10.json`（クワガタ）/ `ep_11.json`（飲み比べ）
   - BGM・背景・SE配置は未実施
   - **クワガタループ**（ep_10.json）: 実装済み（2026-04-13）
     - 脱出正解シーケンス: 戻る→進む→進む→進む（`ep10_loop_seq` で追跡）

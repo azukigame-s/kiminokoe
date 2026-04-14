@@ -32,7 +32,7 @@ var episode_ids: Array[String] = [
 	"ep_8",   # 誕生日
 	"ep_9",   # 怪魚
 	"ep_10",  # クワガタ
-	"ep_11",  # 弟の水
+	"ep_11",  # 飲み比べ
 ]
 
 # エピソードごとの称号名の定義
@@ -47,7 +47,7 @@ var episode_trophy_names: Dictionary = {
 	"ep_8": "誕生日",
 	"ep_9": "怪魚",
 	"ep_10": "迷子",
-	"ep_11": "弟の水",
+	"ep_11": "飲み比べ",
 	"all_episodes_clear": "全エピソードクリア"
 }
 

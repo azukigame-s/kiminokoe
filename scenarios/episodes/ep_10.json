@@ -263,6 +263,42 @@
 		"value": "0"
 	},
 	{
+		"type": "dialogue",
+		"text": "「どっちだと思う？」",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕はスグに聞いた。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグは首を横に振る。"
+	},
+	{
+		"type": "dialogue",
+		"text": "――分からない、か。",
+		"go_next": true
+	},
+	{
+		"type": "dialogue",
+		"text": "僕も、正直分からない。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "でも――。"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグが、僕を見ている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "お兄ちゃんとして、決めなければ。",
+		"go_next": true
+	},
+	{
 		"type": "index",
 		"index": 10
 	},
@@ -287,7 +323,12 @@
 	{
 		"type": "branch_flag",
 		"name": "ep10_loop_seq",
-		"branches": {"0": 201, "1": 202, "2": 203, "3": 204}
+		"branches": {
+			"0": 201,
+			"1": 202,
+			"2": 203,
+			"3": 204
+		}
 	},
 	{
 		"type": "index",
@@ -389,7 +430,12 @@
 	{
 		"type": "branch_flag",
 		"name": "ep10_loop_seq",
-		"branches": {"0": 301, "1": 302, "2": 303, "3": 304}
+		"branches": {
+			"0": 301,
+			"1": 302,
+			"2": 303,
+			"3": 304
+		}
 	},
 	{
 		"type": "index",

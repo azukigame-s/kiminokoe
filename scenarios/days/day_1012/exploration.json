@@ -1346,10 +1346,6 @@
 		"go_next": true
 	},
 	{
-		"type": "jump",
-		"index": 380
-	},
-	{
 		"type": "index",
 		"index": 380
 	},
