@@ -446,6 +446,10 @@
 		"go_next": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/kingyo.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "――大っきい！",
 		"new_page": true

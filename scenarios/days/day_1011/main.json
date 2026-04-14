@@ -652,11 +652,8 @@
 		"type": "subtitle",
 		"text": "１０月１１日\n　１９：００",
 		"fade_time": 0.5,
-		"display_time": 2.0
-	},
-	{
-		"type": "background",
-		"path": "res://assets/backgrounds/no_image.jpg"
+		"display_time": 2.0,
+		"next_background": "res://assets/backgrounds/no_image.jpg"
 	},
 	{
 		"type": "dialogue",

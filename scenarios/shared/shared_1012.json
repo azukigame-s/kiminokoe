@@ -1,5 +1,9 @@
 [
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/road4.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "イロと一緒に、お墓に向かった。",
 		"new_page": true
@@ -11,6 +15,10 @@
 	{
 		"type": "dialogue",
 		"text": "頬に当たる風が心地よい。"
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/cemetery.jpg"
 	},
 	{
 		"type": "dialogue",
