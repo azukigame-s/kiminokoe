@@ -1,16 +1,16 @@
 [
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/house_front.jpg"
+	},
+	{
+		"type": "bgm",
+		"name": "main"
+	},
+	{
 		"type": "dialogue",
-		"text": "何でもないよと伝えると、イロはキョトンとした。",
+		"text": "イロの元気な掛け声に後押しされ、探索を始めることにした。",
 		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "「変なの。――じゃあ元気に行ってみよー！」"
-	},
-	{
-		"type": "dialogue",
-		"text": "イロの元気な掛け声に後押しされ、探索を始めることにした。"
 	},
 	{
 		"type": "dialogue",
@@ -238,20 +238,6 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "…………。"
-	},
-	{
-		"type": "dialogue",
-		"text": "……。",
-		"go_next": true
-	},
-	{
-		"type": "dialogue",
 		"text": "――そうだ……思い出した。",
 		"new_page": true
 	},
@@ -261,13 +247,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "あのときのスグの笑顔を、はっきりと思い出した。",
-		"go_next": true
+		"text": "あのときのスグの笑顔を、はっきりと思い出した。"
 	},
 	{
 		"type": "dialogue",
-		"text": "「こんなところあったんだ。お兄ちゃん結構探検してたんだね」",
-		"new_page": true
+		"text": "「こんなところあったんだ。お兄ちゃん結構探検してたんだね」"
 	},
 	{
 		"type": "dialogue",
@@ -376,20 +360,6 @@
 	{
 		"type": "load_scenario",
 		"path": "episodes/ep_02"
-	},
-	{
-		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "…………。"
-	},
-	{
-		"type": "dialogue",
-		"text": "……。",
-		"go_next": true
 	},
 	{
 		"type": "dialogue",
@@ -523,8 +493,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "家から東に進むと程なく「兄の水」にたどり着いた。",
-		"go_next": true
+		"text": "家から東に進むと程なく「兄の水」にたどり着いた。"
 	},
 	{
 		"type": "background",
@@ -532,8 +501,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "山から流れるこの水は透き通っており、いまだに飲み水として村で利用されている。",
-		"new_page": true
+		"text": "山から流れるこの水は透き通っており、いまだに飲み水として村で利用されている。"
 	},
 	{
 		"type": "dialogue",
@@ -637,20 +605,6 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "…………。"
-	},
-	{
-		"type": "dialogue",
-		"text": "……。",
-		"go_next": true
-	},
-	{
-		"type": "dialogue",
 		"text": "――そうだ……思い出した。",
 		"new_page": true
 	},
@@ -660,13 +614,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "それにしても、カニスケとは……。今思えば、なんともありきたりな名前だったな。",
-		"go_next": true
+		"text": "それにしても、カニスケとは……。今思えば、なんともありきたりな名前だったな。"
 	},
 	{
 		"type": "dialogue",
-		"text": "「お兄ちゃんニヤニヤしてどうしたの？」",
-		"new_page": true
+		"text": "「お兄ちゃんニヤニヤしてどうしたの？」"
 	},
 	{
 		"type": "dialogue",
@@ -1274,32 +1226,16 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "…………。"
-	},
-	{
-		"type": "dialogue",
-		"text": "……。",
-		"go_next": true
-	},
-	{
-		"type": "dialogue",
 		"text": "――そうだ……思い出した。",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "僕たち兄弟はここで遭難――というと大げさだが――しかけたんだ。",
-		"go_next": true
+		"text": "僕たち兄弟はここで遭難――というと大げさだが――しかけたんだ。"
 	},
 	{
 		"type": "dialogue",
-		"text": "「お兄ちゃんどうしたの？　なにか思い出した？」",
-		"new_page": true
+		"text": "「お兄ちゃんどうしたの？　なにか思い出した？」"
 	},
 	{
 		"type": "dialogue",
@@ -1540,21 +1476,7 @@
 	{
 		"type": "load_scenario",
 		"path": "episodes/ep_11"
-	},
-	{
-		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "…………。"
-	},
-	{
-		"type": "dialogue",
-		"text": "……。",
-		"go_next": true
-	},
+	}
 	{
 		"type": "dialogue",
 		"text": "――そうだ……思い出した。",
@@ -1566,13 +1488,11 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "そして僕は兄の水を。",
-		"go_next": true
+		"text": "そして僕は兄の水を。"
 	},
 	{
 		"type": "dialogue",
-		"text": "「お兄ちゃん？」",
-		"new_page": true
+		"text": "「お兄ちゃん？」"
 	},
 	{
 		"type": "dialogue",

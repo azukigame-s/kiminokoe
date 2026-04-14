@@ -1,7 +1,7 @@
 [
 	{
 		"type": "bgm",
-		"name": "main"
+		"name": "night"
 	},
 	{
 		"type": "subtitle",
@@ -91,6 +91,10 @@
 	{
 		"type": "dialogue",
 		"text": "そっと覗いてみると――。"
+	},
+	{
+		"type": "bgm",
+		"name": "dinner"
 	},
 	{
 		"type": "dialogue",
@@ -419,20 +423,6 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "…………。"
-	},
-	{
-		"type": "dialogue",
-		"text": "……。",
-		"go_next": true
-	},
-	{
-		"type": "dialogue",
 		"text": "――そうだ……思い出した。",
 		"new_page": true
 	},
@@ -633,20 +623,6 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "………………。",
-		"new_page": true
-	},
-	{
-		"type": "dialogue",
-		"text": "…………。"
-	},
-	{
-		"type": "dialogue",
-		"text": "……。",
-		"go_next": true
-	},
-	{
-		"type": "dialogue",
 		"text": "――そうだ……思い出した。",
 		"new_page": true
 	},
@@ -663,16 +639,17 @@
 		"text": "「どうしたのお兄ちゃん。ぼーっとしちゃって？」"
 	},
 	{
-		"type": "jump",
-		"index": 400
+		"type": "dialogue",
+		"text": "何でもないよと伝えると、イロはキョトンとした。",
+	},
+	{
+		"type": "dialogue",
+		"text": "「変なの。――じゃあ元気に行ってみよー！」",
+		"go_next": true
 	},
 	{
 		"type": "index",
 		"index": 400
-	},
-	{
-		"type": "index",
-		"index": 600
 	},
 	{
 		"type": "load_scenario",

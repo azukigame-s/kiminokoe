@@ -366,7 +366,8 @@
 		"type": "subtitle",
 		"text": "１０月１２日\n　　１１：００",
 		"fade_time": 0.5,
-		"display_time": 2.0
+		"display_time": 2.0,
+		"next_background": "res://assets/backgrounds/no_image.jpg"
 	},
 	{
 		"type": "bgm",
@@ -483,6 +484,10 @@
 		"go_next": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/road4.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "イロと二人で、バス停へ向かった。",
 		"new_page": true
@@ -507,6 +512,10 @@
 		"type": "dialogue",
 		"text": "ただ、ただ嬉しそうだった。",
 		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/busstop.jpg"
 	},
 	{
 		"type": "dialogue",
@@ -606,6 +615,10 @@
 	{
 		"type": "dialogue",
 		"text": "イロの姿が、徐々に小さくなっていく。"
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/sea.jpg"
 	},
 	{
 		"type": "dialogue",
