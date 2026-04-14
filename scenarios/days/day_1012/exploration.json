@@ -702,6 +702,10 @@
 		"index": 300
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/road3.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "昨日、お寺さんと一緒に歩いた道――家から南に続く道を進むことにした。",
 		"new_page": true
@@ -1476,7 +1480,7 @@
 	{
 		"type": "load_scenario",
 		"path": "episodes/ep_11"
-	}
+	},
 	{
 		"type": "dialogue",
 		"text": "――そうだ……思い出した。",

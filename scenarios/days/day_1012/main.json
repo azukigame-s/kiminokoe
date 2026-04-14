@@ -7,7 +7,8 @@
 		"type": "subtitle",
 		"text": "１０月１２日\n　　６：００",
 		"fade_time": 0.5,
-		"display_time": 2.0
+		"display_time": 2.0,
+		"next_background": "res://assets/backgrounds/no_image.jpg"
 	},
 	{
 		"type": "dialogue",
@@ -640,7 +641,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "何でもないよと伝えると、イロはキョトンとした。",
+		"text": "何でもないよと伝えると、イロはキョトンとした。"
 	},
 	{
 		"type": "dialogue",

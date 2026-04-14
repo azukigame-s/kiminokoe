@@ -19,6 +19,10 @@
 		"duration": 4.5
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/matsuri.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "……。",
 		"new_page": true

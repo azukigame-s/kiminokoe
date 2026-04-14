@@ -142,7 +142,8 @@
 		"type": "subtitle",
 		"text": "１０月１１日\n　１５：００",
 		"fade_time": 0.5,
-		"display_time": 2.0
+		"display_time": 2.0,
+		"next_background": "res://assets/backgrounds/altar_room.jpg"
 	},
 	{
 		"type": "bgm",
@@ -392,6 +393,10 @@
 		"text": "僕は頷き、立ち上がった。"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/road3.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "お寺さんの荷物を持ち、外へ出る。"
 	},
@@ -478,6 +483,10 @@
 		"text": "お寺さんはこちらに笑顔を見せてから、お寺の門をくぐった。"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/temple.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "門の向こう側で、お寺さんが立ち止まる。"
 	},
@@ -532,7 +541,8 @@
 		"type": "subtitle",
 		"text": "１０月１１日\n　１７：００",
 		"fade_time": 0.5,
-		"display_time": 2.0
+		"display_time": 2.0,
+		"next_background": "res://assets/backgrounds/no_image.jpg"
 	},
 	{
 		"type": "dialogue",
@@ -653,7 +663,7 @@
 		"text": "１０月１１日\n　１９：００",
 		"fade_time": 0.5,
 		"display_time": 2.0,
-		"next_background": "res://assets/backgrounds/no_image.jpg"
+		"next_background": "res://assets/backgrounds/inn.jpg"
 	},
 	{
 		"type": "dialogue",
@@ -966,7 +976,8 @@
 		"type": "subtitle",
 		"text": "１０月１１日\n　２１：００",
 		"fade_time": 0.5,
-		"display_time": 2.0
+		"display_time": 2.0,
+		"next_background": "res://assets/backgrounds/lobby.jpg"
 	},
 	{
 		"type": "dialogue",
