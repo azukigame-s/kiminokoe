@@ -32,6 +32,10 @@
 		"text": "………………。"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/forest.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "「あそこの犬……飛び出して来ないよね？」"
 	},
@@ -674,6 +678,10 @@
 		"new_page": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/forest.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "もう、クワガタのことなんて、どうでもよかった。"
 	},
@@ -690,6 +698,10 @@
 		"text": "猟師さんの家が見えた。"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/road3.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "お寺の門。"
 	},
@@ -697,6 +709,10 @@
 		"type": "dialogue",
 		"text": "そして――。",
 		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/no_image.jpg"
 	},
 	{
 		"type": "dialogue",
