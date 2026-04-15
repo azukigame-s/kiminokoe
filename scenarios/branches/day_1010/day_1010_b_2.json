@@ -84,7 +84,7 @@
 		"type": "sfx_loop",
 		"path": "res://assets/sounds/ambient/stream.mp3",
 		"channel": 1,
-		"volume_db": 12.0
+		"volume_db": 6.0
 	},
 	{
 		"type": "dialogue",
@@ -111,7 +111,7 @@
 		"type": "sfx_loop",
 		"path": "res://assets/sounds/ambient/stream.mp3",
 		"channel": 1,
-		"volume_db": 12.0
+		"volume_db": 6.0
 	},
 	{
 		"type": "dialogue",

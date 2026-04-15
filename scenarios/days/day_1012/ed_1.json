@@ -1,5 +1,9 @@
 [
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/secret_base.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "肩で息をしながらあたりを見回す。",
 		"new_page": true
@@ -29,6 +33,10 @@
 		"type": "dialogue",
 		"text": "中央の木の幹に手を当ててみる。苔に覆われた表面は冷たく湿っていた。",
 		"new_page": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/tree_base.jpg"
 	},
 	{
 		"type": "dialogue",
@@ -618,7 +626,7 @@
 	},
 	{
 		"type": "background",
-		"path": "res://assets/backgrounds/sea.jpg"
+		"path": "res://assets/backgrounds/sea2.jpg"
 	},
 	{
 		"type": "dialogue",

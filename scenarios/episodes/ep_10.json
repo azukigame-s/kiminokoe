@@ -126,6 +126,10 @@
 		"text": "ふと、辺りが暗くなっていることに気づいた。"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/copse.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "夕暮れが近い。"
 	},
