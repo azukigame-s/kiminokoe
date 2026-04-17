@@ -26,7 +26,7 @@
 	},
 	{
 		"type": "bgm",
-		"name": "dinner"
+		"name": "iro_theme"
 	},
 	{
 		"type": "subtitle",
@@ -78,8 +78,36 @@
 		"text": "なのにこの記憶――。"
 	},
 	{
+		"type": "branch",
+		"condition": "cond_true_day1011",
+		"branches": {
+			"true": 10,
+			"false": 20
+		}
+	},
+	{
+		"type": "index",
+		"index": 10
+	},
+	{
 		"type": "dialogue",
-		"text": "もしかして１年前の記憶なんだろうか？"
+		"text": "僕たちは……仲直り、できていたんだ。"
+	},
+	{
+		"type": "jump",
+		"index": 30
+	},
+	{
+		"type": "index",
+		"index": 20
+	},
+	{
+		"type": "dialogue",
+		"text": "何かが、噛み合っていない。"
+	},
+	{
+		"type": "index",
+		"index": 30
 	},
 	{
 		"type": "dialogue",
@@ -393,12 +421,12 @@
 		"text": "僕は頷き、立ち上がった。"
 	},
 	{
-		"type": "background",
-		"path": "res://assets/backgrounds/road3.jpg"
-	},
-	{
 		"type": "dialogue",
 		"text": "お寺さんの荷物を持ち、外へ出る。"
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/road3.jpg"
 	},
 	{
 		"type": "dialogue",
@@ -530,7 +558,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "――自分の力で、向き合う。"
+		"text": "――自分の力で、向き合う……か。"
 	},
 	{
 		"type": "dialogue",

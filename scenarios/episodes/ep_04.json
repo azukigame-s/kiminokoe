@@ -134,11 +134,13 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "弟は意外そうに僕の顔を見て、ボールを投げた。"
+		"text": "弟は意外そうに僕の顔を見て、ボールを投げた。",
+		"go_next": true
 	},
 	{
 		"type": "dialogue",
-		"text": "「うん、野球が好きだよ」"
+		"text": "「うん、野球が好きだよ」",
+		"new_page": true
 	},
 	{
 		"type": "dialogue",

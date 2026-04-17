@@ -340,6 +340,10 @@
 		"go_next": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/secret_base.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "振り返ると、そこにはただ、秋の空を背にどっしりと構える大きな木があるだけだった。",
 		"new_page": true
