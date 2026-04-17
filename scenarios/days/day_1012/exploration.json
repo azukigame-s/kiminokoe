@@ -1283,7 +1283,8 @@
 	{
 		"type": "dialogue",
 		"text": "来た道を戻ることにした。",
-		"go_next": true
+		"go_next": true,
+		"new_page": true
 	},
 	{
 		"type": "index",
