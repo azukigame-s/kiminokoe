@@ -145,12 +145,16 @@ func _setup_ui():
 		poem_display.poem_font = load(poem_font_path)
 	add_child(poem_display)
 
-	# ToastNotification
+	# ToastNotification（エンド画面 layer=50 より上の CanvasLayer に配置）
+	var toast_layer = CanvasLayer.new()
+	toast_layer.name = "ToastLayer"
+	toast_layer.layer = 60
+	add_child(toast_layer)
 	toast_notification = Control.new()
 	toast_notification.set_script(ToastNotificationScript)
 	toast_notification.name = "toast_notification"
 	toast_notification.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(toast_notification)
+	toast_layer.add_child(toast_notification)
 
 	# AutoSaveIndicator
 	auto_save_indicator = Control.new()
@@ -311,7 +315,7 @@ func _continue_game():
 	print("[GameScene] シナリオ完了")
 	await _show_demo_ending()
 
-## 体験版エンディング画面
+## ベータ版エンディング画面
 func _show_demo_ending():
 	# シナリオ進行をクリア（ここで消しておくことで、×ボタン終了でも「つづきから」が残らない）
 	SceneManager.clear_scenario_progress()
@@ -351,9 +355,8 @@ func _show_demo_ending():
 	content.add_theme_constant_override("separation", 24)
 	overlay.add_child(content)
 
-	# 「体験版はここまでです」
 	var thanks_label = Label.new()
-	thanks_label.text = "体験版をプレイしていただき\nありがとうございました。"
+	thanks_label.text = "βテスト版をプレイしていただき\nありがとうございました。"
 	thanks_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	thanks_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_HEADING)
 	thanks_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
@@ -366,19 +369,18 @@ func _show_demo_ending():
 	rule.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	content.add_child(rule)
 
-	# トロフィー取得状況（体験版で取得可能なもののみカウント）
-	var unlocked = TrophyManager.get_demo_unlocked_trophy_count()
-	var total = TrophyManager.get_demo_total_trophy_count()
+	var unlocked = TrophyManager.get_beta_unlocked_trophy_count()
+	var total = TrophyManager.get_beta_total_trophy_count()
 
 	var trophy_label = Label.new()
 	trophy_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	trophy_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BODY)
 
 	if unlocked < total:
-		trophy_label.text = "軌跡: %d / %d\n体験版でまだ見つけていない軌跡があるようです" % [unlocked, total]
+		trophy_label.text = "軌跡: %d / %d\nβテスト版でまだ見つけていない軌跡があるようです" % [unlocked, total]
 		trophy_label.add_theme_color_override("font_color", UIConstants.COLOR_SUB_ACCENT)
 	else:
-		trophy_label.text = "軌跡: %d / %d\n体験版のすべての軌跡を見つけました" % [unlocked, total]
+		trophy_label.text = "軌跡: %d / %d\nβテスト版のすべての軌跡を見つけました" % [unlocked, total]
 		trophy_label.add_theme_color_override("font_color", UIConstants.COLOR_ACCENT)
 
 	content.add_child(trophy_label)

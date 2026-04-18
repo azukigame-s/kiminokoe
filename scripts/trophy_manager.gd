@@ -258,6 +258,8 @@ func _check_location_trophies(location_id: String) -> void:
 			_check_chosa_tai_trophy()
 		"normal_end":
 			unlock_trophy("normal_end", secret_trophy_names.get("normal_end", "また来よう"))
+		"kiminokoe":
+			_show_route_unlock_toast("マルチシナリオ\nイロのお節介編を解放しました")
 
 	# ふたこじぞうのチェック（4箇所すべて訪問）
 	_check_futako_jizo()
@@ -540,6 +542,29 @@ func _show_trophy_toast(trophy_name: String):
 	else:
 		log_message("Toast notification not available (toast_node: " + str(toast_node) + ")", LogLevel.DEBUG)
 
+# ルート解放トーストを表示（トロフィーより目立つ表示）
+func _show_route_unlock_toast(message: String):
+	if not is_inside_tree():
+		return
+
+	var toast_node = null
+	var root = get_tree().root
+	if root:
+		for child in root.get_children():
+			if child and (child.name == "NovelSystem" or child.name == "GameScene" or child.has_method("change_background")):
+				if child.has_node("toast_notification"):
+					toast_node = child.get_node("toast_notification")
+					break
+				elif child.has_node("ToastNotification"):
+					toast_node = child.get_node("ToastNotification")
+					break
+
+	if toast_node and toast_node.has_method("show_route_toast"):
+		toast_node.show_route_toast(message)
+		log_message("Showing route unlock toast: " + message, LogLevel.DEBUG)
+	else:
+		log_message("Route toast not available", LogLevel.DEBUG)
+
 # エピソードの称号名を取得
 func get_episode_trophy_name(episode_id: String) -> String:
 	return episode_trophy_names.get(episode_id, "エピソードクリア")
@@ -665,6 +690,29 @@ func get_demo_unlocked_trophy_count() -> int:
 		if is_trophy_unlocked(ep_id + "_clear"):
 			count += 1
 	for trophy_id in demo_secret_trophy_ids:
+		if is_trophy_unlocked(trophy_id):
+			count += 1
+	return count
+
+## ベータ版で取得不可のシークレットトロフィー（製品版限定）
+var beta_excluded_trophy_ids: Array[String] = [
+	"jms_complete",
+	"iro_story",
+]
+
+## ベータ版で取得可能なトロフィーの総数（11 + 8 = 19）
+func get_beta_total_trophy_count() -> int:
+	return episode_ids.size() + secret_trophy_ids.size() - beta_excluded_trophy_ids.size()
+
+## ベータ版で取得済みのトロフィー数
+func get_beta_unlocked_trophy_count() -> int:
+	var count = 0
+	for ep_id in episode_ids:
+		if is_trophy_unlocked(ep_id + "_clear"):
+			count += 1
+	for trophy_id in secret_trophy_ids:
+		if trophy_id in beta_excluded_trophy_ids:
+			continue
 		if is_trophy_unlocked(trophy_id):
 			count += 1
 	return count

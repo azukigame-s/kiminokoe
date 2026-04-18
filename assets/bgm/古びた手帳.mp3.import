@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/古びた手帳.mp3-fdf8a648fecb16fac707f83ad
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

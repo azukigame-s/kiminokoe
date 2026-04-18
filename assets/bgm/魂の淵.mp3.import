@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/魂の淵.mp3-e7926709072f913957bced868ffcacc
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

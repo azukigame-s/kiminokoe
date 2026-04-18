@@ -156,3 +156,68 @@ func show_toast(text: String, _icon_path: String = ""):
 	visible = false
 	is_showing = false
 	toast_completed.emit()
+
+# ルート解放トーストを表示（トロフィーより目立つ金色スタイル・長表示）
+func show_route_toast(text: String) -> void:
+	if is_showing:
+		await toast_completed
+		await get_tree().create_timer(0.5).timeout
+
+	is_showing = true
+
+	# アクセントバーを金色に変更
+	accent_bar.color = Color(0.9, 0.7, 0.1, 1.0)
+
+	# パネル幅を広げる
+	var route_panel_width = 460.0
+	toast_panel.size = Vector2(route_panel_width, panel_height)
+
+	var lines = text.split("\n")
+	if lines.size() >= 2:
+		title_label.text = lines[0]
+		title_label.size = Vector2(route_panel_width - title_label.position.x - 16, 28)
+		desc_label.text = lines[1]
+		desc_label.size = Vector2(route_panel_width - desc_label.position.x - 16, 26)
+		desc_label.visible = true
+	else:
+		title_label.text = text
+		title_label.size = Vector2(route_panel_width - title_label.position.x - 16, 28)
+		desc_label.visible = false
+
+	var viewport_size = get_viewport_rect().size
+	toast_panel.position = Vector2(viewport_size.x, 20)
+	modulate.a = 0.0
+	visible = true
+
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.set_parallel(true)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "modulate:a", 1.0, fade_duration)
+	tween.tween_property(toast_panel, "position:x", viewport_size.x - route_panel_width - 20, fade_duration)
+
+	await tween.finished
+
+	# トロフィーより長い表示時間
+	await get_tree().create_timer(6.0).timeout
+
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.set_parallel(true)
+	tween.set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "modulate:a", 0.0, fade_duration)
+	tween.tween_property(toast_panel, "position:x", viewport_size.x, fade_duration)
+
+	await tween.finished
+
+	# パネル幅・アクセントカラーを元に戻す
+	toast_panel.size = Vector2(panel_width, panel_height)
+	accent_bar.color = UIConstants.COLOR_ACCENT
+
+	visible = false
+	is_showing = false
+	toast_completed.emit()
