@@ -54,9 +54,23 @@ func _ready():
 	# TrophyManager にトースト通知を接続
 	_setup_trophy_manager()
 
+	# ウィンドウ閉じるボタンでもオートセーブして終了
+	get_tree().set_auto_accept_quit(false)
+	get_viewport().get_window().close_requested.connect(_on_window_close_requested)
+
 	# シナリオ実行開始（少し待ってから）
 	await get_tree().create_timer(0.3).timeout
 	_start_game()
+
+## ウィンドウ閉じるボタン処理
+func _on_window_close_requested():
+	var save_state = scenario_engine.get_save_state()
+	_on_auto_save_requested(save_state)
+	get_tree().quit()
+
+## game_scene を離れるときにデフォルトの終了動作を復元
+func _exit_tree():
+	get_tree().set_auto_accept_quit(true)
 
 ## UI構築
 func _setup_ui():

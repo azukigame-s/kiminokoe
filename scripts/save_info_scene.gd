@@ -331,6 +331,7 @@ func _execute_confirm():
 func _execute_new_game():
 	print("[SaveInfoScene] New game from beginning (save data cleared)")
 	SceneManager.clear_save_data()
+	SceneManager.initialize_save()
 	_close_confirm_dialog()
 	SceneManager.game_start_mode = "new"
 	SceneManager.goto_game()

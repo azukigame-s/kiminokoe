@@ -263,6 +263,14 @@ func clear_save_data() -> void:
 			OS.get_user_data_dir() + "/" + SAVE_FILE_PATH.trim_prefix("user://")
 		)
 
+# 初期セーブデータを作成（シナリオ未進行の状態。ウィンドウを閉じても「no data」表示にならないよう保護）
+func initialize_save() -> void:
+	var config = ConfigFile.new()
+	config.set_value("save", "protagonist_name", protagonist_name)
+	config.set_value("save", "scenario_path", "")
+	config.set_value("save", "play_time", play_time)
+	config.save(SAVE_FILE_PATH)
+
 # シナリオ進行のみクリア（名前・プレイ時間・軌跡は保持）
 func clear_scenario_progress() -> void:
 	if not has_save_data():
