@@ -1,5 +1,9 @@
 [
 	{
+		"type": "bgm",
+		"name": "ending"
+	},
+	{
 		"type": "background",
 		"path": "res://assets/backgrounds/road4.jpg"
 	},

@@ -33,6 +33,7 @@ var bgm_aliases: Dictionary = {
 	"suspense":      "res://assets/bgm/魂の淵.mp3",
 	"iro_theme":     "res://assets/bgm/かくしごと.mp3",
 	"jmr_theme":     "res://assets/bgm/古びた手帳.mp3",
+	"truth":         "res://assets/bgm/八月の空、君を忘れ.mp3",
 	"ending":        "res://assets/bgm/朝霧の守り.mp3",
 	"staff_roll":    "res://assets/bgm/儚きは花なれど.mp3",
 	"staff_roll_jmr":"res://assets/bgm/あの日の僕へ.mp3",

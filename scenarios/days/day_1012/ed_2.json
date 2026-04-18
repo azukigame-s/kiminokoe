@@ -7,10 +7,6 @@
 		"next_background": "res://assets/backgrounds/no_image.jpg"
 	},
 	{
-		"type": "bgm",
-		"name": "ending"
-	},
-	{
 		"type": "dialogue",
 		"text": "家に戻ると、祖母が玄関で待っていた。"
 	},
