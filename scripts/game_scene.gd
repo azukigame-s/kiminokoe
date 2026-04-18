@@ -64,8 +64,10 @@ func _ready():
 
 ## ウィンドウ閉じるボタン処理
 func _on_window_close_requested():
-	var save_state = scenario_engine.get_save_state()
-	_on_auto_save_requested(save_state)
+	# シナリオ実行中のみセーブ（エンド画面表示中は is_running=false のためスキップ）
+	if scenario_engine.is_running:
+		var save_state = scenario_engine.get_save_state()
+		_on_auto_save_requested(save_state)
 	get_tree().quit()
 
 ## game_scene を離れるときにデフォルトの終了動作を復元
@@ -311,6 +313,9 @@ func _continue_game():
 
 ## 体験版エンディング画面
 func _show_demo_ending():
+	# シナリオ進行をクリア（ここで消しておくことで、×ボタン終了でも「つづきから」が残らない）
+	SceneManager.clear_scenario_progress()
+
 	# 下部メニューを非表示
 	bottom_menu.visible = false
 
@@ -393,9 +398,6 @@ func _show_demo_ending():
 
 	# ボタン押下待ち
 	await back_button.pressed
-
-	# シナリオ進行のみクリア（名前・プレイ時間・軌跡は保持）
-	SceneManager.clear_scenario_progress()
 
 	# タイトルへ
 	SceneManager.goto_title()
