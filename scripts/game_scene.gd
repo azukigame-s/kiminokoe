@@ -356,7 +356,7 @@ func _show_demo_ending():
 	overlay.add_child(content)
 
 	var thanks_label = Label.new()
-	thanks_label.text = "βテスト版をプレイしていただき\nありがとうございました。"
+	thanks_label.text = "「キミノコエ」編をプレイしていただき\nありがとうございました。"
 	thanks_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	thanks_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_HEADING)
 	thanks_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
