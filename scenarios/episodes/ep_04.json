@@ -10,6 +10,10 @@
 		"go_next": true
 	},
 	{
+		"type": "bgm",
+		"name": "sugu_theme"
+	},
+	{
 		"type": "flashback_start",
 		"effect": "grayscale",
 		"gradual": true,

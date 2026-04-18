@@ -1,5 +1,37 @@
 [
 	{
+		"type": "branch",
+		"condition": "cond_true_day1011",
+		"branches": {
+			"true": 10,
+			"false": 20
+		}
+	},
+	{
+		"type": "index",
+		"index": 10
+	},
+	{
+		"type": "bgm",
+		"name": "sugu_theme"
+	},
+	{
+		"type": "jump",
+		"index": 30
+	},
+	{
+		"type": "index",
+		"index": 20
+	},
+	{
+		"type": "bgm",
+		"name": "flashback"
+	},
+	{
+		"type": "index",
+		"index": 30
+	},
+	{
 		"type": "dialogue",
 		"text": "「起きて！　おにぃ――おきてよ！」"
 	},

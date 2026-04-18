@@ -8,7 +8,7 @@
 	},
 	{
 		"type": "bgm",
-		"name": "dinner"
+		"name": "family"
 	},
 	{
 		"type": "dialogue",
@@ -281,4 +281,3 @@
 		"go_next": true
 	}
 ]
-
