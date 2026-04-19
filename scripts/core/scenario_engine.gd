@@ -135,7 +135,15 @@ func handle_load_scenario(command: Dictionary) -> void:
 	# episodes/ 配下はグレースケール適用
 	var is_episode = path.begins_with("episodes/")
 
-	await call_subscenario(path, is_episode, new_page_after_return)
+	await call_subscenario(_resolve_episode_path(path), is_episode, new_page_after_return)
+
+## エピソードパスの差し替え（周回解放によるリダイレクト）
+func _resolve_episode_path(path: String) -> String:
+	if path == "episodes/ep_00":
+		var trophy_mgr = get_node_or_null("/root/TrophyManager")
+		if trophy_mgr and trophy_mgr.is_episode_cleared("ep_8_prime"):
+			return "episodes/ep_00_beta"
+	return path
 
 ## jump コマンドの処理
 func handle_jump(command: Dictionary) -> void:
