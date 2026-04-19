@@ -315,7 +315,10 @@ func execute_visit_location(command: Dictionary) -> void:
 ## staff_roll コマンドを実行
 ## スタッフロール表示完了後に「キミノコエ」称号を付与する
 ## command の "bgm" フィールドでBGMエイリアスを指定可能（省略時は "staff_roll"）
-func execute_staff_roll(command: Dictionary, _skip_controller: SkipController) -> void:
+func execute_staff_roll(command: Dictionary, skip_controller: SkipController) -> void:
+	# スキップ状態を解除してスタッフロールに突入
+	skip_controller.disable()
+
 	# トロフィー解除
 	var trophy_manager = get_node_or_null("/root/TrophyManager")
 	if trophy_manager:
