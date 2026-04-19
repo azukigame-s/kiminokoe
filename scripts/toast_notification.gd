@@ -12,6 +12,7 @@ var title_label: Label
 var desc_label: Label
 var accent_bar: ColorRect
 var trophy_icon: TextureRect
+var panel_style: StyleBoxFlat
 
 # アニメーション用
 var tween: Tween
@@ -34,18 +35,18 @@ func _setup_toast_ui():
 	toast_panel = Panel.new()
 	toast_panel.name = "toast_panel"
 
-	var style_box = StyleBoxFlat.new()
-	style_box.bg_color = UIConstants.COLOR_BG_PANEL
-	style_box.corner_radius_top_left = UIConstants.CORNER_RADIUS
-	style_box.corner_radius_top_right = UIConstants.CORNER_RADIUS
-	style_box.corner_radius_bottom_left = UIConstants.CORNER_RADIUS
-	style_box.corner_radius_bottom_right = UIConstants.CORNER_RADIUS
-	style_box.border_color = UIConstants.COLOR_ENTRY_BORDER
-	style_box.border_width_top = 1
-	style_box.border_width_bottom = 1
-	style_box.border_width_left = 1
-	style_box.border_width_right = 1
-	toast_panel.add_theme_stylebox_override("panel", style_box)
+	panel_style = StyleBoxFlat.new()
+	panel_style.bg_color = UIConstants.COLOR_BG_PANEL
+	panel_style.corner_radius_top_left = UIConstants.CORNER_RADIUS
+	panel_style.corner_radius_top_right = UIConstants.CORNER_RADIUS
+	panel_style.corner_radius_bottom_left = UIConstants.CORNER_RADIUS
+	panel_style.corner_radius_bottom_right = UIConstants.CORNER_RADIUS
+	panel_style.border_color = UIConstants.COLOR_ENTRY_BORDER
+	panel_style.border_width_top = 1
+	panel_style.border_width_bottom = 1
+	panel_style.border_width_left = 1
+	panel_style.border_width_right = 1
+	toast_panel.add_theme_stylebox_override("panel", panel_style)
 
 	toast_panel.size = Vector2(panel_width, panel_height)
 	add_child(toast_panel)
@@ -158,31 +159,28 @@ func show_toast(text: String, _icon_path: String = ""):
 	toast_completed.emit()
 
 # ルート解放トーストを表示（トロフィーより目立つ金色スタイル・長表示）
-func show_route_toast(text: String) -> void:
+# scenario_name: シナリオ名（タイトルに表示）
+func show_route_toast(scenario_name: String) -> void:
 	if is_showing:
 		await toast_completed
 		await get_tree().create_timer(0.5).timeout
 
 	is_showing = true
 
-	# アクセントバーを金色に変更
-	accent_bar.color = Color(0.9, 0.7, 0.1, 1.0)
+	# アクセントバーとパネル全縁を金色に変更
+	var gold = Color(0.9, 0.7, 0.1, 1.0)
+	accent_bar.color = gold
+	panel_style.border_color = gold
 
 	# パネル幅を広げる
 	var route_panel_width = 460.0
 	toast_panel.size = Vector2(route_panel_width, panel_height)
 
-	var lines = text.split("\n")
-	if lines.size() >= 2:
-		title_label.text = lines[0]
-		title_label.size = Vector2(route_panel_width - title_label.position.x - 16, 28)
-		desc_label.text = lines[1]
-		desc_label.size = Vector2(route_panel_width - desc_label.position.x - 16, 26)
-		desc_label.visible = true
-	else:
-		title_label.text = text
-		title_label.size = Vector2(route_panel_width - title_label.position.x - 16, 28)
-		desc_label.visible = false
+	title_label.text = scenario_name
+	title_label.size = Vector2(route_panel_width - title_label.position.x - 16, 28)
+	desc_label.text = "新シナリオを解放しました"
+	desc_label.size = Vector2(route_panel_width - desc_label.position.x - 16, 26)
+	desc_label.visible = true
 
 	var viewport_size = get_viewport_rect().size
 	toast_panel.position = Vector2(viewport_size.x, 20)
@@ -214,9 +212,10 @@ func show_route_toast(text: String) -> void:
 
 	await tween.finished
 
-	# パネル幅・アクセントカラーを元に戻す
+	# パネル幅・アクセントカラー・ボーダーカラーを元に戻す
 	toast_panel.size = Vector2(panel_width, panel_height)
 	accent_bar.color = UIConstants.COLOR_ACCENT
+	panel_style.border_color = UIConstants.COLOR_ENTRY_BORDER
 
 	visible = false
 	is_showing = false

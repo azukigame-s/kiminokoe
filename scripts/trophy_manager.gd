@@ -259,7 +259,7 @@ func _check_location_trophies(location_id: String) -> void:
 		"normal_end":
 			unlock_trophy("normal_end", secret_trophy_names.get("normal_end", "また来よう"))
 		"kiminokoe":
-			_show_route_unlock_toast("マルチシナリオ\nイロのお節介編を解放しました")
+			_show_route_unlock_toast("イロのおせっかい編")
 
 	# ふたこじぞうのチェック（4箇所すべて訪問）
 	_check_futako_jizo()
@@ -510,57 +510,49 @@ func _load_trophy_data():
 
 # トロフィー取得時のトースト通知を表示
 func _show_trophy_toast(trophy_name: String):
-	# シーンツリーが利用可能かチェック
 	if not is_inside_tree():
 		log_message("Cannot show toast: not inside tree", LogLevel.DEBUG)
 		return
-	
-	# トースト通知への参照を取得（確実に取得するため、毎回探す）
-	var toast_node = null
-	
-	# ノベルシステムシーンを探す
-	var root = get_tree().root
-	if root:
-		for child in root.get_children():
-			if child and (child.name == "NovelSystem" or child.name == "GameScene" or child.has_method("change_background")):
-				# トースト通知が既に存在する場合は取得（シーンファイルに追加されている場合）
-				if child.has_node("toast_notification"):
-					toast_node = child.get_node("toast_notification")
-					break
-				# 後方互換性のため、大文字小文字を区別しない検索も試行
-				elif child.has_node("ToastNotification"):
-					toast_node = child.get_node("ToastNotification")
-					break
-	
-	# トースト通知が利用可能な場合のみ表示
-	if toast_node and toast_node.has_method("show_toast"):
-		var toast_text = trophy_name + "\nを獲得しました"
-		toast_node.show_toast(toast_text)
+
+	# game_scene._setup_trophy_manager() でセットされた参照を優先して使用
+	if not toast_notification or not is_instance_valid(toast_notification):
+		# 参照が無効な場合のみシーンツリーから探す
+		var root = get_tree().root
+		if root:
+			for child in root.get_children():
+				if child and (child.name == "NovelSystem" or child.name == "GameScene" or child.has_method("change_background")):
+					for path in ["ToastLayer/toast_notification", "toast_notification", "ToastNotification"]:
+						if child.has_node(path):
+							toast_notification = child.get_node(path)
+							break
+					if toast_notification:
+						break
+
+	if toast_notification and is_instance_valid(toast_notification) and toast_notification.has_method("show_toast"):
+		toast_notification.show_toast(trophy_name + "\nを獲得しました")
 		log_message("Showing trophy toast: " + trophy_name, LogLevel.DEBUG)
-		# 参照を保存
-		toast_notification = toast_node
 	else:
-		log_message("Toast notification not available (toast_node: " + str(toast_node) + ")", LogLevel.DEBUG)
+		log_message("Toast notification not available", LogLevel.DEBUG)
 
 # ルート解放トーストを表示（トロフィーより目立つ表示）
 func _show_route_unlock_toast(message: String):
 	if not is_inside_tree():
 		return
 
-	var toast_node = null
-	var root = get_tree().root
-	if root:
-		for child in root.get_children():
-			if child and (child.name == "NovelSystem" or child.name == "GameScene" or child.has_method("change_background")):
-				if child.has_node("toast_notification"):
-					toast_node = child.get_node("toast_notification")
-					break
-				elif child.has_node("ToastNotification"):
-					toast_node = child.get_node("ToastNotification")
-					break
+	if not toast_notification or not is_instance_valid(toast_notification):
+		var root = get_tree().root
+		if root:
+			for child in root.get_children():
+				if child and (child.name == "NovelSystem" or child.name == "GameScene" or child.has_method("change_background")):
+					for path in ["ToastLayer/toast_notification", "toast_notification", "ToastNotification"]:
+						if child.has_node(path):
+							toast_notification = child.get_node(path)
+							break
+					if toast_notification:
+						break
 
-	if toast_node and toast_node.has_method("show_route_toast"):
-		toast_node.show_route_toast(message)
+	if toast_notification and is_instance_valid(toast_notification) and toast_notification.has_method("show_route_toast"):
+		toast_notification.show_route_toast(message)
 		log_message("Showing route unlock toast: " + message, LogLevel.DEBUG)
 	else:
 		log_message("Route toast not available", LogLevel.DEBUG)
