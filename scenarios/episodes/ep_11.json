@@ -32,6 +32,10 @@
 		"text": "………………。"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/ani_no_mizu.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "スグと僕は学校から帰って来て、兄の水に向かっていた。"
 	},
@@ -89,6 +93,10 @@
 		"type": "dialogue",
 		"text": "スグの掛け声とともに、僕たちは走って弟の水に向かった。",
 		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/otouto_no_mizu.jpg"
 	},
 	{
 		"type": "dialogue",

@@ -1148,6 +1148,10 @@
 		"text": "僕がお寺を素通りして山道に入ったものだから、鳩が豆鉄砲を食らったような顔をしていた。"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/forest.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "山道の横には細い小川が流れていて、水面が秋の日差しを跳ね返している。",
 		"go_next": true
@@ -1342,6 +1346,10 @@
 		"new_page": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/road1.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "といってもバス停に向かう表通りではなく、家と家に囲まれた路地の方だ。"
 	},
@@ -1384,6 +1392,10 @@
 	{
 		"type": "dialogue",
 		"text": "特に開けるわけでもなく、家と家の間にひっそりとそれはあった。"
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/otouto_no_mizu.jpg"
 	},
 	{
 		"type": "dialogue",
