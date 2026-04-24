@@ -22,7 +22,7 @@ const IMG_WIDTH_RATIO := 0.88   ## パネル幅に対する画像幅の割合
 ## image_left: true = 画像が左・テキストが右 / false = テキストが左・画像が右
 const SLIDE_DATA := [
 	{
-		"image": "res://assets/staff_roll/slide_01.png",
+		"image": "res://assets/staff_roll/slide_01.jpg",
 		"image_left": true,
 		"lines": [
 			["シナリオ", "header"],
@@ -33,7 +33,7 @@ const SLIDE_DATA := [
 		]
 	},
 	{
-		"image": "res://assets/staff_roll/slide_02.png",
+		"image": "res://assets/staff_roll/slide_02.jpg",
 		"image_left": false,
 		"lines": [
 			["グラフィック・背景", "header"],
@@ -41,7 +41,7 @@ const SLIDE_DATA := [
 		]
 	},
 	{
-		"image": "res://assets/staff_roll/slide_03.png",
+		"image": "res://assets/staff_roll/slide_03.jpg",
 		"image_left": true,
 		"lines": [
 			["音　楽", "header"],
@@ -57,7 +57,7 @@ const SLIDE_DATA := [
 		]
 	},
 	{
-		"image": "res://assets/staff_roll/slide_04.png",
+		"image": "res://assets/staff_roll/slide_04.jpg",
 		"image_left": false,
 		"lines": [
 			["フォント", "header"],
@@ -68,7 +68,7 @@ const SLIDE_DATA := [
 		]
 	},
 	{
-		"image": "res://assets/staff_roll/slide_05.png",
+		"image": "res://assets/staff_roll/slide_05.jpg",
 		"image_left": true,
 		"lines": [
 			["制　作", "header"],
