@@ -13,6 +13,7 @@ enum LogLevel {INFO, DEBUG, ERROR}
 
 # セーブファイルのパス
 const SAVE_FILE_PATH = "user://trophy_data.cfg"
+const PENDING_FILE_PATH = "user://pending_trophy.cfg"
 
 # エピソードのクリア状態
 var cleared_episodes: Dictionary = {}
@@ -508,6 +509,30 @@ func _load_trophy_data():
 	else:
 		log_message("ERROR: Failed to load trophy data: " + str(error), LogLevel.ERROR)
 
+	# データリセット後の「転生する勇気」待機フラグをチェック
+	_check_tensei_pending()
+
+# 「転生する勇気」待機フラグを設定（データをリセット直前に呼ぶ）
+# 条件: キミノコエ取得済み AND 地蔵焚の旅人未取得
+func set_tensei_pending() -> void:
+	if is_trophy_unlocked("kiminokoe") and not is_trophy_unlocked("demo_complete"):
+		var config = ConfigFile.new()
+		config.set_value("pending", "tensei", true)
+		config.save(PENDING_FILE_PATH)
+		log_message("Tensei pending flag set", LogLevel.INFO)
+
+# 待機フラグを確認し、あれば「転生する勇気」を付与
+func _check_tensei_pending() -> void:
+	if not FileAccess.file_exists(PENDING_FILE_PATH):
+		return
+	var config = ConfigFile.new()
+	if config.load(PENDING_FILE_PATH) != OK:
+		return
+	if config.get_value("pending", "tensei", false):
+		DirAccess.remove_absolute(OS.get_user_data_dir() + "/" + PENDING_FILE_PATH.trim_prefix("user://"))
+		unlock_trophy("demo_complete", "転生する勇気")
+		log_message("転生する勇気 granted from pending flag", LogLevel.INFO)
+
 # トロフィー取得時のトースト通知を表示
 func _show_trophy_toast(trophy_name: String):
 	if not is_inside_tree():
@@ -572,6 +597,9 @@ func reset_trophy_data():
 	unlocked_trophies.clear()
 	visited_locations.clear()
 	_save_trophy_data()
+	# pending_trophy.cfg も削除（次のリセットではフラグを引き継がない）
+	if FileAccess.file_exists(PENDING_FILE_PATH):
+		DirAccess.remove_absolute(OS.get_user_data_dir() + "/" + PENDING_FILE_PATH.trim_prefix("user://"))
 	log_message("Trophy data reset", LogLevel.INFO)
 
 # 現在のトロフィー獲得状況を表示（デバッグ用）

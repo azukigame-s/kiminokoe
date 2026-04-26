@@ -339,10 +339,13 @@ func _execute_new_game():
 ## データリセット実行（全データ消去）
 func _execute_reset():
 	print("[SaveInfoScene] Full data reset executed")
+	var trophy_mgr = get_node_or_null("/root/TrophyManager")
+	# リセット前に「転生する勇気」条件を確認してフラグを立てる
+	if trophy_mgr:
+		trophy_mgr.set_tensei_pending()
 	SceneManager.clear_save_data()
 	SceneManager.protagonist_name = "コウ"
 	SceneManager.play_time = 0.0
-	var trophy_mgr = get_node_or_null("/root/TrophyManager")
 	if trophy_mgr:
 		trophy_mgr.reset_trophy_data()
 
