@@ -282,7 +282,10 @@ func _new_game():
 	await scenario_engine.start_scenario(scenario_data, "main")
 
 	print("[GameScene] シナリオ完了")
-	await _show_demo_ending()
+	if scenario_engine.scenario_flags.get("osekkai_selected", "") == "true":
+		await _show_beta_ending()
+	else:
+		await _show_demo_ending()
 
 ## セーブデータからの続行
 func _continue_game():
@@ -315,7 +318,10 @@ func _continue_game():
 	await scenario_engine.load_from_save_state(engine_state)
 
 	print("[GameScene] シナリオ完了")
-	await _show_demo_ending()
+	if scenario_engine.scenario_flags.get("osekkai_selected", "") == "true":
+		await _show_beta_ending()
+	else:
+		await _show_demo_ending()
 
 ## ベータ版エンディング画面
 func _show_demo_ending():
@@ -404,6 +410,74 @@ func _show_demo_ending():
 	await back_button.pressed
 
 	# タイトルへ
+	SceneManager.goto_title()
+
+## βテスト版エンディング画面（「ただいま」ルート）
+func _show_beta_ending():
+	SceneManager.clear_scenario_progress()
+	bottom_menu.visible = false
+
+	var canvas = CanvasLayer.new()
+	canvas.layer = 50
+	add_child(canvas)
+
+	var overlay = ColorRect.new()
+	overlay.color = UIConstants.COLOR_BASE_DARK
+	overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	overlay.offset_left = 0
+	overlay.offset_top = 0
+	overlay.offset_right = 0
+	overlay.offset_bottom = 0
+	overlay.modulate.a = 0.0
+	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	canvas.add_child(overlay)
+
+	var fade_tween = create_tween()
+	fade_tween.tween_property(overlay, "modulate:a", 1.0, 1.5)
+	await fade_tween.finished
+
+	var content = VBoxContainer.new()
+	content.set_anchors_preset(Control.PRESET_CENTER)
+	content.offset_left = -300
+	content.offset_right = 300
+	content.offset_top = -120
+	content.offset_bottom = 120
+	content.alignment = BoxContainer.ALIGNMENT_CENTER
+	content.add_theme_constant_override("separation", 24)
+	overlay.add_child(content)
+
+	var thanks_label = Label.new()
+	thanks_label.text = "βテスト版をプレイいただき\nありがとうございました。"
+	thanks_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	thanks_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_HEADING)
+	thanks_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+	content.add_child(thanks_label)
+
+	var rule = ColorRect.new()
+	rule.color = UIConstants.COLOR_RULE
+	rule.custom_minimum_size = Vector2(200, 1)
+	rule.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	content.add_child(rule)
+
+	var next_label = Label.new()
+	next_label.text = "「イロのお節介編」のリリースをお楽しみに。"
+	next_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	next_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BODY)
+	next_label.add_theme_color_override("font_color", UIConstants.COLOR_SUB_ACCENT)
+	content.add_child(next_label)
+
+	var back_button = Button.new()
+	back_button.text = "タイトルへもどる"
+	back_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	UIStyleHelper.style_back_button(back_button)
+	content.add_child(back_button)
+
+	content.modulate.a = 0.0
+	var content_tween = create_tween()
+	content_tween.tween_property(content, "modulate:a", 1.0, 1.0)
+	await content_tween.finished
+
+	await back_button.pressed
 	SceneManager.goto_title()
 
 ## オートセーブ処理

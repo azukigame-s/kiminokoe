@@ -27,6 +27,7 @@ var current_scenario_path: String = ""  # セーブ/ロード用
 # increment コマンドで数値をカウント、set_flag で任意の文字列値をセット
 var scenario_flags: Dictionary = {}
 
+
 func _init():
 	# コンポーネントの初期化
 	command_executor = CommandExecutor.new()
@@ -384,7 +385,7 @@ func call_subscenario(scenario_path: String, apply_grayscale: bool = false, new_
 	if subscenario_data:
 		await start_scenario(subscenario_data, scenario_path)
 
-	# 元のシナリオに復帰（元のindexに戻すだけ。進行は呼び出し元が責任を持つ）
+	# 元のシナリオに復帰
 	var previous_state = scenario_stack.pop()
 	if previous_state:
 		current_scenario = previous_state.scenario

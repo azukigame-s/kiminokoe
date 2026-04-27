@@ -21,7 +21,9 @@
       "Bash(python -c ' *)",
       "Bash(python -)",
       "Read(//c/Users/azuki/AppData/Roaming/Godot/app_userdata/**)",
-      "Read(//c/Users/azuki/AppData/Roaming/Godot/**)"
+      "Read(//c/Users/azuki/AppData/Roaming/Godot/**)",
+      "Bash(python3 -c ' *)",
+      "Bash(python -c \"import json,sys; sys.stdout.reconfigure\\(encoding='utf-8'\\); data=json.load\\(open\\('c:/Users/azuki/Documents/workspaces/github.com/azukigame-s/kiminokoe/scenarios/days/day_1010/main.json',encoding='utf-8'\\)\\); indices=[\\(i,c.get\\('index'\\)\\) for i,c in enumerate\\(data\\) if c.get\\('type'\\)=='index']; print\\(indices\\); print\\('total:',len\\(data\\)\\)\")"
     ]
   }
 }

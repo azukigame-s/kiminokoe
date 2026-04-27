@@ -366,6 +366,8 @@ func evaluate_condition(condition_name: String) -> String:
 			# 童歌 AND 焚き場 の両方取得済みなら false（選択肢表示）、未達なら true（非表示）
 			var met = is_trophy_unlocked("warabeuta") and is_trophy_unlocked("takiba")
 			return "false" if met else "true"
+		"kiminokoe_not_unlocked":
+			return "false" if is_trophy_unlocked("kiminokoe") else "true"
 		_:
 			push_error("[TrophyManager] Unknown condition: " + condition_name)
 			return ""

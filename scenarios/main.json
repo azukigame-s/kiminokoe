@@ -135,6 +135,15 @@
 		"new_page_after_return": true
 	},
 	{
+		"type": "branch_flag",
+		"name": "osekkai_selected",
+		"branches": {"true": 9999, "false": 10}
+	},
+	{
+		"type": "index",
+		"index": 10
+	},
+	{
 		"type": "load_scenario",
 		"path": "days/day_1011/main",
 		"new_page_after_return": true
@@ -143,5 +152,9 @@
 		"type": "load_scenario",
 		"path": "days/day_1012/main",
 		"new_page_after_return": true
+	},
+	{
+		"type": "index",
+		"index": 9999
 	}
 ]

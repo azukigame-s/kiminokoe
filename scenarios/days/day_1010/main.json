@@ -34,8 +34,31 @@
 				"id": "remember_no",
 				"text": "えぇっと……だれだっけ？",
 				"next_index": 500
+			},
+			{
+				"id": "tadaima",
+				"text": "「ただいま」",
+				"hidden_if": "kiminokoe_not_unlocked",
+				"next_index": 300
 			}
 		]
+	},
+	{
+		"type": "index",
+		"index": 300
+	},
+	{
+		"type": "dialogue",
+		"text": "「おかえり、お兄ちゃん！　１年ぶりだね！」",
+		"new_page": true
+	},
+	{
+		"type": "load_scenario",
+		"path": "osekkai/main"
+	},
+	{
+		"type": "jump",
+		"index": 9999
 	},
 	{
 		"type": "index",
@@ -333,6 +356,10 @@
 		"type": "load_scenario",
 		"path": "days/day_1010/evening_common",
 		"new_page_after_return": true
+	},
+	{
+		"type": "index",
+		"index": 9999
 	}
 ]
 
