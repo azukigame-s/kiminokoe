@@ -247,6 +247,8 @@ func _setup_trophy_manager():
 	if trophy_manager:
 		trophy_manager.toast_notification = toast_notification
 		print("[GameScene] TrophyManager にトースト通知を接続しました")
+		# トースト接続後に待機トロフィーを確認（データリセット直後の「転生する勇気」付与）
+		trophy_manager._check_tensei_pending()
 	else:
 		print("[GameScene] TrophyManager が見つかりません")
 

@@ -597,9 +597,6 @@ func reset_trophy_data():
 	unlocked_trophies.clear()
 	visited_locations.clear()
 	_save_trophy_data()
-	# pending_trophy.cfg も削除（次のリセットではフラグを引き継がない）
-	if FileAccess.file_exists(PENDING_FILE_PATH):
-		DirAccess.remove_absolute(OS.get_user_data_dir() + "/" + PENDING_FILE_PATH.trim_prefix("user://"))
 	log_message("Trophy data reset", LogLevel.INFO)
 
 # 現在のトロフィー獲得状況を表示（デバッグ用）
@@ -655,10 +652,20 @@ func get_trophy_display_data() -> Dictionary:
 	var secret_trophies: Array = []
 	for trophy_id in secret_trophy_ids:
 		var unlocked = is_trophy_unlocked(trophy_id)
+		# 保存された名前を優先（転生する勇気など動的に変わるトロフィー対応）
+		var entry = unlocked_trophies.get(trophy_id, null)
+		var saved_name: String = ""
+		if entry != null and entry is Dictionary and entry.has("name"):
+			saved_name = str(entry["name"])
+		var name: String = saved_name if saved_name != "" else secret_trophy_names.get(trophy_id, "")
+		# 説明文も名前に合わせて切り替え（地蔵焚の旅人 ⇔ 転生する勇気）
+		var description: String = secret_trophy_descriptions.get(trophy_id, "")
+		if trophy_id == "demo_complete" and name == "転生する勇気":
+			description = "記憶を消してプレイしたいと言われてみたい"
 		secret_trophies.append({
 			"id": trophy_id,
-			"name": secret_trophy_names.get(trophy_id, ""),
-			"description": secret_trophy_descriptions.get(trophy_id, ""),
+			"name": name,
+			"description": description,
 			"unlocked": unlocked,
 			"is_secret": true,
 		})
