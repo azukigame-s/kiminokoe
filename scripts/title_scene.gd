@@ -29,7 +29,6 @@ func _ready():
 	_setup_ui()
 	_setup_buttons()
 	_setup_background()
-	_setup_ripple()
 
 	# 黒オーバーレイを最前面に追加（BGMフェードインと同期してフェードアウトする）
 	_intro_overlay = ColorRect.new()
@@ -39,18 +38,78 @@ func _ready():
 	_intro_overlay.z_index = 100
 	add_child(_intro_overlay)
 
+	_setup_leaves()
 	_setup_bgm()
 
 	# 初期フォーカス設定
 	if start_button:
 		start_button.grab_focus()
 
-# 波紋オーバーレイのセットアップ
-func _setup_ripple():
-	var ripple = load("res://scripts/ui/ripple_overlay.gd").new()
-	add_child(ripple)
-	# ボタンより手前・タイトルより奥に配置
-	move_child(ripple, get_child_count() - 2)
+# 落ち葉パーティクルのセットアップ（「キミノコエ」トロフィー取得後のみ表示）
+func _setup_leaves() -> void:
+	var trophy_mgr = get_node_or_null("/root/TrophyManager")
+	if not trophy_mgr or not trophy_mgr.is_trophy_unlocked("kiminokoe"):
+		return
+
+	var viewport_size = get_viewport_rect().size
+
+	var particles = GPUParticles2D.new()
+	particles.name = "LeafParticles"
+	particles.amount = 20
+	particles.lifetime = 12.0
+	particles.preprocess = 5.0  # 起動時から葉が散っている状態にする
+	particles.local_coords = false
+	# 放出中心を画面上半分の中央に配置
+	particles.position = Vector2(viewport_size.x / 2.0, viewport_size.y / 4.0)
+	particles.z_index = 1
+
+	# プレースホルダー: コードで生成した白い正方形テクスチャ（画像差し替え時はここを変更）
+	var img = Image.create(12, 12, false, Image.FORMAT_RGBA8)
+	img.fill(Color.WHITE)
+	particles.texture = ImageTexture.create_from_image(img)
+
+	var mat = ParticleProcessMaterial.new()
+
+	# 画面上半分全体に放出エリアを広げる
+	mat.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
+	mat.emission_box_extents = Vector3(viewport_size.x / 2.0, viewport_size.y / 4.0, 0.0)
+
+	# ゆっくり舞う：速度・重力を抑えて spread を広げる
+	mat.direction = Vector3(0.0, 1.0, 0.0)
+	mat.spread = 60.0
+	mat.initial_velocity_min = 15.0
+	mat.initial_velocity_max = 90.0
+	mat.gravity = Vector3(0.0, 30.0, 0.0)
+
+	# 回転（ひらひら感の基本）
+	mat.angle_min = 0.0
+	mat.angle_max = 360.0
+	mat.angular_velocity_min = -150.0
+	mat.angular_velocity_max = 150.0
+
+	# スケール差で大小の葉を表現
+	mat.scale_min = 0.5
+	mat.scale_max = 2.5
+
+	# Turbulence で左右のひらひらを追加
+	mat.turbulence_enabled = true
+	mat.turbulence_noise_scale = 3.0
+	mat.turbulence_influence_min = 0.2
+	mat.turbulence_influence_max = 0.4
+
+	# 紅葉カラー（橙→茶）で生涯末期にフェードアウト
+	var gradient = Gradient.new()
+	gradient.set_color(0, Color(0.85, 0.45, 0.1, 1.0))
+	gradient.set_color(1, Color(0.55, 0.22, 0.05, 0.0))
+	var color_ramp = GradientTexture1D.new()
+	color_ramp.gradient = gradient
+	mat.color_ramp = color_ramp
+
+	particles.process_material = mat
+
+	add_child(particles)
+	move_child(particles, 1)  # 背景の直上、ボタンより奥
+
 
 # BGMのセットアップ（AudioManager オートロード経由でシーンをまたいで再生継続）
 func _setup_bgm():
@@ -158,7 +217,7 @@ func _setup_background():
 
 		background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
-		# 波シェーダーを適用
+		# 波紋シェーダーを適用
 		var shader_path = "res://assets/shaders/water_wave.gdshader"
 		if ResourceLoader.exists(shader_path):
 			var mat = ShaderMaterial.new()
