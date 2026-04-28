@@ -14,8 +14,7 @@ Godot 4 製のノベル＆アドベンチャーゲーム。シナリオは `scen
 | `scenario_rules.md` | シナリオ原稿（MD形式）の記法ルール |
 | `trophy_system.md` | トロフィー一覧・解放条件・実装方針 |
 | `audio_design.md` | BGM・SE の割り当て一覧 |
-| `day_1012_exploration_design.md` | day_1012 探索ルートの詳細設計 |
-| `handoff_instructions.md` | 引き継ぎ情報・未実装タスク一覧 |
+| `handoff_instructions.md` | 引き継ぎ情報・現在の作業状況 |
 | `test_cases.md` | テストケース一覧 |
 | `ui_design.md` | UI 設計 |
 
