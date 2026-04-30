@@ -27,7 +27,7 @@ func _setup_ui():
 	offset_bottom = 36
 
 	label = Label.new()
-	label.text = "自動保存……"
+	label.text = "栞を挟む……"
 	label.set_anchors_preset(Control.PRESET_FULL_RECT)
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	label.vertical_alignment   = VERTICAL_ALIGNMENT_CENTER

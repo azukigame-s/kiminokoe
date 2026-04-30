@@ -81,7 +81,7 @@ func _build_ui():
 	# 区切り線
 	_menu_container.add_child(_create_separator())
 
-	title_button = _create_menu_button("タイトルへもどる")
+	title_button = _create_menu_button("表紙にもどる")
 	title_button.pressed.connect(_on_title)
 	_menu_container.add_child(title_button)
 

@@ -14,6 +14,9 @@ var _confirm_mode: String = ""  # "new_game" or "reset"
 
 func _ready():
 	set_anchors_preset(Control.PRESET_FULL_RECT)
+	var theme_path = "res://themes/novel_theme.tres"
+	if ResourceLoader.exists(theme_path):
+		theme = load(theme_path)
 	_build_ui()
 	# 続行可能なら「つづきから」、不可なら「はじめから」にフォーカス
 	if _start_button and _start_button.focus_mode != Control.FOCUS_NONE:
@@ -35,10 +38,10 @@ func _build_ui():
 
 	# 中央コンテナ
 	var center = VBoxContainer.new()
-	center.anchor_left = 0.25
-	center.anchor_top = 0.25
-	center.anchor_right = 0.75
-	center.anchor_bottom = 0.75
+	center.anchor_left = 0.1
+	center.anchor_top = 0.1
+	center.anchor_right = 0.9
+	center.anchor_bottom = 0.9
 	center.alignment = BoxContainer.ALIGNMENT_CENTER
 	center.add_theme_constant_override("separation", 16)
 	add_child(center)
@@ -84,7 +87,7 @@ func _build_ui():
 
 		# データをリセット（最下部、控えめ）
 		_reset_button = Button.new()
-		_reset_button.text = "データをリセット"
+		_reset_button.text = "記憶を忘れる"
 		_reset_button.alignment = HORIZONTAL_ALIGNMENT_CENTER
 		_style_reset_button(_reset_button)
 		_reset_button.pressed.connect(_on_reset_pressed)
@@ -113,32 +116,41 @@ func _build_ui():
 func _build_save_info(parent: VBoxContainer):
 	var save_data = SceneManager.load_save_data()
 
-	# 情報パネル（赤銅左ボーダー）
-	var panel = PanelContainer.new()
-	var panel_style = StyleBoxFlat.new()
-	panel_style.bg_color = UIConstants.COLOR_ENTRY_BG
-	panel_style.border_width_left = 3
-	panel_style.border_color = UIConstants.COLOR_ACCENT
-	panel_style.corner_radius_top_left = UIConstants.CORNER_RADIUS
-	panel_style.corner_radius_bottom_left = UIConstants.CORNER_RADIUS
-	panel_style.corner_radius_top_right = UIConstants.CORNER_RADIUS
-	panel_style.corner_radius_bottom_right = UIConstants.CORNER_RADIUS
-	panel_style.content_margin_left = 24
-	panel_style.content_margin_right = 24
-	panel_style.content_margin_top = 20
-	panel_style.content_margin_bottom = 20
-	panel.add_theme_stylebox_override("panel", panel_style)
-	parent.add_child(panel)
+	# 栞画像をベースにした情報パネル
+	var bookmark_container = Control.new()
+	bookmark_container.custom_minimum_size = Vector2(600, 200)
+	bookmark_container.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	parent.add_child(bookmark_container)
 
+	# 栞背景画像
+	var texture_rect = TextureRect.new()
+	var texture_path = "res://assets/ui/bookmark.png"
+	if ResourceLoader.exists(texture_path):
+		texture_rect.texture = load(texture_path)
+	texture_rect.stretch_mode = TextureRect.STRETCH_SCALE
+	texture_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bookmark_container.add_child(texture_rect)
+
+	# テキストを重ねるコンテナ（位置はbookmark.pngのレイアウトに合わせて調整）
 	_info_container = VBoxContainer.new()
 	_info_container.add_theme_constant_override("separation", 12)
-	panel.add_child(_info_container)
+	_info_container.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_info_container.offset_left = 200
+	_info_container.offset_top = 20
+	_info_container.offset_right = -20
+	_info_container.offset_bottom = -20
+	_info_container.alignment = BoxContainer.ALIGNMENT_CENTER
+	bookmark_container.add_child(_info_container)
+
+	# 栞カードは明るい地色なので丁子茶テキスト・アウトラインなしでコントラストを確保
+	var text_color = UIConstants.COLOR_SUB_ACCENT
 
 	# 主人公名
 	var name_label = Label.new()
 	name_label.text = "主人公: %s" % save_data.get("protagonist_name", "コウ")
 	name_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BODY)
-	name_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+	name_label.add_theme_color_override("font_color", text_color)
+	name_label.add_theme_constant_override("outline_size", 0)
 	_info_container.add_child(name_label)
 
 	# プレイ時間
@@ -146,7 +158,8 @@ func _build_save_info(parent: VBoxContainer):
 	var play_time_sec = save_data.get("play_time", 0.0)
 	play_time_label.text = "プレイ時間: %s" % _format_play_time(play_time_sec)
 	play_time_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BODY)
-	play_time_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+	play_time_label.add_theme_color_override("font_color", text_color)
+	play_time_label.add_theme_constant_override("outline_size", 0)
 	_info_container.add_child(play_time_label)
 
 	# 軌跡（トロフィー）進捗
@@ -159,13 +172,14 @@ func _build_save_info(parent: VBoxContainer):
 	else:
 		trophy_label.text = "軌跡: ---"
 	trophy_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BODY)
-	trophy_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
+	trophy_label.add_theme_color_override("font_color", text_color)
+	trophy_label.add_theme_constant_override("outline_size", 0)
 	_info_container.add_child(trophy_label)
 
 ## セーブなし時の表示
 func _build_no_save_info(parent: VBoxContainer):
 	_no_save_label = Label.new()
-	_no_save_label.text = "セーブデータはありません"
+	_no_save_label.text = "挟んでいる栞はありません"
 	_no_save_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_no_save_label.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BODY)
 	_no_save_label.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_SECONDARY)
@@ -175,6 +189,7 @@ func _build_no_save_info(parent: VBoxContainer):
 func _style_reset_button(button: Button):
 	button.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BUTTON_NORMAL)
 	button.custom_minimum_size = UIConstants.BUTTON_MIN_SIZE_NORMAL
+	button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 
 	var normal_style = StyleBoxFlat.new()
 	normal_style.bg_color = Color.TRANSPARENT
@@ -282,9 +297,9 @@ func _show_confirm_dialog(mode: String):
 	# メッセージ（モードで切り替え）
 	var msg = Label.new()
 	if mode == "new_game":
-		msg.text = "セーブデータを消去して\nシナリオを最初からプレーしますか？"
+		msg.text = "栞を外して\n最初から読み直しますか？"
 	else:
-		msg.text = "すべてのデータをリセットしますか？\nセーブデータと軌跡が消去されます"
+		msg.text = "すべての記憶を忘れますか？\n栞と軌跡が消去されます"
 	msg.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	msg.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_BODY)
 	msg.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
@@ -297,7 +312,7 @@ func _show_confirm_dialog(mode: String):
 	vbox.add_child(btn_row)
 
 	var yes_btn = Button.new()
-	yes_btn.text = "はい" if mode == "new_game" else "リセットする"
+	yes_btn.text = "はい" if mode == "new_game" else "忘れる"
 	yes_btn.custom_minimum_size = Vector2(140, 40)
 	_style_reset_button(yes_btn)
 	yes_btn.pressed.connect(_execute_confirm)
@@ -378,7 +393,7 @@ func _build_title_area():
 	title_container.add_child(_create_rule())
 
 	var title = Label.new()
-	title.text = "セーブデータ"
+	title.text = "栞"
 	title.add_theme_font_size_override("font_size", UIConstants.FONT_SIZE_HEADING)
 	title.add_theme_color_override("font_color", UIConstants.COLOR_TEXT_PRIMARY)
 	title_container.add_child(title)
