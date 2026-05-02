@@ -138,7 +138,8 @@ func _setup_buttons():
 # 背景設定
 func _setup_background():
 	if background:
-		var bg_path = "res://assets/backgrounds/title_bg.jpg"
+		var use_alt = TrophyManager.is_trophy_unlocked("kiminokoe")
+		var bg_path = "res://assets/backgrounds/title_bg2.jpg" if use_alt else "res://assets/backgrounds/title_bg.jpg"
 		if ResourceLoader.exists(bg_path):
 			var bg_texture = load(bg_path)
 			if bg_texture:
