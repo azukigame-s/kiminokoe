@@ -22,6 +22,18 @@ var _intro_overlay: ColorRect
 var title_text: String = "あなたのゲームタイトル"
 var version_text: String = "v" + ProjectSettings.get_setting("application/config/version", "0.0.0")
 
+# 波紋・取り消し線制御
+var _bg_material: ShaderMaterial = null
+var _ripple_active: bool = false
+var _ripple_elapsed: float = 0.0
+var _ripple_fadein_elapsed: float = 0.0
+const RIPPLE_FADEIN_DURATION: float = 1.5
+var _strikethrough_overlay: TextureRect = null
+var _erase_mat: ShaderMaterial = null
+var _erase_active: bool = false
+var _erase_elapsed: float = 0.0
+const ERASE_DURATION: float = 3.0
+
 func _ready():
 	print("[TitleScene] Title scene initialized")
 
@@ -44,6 +56,27 @@ func _ready():
 	if start_button:
 		start_button.grab_focus()
 
+func _process(delta: float) -> void:
+	if _ripple_active and _bg_material:
+		_ripple_elapsed += delta
+		_bg_material.set_shader_parameter("elapsed", _ripple_elapsed)
+		if _ripple_fadein_elapsed < RIPPLE_FADEIN_DURATION:
+			_ripple_fadein_elapsed += delta
+			var intensity = clamp(_ripple_fadein_elapsed / RIPPLE_FADEIN_DURATION, 0.0, 1.0)
+			_bg_material.set_shader_parameter("ripple_intensity", intensity)
+
+	if _erase_active and is_instance_valid(_erase_mat):
+		_erase_elapsed += delta
+		var t = clamp(_erase_elapsed / ERASE_DURATION, 0.0, 1.0)
+		var eased_t = 0.1 * t + 0.9 * t * t
+		_erase_mat.set_shader_parameter("erase_progress", lerp(-0.1, 1.1, eased_t))
+		if _erase_elapsed >= ERASE_DURATION:
+			_erase_active = false
+			if is_instance_valid(_strikethrough_overlay):
+				_strikethrough_overlay.queue_free()
+				_strikethrough_overlay = null
+			_start_ripple()
+
 # BGMのセットアップ（AudioManager オートロード経由でシーンをまたいで再生継続）
 func _setup_bgm():
 	var bgm_path = AudioManager.resolve_bgm_alias("title")
@@ -56,6 +89,7 @@ func _setup_bgm():
 		await t.finished
 		_intro_overlay.queue_free()
 		_intro_overlay = null
+		_on_intro_completed()
 		return
 
 	# スプラッシュからの初回遷移: 1秒待ってから BGMフェードイン と 黒→タイトル を同時に開始
@@ -66,6 +100,29 @@ func _setup_bgm():
 	await tween.finished
 	_intro_overlay.queue_free()
 	_intro_overlay = null
+	_on_intro_completed()
+
+func _on_intro_completed() -> void:
+	if _strikethrough_overlay != null and TrophyManager.is_trophy_unlocked("kiminokoe"):
+		_start_strikethrough_animation()
+	else:
+		_start_ripple()
+
+func _start_strikethrough_animation() -> void:
+	if not is_instance_valid(_strikethrough_overlay):
+		_start_ripple()
+		return
+	var mat := _strikethrough_overlay.material as ShaderMaterial
+	if not mat:
+		_start_ripple()
+		return
+	_erase_mat = mat
+	_erase_active = true
+
+func _start_ripple() -> void:
+	if not _bg_material:
+		return
+	_ripple_active = true
 
 # UI要素のセットアップ
 func _setup_ui():
@@ -150,12 +207,41 @@ func _setup_background():
 
 		background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
-		# 波紋シェーダーを適用
+		# 波紋シェーダーを適用（ripple_intensity=0 で静止スタート）
 		var shader_path = "res://assets/shaders/water_wave.gdshader"
 		if ResourceLoader.exists(shader_path):
-			var mat = ShaderMaterial.new()
-			mat.shader = load(shader_path)
-			background.material = mat
+			_bg_material = ShaderMaterial.new()
+			_bg_material.shader = load(shader_path)
+			_bg_material.set_shader_parameter("elapsed", 0.0)
+			_bg_material.set_shader_parameter("ripple_intensity", 0.0)
+			background.material = _bg_material
+
+		# 取り消し線オーバーレイ
+		_setup_strikethrough_overlay()
+
+func _setup_strikethrough_overlay() -> void:
+	var path = "res://assets/backgrounds/title_strikethrough.png"
+	if not ResourceLoader.exists(path):
+		return
+
+	var overlay = TextureRect.new()
+	overlay.name = "StrikethroughOverlay"
+	overlay.texture = load(path)
+	overlay.stretch_mode = TextureRect.STRETCH_KEEP
+	overlay.position = Vector2.ZERO
+	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	var shader_path = "res://assets/shaders/strikethrough_erase.gdshader"
+	if ResourceLoader.exists(shader_path):
+		var mat = ShaderMaterial.new()
+		mat.shader = load(shader_path)
+		mat.set_shader_parameter("erase_progress", -0.1)
+		overlay.material = mat
+
+	add_child(overlay)
+	move_child(overlay, background.get_index() + 1)
+
+	_strikethrough_overlay = overlay
 
 # グラデーション背景の作成
 func _create_gradient_background() -> GradientTexture2D:

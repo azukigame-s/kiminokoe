@@ -20,6 +20,10 @@ uniform int ring_count : hint_range(1, 4) = 3;
 uniform float ring_spacing : hint_range(0.02, 0.15) = 0.06;
 // 波紋の不透明度（大きいほど目立つ）
 uniform float ring_opacity : hint_range(0.0, 1.0) = 0.45;
+// 経過時間（GDScript から更新、0のまま＝静止）
+uniform float elapsed = 0.0;
+// 波紋の表示強度（0=非表示, 1=通常。フェードイン用）
+uniform float ripple_intensity : hint_range(0.0, 1.0) = 0.0;
 
 float hash11(float p) {
     return fract(sin(p * 127.1) * 43758.5453);
@@ -56,7 +60,7 @@ void fragment() {
         vec2 jitter = hash12(fi + 1.3) * 0.7 + 0.15;  // セル内でランダムにずらす
         vec2  center      = (vec2(float(col), float(row)) + jitter) * cell_size;
         float time_offset = hash11(fi + 37.0) * ripple_period;
-        float t           = mod(TIME * ripple_speed + time_offset, ripple_period);
+        float t           = mod(elapsed * ripple_speed + time_offset, ripple_period);
         float phase       = t / ripple_period;
         float lead_r      = phase * max_r;
 
@@ -82,9 +86,9 @@ void fragment() {
     }
 
     // 背景を取得（わずかに歪ませる）
-    vec4 base = texture(TEXTURE, uv + total_warp * distortion_strength);
+    vec4 base = texture(TEXTURE, uv + total_warp * distortion_strength * ripple_intensity);
 
     // 波紋の輪を背景に上書きブレンド（加算でなく mix）
-    float blend = clamp(total_wave * ring_opacity, 0.0, 1.0);
+    float blend = clamp(total_wave * ring_opacity * ripple_intensity, 0.0, 1.0);
     COLOR = vec4(mix(base.rgb, ring_color.rgb, blend), base.a);
 }
