@@ -26,7 +26,11 @@
       "Bash(python -c \"import json,sys; sys.stdout.reconfigure\\(encoding='utf-8'\\); data=json.load\\(open\\('c:/Users/azuki/Documents/workspaces/github.com/azukigame-s/kiminokoe/scenarios/days/day_1010/main.json',encoding='utf-8'\\)\\); indices=[\\(i,c.get\\('index'\\)\\) for i,c in enumerate\\(data\\) if c.get\\('type'\\)=='index']; print\\(indices\\); print\\('total:',len\\(data\\)\\)\")",
       "Bash(Get-ChildItem -Recurse -Directory)",
       "Bash(Select-Object -ExpandProperty FullName)",
-      "Bash(git fetch *)"
+      "Bash(git fetch *)",
+      "PowerShell($data = Get-Content 'c:\\\\Users\\\\kuramoto.AzureAD\\\\Documents\\\\workspaces\\\\github.com\\\\azukigame-s\\\\kiminokoe\\\\scenarios\\\\days\\\\day_1012\\\\main.json' -Raw | ConvertFrom-Json; Write-Host \"Total: $\\($data.Count\\)\"; for \\($i = [Math]::Max\\(0, $data.Count - 5\\); $i -lt $data.Count; $i++\\) { Write-Host \"[$i]: $\\($data[$i] | ConvertTo-Json -Compress\\)\" })",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const d=JSON.parse\\(fs.readFileSync\\('c:/Users/kuramoto.AzureAD/Documents/workspaces/github.com/azukigame-s/kiminokoe/scenarios/days/day_1012/main.json','utf8'\\)\\);process.stdout.write\\('len='+d.length+'\\\\n'\\);for\\(let i=Math.max\\(0,d.length-5\\);i<d.length;i++\\){process.stdout.write\\('['+i+']: type='+d[i].type+' '+\\(d[i].index||d[i].path||d[i].text||''\\).toString\\(\\).substring\\(0,50\\)+'\\\\n'\\);}\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const d=JSON.parse\\(fs.readFileSync\\('c:/Users/kuramoto.AzureAD/Documents/workspaces/github.com/azukigame-s/kiminokoe/scenarios/days/day_1012/exploration.json','utf8'\\)\\);process.stdout.write\\('len='+d.length+'\\\\n'\\);[[57,65],[101,108],[152,158],[246,252],[294,300],[359,366],[389,394]].forEach\\(\\([s,e]\\)=>{for\\(let i=s;i<Math.min\\(e,d.length\\);i++\\){process.stdout.write\\('['+i+']: type='+d[i].type+' '+\\(d[i].index!=null?'idx:'+d[i].index:d[i].path||d[i].text||''\\).toString\\(\\).substring\\(0,50\\)+'\\\\n'\\);}process.stdout.write\\('---\\\\n'\\);}\\);\")"
     ]
   }
 }

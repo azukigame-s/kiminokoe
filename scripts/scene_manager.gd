@@ -254,7 +254,7 @@ func can_continue() -> bool:
 		return false
 	var data = load_save_data()
 	var scenario_path = data.get("scenario_path", "")
-	return scenario_path != ""
+	return scenario_path != null and scenario_path != ""
 
 # セーブデータの全削除
 func clear_save_data() -> void:
@@ -279,10 +279,10 @@ func clear_scenario_progress() -> void:
 	var error = config.load(SAVE_FILE_PATH)
 	if error != OK:
 		return
-	# シナリオ関連キーを削除
+	# シナリオ関連キーを削除（set_value(null) ではなく erase_section_key で確実に削除）
 	for key in ["scenario_path", "index", "stack", "background_path", "bgm_path", "effect", "backlog", "ambient_path", "ambient_volume_db", "ambient2_path", "ambient2_volume_db"]:
 		if config.has_section_key("save", key):
-			config.set_value("save", key, null)
+			config.erase_section_key("save", key)
 	config.save(SAVE_FILE_PATH)
 
 # 保存済み設定の読み込みと適用（起動時に呼ばれる）
