@@ -379,7 +379,7 @@
 		"text": "１０月１２日\n　　１１：００",
 		"fade_time": 0.5,
 		"display_time": 2.0,
-		"next_background": "res://assets/backgrounds/no_image.jpg"
+		"next_background": "res://assets/backgrounds/side_street.jpg"
 	},
 	{
 		"type": "bgm",
@@ -402,6 +402,10 @@
 		"type": "dialogue",
 		"text": "心は、軽かった。",
 		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/entrance.jpg"
 	},
 	{
 		"type": "dialogue",

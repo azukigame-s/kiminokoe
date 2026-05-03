@@ -4,7 +4,7 @@
 		"text": "１０月１０日\n　１９：００",
 		"fade_time": 0.5,
 		"display_time": 2.0,
-		"next_background": "res://assets/backgrounds/no_image.jpg"
+		"next_background": "res://assets/backgrounds/kitchen.jpg"
 	},
 	{
 		"type": "bgm",
