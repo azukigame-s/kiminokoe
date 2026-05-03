@@ -510,10 +510,7 @@ func _on_menu_pressed():
 
 ## 選択肢表示状態の変更時
 func _on_choice_visibility_changed():
-	if choice_display.visible:
-		bottom_menu.visible = false
-	else:
-		bottom_menu.visible = true
+	bottom_menu.visible = true
 
 ## バックログを開く
 var _backlog_paused_by_us: bool = false
