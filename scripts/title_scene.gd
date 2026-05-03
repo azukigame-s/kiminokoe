@@ -23,6 +23,7 @@ var title_text: String = "あなたのゲームタイトル"
 var version_text: String = "v" + ProjectSettings.get_setting("application/config/version", "0.0.0")
 
 # 波紋・取り消し線制御
+static var _strikethrough_played: bool = false  # 起動中1回のみ再生するフラグ
 var _bg_material: ShaderMaterial = null
 var _ripple_active: bool = false
 var _ripple_elapsed: float = 0.0
@@ -68,7 +69,16 @@ func _process(delta: float) -> void:
 	if _erase_active and is_instance_valid(_erase_mat):
 		_erase_elapsed += delta
 		var t = clamp(_erase_elapsed / ERASE_DURATION, 0.0, 1.0)
-		var eased_t = 0.1 * t + 0.9 * t * t
+		# 糸を抜くような動き：前半60%の時間でコンテンツの15%だけ消し、残り40%で一気に消す
+		const SNAP_T: float = 0.6
+		const SNAP_P: float = 0.15
+		var eased_t: float
+		if t < SNAP_T:
+			var s: float = t / SNAP_T
+			eased_t = SNAP_P * s * s
+		else:
+			var s: float = (t - SNAP_T) / (1.0 - SNAP_T)
+			eased_t = SNAP_P + (1.0 - SNAP_P) * s
 		_erase_mat.set_shader_parameter("erase_progress", lerp(-0.1, 1.1, eased_t))
 		if _erase_elapsed >= ERASE_DURATION:
 			_erase_active = false
@@ -92,8 +102,7 @@ func _setup_bgm():
 		_on_intro_completed()
 		return
 
-	# スプラッシュからの初回遷移: 1秒待ってから BGMフェードイン と 黒→タイトル を同時に開始
-	await get_tree().create_timer(1.0).timeout
+	# スプラッシュからの初回遷移: BGMフェードイン と 黒→タイトル を同時に開始
 	AudioManager.play_bgm(bgm_path, true)
 	var tween = create_tween()
 	tween.tween_property(_intro_overlay, "modulate:a", 0.0, fade_duration)
@@ -109,6 +118,7 @@ func _on_intro_completed() -> void:
 		_start_ripple()
 
 func _start_strikethrough_animation() -> void:
+	_strikethrough_played = true
 	if not is_instance_valid(_strikethrough_overlay):
 		_start_ripple()
 		return
@@ -220,6 +230,8 @@ func _setup_background():
 		_setup_strikethrough_overlay()
 
 func _setup_strikethrough_overlay() -> void:
+	if _strikethrough_played:
+		return
 	var path = "res://assets/backgrounds/title_strikethrough.png"
 	if not ResourceLoader.exists(path):
 		return
@@ -236,6 +248,8 @@ func _setup_strikethrough_overlay() -> void:
 		var mat = ShaderMaterial.new()
 		mat.shader = load(shader_path)
 		mat.set_shader_parameter("erase_progress", -0.1)
+		mat.set_shader_parameter("content_left", 100.0 / 780.0)
+		mat.set_shader_parameter("content_right", 680.0 / 780.0)
 		overlay.material = mat
 
 	add_child(overlay)
