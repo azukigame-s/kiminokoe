@@ -59,12 +59,12 @@
 ### 🎮 プレイ方法
 
 #### Windows
-1. Assets 内の `kiminokoe_beta_v0.8.2_windows.zip` をダウンロードする
+1. Assets 内の `kiminokoe_beta_v0.8.4_windows.zip` をダウンロードする
 2. zip ファイルを解凍する
 3. `キミノコエ.exe` を実行する
 
 #### macOS
-1. Assets 内の `kiminokoe_beta_v0.8.2_macos.zip` をダウンロードする
+1. Assets 内の `kiminokoe_beta_v0.8.4_macos.zip` をダウンロードする
 2. zip ファイルを解凍する
 3. `キミノコエ.app` を起動する
 
@@ -84,6 +84,8 @@
 - 特になし
 
 ### 📝 変更履歴
+- v0.8.4: 各シナリオの演出を強化
+- v0.8.3: エンディング後にゲームが終了しないバグを修正
 - v0.8.2: タイトル画面のUIを変更
 - v0.8.1: 各種UIデザインの変更 & 一部シナリオのテキストを変更
 - v0.8.0: βテスト版リリース
