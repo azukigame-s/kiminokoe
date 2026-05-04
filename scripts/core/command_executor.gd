@@ -254,6 +254,15 @@ func execute_subtitle(command: Dictionary, skip_controller: SkipController) -> v
 ## オプション: mute_bgm=true で BGM を一時停止し詩終了後に復元
 ## オプション: ambient="path" で詩の間ループSEを再生
 func execute_poem(command: Dictionary, skip_controller: SkipController) -> void:
+	# テキストをクリアして背景のみの状態にしてから詩を表示
+	if text_display:
+		text_display.clear()
+
+	# no_skip: true の場合はスキップを強制解除して必ず表示
+	var no_skip: bool = command.get("no_skip", false)
+	if no_skip and skip_controller.is_skipping:
+		skip_controller.disable()
+
 	# スキップモード中は詩表示をスキップ
 	if skip_controller.is_skipping:
 		return
