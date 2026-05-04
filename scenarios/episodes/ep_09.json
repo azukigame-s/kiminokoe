@@ -13,14 +13,14 @@
 		"name": "flashback"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/matsuri.jpg"
+	},
+	{
 		"type": "flashback_start",
 		"effect": "grayscale",
 		"gradual": true,
 		"duration": 4.5
-	},
-	{
-		"type": "background",
-		"path": "res://assets/backgrounds/matsuri.jpg"
 	},
 	{
 		"type": "dialogue",

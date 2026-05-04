@@ -59,6 +59,7 @@ void fragment() {
         vec2 cell_size = vec2(1.0 / 3.0, 1.0 / num_rows);
         vec2 jitter = hash12(fi + 1.3) * 0.7 + 0.15;  // セル内でランダムにずらす
         vec2  center      = (vec2(float(col), float(row)) + jitter) * cell_size;
+        // 元のtime_offsetによるサイクリングを維持（常に連続して波紋が出続ける）
         float time_offset = hash11(fi + 37.0) * ripple_period;
         float t           = mod(elapsed * ripple_speed + time_offset, ripple_period);
         float phase       = t / ripple_period;
@@ -76,6 +77,10 @@ void fragment() {
 
         // 着水の瞬間に中心が光る
         wave_sum += exp(-phase * 15.0) * exp(-dist * dist * 300.0) * 0.5;
+
+        // 起動時のみ：各ドロップを時間差でフェードイン（ripple_intensityと独立して動作）
+        float startup_delay = hash11(fi * 3.7 + 1.1) * 3.5;
+        wave_sum *= smoothstep(startup_delay, startup_delay + 1.5, elapsed);
 
         // 符号付き波の加算 → 重なると自然に干渉（靄は cos の正負で相殺）
         total_wave += wave_sum;

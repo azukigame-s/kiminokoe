@@ -574,7 +574,7 @@
 		"text": "１０月１１日\n　１７：００",
 		"fade_time": 0.5,
 		"display_time": 2.0,
-		"next_background": "res://assets/backgrounds/no_image.jpg"
+		"next_background": "res://assets/backgrounds/entrance.jpg"
 	},
 	{
 		"type": "dialogue",
@@ -1041,6 +1041,14 @@
 		"type": "dialogue",
 		"text": "僕のスグとの記憶も、満ち欠けせずに真ん丸ならいいのに……。",
 		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "――でも。"
+	},
+	{
+		"type": "dialogue",
+		"text": "欠けたままでも、探すことはできるはずだ。"
 	},
 	{
 		"type": "dialogue",

@@ -769,6 +769,10 @@
 		"name": "jmr_theme"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/temple.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "「やあ、やっぱり来たね」",
 		"new_page": true
@@ -815,6 +819,10 @@
 		"type": "dialogue",
 		"text": "僕たちは靴を脱ぎ、後に続いた。",
 		"go_next": true
+	},
+	{
+		"type": "background",
+		"path": "res://assets/backgrounds/no_image.jpg"
 	},
 	{
 		"type": "dialogue",

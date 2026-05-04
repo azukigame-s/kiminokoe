@@ -1,4 +1,4 @@
-[
+﻿[
 	{
 		"type": "dialogue",
 		"text": "「クワガタいるかなぁ」"
@@ -344,12 +344,16 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「まっすぐ進もう」",
+		"text": "「まっすぐ……進もう」",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "僕はスグの手を引いて、前に進んだ。",
+		"text": "右も左も、前も後ろも、同じような木ばかりが続いている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "ただ、立ち止まっていてはいけないという焦りだけで、足を踏み出した。",
 		"go_next": true
 	},
 	{
@@ -374,12 +378,16 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「まっすぐ進もう」",
+		"text": "「今度は前に進もう」",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "僕はスグの手を引いて、前に進んだ。",
+		"text": "向きを変えてから、あの犬の声が少し近くなった気がした。"
+	},
+	{
+		"type": "dialogue",
+		"text": "左にも右にも道は続いているけど――この方向で合ってる。",
 		"go_next": true
 	},
 	{
@@ -404,12 +412,12 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「まっすぐ進もう」",
+		"text": "「この方向……合ってる気がする」",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "僕はスグの手を引いて、前に進んだ。",
+		"text": "左を向いても右を向いても木ばかりだけど、前の方だけが、少し明るくなってきた。",
 		"go_next": true
 	},
 	{
@@ -456,12 +464,24 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「一回、戻ろう」",
+		"text": "「……一回、戻ってみよう」",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "僕はスグの手を引いて、来た道を戻った。",
+		"text": "来るとき――後ろの方から、猟師さんの家の犬の声がした気がする。"
+	},
+	{
+		"type": "dialogue",
+		"text": "あっちの方向に戻れば、出られるはずだ。"
+	},
+	{
+		"type": "dialogue",
+		"text": "「戻るよ」"
+	},
+	{
+		"type": "dialogue",
+		"text": "スグの手をしっかり握り、来た道を引き返した。",
 		"go_next": true
 	},
 	{
@@ -481,12 +501,16 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「一回、戻ろう」",
+		"text": "「やっぱり……どっちだろう」",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "僕はスグの手を引いて、来た道を戻った。",
+		"text": "迷って、また向きを変えた。どこを向いても同じような木々が続く。"
+	},
+	{
+		"type": "dialogue",
+		"text": "前か後ろか、もう分からなくなってきた。",
 		"go_next": true
 	},
 	{
@@ -511,12 +535,16 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「一回、戻ろう」",
+		"text": "「やっぱり戻ってみよう」",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "僕はスグの手を引いて、来た道を戻った。",
+		"text": "足を踏み出した途端――あの犬の声が、また遠くなった。"
+	},
+	{
+		"type": "dialogue",
+		"text": "違う。そっちじゃない。",
 		"go_next": true
 	},
 	{
@@ -541,12 +569,16 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "「一回、戻ろう」",
+		"text": "「違う……やっぱり戻ろう」",
 		"new_page": true
 	},
 	{
 		"type": "dialogue",
-		"text": "僕はスグの手を引いて、来た道を戻った。",
+		"text": "踏み出した足が、また知らない場所へと向かっていく。"
+	},
+	{
+		"type": "dialogue",
+		"text": "左も右も、前も後ろも――また全部が同じ顔になった。",
 		"go_next": true
 	},
 	{
@@ -661,7 +693,7 @@
 	},
 	{
 		"type": "dialogue",
-		"text": "それでも、スグの手を強く握り返した。",
+		"text": "それでも、スグの手を強く握り返した。もう一度――考えよう。",
 		"go_next": true
 	},
 	{
@@ -712,7 +744,7 @@
 	},
 	{
 		"type": "background",
-		"path": "res://assets/backgrounds/no_image.jpg"
+		"path": "res://assets/backgrounds/house_front.jpg"
 	},
 	{
 		"type": "dialogue",

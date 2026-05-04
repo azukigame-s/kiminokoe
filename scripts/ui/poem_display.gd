@@ -52,7 +52,7 @@ func _build_ui() -> void:
 	_label.modulate.a = 0.0
 	if poem_font:
 		_label.add_theme_font_override("font", poem_font)
-	_label.add_theme_font_size_override("font_size", 36)
+	_label.add_theme_font_size_override("font_size", 32)
 	_label.add_theme_color_override("font_color", UIConstants.COLOR_ACCENT)
 	_container.add_child(_label)
 
