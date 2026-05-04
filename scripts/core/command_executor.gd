@@ -133,7 +133,7 @@ func execute_dialogue(command: Dictionary, skip_controller: SkipController) -> v
 ## background コマンドを実行
 func execute_background(command: Dictionary, skip_controller: SkipController) -> void:
 	var path = command.get("path", "")
-	var effect = command.get("effect", "normal")
+	var effect = command.get("effect", background_display.current_effect if background_display else "normal")
 
 	if background_display:
 		var use_fade = not skip_controller.is_skipping

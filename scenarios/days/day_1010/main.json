@@ -291,6 +291,10 @@
 		"text": "今日、明日と２泊して、明後日１０月１２日の午後のバスで帰る予定だ。"
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/no_image.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "客間として利用している和室に荷物を置いた。"
 	},
