@@ -96,6 +96,9 @@ static func style_bottom_menu_button(button: Button) -> void:
 	button.add_theme_stylebox_override("pressed", transparent)
 	button.add_theme_stylebox_override("focus", transparent)
 
+	button.mouse_entered.connect(func(): AudioManager.play_sfx("res://assets/sounds/cursor_move.mp3", -3.0))
+	button.pressed.connect(func(): AudioManager.play_sfx("res://assets/sounds/cursor_select.mp3", -3.0))
+
 ## 「もどる」ボタン（画面下部に配置、控えめなテキストボタン）
 static func style_back_button(button: Button) -> void:
 	if not button:
@@ -112,6 +115,9 @@ static func style_back_button(button: Button) -> void:
 	button.add_theme_stylebox_override("normal", transparent)
 	button.add_theme_stylebox_override("hover", transparent)
 	button.add_theme_stylebox_override("pressed", transparent)
+
+	button.mouse_entered.connect(func(): AudioManager.play_sfx("res://assets/sounds/cursor_move.mp3", -3.0))
+	button.pressed.connect(func(): AudioManager.play_sfx("res://assets/sounds/cursor_select.mp3", -3.0))
 
 ## タイトル用ボタン（透明背景、ダーク文字、ホバーで白）
 static func style_title_button(button: Button) -> void:
@@ -133,3 +139,7 @@ static func style_title_button(button: Button) -> void:
 	button.add_theme_stylebox_override("hover", transparent_style)
 	button.add_theme_stylebox_override("pressed", transparent_style)
 	button.add_theme_stylebox_override("focus", transparent_style)
+
+	button.focus_entered.connect(func(): AudioManager.play_sfx("res://assets/sounds/cursor_move.mp3", -3.0))
+	button.mouse_entered.connect(func(): AudioManager.play_sfx("res://assets/sounds/cursor_move.mp3", -3.0))
+	button.pressed.connect(func(): AudioManager.play_sfx("res://assets/sounds/cursor_select.mp3", -3.0))

@@ -40,6 +40,10 @@
 		"path": "res://assets/backgrounds/stairs.jpg"
 	},
 	{
+		"type": "sfx",
+		"path": "res://assets/sounds/stairs_walk.mp3"
+	},
+	{
 		"type": "dialogue",
 		"text": "階段を上りながら、さっきの食卓のことを思い返していた。",
 		"new_page": true
@@ -89,6 +93,10 @@
 	{
 		"type": "dialogue",
 		"text": "ドアを開けると、懐かしい景色が広がった。"
+	},
+	{
+		"type": "sfx",
+		"path": "res://assets/sounds/door_open.mp3"
 	},
 	{
 		"type": "background",

@@ -72,6 +72,10 @@
 		"text": "一階は、静まり返っている。"
 	},
 	{
+		"type": "sfx",
+		"path": "res://assets/sounds/clock_tick.mp3"
+	},
+	{
 		"type": "dialogue",
 		"text": "時計の音だけが、静かに響いていた。"
 	},
@@ -92,6 +96,10 @@
 		"type": "dialogue",
 		"text": "トイレを済ませて出ると、台所に明かりがともっているのに気づく。",
 		"new_page": true
+	},
+	{
+		"type": "sfx",
+		"path": "res://assets/sounds/toilet_flush.mp3"
 	},
 	{
 		"type": "dialogue",

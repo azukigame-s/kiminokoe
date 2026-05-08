@@ -270,6 +270,11 @@
 		"text": "窓を閉めて、布団をかぶる。"
 	},
 	{
+		"type": "sfx",
+		"path": "res://assets/sounds/window_close.mp3",
+		"volume_db": 12.0
+	},
+	{
 		"type": "sfx_loop_stop",
 		"channel": 1
 	},
