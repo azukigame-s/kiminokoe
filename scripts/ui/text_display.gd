@@ -63,7 +63,7 @@ func _input(event):
 	if block_advance:
 		return
 	if event is InputEventKey:
-		if (event.keycode == KEY_ENTER or event.keycode == KEY_SPACE) and event.pressed:
+		if (event.keycode == KEY_ENTER or event.keycode == KEY_SPACE) and event.pressed and not event.echo:
 			_handle_advance()
 
 func _handle_advance():
