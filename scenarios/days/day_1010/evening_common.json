@@ -36,6 +36,10 @@
 		"go_next": true
 	},
 	{
+		"type": "background",
+		"path": "res://assets/backgrounds/stairs.jpg"
+	},
+	{
 		"type": "dialogue",
 		"text": "階段を上りながら、さっきの食卓のことを思い返していた。",
 		"new_page": true
