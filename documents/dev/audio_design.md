@@ -55,6 +55,9 @@ SEファイルはすべて `assets/sounds/` 以下に配置する。
 | `sounds/ambient/underwater.mp3` | ループ ch1 | 水中SE（溺れる回想） |
 | `sounds/ambient/night_insects.mp3` | ループ ch1 | 夜の秋虫（就寝シーン） |
 
+| `sounds/cursor_move.mp3` | ワンショット | UIカーソル移動音（ボタンホバー・フォーカス・選択肢移動） |
+| `sounds/cursor_select.mp3` | ワンショット | UI決定音（ボタン押下・選択肢決定） |
+
 **未配置（将来用）**: `stream.mp3`（川）/ `village_evening.mp3`（田舎の夕方）
 
 ### シーン別SE配置

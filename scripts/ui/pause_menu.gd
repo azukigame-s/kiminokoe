@@ -192,6 +192,10 @@ func _create_menu_button(text: String) -> Button:
 	button.add_theme_stylebox_override("focus", normal_style)
 	button.add_theme_stylebox_override("disabled", normal_style)
 
+	button.focus_entered.connect(func(): AudioManager.play_sfx("res://assets/sounds/cursor_move.mp3", -3.0))
+	button.mouse_entered.connect(func(): AudioManager.play_sfx("res://assets/sounds/cursor_move.mp3", -3.0))
+	button.pressed.connect(func(): AudioManager.play_sfx("res://assets/sounds/cursor_select.mp3", -3.0))
+
 	return button
 
 func open():

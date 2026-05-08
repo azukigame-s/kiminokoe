@@ -142,6 +142,7 @@ func _on_button_hover(index: int):
 	if _selected_index != index:
 		_selected_index = index
 		_update_highlight()
+		AudioManager.play_sfx("res://assets/sounds/cursor_move.mp3", -3.0)
 
 ## 選択を確定
 func _select(index: int):
@@ -154,7 +155,7 @@ func _select(index: int):
 	_is_active = false
 	visible = false
 	_clear_choices()
-
+	AudioManager.play_sfx("res://assets/sounds/cursor_select.mp3", -3.0)
 	choice_selected.emit(selected)
 
 ## ハイライト更新
@@ -174,10 +175,12 @@ func _input(event):
 				if _selected_index > 0:
 					_selected_index -= 1
 					_update_highlight()
+					AudioManager.play_sfx("res://assets/sounds/cursor_move.mp3", -3.0)
 			KEY_DOWN:
 				if _selected_index < _choice_labels.size() - 1:
 					_selected_index += 1
 					_update_highlight()
+					AudioManager.play_sfx("res://assets/sounds/cursor_move.mp3", -3.0)
 			KEY_ENTER, KEY_SPACE:
 				_select(_selected_index)
 			KEY_A:
