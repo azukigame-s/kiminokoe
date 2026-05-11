@@ -59,12 +59,12 @@
 ### 🎮 プレイ方法
 
 #### Windows
-1. Assets 内の `kiminokoe_beta_v0.8.5_windows.zip` をダウンロードする
+1. Assets 内の `kiminokoe_beta_v0.8.6_windows.zip` をダウンロードする
 2. zip ファイルを解凍する
 3. `キミノコエ.exe` を実行する
 
 #### macOS
-1. Assets 内の `kiminokoe_beta_v0.8.5_macos.zip` をダウンロードする
+1. Assets 内の `kiminokoe_beta_v0.8.6_macos.zip` をダウンロードする
 2. zip ファイルを解凍する
 3. `キミノコエ.app` を起動する
 
@@ -84,6 +84,7 @@
 - 特になし
 
 ### 📝 変更履歴
+- v0.8.6: Macosで起動ができない問題を対応
 - v0.8.5: 一部の軌跡が異なる条件で取得できてしまう不具合を修正
 - v0.8.4: 各シナリオの演出を強化
 - v0.8.3: エンディング後にゲームが終了しないバグを修正
