@@ -74,6 +74,24 @@
 		"go_next": true
 	},
 	{
+		"type": "dialogue",
+		"text": "――それにしても、傘が小さい。",
+		"new_page": true
+	},
+	{
+		"type": "dialogue",
+		"text": "「あ、ごめん。慌ててでたから間違えちゃって」"
+	},
+	{
+		"type": "dialogue",
+		"text": "イロは苦笑いを浮かべている。"
+	},
+	{
+		"type": "dialogue",
+		"text": "僕は小さな傘に肩を寄せながら、家路についた。",
+		"go_next": true
+	},
+	{
 		"type": "sfx_loop_stop",
 		"channel": 1
 	}
