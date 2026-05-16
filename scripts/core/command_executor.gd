@@ -5,6 +5,7 @@ class_name CommandExecutor
 ## 各コマンドタイプの処理を実装
 
 const StaffRollDisplayScript = preload("res://scripts/ui/staff_roll_display.gd")
+const SuguHorrorDisplayScript = preload("res://scripts/ui/sugu_horror_display.gd")
 
 # UI コンポーネント（後で設定）
 var text_display: TextDisplay
@@ -88,6 +89,8 @@ func execute(command: Dictionary, skip_controller: SkipController) -> void:
 		"jump":
 			# ジャンプは ScenarioEngine で処理
 			pass
+		"sugu_horror":
+			await execute_sugu_horror(skip_controller)
 		"flashback_start":
 			await execute_flashback_start(command, skip_controller)
 		"flashback_end":
@@ -344,6 +347,20 @@ func execute_staff_roll(command: Dictionary, skip_controller: SkipController) ->
 	add_child(staff_roll)
 	await staff_roll.play(bgm_alias)
 	staff_roll.queue_free()
+
+## sugu_horror コマンドを実行（日記の真っ黒ページ演出）
+func execute_sugu_horror(skip_controller: SkipController) -> void:
+	if skip_controller.is_skipping:
+		return
+	if text_display:
+		text_display.clear()
+
+	var horror: Node = SuguHorrorDisplayScript.new()
+	add_child(horror)
+	horror.text_display = text_display
+	horror.start()
+	await horror.horror_completed
+	horror.queue_free()
 
 ## flashback_start コマンドを実行（回想モード開始）
 func execute_flashback_start(command: Dictionary, skip_controller: SkipController) -> void:
