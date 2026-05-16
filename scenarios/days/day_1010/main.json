@@ -48,11 +48,6 @@
 		"index": 300
 	},
 	{
-		"type": "dialogue",
-		"text": "「おかえり、お兄ちゃん！　１年ぶりだね！」",
-		"new_page": true
-	},
-	{
 		"type": "load_scenario",
 		"path": "osekkai/main"
 	},

@@ -1,780 +1,2857 @@
 [
-  { "type": "set_flag", "name": "osekkai_selected", "value": "true" },
-  { "type": "bgm", "name": "iro_theme" },
-
-  { "type": "dialogue", "text": "「おかえり、お兄ちゃん！　１年ぶりだね！」" },
-  { "type": "dialogue", "text": "そう、ちょうど１年前にもこんなやり取りをした。" },
-  { "type": "dialogue", "text": "僕は今日、母親の十三回忌のために故郷に帰ってきたのだ。", "new_page": true },
-
-  { "type": "dialogue", "text": "１年前と同じく空は青く、潮の香りが心地よい。" },
-  { "type": "dialogue", "text": "地下へ伸びる階段は、ポッカリと口を開けて待っていた。" },
-  { "type": "dialogue", "text": "イロと並びながら階段を降りる。" },
-  { "type": "background", "path": "res://assets/backgrounds/underpass.jpg" },
-  { "type": "dialogue", "text": "階段をおりた先には、真っ白な服を着た少年が……なんてこともなかった。" },
-  { "type": "dialogue", "text": "「なんだか懐かしいね、もう１年かぁ～。どう、お兄ちゃん？　もう喉の方はいいの？」", "new_page": true },
-
-  { "type": "dialogue", "text": "僕は少し口を開けて……。", "new_page": true },
-
-  { "type": "dialogue", "text": "手話で「もう大丈夫だよ」と伝えた。" },
-  { "type": "dialogue", "text": "「なんでそっちなの！」" },
-  { "type": "dialogue", "text": "イロは笑いながら大きく反応する。" },
-  { "type": "dialogue", "text": "「ごめん、ごめん。もう大丈夫だよ」" },
-  { "type": "dialogue", "text": "実際のところ、自然に声を出すまでは苦労した。" },
-  { "type": "dialogue", "text": "毎日声を出す訓練を続けているし、喉がすぐに痛くなるからのど飴は欠かせない。" },
-  { "type": "dialogue", "text": "それでもこうやって声を出して会話ができるのは嬉しかった。", "new_page": true },
-
-  { "type": "dialogue", "text": "「なんか新鮮～。でも良かった。ほんとに良かったよ」" },
-  { "type": "dialogue", "text": "語彙力に欠けたイロの返答だったが、表情から嬉しさが伝わってきて、僕も更に嬉しくなった。" },
-  { "type": "dialogue", "text": "「まだ、長時間はしんどいけどね。短い日常会話くらいなら」" },
-  { "type": "dialogue", "text": "「うんうん、いっぱい話したい！」" },
-  { "type": "dialogue", "text": "「話聞いてた？」" },
-  { "type": "dialogue", "text": "二人でタイミングを合わせて吹き出した。", "new_page": true },
-
-  { "type": "background", "path": "res://assets/backgrounds/house_front.jpg" },
-  { "type": "dialogue", "text": "そんなやり取りをしているうちに、見覚えのある建物が見えてきた。" },
-  { "type": "dialogue", "text": "ちょうど玄関から祖母が顔を覗かせる。" },
-  { "type": "dialogue", "text": "「[主人公]ちゃん！　おかえり」" },
-  { "type": "dialogue", "text": "おばあちゃんは相変わらず元気そうな様子だ。" },
-  { "type": "dialogue", "text": "「たっだいまー！」" },
-  { "type": "dialogue", "text": "僕より先にイロが帰宅の挨拶。" },
-  { "type": "dialogue", "text": "「なんでイロが言うんだよ。おばあちゃん、ただいま」" },
-  { "type": "dialogue", "text": "その声を聞いたおばあちゃんは、大きく目を見開いて――顔をしわくちゃにした。" },
-  { "type": "dialogue", "text": "泣いているのか、笑っているのか、分からない表情。１年前と同じ反応ではあったが、ちゃんと言えて良かった。", "new_page": true },
-
-  { "type": "background", "path": "res://assets/backgrounds/no_image.jpg" },
-  { "type": "dialogue", "text": "「ささっ、入りないな」" },
-  { "type": "dialogue", "text": "祖母に導かれ、家に入り居間へつながる障子戸をひらいた。" },
-  { "type": "dialogue", "text": "「おかえり」" },
-  { "type": "dialogue", "text": "予想していなかった出迎えにびっくりして、口をおの字に開いたまま固まってしまった。" },
-  { "type": "dialogue", "text": "居間には親戚のおじさんとその家族、それに――。" },
-  { "type": "dialogue", "text": "あの二人の兄弟がいたのだ。" },
-  { "type": "dialogue", "text": "「た……ただいま。えっと――どういう状況？」", "new_page": true },
-
-  { "type": "dialogue", "text": "「ふっふっふぅー。私から説明しよう！」" },
-  { "type": "dialogue", "text": "後ろからイロが演技掛かったセリフを述べる。" },
-  { "type": "dialogue", "text": "「でもその前に、準備するから待ってね。お兄ちゃんも荷物とか片付けちゃって」" },
-  { "type": "dialogue", "text": "そう言われ、僕は頷くしか無かった。" },
-  { "type": "dialogue", "text": "部屋で談笑している面々を尻目に二階の部屋に荷物を持っていくことにした。" },
-  { "type": "dialogue", "text": "――しかし、１年前とは大違いだ。" },
-  { "type": "dialogue", "text": "階段を上がりながら、僕は自然と笑っていた。", "new_page": true },
-
-  { "type": "dialogue", "text": "居間に戻り、空いたところに腰をおろした。座敷机を囲んで皆が座っている。" },
-  { "type": "dialogue", "text": "一人立っているイロが、まるでマジックでも始めるかのような様子で話し始めた。" },
-  { "type": "dialogue", "text": "「みなさんにお集まりいただいたのは他でもありません」" },
-  { "type": "dialogue", "text": "いちいち芝居がかっているが、クスクスと笑い声も漏れていて掴みは上々そうだ。" },
-  { "type": "dialogue", "text": "「１年前にお兄ちゃんは声を取り戻しました」" },
-  { "type": "dialogue", "text": "「実はそれは、私のおかげなのです！」" },
-  { "type": "dialogue", "text": "なるほど……そうきたか。", "new_page": true },
-
-  { "type": "dialogue", "text": "「でも、その前に――お兄ちゃん……ごめんなさい！」" },
-  { "type": "dialogue", "text": "え？" },
-  { "type": "dialogue", "text": "一瞬声を失ったが、慌てて返答した。" },
-  { "type": "dialogue", "text": "「えっと、何だっけ？」" },
-  { "type": "dialogue", "text": "「１年前のことね、ずっとちゃんと謝りたかったの」" },
-  { "type": "dialogue", "text": "「お父さんにも怒られたの。お兄ちゃんを傷つけてしまってたかもって……」" },
-  { "type": "dialogue", "text": "話が見えない。とりあえずイロの目をみていた。", "new_page": true },
-
-  { "type": "dialogue", "text": "「今日来てくれているけど、シュン君とユウ君。１年前にお兄ちゃんもあったでしょ」" },
-  { "type": "dialogue", "text": "「それに、あの白い服の子……覚えてる？」" },
-  { "type": "dialogue", "text": "「ユウくんに、スグちゃんのふりをお願いしたの。私」" },
-  { "type": "dialogue", "text": "イロは少し下を向き続ける。" },
-  { "type": "dialogue", "text": "「私、お母さんの日記を読んで、お兄ちゃんとスグちゃんが仲良かったの知って……」" },
-  { "type": "dialogue", "text": "「でもお兄ちゃんはそれを忘れちゃってて……」" },
-  { "type": "dialogue", "text": "「だからなんとか、思い出してもらいたくて、それで……」" },
-  { "type": "dialogue", "text": "イロの目は潤んで今にも水が溢れ落ちそうだ。", "new_page": true },
-
-  { "type": "dialogue", "text": "「気にしてない。むしろありがとう。イロのお陰で今の僕があると思っているよ」" },
-  { "type": "dialogue", "text": "僕はイロに対して思っていたことを素直に伝えた。" },
-  { "type": "dialogue", "text": "確かに、白い服の少年がスグではなく、別の子供だったことを知ったときのショックは大きかった。" },
-  { "type": "dialogue", "text": "それでも、イロのお陰で家族の温かさや、優しさを知ることができたと思っている。" },
-  { "type": "dialogue", "text": "「――だから、イロの頑張りを今日は聞かせてほしい」" },
-  { "type": "dialogue", "text": "そう言うとイロは涙を拭い、笑顔をのぞかせた。", "new_page": true },
-
-  { "type": "dialogue", "text": "「ありがとうお兄ちゃん。ちゃんと謝ってから話したかったから」" },
-  { "type": "dialogue", "text": "周りを置いてきぼりにしていた気がしたが、どうやら僕と同じ気持ちのようで、イロを温かい目で見ている。" },
-  { "type": "dialogue", "text": "「それじゃあ、仕切り直すね。でも、お兄ちゃんびっくりしたでしょ？」" },
-  { "type": "dialogue", "text": "イロが仕組んだことだった、ということに対する問いだろう。" },
-  { "type": "dialogue", "text": "ただ、僕には当時、気付いていたことがあった。", "go_next": true },
-
-  { "type": "index", "index": 1000 },
+  {
+    "type": "set_flag",
+    "name": "osekkai_selected",
+    "value": "true"
+  },
+  {
+    "type": "bgm",
+    "name": "iro_theme"
+  },
+  {
+    "type": "dialogue",
+    "text": "「おかえり、お兄ちゃん！　１年ぶりだね！」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "そう、ちょうど１年前にもこんなやり取りをした。"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕は今日、母親の十三回忌のために故郷に帰ってきたのだ。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "１年前と同じく空は青く、潮の香りが心地よい。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "地下へ伸びる階段は、ポッカリと口を開けて待っていた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロと並びながら階段を降りる。"
+  },
+  {
+    "type": "background",
+    "path": "res://assets/backgrounds/underpass.jpg"
+  },
+  {
+    "type": "dialogue",
+    "text": "階段をおりた先には、真っ白な服を着た少年が……なんてこともなかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「なんだか懐かしいね、もう１年かぁ～。どう、お兄ちゃん？　もう喉の方はいいの？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕は少し口を開けて……。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "手話で「もう大丈夫だよ」と伝えた。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「なんでそっちなの！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロは笑いながら大きく反応する。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「ごめん、ごめん。もう大丈夫だよ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "実際のところ、自然に声を出すまでは苦労した。"
+  },
+  {
+    "type": "dialogue",
+    "text": "毎日声を出す訓練を続けているし、喉がすぐに痛くなるからのど飴は欠かせない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "それでもこうやって声を出して会話ができるのは嬉しかった。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「なんか新鮮～。でも良かった。ほんとに良かったよ」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "語彙力に欠けたイロの返答だったが、表情から嬉しさが伝わってきて、僕も更に嬉しくなった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「まだ、長時間はしんどいけどね。短い日常会話くらいなら」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「うんうん、いっぱい話したい！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「話聞いてた？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "二人でタイミングを合わせて吹き出した。",
+    "go_next": true
+  },
+  {
+    "type": "background",
+    "path": "res://assets/backgrounds/house_front.jpg"
+  },
+  {
+    "type": "dialogue",
+    "text": "そんなやり取りをしているうちに、見覚えのある建物が見えてきた。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "ちょうど玄関から祖母が顔を覗かせる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「[主人公]ちゃん！　おかえり」"
+  },
+  {
+    "type": "dialogue",
+    "text": "おばあちゃんは相変わらず元気そうな様子だ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「たっだいまー！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕より先にイロが帰宅の挨拶。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「なんでイロが言うんだよ。おばあちゃん、ただいま」"
+  },
+  {
+    "type": "dialogue",
+    "text": "その声を聞いたおばあちゃんは、大きく目を見開いて――顔をしわくちゃにした。"
+  },
+  {
+    "type": "dialogue",
+    "text": "泣いているのか、笑っているのか、分からない表情。１年前と同じ反応ではあったが、ちゃんと言えて良かった。",
+    "go_next": true
+  },
+  {
+    "type": "background",
+    "path": "res://assets/backgrounds/no_image.jpg"
+  },
+  {
+    "type": "dialogue",
+    "text": "「ささっ、入りないな」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "祖母に導かれ、家に入り居間へつながる障子戸をひらいた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「おかえり」"
+  },
+  {
+    "type": "dialogue",
+    "text": "予想していなかった出迎えにびっくりして、口をおの字に開いたまま固まってしまった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "居間には親戚のおじさんとその家族、それに――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "あの二人の兄弟がいたのだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「た……ただいま。えっと――どういう状況？」",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「ふっふっふぅー。私から説明しよう！」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "後ろからイロが演技掛かったセリフを述べる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「でもその前に、準備するから待ってね。お兄ちゃんも荷物とか片付けちゃって」"
+  },
+  {
+    "type": "dialogue",
+    "text": "そう言われ、僕は頷くしか無かった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "部屋で談笑している面々を尻目に二階の部屋に荷物を持っていくことにした。"
+  },
+  {
+    "type": "dialogue",
+    "text": "――しかし、１年前とは大違いだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "階段を上がりながら、僕は自然と笑っていた。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "居間に戻り、空いたところに腰をおろした。座敷机を囲んで皆が座っている。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "一人立っているイロが、まるでマジックでも始めるかのような様子で話し始めた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「みなさんにお集まりいただいたのは他でもありません」"
+  },
+  {
+    "type": "dialogue",
+    "text": "いちいち芝居がかっているが、クスクスと笑い声も漏れていて掴みは上々そうだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「１年前にお兄ちゃんは声を取り戻しました」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「実はそれは、私のおかげなのです！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "なるほど……そうきたか。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「でも、その前に――お兄ちゃん……ごめんなさい！」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "え？"
+  },
+  {
+    "type": "dialogue",
+    "text": "一瞬声を失ったが、慌てて返答した。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「えっと、何だっけ？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「１年前のことね、ずっとちゃんと謝りたかったの」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「お父さんにも怒られたの。お兄ちゃんを傷つけてしまってたかもって……」"
+  },
+  {
+    "type": "dialogue",
+    "text": "話が見えない。とりあえずイロの目をみていた。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「今日来てくれているけど、シュン君とユウ君。１年前にお兄ちゃんもあったでしょ」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「それに、あの白い服の子……覚えてる？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「ユウくんに、スグちゃんのふりをお願いしたの。私」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロは少し下を向き続ける。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「私、お母さんの日記を読んで、お兄ちゃんとスグちゃんが仲良かったの知って……」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「でもお兄ちゃんはそれを忘れちゃってて……」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「だからなんとか、思い出してもらいたくて、それで……」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロの目は潤んで今にも水が溢れ落ちそうだ。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「気にしてない。むしろありがとう。イロのお陰で今の僕があると思っているよ」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "僕はイロに対して思っていたことを素直に伝えた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "確かに、白い服の少年がスグではなく、別の子供だったことを知ったときのショックは大きかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "それでも、イロのお陰で家族の温かさや、優しさを知ることができたと思っている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「――だから、イロの頑張りを今日は聞かせてほしい」"
+  },
+  {
+    "type": "dialogue",
+    "text": "そう言うとイロは涙を拭い、笑顔をのぞかせた。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「ありがとうお兄ちゃん。ちゃんと謝ってから話したかったから」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "周りを置いてきぼりにしていた気がしたが、どうやら僕と同じ気持ちのようで、イロを温かい目で見ている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「それじゃあ、仕切り直すね。でも、お兄ちゃんびっくりしたでしょ？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロが仕組んだことだった、ということに対する問いだろう。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ただ、僕には当時、気付いていたことがあった。",
+    "go_next": true
+  },
+  {
+    "type": "index",
+    "index": 1000
+  },
   {
     "type": "choice",
     "prompt": "違和感に気づいたのはいつだろう？",
     "choices": [
-      { "id": "osekkai_a_1", "text": "１０月１０日", "next_index": 1100 },
-      { "id": "osekkai_a_2", "text": "１０月１１日", "next_index": 1200 },
-      { "id": "osekkai_a_3", "text": "１０月１２日", "next_index": 1300 },
-      { "id": "osekkai_a_4", "text": "わからない", "next_index": 1400 }
+      {
+        "id": "osekkai_a_1",
+        "text": "１０月１０日",
+        "next_index": 1100
+      },
+      {
+        "id": "osekkai_a_2",
+        "text": "１０月１１日",
+        "next_index": 1200
+      },
+      {
+        "id": "osekkai_a_3",
+        "text": "１０月１２日",
+        "next_index": 1300
+      },
+      {
+        "id": "osekkai_a_4",
+        "text": "わからない",
+        "next_index": 1400
+      }
     ]
   },
-
-  { "type": "index", "index": 1100 },
-  { "type": "dialogue", "text": "そうだ、帰省の１日目。", "new_page": true },
-  { "type": "dialogue", "text": "その日にイロの違和感に気が付いたんだ。", "go_next": true },
-
+  {
+    "type": "index",
+    "index": 1100
+  },
+  {
+    "type": "dialogue",
+    "text": "そうだ、帰省の１日目。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "その日にイロの違和感に気が付いたんだ。"
+  },
   {
     "type": "choice",
     "prompt": "場所はどこだったかな？",
     "choices": [
-      { "id": "osekkai_b_1", "text": "海水浴場", "next_index": 1120 },
-      { "id": "osekkai_b_2", "text": "バス停", "next_index": 1130 },
-      { "id": "osekkai_b_3", "text": "地下道", "next_index": 1140 },
-      { "id": "osekkai_b_4", "text": "考え直す", "next_index": 1000 }
+      {
+        "id": "osekkai_b_1",
+        "text": "海水浴場",
+        "next_index": 1120
+      },
+      {
+        "id": "osekkai_b_2",
+        "text": "バス停",
+        "next_index": 1130
+      },
+      {
+        "id": "osekkai_b_3",
+        "text": "地下道",
+        "next_index": 1140
+      },
+      {
+        "id": "osekkai_b_4",
+        "text": "考え直す",
+        "next_index": 1000
+      }
     ]
   },
-
-  { "type": "index", "index": 1120 },
-  { "type": "dialogue", "text": "海水浴場――僕はそこで白い服を来た少年を見た。", "new_page": true },
-  { "type": "dialogue", "text": "そこにイロは……いなかった。" },
-  { "type": "dialogue", "text": "僕の思い違いだったのかもしれない。" },
-  { "type": "dialogue", "text": "ここは大人しく、イロの話を聞くことにしよう。" },
-  { "type": "jump", "index": 1190 },
-
-  { "type": "index", "index": 1130 },
-  { "type": "dialogue", "text": "僕はダキを探索して雨に降られたんだ。", "new_page": true },
-  { "type": "dialogue", "text": "それでバス停で雨宿りをしていた……。" },
-  { "type": "dialogue", "text": "「実はイロがいろいろ企てていたこと気付いていたよ」" },
-  { "type": "dialogue", "text": "あの日の出来事が鮮明に蘇ってくる。僕は真っ直ぐにイロを見た。" },
-  { "type": "dialogue", "text": "「え゛！？」" },
-  { "type": "dialogue", "text": "イロは想像以上の反応だ。", "new_page": true },
-
-  { "type": "dialogue", "text": "「お兄ちゃん、気付いていたの？　どこで？」" },
-  { "type": "dialogue", "text": "「最初の日にバス停に傘を届けてくれただろ」" },
-  { "type": "dialogue", "text": "僕はイロの目が泳ぐのを見逃さなかった。" },
-  { "type": "dialogue", "text": "「あの時、傘がやけに小さいって話をしたの覚えてる？　あれは実は、この子に届けようとした傘だったんじゃないのか？」" },
-  { "type": "dialogue", "text": "僕はユウくんの方に目線をやる。ユウくんはキョトンとした瞳でこちらを見ていた。" },
-  { "type": "dialogue", "text": "「あ、あの時も言ったと思うけど……あれは慌てて出たから、間違えて小さいやつ持って出ちゃって――」" },
-  { "type": "dialogue", "text": "イロはしどろもどろだ。" },
-  { "type": "dialogue", "text": "その様子を見て、少し演技がかった台詞を言ってみる。", "new_page": true },
-
-  { "type": "dialogue", "text": "「でも――僕は見てしまったんだ。次の日にあの傘がなくなっていることに」" },
-  { "type": "dialogue", "text": "「……参りました！」" },
-  { "type": "dialogue", "text": "実は当てずっぽうだったが、イロは大きく身体を上下して、手を合わせてごめんなさいのポーズをした。" },
-  { "type": "dialogue", "text": "「ははは、合ってたか。でも当時は気付いていなかったんだよ」" },
-  { "type": "dialogue", "text": "「そうなの？」" },
-  { "type": "dialogue", "text": "「うん、あらためてこの時の出来事を振り返ったときにさ……もしかしてって」" },
-  { "type": "dialogue", "text": "「なんだ～。バレてて合わせてもらってたんだったら悲しいなって思ったけど、そうじゃないんだったらいいや」" },
-  { "type": "dialogue", "text": "さすがはイロ、切り替えが早い。", "new_page": true },
-
-  { "type": "dialogue", "text": "「そうだね、だから聞かせてよ、イロの頑張りを」" },
-  { "type": "dialogue", "text": "さっきまで謝罪ムードだったイロはすっかり元気を取り戻していた。" },
-  { "type": "dialogue", "text": "「もちろんだよ！　じゃあ始めるね！」" },
-  { "type": "jump", "index": 1190 },
-
-  { "type": "index", "index": 1140 },
-  { "type": "dialogue", "text": "そう、地下道で僕とイロは、初めて白い服の少年を見たんだ。", "new_page": true },
-  { "type": "dialogue", "text": "あの時のイロの言動――。" },
-  { "type": "dialogue", "text": "「実はイロがいろいろ企てていたこと気付いていたよ」" },
-  { "type": "dialogue", "text": "僕は涼しい顔をしてイロに言い放つ。" },
-  { "type": "dialogue", "text": "「え゛！？」" },
-  { "type": "dialogue", "text": "イロの驚く表情が可笑しい。", "new_page": true },
-
-  { "type": "dialogue", "text": "「お兄ちゃん、気付いていたの？　どこで？」" },
-  { "type": "dialogue", "text": "「地下道さ。あの時、イロはこういっただろう」" },
-  { "type": "dialogue", "text": "部屋にいる皆が僕に注目し、次の言葉を待っていた。" },
-  { "type": "dialogue", "text": "「あんな子、ダキにいたかな、と」", "new_page": true },
-
-  { "type": "dialogue", "text": "「…………うん、言ったよ。実際、ダキの子たちじゃないし」" },
-  { "type": "dialogue", "text": "「え？」" },
-  { "type": "dialogue", "text": "「……え？」" },
-  { "type": "dialogue", "text": "予想外の返しに体中が熱くなる。" },
-  { "type": "dialogue", "text": "「二人はダキの子じゃないの？」" },
-  { "type": "dialogue", "text": "その場にいる兄弟に問いかけるようにそう言いうと、" },
-  { "type": "dialogue", "text": "「うん、僕たちは違うよ！」" },
-  { "type": "dialogue", "text": "とユウくん。横でお兄ちゃんが笑っているのが見えて辛い。", "new_page": true },
-
-  { "type": "dialogue", "text": "「…………ごめん。勘違いだったみたい」" },
-  { "type": "dialogue", "text": "僕は素直に間違いを認め、手を合わせて謝った。" },
-  { "type": "dialogue", "text": "「ふふふ。お兄ちゃんでもそんな風に間違えるんだね。ちょっと新鮮」" },
-  { "type": "dialogue", "text": "イロの言葉につられるように、周りの一同も笑いが溢れた。" },
-  { "type": "dialogue", "text": "僕も照れながらも一緒に笑った。" },
-  { "type": "dialogue", "text": "「じゃあ、バレてなかったってことでいいね！　じゃあ始めます」" },
-  { "type": "dialogue", "text": "僕の推理は間違っていたものの、場は盛り上がった。" },
-  { "type": "dialogue", "text": "それじゃあ、イロの話を聞くことにしよう。" },
-
-  { "type": "index", "index": 1190 },
-  { "type": "jump", "index": 2000 },
-
-  { "type": "index", "index": 1200 },
-  { "type": "dialogue", "text": "１１日、帰省の２日目だ。", "new_page": true },
-  { "type": "dialogue", "text": "その日、僕たちは朝から法事の準備をしていた。" },
-  { "type": "dialogue", "text": "そしてスグの１３回忌法要を終えて、旅館へ向かい……帰って泥のように寝た。" },
-  { "type": "dialogue", "text": "――勘違いだったかもしれない。" },
-  { "type": "dialogue", "text": "ここは大人しく、イロの話を聞くことにしよう。" },
-  { "type": "jump", "index": 2000 },
-
-  { "type": "index", "index": 1300 },
-  { "type": "dialogue", "text": "帰省の最終日、その日が一番イロといっしょに過ごした。", "new_page": true },
-  { "type": "dialogue", "text": "そこで違和感に気が付いたんだ。", "go_next": true },
-
+  {
+    "type": "index",
+    "index": 1120
+  },
+  {
+    "type": "dialogue",
+    "text": "海水浴場――僕はそこで白い服を来た少年を見た。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "そこにイロは……いなかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕の思い違いだったのかもしれない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ここは大人しく、イロの話を聞くことにしよう。" ,
+    "go_next": true
+  },
+  {
+    "type": "jump",
+    "index": 1190
+  },
+  {
+    "type": "index",
+    "index": 1130
+  },
+  {
+    "type": "dialogue",
+    "text": "僕はダキを探索して雨に降られたんだ。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "それでバス停で雨宿りをしていた……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「実はイロがいろいろ企てていたこと気付いていたよ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "あの日の出来事が鮮明に蘇ってくる。僕は真っ直ぐにイロを見た。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「え゛！？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロは想像以上の反応だ。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「お兄ちゃん、気付いていたの？　どこで？」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「最初の日にバス停に傘を届けてくれただろ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕はイロの目が泳ぐのを見逃さなかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「あの時、傘がやけに小さいって話をしたの覚えてる？　あれは実は、この子に届けようとした傘だったんじゃないのか？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕はユウくんの方に目線をやる。ユウくんはキョトンとした瞳でこちらを見ていた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「あ、あの時も言ったと思うけど……あれは慌てて出たから、間違えて小さいやつ持って出ちゃって――」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロはしどろもどろだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "その様子を見て、少し演技がかった台詞を言ってみる。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「でも――僕は見てしまったんだ。次の日にあの傘がなくなっていることに」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「……参りました！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "実は当てずっぽうだったが、イロは大きく身体を上下して、手を合わせてごめんなさいのポーズをした。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「ははは、合ってたか。でも当時は気付いていなかったんだよ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「そうなの？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「うん、あらためてこの時の出来事を振り返ったときにさ……もしかしてって」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「なんだ～。バレてて合わせてもらってたんだったら悲しいなって思ったけど、そうじゃないんだったらいいや」"
+  },
+  {
+    "type": "dialogue",
+    "text": "さすがはイロ、切り替えが早い。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「そうだね、だから聞かせてよ、イロの頑張りを」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "さっきまで謝罪ムードだったイロはすっかり元気を取り戻していた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「もちろんだよ！　じゃあ始めるね！」",
+    "go_next": true
+  },
+  {
+    "type": "jump",
+    "index": 1190
+  },
+  {
+    "type": "index",
+    "index": 1140
+  },
+  {
+    "type": "dialogue",
+    "text": "そう、地下道で僕とイロは、初めて白い服の少年を見たんだ。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "あの時のイロの言動――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「実はイロがいろいろ企てていたこと気付いていたよ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕は涼しい顔をしてイロに言い放つ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「え゛！？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロの驚く表情が可笑しい。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「お兄ちゃん、気付いていたの？　どこで？」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「地下道さ。あの時、イロはこういっただろう」"
+  },
+  {
+    "type": "dialogue",
+    "text": "部屋にいる皆が僕に注目し、次の言葉を待っていた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「あんな子、ダキにいたかな、と」",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「…………うん、言ったよ。実際、ダキの子たちじゃないし」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「え？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「……え？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "予想外の返しに体中が熱くなる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「二人はダキの子じゃないの？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "その場にいる兄弟に問いかけるようにそう言いうと、"
+  },
+  {
+    "type": "dialogue",
+    "text": "「うん、僕たちは違うよ！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "とユウくん。横でお兄ちゃんが笑っているのが見えて辛い。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「…………ごめん。勘違いだったみたい」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "僕は素直に間違いを認め、手を合わせて謝った。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「ふふふ。お兄ちゃんでもそんな風に間違えるんだね。ちょっと新鮮」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロの言葉につられるように、周りの一同も笑いが溢れた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕も照れながらも一緒に笑った。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「じゃあ、バレてなかったってことでいいね！　じゃあ始めます」"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕の推理は間違っていたものの、場は盛り上がった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "それじゃあ、イロの話を聞くことにしよう。",
+    "go_next": true
+  },
+  {
+    "type": "index",
+    "index": 1190
+  },
+  {
+    "type": "jump",
+    "index": 2000
+  },
+  {
+    "type": "index",
+    "index": 1200
+  },
+  {
+    "type": "dialogue",
+    "text": "１１日、帰省の２日目だ。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "その日、僕たちは朝から法事の準備をしていた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "そしてスグの１３回忌法要を終えて、旅館へ向かい……帰って泥のように寝た。"
+  },
+  {
+    "type": "dialogue",
+    "text": "――勘違いだったかもしれない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ここは大人しく、イロの話を聞くことにしよう。",
+    "go_next": true
+  },
+  {
+    "type": "jump",
+    "index": 2000
+  },
+  {
+    "type": "index",
+    "index": 1300
+  },
+  {
+    "type": "dialogue",
+    "text": "帰省の最終日、その日が一番イロといっしょに過ごした。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "そこで違和感に気が付いたんだ。"
+  },
   {
     "type": "choice",
     "prompt": "場所はどこだったかな？",
     "choices": [
-      { "id": "osekkai_c_1", "text": "玄関", "next_index": 1320 },
-      { "id": "osekkai_c_2", "text": "海水浴場", "next_index": 1330 },
-      { "id": "osekkai_c_3", "text": "バス停", "next_index": 1340 },
-      { "id": "osekkai_c_4", "text": "考え直す", "next_index": 1000 }
+      {
+        "id": "osekkai_c_1",
+        "text": "玄関",
+        "next_index": 1320
+      },
+      {
+        "id": "osekkai_c_2",
+        "text": "海水浴場",
+        "next_index": 1330
+      },
+      {
+        "id": "osekkai_c_3",
+        "text": "バス停",
+        "next_index": 1340
+      },
+      {
+        "id": "osekkai_c_4",
+        "text": "考え直す",
+        "next_index": 1000
+      }
     ]
   },
-
-  { "type": "index", "index": 1320 },
-  { "type": "dialogue", "text": "二人でダキを探索しようと家をでて、そこであの「手紙」を拾った。", "new_page": true },
-  { "type": "dialogue", "text": "僕たちを秘密基地にいざなった「手紙」だ。" },
-  { "type": "dialogue", "text": "「実はイロがいろいろ企てていたこと気付いていたよ」" },
-  { "type": "dialogue", "text": "そう、手紙だ――。" },
-  { "type": "dialogue", "text": "「え゛！？」" },
-  { "type": "dialogue", "text": "イロの反応は大きい。", "new_page": true },
-
-  { "type": "dialogue", "text": "「お兄ちゃん、気付いていたの？　どこで？」" },
-  { "type": "dialogue", "text": "「玄関で手紙を見つけたのを覚えているかい？」" },
-  { "type": "dialogue", "text": "「うん、覚えているけど――それがなに？」" },
-  { "type": "dialogue", "text": "「あの時、イロは『手紙が落ちてた』って渡してくれたよね」" },
-  { "type": "dialogue", "text": "イロは少し目を泳がせ、何かを思い出すような仕草をした。" },
-  { "type": "dialogue", "text": "「うん、覚えているよ。手紙を拾って渡した」" },
-  { "type": "dialogue", "text": "イロは頷くように頭を縦に数回振りながら答えた。", "new_page": true },
-
-  { "type": "dialogue", "text": "「あの手紙、僕にはノートの切れ端を折りたたんだものにしか見えなかったんだ」" },
-  { "type": "dialogue", "text": "「……あっ！」" },
-  { "type": "dialogue", "text": "「気づいたかな。イロは中身を確認することなく僕に紙切れを渡した」" },
-  { "type": "dialogue", "text": "「それを『手紙』と言いながらね」" },
-  { "type": "dialogue", "text": "イロの身体が震える。" },
-  { "type": "dialogue", "text": "流石に言い過ぎたかもしれない。" },
-  { "type": "dialogue", "text": "「あぁ……ごめ――」" },
-  { "type": "dialogue", "text": "「お兄ちゃん――すっごーい！！　名探偵みたい！」" },
-  { "type": "dialogue", "text": "ごめんと言いかけたのに割り込んできた言葉は意外にも驚きを表す表現だった。" },
-  { "type": "dialogue", "text": "「うん、確かに鋭いな」" },
-  { "type": "dialogue", "text": "叔父まで参加してきた。", "new_page": true },
-
-  { "type": "dialogue", "text": "「えっ、あれ」" },
-  { "type": "dialogue", "text": "どう反応してよいかわからず、僕は頭をかく。" },
-  { "type": "dialogue", "text": "「自分でも全然気づかなかったよ、さすがお兄ちゃんだね！　――あ、でもその通り。手紙も私たちが用意したもの。そこはごめん」" },
-  { "type": "dialogue", "text": "イロの表情が少し真剣なものになる。" },
-  { "type": "dialogue", "text": "「手紙のことについては、後から考えたら自分でも危なかったなって思っちゃったの。お兄ちゃんに嫌われちゃうかもって」" },
-  { "type": "dialogue", "text": "「だから、なんでそんなことをしたのかってとこも含めて、これから話すね」" },
-  { "type": "dialogue", "text": "僕も神妙な表情で頷いた。話を聞こう。" },
-  { "type": "jump", "index": 1390 },
-
-  { "type": "index", "index": 1330 },
-  { "type": "dialogue", "text": "二人で海水浴場に行って、僕は少年の姿を見た。", "new_page": true },
-  { "type": "dialogue", "text": "ただその姿は蜃気楼のように不確かで、実際イロもその姿を見てはいなかった。" },
-  { "type": "dialogue", "text": "確かに僕の見間違いなのかも知れない……でも――。" },
-  { "type": "dialogue", "text": "「実はイロがいろいろ企てていたこと気付いていたよ」" },
-  { "type": "dialogue", "text": "僕には一つの仮説があった。" },
-  { "type": "dialogue", "text": "「え゛！？」" },
-  { "type": "dialogue", "text": "イロの反応を見ると、更に自信が湧いてくる。", "new_page": true },
-
-  { "type": "dialogue", "text": "「お兄ちゃん、気付いていたの？　どこで？」" },
-  { "type": "dialogue", "text": "「最終日に二人で海に行ったでしょ。あの時に僕が白い服の少年を見たと伝えたことを覚えてる？」" },
-  { "type": "dialogue", "text": "イロは一瞬キョトンとした顔を見せたが、すぐに答えた。" },
-  { "type": "dialogue", "text": "「あー言ってたね。でも私は見てないし、実際ユウ君も海にはいなかったんだよ」" },
-  { "type": "dialogue", "text": "僕の中で仮説が確信に変わる。" },
-  { "type": "dialogue", "text": "「そう、その通り。ユウ君はいなかったんだ」" },
-  { "type": "dialogue", "text": "「……ん？　どういうこと？」" },
-  { "type": "dialogue", "text": "イロは困惑しているようだ。それはそうだ、事実を述べているだけだから。", "new_page": true },
-
-  { "type": "dialogue", "text": "「あの時イロはこう言った。そんなはずない――と」" },
-  { "type": "dialogue", "text": "「ユウ君は海にいないから『そんなはずはない』と思ったんだ」" },
-  { "type": "dialogue", "text": "「……あっ！」" },
-  { "type": "dialogue", "text": "「そう、普通の人ならそんな風に言い切らず、『自分は見なかった』とか曖昧に答えるはずだよ。わからないんだからね」" },
-  { "type": "dialogue", "text": "「……お兄ちゃん、すっごーい！！　名探偵みたい！」" },
-  { "type": "dialogue", "text": "ここまできれいに決まるとは思っていなかったけど、気分的には探偵にでもなったようだった。" },
-  { "type": "dialogue", "text": "「うん、確かに鋭いな」" },
-  { "type": "dialogue", "text": "叔父まで参加してきた。", "new_page": true },
-
-  { "type": "dialogue", "text": "「あー、なんかありがとうございます」" },
-  { "type": "dialogue", "text": "皆が拍手まで始めている。" },
-  { "type": "dialogue", "text": "「ふふふ、お兄ちゃん変な反応」" },
-  { "type": "dialogue", "text": "イロは笑っている。" },
-  { "type": "dialogue", "text": "僕も可笑しくなって笑い返した。" },
-  { "type": "dialogue", "text": "「じゃあ、私の計画を話していこうかな」" },
-  { "type": "dialogue", "text": "「お願いするよ」" },
-  { "type": "dialogue", "text": "僕は頷いた。" },
-  { "type": "jump", "index": 1390 },
-
-  { "type": "index", "index": 1340 },
-  { "type": "dialogue", "text": "帰りのバス停だ――イロが見送りをしてくれた。", "new_page": true },
-  { "type": "dialogue", "text": "「もしかしたらイロとユウ君が一緒にいるところを見たかもしれない」" },
-  { "type": "dialogue", "text": "そうだ、手を降るイロの背後に確かに白い服をきた少年を感じた。" },
-  { "type": "dialogue", "text": "「え？」" },
-  { "type": "dialogue", "text": "イロはとても驚いた表情をする。" },
-  { "type": "dialogue", "text": "「たぶん……いなかったと思うけど――。ね？　ユウ君」" },
-  { "type": "dialogue", "text": "イロがユウ君の方へ顔をかしげて見せる。" },
-  { "type": "dialogue", "text": "ユウ君はお兄ちゃんであるシュン君と顔を見合わせてから、もう一度こちらを向いて口を開いた。", "new_page": true },
-
-  { "type": "dialogue", "text": "「うん、いなかったよ。僕はお兄ちゃんと一緒にいたから」" },
-  { "type": "dialogue", "text": "「やっぱりそうだよね。ごめんお兄ちゃん、勘違いかも？」" },
-  { "type": "dialogue", "text": "そうなのか……。" },
-  { "type": "dialogue", "text": "「そっか、じゃあ僕の見間違いだったのかもしれない。水を差して悪かったね」" },
-  { "type": "dialogue", "text": "「ううん、大丈夫だよ」" },
-  { "type": "dialogue", "text": "本当に、見間違いだったのか……。" },
-  { "type": "dialogue", "text": "「じゃあ、話を始めるね！」" },
-  { "type": "dialogue", "text": "イロは気持ちを切り替えるように声のトーンを上げた。" },
-  { "type": "dialogue", "text": "「うん、お願いするよ」" },
-
-  { "type": "index", "index": 1390 },
-  { "type": "jump", "index": 2000 },
-
-  { "type": "index", "index": 1400 },
-  { "type": "dialogue", "text": "気付いていたことがあった……はずなんだけど、なんだったかな。", "new_page": true },
-  { "type": "dialogue", "text": "１年前を振り返ってみたけれど、思い出せなかった。" },
-  { "type": "dialogue", "text": "ここは大人しく、イロの話を聞くことにしよう。" },
-  { "type": "jump", "index": 2000 },
-
-  { "type": "index", "index": 2000 },
-  { "type": "dialogue", "text": "「私ね――」" },
-  { "type": "dialogue", "text": "「さっきも少し話したけど、私がこんなことをしようと思ったのは、お母さんの日記を見たからなの」" },
-  { "type": "dialogue", "text": "そう、そうなの。" },
-  { "type": "dialogue", "text": "私、お母さんのことをほとんど覚えてない。" },
-  { "type": "dialogue", "text": "だから日記を見つけたときに、お母さんとの繋がりが見つかるかもって。" },
-  { "type": "dialogue", "text": "そう思って――。", "new_page": true },
-
-  { "type": "flashback_start" },
-  { "type": "dialogue", "text": "……。" },
-  { "type": "dialogue", "text": "…………。" },
-  { "type": "dialogue", "text": "………………。", "new_page": true },
-
-  { "type": "dialogue", "text": "「お父さーん、油性ペンもってない？」" },
-  { "type": "dialogue", "text": "父は昼間だと言うのに布団の上で新聞を読んでいる。" },
-  { "type": "dialogue", "text": "部屋も衣服が散らかっていて、だらしがない。" },
-  { "type": "dialogue", "text": "お母さんがいたら、こんなんじゃなかったかもしれないのに……。", "new_page": true },
-
-  { "type": "dialogue", "text": "「んー、そこにないか？　お母さんの鏡台に」" },
-  { "type": "dialogue", "text": "こちらに振り向きもせず、新聞を読んだまま答える父。" },
-  { "type": "dialogue", "text": "肩をすくめながらも、鏡台の前に立ちあたりを見渡す。" },
-  { "type": "dialogue", "text": "封筒やプリントのような用紙が煩雑に置かれていて、ペンなど見当たらない。" },
-  { "type": "dialogue", "text": "「はぁ」" },
-  { "type": "dialogue", "text": "小さくため息をついて、発掘作業を始める。", "new_page": true },
-
-  { "type": "dialogue", "text": "封筒をどける。" },
-  { "type": "dialogue", "text": "プリントをまとめる。" },
-  { "type": "dialogue", "text": "ぐしゃぐしゃになったレシート。" },
-  { "type": "dialogue", "text": "使えなくなった乾電池。" },
-  { "type": "dialogue", "text": "「もぉ……」" },
-  { "type": "dialogue", "text": "その下に、古びた赤い表紙が見えた。", "new_page": true },
-
-  { "type": "dialogue", "text": "「これ……は」" },
-  { "type": "dialogue", "text": "『Diary』という文字が表紙にかかれている。" },
-  { "type": "dialogue", "text": "「お父さんありがとう、あったわ」" },
-  { "type": "dialogue", "text": "私は父の様子を見ることなく、急いで部屋を出た。" },
-  { "type": "dialogue", "text": "すぐさま自分の部屋に入り、ドアを閉める。" },
-  { "type": "dialogue", "text": "ドンっという大きな音がしてしまった。", "new_page": true },
-
-  { "type": "dialogue", "text": "ベッドの上に這うように上がり、体育座りをする。" },
-  { "type": "dialogue", "text": "……ゆっくりと本を開く。" },
-  { "type": "dialogue", "text": "まっしろなページ。遊び紙だった。" },
-  { "type": "dialogue", "text": "「ふぅー」" },
-  { "type": "dialogue", "text": "大きく息を吐いてもう１ページ。" },
-  { "type": "dialogue", "text": "そこには綺麗な文字が綴られていた。", "new_page": true },
-
-  { "type": "dialogue", "text": "２０ｘｘ年４月８日" },
-  { "type": "dialogue", "text": "今日は新学期、[主人公]もスグも元気に登校していった。" },
-  { "type": "dialogue", "text": "お腹のこの子も順調に大きくなってくれている。" },
-  { "type": "dialogue", "text": "予定日まであと２か月、元気に生まれてきてほしいな。" },
-  { "type": "dialogue", "text": "待ってるよ。", "new_page": true },
-
-  { "type": "dialogue", "text": "「……やっぱり。日記だ……」" },
-  { "type": "dialogue", "text": "お腹の子ってきっと私。" },
-  { "type": "dialogue", "text": "……。" },
-  { "type": "dialogue", "text": "そっか。" },
-  { "type": "dialogue", "text": "お母さん、待っててくれたんだ。" },
-  { "type": "dialogue", "text": "さっきまで感じていた後ろめたさは、もう消えていた。", "new_page": true },
-
-  { "type": "dialogue", "text": "２０ｘｘ年５月２４日" },
-  { "type": "dialogue", "text": "今日は[主人公]とスグの運動会。" },
-  { "type": "dialogue", "text": "予定日まで２週間を切って、いつ生まれてもおかしくないから悩んだけど、" },
-  { "type": "dialogue", "text": "やっぱり二人の頑張ってる姿は見たかった。" },
-  { "type": "dialogue", "text": "二人とも頑張ってたね！" },
-  { "type": "dialogue", "text": "少しでも見られてよかった。", "new_page": true },
-
-  { "type": "dialogue", "text": "「運動会か……」" },
-  { "type": "dialogue", "text": "私の運動会も見てほしかったなぁ。" },
-  { "type": "dialogue", "text": "何ページか目につくものを読んでいるけど、お母さんはまめだなと思う。" },
-  { "type": "dialogue", "text": "毎日、日記をつけているようだった。" },
-  { "type": "dialogue", "text": "……そうだ、私の誕生日は？" },
-  { "type": "dialogue", "text": "ペラペラとページをめくる。" },
-  { "type": "dialogue", "text": "「６月――７日…………っと。」" },
-  { "type": "dialogue", "text": "「――あった！」", "new_page": true },
-
-  { "type": "dialogue", "text": "２０ｘｘ年６月７日" },
-  { "type": "dialogue", "text": "イロちゃん" },
-  { "type": "dialogue", "text": "生まれてきてくれて" },
-  { "type": "dialogue", "text": "ありがとう。", "new_page": true },
-
-  { "type": "dialogue", "text": "イロちゃん――。" },
-  { "type": "dialogue", "text": "そんな風に呼んでくれてたんだ！" },
-  { "type": "dialogue", "text": "「っ……やったーあ！」" },
-  { "type": "dialogue", "text": "ドン！" },
-  { "type": "dialogue", "text": "「いったーあ！！」" },
-  { "type": "dialogue", "text": "嬉しさのあまり、後ろにのけぞったため後頭部を派手に壁にぶつけた。" },
-  { "type": "dialogue", "text": "右目の涙を拭い、もう一度日記を見る。", "new_page": true },
-
-  { "type": "dialogue", "text": "お母さん、出産で大変だったと思うのに、ちゃんと日記残してくれてた。" },
-  { "type": "dialogue", "text": "イロちゃん――。" },
-  { "type": "dialogue", "text": "イロちゃんか……。" },
-  { "type": "dialogue", "text": "ウンウン、と大きく頷く動作をして喜びを噛み締めていた。" },
-  { "type": "dialogue", "text": "その後も自分の成長の日記を読んでいたが、ページの端に書かれた「１０月」の文字が目に入る。" },
-  { "type": "dialogue", "text": "指が止まった。" },
-  { "type": "dialogue", "text": "――スグちゃんが亡くなった月。" },
-  { "type": "dialogue", "text": "胸の奥が、急にざわつき始める。" },
-  { "type": "dialogue", "text": "――そこからは、なかなか日記帳をめくることができなかった。", "new_page": true },
-
-  { "type": "dialogue", "text": "「スグちゃん――」" },
-  { "type": "dialogue", "text": "そう、私の兄であるスグちゃん。" },
-  { "type": "dialogue", "text": "写真でしか見たことのないスグちゃん。" },
-  { "type": "dialogue", "text": "日記では、お兄ちゃんといつも一緒に書かれていた。" },
-  { "type": "dialogue", "text": "とても仲が良かったみたい。" },
-  { "type": "dialogue", "text": "でも、お兄ちゃんはスグちゃんと仲が悪かったって言ってた。" },
-  { "type": "dialogue", "text": "日記の中の二人と、全然違う。", "new_page": true },
-
-  { "type": "dialogue", "text": "もしかしたら、日記にもなにか書いてあるかもしれない。" },
-  { "type": "dialogue", "text": "怖いなぁ。" },
-  { "type": "dialogue", "text": "きっと読まない方がいいんだよね、お母さんのっていっても、人の日記なんだし。" },
-  { "type": "dialogue", "text": "どこかに行ってた罪悪感が帰ってきたみたい。" },
-  { "type": "dialogue", "text": "……。" },
-  { "type": "dialogue", "text": "……でも、やっぱり知りたい。" },
-  { "type": "dialogue", "text": "家族だもん。", "new_page": true },
-
-  { "type": "dialogue", "text": "２０ｘｘ年１０月６日" },
-  { "type": "dialogue", "text": "今日は失敗した。" },
-  { "type": "dialogue", "text": "[主人公]とスグが喜ぶと思って買ってあげたカードで二人が喧嘩してしまうなんて。" },
-  { "type": "dialogue", "text": "それに[主人公]に「お兄ちゃんなんだから」なんて言ってしまって。" },
-  { "type": "dialogue", "text": "私も、子供の頃に言われて嫌だったくせに。" },
-  { "type": "dialogue", "text": "失敗したな。", "new_page": true },
-
-  { "type": "dialogue", "text": "喧嘩……しちゃったんだ。" },
-  { "type": "dialogue", "text": "これがあったから、仲が悪いってなっちゃったのかな。" },
-  { "type": "dialogue", "text": "ページをめくると白紙のページだった。" },
-  { "type": "dialogue", "text": "ここまで欠かさず書いていた日記が書かれていない。" },
-  { "type": "dialogue", "text": "お母さん、ショックだったんだろうな……。" },
-  { "type": "dialogue", "text": "更にページをめくると、左半分だけ日記が書かれていた。" },
-  { "type": "dialogue", "text": "内容は仲直りできた喜びだったけど――。" },
-  { "type": "dialogue", "text": "右の日付、１０月１０日が目に入って、それどころじゃなかった。", "new_page": true },
-
-  { "type": "dialogue", "text": "そこからは、悲しい内容ばかりだった。" },
-  { "type": "dialogue", "text": "読むのも辛かったけど、なぜか止められなかった。" },
-  { "type": "dialogue", "text": "スグちゃんの事故のこと。" },
-  { "type": "dialogue", "text": "お兄ちゃんを責めてしまったこと。" },
-  { "type": "dialogue", "text": "――責めてしまったことを後悔して苦しんでいること。" },
-  { "type": "dialogue", "text": "お母さんのきれいな字は、どんどん乱れていった。", "new_page": true },
-
-  { "type": "dialogue", "text": "これはどこまで続くんだろ――。" },
-  { "type": "dialogue", "text": "……読むの？" },
-  { "type": "dialogue", "text": "これ。" },
-  { "type": "dialogue", "text": "終わりが知りたくて、私はページをパラパラとめくり進めた。" },
-  { "type": "dialogue", "text": "すると急に目に飛び込んだのは、真っ黒だった。" },
-  { "type": "dialogue", "text": "ページが真っ黒。" },
-  { "type": "dialogue", "text": "なんとなく手でなぞると、凸凹している。" },
-  { "type": "dialogue", "text": "本を顔に近づけて、よく見ると――。", "new_page": true },
-
-  { "type": "bgm", "name": "stop" },
-  { "type": "sugu_horror" },
-
-  { "type": "dialogue", "text": "「ひっ！」" },
-  { "type": "dialogue", "text": "思わず本を投げてしまった。" },
-  { "type": "dialogue", "text": "バサリという音を立てて床に落ちる。" },
-  { "type": "dialogue", "text": "ベッドの上の私は、怖くて下を覗くことができなかった。" },
-  { "type": "dialogue", "text": "……。" },
-  { "type": "dialogue", "text": "……なんで。" },
-  { "type": "dialogue", "text": "なんでこんなことに。", "new_page": true },
-
-  { "type": "dialogue", "text": "どのくらいたっただろう。" },
-  { "type": "dialogue", "text": "ベッドの上で体育座りをして、壁に貼っているポスターを見ていた。" },
-  { "type": "dialogue", "text": "日記なんて読まないほうが良かったのかもしれない。" },
-  { "type": "dialogue", "text": "知らない方が良かったかもしれない……。" },
-  { "type": "dialogue", "text": "――でも。", "new_page": true },
-
-  { "type": "dialogue", "text": "勇気を出して日記を拾い上げて、もう一度読み始める。" },
-  { "type": "dialogue", "text": "「ちゃんと――」" },
-  { "type": "dialogue", "text": "知らないとダメなんだ。" },
-  { "type": "dialogue", "text": "お母さんのこと。" },
-  { "type": "dialogue", "text": "お兄ちゃんのこと。" },
-  { "type": "dialogue", "text": "スグちゃんのことを。", "new_page": true },
-
-  { "type": "dialogue", "text": "真っ黒なページよりあとは、ほとんど文章として成り立っていなかった。" },
-  { "type": "dialogue", "text": "そして気づいたこと――。" },
-  { "type": "dialogue", "text": "日記にはスグちゃんと、お兄ちゃんのことしか書かれていなかった。" },
-  { "type": "dialogue", "text": "下唇を噛む。" },
-  { "type": "dialogue", "text": "「くそっ……」" },
-  { "type": "dialogue", "text": "そして日記は終わった。" },
-  { "type": "dialogue", "text": "白紙になってしまった。" },
-  { "type": "dialogue", "text": "お母さんもいなくなってしまった。", "new_page": true },
-
-  { "type": "dialogue", "text": "もっとお母さんといたかった。" },
-  { "type": "dialogue", "text": "運動会も見てほしかった。" },
-  { "type": "dialogue", "text": "中学生にもなったんだよ。" },
-  { "type": "dialogue", "text": "もっと……。" },
-  { "type": "dialogue", "text": "なんで私だけ――。" },
-  { "type": "dialogue", "text": "静かにもう一度日記帳を開く。", "new_page": true },
-
-  { "type": "dialogue", "text": "２０ｘｘ年６月７日" },
-  { "type": "dialogue", "text": "イロちゃん" },
-  { "type": "dialogue", "text": "生まれてきてくれて" },
-  { "type": "dialogue", "text": "ありがとう。", "new_page": true },
-
-  { "type": "dialogue", "text": "それでも――。" },
-  { "type": "dialogue", "text": "このまま、お兄ちゃんが苦しんだままなのは嫌だった。" },
-  { "type": "dialogue", "text": "私じゃなきゃできないんだ。" },
-  { "type": "dialogue", "text": "「お兄ちゃん……」" },
-  { "type": "dialogue", "text": "お兄ちゃんを助けたい。" },
-  { "type": "dialogue", "text": "間違ってるって、教えてあげたい。" },
-  { "type": "dialogue", "text": "放っておけないもん。" },
-  { "type": "dialogue", "text": "ベッドをおりて立ち上がった。" },
-  { "type": "dialogue", "text": "口の中が鉄の味で気持ち悪かった。", "new_page": true },
-
-  { "type": "dialogue", "text": "………………。" },
-  { "type": "dialogue", "text": "…………。" },
-  { "type": "dialogue", "text": "……。", "new_page": true },
-
-  { "type": "flashback_end" },
-  { "type": "bgm", "name": "iro_theme" },
-
-  { "type": "dialogue", "text": "「それで――」" },
-  { "type": "dialogue", "text": "無意識に噛んでいた下唇を解放し、話を続ける。" },
-  { "type": "dialogue", "text": "「日記帳には、お兄ちゃんとスグちゃんが仲が良かったことが書いてあったの」" },
-  { "type": "dialogue", "text": "お兄ちゃんに伝えたかった。" },
-  { "type": "dialogue", "text": "「そう。それをなんとか、お兄ちゃんに伝えたかったから」", "new_page": true },
-
-  { "type": "dialogue", "text": "「って、なんか重たくなっちゃったね」" },
-  { "type": "dialogue", "text": "力が入ってしまったせいか、みんな静かになってしまっている。" },
-  { "type": "dialogue", "text": "「うん――、そうだね。せっかく料理もでてることだし、食べながら聞いてもいいかな？」" },
-  { "type": "dialogue", "text": "「もちろん！　気楽に聞いてくれたらいいよ」" },
-  { "type": "dialogue", "text": "さすがお兄ちゃんだ。" },
-  { "type": "dialogue", "text": "今日は私が主役なんだから、笑顔で話そう。", "new_page": true },
-
-  { "type": "dialogue", "text": "「それでね、どうにかしてお兄ちゃんに伝えようと思ったんだ」" },
-  { "type": "dialogue", "text": "「でも、普通に伝えても気休めに聞こえてしまうかもしれないでしょ」" },
-  { "type": "dialogue", "text": "「かと言って、日記を見せるのは逆に嫌な気持ちにさせちゃうかもしれないし――。それに気も引けるしね」" },
-  { "type": "dialogue", "text": "少し笑った。" },
-  { "type": "dialogue", "text": "お兄ちゃんも、確かにといった表情をしてくれている。" },
-  { "type": "dialogue", "text": "「だから、学校で相談してみたの」" },
-  { "type": "dialogue", "text": "「あ、もちろん詳しい話はなしでだよ！　でも、どうしてもスグちゃんのことは話さないといけなかったけど」", "new_page": true },
-
-  { "type": "dialogue", "text": "「お姉ちゃん会いに来てくれたんだよねー」" },
-  { "type": "dialogue", "text": "ユウくんがニコニコしながら入ってきてくれる。" },
-  { "type": "dialogue", "text": "右手にはフライドポテトが握られていて可愛い。" },
-  { "type": "dialogue", "text": "「そうだよねー」" },
-  { "type": "dialogue", "text": "「そう、友達に相談することで、シュンくんとユウくんに出会うことができたの」" },
-  { "type": "dialogue", "text": "「友達の親戚なんだけど、写真で見たスグちゃんに似てたから」" },
-  { "type": "dialogue", "text": "勢いよく喋りすぎて喉が乾いた。" },
-  { "type": "dialogue", "text": "オレンジジュースをぐびっと飲む。" },
-  { "type": "dialogue", "text": "シュンくんとユウくんは、照れくさそうに顔を見合わせている。", "new_page": true },
-
-  { "type": "dialogue", "text": "「その時はねぇ、まだスグちゃんのふりをしてもらうって考えはなかったんだけど」" },
-  { "type": "dialogue", "text": "「あまりに似てたから会ってみたくなって」" },
-  { "type": "dialogue", "text": "「実際会うとやっぱりそっくりで……。よくテレビとかであるじゃん、死んだ家族が幽霊になって会いに来てくれるやつ」" },
-  { "type": "dialogue", "text": "もちろん、本当にそんなことができるなんて思ってたわけじゃない。" },
-  { "type": "dialogue", "text": "でも――。" },
-  { "type": "dialogue", "text": "「そういう感じのことできないかな、って思っちゃったの」", "new_page": true },
-
-  { "type": "dialogue", "text": "「その場ですぐにお願いしちゃったよね、私」" },
-  { "type": "dialogue", "text": "ユウくんにパスをする。" },
-  { "type": "dialogue", "text": "「うん！　嫌だっていった！」" },
-  { "type": "dialogue", "text": "みんな大笑いだ。" },
-  { "type": "dialogue", "text": "パスを見事にさばいてくれた。" },
-  { "type": "dialogue", "text": "「そうそう、めんどくさいって断られちゃって。でも諦めきれなくて私――」", "new_page": true },
-
-  { "type": "dialogue", "text": "「お菓子買ってあげるから！　……って」" },
-  { "type": "dialogue", "text": "「物で釣ったのか」" },
-  { "type": "dialogue", "text": "お兄ちゃんが呆れ顔で反応する。" },
-  { "type": "dialogue", "text": "「……だって、断られたんだもん」" },
-  { "type": "dialogue", "text": "なんか恥ずかしくて頭をかいた。" },
-  { "type": "dialogue", "text": "「でもそのかいあって、喜んで協力してくれたんだよ！」", "new_page": true },
-
-  { "type": "dialogue", "text": "クスクスという笑い声が聞こえてきたけど、気にしない。" },
-  { "type": "dialogue", "text": "「んで、役者も揃ったので実際にどうやってお兄ちゃんに伝えようかって話ね」" },
-  { "type": "dialogue", "text": "あまりやり過ぎても、別人だって思われちゃう。" },
-  { "type": "dialogue", "text": "かと言って、気づかれなくてもダメだから――。" },
-  { "type": "dialogue", "text": "「まずは気付いてもらおうと思って。だから、一緒に降りた地下道でユウくんの姿を見てもらうことにしたの」" },
-  { "type": "dialogue", "text": "お兄ちゃんは頷いている。" },
-  { "type": "dialogue", "text": "「あの時、実はシュンくんが海につながる通路側にいた。ユウくんが海に降りていったでしょ？　出てすぐに横道にそれてシュンくんと合流したってわけ」" },
-  { "type": "dialogue", "text": "「僕が　海の方を覗きに行く可能性を考えていたわけだね」" },
-  { "type": "dialogue", "text": "さすがお兄ちゃんだ、鋭い。" },
-  { "type": "dialogue", "text": "「そう！」", "new_page": true },
-
-  { "type": "dialogue", "text": "「無事にお兄ちゃんに『白い服の少年』の姿を見せられたから、次は３日目に向けて準備を進めたわ」" },
-  { "type": "dialogue", "text": "「え？」" },
-  { "type": "dialogue", "text": "急にお兄ちゃんが驚いた顔をする。" },
-  { "type": "dialogue", "text": "何か変なことをいったかしら？" },
-  { "type": "dialogue", "text": "「どうしたの、お兄ちゃん？」" },
-  { "type": "dialogue", "text": "「それだけだった？　ユウくんに他の場所で待機してもらったりとかは……」" },
-  { "type": "dialogue", "text": "「１日目のことだよね？　ないよ。ないと思うけど……」" },
-  { "type": "dialogue", "text": "ないと言ったものの、ユウくんがふらふらと出歩いていないとは限らない。" },
-  { "type": "dialogue", "text": "自信がなかったので、ユウくんの方に目をやった。", "new_page": true },
-
-  { "type": "dialogue", "text": "「ううん、僕はあの後、お兄ちゃんと家に帰ったよ」" },
-  { "type": "dialogue", "text": "「やっぱりそうだよね。……みたいよ、お兄ちゃん」" },
-  { "type": "dialogue", "text": "お兄ちゃんは首をかしげていたが、すぐに向き返った。" },
-  { "type": "dialogue", "text": "「そっか、じゃあ見間違いかな。ごめんごめん、続けて」" },
-  { "type": "dialogue", "text": "私は頷き、続けることにした。" },
-  { "type": "dialogue", "text": "今回の一番の難所、手紙作戦だ。", "new_page": true },
-
-  { "type": "dialogue", "text": "「私はお兄ちゃんとスグちゃんが仲直りをしたのを、日記で読んで知っている」" },
-  { "type": "dialogue", "text": "「お兄ちゃんには、そのことを思い出してほしかったの」" },
-  { "type": "dialogue", "text": "ただ、仲が良かったってだけじゃダメ。" },
-  { "type": "dialogue", "text": "ダメだと思ったから、スグちゃんの役だけじゃなくて、お兄ちゃん役が必要だった。" },
-  { "type": "dialogue", "text": "「兄弟が仲直りしている姿を見たら――もしかして、って思って」" },
-  { "type": "dialogue", "text": "「あとは、秘密基地。お兄ちゃんたち、お寺の裏の大きな木のところをそう呼んでるみたいだったから、あそこで見せたらいいと思ったのよ」", "new_page": true },
-
-  { "type": "dialogue", "text": "「あの時は、実際は手紙を掘り返してしまったね。本当はそうじゃなかったってことか」" },
-  { "type": "dialogue", "text": "「そう」" },
-  { "type": "dialogue", "text": "そうなんだ。本当はシュン君たち兄弟に、掘り起こして仲直りしてもらうところを見てほしかったんだ。" },
-  { "type": "dialogue", "text": "「でも、お兄ちゃん走り出しちゃったじゃん。追いかけるの大変だったんだからね！」" },
-  { "type": "dialogue", "text": "話しながら笑いがでた。" },
-  { "type": "dialogue", "text": "「それに、走りながら、あーどうしようぅーって考えてた」" },
-  { "type": "dialogue", "text": "みんなも一斉に笑っている。", "new_page": true },
-
-  { "type": "dialogue", "text": "「あの時は夢中だったからなぁ」" },
-  { "type": "dialogue", "text": "と、お兄ちゃん。" },
-  { "type": "dialogue", "text": "ふと、また首をかしげる。" },
-  { "type": "dialogue", "text": "「玄関で手紙を拾った時はユウ君はどこに？」" },
-  { "type": "dialogue", "text": "「えっ？　えーっと、神社の方からお寺の裏に回れるじゃない。あっち側から向かってもらってたよ」" },
-  { "type": "dialogue", "text": "ユウくんとシュン君は二人揃って、ウンウンと頷いている。" },
-  { "type": "dialogue", "text": "「うーん、そうか――」" },
-  { "type": "dialogue", "text": "お兄ちゃんは下を向いて、考え込んでしまった。" },
-  { "type": "dialogue", "text": "「どうしたの？」", "new_page": true },
-
-  { "type": "dialogue", "text": "「いや、見間違いだと思うんだけど、あの時、白い服を着た子を見た気がしてね」" },
-  { "type": "dialogue", "text": "さっきも言ってたけど、そこでもか。" },
-  { "type": "dialogue", "text": "でも確かに、一回スグちゃんっぽい子を見ちゃったら……気になっちゃうよね。" },
-  { "type": "dialogue", "text": "「幽……霊とか？」" },
-  { "type": "dialogue", "text": "「いやいや、幽霊なんて。あの時は普通の精神状態じゃなかったからね。疲れてたんだと思う」" },
-  { "type": "dialogue", "text": "お兄ちゃんは大きく首を横に振りながら答えてくれた。" },
-  { "type": "dialogue", "text": "「疲れさせたのは、私かもしれないけどね」" },
-  { "type": "dialogue", "text": "「はは、そうだな」" },
-  { "type": "dialogue", "text": "笑ってくれたので、続きを話すことにした。", "new_page": true },
-
-  { "type": "dialogue", "text": "……。" },
-  { "type": "dialogue", "text": "…………。" },
-  { "type": "dialogue", "text": "………………。" },
-  { "type": "dialogue", "text": "『おにいちゃん　みせたいものがあるから　ひみつきちに　きて』" },
-  { "type": "dialogue", "text": "「お兄ちゃん、見せたいものがあるから、秘密基地に、来て？」" },
-  { "type": "dialogue", "text": "昨日までの２日間で、お兄ちゃんの様子がだいぶ良くなっている。" },
-  { "type": "dialogue", "text": "ここでちゃんと思い出させるんだ。" },
-  { "type": "dialogue", "text": "「スグちゃんからの……手紙？」" },
-  { "type": "dialogue", "text": "お兄ちゃん、思い出して！", "new_page": true },
-
-  { "type": "dialogue", "text": "お兄ちゃんは私のことを見る。" },
-  { "type": "dialogue", "text": "その目は真剣だ。" },
-  { "type": "dialogue", "text": "行こうお兄ちゃん。そう言おうとする前に、お兄ちゃんは背中を向けてしまった。" },
-  { "type": "dialogue", "text": "なんで？" },
-  { "type": "dialogue", "text": "お兄ちゃんは、私が背中を押さないと動かないタイプだと思ってたのに。" },
-  { "type": "dialogue", "text": "なのに、なんで――。全速力で、秘密基地に向かって走り出していた。" },
-  { "type": "dialogue", "text": "どんどん背中が小さくなる。" },
-  { "type": "dialogue", "text": "私だって部活で鍛えているのに。", "new_page": true },
-
-  { "type": "dialogue", "text": "「お兄ちゃん……はあ……はあ……」" },
-  { "type": "dialogue", "text": "やっと追いついた。" },
-  { "type": "dialogue", "text": "慌てて二人の姿を探すが、まだみたいだ。" },
-  { "type": "dialogue", "text": "どうしよう――。" },
-  { "type": "dialogue", "text": "「何か……あった？」" },
-  { "type": "dialogue", "text": "考えろ、考えるんだ。" },
-  { "type": "dialogue", "text": "お兄ちゃんは首を振ると、中央の木に向かって歩き出してしまう。" },
-  { "type": "dialogue", "text": "そっちはダメだ！", "new_page": true },
-
-  { "type": "dialogue", "text": "このままじゃ、このままじゃ。" },
-  { "type": "dialogue", "text": "失敗しちゃう――。" },
-  { "type": "dialogue", "text": "そんな気持ちをよそに、お兄ちゃんは膝をつき、土を掘り返し始めた。" },
-  { "type": "dialogue", "text": "でも――止めるわけにはいかない。" },
-  { "type": "dialogue", "text": "お兄ちゃんは、私が用意したお菓子の缶を大事そうに抱え、ついた土を払った。" },
-  { "type": "dialogue", "text": "こちらを見ている。" },
-  { "type": "dialogue", "text": "もう、このまま進むしかない。" },
-  { "type": "dialogue", "text": "私は大きく頷いた。" },
-  { "type": "dialogue", "text": "おねがい――思い出して――――。", "new_page": true },
-
-  { "type": "dialogue", "text": "「……あ、誰だよー！　僕の手紙、勝手に出したのは！」" },
-  { "type": "dialogue", "text": "えっ？" },
-  { "type": "dialogue", "text": "後ろを振り返ると、到着したばかりの二人が立っていた。" },
-  { "type": "dialogue", "text": "シュン君は、私に気付いて驚いた顔をしている。" },
-  { "type": "dialogue", "text": "「あ、それ……ごめんなさい、弟が……その……」" },
-  { "type": "dialogue", "text": "やばいやばいやばい――やばい！" },
-  { "type": "dialogue", "text": "全然うまくいかない。" },
-  { "type": "dialogue", "text": "このままじゃお兄ちゃんが――。", "new_page": true },
-
-  { "type": "dialogue", "text": "お兄ちゃんは両手を地面について、多分、泣いていた。" },
-  { "type": "dialogue", "text": "もう無理だ。" },
-  { "type": "dialogue", "text": "謝ろう。" },
-  { "type": "dialogue", "text": "潤んできてぼやける視界を拭い、お兄ちゃんに歩み寄ろうとした。" },
-  { "type": "dialogue", "text": "――あれ？" },
-  { "type": "dialogue", "text": "お兄ちゃんが立ち上がって、二人に近づいていく。" },
-  { "type": "dialogue", "text": "私はもう、見るしかなかった。", "new_page": true },
-
-  { "type": "dialogue", "text": "「……お……と」" },
-  { "type": "dialogue", "text": "二人の肩に手をあてるお兄ちゃんの後ろ姿が震える。" },
-  { "type": "dialogue", "text": "嘘っ……。" },
-  { "type": "dialogue", "text": "苦しそう。喉が。" },
-  { "type": "dialogue", "text": "涙が溢れてくる。" },
-  { "type": "dialogue", "text": "お兄ちゃん――。" },
-  { "type": "dialogue", "text": "「……弟を……大切に、な……」", "new_page": true },
-
-  { "type": "dialogue", "text": "一歩、兄のもとに近づく。" },
-  { "type": "dialogue", "text": "もう３人の様子はわからない。" },
-  { "type": "dialogue", "text": "それでも、声が確かに聞こえた。" },
-  { "type": "dialogue", "text": "「お兄ちゃん…………声……う、うわぁぁぁん……！」" },
-  { "type": "dialogue", "text": "作戦が失敗したことなんて、もうどうでも良かった。" },
-  { "type": "dialogue", "text": "ただ、ただ……。" },
-  { "type": "dialogue", "text": "お兄ちゃんが私の肩をだいてくれる。" },
-  { "type": "dialogue", "text": "ただ……嬉しかった。", "new_page": true },
-
-  { "type": "dialogue", "text": "………………。" },
-  { "type": "dialogue", "text": "…………。" },
-  { "type": "dialogue", "text": "……。", "new_page": true },
-
-  { "type": "dialogue", "text": "「無事にお兄ちゃんは声を取り戻したのでした～。パチパチパチ」" },
-  { "type": "dialogue", "text": "本当に拍手が巻き起こる。" },
-  { "type": "dialogue", "text": "私はお兄ちゃんを助けたのだ。" },
-  { "type": "dialogue", "text": "「……作戦失敗してたけどね」" },
-  { "type": "dialogue", "text": "拍手は笑いへと変わった。" },
-  { "type": "dialogue", "text": "でも、本当に良かった。", "new_page": true },
-
-  { "type": "index", "index": 9000 },
-  { "type": "background", "path": "res://assets/backgrounds/busstop.jpg" },
-  { "type": "dialogue", "text": "バス停で、横にはお兄ちゃん。" },
-  { "type": "dialogue", "text": "お母さんの法事も無事に終わり、また離れ離れだ。" },
-  { "type": "dialogue", "text": "でも、もう大丈夫。" },
-  { "type": "dialogue", "text": "きっとお兄ちゃんも、そう思っている。" },
-  { "type": "dialogue", "text": "「あ、バス見えたよ！」" },
-  { "type": "dialogue", "text": "「めちゃくちゃちっちゃいけどね。なんでこうも遅れるかなぁ」" },
-  { "type": "dialogue", "text": "去年なら、こんな些細なことまで話せなかった。" },
-  { "type": "dialogue", "text": "それに、よく喋る。" },
-  { "type": "dialogue", "text": "嬉しくなって笑みが溢れた。", "new_page": true },
-
-  { "type": "dialogue", "text": "「何笑ってんの？」" },
-  { "type": "dialogue", "text": "覗き込む兄。" },
-  { "type": "dialogue", "text": "「ううん、何でも」" },
-  { "type": "dialogue", "text": "笑いながら答える。", "new_page": true },
-
-  { "type": "dialogue", "text": "「お兄ちゃん、法事じゃなくても帰って来てよね」" },
-  { "type": "dialogue", "text": "――さみしいから。" },
-  { "type": "dialogue", "text": "「ん？　社会人になったばかりで、なかなか休めないんだぞ」" },
-  { "type": "dialogue", "text": "「でも――」" },
-  { "type": "dialogue", "text": "でも？" },
-  { "type": "dialogue", "text": "「帰るよ。イロに会いにね」" },
-  { "type": "dialogue", "text": "お兄ちゃん大好き！", "new_page": true },
-
-  { "type": "dialogue", "text": "「じゃあ気をつけて！」" },
-  { "type": "dialogue", "text": "お兄ちゃんはバスに乗り込み、一番前の席から手を振ってくれた。" },
-  { "type": "dialogue", "text": "私も精一杯振り返す。" },
-  { "type": "dialogue", "text": "バスが出発する。" },
-  { "type": "dialogue", "text": "来るまでは遅いくせに、行くのは早い。" },
-  { "type": "dialogue", "text": "排気ガスで目が痛かった。", "new_page": true },
-
-  { "type": "dialogue", "text": "お兄ちゃん、またね！", "new_page": true },
-
-  { "type": "branch_flag", "name": "jmr_unlocked", "branches": { "true": 9100 } },
-  { "type": "jump", "index": 9999 },
-
-  { "type": "index", "index": 9100 },
-  { "type": "dialogue", "text": "……。" },
-  { "type": "dialogue", "text": "……。" },
-  { "type": "dialogue", "text": "……。", "new_page": true },
-
-  { "type": "dialogue", "text": "ポケットが揺れて、スマホを出す。" },
-  { "type": "dialogue", "text": "画面はグリーンに光り、ライムに葉っぱがついた――まるで吹き出しを逆にしたデザインのLIMEのロゴが見えた。" },
-  { "type": "dialogue", "text": "「あっ、お寺さんだ」" },
-  { "type": "show_toast", "text": "「調査隊編」が解放されました" },
-  { "type": "jump", "index": 9999 },
-
-  { "type": "index", "index": 9999 },
-  { "type": "visit_location", "id": "iro_story" }
+  {
+    "type": "index",
+    "index": 1320
+  },
+  {
+    "type": "dialogue",
+    "text": "二人でダキを探索しようと家をでて、そこであの「手紙」を拾った。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "僕たちを秘密基地にいざなった「手紙」だ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「実はイロがいろいろ企てていたこと気付いていたよ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "そう、手紙だ――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「え゛！？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロの反応は大きい。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「お兄ちゃん、気付いていたの？　どこで？」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「玄関で手紙を見つけたのを覚えているかい？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「うん、覚えているけど――それがなに？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「あの時、イロは『手紙が落ちてた』って渡してくれたよね」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロは少し目を泳がせ、何かを思い出すような仕草をした。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「うん、覚えているよ。手紙を拾って渡した」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロは頷くように頭を縦に数回振りながら答えた。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「あの手紙、僕にはノートの切れ端を折りたたんだものにしか見えなかったんだ」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「……あっ！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「気づいたかな。イロは中身を確認することなく僕に紙切れを渡した」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「それを『手紙』と言いながらね」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロの身体が震える。"
+  },
+  {
+    "type": "dialogue",
+    "text": "流石に言い過ぎたかもしれない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「あぁ……ごめ――」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「お兄ちゃん――すっごーい！！　名探偵みたい！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "ごめんと言いかけたのに割り込んできた言葉は意外にも驚きを表す表現だった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「うん、確かに鋭いな」"
+  },
+  {
+    "type": "dialogue",
+    "text": "叔父まで参加してきた。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「えっ、あれ」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "どう反応してよいかわからず、僕は頭をかく。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「自分でも全然気づかなかったよ、さすがお兄ちゃんだね！　――あ、でもその通り。手紙も私たちが用意したもの。そこはごめん」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロの表情が少し真剣なものになる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「手紙のことについては、後から考えたら自分でも危なかったなって思っちゃったの。お兄ちゃんに嫌われちゃうかもって」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「だから、なんでそんなことをしたのかってとこも含めて、これから話すね」"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕も神妙な表情で頷いた。話を聞こう。",
+    "go_next": true
+  },
+  {
+    "type": "jump",
+    "index": 1390
+  },
+  {
+    "type": "index",
+    "index": 1330
+  },
+  {
+    "type": "dialogue",
+    "text": "二人で海水浴場に行って、僕は少年の姿を見た。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "ただその姿は蜃気楼のように不確かで、実際イロもその姿を見てはいなかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "確かに僕の見間違いなのかも知れない……でも――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「実はイロがいろいろ企てていたこと気付いていたよ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕には一つの仮説があった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「え゛！？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロの反応を見ると、更に自信が湧いてくる。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「お兄ちゃん、気付いていたの？　どこで？」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「最終日に二人で海に行ったでしょ。あの時に僕が白い服の少年を見たと伝えたことを覚えてる？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロは一瞬キョトンとした顔を見せたが、すぐに答えた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「あー言ってたね。でも私は見てないし、実際ユウ君も海にはいなかったんだよ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕の中で仮説が確信に変わる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「そう、その通り。ユウ君はいなかったんだ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「……ん？　どういうこと？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロは困惑しているようだ。それはそうだ、事実を述べているだけだから。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「あの時イロはこう言った。そんなはずない――と」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「ユウ君は海にいないから『そんなはずはない』と思ったんだ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「……あっ！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「そう、普通の人ならそんな風に言い切らず、『自分は見なかった』とか曖昧に答えるはずだよ。わからないんだからね」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「……お兄ちゃん、すっごーい！！　名探偵みたい！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "ここまできれいに決まるとは思っていなかったけど、気分的には探偵にでもなったようだった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「うん、確かに鋭いな」"
+  },
+  {
+    "type": "dialogue",
+    "text": "叔父まで参加してきた。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「あー、なんかありがとうございます」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "皆が拍手まで始めている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「ふふふ、お兄ちゃん変な反応」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロは笑っている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕も可笑しくなって笑い返した。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「じゃあ、私の計画を話していこうかな」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「お願いするよ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "僕は頷いた。",
+    "go_next": true
+  },
+  {
+    "type": "jump",
+    "index": 1390
+  },
+  {
+    "type": "index",
+    "index": 1340
+  },
+  {
+    "type": "dialogue",
+    "text": "帰りのバス停だ――イロが見送りをしてくれた。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「もしかしたらイロとユウ君が一緒にいるところを見たかもしれない」"
+  },
+  {
+    "type": "dialogue",
+    "text": "そうだ、手を降るイロの背後に確かに白い服をきた少年を感じた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「え？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロはとても驚いた表情をする。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「たぶん……いなかったと思うけど――。ね？　ユウ君」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロがユウ君の方へ顔をかしげて見せる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ユウ君はお兄ちゃんであるシュン君と顔を見合わせてから、もう一度こちらを向いて口を開いた。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「うん、いなかったよ。僕はお兄ちゃんと一緒にいたから」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「やっぱりそうだよね。ごめんお兄ちゃん、勘違いかも？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "そうなのか……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「そっか、じゃあ僕の見間違いだったのかもしれない。水を差して悪かったね」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「ううん、大丈夫だよ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "本当に、見間違いだったのか……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「じゃあ、話を始めるね！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロは気持ちを切り替えるように声のトーンを上げた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「うん、お願いするよ」",
+    "go_next": true
+  },
+  {
+    "type": "index",
+    "index": 1390
+  },
+  {
+    "type": "jump",
+    "index": 2000
+  },
+  {
+    "type": "index",
+    "index": 1400
+  },
+  {
+    "type": "dialogue",
+    "text": "気付いていたことがあった……はずなんだけど、なんだったかな。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "１年前を振り返ってみたけれど、思い出せなかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ここは大人しく、イロの話を聞くことにしよう。",
+    "go_next": true
+  },
+  {
+    "type": "jump",
+    "index": 2000
+  },
+  {
+    "type": "index",
+    "index": 2000
+  },
+  {
+		"type": "subtitle",
+		"text": "イロのお節介編",
+		"fade_time": 0.5,
+		"display_time": 2.0
+	},
+  {
+    "type": "dialogue",
+    "text": "「私ね――」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「さっきも少し話したけど、私がこんなことをしようと思ったのは、お母さんの日記を見たからなの」"
+  },
+  {
+    "type": "dialogue",
+    "text": "そう、そうなの。"
+  },
+  {
+    "type": "dialogue",
+    "text": "私、お母さんのことをほとんど覚えてない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "だから日記を見つけたときに、お母さんとの繋がりが見つかるかもって。"
+  },
+  {
+    "type": "dialogue",
+    "text": "そう思って――。",
+    "go_next": true
+  },
+  {
+    "type": "flashback_start"
+  },
+  {
+    "type": "dialogue",
+    "text": "……。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "…………。"
+  },
+  {
+    "type": "dialogue",
+    "text": "………………。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「お父さーん、油性ペンもってない？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "父は昼間だというのに布団の上で新聞を読んでいる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "部屋も衣服が散らかっていて、だらしがない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お母さんがいたら、こんなんじゃなかったかもしれないのに……。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「んー、そこにないか？　お母さんの鏡台に」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "こちらに振り向きもせず、新聞を読んだまま答える父。"
+  },
+  {
+    "type": "dialogue",
+    "text": "肩をすくめながらも、鏡台の前に立ちあたりを見渡す。"
+  },
+  {
+    "type": "dialogue",
+    "text": "封筒やプリントのような用紙が煩雑に置かれていて、ペンなど見当たらない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「はぁ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "小さくため息をついて、発掘作業を始める。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "封筒をどける。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "プリントをまとめる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ぐしゃぐしゃになったレシート。"
+  },
+  {
+    "type": "dialogue",
+    "text": "使えなくなった乾電池。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「もぉ……」"
+  },
+  {
+    "type": "dialogue",
+    "text": "その下に、古びた赤い表紙が見えた。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「これ……は」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "『Diary』という文字が表紙にかかれている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「お父さんありがとう、あったわ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "父の様子を見ることなく、私は急いで部屋を出た。"
+  },
+  {
+    "type": "dialogue",
+    "text": "すぐさま自分の部屋に入り、ドアを閉める。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ドンっという大きな音がしてしまった。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "ベッドの上に這うように上がり、体育座りをする。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "……ゆっくりと本を開く。"
+  },
+  {
+    "type": "dialogue",
+    "text": "まっしろなページ。遊び紙だった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「ふぅー」"
+  },
+  {
+    "type": "dialogue",
+    "text": "大きく息を吐いてもう１ページ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "そこには綺麗な文字が綴られていた。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "２０ｘｘ年４月８日",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "今日は新学期、[主人公]もスグも元気に登校していった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お腹のこの子も順調に大きくなってくれている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "予定日まであと２か月、元気に生まれてきてほしいな。"
+  },
+  {
+    "type": "dialogue",
+    "text": "待ってるよ。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「……やっぱり。日記だ……」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "お腹の子ってきっと私。"
+  },
+  {
+    "type": "dialogue",
+    "text": "……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "そっか。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お母さん、待っててくれたんだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "さっきまで感じていた後ろめたさは、もう消えていた。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "２０ｘｘ年５月２４日",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "今日は[主人公]とスグの運動会。"
+  },
+  {
+    "type": "dialogue",
+    "text": "予定日まで２週間を切って、いつ生まれてもおかしくないから悩んだけど、"
+  },
+  {
+    "type": "dialogue",
+    "text": "やっぱり二人の頑張ってる姿は見たかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "二人とも頑張ってたね！"
+  },
+  {
+    "type": "dialogue",
+    "text": "少しでも見られてよかった。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「運動会か……」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "私の運動会も見てほしかったなぁ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "何ページか目につくものを読んでいるけど、お母さんはまめだなと思う。"
+  },
+  {
+    "type": "dialogue",
+    "text": "毎日、日記をつけているようだった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "……そうだ、私の誕生日は？"
+  },
+  {
+    "type": "dialogue",
+    "text": "ペラペラとページをめくる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「６月――７日…………っと。」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「――あった！」",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "２０ｘｘ年６月７日",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "イロちゃん"
+  },
+  {
+    "type": "dialogue",
+    "text": "生まれてきてくれて"
+  },
+  {
+    "type": "dialogue",
+    "text": "ありがとう。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "イロちゃん――。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "そんな風に呼んでくれてたんだ！"
+  },
+  {
+    "type": "dialogue",
+    "text": "「っ……やったーあ！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "ドン！"
+  },
+  {
+    "type": "dialogue",
+    "text": "「いったーあ！！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "嬉しさのあまり、後ろにのけぞったため後頭部を派手に壁にぶつけた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "右目の涙を拭い、もう一度日記を見る。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "お母さん、出産で大変だったと思うのに、ちゃんと日記残してくれてた。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "イロちゃん――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "イロちゃんか……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ウンウン、と大きく頷く動作をして喜びを噛み締めていた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "その後も自分の成長の日記を読んでいたが、ページの端に書かれた「１０月」の文字が目に入る。"
+  },
+  {
+    "type": "dialogue",
+    "text": "指が止まった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "――スグちゃんが亡くなった月。"
+  },
+  {
+    "type": "dialogue",
+    "text": "胸の奥が、急にざわつき始める。"
+  },
+  {
+    "type": "dialogue",
+    "text": "――そこからは、なかなか日記帳をめくることができなかった。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「スグちゃん――」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "そう、私の兄であるスグちゃん。"
+  },
+  {
+    "type": "dialogue",
+    "text": "写真でしか見たことのないスグちゃん。"
+  },
+  {
+    "type": "dialogue",
+    "text": "日記では、お兄ちゃんといつも一緒に書かれていた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "とても仲が良かったみたい。"
+  },
+  {
+    "type": "dialogue",
+    "text": "でも、お兄ちゃんはスグちゃんと仲が悪かったって言ってた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "日記の中の二人と、全然違う。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "もしかしたら、日記に何か書いてあるかもしれない。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "怖いなぁ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "きっと読まない方がいいんだよね、お母さんのっていっても、人の日記なんだし。"
+  },
+  {
+    "type": "dialogue",
+    "text": "どこかに行ってた罪悪感が帰ってきたみたい。"
+  },
+  {
+    "type": "dialogue",
+    "text": "……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "……でも、やっぱり知りたい。"
+  },
+  {
+    "type": "dialogue",
+    "text": "家族だもん。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "２０ｘｘ年１０月６日",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "今日は失敗した。"
+  },
+  {
+    "type": "dialogue",
+    "text": "[主人公]とスグが喜ぶと思って買ってあげたカードで二人が喧嘩してしまうなんて。"
+  },
+  {
+    "type": "dialogue",
+    "text": "それに[主人公]に「お兄ちゃんなんだから」なんて言ってしまって。"
+  },
+  {
+    "type": "dialogue",
+    "text": "私も、子供の頃に言われて嫌だったくせに。"
+  },
+  {
+    "type": "dialogue",
+    "text": "失敗したな。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "喧嘩……しちゃったんだ。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "これがあったから、仲が悪いってなっちゃったのかな。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ページをめくると白紙のページだった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ここまで欠かさず書いていた日記が書かれていない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お母さん、ショックだったんだろうな……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "更にページをめくると、左半分だけ日記が書かれていた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "内容は仲直りできた喜びだったけど――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "右の日付、１０月１０日が目に入って、それどころじゃなかった。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "そこからは、悲しい内容ばかりだった。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "読むのも辛かったけど、なぜか止められなかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "スグちゃんの事故のこと。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんを責めてしまったこと。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんが声を失ってしまったこと。"
+  },
+  {
+    "type": "dialogue",
+    "text": "――責めてしまったことを後悔して苦しんでいること。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お母さんのきれいな字は、どんどん乱れていった。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "これはどこまで続くんだろ――。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "……読むの？"
+  },
+  {
+    "type": "dialogue",
+    "text": "これ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "終わりが知りたくて、私はページをパラパラとめくり進めた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "すると急に目に飛び込んだのは、真っ黒だった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ページが真っ黒。"
+  },
+  {
+    "type": "dialogue",
+    "text": "なんとなく手でなぞると、凸凹している。"
+  },
+  {
+    "type": "dialogue",
+    "text": "本を顔に近づけて、よく見ると――。",
+    "go_next": true
+  },
+  {
+    "type": "bgm",
+    "name": "stop"
+  },
+  {
+    "type": "sugu_horror"
+  },
+  {
+    "type": "dialogue",
+    "text": "「ひっ！」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "思わず本を投げてしまった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "バサリという音を立てて床に落ちる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ベッドの上の私は、怖くて下を覗くことができなかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "……なんで。"
+  },
+  {
+    "type": "dialogue",
+    "text": "なんでこんなことに。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "どのくらいたっただろう。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "ベッドの上で体育座りをして、壁に貼っているポスターを見ていた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "日記なんて読まないほうが良かったのかもしれない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "知らない方が良かったかもしれない……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "――でも。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "勇気を出して日記を拾い上げて、もう一度読み始める。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「ちゃんと――」"
+  },
+  {
+    "type": "dialogue",
+    "text": "知らないとダメなんだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お母さんのこと。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんのこと。"
+  },
+  {
+    "type": "dialogue",
+    "text": "スグちゃんのことを。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "真っ黒なページよりあとは、ほとんど文章として成り立っていなかった。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "そして気づいたこと――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "日記にはスグちゃんと、お兄ちゃんのことしか書かれていなかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "下唇を噛む。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「くそっ……」"
+  },
+  {
+    "type": "dialogue",
+    "text": "そして日記は終わった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "白紙になってしまった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お母さんもいなくなってしまった。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "もっとお母さんといたかった。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "運動会も見てほしかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "中学生にもなったんだよ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "もっと……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "なんで私だけ――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "静かにもう一度日記帳を開く。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "２０ｘｘ年６月７日",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "イロちゃん"
+  },
+  {
+    "type": "dialogue",
+    "text": "生まれてきてくれて"
+  },
+  {
+    "type": "dialogue",
+    "text": "ありがとう。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "それでも――。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "このまま、お兄ちゃんが苦しんだままなのは嫌だった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "私じゃなきゃできないんだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「お兄ちゃん……」"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんを助けたい。"
+  },
+  {
+    "type": "dialogue",
+    "text": "間違ってるって、教えてあげたい。"
+  },
+  {
+    "type": "dialogue",
+    "text": "放っておけないもん。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ベッドをおりて立ち上がった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "口の中が鉄の味で気持ち悪かった。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "………………。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "…………。"
+  },
+  {
+    "type": "dialogue",
+    "text": "……。"
+  },
+  {
+    "type": "flashback_end"
+  },
+  {
+    "type": "bgm",
+    "name": "iro_theme"
+  },
+  {
+    "type": "dialogue",
+    "text": "「それで――」"
+  },
+  {
+    "type": "dialogue",
+    "text": "無意識に噛んでいた下唇を解放し、話を続ける。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「日記帳には、お兄ちゃんとスグちゃんが仲が良かったことが書いてあったの」"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんに伝えたかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「そう。それをなんとか、お兄ちゃんに伝えたかったから」",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「って、なんか重たくなっちゃったね」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "力が入ってしまったせいか、みんな静かになってしまっている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「うん――、そうだね。せっかく料理もでてることだし、食べながら聞いてもいいかな？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「もちろん！　気楽に聞いてくれたらいいよ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "さすがお兄ちゃんだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "今日は私が主役なんだから、笑顔で話そう。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「それでね、どうにかしてお兄ちゃんに伝えようと思ったんだ」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「でも、普通に伝えても気休めに聞こえてしまうかもしれないでしょ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「かと言って、日記を見せるのは逆に嫌な気持ちにさせちゃうかもしれないし――。それに気も引けるしね」"
+  },
+  {
+    "type": "dialogue",
+    "text": "少し笑った。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんも、確かにといった表情をしてくれている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「だから、学校で相談してみたの」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「あ、もちろん詳しい話はなしでだよ！　流石にスグちゃんのことは話さないといけなかったけど」",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「お姉ちゃん会いに来てくれたんだよねー」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "ユウくんがニコニコしながら入ってきてくれる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "右手にはフライドポテトが握られていて可愛い。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「そうだよねー」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「そう、友達に相談することで、シュンくんとユウくんに出会うことができたの」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「友達の親戚なんだけど、写真で見たスグちゃんに似てたから」"
+  },
+  {
+    "type": "dialogue",
+    "text": "勢いよく喋りすぎて喉が乾いた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "オレンジジュースをぐびっと飲む。"
+  },
+  {
+    "type": "dialogue",
+    "text": "シュンくんとユウくんは、照れくさそうに顔を見合わせている。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「その時はねぇ、まだスグちゃんのふりをしてもらうって考えはなかったんだけど」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「あまりに似てたから会ってみたくなって」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「実際会うとやっぱりそっくりで……。」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「よくテレビとかであるじゃん、死んだ家族が幽霊になって会いに来てくれるやつ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "もちろん、本当にそんなことができるなんて思ってたわけじゃない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "でも――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「そういう感じのことできないかな、って思っちゃったの」",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「その場ですぐにお願いしちゃったよね、私」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "ユウくんにパスをする。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「うん！　嫌だっていった！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "みんな大笑いだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "パスを見事にさばいてくれた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「そうそう、めんどくさいって断られちゃって。でも諦めきれなくて私――」",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「お菓子買ってあげるから！　……って」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「物で釣ったのか」"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんが呆れ顔で反応する。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「……だって、断られたんだもん」"
+  },
+  {
+    "type": "dialogue",
+    "text": "なんか恥ずかしくて頭をかいた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「でもそのかいあって、喜んで協力してくれたんだよ！」",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "クスクスという笑い声が聞こえてきたけど、気にしない。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「んで、役者も揃ったので実際にどうやってお兄ちゃんに伝えようかって話ね」"
+  },
+  {
+    "type": "dialogue",
+    "text": "あまりやり過ぎても、別人だって思われちゃう。"
+  },
+  {
+    "type": "dialogue",
+    "text": "かと言って、気づかれなくてもダメだから――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「まずは気付いてもらおうと思って。だから、一緒に降りた地下道でユウくんの姿を見てもらうことにしたの」"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんは頷いている。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「あの時、実はシュンくんが海につながる通路側にいた。ユウくんが海に降りていったでしょ？　出てすぐに横道にそれてシュンくんと合流したってわけ」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「僕が海の方を覗きに行く可能性を考えていたわけだね」"
+  },
+  {
+    "type": "dialogue",
+    "text": "さすがお兄ちゃんだ、鋭い。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「そう！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「無事にお兄ちゃんに『白い服の少年』の姿を見せられたから、次は３日目に向けて準備を進めたわ」",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「え？」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "急にお兄ちゃんが驚いた顔をする。"
+  },
+  {
+    "type": "dialogue",
+    "text": "何か変なことをいったかしら？"
+  },
+  {
+    "type": "dialogue",
+    "text": "「どうしたの、お兄ちゃん？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「それだけだった？　ユウくんに他の場所で待機してもらったりとかは……」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「１日目のことだよね？　ないよ。ないと思うけど……」"
+  },
+  {
+    "type": "dialogue",
+    "text": "ないと言ったものの、ユウくんがふらふらと出歩いていないとは限らない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "自信がなかったので、ユウくんの方に目をやった。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「ううん、僕はあの後、お兄ちゃんと家に帰ったよ」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「やっぱりそうだよね。……みたいよ、お兄ちゃん」"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんは首をかしげていたが、すぐに向き返った。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「そっか、じゃあ見間違いかな。ごめんごめん、続けて」"
+  },
+  {
+    "type": "dialogue",
+    "text": "私は頷き、続けることにした。"
+  },
+  {
+    "type": "dialogue",
+    "text": "今回の一番の難所、手紙作戦だ。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「私はお兄ちゃんとスグちゃんが仲直りをしたのを、日記で読んで知っている」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「お兄ちゃんには、そのことを思い出してほしかったの」"
+  },
+  {
+    "type": "dialogue",
+    "text": "ただ、仲が良かったってだけじゃダメ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ダメだと思ったから、スグちゃんの役だけじゃなくて、お兄ちゃん役が必要だった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「兄弟が仲直りしている姿を見たら――もしかして、って思って」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「あとは、秘密基地。お兄ちゃんたち、お寺の裏の大きな木のところをそう呼んでるみたいだったから、あそこで見せたらいいと思ったのよ」",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「あの時は、実際は手紙を掘り返してしまったね。本当はそうじゃなかったってことか」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「そう」"
+  },
+  {
+    "type": "dialogue",
+    "text": "そうなんだ。本当はシュン君たち兄弟に、掘り起こして仲直りしてもらうところを見てほしかったんだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「でも、お兄ちゃん走り出しちゃったじゃん。追いかけるの大変だったんだからね！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "話しながら笑いがでた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「それに、走りながら、あーどうしようぅーって考えてた」"
+  },
+  {
+    "type": "dialogue",
+    "text": "みんなも一斉に笑っている。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「あの時は夢中だったからなぁ」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "と、お兄ちゃん。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ふと、また首をかしげる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「玄関で手紙を拾った時はユウ君はどこに？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「えっ？　えーっと、神社の方からお寺の裏に回れるじゃない。あっち側から向かってもらってたよ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "ユウくんとシュン君は二人揃って、ウンウンと頷いている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「うーん、そうか――」"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんは下を向いて、考え込んでしまった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「どうしたの？」",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「いや、見間違いだと思うんだけど、あの時、白い服を着た子を見た気がしてね」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "さっきも言ってたけど、そこでもか。"
+  },
+  {
+    "type": "dialogue",
+    "text": "でも確かに、一回スグちゃんっぽい子を見ちゃったら……気になっちゃうよね。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「幽……霊とか？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「いやいや、幽霊なんて。あの時は普通の精神状態じゃなかったからね。疲れてたんだと思う」"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんは大きく首を横に振りながら答えてくれた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「疲れさせたのは、私かもしれないけどね」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「はは、そうだな」"
+  },
+  {
+    "type": "dialogue",
+    "text": "笑ってくれたので、続きを話すことにした。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "……。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "…………。"
+  },
+  {
+    "type": "dialogue",
+    "text": "………………。"
+  },
+  {
+    "type": "dialogue",
+    "text": "『おにいちゃん　みせたいものがあるから　ひみつきちに　きて』"
+  },
+  {
+    "type": "dialogue",
+    "text": "「お兄ちゃん、見せたいものがあるから、秘密基地に、来て？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "昨日までの２日間で、お兄ちゃんの様子がだいぶ良くなっている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ここでちゃんと思い出させるんだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「スグちゃんからの……手紙？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃん、思い出して！",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんは私のことを見る。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "その目は真剣だ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "行こうお兄ちゃん。そう言おうとする前に、お兄ちゃんは背中を向けてしまった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "なんで？"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんは、私が背中を押さないと動かないタイプだと思ってたのに。"
+  },
+  {
+    "type": "dialogue",
+    "text": "なのに、なんで――。全速力で、秘密基地に向かって走り出してしまった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "どんどん背中が小さくなる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "私だって部活で鍛えているのに。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「お兄ちゃん……はあ……はあ……」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "やっと追いついた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "慌てて二人の姿を探すが、まだみたいだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "どうしよう――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「何か……あった？」"
+  },
+  {
+    "type": "dialogue",
+    "text": "考えろ、考えるんだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんは首を振ると、中央の木に向かって歩き出してしまう。"
+  },
+  {
+    "type": "dialogue",
+    "text": "そっちはダメだ――！",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "このままじゃ、このままじゃ。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "失敗しちゃう――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "そんな気持ちをよそに、お兄ちゃんは膝をつき、土を掘り返し始めた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "でも――止めるわけにはいかない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんは、私が用意したお菓子の缶を大事そうに抱え、ついた土を払った。"
+  },
+  {
+    "type": "dialogue",
+    "text": "こちらを見ている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "もう、このまま進むしかない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "私は大きく頷いた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "おねがい――思い出して――――。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「……あ、誰だよー！　僕の手紙、勝手に出したのは！」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "えっ？"
+  },
+  {
+    "type": "dialogue",
+    "text": "後ろを振り返ると、到着したばかりの二人が立っていた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "シュン君は、私に気付いて驚いた顔をしている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「あ、それ……ごめんなさい、弟が……その……」"
+  },
+  {
+    "type": "dialogue",
+    "text": "やばいやばいやばい――やばい！"
+  },
+  {
+    "type": "dialogue",
+    "text": "全然うまくいかない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "このままじゃお兄ちゃんが――。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんは両手を地面について、多分……泣いていた。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "もう無理だ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "謝ろう。"
+  },
+  {
+    "type": "dialogue",
+    "text": "潤んできてぼやける視界を拭い、お兄ちゃんに歩み寄ろうとした。"
+  },
+  {
+    "type": "dialogue",
+    "text": "――あれ？"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんが立ち上がって、二人に近づいていく。"
+  },
+  {
+    "type": "dialogue",
+    "text": "私はもう、見届けるしかなかった。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「……お……と」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "二人の肩に手をあてるお兄ちゃんの後ろ姿が震える。"
+  },
+  {
+    "type": "dialogue",
+    "text": "嘘っ……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "苦しそう。喉が。"
+  },
+  {
+    "type": "dialogue",
+    "text": "涙が溢れてくる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃん――。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「……弟を……大切に、な……」",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "一歩……兄のもとに近づく。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "もう３人の様子はわからない。"
+  },
+  {
+    "type": "dialogue",
+    "text": "それでも、声が確かに聞こえた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「お兄ちゃん…………声……う、うわぁぁぁん……！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "作戦が失敗したことなんて、もうどうでも良かった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ただ、ただ……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんが私の肩をだいてくれる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ただ……嬉しかった。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "………………。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "…………。"
+  },
+  {
+    "type": "dialogue",
+    "text": "……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「無事にお兄ちゃんは声を取り戻したのでした～。パチパチパチ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "本当に拍手が巻き起こる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "私はお兄ちゃんを助けたのだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「……作戦失敗してたけどね」"
+  },
+  {
+    "type": "dialogue",
+    "text": "拍手は笑いへと変わった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "でも、本当に良かった。",
+    "go_next": true
+  },
+  {
+    "type": "index",
+    "index": 9000
+  },
+  {
+		"type": "subtitle",
+		"text": "",
+		"fade_time": 0.5,
+		"display_time": 2.0,
+		"next_background": "res://assets/backgrounds/busstop.jpg"
+	},
+  {
+    "type": "dialogue",
+    "text": "バス停で、横にはお兄ちゃん。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "お母さんの法事も無事に終わり、また離れ離れだ。"
+  },
+  {
+    "type": "dialogue",
+    "text": "でも、もう大丈夫。"
+  },
+  {
+    "type": "dialogue",
+    "text": "きっとお兄ちゃんも、そう思っている。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「あ、バス見えたよ！」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「めちゃくちゃちっちゃいけどね。なんでこうも遅れるかなぁ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "去年なら、こんな些細なことまで話せなかった。"
+  },
+  {
+    "type": "dialogue",
+    "text": "それに、よく喋る。"
+  },
+  {
+    "type": "dialogue",
+    "text": "嬉しくなって笑みが溢れた。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「何笑ってんの？」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "覗き込む兄。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「ううん、何でも」"
+  },
+  {
+    "type": "dialogue",
+    "text": "笑いながら答える。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「お兄ちゃん、法事じゃなくても帰って来てよね」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "――さみしいから。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「ん？　社会人になったばかりで、なかなか休めないんだぞ」"
+  },
+  {
+    "type": "dialogue",
+    "text": "「でも――」"
+  },
+  {
+    "type": "dialogue",
+    "text": "でも？"
+  },
+  {
+    "type": "dialogue",
+    "text": "「帰るよ。イロに会いにね」"
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃん大好き！",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "「じゃあ気をつけて！」",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃんはバスに乗り込み、一番前の席から手を振ってくれた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "私も精一杯振り返す。"
+  },
+  {
+    "type": "dialogue",
+    "text": "バスが出発する。"
+  },
+  {
+    "type": "dialogue",
+    "text": "来るまでは遅いくせに、行くのは早い。"
+  },
+  {
+    "type": "dialogue",
+    "text": "バスが小さくなる。"
+  },
+  {
+    "type": "dialogue",
+    "text": "排気ガスで目が痛かった。",
+    "go_next": true
+  },
+  {
+    "type": "dialogue",
+    "text": "お兄ちゃん、またね！",
+    "new_page": true,
+    "go_next": true
+  },
+  {
+    "type": "branch_flag",
+    "name": "jmr_unlocked",
+    "branches": {
+      "true": 9100
+    }
+  },
+  {
+    "type": "jump",
+    "index": 9999
+  },
+  {
+    "type": "index",
+    "index": 9100
+  },
+  {
+    "type": "dialogue",
+    "text": "……。",
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "……。"
+  },
+  {
+    "type": "dialogue",
+    "text": "ポケットが揺れて、スマホを出す。"
+  },
+  {
+    "type": "dialogue",
+    "text": "画面はグリーンに光り、ライムに葉っぱがついた――まるで吹き出しを逆にしたデザインのLIMEのロゴが見えた。"
+  },
+  {
+    "type": "dialogue",
+    "text": "「あっ、お寺さんだ」"
+  },
+  {
+    "type": "show_toast",
+    "text": "「調査隊編」が解放されました"
+  },
+  {
+    "type": "jump",
+    "index": 9999
+  },
+  {
+    "type": "index",
+    "index": 9999
+  },
+  {
+    "type": "visit_location",
+    "id": "iro_story"
+  }
 ]
