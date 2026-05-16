@@ -4,7 +4,7 @@ extends CanvasLayer
 ## シーケンス:
 ##   1. クリックフェーズ（スグ。が1行ずつスタック、1→2→4クリック）
 ##   2. 自動フェーズ（スグ。×6 自動スタック）
-##   3. 密集フェーズ（スグ×190=380文字・黒文字・速度加速）
+##   3. 密集フェーズ（スグ×250=500文字・黒文字・速度加速）
 ##   4. カオスフェーズ（400文字を背景に黒ラベルが乱れ飛ぶ → 暗転）
 
 signal horror_completed
@@ -39,11 +39,7 @@ const CHAOS_FIRST_PAUSE     := 1.2
 ## クリックフェーズ：2クリック1回目のジョルト量（px）
 const JOLT_SMALL            := 125.0
 ## 4クリック3回目の傾き角度（ラジアン）±この範囲でランダム
-const TILT_ANGLE_MAX        := -0.45
-## ジョルト後に元の位置に戻るまでの時間（秒）
-const JOLT_RETURN_TIME      := 0.3
-## 傾き後に元の角度に戻るまでの時間（秒）
-const TILT_RETURN_TIME      := 0.4
+const TILT_ANGLE_MAX        := 0.45
 ## 密集フェーズ中のシェイク間隔（秒）
 const DENSE_SHAKE_INTERVAL  := 0.3
 ## 密集フェーズ終盤のシェイク最大強度（px）
@@ -79,8 +75,12 @@ var _dense_font_switched: bool   = false
 var _dense_shake_timer:   float  = 0.0
 var _dense_last_font_size: int   = -1
 
-## text_label の基準位置（ジョルト・シェイク後に戻すための参照）
+## text_label の基準位置（密集フェーズのシェイクで振れ幅の中心として使う）
 var _label_origin: Vector2 = Vector2.ZERO
+## 演出開始前の本当の原点（終了時に完全リセットするために保持）
+var _label_true_origin: Vector2 = Vector2.ZERO
+## 演出開始前の有効フォントサイズ（終了時に確実に復元するために保持）
+var _original_font_size: int = -1
 
 var _chaos_interval:   float = CHAOS_INTERVAL_START
 var _chaos_timer:      float = 0.0
@@ -133,6 +133,8 @@ func start() -> void:
 	_phase = _Phase.CLICK
 	_click_target = 0
 	if text_display and text_display.text_label:
+		_label_true_origin = text_display.text_label.position
+		_original_font_size = text_display.text_label.get_theme_font_size("normal_font_size")
 		text_display.text_label.scroll_active = false
 	set_process(true)
 	_run_click_phase()
@@ -183,7 +185,7 @@ func _run_auto_single_phase() -> void:
 	_run_auto_dense_phase()
 
 
-# ── 密集フェーズ（400文字・黒文字・速度加速）─────────────
+# ── 密集フェーズ（500文字・黒文字・速度加速）─────────────
 
 func _run_auto_dense_phase() -> void:
 	text_display.clear()
@@ -351,8 +353,8 @@ func _process(delta: float) -> void:
 			text_display.text_label.add_theme_color_override(
 					"default_color", UIConstants.COLOR_TEXT_PRIMARY)
 			text_display.text_label.remove_theme_font_override("font")
-			text_display.text_label.remove_theme_font_size_override("normal_font_size")
-			text_display.text_label.position = _label_origin
+			text_display.text_label.add_theme_font_size_override("normal_font_size", _original_font_size)
+			text_display.text_label.position = _label_true_origin
 			text_display.text_label.rotation = 0.0
 			text_display.text_label.pivot_offset = Vector2.ZERO
 			text_display.text_label.scroll_active = true
