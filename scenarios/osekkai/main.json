@@ -1705,6 +1705,10 @@
     "type": "sugu_horror"
   },
   {
+		"type": "bgm",
+		"name": "suspense"
+	},
+  {
     "type": "dialogue",
     "text": "「ひっ！」",
     "new_page": true
@@ -2356,6 +2360,10 @@
     "go_next": true
   },
   {
+		"type": "bgm",
+		"name": "stop"
+	},
+  {
     "type": "dialogue",
     "text": "……。",
     "new_page": true
@@ -2368,6 +2376,10 @@
     "type": "dialogue",
     "text": "………………。"
   },
+  {
+		"type": "bgm",
+		"name": "truth"
+	},
   {
     "type": "dialogue",
     "text": "『おにいちゃん　みせたいものがあるから　ひみつきちに　きて』"
@@ -2628,6 +2640,10 @@
     "go_next": true
   },
   {
+    "type": "bgm",
+    "name": "stop"
+  },
+  {
     "type": "dialogue",
     "text": "………………。",
     "new_page": true
@@ -2639,6 +2655,10 @@
   {
     "type": "dialogue",
     "text": "……。"
+  },
+  {
+    "type": "bgm",
+    "name": "iro_theme"
   },
   {
     "type": "dialogue",
@@ -2676,6 +2696,10 @@
 		"display_time": 2.0,
 		"next_background": "res://assets/backgrounds/busstop.jpg"
 	},
+  {
+    "type": "bgm",
+    "name": "ending"
+  },
   {
     "type": "dialogue",
     "text": "バス停で、横にはお兄ちゃん。",

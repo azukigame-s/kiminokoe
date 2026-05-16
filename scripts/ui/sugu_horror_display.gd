@@ -11,7 +11,7 @@ signal horror_completed
 
 # ── 調整用定数 ──────────────────────────────────────────
 ## フォントパス（怨霊フォント入手後はこの1行だけ差し替える）
-const FONT_PATH             := "res://assets/fonts/EnkaDotMincho24.ttf"
+const FONT_PATH             := "res://assets/fonts/onryou.TTF"
 
 ## 自動フェーズの行間間隔（秒）
 const AUTO_INTERVAL         := 0.8
@@ -33,7 +33,7 @@ const BLACKOUT_DURATION     := 8.0
 const CHAOS_SIZE_MIN        := 30
 const CHAOS_SIZE_MAX        := 300
 ## カオス開幕の「スグ」：センター表示のフォントサイズと待機時間（秒）
-const CHAOS_FIRST_FONT_SIZE := 250
+const CHAOS_FIRST_FONT_SIZE := 400
 const CHAOS_FIRST_PAUSE     := 1.2
 
 ## クリックフェーズ：2クリック1回目のジョルト量（px）
