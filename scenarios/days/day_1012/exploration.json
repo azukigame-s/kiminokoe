@@ -1127,6 +1127,11 @@
 		"id": "temple_jmr"
 	},
 	{
+		"type": "set_flag",
+		"name": "jmr_unlocked",
+		"value": "true"
+	},
+	{
 		"type": "load_scenario",
 		"path": "shared/shared_1012"
 	},

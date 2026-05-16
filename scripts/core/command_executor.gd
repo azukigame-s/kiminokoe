@@ -91,6 +91,8 @@ func execute(command: Dictionary, skip_controller: SkipController) -> void:
 			pass
 		"sugu_horror":
 			await execute_sugu_horror(skip_controller)
+		"show_toast":
+			await execute_show_toast(command)
 		"flashback_start":
 			await execute_flashback_start(command, skip_controller)
 		"flashback_end":
@@ -376,6 +378,16 @@ func execute_flashback_start(command: Dictionary, skip_controller: SkipControlle
 			await background_display.set_effect(effect, use_fade)
 	else:
 		push_warning("[CommandExecutor] BackgroundDisplay が設定されていません")
+
+## show_toast コマンドを実行（任意テキストのトースト表示）
+func execute_show_toast(command: Dictionary) -> void:
+	var text = command.get("text", "")
+	if text.is_empty():
+		return
+	var trophy_manager = get_node_or_null("/root/TrophyManager")
+	if trophy_manager and trophy_manager.toast_notification \
+			and trophy_manager.toast_notification.has_method("show_toast"):
+		await trophy_manager.toast_notification.show_toast(text)
 
 ## flashback_end コマンドを実行（回想モード終了）
 func execute_flashback_end(command: Dictionary, skip_controller: SkipController) -> void:
