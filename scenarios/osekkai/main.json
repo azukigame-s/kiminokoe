@@ -1706,7 +1706,7 @@
   },
   {
 		"type": "bgm",
-		"name": "suspense"
+		"name": "iro_flashback"
 	},
   {
     "type": "dialogue",
@@ -1902,6 +1902,10 @@
     "text": "口の中が鉄の味で気持ち悪かった。",
     "go_next": true
   },
+  {
+		"type": "bgm",
+		"name": "stop"
+	},
   {
     "type": "dialogue",
     "text": "………………。",
@@ -2698,7 +2702,7 @@
 	},
   {
     "type": "bgm",
-    "name": "ending"
+    "name": "iro_ending"
   },
   {
     "type": "dialogue",
@@ -2819,7 +2823,15 @@
   {
     "type": "dialogue",
     "text": "お兄ちゃん、またね！",
-    "new_page": true,
+    "new_page": true
+  },
+  {
+    "type": "dialogue",
+    "text": "――青い空。"
+  },
+  {
+    "type": "dialogue",
+    "text": "今日は、とーってもいい天気だった。",
     "go_next": true
   },
   {
