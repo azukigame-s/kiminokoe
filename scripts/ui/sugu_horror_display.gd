@@ -16,9 +16,9 @@ const FONT_PATH             := "res://assets/fonts/EnkaDotMincho24.ttf"
 ## 自動フェーズの行間間隔（秒）
 const AUTO_INTERVAL         := 0.8
 ## 密集行アニメーション開始時の秒/文字（遅い）
-const DENSE_SPEED_START     := 0.05
+const DENSE_SPEED_START     := 0.02
 ## 密集行アニメーション終了時の秒/文字（速い）
-const DENSE_SPEED_END       := 0.01
+const DENSE_SPEED_END       := 0.005
 ## 密集行アニメーション完了後の待機時間（秒）
 const DENSE_INTERVAL        := 1.0
 ## カオスラベルの初期生成間隔（秒）
