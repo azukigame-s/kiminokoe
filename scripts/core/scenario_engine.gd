@@ -445,6 +445,7 @@ func get_save_state() -> Dictionary:
 		"bgm_path": _get_bgm_path(),
 		"effect": _get_current_effect(),
 		"backlog": backlog_manager.serialize(),
+		"flags": scenario_flags.duplicate(),
 	}
 
 ## 現在の背景パスを取得
@@ -514,6 +515,9 @@ func load_from_save_state(save_state: Dictionary) -> void:
 	current_scenario_path = scenario_path
 	current_index = index
 	is_running = true
+
+	# フラグを復元（branch_flag などがロード後のスタック巻き戻しで正しく動くために必要）
+	scenario_flags = save_state.get("flags", {})
 
 	# 視覚/音声状態の復元（シナリオ再開前）
 	var bg_path = save_state.get("background_path", "")

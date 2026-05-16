@@ -221,6 +221,7 @@ func auto_save(save_state: Dictionary) -> void:
 	config.set_value("save", "ambient_volume_db", save_state.get("ambient_volume_db", 0.0))
 	config.set_value("save", "ambient2_path", save_state.get("ambient2_path", ""))
 	config.set_value("save", "ambient2_volume_db", save_state.get("ambient2_volume_db", 0.0))
+	config.set_value("save", "flags", save_state.get("flags", {}))
 	var error = config.save(SAVE_FILE_PATH)
 	if error != OK:
 		push_error("[SceneManager] Failed to auto-save: %s" % str(error))
@@ -246,6 +247,7 @@ func load_save_data() -> Dictionary:
 		"ambient_volume_db": config.get_value("save", "ambient_volume_db", 0.0),
 		"ambient2_path": config.get_value("save", "ambient2_path", ""),
 		"ambient2_volume_db": config.get_value("save", "ambient2_volume_db", 0.0),
+		"flags": config.get_value("save", "flags", {}),
 	}
 
 # つづきからはじめるが可能か（シナリオ進行データがあるか）

@@ -314,11 +314,14 @@ func _continue_game():
 		"ambient_volume_db": save_data.get("ambient_volume_db", 0.0),
 		"ambient2_path": save_data.get("ambient2_path", ""),
 		"ambient2_volume_db": save_data.get("ambient2_volume_db", 0.0),
+		"flags": save_data.get("flags", {}),
 	}
 	await scenario_engine.load_from_save_state(engine_state)
 
 	print("[GameScene] シナリオ完了")
-	if scenario_engine.scenario_flags.get("osekkai_selected", "") == "true":
+	# フラグはセーブ非対応のため、シナリオパスでも補完判定する
+	var _in_osekkai = scenario_engine.current_scenario_path.begins_with("osekkai")
+	if _in_osekkai or scenario_engine.scenario_flags.get("osekkai_selected", "") == "true":
 		await _show_beta_ending()
 	else:
 		await _show_demo_ending()
