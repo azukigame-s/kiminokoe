@@ -822,11 +822,11 @@
 	},
 	{
 		"type": "background",
-		"path": "res://assets/backgrounds/no_image.jpg"
+		"path": "res://assets/backgrounds/reception_room.jpg"
 	},
 	{
 		"type": "dialogue",
-		"text": "応接室のような洋間に通され、ソファーに座った。",
+		"text": "応接室のような洋間に通され、椅子に座った。",
 		"new_page": true
 	},
 	{

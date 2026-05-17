@@ -1183,9 +1183,6 @@
     "go_next": true
   },
   {
-    "type": "flashback_start"
-  },
-  {
     "type": "dialogue",
     "text": "……。",
     "new_page": true
@@ -1302,6 +1299,10 @@
     "type": "dialogue",
     "text": "……ゆっくりと本を開く。"
   },
+  {
+		"type": "background",
+		"path": "res://assets/backgrounds/diary.jpg"
+	},
   {
     "type": "dialogue",
     "text": "まっしろなページ。遊び紙だった。"
@@ -1920,7 +1921,8 @@
     "text": "……。"
   },
   {
-    "type": "flashback_end"
+    "type": "background",
+    "path": "res://assets/backgrounds/no_image.jpg"
   },
   {
     "type": "bgm",
